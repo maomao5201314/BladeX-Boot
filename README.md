@@ -12,6 +12,10 @@
 * 创建多租户模式，发布简单，数据隔离轻松
 * 项目分包明确，规范微服务的开发模式
 
+## 商业授权
+* 您一旦开始复制、下载、安装或者使用本产品，即被视为完全理解并接受本协议的各项条款
+* 更多详情请看：[BladeX商业授权许可协议](https://gitee.ltd/blade/BladeX-Boot/src/master/LICENSE)
+
 ## 官网
 * 官网地址：[https://bladex.vip](https://bladex.vip)
 

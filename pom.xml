@@ -10,7 +10,7 @@
     <version>2.0.0.RC1</version>
 
     <properties>
-        <bladex.tool.version>2.0.0.RC1</bladex.tool.version>
+        <bladex.tool.version>2.0.0.RC2</bladex.tool.version>
         <bladex.project.version>2.0.0.RC1</bladex.project.version>
 
         <java.version>1.8</java.version>

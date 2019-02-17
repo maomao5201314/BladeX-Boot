@@ -156,6 +156,9 @@ public class MenuController extends BladeController {
 	@GetMapping("auth-routes")
 	@ApiOperation(value = "菜单的角色权限", position = 8)
 	public R<List<Kv>> authRoutes(BladeUser user) {
+		if (Func.isEmpty(user)) {
+			return null;
+		}
 		List<Kv> list = new ArrayList<>();
 		List<MenuDTO> routes = menuService.authRoutes(Func.toIntList(user.getRoleId()));
 		routes.forEach(route -> list.add(Kv.create().set(route.getPath(), Kv.create().set("authority", Func.toStrArray(route.getAlias())))));

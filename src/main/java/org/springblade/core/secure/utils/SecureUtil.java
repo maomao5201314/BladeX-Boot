@@ -49,7 +49,7 @@ public class SecureUtil {
 	public final static String USER_NAME = "userName";
 	public final static String ROLE_NAME = "roleName";
 	public final static Integer AUTH_LENGTH = 7;
-	private static String BASE64_SECURITY = DatatypeConverter.printBase64Binary("SpringBlade".getBytes());
+	private static String BASE64_SECURITY = DatatypeConverter.printBase64Binary("BladeX".getBytes());
 
 	/**
 	 * 获取用户信息

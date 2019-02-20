@@ -11,7 +11,7 @@
 
     <properties>
         <bladex.tool.version>2.0.0.RC3</bladex.tool.version>
-        <bladex.project.version>2.0.0.RC2</bladex.project.version>
+        <bladex.project.version>2.0.0.RC3</bladex.project.version>
 
         <java.version>1.8</java.version>
         <swagger.version>2.9.2</swagger.version>
@@ -21,7 +21,7 @@
         <protostuff.version>1.6.0</protostuff.version>
 
         <spring.boot.version>2.1.2.RELEASE</spring.boot.version>
-        <spring.platform.version>Cairo-RELEASE</spring.platform.version>
+        <spring.platform.version>Cairo-SR7</spring.platform.version>
 
         <!-- 推荐使用Harbor -->
         <docker.registry.url>192.168.186.129</docker.registry.url>

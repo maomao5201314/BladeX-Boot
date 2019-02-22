@@ -16,15 +16,10 @@
  */
 package org.springblade.modules.system.vo;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springblade.core.tool.node.INode;
 import org.springblade.modules.system.entity.User;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 视图实体类
@@ -35,32 +30,13 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "UserVO对象", description = "UserVO对象")
-public class UserVO extends User implements INode {
+public class UserVO extends User {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 主键ID
 	 */
 	private Integer id;
-
-	/**
-	 * 父节点ID
-	 */
-	private Integer parentId;
-
-	/**
-	 * 子孙节点
-	 */
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
-	private List<INode> children;
-
-	@Override
-	public List<INode> getChildren() {
-		if (this.children == null) {
-			this.children = new ArrayList<>();
-		}
-		return this.children;
-	}
 
 	/**
 	 * 角色名

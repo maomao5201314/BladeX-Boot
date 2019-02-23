@@ -98,10 +98,11 @@ public class CodeController extends BladeController {
 	 */
 	@PostMapping("/gen-code")
 	@ApiOperation(value = "代码生成", notes = "传入ids", position = 8)
-	public R genCode(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
+	public R genCode(@ApiParam(value = "主键集合", required = true) @RequestParam String ids, @RequestParam(defaultValue = "sword") String system) {
 		Collection<Code> codes = codeService.listByIds(Func.toIntList(ids));
 		codes.forEach(code -> {
 			BladeGenerator generator = new BladeGenerator();
+			generator.setSystemName(system);
 			generator.setServiceName(code.getServiceName());
 			generator.setPackageName(code.getPackageName());
 			generator.setPackageDir(code.getApiPath());

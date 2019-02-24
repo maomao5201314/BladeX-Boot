@@ -29,6 +29,7 @@ import org.springblade.modules.system.mapper.UserMapper;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -67,6 +68,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	public boolean resetPassword(String userIds) {
 		User user = new User();
 		user.setPassword(DigestUtil.encrypt(CommonConstant.DEFAULT_PASSWORD));
+		user.setUpdateTime(LocalDateTime.now());
 		return this.update(user, Wrappers.<User>update().lambda().in(User::getId, Func.toIntList(userIds)));
 	}
 

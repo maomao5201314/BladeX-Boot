@@ -93,6 +93,15 @@ public class UserController {
 	}
 
 	/**
+	 * 修改
+	 */
+	@PostMapping("/update")
+	@ApiOperation(value = "修改", notes = "传入User", position = 3)
+	public R update(@Valid @RequestBody User user) {
+		return R.status(userService.updateById(user));
+	}
+
+	/**
 	 * 删除
 	 */
 	@PostMapping("/remove")

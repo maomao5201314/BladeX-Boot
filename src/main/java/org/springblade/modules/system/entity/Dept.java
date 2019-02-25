@@ -59,9 +59,9 @@ public class Dept implements Serializable {
 	private String deptName;
 
 	/**
-	 * 部门全程
+	 * 部门全称
 	 */
-	@ApiModelProperty(value = "部门全程")
+	@ApiModelProperty(value = "部门全称")
 	private String fullName;
 
 	/**

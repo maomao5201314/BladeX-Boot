@@ -50,7 +50,7 @@ CREATE TABLE `blade_dept`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `parent_id` int(11) NULL DEFAULT 0 COMMENT '父主键',
   `dept_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '部门名',
-  `full_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '部门全程',
+  `full_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '部门全称',
   `sort` int(11) NULL DEFAULT NULL COMMENT '排序',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `is_deleted` int(2) NULL DEFAULT 0 COMMENT '是否已删除',

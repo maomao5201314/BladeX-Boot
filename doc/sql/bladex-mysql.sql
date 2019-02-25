@@ -351,7 +351,7 @@ CREATE TABLE `blade_user`  (
 -- Records of blade_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `blade_user` VALUES (1, 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员', '管理员', 'admin@ronrisoft.com.cn', '22233322', '2015-09-08 00:00:00', 1, '1', '1', 1, '2018-05-01 10:47:12', 1, '2018-05-01 10:47:18', 1, 0);
+INSERT INTO `blade_user` VALUES (1, 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员', '管理员', 'admin@bladex.vip', '22233322', '2015-09-08 00:00:00', 1, '1', '1', 1, '2018-05-01 10:47:12', 1, '2018-05-01 10:47:18', 1, 0);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

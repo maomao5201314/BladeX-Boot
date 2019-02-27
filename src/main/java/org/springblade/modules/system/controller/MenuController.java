@@ -144,7 +144,7 @@ public class MenuController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "物理删除", notes = "传入ids", position = 9)
+	@ApiOperation(value = "删除", notes = "传入ids", position = 9)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(menuService.removeByIds(Func.toIntList(ids)));
 	}

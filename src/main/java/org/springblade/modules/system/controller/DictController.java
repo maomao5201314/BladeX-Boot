@@ -27,12 +27,16 @@ import org.springblade.modules.system.entity.Dict;
 import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.vo.DictVO;
 import org.springblade.modules.system.wrapper.DictWrapper;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+
+import static org.springblade.common.cache.CacheNames.DICT_LIST;
+import static org.springblade.common.cache.CacheNames.DICT_VALUE;
 
 /**
  * 控制器
@@ -94,7 +98,7 @@ public class DictController extends BladeController {
 	@PostMapping("/submit")
 	@ApiOperation(value = "新增或修改", notes = "传入dict", position = 6)
 	public R submit(@Valid @RequestBody Dict dict) {
-		return R.status(dictService.saveOrUpdate(dict));
+		return R.status(dictService.submit(dict));
 	}
 
 
@@ -102,7 +106,8 @@ public class DictController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "物理删除", notes = "传入ids", position = 7)
+	@CacheEvict(cacheNames = {DICT_LIST, DICT_VALUE})
+	@ApiOperation(value = "删除", notes = "传入ids", position = 7)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(dictService.removeByIds(Func.toIntList(ids)));
 	}

@@ -64,4 +64,11 @@ public interface IDictService extends IService<Dict> {
 	 */
 	List<Dict> getList(String code);
 
+	/**
+	 * 新增或修改
+	 * @param dict
+	 * @return
+	 */
+	boolean submit(Dict dict);
+
 }

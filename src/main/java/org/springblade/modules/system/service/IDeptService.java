@@ -27,7 +27,6 @@ import java.util.List;
  * 服务类
  *
  * @author Chill
- * @since 2018-12-24
  */
 public interface IDeptService extends IService<Dept> {
 

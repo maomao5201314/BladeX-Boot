@@ -23,7 +23,6 @@ import org.springblade.core.log.model.LogApi;
  * Mapper 接口
  *
  * @author Chill
- * @since 2018-09-26
  */
 public interface LogApiMapper extends BaseMapper<LogApi> {
 

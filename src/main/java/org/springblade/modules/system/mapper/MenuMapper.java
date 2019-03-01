@@ -28,7 +28,6 @@ import java.util.List;
  * Mapper 接口
  *
  * @author Chill
- * @since 2018-12-24
  */
 public interface MenuMapper extends BaseMapper<Menu> {
 

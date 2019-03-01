@@ -41,7 +41,6 @@ import static org.springblade.common.cache.CacheNames.DICT_VALUE;
  * 服务实现类
  *
  * @author Chill
- * @since 2018-12-24
  */
 @Service
 public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements IDictService {

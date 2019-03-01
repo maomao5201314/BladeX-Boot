@@ -23,7 +23,6 @@ import org.springblade.core.log.model.LogError;
  * Mapper 接口
  *
  * @author Chill
- * @since 2018-09-26
  */
 public interface LogErrorMapper extends BaseMapper<LogError> {
 

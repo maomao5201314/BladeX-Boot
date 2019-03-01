@@ -24,7 +24,6 @@ import org.springblade.modules.desk.entity.Notice;
  * 服务类
  *
  * @author Chill
- * @since 2018-09-29
  */
 public interface INoticeService extends BaseService<Notice> {
 

@@ -24,7 +24,6 @@ import org.springblade.core.secure.BladeUser;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.modules.system.dto.MenuDTO;
 import org.springblade.modules.system.entity.Menu;
 import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.service.IMenuService;
@@ -34,7 +33,6 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -116,8 +114,8 @@ public class MenuController extends BladeController {
 	 */
 	@GetMapping("/grant-tree")
 	@ApiOperation(value = "权限分配树形结构", notes = "权限分配树形结构", position = 6)
-	public R<List<MenuVO>> grantTree() {
-		return R.data(menuService.grantTree());
+	public R<List<MenuVO>> grantTree(BladeUser user) {
+		return R.data(menuService.grantTree(user));
 	}
 
 	/**
@@ -150,18 +148,11 @@ public class MenuController extends BladeController {
 
 	/**
 	 * 获取配置的角色权限
-	 * @return
 	 */
 	@GetMapping("auth-routes")
 	@ApiOperation(value = "菜单的角色权限", position = 8)
 	public R<List<Kv>> authRoutes(BladeUser user) {
-		if (Func.isEmpty(user)) {
-			return null;
-		}
-		List<Kv> list = new ArrayList<>();
-		List<MenuDTO> routes = menuService.authRoutes(Func.toIntList(user.getRoleId()));
-		routes.forEach(route -> list.add(Kv.create().set(route.getPath(), Kv.create().set("authority", Func.toStrArray(route.getAlias())))));
-		return R.data(list);
+		return R.data(menuService.authRoutes(user));
 	}
 
 }

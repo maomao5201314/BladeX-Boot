@@ -55,6 +55,13 @@ public interface MenuMapper extends BaseMapper<Menu> {
 	List<MenuVO> grantTree();
 
 	/**
+	 * 授权树形结构
+	 *
+	 * @return
+	 */
+	List<MenuVO> grantTreeByRole(List<Integer> roleId);
+
+	/**
 	 * 所有菜单
 	 *
 	 * @return

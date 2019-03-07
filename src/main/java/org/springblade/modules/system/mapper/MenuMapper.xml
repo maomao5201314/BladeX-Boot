@@ -112,6 +112,21 @@
         select id, parent_id, name as title, id as 'value', id as 'key' from blade_menu where is_deleted = 0
     </select>
 
+    <select id="grantTreeByRole" resultMap="treeNodeResultMap">
+        select id, parent_id, name as title, id as 'value', id as 'key' from blade_menu where is_deleted = 0
+        and id in ( select menu_id from blade_role_menu where role_id in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach> )
+        or id in (
+            select parent_id from blade_menu where is_deleted = 0
+            and id in ( select menu_id from blade_role_menu where role_id in
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach> )
+          )
+    </select>
+
     <select id="authRoutes" resultType="org.springblade.modules.system.dto.MenuDTO">
         SELECT
             GROUP_CONCAT(r.role_alias) as alias,

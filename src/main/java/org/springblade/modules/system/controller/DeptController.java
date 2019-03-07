@@ -94,10 +94,12 @@ public class DeptController extends BladeController {
 	 */
 	@PostMapping("/submit")
 	@ApiOperation(value = "新增或修改", notes = "传入dept", position = 6)
-	public R submit(@Valid @RequestBody Dept dept) {
+	public R submit(@Valid @RequestBody Dept dept, BladeUser user) {
+		if (Func.isEmpty(dept.getId())) {
+			dept.setTenantCode(user.getTenantCode());
+		}
 		return R.status(deptService.saveOrUpdate(dept));
 	}
-
 
 	/**
 	 * 删除

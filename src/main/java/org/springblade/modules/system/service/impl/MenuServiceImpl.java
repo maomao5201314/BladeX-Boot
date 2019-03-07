@@ -20,7 +20,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
+import org.springblade.core.secure.BladeUser;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
+import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.dto.MenuDTO;
 import org.springblade.modules.system.entity.Menu;
@@ -32,10 +35,7 @@ import org.springblade.modules.system.vo.MenuVO;
 import org.springblade.modules.system.wrapper.MenuWrapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -87,8 +87,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	}
 
 	@Override
-	public List<MenuVO> grantTree() {
-		return ForestNodeMerger.merge(baseMapper.grantTree());
+	public List<MenuVO> grantTree(BladeUser user) {
+		return ForestNodeMerger.merge(user.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE) ? baseMapper.grantTree() : baseMapper.grantTreeByRole(Func.toIntList(user.getRoleId())));
 	}
 
 	@Override
@@ -98,8 +98,14 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	}
 
 	@Override
-	public List<MenuDTO> authRoutes(List<Integer> roleIds) {
-		return baseMapper.authRoutes(roleIds);
+	public List<Kv> authRoutes(BladeUser user) {
+		if (Func.isEmpty(user)) {
+			return null;
+		}
+		List<MenuDTO> routes = baseMapper.authRoutes(Func.toIntList(user.getRoleId()));
+		List<Kv> list = new ArrayList<>();
+		routes.forEach(route -> list.add(Kv.create().set(route.getPath(), Kv.create().set("authority", Func.toStrArray(route.getAlias())))));
+		return list;
 	}
 
 }

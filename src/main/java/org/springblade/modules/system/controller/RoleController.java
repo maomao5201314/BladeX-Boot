@@ -16,11 +16,14 @@
  */
 package org.springblade.modules.system.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.mp.support.Condition;
+import org.springblade.core.secure.BladeUser;
 import org.springblade.core.tool.api.R;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Role;
@@ -68,8 +71,9 @@ public class RoleController extends BladeController {
 		@ApiImplicitParam(name = "roleAlias", value = "角色别名", paramType = "query", dataType = "string")
 	})
 	@ApiOperation(value = "列表", notes = "传入role", position = 2)
-	public R<List<INode>> list(@ApiIgnore @RequestParam Map<String, Object> role) {
-		List<Role> list = roleService.list(Condition.getQueryWrapper(role, Role.class));
+	public R<List<INode>> list(@ApiIgnore @RequestParam Map<String, Object> role, BladeUser bladeUser) {
+		QueryWrapper<Role> queryWrapper = Condition.getQueryWrapper(role, Role.class);
+		List<Role> list = roleService.list((!bladeUser.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE)) ? queryWrapper.lambda().eq(Role::getTenantCode, bladeUser.getTenantCode()) : queryWrapper);
 		RoleWrapper roleWrapper = new RoleWrapper(roleService);
 		return R.data(roleWrapper.listNodeVO(list));
 	}
@@ -89,10 +93,12 @@ public class RoleController extends BladeController {
 	 */
 	@PostMapping("/submit")
 	@ApiOperation(value = "新增或修改", notes = "传入role", position = 6)
-	public R submit(@Valid @RequestBody Role role) {
+	public R submit(@Valid @RequestBody Role role, BladeUser user) {
+		if (Func.isEmpty(role.getId())) {
+			role.setTenantCode(user.getTenantCode());
+		}
 		return R.status(roleService.saveOrUpdate(role));
 	}
-
 
 	/**
 	 * 删除

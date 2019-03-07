@@ -21,14 +21,15 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springblade.core.secure.BladeUser;
+import org.springblade.core.tool.utils.Charsets;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringPool;
 import org.springblade.core.tool.utils.WebUtil;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -48,8 +49,9 @@ public class SecureUtil {
 	public final static String ROLE_ID = "roleId";
 	public final static String USER_NAME = "userName";
 	public final static String ROLE_NAME = "roleName";
+	public final static String TENANT_CODE = "tenantCode";
 	public final static Integer AUTH_LENGTH = 7;
-	private static String BASE64_SECURITY = DatatypeConverter.printBase64Binary("BladeX".getBytes());
+	public static String BASE64_SECURITY = Base64.getEncoder().encodeToString("BladeX".getBytes(Charsets.UTF_8));
 
 	/**
 	 * 获取用户信息
@@ -82,14 +84,18 @@ public class SecureUtil {
 			return null;
 		}
 		Integer userId = Func.toInt(claims.get(SecureUtil.USER_ID));
+		String tenantCode = Func.toStr(claims.get(SecureUtil.TENANT_CODE));
 		String roleId = Func.toStr(claims.get(SecureUtil.ROLE_ID));
 		String account = Func.toStr(claims.get(SecureUtil.ACCOUNT));
 		String roleName = Func.toStr(claims.get(SecureUtil.ROLE_NAME));
+		String userName = Func.toStr(claims.get(SecureUtil.USER_NAME));
 		BladeUser bladeUser = new BladeUser();
-		bladeUser.setAccount(account);
 		bladeUser.setUserId(userId);
+		bladeUser.setTenantCode(tenantCode);
+		bladeUser.setAccount(account);
 		bladeUser.setRoleId(roleId);
 		bladeUser.setRoleName(roleName);
+		bladeUser.setUserName(userName);
 		return bladeUser;
 	}
 
@@ -134,6 +140,48 @@ public class SecureUtil {
 	public static String getUserAccount(HttpServletRequest request) {
 		BladeUser user = getUser(request);
 		return (null == user) ? StringPool.EMPTY : user.getAccount();
+	}
+
+	/**
+	 * 获取用户名
+	 *
+	 * @return userName
+	 */
+	public static String getUserName() {
+		BladeUser user = getUser();
+		return (null == user) ? StringPool.EMPTY : user.getUserName();
+	}
+
+	/**
+	 * 获取用户名
+	 *
+	 * @param request request
+	 * @return userName
+	 */
+	public static String getUserName(HttpServletRequest request) {
+		BladeUser user = getUser(request);
+		return (null == user) ? StringPool.EMPTY : user.getUserName();
+	}
+
+	/**
+	 * 获取租户编号
+	 *
+	 * @return tenantCode
+	 */
+	public static String getTenantCode() {
+		BladeUser user = getUser();
+		return (null == user) ? StringPool.EMPTY : user.getTenantCode();
+	}
+
+	/**
+	 * 获取租户编号
+	 *
+	 * @param request request
+	 * @return tenantCode
+	 */
+	public static String getTenantCode(HttpServletRequest request) {
+		BladeUser user = getUser(request);
+		return (null == user) ? StringPool.EMPTY : user.getTenantCode();
 	}
 
 	/**
@@ -182,7 +230,7 @@ public class SecureUtil {
 	public static Claims parseJWT(String jsonWebToken) {
 		try {
 			Claims claims = Jwts.parser()
-				.setSigningKey(DatatypeConverter.parseBase64Binary(BASE64_SECURITY))
+				.setSigningKey(Base64.getDecoder().decode(BASE64_SECURITY))
 				.parseClaimsJws(jsonWebToken).getBody();
 			return claims;
 		} catch (Exception ex) {
@@ -206,7 +254,7 @@ public class SecureUtil {
 		Date now = new Date(nowMillis);
 
 		//生成签名密钥
-		byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(BASE64_SECURITY);
+		byte[] apiKeySecretBytes = Base64.getDecoder().decode(BASE64_SECURITY);
 		Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
 		//添加构成JWT的类

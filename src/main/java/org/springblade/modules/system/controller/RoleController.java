@@ -79,8 +79,8 @@ public class RoleController extends BladeController {
 	 */
 	@GetMapping("/tree")
 	@ApiOperation(value = "树形结构", notes = "树形结构", position = 3)
-	public R<List<RoleVO>> tree() {
-		List<RoleVO> tree = roleService.tree();
+	public R<List<RoleVO>> tree(String tenantCode) {
+		List<RoleVO> tree = roleService.tree(tenantCode);
 		return R.data(tree);
 	}
 

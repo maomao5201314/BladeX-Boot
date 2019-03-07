@@ -52,8 +52,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 	}
 
 	@Override
-	public List<RoleVO> tree() {
-		return ForestNodeMerger.merge(baseMapper.tree());
+	public List<RoleVO> tree(String tenantCode) {
+		return ForestNodeMerger.merge(baseMapper.tree(tenantCode));
 	}
 
 	@Override

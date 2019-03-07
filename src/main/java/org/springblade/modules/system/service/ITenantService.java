@@ -14,37 +14,34 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.mapper;
+package org.springblade.modules.system.service;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springblade.modules.system.entity.Role;
-import org.springblade.modules.system.vo.RoleVO;
-
-import java.util.List;
+import org.springblade.core.mp.base.BaseService;
+import org.springblade.modules.system.entity.Tenant;
 
 /**
- * Mapper 接口
+ * 服务类
  *
  * @author Chill
  */
-public interface RoleMapper extends BaseMapper<Role> {
+public interface ITenantService extends BaseService<Tenant> {
 
 	/**
 	 * 自定义分页
 	 *
 	 * @param page
-	 * @param role
+	 * @param tenant
 	 * @return
 	 */
-	List<RoleVO> selectRolePage(IPage page, RoleVO role);
+	IPage<Tenant> selectTenantPage(IPage<Tenant> page, Tenant tenant);
 
 	/**
-	 * 获取树形节点
+	 * 新增
 	 *
-	 * @param tenantCode
+	 * @param tenant
 	 * @return
 	 */
-	List<RoleVO> tree(String tenantCode);
+	boolean saveTenant(Tenant tenant);
 
 }

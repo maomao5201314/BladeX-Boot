@@ -54,15 +54,16 @@ public class AuthController {
 
 	@ApiLog("登录用户验证")
 	@PostMapping("token")
-	@ApiOperation(value = "获取认证token", notes = "传入账号:account,密码:password")
-	public R<AuthInfo> token(@ApiParam(value = "账号", required = true) @RequestParam String account,
+	@ApiOperation(value = "获取认证token", notes = "传入租户编号:tenantCode,账号:account,密码:password")
+	public R<AuthInfo> token(@ApiParam(value = "租户编号", required = true) @RequestParam String tenantCode,
+							 @ApiParam(value = "账号", required = true) @RequestParam String account,
 							 @ApiParam(value = "密码", required = true) @RequestParam String password) {
 
 		if (Func.hasEmpty(account, password)) {
 			return R.fail("接口调用不合法");
 		}
 
-		UserInfo userInfo = service.userInfo(account, DigestUtil.encrypt(password));
+		UserInfo userInfo = service.userInfo(tenantCode, account, DigestUtil.encrypt(password));
 
 		User user = userInfo.getUser();
 
@@ -75,6 +76,7 @@ public class AuthController {
 		Map<String, String> param = new HashMap<>(16);
 		param.put(SecureUtil.USER_ID, Func.toStr(user.getId()));
 		param.put(SecureUtil.ROLE_ID, user.getRoleId());
+		param.put(SecureUtil.TENANT_CODE, user.getTenantCode());
 		param.put(SecureUtil.ACCOUNT, user.getAccount());
 		param.put(SecureUtil.USER_NAME, user.getRealName());
 		param.put(SecureUtil.ROLE_NAME, Func.join(userInfo.getRoles()));

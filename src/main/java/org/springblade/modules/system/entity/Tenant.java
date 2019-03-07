@@ -17,11 +17,11 @@
 package org.springblade.modules.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springblade.core.tenant.mp.TenantEntity;
-
-import java.time.LocalDateTime;
+import org.springblade.core.mp.base.BaseEntity;
 
 /**
  * 实体类
@@ -29,52 +29,38 @@ import java.time.LocalDateTime;
  * @author Chill
  */
 @Data
-@TableName("blade_user")
+@TableName("blade_tenant")
 @EqualsAndHashCode(callSuper = true)
-public class User extends TenantEntity {
+@ApiModel(value = "Tenant对象", description = "Tenant对象")
+public class Tenant extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 账号
+	 * 租户编号
 	 */
-	private String account;
+	@ApiModelProperty(value = "租户编号")
+	private String tenantCode;
 	/**
-	 * 密码
+	 * 租户名称
 	 */
-	private String password;
+	@ApiModelProperty(value = "租户名称")
+	private String tenantName;
 	/**
-	 * 昵称
+	 * 联系人
 	 */
-	private String name;
+	@ApiModelProperty(value = "联系人")
+	private String linkman;
 	/**
-	 * 真名
+	 * 联系电话
 	 */
-	private String realName;
+	@ApiModelProperty(value = "联系电话")
+	private String contactNumber;
 	/**
-	 * 邮箱
+	 * 联系地址
 	 */
-	private String email;
-	/**
-	 * 手机
-	 */
-	private String phone;
-	/**
-	 * 生日
-	 */
-	private LocalDateTime birthday;
-	/**
-	 * 性别
-	 */
-	private Integer sex;
-	/**
-	 * 角色id
-	 */
-	private String roleId;
-	/**
-	 * 部门id
-	 */
-	private String deptId;
+	@ApiModelProperty(value = "联系地址")
+	private String address;
 
 
 }

@@ -59,6 +59,7 @@ public class $!{entity} implements Serializable {
 
 ## ----------  BEGIN 字段循环遍历  ----------
 #foreach($field in $!{table.fields})
+#if($!{field.name}!=$!{cfg.tenantColumn})
 #if($!{field.keyFlag})
 #set($keyPropertyName=$!{field.propertyName})
 #end
@@ -99,7 +100,7 @@ public class $!{entity} implements Serializable {
   @TableLogic
 #end
   private $!{field.propertyType} $!{field.propertyName};
-
+#end
 #end
 ## ----------  END 字段循环遍历  ----------
 

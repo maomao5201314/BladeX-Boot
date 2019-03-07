@@ -10,7 +10,7 @@ const FormItem = Form.Item;
 
 @connect(({ $!{table.entityPath}, loading }) => ({
   $!{table.entityPath},
-  loading: loading.models.param,
+  loading: loading.models.$!{table.entityPath},
 }))
 @Form.create()
 class $!{entity} extends PureComponent {
@@ -57,10 +57,12 @@ class $!{entity} extends PureComponent {
 
     const columns = [
 #foreach($field in $!{table.fields})
+#if($!{field.name}!=$!{cfg.tenantColumn})
       {
         title: '$!{field.comment}',
         dataIndex: '$!{field.propertyName}',
       },
+#end
 #end
     ];
 

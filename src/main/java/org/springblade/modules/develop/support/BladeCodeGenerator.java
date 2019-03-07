@@ -46,11 +46,15 @@ import java.util.*;
  */
 @Data
 @Slf4j
-public class BladeGenerator {
+public class BladeCodeGenerator {
 	/**
 	 * 代码所在系统
 	 */
 	private String systemName = CommonConstant.SWORD_NAME;
+	/**
+	 * 代码模块名称
+	 */
+	private String codeName;
 	/**
 	 * 代码所在服务名
 	 */
@@ -87,6 +91,10 @@ public class BladeGenerator {
 	 * 基础业务字段
 	 */
 	private String[] superEntityColumns = {"id", "create_time", "create_user", "update_time", "update_user", "status", "is_deleted"};
+	/**
+	 * 租户字段
+	 */
+	private String tenantColumn = "tenant_code";
 	/**
 	 * 是否启用swagger
 	 */
@@ -175,16 +183,24 @@ public class BladeGenerator {
 		InjectionConfig cfg = new InjectionConfig() {
 			@Override
 			public void initMap() {
+				map.put("codeName", codeName);
 				map.put("serviceName", serviceName);
 				map.put("servicePackage", servicePackage);
+				map.put("tenantColumn", tenantColumn);
 				this.setMap(map);
 			}
 		};
 		List<FileOutConfig> focList = new ArrayList<>();
+		focList.add(new FileOutConfig("/templates/sql/menu.sql.vm") {
+			@Override
+			public String outputFile(TableInfo tableInfo) {
+				map.put("entityKey", (tableInfo.getEntityName().toLowerCase()));
+				return getOutputDir() + "/" + "/sql/menu.mysql";
+			}
+		});
 		focList.add(new FileOutConfig("/templates/entityVO.java.vm") {
 			@Override
 			public String outputFile(TableInfo tableInfo) {
-				map.put("entityKey", StringUtil.humpToLine(tableInfo.getEntityName()));
 				return getOutputDir() + "/" + packageName.replace(".", "/") + "/" + "vo" + "/" + tableInfo.getEntityName() + "VO" + StringPool.DOT_JAVA;
 			}
 		});

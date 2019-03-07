@@ -20,8 +20,12 @@ export default {
         yield put({
           type: 'saveList',
           payload: {
-            list: response.data,
-            pagination: false,
+            list: response.data.records,
+            pagination: {
+              total: response.data.total,
+              current: response.data.current,
+              pageSize: response.data.size,
+            },
           },
         });
       }

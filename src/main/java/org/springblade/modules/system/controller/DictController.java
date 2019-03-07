@@ -43,7 +43,6 @@ import static org.springblade.common.cache.CacheNames.DICT_VALUE;
  *
  * @author Chill
  */
-@ApiIgnore
 @RestController
 @AllArgsConstructor
 @RequestMapping("/blade-system/dict")

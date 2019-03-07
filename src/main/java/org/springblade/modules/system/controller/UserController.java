@@ -17,6 +17,7 @@
 package org.springblade.modules.system.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -25,7 +26,9 @@ import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
+import org.springblade.core.secure.BladeUser;
 import org.springblade.core.tool.api.R;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.User;
@@ -74,12 +77,12 @@ public class UserController {
 		@ApiImplicitParam(name = "realName", value = "姓名", paramType = "query", dataType = "string")
 	})
 	@ApiOperation(value = "列表", notes = "传入account和realName", position = 2)
-	public R<IPage<UserVO>> list(@ApiIgnore @RequestParam Map<String, Object> user, Query query) {
-		IPage<User> pages = userService.page(Condition.getPage(query), Condition.getQueryWrapper(user, User.class));
+	public R<IPage<UserVO>> list(@ApiIgnore @RequestParam Map<String, Object> user, Query query, BladeUser bladeUser) {
+		QueryWrapper<User> queryWrapper = Condition.getQueryWrapper(user, User.class);
+		IPage<User> pages = userService.page(Condition.getPage(query), (!bladeUser.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE)) ? queryWrapper.lambda().eq(User::getTenantCode, bladeUser.getTenantCode()) : queryWrapper);
 		UserWrapper userWrapper = new UserWrapper(userService, dictService);
 		return R.data(userWrapper.pageVO(pages));
 	}
-
 	/**
 	 * 新增或修改
 	 */

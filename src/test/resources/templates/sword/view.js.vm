@@ -30,7 +30,7 @@ class $!{entity}View extends PureComponent {
         params: { id },
       },
     } = this.props;
-    router.push(`/$!{cfg.servicePackage}/$!{table.entityPath}/edit/${id}`);
+    router.push(`/$!{cfg.servicePackage}/$!{table.entityPath}/edit/$!{id}`);
   };
 
   render() {
@@ -61,9 +61,11 @@ class $!{entity}View extends PureComponent {
         <Form hideRequiredMark style={{ marginTop: 8 }}>
           <Card className={styles.card} bordered={false}>
 #foreach($field in $!{table.fields})
+#if($!{field.name}!=$!{cfg.tenantColumn})
             <FormItem {...formItemLayout} label="$!{field.comment}">
               <span>{detail.$!{field.propertyName}}</span>
             </FormItem>
+#end
 #end
           </Card>
         </Form>

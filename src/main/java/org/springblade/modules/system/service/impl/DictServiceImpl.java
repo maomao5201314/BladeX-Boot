@@ -77,5 +77,4 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 		}
 		return saveOrUpdate(dict);
 	}
-
 }

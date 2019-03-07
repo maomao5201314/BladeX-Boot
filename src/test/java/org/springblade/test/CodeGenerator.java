@@ -17,7 +17,7 @@
 package org.springblade.test;
 
 
-import org.springblade.modules.develop.support.BladeGenerator;
+import org.springblade.modules.develop.support.BladeCodeGenerator;
 
 /**
  * 代码生成器
@@ -27,17 +27,25 @@ import org.springblade.modules.develop.support.BladeGenerator;
 public class CodeGenerator {
 
 	/**
+	 * 代码生成的模块名
+	 */
+	public static String CODE_NAME = "自定义模块";
+	/**
+	 * 代码所在服务名
+	 */
+	public static String SERVICE_NAME = "blade-desk";
+	/**
 	 * 代码生成的包名
 	 */
-	public static String PACKAGE_NAME = "org.springblade.demo";
+	public static String PACKAGE_NAME = "org.springblade.desk";
 	/**
 	 * 前端代码生成所属系统
 	 */
-	public static String SYSTEM_NAME = "saber";
+	public static String SYSTEM_NAME = "sword";
 	/**
 	 * 前端代码生成地址
 	 */
-	public static String PACKAGE_WEB_DIR = "/Users/chill/Workspaces/dev/Saber";
+	public static String PACKAGE_WEB_DIR = "/Users/chill/Workspaces/product/Sword";
 	/**
 	 * 需要去掉的表前缀
 	 */
@@ -53,18 +61,19 @@ public class CodeGenerator {
 	/**
 	 * 是否包含基础业务字段
 	 */
-	public static Boolean HAS_SUPER_ENTITY = Boolean.FALSE;
+	public static Boolean HAS_SUPER_ENTITY = Boolean.TRUE;
 	/**
 	 * 基础业务字段
 	 */
-	public static String[] SUPER_ENTITY_COLUNMS = {"id", "create_time", "create_user", "update_time", "update_user", "status", "is_deleted"};
-
+	public static String[] SUPER_ENTITY_COLUMNS = {"id", "create_time", "create_user", "update_time", "update_user", "status", "is_deleted"};
 
 	/**
 	 * RUN THIS
 	 */
 	public static void main(String[] args) {
-		BladeGenerator generator = new BladeGenerator();
+		BladeCodeGenerator generator = new BladeCodeGenerator();
+		generator.setCodeName(CODE_NAME);
+		generator.setServiceName(SERVICE_NAME);
 		generator.setSystemName(SYSTEM_NAME);
 		generator.setPackageName(PACKAGE_NAME);
 		generator.setPackageWebDir(PACKAGE_WEB_DIR);
@@ -72,7 +81,7 @@ public class CodeGenerator {
 		generator.setIncludeTables(INCLUDE_TABLES);
 		generator.setExcludeTables(EXCLUDE_TABLES);
 		generator.setHasSuperEntity(HAS_SUPER_ENTITY);
-		generator.setSuperEntityColumns(SUPER_ENTITY_COLUNMS);
+		generator.setSuperEntityColumns(SUPER_ENTITY_COLUMNS);
 		generator.run();
 	}
 

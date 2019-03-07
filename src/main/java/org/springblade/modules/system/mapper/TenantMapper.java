@@ -18,33 +18,24 @@ package org.springblade.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springblade.modules.system.entity.Role;
-import org.springblade.modules.system.vo.RoleVO;
+import org.springblade.modules.system.entity.Tenant;
 
 import java.util.List;
 
 /**
- * Mapper 接口
+ *  Mapper 接口
  *
  * @author Chill
  */
-public interface RoleMapper extends BaseMapper<Role> {
+public interface TenantMapper extends BaseMapper<Tenant> {
 
 	/**
 	 * 自定义分页
 	 *
 	 * @param page
-	 * @param role
+	 * @param tenant
 	 * @return
 	 */
-	List<RoleVO> selectRolePage(IPage page, RoleVO role);
-
-	/**
-	 * 获取树形节点
-	 *
-	 * @param tenantCode
-	 * @return
-	 */
-	List<RoleVO> tree(String tenantCode);
+	List<Tenant> selectTenantPage(IPage page, Tenant tenant);
 
 }

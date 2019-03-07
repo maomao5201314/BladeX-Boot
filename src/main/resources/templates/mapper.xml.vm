@@ -19,26 +19,16 @@
         <result column="$!{field.name}" property="$!{field.propertyName}"/>
 #end
 #foreach($field in $!{table.fields})
-#if(!$!{field.keyFlag})##生成普通字段
+#if(!$!{field.keyFlag} && $!{field.name} != $!{cfg.tenantColumn})##生成普通字段
         <result column="$!{field.name}" property="$!{field.propertyName}"/>
 #end
 #end
     </resultMap>
 
 #end
-#if($!{baseColumnList})
-    <!-- 通用查询结果列 -->
-    <sql id="baseColumnList">
-        select
-    #foreach($field in $!{table.commonFields})
-    #if($!{field.name} == $!{field.propertyName})$!{field.name}#else$!{field.name} AS $!{field.propertyName}#end,
-    #end
-    $!{table.fieldNames}
-    </sql>
 
     <select id="select$!{entity}Page" resultMap="$!{table.entityPath}ResultMap">
         select * from $!{table.name} where is_deleted = 0
     </select>
 
-#end
 </mapper>

@@ -81,8 +81,9 @@ public class TenantController extends BladeController {
 	 */
 	@GetMapping("/select")
 	@ApiOperation(value = "下拉数据源", notes = "传入tenant", position = 3)
-	public R<List<Tenant>> select(Tenant tenant) {
-		List<Tenant> list = tenantService.list(Condition.getQueryWrapper(tenant));
+	public R<List<Tenant>> select(Tenant tenant, BladeUser bladeUser) {
+		QueryWrapper<Tenant> queryWrapper = Condition.getQueryWrapper(tenant);
+		List<Tenant> list = tenantService.list((!bladeUser.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE)) ? queryWrapper.lambda().eq(Tenant::getTenantCode, bladeUser.getTenantCode()) : queryWrapper);
 		return R.data(list);
 	}
 

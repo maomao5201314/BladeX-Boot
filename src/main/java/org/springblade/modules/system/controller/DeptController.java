@@ -45,6 +45,7 @@ import java.util.Map;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/blade-system/dept")
+@ApiIgnore
 @Api(value = "部门", tags = "部门")
 public class DeptController extends BladeController {
 
@@ -84,7 +85,7 @@ public class DeptController extends BladeController {
 	 */
 	@GetMapping("/tree")
 	@ApiOperation(value = "树形结构", notes = "树形结构", position = 3)
-	public R<List<DeptVO>> tree(String tenantCode) {
+	public R<List<DeptVO>> tree(@RequestParam(defaultValue = BladeConstant.ADMIN_TENANT_CODE) String tenantCode) {
 		List<DeptVO> tree = deptService.tree(tenantCode);
 		return R.data(tree);
 	}

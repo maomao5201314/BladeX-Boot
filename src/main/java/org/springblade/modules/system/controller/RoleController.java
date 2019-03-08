@@ -83,8 +83,8 @@ public class RoleController extends BladeController {
 	 */
 	@GetMapping("/tree")
 	@ApiOperation(value = "树形结构", notes = "树形结构", position = 3)
-	public R<List<RoleVO>> tree(@RequestParam(defaultValue = BladeConstant.ADMIN_TENANT_CODE) String tenantCode) {
-		List<RoleVO> tree = roleService.tree(tenantCode);
+	public R<List<RoleVO>> tree(String tenantCode, BladeUser bladeUser) {
+		List<RoleVO> tree = roleService.tree(Func.toStr(tenantCode, bladeUser.getTenantCode()));
 		return R.data(tree);
 	}
 
@@ -92,7 +92,7 @@ public class RoleController extends BladeController {
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
-	@ApiOperation(value = "新增或修改", notes = "传入role", position = 6)
+	@ApiOperation(value = "新增或修改", notes = "传入role", position = 4)
 	public R submit(@Valid @RequestBody Role role, BladeUser user) {
 		if (Func.isEmpty(role.getId())) {
 			role.setTenantCode(user.getTenantCode());
@@ -104,7 +104,7 @@ public class RoleController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "删除", notes = "传入ids", position = 7)
+	@ApiOperation(value = "删除", notes = "传入ids", position = 5)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(roleService.removeByIds(Func.toIntList(ids)));
 	}
@@ -117,7 +117,7 @@ public class RoleController extends BladeController {
 	 * @return
 	 */
 	@PostMapping("/grant")
-	@ApiOperation(value = "权限设置", notes = "传入roleId集合以及menuId集合", position = 7)
+	@ApiOperation(value = "权限设置", notes = "传入roleId集合以及menuId集合", position = 6)
 	public R grant(@ApiParam(value = "roleId集合", required = true) @RequestParam String roleIds,
 				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds) {
 		boolean temp = roleService.grant(Func.toIntList(roleIds), Func.toIntList(menuIds));

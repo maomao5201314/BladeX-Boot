@@ -85,8 +85,8 @@ public class DeptController extends BladeController {
 	 */
 	@GetMapping("/tree")
 	@ApiOperation(value = "树形结构", notes = "树形结构", position = 3)
-	public R<List<DeptVO>> tree(@RequestParam(defaultValue = BladeConstant.ADMIN_TENANT_CODE) String tenantCode) {
-		List<DeptVO> tree = deptService.tree(tenantCode);
+	public R<List<DeptVO>> tree(String tenantCode, BladeUser bladeUser) {
+		List<DeptVO> tree = deptService.tree(Func.toStr(tenantCode, bladeUser.getTenantCode()));
 		return R.data(tree);
 	}
 
@@ -94,7 +94,7 @@ public class DeptController extends BladeController {
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
-	@ApiOperation(value = "新增或修改", notes = "传入dept", position = 6)
+	@ApiOperation(value = "新增或修改", notes = "传入dept", position = 4)
 	public R submit(@Valid @RequestBody Dept dept, BladeUser user) {
 		if (Func.isEmpty(dept.getId())) {
 			dept.setTenantCode(user.getTenantCode());
@@ -106,7 +106,7 @@ public class DeptController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "删除", notes = "传入ids", position = 7)
+	@ApiOperation(value = "删除", notes = "传入ids", position = 5)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(deptService.removeByIds(Func.toIntList(ids)));
 	}

@@ -65,7 +65,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			// 新建租户对应的默认角色
 			Role role = new Role();
 			role.setTenantCode(tenantCode);
-			role.setParentId(1);
+			role.setParentId(0);
 			role.setRoleName("管理员");
 			role.setRoleAlias("admin");
 			role.setSort(2);

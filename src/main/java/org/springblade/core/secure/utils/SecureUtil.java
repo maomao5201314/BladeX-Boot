@@ -29,10 +29,7 @@ import org.springblade.core.tool.utils.WebUtil;
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Key;
-import java.util.Base64;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Secure工具类
@@ -60,8 +57,11 @@ public class SecureUtil {
 	 */
 	public static BladeUser getUser() {
 		HttpServletRequest request = WebUtil.getRequest();
+		if (request == null) {
+			return null;
+		}
 		// 优先从 request 中获取
-		BladeUser bladeUser = (BladeUser) request.getAttribute(BLADE_USER_REQUEST_ATTR);
+		Object bladeUser = request.getAttribute(BLADE_USER_REQUEST_ATTR);
 		if (bladeUser == null) {
 			bladeUser = getUser(request);
 			if (bladeUser != null) {
@@ -69,7 +69,7 @@ public class SecureUtil {
 				request.setAttribute(BLADE_USER_REQUEST_ATTR, bladeUser);
 			}
 		}
-		return bladeUser;
+		return (BladeUser) bladeUser;
 	}
 
 	/**

@@ -20,17 +20,17 @@ ALTER TABLE `bladex`.`blade_log_usual`
 -- ----------------------------
 -- 租户菜单增加
 -- ----------------------------
-INSERT INTO `blade_menu`(`tenant_code`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
-VALUES ('000000', 56, 'tenant', '租户管理', 'menu', '/blade-system/tenant', NULL, 1, 1, 0, 1, NULL, 0);
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (56, 'tenant', '租户管理', 'menu', '/blade-system/tenant', NULL, 1, 1, 0, 1, NULL, 0);
 set @parentid = (SELECT LAST_INSERT_ID());
-INSERT INTO `blade_menu`(`tenant_code`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
-VALUES ('000000', @parentid, 'tenant_add', '新增', 'add', '/blade-system/tenant/add', 'plus', 1, 2, 1, 1, NULL, 0);
-INSERT INTO `blade_menu`(`tenant_code`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
-VALUES ('000000', @parentid, 'tenant_edit', '修改', 'edit', '/blade-system/tenant/edit', 'form', 1, 2, 1, 1, NULL, 0);
-INSERT INTO `blade_menu`(`tenant_code`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
-VALUES ('000000', @parentid, 'tenant_delete', '删除', 'delete', '/blade-system/tenant/delete', 'delete', 1, 2, 1, 1, NULL, 0);
-INSERT INTO `blade_menu`(`tenant_code`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
-VALUES ('000000', @parentid, 'tenant_view', '查看', 'view', '/blade-system/tenant/view', 'file-text', 1, 2, 1, 1, NULL, 0);
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (@parentid, 'tenant_add', '新增', 'add', '/blade-system/tenant/add', 'plus', 1, 2, 1, 1, NULL, 0);
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (@parentid, 'tenant_edit', '修改', 'edit', '/blade-system/tenant/edit', 'form', 1, 2, 1, 1, NULL, 0);
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (@parentid, 'tenant_delete', '删除', 'delete', '/blade-system/tenant/delete', 'delete', 1, 2, 1, 1, NULL, 0);
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (@parentid, 'tenant_view', '查看', 'view', '/blade-system/tenant/view', 'file-text', 1, 2, 1, 1, NULL, 0);
 
 -- ----------------------------
 -- 租户表创建

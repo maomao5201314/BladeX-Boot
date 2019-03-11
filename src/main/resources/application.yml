@@ -82,3 +82,10 @@ swagger:
     name: smallchill
     email: smallchill@163.com
     url: https://gitee.com/smallc
+
+# 租户表维护
+blade:
+  tenant:
+    column: tenant_code
+    tables:
+      - blade_notice

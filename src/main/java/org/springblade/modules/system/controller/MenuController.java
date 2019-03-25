@@ -29,12 +29,15 @@ import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.service.IMenuService;
 import org.springblade.modules.system.vo.MenuVO;
 import org.springblade.modules.system.wrapper.MenuWrapper;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+
+import static org.springblade.common.cache.CacheNames.AUTH_ROUTES;
 
 /**
  * 控制器
@@ -131,6 +134,7 @@ public class MenuController extends BladeController {
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
+	@CacheEvict(cacheNames = {AUTH_ROUTES})
 	@ApiOperation(value = "新增或修改", notes = "传入menu", position = 8)
 	public R submit(@Valid @RequestBody Menu menu) {
 		return R.status(menuService.saveOrUpdate(menu));
@@ -141,6 +145,7 @@ public class MenuController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
+	@CacheEvict(cacheNames = {AUTH_ROUTES})
 	@ApiOperation(value = "删除", notes = "传入ids", position = 9)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(menuService.removeByIds(Func.toIntList(ids)));

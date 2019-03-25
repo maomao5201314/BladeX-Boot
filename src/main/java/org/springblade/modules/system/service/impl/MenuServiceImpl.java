@@ -33,10 +33,13 @@ import org.springblade.modules.system.service.IMenuService;
 import org.springblade.modules.system.service.IRoleMenuService;
 import org.springblade.modules.system.vo.MenuVO;
 import org.springblade.modules.system.wrapper.MenuWrapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static org.springblade.common.cache.CacheNames.AUTH_ROUTES;
 
 /**
  * 服务实现类
@@ -98,6 +101,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	}
 
 	@Override
+	@Cacheable(cacheNames = AUTH_ROUTES, key = "#user.roleId")
 	public List<Kv> authRoutes(BladeUser user) {
 		if (Func.isEmpty(user)) {
 			return null;

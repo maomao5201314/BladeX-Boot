@@ -1,4 +1,5 @@
 #set($upperEntityPath=$table.entityPath.toUpperCase())
+#set($editId="$" + "{" + "id" + "}")
 import React, { PureComponent } from 'react';
 import router from 'umi/router';
 import { Form, Card, Button } from 'antd';
@@ -30,7 +31,7 @@ class $!{entity}View extends PureComponent {
         params: { id },
       },
     } = this.props;
-    router.push(`/$!{cfg.servicePackage}/$!{table.entityPath}/edit/$!{id}`);
+    router.push(`/$!{cfg.servicePackage}/$!{table.entityPath}/edit/$!{editId}`);
   };
 
   render() {

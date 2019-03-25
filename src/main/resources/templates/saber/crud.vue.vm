@@ -69,10 +69,10 @@
       ...mapGetters(["permission"]),
       permissionList() {
         return {
-          addBtn: this.permission.$!{table.entityPath}_add,
-          viewBtn: this.permission.$!{table.entityPath}_view,
-          delBtn: this.permission.$!{table.entityPath}_delete,
-          editBtn: this.permission.$!{table.entityPath}_edit
+          addBtn: this.vaildData(this.permission.$!{table.entityPath}_add),
+          viewBtn: this.vaildData(this.permission.$!{table.entityPath}_view),
+          delBtn: this.vaildData(this.permission.$!{table.entityPath}_delete),
+          editBtn: this.vaildData(this.permission.$!{table.entityPath}_edit)
         };
       },
       ids() {

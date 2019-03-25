@@ -20,6 +20,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.tool.utils.Charsets;
 import org.springblade.core.tool.utils.Func;
@@ -37,18 +38,18 @@ import java.util.*;
  * @author Chill
  */
 public class SecureUtil {
-	public static final String BLADE_USER_REQUEST_ATTR = "_BLADE_USER_REQUEST_ATTR_";
+	private static final String BLADE_USER_REQUEST_ATTR = "_BLADE_USER_REQUEST_ATTR_";
 
-	public final static String HEADER = "blade-auth";
-	public final static String BEARER = "bearer";
-	public final static String ACCOUNT = "account";
-	public final static String USER_ID = "userId";
-	public final static String ROLE_ID = "roleId";
-	public final static String USER_NAME = "userName";
-	public final static String ROLE_NAME = "roleName";
-	public final static String TENANT_CODE = "tenantCode";
-	public final static Integer AUTH_LENGTH = 7;
-	public static String BASE64_SECURITY = Base64.getEncoder().encodeToString("BladeX".getBytes(Charsets.UTF_8));
+	private final static String HEADER = TokenConstant.HEADER;
+	private final static String BEARER = TokenConstant.BEARER;
+	private final static String ACCOUNT = TokenConstant.ACCOUNT;
+	private final static String USER_ID = TokenConstant.USER_ID;
+	private final static String ROLE_ID = TokenConstant.ROLE_ID;
+	private final static String USER_NAME = TokenConstant.USER_NAME;
+	private final static String ROLE_NAME = TokenConstant.ROLE_NAME;
+	private final static String TENANT_CODE = TokenConstant.TENANT_CODE;
+	private final static Integer AUTH_LENGTH = TokenConstant.AUTH_LENGTH;
+	private static String BASE64_SECURITY = Base64.getEncoder().encodeToString(TokenConstant.SIGN_KEY.getBytes(Charsets.UTF_8));
 
 	/**
 	 * 获取用户信息
@@ -208,7 +209,7 @@ public class SecureUtil {
 	 * @return header
 	 */
 	public static String getHeader() {
-		return getHeader(WebUtil.getRequest());
+		return getHeader(Objects.requireNonNull(WebUtil.getRequest()));
 	}
 
 	/**
@@ -229,10 +230,9 @@ public class SecureUtil {
 	 */
 	public static Claims parseJWT(String jsonWebToken) {
 		try {
-			Claims claims = Jwts.parser()
+			return Jwts.parser()
 				.setSigningKey(Base64.getDecoder().decode(BASE64_SECURITY))
 				.parseClaimsJws(jsonWebToken).getBody();
-			return claims;
 		} catch (Exception ex) {
 			return null;
 		}
@@ -290,6 +290,15 @@ public class SecureUtil {
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.MILLISECOND, 0);
 		return cal.getTimeInMillis() - System.currentTimeMillis();
+	}
+
+	/**
+	 * 获取过期时间的秒数(次日凌晨3点)
+	 *
+	 * @return expire
+	 */
+	public static int getExpireSeconds() {
+		return (int) (getExpire() / 1000);
 	}
 
 }

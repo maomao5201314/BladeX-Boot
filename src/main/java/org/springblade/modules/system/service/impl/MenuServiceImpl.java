@@ -103,9 +103,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	@Override
 	@Cacheable(cacheNames = AUTH_ROUTES, key = "#user.roleId")
 	public List<Kv> authRoutes(BladeUser user) {
-		if (Func.isEmpty(user)) {
-			return null;
-		}
 		List<MenuDTO> routes = baseMapper.authRoutes(Func.toIntList(user.getRoleId()));
 		List<Kv> list = new ArrayList<>();
 		routes.forEach(route -> list.add(Kv.create().set(route.getPath(), Kv.create().set("authority", Func.toStrArray(route.getAlias())))));

@@ -157,6 +157,9 @@ public class MenuController extends BladeController {
 	@GetMapping("auth-routes")
 	@ApiOperation(value = "菜单的角色权限", position = 8)
 	public R<List<Kv>> authRoutes(BladeUser user) {
+		if (Func.isEmpty(user)) {
+			return null;
+		}
 		return R.data(menuService.authRoutes(user));
 	}
 

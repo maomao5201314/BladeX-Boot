@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +54,7 @@ public class AuthController {
 	IUserService service;
 
 	@ApiLog("登录用户验证")
-	@PostMapping("token")
+	@PostMapping("/oauth/token")
 	@ApiOperation(value = "获取认证token", notes = "传入租户编号:tenantCode,账号:account,密码:password")
 	public Kv token(@ApiParam(value = "租户编号", required = true) @RequestParam(defaultValue = "000000", required = false) String tenantCode,
 					@ApiParam(value = "账号", required = true) @RequestParam String username,
@@ -62,7 +63,7 @@ public class AuthController {
 		Kv authInfo = Kv.create();
 
 		if (Func.hasEmpty(username, password)) {
-			return authInfo.set("error_code", 400).set("error_msg", "接口调用不合法");
+			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_msg", "接口调用不合法");
 		}
 
 		UserInfo userInfo = service.userInfo(tenantCode, username, DigestUtil.encrypt(password));
@@ -71,7 +72,7 @@ public class AuthController {
 
 		//验证用户
 		if (user == null) {
-			return authInfo.set("error_code", 400).set("error_msg", "用户名或密码不正确");
+			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_msg", "用户名或密码不正确");
 		}
 
 		//设置jwt参数

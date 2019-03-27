@@ -63,7 +63,7 @@ public class AuthController {
 		Kv authInfo = Kv.create();
 
 		if (Func.hasEmpty(username, password)) {
-			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_msg", "接口调用不合法");
+			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_description", "接口调用不合法");
 		}
 
 		UserInfo userInfo = service.userInfo(tenantCode, username, DigestUtil.encrypt(password));
@@ -72,7 +72,7 @@ public class AuthController {
 
 		//验证用户
 		if (user == null) {
-			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_msg", "用户名或密码不正确");
+			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_description", "用户名或密码不正确");
 		}
 
 		//设置jwt参数

@@ -264,7 +264,7 @@ CREATE TABLE `blade_role`  (
 -- Records of blade_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `blade_role` VALUES (1, '000000', 0, '超级管理员', 1, 'administrator', 0);
+INSERT INTO `blade_role` VALUES (1, '000000', 0, '超级管理员', 1, 'administrator', 0), (2, '000000', 0, '用户', 2, 'user', 0);
 COMMIT;
 
 -- ----------------------------

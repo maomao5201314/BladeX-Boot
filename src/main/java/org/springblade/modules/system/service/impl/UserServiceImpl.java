@@ -19,6 +19,7 @@ package org.springblade.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.tool.utils.DigestUtil;
@@ -39,6 +40,18 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
+
+	@Override
+	public boolean submit(User user) {
+		if (Func.isNotEmpty(user.getPassword())) {
+			user.setPassword(DigestUtil.encrypt(user.getPassword()));
+		}
+		Integer cnt = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantCode, user.getTenantCode()).eq(User::getAccount, user.getAccount()));
+		if (cnt > 0) {
+			throw new ApiException("当前用户已存在!");
+		}
+		return saveOrUpdate(user);
+	}
 
 	@Override
 	public IPage<User> selectUserPage(IPage<User> page, User user) {

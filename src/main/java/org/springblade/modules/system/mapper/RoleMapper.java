@@ -43,8 +43,9 @@ public interface RoleMapper extends BaseMapper<Role> {
 	 * 获取树形节点
 	 *
 	 * @param tenantCode
+	 * @param excludeRole
 	 * @return
 	 */
-	List<RoleVO> tree(String tenantCode);
+	List<RoleVO> tree(String tenantCode, String excludeRole);
 
 }

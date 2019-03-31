@@ -76,6 +76,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.springblade</groupId>
+            <artifactId>blade-core-test</artifactId>
+            <version>${bladex.tool.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${mybatis.plus.version}</version>

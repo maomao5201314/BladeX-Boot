@@ -83,8 +83,19 @@ swagger:
     email: smallchill@163.com
     url: https://gitee.com/smallc
 
-# 租户表维护
+#blade配置
 blade:
+  secure:
+    url:
+      exclude-patterns:
+        - /blade-test/**
+    client:
+      - client-id: sword
+        path-patterns:
+          - /blade-sword/**
+      - client-id: saber
+        path-patterns:
+          - /blade-saber/**
   tenant:
     column: tenant_code
     tables:

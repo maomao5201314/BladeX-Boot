@@ -85,19 +85,21 @@ public class AuthController {
 		param.put(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()));
 
 		//拼装accessToken
-		String accessToken = SecureUtil.createJWT(param, "audience", "issuser", true);
-
-		//返回accessToken
-		authInfo.set(TokenConstant.ACCOUNT, user.getAccount())
-			.set(TokenConstant.USER_NAME, user.getRealName())
-			.set(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()))
-			.set(TokenConstant.AVATAR, TokenConstant.DEFAULT_AVATAR)
-			.set(TokenConstant.ACCESS_TOKEN, accessToken)
-			.set(TokenConstant.REFRESH_TOKEN, accessToken)
-			.set(TokenConstant.TOKEN_TYPE, TokenConstant.BEARER)
-			.set(TokenConstant.EXPIRES_IN, SecureUtil.getExpireSeconds())
-			.set(TokenConstant.LICENSE, TokenConstant.LICENSE_NAME);
-		return authInfo;
+		try {
+			String accessToken = SecureUtil.createJWT(param, "audience", "issuser", true);
+			//返回accessToken
+			return authInfo.set(TokenConstant.ACCOUNT, user.getAccount())
+				.set(TokenConstant.USER_NAME, user.getRealName())
+				.set(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()))
+				.set(TokenConstant.AVATAR, TokenConstant.DEFAULT_AVATAR)
+				.set(TokenConstant.ACCESS_TOKEN, accessToken)
+				.set(TokenConstant.REFRESH_TOKEN, accessToken)
+				.set(TokenConstant.TOKEN_TYPE, TokenConstant.BEARER)
+				.set(TokenConstant.EXPIRES_IN, SecureUtil.getExpireSeconds())
+				.set(TokenConstant.LICENSE, TokenConstant.LICENSE_NAME);
+		} catch (Exception ex) {
+			return authInfo.set("error_code", HttpServletResponse.SC_UNAUTHORIZED).set("error_description", ex.getMessage());
+		}
 	}
 
 }

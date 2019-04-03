@@ -22,6 +22,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.base.BaseServiceImpl;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.User;
@@ -46,7 +47,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (Func.isNotEmpty(user.getPassword())) {
 			user.setPassword(DigestUtil.encrypt(user.getPassword()));
 		}
-		Integer cnt = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantCode, user.getTenantCode()).eq(User::getAccount, user.getAccount()));
+		Integer cnt = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantCode, Func.toStr(user.getTenantCode(), BladeConstant.ADMIN_TENANT_CODE)).eq(User::getAccount, user.getAccount()));
 		if (cnt > 0) {
 			throw new ApiException("当前用户已存在!");
 		}

@@ -22,7 +22,9 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
+import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
+import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.develop.support.BladeCodeGenerator;
 import org.springblade.modules.develop.entity.Code;
@@ -44,6 +46,7 @@ import java.util.Map;
 @AllArgsConstructor
 @RequestMapping("/blade-develop/code")
 @Api(value = "代码生成", tags = "代码生成")
+@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 public class CodeController extends BladeController {
 
 	private ICodeService codeService;

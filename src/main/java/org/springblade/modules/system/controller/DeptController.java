@@ -22,8 +22,10 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.secure.BladeUser;
+import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.BladeConstant;
+import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dept;
@@ -47,6 +49,7 @@ import java.util.Map;
 @RequestMapping("/blade-system/dept")
 @ApiIgnore
 @Api(value = "部门", tags = "部门")
+@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 public class DeptController extends BladeController {
 
 	private IDeptService deptService;

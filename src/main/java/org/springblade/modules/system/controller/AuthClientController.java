@@ -24,7 +24,9 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
+import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
+import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.AuthClient;
 import org.springblade.modules.system.service.IAuthClientService;
@@ -43,6 +45,7 @@ import javax.validation.Valid;
 @RequestMapping("/blade-system/client")
 @ApiIgnore
 @Api(value = "应用管理", tags = "接口")
+@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 public class AuthClientController extends BladeController {
 
 	private IAuthClientService clientService;

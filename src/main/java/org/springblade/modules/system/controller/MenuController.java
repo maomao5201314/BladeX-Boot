@@ -87,59 +87,6 @@ public class MenuController extends BladeController {
 	}
 
 	/**
-	 * 前端菜单数据
-	 */
-	@GetMapping("/routes")
-	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
-	@ApiOperation(value = "前端菜单数据", notes = "前端菜单数据", position = 3)
-	public R<List<MenuVO>> routes(BladeUser user) {
-		List<MenuVO> list = menuService.routes(user.getRoleId());
-		return R.data(list);
-	}
-
-	/**
-	 * 前端按钮数据
-	 */
-	@GetMapping("/buttons")
-	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
-	@ApiOperation(value = "前端按钮数据", notes = "前端按钮数据", position = 4)
-	public R<List<MenuVO>> buttons(BladeUser user) {
-		List<MenuVO> list = menuService.buttons(user.getRoleId());
-		return R.data(list);
-	}
-
-	/**
-	 * 获取菜单树形结构
-	 */
-	@GetMapping("/tree")
-	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
-	@ApiOperation(value = "树形结构", notes = "树形结构", position = 5)
-	public R<List<MenuVO>> tree() {
-		List<MenuVO> tree = menuService.tree();
-		return R.data(tree);
-	}
-
-	/**
-	 * 获取权限分配树形结构
-	 */
-	@GetMapping("/grant-tree")
-	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
-	@ApiOperation(value = "权限分配树形结构", notes = "权限分配树形结构", position = 6)
-	public R<List<MenuVO>> grantTree(BladeUser user) {
-		return R.data(menuService.grantTree(user));
-	}
-
-	/**
-	 * 获取权限分配树形结构
-	 */
-	@GetMapping("/role-tree-keys")
-	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
-	@ApiOperation(value = "角色所分配的树", notes = "角色所分配的树", position = 7)
-	public R<List<String>> roleTreeKeys(String roleIds) {
-		return R.data(menuService.roleTreeKeys(roleIds));
-	}
-
-	/**
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
@@ -160,6 +107,54 @@ public class MenuController extends BladeController {
 	@ApiOperation(value = "删除", notes = "传入ids", position = 9)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(menuService.removeByIds(Func.toIntList(ids)));
+	}
+
+	/**
+	 * 前端菜单数据
+	 */
+	@GetMapping("/routes")
+	@ApiOperation(value = "前端菜单数据", notes = "前端菜单数据", position = 3)
+	public R<List<MenuVO>> routes(BladeUser user) {
+		List<MenuVO> list = menuService.routes(user.getRoleId());
+		return R.data(list);
+	}
+
+	/**
+	 * 前端按钮数据
+	 */
+	@GetMapping("/buttons")
+	@ApiOperation(value = "前端按钮数据", notes = "前端按钮数据", position = 4)
+	public R<List<MenuVO>> buttons(BladeUser user) {
+		List<MenuVO> list = menuService.buttons(user.getRoleId());
+		return R.data(list);
+	}
+
+	/**
+	 * 获取菜单树形结构
+	 */
+	@GetMapping("/tree")
+	@ApiOperation(value = "树形结构", notes = "树形结构", position = 5)
+	public R<List<MenuVO>> tree() {
+		List<MenuVO> tree = menuService.tree();
+		return R.data(tree);
+	}
+
+	/**
+	 * 获取权限分配树形结构
+	 */
+	@GetMapping("/grant-tree")
+	@ApiOperation(value = "权限分配树形结构", notes = "权限分配树形结构", position = 6)
+	public R<List<MenuVO>> grantTree(BladeUser user) {
+		return R.data(menuService.grantTree(user));
+	}
+
+	/**
+	 * 获取权限分配树形结构
+	 */
+	@GetMapping("/role-tree-keys")
+	@ApiOperation(value = "角色所分配的树", notes = "角色所分配的树", position = 7)
+	public R<List<String>> roleTreeKeys(String roleIds) {
+		return R.data(menuService.roleTreeKeys(roleIds));
 	}
 
 	/**

@@ -18,6 +18,7 @@
         <swagger.bootstrapui.version>1.9.3</swagger.bootstrapui.version>
         <mybatis.plus.version>3.1.0</mybatis.plus.version>
         <protostuff.version>1.6.0</protostuff.version>
+        <flowable.version>6.4.1</flowable.version>
 
         <spring.boot.version>2.1.4.RELEASE</spring.boot.version>
         <spring.platform.version>Cairo-SR7</spring.platform.version>
@@ -48,6 +49,7 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Blade -->
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-core-boot</artifactId>
@@ -86,6 +88,18 @@
             <version>${bladex.tool.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- 工作流 -->
+        <dependency>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-spring-boot-starter</artifactId>
+            <version>${flowable.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-json-converter</artifactId>
+            <version>${flowable.version}</version>
+        </dependency>
+        <!-- Mybatis-Plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
@@ -99,19 +113,21 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!-- devtools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

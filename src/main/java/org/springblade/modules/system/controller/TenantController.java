@@ -21,6 +21,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.BladeUser;
@@ -43,7 +44,7 @@ import java.util.Map;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/blade-system/tenant")
+@RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/tenant")
 @ApiIgnore
 @Api(value = "租户管理", tags = "接口")
 public class TenantController extends BladeController {

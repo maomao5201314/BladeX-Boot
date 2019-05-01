@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.annotation.PreAuth;
@@ -44,7 +45,7 @@ import java.util.Map;
 @ApiIgnore
 @RestController
 @AllArgsConstructor
-@RequestMapping("/blade-develop/code")
+@RequestMapping(AppConstant.APPLICATION_DEVELOP_NAME + "/code")
 @Api(value = "代码生成", tags = "代码生成")
 @PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 public class CodeController extends BladeController {

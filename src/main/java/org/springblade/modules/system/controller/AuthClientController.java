@@ -22,6 +22,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.annotation.PreAuth;
@@ -42,7 +43,7 @@ import javax.validation.Valid;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/blade-system/client")
+@RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/client")
 @ApiIgnore
 @Api(value = "应用管理", tags = "接口")
 @PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)

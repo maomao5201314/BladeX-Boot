@@ -19,6 +19,7 @@ package org.springblade.modules.system.controller;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.node.INode;
@@ -45,7 +46,7 @@ import static org.springblade.core.cache.constant.CacheConstant.DICT_VALUE;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/blade-system/dict")
+@RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/dict")
 @ApiIgnore
 @Api(value = "字典", tags = "字典")
 public class DictController extends BladeController {

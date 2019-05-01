@@ -3,6 +3,7 @@ package org.springblade.modules.desk.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.support.Kv;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ import java.util.Map;
  */
 @ApiIgnore
 @RestController
-@RequestMapping("/blade-desk/dashboard")
+@RequestMapping(AppConstant.APPLICATION_DESK_NAME + "/dashboard")
 @AllArgsConstructor
 @Api(value = "首页", tags = "首页")
 public class DashBoardController {

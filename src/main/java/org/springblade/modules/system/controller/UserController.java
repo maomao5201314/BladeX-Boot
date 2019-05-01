@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.BladeUser;
@@ -51,7 +52,7 @@ import java.util.Map;
  */
 @ApiIgnore
 @RestController
-@RequestMapping("blade-user")
+@RequestMapping(AppConstant.APPLICATION_USER_NAME)
 @AllArgsConstructor
 public class UserController {
 

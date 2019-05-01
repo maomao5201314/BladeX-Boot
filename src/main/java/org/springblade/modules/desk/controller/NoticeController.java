@@ -21,6 +21,7 @@ import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.CacheNames;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.tool.api.R;
@@ -44,7 +45,7 @@ import java.util.Map;
  * @author Chill
  */
 @RestController
-@RequestMapping("/blade-desk/notice")
+@RequestMapping(AppConstant.APPLICATION_DESK_NAME + "/notice")
 @AllArgsConstructor
 @ApiSort(2)
 @Api(value = "用户博客", tags = "博客接口")

@@ -20,6 +20,7 @@ package org.springblade.modules.system.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.AllArgsConstructor;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.log.model.LogUsual;
 import org.springblade.core.log.model.LogUsualVo;
 import org.springblade.core.mp.support.Condition;
@@ -46,7 +47,7 @@ import java.util.stream.Collectors;
 @ApiIgnore
 @RestController
 @AllArgsConstructor
-@RequestMapping("/blade-log/usual")
+@RequestMapping(AppConstant.APPLICATION_LOG_NAME + "/usual")
 public class LogUsualController {
 
 	private ILogUsualService logService;

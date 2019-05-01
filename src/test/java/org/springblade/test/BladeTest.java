@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author Chill
  */
 @SpringBootTest
-@BladeBootTest("blade-runner")
+@BladeBootTest(appName = "blade-runner", profile = "test")
 @RunWith(BladeSpringRunner.class)
 public class BladeTest {
 

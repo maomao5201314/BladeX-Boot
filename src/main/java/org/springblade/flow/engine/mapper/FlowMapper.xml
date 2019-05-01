@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.springblade.flow.engine.mapper.FlowMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="flowModelResultMap" type="org.springblade.flow.engine.entity.FlowModel">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="model_key" property="modelKey"/>
+        <result column="description" property="description"/>
+        <result column="model_comment" property="modelComment"/>
+        <result column="created" property="created"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="last_updated" property="lastUpdated"/>
+        <result column="last_updated_by" property="lastUpdatedBy"/>
+        <result column="version" property="version"/>
+        <result column="model_editor_json" property="modelEditorJson"/>
+        <result column="thumbnail" property="thumbnail"/>
+        <result column="model_type" property="modelType"/>
+        <result column="tenant_id" property="tenantId"/>
+    </resultMap>
+
+    <select id="selectFlowPage" resultMap="flowModelResultMap">
+        SELECT
+            a.id,
+            a.name,
+            a.model_key,
+            a.description,
+            a.model_comment,
+            a.created,
+            a.created_by,
+            a.last_updated,
+            a.last_updated_by,
+            a.version,
+            a.model_editor_json,
+            a.thumbnail,
+            a.model_type,
+            a.tenant_id
+        FROM
+            ACT_DE_MODEL a
+        WHERE
+            1 = 1
+        ORDER BY
+            a.created DESC
+    </select>
+
+    <select id="findByParentModelId" parameterType="string" resultMap="flowModelResultMap">
+        select model.* from ACT_DE_MODEL_RELATION modelrelation
+                                inner join ACT_DE_MODEL model on modelrelation.model_id = model.id
+        where modelrelation.parent_model_id = #{_parameter}
+    </select>
+
+</mapper>

@@ -19,6 +19,7 @@ package org.springblade.modules.system.controller;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.secure.annotation.PreAuth;
@@ -49,7 +50,7 @@ import static org.springblade.core.cache.constant.CacheConstant.AUTH_ROUTES;
 @ApiIgnore
 @RestController
 @AllArgsConstructor
-@RequestMapping("/blade-system/menu")
+@RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/menu")
 @Api(value = "菜单", tags = "菜单")
 public class MenuController extends BladeController {
 

@@ -21,6 +21,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiSort;
 import lombok.AllArgsConstructor;
+import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.log.annotation.ApiLog;
 import org.springblade.core.secure.utils.SecureUtil;
@@ -46,7 +47,7 @@ import java.util.Map;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("blade-auth")
+@RequestMapping(AppConstant.APPLICATION_AUTH_NAME)
 @ApiSort(1)
 @Api(value = "用户授权认证", tags = "授权接口")
 public class AuthController {

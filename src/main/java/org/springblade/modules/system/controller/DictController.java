@@ -20,9 +20,7 @@ import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.mp.support.Condition;
-import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
-import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dict;
@@ -37,8 +35,8 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-import static org.springblade.common.cache.CacheNames.DICT_LIST;
-import static org.springblade.common.cache.CacheNames.DICT_VALUE;
+import static org.springblade.core.cache.constant.CacheConstant.DICT_LIST;
+import static org.springblade.core.cache.constant.CacheConstant.DICT_VALUE;
 
 /**
  * 控制器
@@ -50,7 +48,6 @@ import static org.springblade.common.cache.CacheNames.DICT_VALUE;
 @RequestMapping("/blade-system/dict")
 @ApiIgnore
 @Api(value = "字典", tags = "字典")
-@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 public class DictController extends BladeController {
 
 	private IDictService dictService;

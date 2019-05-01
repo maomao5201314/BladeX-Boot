@@ -39,7 +39,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-import static org.springblade.common.cache.CacheNames.AUTH_ROUTES;
+import static org.springblade.core.cache.constant.CacheConstant.AUTH_ROUTES;
 
 /**
  * 控制器

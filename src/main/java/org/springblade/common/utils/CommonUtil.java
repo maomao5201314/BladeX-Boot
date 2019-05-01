@@ -14,15 +14,13 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.common.cache;
+package org.springblade.common.utils;
 
 /**
- * 缓存名
+ * 通用工具类
  *
  * @author Chill
  */
-public interface CacheNames {
-
-	String NOTICE_ONE = "blade_dict:notice:one";
+public class CommonUtil {
 
 }

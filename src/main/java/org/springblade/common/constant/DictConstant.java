@@ -14,13 +14,25 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.common.tool;
+package org.springblade.common.constant;
 
 /**
- * 通用工具类
+ * 字典常量.
  *
- * @author Chill
+ * @author zhuangqian
  */
-public class CommonUtil {
+public interface DictConstant {
+
+	String SEX_CODE = "sex";
+
+	String NOTICE_CODE = "notice";
+
+	String MENU_CATEGORY_CODE = "menu_category";
+
+	String BUTTON_FUNC_CODE = "button_func";
+
+	String YES_NO_CODE = "yes_no";
+
+	String FLOW_CATEGORY_CODE = "flow_category";
 
 }

@@ -18,7 +18,6 @@ package org.springblade.common.launch;
 
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.auto.service.AutoService;
-import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.launch.service.LauncherService;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
@@ -35,7 +34,7 @@ public class LauncherServiceImpl implements LauncherService {
 	@Override
 	public void launcher(SpringApplicationBuilder builder, String appName, String profile, boolean isLocalDev) {
 		Properties props = System.getProperties();
-		props.setProperty("spring.cloud.sentinel.transport.dashboard", profile.equals(AppConstant.DEV_CDOE) ? CommonConstant.SENTINEL_DEV_ADDR : CommonConstant.SENTINEL_PROD_ADDR);
+		props.setProperty("spring.cloud.sentinel.transport.dashboard", CommonConstant.sentinelAddr(profile));
 	}
 
 }

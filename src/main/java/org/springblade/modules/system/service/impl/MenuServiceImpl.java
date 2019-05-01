@@ -39,7 +39,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.springblade.common.cache.CacheNames.AUTH_ROUTES;
+import static org.springblade.core.cache.constant.CacheConstant.AUTH_ROUTES;
 
 /**
  * 服务实现类

@@ -41,6 +41,11 @@ public interface CommonConstant {
 	String SENTINEL_PROD_ADDR = "10.211.55.5:8858";
 
 	/**
+	 * sentinel test 地址
+	 */
+	String SENTINEL_TEST_ADDR = "172.30.0.58:8858";
+
+	/**
 	 * sword 系统名
 	 */
 	String SWORD_NAME = "sword";
@@ -64,5 +69,23 @@ public interface CommonConstant {
 	 * 默认密码
 	 */
 	String DEFAULT_PASSWORD = "123456";
+
+	/**
+	 * 动态获取sentinel地址
+	 *
+	 * @param profile 环境变量
+	 * @return addr
+	 */
+	static String sentinelAddr(String profile) {
+		switch (profile) {
+			case (AppConstant.PROD_CODE):
+				return SENTINEL_PROD_ADDR;
+			case (AppConstant.TEST_CODE):
+				return SENTINEL_TEST_ADDR;
+			default:
+				return SENTINEL_DEV_ADDR;
+		}
+	}
+
 
 }

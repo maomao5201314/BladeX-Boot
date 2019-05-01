@@ -34,8 +34,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static org.springblade.common.cache.CacheNames.DICT_LIST;
-import static org.springblade.common.cache.CacheNames.DICT_VALUE;
+import static org.springblade.core.cache.constant.CacheConstant.DICT_LIST;
+import static org.springblade.core.cache.constant.CacheConstant.DICT_VALUE;
 
 /**
  * 服务实现类
@@ -68,7 +68,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 	}
 
 	@Override
-	@CacheEvict(cacheNames = {DICT_LIST, DICT_VALUE})
+	@CacheEvict(cacheNames = {DICT_LIST, DICT_VALUE}, allEntries = true)
 	public boolean submit(Dict dict) {
 		LambdaQueryWrapper<Dict> lqw = Wrappers.<Dict>query().lambda().eq(Dict::getCode, dict.getCode()).eq(Dict::getDictKey, dict.getDictKey());
 		Integer cnt = baseMapper.selectCount((Func.isEmpty(dict.getId())) ? lqw : lqw.notIn(Dict::getId, dict.getId()));

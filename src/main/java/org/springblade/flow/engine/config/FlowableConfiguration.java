@@ -20,9 +20,7 @@ import lombok.AllArgsConstructor;
 import org.flowable.spring.SpringProcessEngineConfiguration;
 import org.flowable.spring.boot.EngineConfigurationConfigurer;
 import org.flowable.spring.boot.FlowableProperties;
-import org.springblade.core.secure.registry.SecureRegistry;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -41,13 +39,6 @@ public class FlowableConfiguration implements EngineConfigurationConfigurer<Spri
 		engineConfiguration.setActivityFontName(flowableProperties.getActivityFontName());
 		engineConfiguration.setLabelFontName(flowableProperties.getLabelFontName());
 		engineConfiguration.setAnnotationFontName(flowableProperties.getAnnotationFontName());
-	}
-
-	@Bean
-	public SecureRegistry secureRegistry() {
-		SecureRegistry secureRegistry = new SecureRegistry();
-		secureRegistry.excludePathPatterns("/manager/resource");
-		return secureRegistry;
 	}
 
 }

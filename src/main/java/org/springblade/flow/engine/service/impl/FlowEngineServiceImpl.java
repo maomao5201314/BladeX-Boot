@@ -45,7 +45,6 @@ import org.springblade.common.cache.UserCache;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.core.tool.utils.StringPool;
 import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.flow.core.entity.BladeFlow;
 import org.springblade.flow.core.utils.TaskUtil;
@@ -242,22 +241,6 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 	public boolean deleteDeployment(String deploymentIds) {
 		Func.toStrList(deploymentIds).forEach(deploymentId -> repositoryService.deleteDeployment(deploymentId, true));
 		return true;
-	}
-
-	@Override
-	public InputStream resource(String processId, String instanceId, String resourceType) {
-		if (StringUtils.isBlank(processId)) {
-			ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(instanceId).singleResult();
-			processId = processInstance.getProcessDefinitionId();
-		}
-		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionId(processId).singleResult();
-		String resourceName = StringPool.EMPTY;
-		if (resourceType.equals(IMAGE_NAME)) {
-			resourceName = processDefinition.getDiagramResourceName();
-		} else if (resourceType.equals(XML_NAME)) {
-			resourceName = processDefinition.getResourceName();
-		}
-		return repositoryService.getResourceAsStream(processDefinition.getDeploymentId(), resourceName);
 	}
 
 	@Override

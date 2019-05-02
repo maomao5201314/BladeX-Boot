@@ -27,14 +27,11 @@ import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.RoleConstant;
-import org.springblade.core.tool.utils.IntegerPool;
 import org.springblade.flow.engine.entity.FlowProcess;
 import org.springblade.flow.engine.service.FlowEngineService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -95,25 +92,6 @@ public class FlowManagerController {
 	@ApiOperation(value = "上传部署流程文件", notes = "传入文件", position = 4)
 	public R deployUpload(@RequestParam List<MultipartFile> files, @RequestParam String category) {
 		return R.status(flowEngineService.deployUpload(files, category));
-	}
-
-	/**
-	 * 资源展示
-	 *
-	 * @param processId    流程id
-	 * @param instanceId   实例id
-	 * @param resourceType 资源类型
-	 * @param response     响应
-	 */
-	@GetMapping("resource")
-	@ApiOperation(value = "资源展示", notes = "传入processId,instanceId,resourceType", position = 4)
-	public void resource(String processId, String instanceId, String resourceType, HttpServletResponse response) throws Exception {
-		InputStream resourceAsStream = flowEngineService.resource(processId, instanceId, resourceType);
-		byte[] b = new byte[1024];
-		int len;
-		while ((len = resourceAsStream.read(b, 0, IntegerPool.INT_1024)) != -1) {
-			response.getOutputStream().write(b, 0, len);
-		}
 	}
 
 }

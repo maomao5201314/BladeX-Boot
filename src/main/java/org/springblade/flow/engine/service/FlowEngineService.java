@@ -24,7 +24,6 @@ import org.springblade.flow.engine.entity.FlowModel;
 import org.springblade.flow.engine.entity.FlowProcess;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -88,16 +87,6 @@ public interface FlowEngineService extends IService<FlowModel> {
 	 * @return
 	 */
 	boolean deleteDeployment(String deploymentIds);
-
-	/**
-	 * 资源展示
-	 *
-	 * @param processId    流程ID
-	 * @param instanceId   流程实例ID
-	 * @param resourceType 资源类型(xml|image)
-	 * @return
-	 */
-	InputStream resource(String processId, String instanceId, String resourceType);
 
 	/**
 	 * 上传部署流程

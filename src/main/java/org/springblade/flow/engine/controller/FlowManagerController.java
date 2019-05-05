@@ -31,6 +31,7 @@ import org.springblade.flow.engine.entity.FlowProcess;
 import org.springblade.flow.engine.service.FlowEngineService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -44,6 +45,7 @@ import java.util.List;
 @AllArgsConstructor
 @Api(value = "流程管理接口", tags = "流程管理接口")
 @PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+@ApiIgnore
 public class FlowManagerController {
 
 	private FlowEngineService flowEngineService;

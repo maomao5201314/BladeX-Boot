@@ -29,6 +29,7 @@ import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.flow.engine.entity.FlowExecution;
 import org.springblade.flow.engine.service.FlowEngineService;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * 流程状态控制器
@@ -39,6 +40,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(AppConstant.APPLICATION_FLOW_NAME + "/follow")
 @AllArgsConstructor
 @PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+@ApiIgnore
 public class FlowFollowController {
 
 	private FlowEngineService flowEngineService;

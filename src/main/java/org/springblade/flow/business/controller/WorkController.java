@@ -116,6 +116,7 @@ public class WorkController {
 	 * @param flow 请假信息
 	 */
 	@PostMapping("complete-task")
+	@ApiOperation(value = "完成任务", notes = "传入流程信息", position = 7)
 	public R completeTask(@ApiParam("任务信息") @RequestBody BladeFlow flow) {
 		return R.status(flowBusinessService.completeTask(flow));
 	}
@@ -127,7 +128,7 @@ public class WorkController {
 	 * @param reason 删除原因
 	 */
 	@PostMapping("delete-task")
-	@ApiOperation(value = "删除任务", notes = "传入流程信息", position = 7)
+	@ApiOperation(value = "删除任务", notes = "传入流程信息", position = 8)
 	public R deleteTask(@ApiParam("任务id") String taskId, @ApiParam("删除原因") String reason) {
 		taskService.deleteTask(taskId, reason);
 		return R.success("删除任务成功");

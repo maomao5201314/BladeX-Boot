@@ -45,6 +45,7 @@ import java.util.Map;
 @RequestMapping(AppConstant.APPLICATION_FLOW_NAME + "/model")
 @AllArgsConstructor
 @PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+@ApiIgnore
 public class FlowModelController {
 
 	private FlowEngineService flowEngineService;

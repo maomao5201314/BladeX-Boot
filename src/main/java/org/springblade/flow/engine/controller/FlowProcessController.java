@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -52,6 +53,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_FLOW_NAME + "/process")
+@ApiIgnore
 public class FlowProcessController {
 
 	private static final String IMAGE_NAME = "image";

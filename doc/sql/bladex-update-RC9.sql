@@ -106,9 +106,9 @@ VALUES (@dictid, 'flow', 2, '报销流程', 2, NULL, 0);
 -- ----------------------------
 -- 用户数据增加
 -- ----------------------------
-INSERT INTO `blade_user`(`tenant_code`, `account`, `password`, `name`, `real_name`, `email`, `phone`, `birthday`, `sex`, `role_id`, `dept_id`, `create_user`, `create_time`, `update_user`, `update_time`, `status`, `is_deleted`) VALUES ('000000', 'hr', '5e79b90f7bba52d54115f086e48f539016a27ec6', '人事', '人事', NULL, NULL, NULL, NULL, '3', '1', 1, '2019-04-27 17:03:10', 1, '2019-04-27 17:03:10', 1, 0);
-INSERT INTO `blade_user`(`tenant_code`, `account`, `password`, `name`, `real_name`, `email`, `phone`, `birthday`, `sex`, `role_id`, `dept_id`, `create_user`, `create_time`, `update_user`, `update_time`, `status`, `is_deleted`) VALUES ('000000', 'manager', 'dfbaa3b61caa3a319f463cc165085aa8c822d2ce', '经理', '经理', NULL, NULL, NULL, NULL, '4', '1', 1, '2019-04-27 17:03:38', 1, '2019-04-27 17:03:38', 1, 0);
-INSERT INTO `blade_user`(`tenant_code`, `account`, `password`, `name`, `real_name`, `email`, `phone`, `birthday`, `sex`, `role_id`, `dept_id`, `create_user`, `create_time`, `update_user`, `update_time`, `status`, `is_deleted`) VALUES ('000000', 'boss', 'abe57d23e18f7ad8ea99c86e430c90a05119a9d3', '老板', '老板', NULL, NULL, NULL, NULL, '5', '1', 1, '2019-04-27 17:03:55', 1, '2019-04-27 17:03:55', 1, 0);
+INSERT INTO `blade_user`(`tenant_code`, `account`, `password`, `name`, `real_name`, `email`, `phone`, `birthday`, `sex`, `role_id`, `dept_id`, `create_user`, `create_time`, `update_user`, `update_time`, `status`, `is_deleted`) VALUES ('000000', 'hr', '5e79b90f7bba52d54115f086e48f539016a27ec6', '人事', '人事', 'hr@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '3', '1', 1, '2019-04-27 17:03:10', 1, '2019-04-27 17:03:10', 1, 0);
+INSERT INTO `blade_user`(`tenant_code`, `account`, `password`, `name`, `real_name`, `email`, `phone`, `birthday`, `sex`, `role_id`, `dept_id`, `create_user`, `create_time`, `update_user`, `update_time`, `status`, `is_deleted`) VALUES ('000000', 'manager', 'dfbaa3b61caa3a319f463cc165085aa8c822d2ce', '经理', '经理', 'manager@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '4', '1', 1, '2019-04-27 17:03:38', 1, '2019-04-27 17:03:38', 1, 0);
+INSERT INTO `blade_user`(`tenant_code`, `account`, `password`, `name`, `real_name`, `email`, `phone`, `birthday`, `sex`, `role_id`, `dept_id`, `create_user`, `create_time`, `update_user`, `update_time`, `status`, `is_deleted`) VALUES ('000000', 'boss', 'abe57d23e18f7ad8ea99c86e430c90a05119a9d3', '老板', '老板', 'boss@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '5', '1', 1, '2019-04-27 17:03:55', 1, '2019-04-27 17:03:55', 1, 0);
 
 -- ----------------------------
 -- 角色数据增加
@@ -122,7 +122,7 @@ INSERT INTO `blade_role`(`tenant_code`, `parent_id`, `role_name`, `sort`, `role_
 -- ----------------------------
 DROP TABLE IF EXISTS `blade_process_leave`;
 CREATE TABLE `blade_process_leave`  (
-`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+`id` bigint(64) NOT NULL COMMENT '编号',
 `process_definition_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '流程定义主键',
 `process_instance_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '流程实例主键',
 `start_time` datetime(0) NULL DEFAULT NULL COMMENT '开始时间',
@@ -182,5 +182,28 @@ ALTER TABLE `blade_tenant`
     MODIFY COLUMN `update_user` bigint(64) NULL DEFAULT NULL COMMENT '修改人' AFTER `create_time`;
 ALTER TABLE `blade_user`
     MODIFY COLUMN `id` bigint(64) NOT NULL COMMENT '主键' FIRST,
+    MODIFY COLUMN `role_id` bigint(64) NULL DEFAULT NULL COMMENT '角色id' AFTER `sex`,
+    MODIFY COLUMN `dept_id` bigint(64) NULL DEFAULT NULL COMMENT '部门id' AFTER `role_id`,
     MODIFY COLUMN `create_user` bigint(64) NULL DEFAULT NULL COMMENT '创建人' AFTER `dept_id`,
     MODIFY COLUMN `update_user` bigint(64) NULL DEFAULT NULL COMMENT '修改人' AFTER `create_time`;
+
+-- ----------------------------
+-- 修改表字段为雪花id
+-- ----------------------------
+update `blade_client` set id = id + 1123598815738675200;
+update `blade_code` set id = id + 1123598815738675200;
+update `blade_dept` set id = id + 1123598815738675200;
+update `blade_dept` set parent_id = parent_id + 1123598815738675200 where parent_id > 0;
+update `blade_dict` set id = id + 1123598815738675200;
+update `blade_dict` set parent_id = parent_id + 1123598815738675200 where parent_id > 0;
+update `blade_menu` set id = id + 1123598815738675200;
+update `blade_menu` set parent_id = parent_id + 1123598815738675200 where parent_id > 0;
+update `blade_role` set id = id + 1123598815738675200;
+update `blade_role` set parent_id = parent_id + 1123598815738675200 where parent_id > 0;
+update `blade_role_menu` set id = id + 1123598815738675200;
+update `blade_role_menu` set menu_id = menu_id + 1123598815738675200;
+update `blade_role_menu` set role_id = role_id + 1123598815738675200;
+update `blade_notice` set id = id + 1123598815738675200, create_user = create_user + 1123598815738675200, update_user = update_user + 1123598815738675200;
+update `blade_param` set id = id + 1123598815738675200, create_user = create_user + 1123598815738675200, update_user = update_user + 1123598815738675200;
+update `blade_tenant` set id = id + 1123598815738675200, create_user = create_user + 1123598815738675200, update_user = update_user + 1123598815738675200;
+update `blade_user` set id = id + 1123598815738675200, role_id = role_id + 1123598815738675200, dept_id = dept_id + 1123598815738675200, create_user = create_user + 1123598815738675200, update_user = update_user + 1123598815738675200;

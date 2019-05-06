@@ -114,7 +114,7 @@ public class TenantController extends BladeController {
 	@PostMapping("/remove")
 	@ApiOperation(value = "逻辑删除", notes = "传入ids", position = 8)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-		return R.status(tenantService.deleteLogic(Func.toIntList(ids)));
+		return R.status(tenantService.deleteLogic(Func.toLongList(ids)));
 	}
 
 

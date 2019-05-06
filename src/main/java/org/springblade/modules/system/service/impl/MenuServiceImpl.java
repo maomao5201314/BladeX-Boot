@@ -60,7 +60,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	@Override
 	public List<MenuVO> routes(String roleId) {
 		List<Menu> allMenus = baseMapper.allMenu();
-		List<Menu> roleMenus = baseMapper.roleMenu(Func.toIntList(roleId));
+		List<Menu> roleMenus = baseMapper.roleMenu(Func.toLongList(roleId));
 		List<Menu> routes = new LinkedList<>(roleMenus);
 		roleMenus.forEach(roleMenu -> recursion(allMenus, routes, roleMenu));
 		routes.sort(Comparator.comparing(Menu::getSort));
@@ -79,7 +79,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	@Override
 	public List<MenuVO> buttons(String roleId) {
-		List<Menu> buttons = baseMapper.buttons(Func.toIntList(roleId));
+		List<Menu> buttons = baseMapper.buttons(Func.toLongList(roleId));
 		MenuWrapper menuWrapper = new MenuWrapper();
 		return menuWrapper.listNodeVO(buttons);
 	}
@@ -91,19 +91,19 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	@Override
 	public List<MenuVO> grantTree(BladeUser user) {
-		return ForestNodeMerger.merge(user.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE) ? baseMapper.grantTree() : baseMapper.grantTreeByRole(Func.toIntList(user.getRoleId())));
+		return ForestNodeMerger.merge(user.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE) ? baseMapper.grantTree() : baseMapper.grantTreeByRole(Func.toLongList(user.getRoleId())));
 	}
 
 	@Override
 	public List<String> roleTreeKeys(String roleIds) {
-		List<RoleMenu> roleMenus = roleMenuService.list(Wrappers.<RoleMenu>query().lambda().in(RoleMenu::getRoleId, Func.toIntList(roleIds)));
+		List<RoleMenu> roleMenus = roleMenuService.list(Wrappers.<RoleMenu>query().lambda().in(RoleMenu::getRoleId, Func.toLongList(roleIds)));
 		return roleMenus.stream().map(roleMenu -> Func.toStr(roleMenu.getMenuId())).collect(Collectors.toList());
 	}
 
 	@Override
 	@Cacheable(cacheNames = AUTH_ROUTES, key = "#user.roleId")
 	public List<Kv> authRoutes(BladeUser user) {
-		List<MenuDTO> routes = baseMapper.authRoutes(Func.toIntList(user.getRoleId()));
+		List<MenuDTO> routes = baseMapper.authRoutes(Func.toLongList(user.getRoleId()));
 		List<Kv> list = new ArrayList<>();
 		routes.forEach(route -> list.add(Kv.create().set(route.getPath(), Kv.create().set("authority", Func.toStrArray(route.getAlias())))));
 		return list;

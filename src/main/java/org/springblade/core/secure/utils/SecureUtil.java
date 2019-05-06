@@ -94,7 +94,7 @@ public class SecureUtil {
 			return null;
 		}
 		String clientId = Func.toStr(claims.get(SecureUtil.CLIENT_ID));
-		Integer userId = Func.toInt(claims.get(SecureUtil.USER_ID));
+		Long userId = Func.toLong(claims.get(SecureUtil.USER_ID));
 		String tenantCode = Func.toStr(claims.get(SecureUtil.TENANT_CODE));
 		String roleId = Func.toStr(claims.get(SecureUtil.ROLE_ID));
 		String account = Func.toStr(claims.get(SecureUtil.ACCOUNT));
@@ -117,7 +117,7 @@ public class SecureUtil {
 	 *
 	 * @return userId
 	 */
-	public static Integer getUserId() {
+	public static Long getUserId() {
 		BladeUser user = getUser();
 		return (null == user) ? -1 : user.getUserId();
 	}
@@ -128,7 +128,7 @@ public class SecureUtil {
 	 * @param request request
 	 * @return userId
 	 */
-	public static Integer getUserId(HttpServletRequest request) {
+	public static Long getUserId(HttpServletRequest request) {
 		BladeUser user = getUser(request);
 		return (null == user) ? -1 : user.getUserId();
 	}

@@ -55,6 +55,6 @@ public interface IRoleService extends IService<Role> {
 	 * @param menuIds 菜单id集合
 	 * @return 是否成功
 	 */
-	boolean grant(@NotEmpty List<Integer> roleIds, @NotEmpty List<Integer> menuIds);
+	boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds);
 
 }

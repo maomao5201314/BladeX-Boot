@@ -55,8 +55,8 @@ public class TaskUtil {
 	 * @param taskUser 任务用户
 	 * @return userId
 	 */
-	public static Integer getUserId(String taskUser) {
-		return Func.toInt(StringUtil.removePrefix(taskUser, TASK_USR_PREFIX));
+	public static Long getUserId(String taskUser) {
+		return Func.toLong(StringUtil.removePrefix(taskUser, TASK_USR_PREFIX));
 	}
 
 	/**

@@ -44,7 +44,7 @@ public class LeaveController {
 	 * @param businessId 主键
 	 */
 	@GetMapping("detail")
-	public R<ProcessLeave> detail(Integer businessId) {
+	public R<ProcessLeave> detail(Long businessId) {
 		ProcessLeave detail = leaveService.getById(businessId);
 		detail.getFlow().setAssigneeName(UserCache.getUser(detail.getCreateUser()).getName());
 		return R.data(detail);

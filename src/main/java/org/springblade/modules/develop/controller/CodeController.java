@@ -93,7 +93,7 @@ public class CodeController extends BladeController {
 	@PostMapping("/remove")
 	@ApiOperation(value = "删除", notes = "传入ids", position = 7)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-		return R.status(codeService.removeByIds(Func.toIntList(ids)));
+		return R.status(codeService.removeByIds(Func.toLongList(ids)));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class CodeController extends BladeController {
 	@PostMapping("/gen-code")
 	@ApiOperation(value = "代码生成", notes = "传入ids", position = 8)
 	public R genCode(@ApiParam(value = "主键集合", required = true) @RequestParam String ids, @RequestParam(defaultValue = "sword") String system) {
-		Collection<Code> codes = codeService.listByIds(Func.toIntList(ids));
+		Collection<Code> codes = codeService.listByIds(Func.toLongList(ids));
 		codes.forEach(code -> {
 			BladeCodeGenerator generator = new BladeCodeGenerator();
 			generator.setSystemName(system);

@@ -116,7 +116,7 @@ public class UserController {
 	@ApiOperation(value = "删除", notes = "传入地基和", position = 5)
 	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R remove(@RequestParam String ids) {
-		return R.status(userService.deleteLogic(Func.toIntList(ids)));
+		return R.status(userService.deleteLogic(Func.toLongList(ids)));
 	}
 
 	/**

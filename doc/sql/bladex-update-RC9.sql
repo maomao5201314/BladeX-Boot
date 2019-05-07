@@ -213,4 +213,4 @@ update `blade_user` set id = id + 1123598821738675200, role_id = role_id + 11235
 -- ----------------------------
 ALTER TABLE `blade_user`
     MODIFY COLUMN `role_id` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '角色id' AFTER `sex`,
-    MODIFY COLUMN `dept_id` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '部门id';
+    MODIFY COLUMN `dept_id` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '部门id' AFTER `role_id`;

@@ -130,9 +130,9 @@ CREATE TABLE `blade_process_leave`  (
 `reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请假理由',
 `task_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第一级审批人',
 `apply_time` datetime(0) NULL DEFAULT NULL COMMENT '申请时间',
-`create_user` int(11) NULL DEFAULT NULL COMMENT '创建人',
+`create_user` bigint(64) NULL DEFAULT NULL COMMENT '创建人',
 `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-`update_user` int(11) NULL DEFAULT NULL COMMENT '修改人',
+`update_user` bigint(64) DEFAULT NULL COMMENT '修改人',
 `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
 `status` int(2) NULL DEFAULT NULL COMMENT '状态',
 `is_deleted` int(2) NULL DEFAULT NULL COMMENT '是否已删除',
@@ -207,7 +207,6 @@ update `blade_notice` set id = id + 1123598818738675200, create_user = create_us
 update `blade_param` set id = id + 1123598819738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
 update `blade_tenant` set id = id + 1123598820738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
 update `blade_user` set id = id + 1123598821738675200, role_id = role_id + 1123598816738675200, dept_id = dept_id + 1123598813738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
-
 
 -- ----------------------------
 -- 将user表字段再改回varchar

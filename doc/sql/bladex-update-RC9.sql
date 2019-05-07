@@ -207,3 +207,11 @@ update `blade_notice` set id = id + 1123598818738675200, create_user = create_us
 update `blade_param` set id = id + 1123598819738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
 update `blade_tenant` set id = id + 1123598820738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
 update `blade_user` set id = id + 1123598821738675200, role_id = role_id + 1123598816738675200, dept_id = dept_id + 1123598813738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
+
+
+-- ----------------------------
+-- 将user表字段再改回varchar
+-- ----------------------------
+ALTER TABLE `blade_user`
+    MODIFY COLUMN `role_id` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '角色id' AFTER `sex`,
+    MODIFY COLUMN `dept_id` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '部门id';

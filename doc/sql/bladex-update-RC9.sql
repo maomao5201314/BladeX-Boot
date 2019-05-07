@@ -190,20 +190,20 @@ ALTER TABLE `blade_user`
 -- ----------------------------
 -- 修改表字段为雪花id
 -- ----------------------------
-update `blade_client` set id = id + 1123598815738675200;
-update `blade_code` set id = id + 1123598815738675200;
-update `blade_dept` set id = id + 1123598815738675200;
-update `blade_dept` set parent_id = parent_id + 1123598815738675200 where parent_id > 0;
-update `blade_dict` set id = id + 1123598815738675200;
-update `blade_dict` set parent_id = parent_id + 1123598815738675200 where parent_id > 0;
+update `blade_client` set id = id + 1123598811738675200;
+update `blade_code` set id = id + 1123598812738675200;
+update `blade_dept` set id = id + 1123598813738675200;
+update `blade_dept` set parent_id = parent_id + 1123598813738675200 where parent_id > 0;
+update `blade_dict` set id = id + 1123598814738675200;
+update `blade_dict` set parent_id = parent_id + 1123598814738675200 where parent_id > 0;
 update `blade_menu` set id = id + 1123598815738675200;
 update `blade_menu` set parent_id = parent_id + 1123598815738675200 where parent_id > 0;
-update `blade_role` set id = id + 1123598815738675200;
-update `blade_role` set parent_id = parent_id + 1123598815738675200 where parent_id > 0;
-update `blade_role_menu` set id = id + 1123598815738675200;
+update `blade_role` set id = id + 1123598816738675200;
+update `blade_role` set parent_id = parent_id + 1123598816738675200 where parent_id > 0;
+update `blade_role_menu` set id = id + 1123598817738675200;
 update `blade_role_menu` set menu_id = menu_id + 1123598815738675200;
-update `blade_role_menu` set role_id = role_id + 1123598815738675200;
-update `blade_notice` set id = id + 1123598815738675200, create_user = create_user + 1123598815738675200, update_user = update_user + 1123598815738675200;
-update `blade_param` set id = id + 1123598815738675200, create_user = create_user + 1123598815738675200, update_user = update_user + 1123598815738675200;
-update `blade_tenant` set id = id + 1123598815738675200, create_user = create_user + 1123598815738675200, update_user = update_user + 1123598815738675200;
-update `blade_user` set id = id + 1123598815738675200, role_id = role_id + 1123598815738675200, dept_id = dept_id + 1123598815738675200, create_user = create_user + 1123598815738675200, update_user = update_user + 1123598815738675200;
+update `blade_role_menu` set role_id = role_id + 1123598816738675200;
+update `blade_notice` set id = id + 1123598818738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
+update `blade_param` set id = id + 1123598819738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
+update `blade_tenant` set id = id + 1123598820738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;
+update `blade_user` set id = id + 1123598821738675200, role_id = role_id + 1123598816738675200, dept_id = dept_id + 1123598813738675200, create_user = create_user + 1123598821738675200, update_user = update_user + 1123598821738675200;

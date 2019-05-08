@@ -45,9 +45,10 @@ public class SecureUtil {
 	private final static String HEADER = TokenConstant.HEADER;
 	private final static String BEARER = TokenConstant.BEARER;
 	private final static String ACCOUNT = TokenConstant.ACCOUNT;
+	private final static String USER_NAME = TokenConstant.USER_NAME;
+	private final static String NICK_NAME = TokenConstant.NICK_NAME;
 	private final static String USER_ID = TokenConstant.USER_ID;
 	private final static String ROLE_ID = TokenConstant.ROLE_ID;
-	private final static String USER_NAME = TokenConstant.USER_NAME;
 	private final static String ROLE_NAME = TokenConstant.ROLE_NAME;
 	private final static String TENANT_CODE = TokenConstant.TENANT_CODE;
 	private final static String CLIENT_ID = TokenConstant.CLIENT_ID;
@@ -100,6 +101,7 @@ public class SecureUtil {
 		String account = Func.toStr(claims.get(SecureUtil.ACCOUNT));
 		String roleName = Func.toStr(claims.get(SecureUtil.ROLE_NAME));
 		String userName = Func.toStr(claims.get(SecureUtil.USER_NAME));
+		String nickName = Func.toStr(claims.get(SecureUtil.NICK_NAME));
 		BladeUser bladeUser = new BladeUser();
 		bladeUser.setClientId(clientId);
 		bladeUser.setUserId(userId);
@@ -108,6 +110,7 @@ public class SecureUtil {
 		bladeUser.setRoleId(roleId);
 		bladeUser.setRoleName(roleName);
 		bladeUser.setUserName(userName);
+		bladeUser.setNickName(nickName);
 		return bladeUser;
 	}
 
@@ -173,6 +176,27 @@ public class SecureUtil {
 	public static String getUserName(HttpServletRequest request) {
 		BladeUser user = getUser(request);
 		return (null == user) ? StringPool.EMPTY : user.getUserName();
+	}
+
+	/**
+	 * 获取昵称
+	 *
+	 * @return userName
+	 */
+	public static String getNickName() {
+		BladeUser user = getUser();
+		return (null == user) ? StringPool.EMPTY : user.getNickName();
+	}
+
+	/**
+	 * 获取昵称
+	 *
+	 * @param request request
+	 * @return userName
+	 */
+	public static String getNickName(HttpServletRequest request) {
+		BladeUser user = getUser(request);
+		return (null == user) ? StringPool.EMPTY : user.getNickName();
 	}
 
 	/**

@@ -82,7 +82,8 @@ public class AuthController {
 		param.put(TokenConstant.ROLE_ID, user.getRoleId());
 		param.put(TokenConstant.TENANT_CODE, user.getTenantCode());
 		param.put(TokenConstant.ACCOUNT, user.getAccount());
-		param.put(TokenConstant.USER_NAME, user.getRealName());
+		param.put(TokenConstant.USER_NAME, user.getAccount());
+		param.put(TokenConstant.NICK_NAME, user.getRealName());
 		param.put(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()));
 
 		//拼装accessToken
@@ -90,7 +91,8 @@ public class AuthController {
 			String accessToken = SecureUtil.createJWT(param, "audience", "issuser", true);
 			//返回accessToken
 			return authInfo.set(TokenConstant.ACCOUNT, user.getAccount())
-				.set(TokenConstant.USER_NAME, user.getRealName())
+				.set(TokenConstant.USER_NAME, user.getAccount())
+				.set(TokenConstant.NICK_NAME, user.getRealName())
 				.set(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()))
 				.set(TokenConstant.AVATAR, TokenConstant.DEFAULT_AVATAR)
 				.set(TokenConstant.ACCESS_TOKEN, accessToken)

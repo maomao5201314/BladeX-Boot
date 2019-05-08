@@ -14,7 +14,7 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.demo.leave.service.impl;
+package org.springblade.flow.demo.leave.service.impl;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +23,9 @@ import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.demo.leave.entity.ProcessLeave;
-import org.springblade.demo.leave.mapper.LeaveMapper;
-import org.springblade.demo.leave.service.ILeaveService;
+import org.springblade.flow.demo.leave.entity.ProcessLeave;
+import org.springblade.flow.demo.leave.mapper.LeaveMapper;
+import org.springblade.flow.demo.leave.service.ILeaveService;
 import org.springblade.flow.business.service.IFlowService;
 import org.springblade.flow.core.constant.ProcessConstant;
 import org.springblade.flow.core.entity.BladeFlow;

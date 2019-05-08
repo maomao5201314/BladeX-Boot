@@ -14,7 +14,7 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.demo.leave.entity;
+package org.springblade.flow.demo.leave.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;

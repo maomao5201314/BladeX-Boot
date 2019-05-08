@@ -14,14 +14,14 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.demo.leave.controller;
+package org.springblade.flow.demo.leave.controller;
 
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.UserCache;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.tool.api.R;
-import org.springblade.demo.leave.entity.ProcessLeave;
-import org.springblade.demo.leave.service.ILeaveService;
+import org.springblade.flow.demo.leave.entity.ProcessLeave;
+import org.springblade.flow.demo.leave.service.ILeaveService;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 

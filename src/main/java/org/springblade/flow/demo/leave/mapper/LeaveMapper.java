@@ -14,24 +14,16 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.demo.leave.service;
+package org.springblade.flow.demo.leave.mapper;
 
-import org.springblade.core.mp.base.BaseService;
-import org.springblade.demo.leave.entity.ProcessLeave;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springblade.flow.demo.leave.entity.ProcessLeave;
 
 /**
- * 服务类
+ * Mapper 接口
  *
  * @author Chill
  */
-public interface ILeaveService extends BaseService<ProcessLeave> {
-
-	/**
-	 * 开启流程
-	 *
-	 * @param leave 请假实体
-	 * @return boolean
-	 */
-	boolean startProcess(ProcessLeave leave);
+public interface LeaveMapper extends BaseMapper<ProcessLeave> {
 
 }

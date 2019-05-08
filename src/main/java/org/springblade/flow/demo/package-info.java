@@ -3,4 +3,4 @@
  *
  * @author zhuangqian
  */
-package org.springblade.demo;
+package org.springblade.flow.demo;

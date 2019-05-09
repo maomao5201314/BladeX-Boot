@@ -99,9 +99,9 @@ INSERT INTO `blade_dict`(`parent_id`, `code`, `dict_key`, `dict_value`, `sort`, 
 VALUES (0, 'flow', -1, '流程类型', 5, NULL, 0);
 set @dictid = (SELECT LAST_INSERT_ID());
 INSERT INTO `blade_dict`(`parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`)
-VALUES (@dictid, 'flow', 1, '请假流程', 1, NULL, 0);
+VALUES (@dictid, 'flow', 1, '请假流程', 1, 'leave', 0);
 INSERT INTO `blade_dict`(`parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`)
-VALUES (@dictid, 'flow', 2, '报销流程', 2, NULL, 0);
+VALUES (@dictid, 'flow', 2, '报销流程', 2, 'expense', 0);
 
 -- ----------------------------
 -- 用户数据增加

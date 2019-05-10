@@ -21,7 +21,7 @@ package org.springblade.flow.engine.constant;
  *
  * @author zhuangqian
  */
-public interface FlowConstant {
+public interface FlowEngineConstant {
 
 	String FLOWABLE_BASE_PACKAGES = "org.flowable.ui";
 

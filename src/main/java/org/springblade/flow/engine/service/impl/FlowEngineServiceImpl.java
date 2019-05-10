@@ -48,7 +48,7 @@ import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.flow.core.entity.BladeFlow;
 import org.springblade.flow.core.utils.TaskUtil;
-import org.springblade.flow.engine.constant.FlowConstant;
+import org.springblade.flow.engine.constant.FlowEngineConstant;
 import org.springblade.flow.engine.entity.FlowExecution;
 import org.springblade.flow.engine.entity.FlowModel;
 import org.springblade.flow.engine.entity.FlowProcess;
@@ -158,8 +158,8 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 			}
 			// 显示开始节点和结束节点，并且执行人不为空的任务
 			if (StringUtils.isNotBlank(historicActivityInstance.getAssignee())
-				|| FlowConstant.START_EVENT.equals(historicActivityInstance.getActivityType())
-				|| FlowConstant.END_EVENT.equals(historicActivityInstance.getActivityType())) {
+				|| FlowEngineConstant.START_EVENT.equals(historicActivityInstance.getActivityType())
+				|| FlowEngineConstant.END_EVENT.equals(historicActivityInstance.getActivityType())) {
 				// 给节点增加序号
 				Integer activityNum = activityMap.get(historicActivityInstance.getActivityId());
 				if (activityNum == null) {
@@ -172,7 +172,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 				String durationTime = DateUtil.secondToTime(Func.toLong(historicActivityInstance.getDurationInMillis(), 0L) / 1000);
 				flow.setHistoryActivityDurationTime(durationTime);
 				// 获取流程发起人名称
-				if (FlowConstant.START_EVENT.equals(historicActivityInstance.getActivityType())) {
+				if (FlowEngineConstant.START_EVENT.equals(historicActivityInstance.getActivityType())) {
 					List<HistoricProcessInstance> processInstanceList = historyService.createHistoricProcessInstanceQuery().processInstanceId(processInstanceId).orderByProcessInstanceStartTime().asc().list();
 					if (processInstanceList.size() > 0) {
 						if (StringUtil.isNotBlank(processInstanceList.get(0).getStartUserId())) {
@@ -226,10 +226,10 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 
 	@Override
 	public String changeState(String state, String processId) {
-		if (state.equals(FlowConstant.ACTIVE)) {
+		if (state.equals(FlowEngineConstant.ACTIVE)) {
 			repositoryService.activateProcessDefinitionById(processId, true, null);
 			return StringUtil.format("激活ID为 [{}] 的流程成功", processId);
-		} else if (state.equals(FlowConstant.SUSPEND)) {
+		} else if (state.equals(FlowEngineConstant.SUSPEND)) {
 			repositoryService.suspendProcessDefinitionById(processId, true, null);
 			return StringUtil.format("挂起ID为 [{}] 的流程成功", processId);
 		} else {
@@ -266,8 +266,8 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 		}
 		byte[] bytes = getBpmnXML(model);
 		String processName = model.getName();
-		if (!StringUtil.endsWithIgnoreCase(processName, FlowConstant.SUFFIX)) {
-			processName += FlowConstant.SUFFIX;
+		if (!StringUtil.endsWithIgnoreCase(processName, FlowEngineConstant.SUFFIX)) {
+			processName += FlowEngineConstant.SUFFIX;
 		}
 		Deployment deployment = repositoryService.createDeployment().addBytes(processName, bytes).name(model.getName()).key(model.getModelKey()).deploy();
 		return deploy(deployment, category);

@@ -34,7 +34,7 @@ import org.springblade.flow.business.service.FlowBusinessService;
 import org.springblade.flow.core.constant.ProcessConstant;
 import org.springblade.flow.core.entity.BladeFlow;
 import org.springblade.flow.core.utils.TaskUtil;
-import org.springblade.flow.engine.constant.FlowConstant;
+import org.springblade.flow.engine.constant.FlowEngineConstant;
 import org.springblade.flow.engine.utils.FlowCache;
 import org.springframework.stereotype.Service;
 
@@ -68,8 +68,8 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 			.includeProcessVariables().active().orderByTaskCreateTime().desc();
 
 		// 构建列表数据
-		buildFlowTaskList(bladeFlow, flowList, claimUserQuery, FlowConstant.STATUS_CLAIM);
-		buildFlowTaskList(bladeFlow, flowList, claimRoleQuery, FlowConstant.STATUS_CLAIM);
+		buildFlowTaskList(bladeFlow, flowList, claimUserQuery, FlowEngineConstant.STATUS_CLAIM);
+		buildFlowTaskList(bladeFlow, flowList, claimRoleQuery, FlowEngineConstant.STATUS_CLAIM);
 
 		// 计算总数
 		long count = claimUserQuery.count() + claimRoleQuery.count();
@@ -92,7 +92,7 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 			.includeProcessVariables().orderByTaskCreateTime().desc();
 
 		// 构建列表数据
-		buildFlowTaskList(bladeFlow, flowList, todoQuery, FlowConstant.STATUS_TODO);
+		buildFlowTaskList(bladeFlow, flowList, todoQuery, FlowEngineConstant.STATUS_TODO);
 
 		// 计算总数
 		long count = todoQuery.count();
@@ -155,11 +155,11 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 			flow.setTaskDefinitionKey(historyTask.getTaskDefinitionKey());
 			// Status
 			if (historicProcessInstance.getEndActivityId() != null) {
-				flow.setProcessIsFinished(FlowConstant.STATUS_FINISHED);
+				flow.setProcessIsFinished(FlowEngineConstant.STATUS_FINISHED);
 			} else {
-				flow.setProcessIsFinished(FlowConstant.STATUS_UNFINISHED);
+				flow.setProcessIsFinished(FlowEngineConstant.STATUS_UNFINISHED);
 			}
-			flow.setStatus(FlowConstant.STATUS_FINISH);
+			flow.setStatus(FlowEngineConstant.STATUS_FINISH);
 			flowList.add(flow);
 		});
 
@@ -218,12 +218,12 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 				flow.setBusinessTable(businessKey[0]);
 				flow.setBusinessId(businessKey[1]);
 				if (historicProcessInstance.getEndActivityId() != null) {
-					flow.setProcessIsFinished(FlowConstant.STATUS_FINISHED);
+					flow.setProcessIsFinished(FlowEngineConstant.STATUS_FINISHED);
 				} else {
-					flow.setProcessIsFinished(FlowConstant.STATUS_UNFINISHED);
+					flow.setProcessIsFinished(FlowEngineConstant.STATUS_UNFINISHED);
 				}
 			}
-			flow.setStatus(FlowConstant.STATUS_FINISH);
+			flow.setStatus(FlowEngineConstant.STATUS_FINISH);
 			flowList.add(flow);
 		});
 		// 计算总数

@@ -121,6 +121,16 @@ public class MenuController extends BladeController {
 	}
 
 	/**
+	 * 前端菜单数据
+	 */
+	@GetMapping("/routes-ext")
+	@ApiOperation(value = "前端菜单数据", notes = "前端菜单数据", position = 3)
+	public R<List<MenuVO>> routesExt(BladeUser user) {
+		List<MenuVO> list = menuService.routesExt(user.getRoleId());
+		return R.data(list);
+	}
+
+	/**
 	 * 前端按钮数据
 	 */
 	@GetMapping("/buttons")

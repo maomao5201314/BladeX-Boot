@@ -52,6 +52,17 @@
         </foreach> )
     </select>
 
+    <select id="allMenuExt" resultMap="menuResultMap">
+        select * from blade_menu_ext where is_deleted = 0 and category = 1
+    </select>
+
+    <select id="roleMenuExt" resultMap="menuResultMap">
+        select * from blade_menu_ext where is_deleted = 0 and id IN ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach> )
+    </select>
+
     <select id="routes" resultMap="menuResultMap">
         SELECT
             *

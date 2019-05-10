@@ -61,6 +61,17 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	public List<MenuVO> routes(String roleId) {
 		List<Menu> allMenus = baseMapper.allMenu();
 		List<Menu> roleMenus = baseMapper.roleMenu(Func.toLongList(roleId));
+		return buildRoutes(allMenus, roleMenus);
+	}
+
+	@Override
+	public List<MenuVO> routesExt(String roleId) {
+		List<Menu> allMenus = baseMapper.allMenuExt();
+		List<Menu> roleMenus = baseMapper.roleMenuExt(Func.toLongList(roleId));
+		return buildRoutes(allMenus, roleMenus);
+	}
+
+	private List<MenuVO> buildRoutes(List<Menu> allMenus, List<Menu> roleMenus) {
 		List<Menu> routes = new LinkedList<>(roleMenus);
 		roleMenus.forEach(roleMenu -> recursion(allMenus, routes, roleMenu));
 		routes.sort(Comparator.comparing(Menu::getSort));
@@ -69,7 +80,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 		return menuWrapper.listNodeVO(collect);
 	}
 
-	public void recursion(List<Menu> allMenus, List<Menu> routes, Menu roleMenu) {
+	private void recursion(List<Menu> allMenus, List<Menu> routes, Menu roleMenu) {
 		Optional<Menu> menu = allMenus.stream().filter(x -> Func.equals(x.getId(), roleMenu.getParentId())).findFirst();
 		if (menu.isPresent() && !routes.contains(menu.get())) {
 			routes.add(menu.get());

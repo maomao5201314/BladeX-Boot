@@ -33,12 +33,15 @@ import org.springblade.modules.system.entity.Role;
 import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.vo.RoleVO;
 import org.springblade.modules.system.wrapper.RoleWrapper;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+
+import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
  * 控制器
@@ -62,8 +65,7 @@ public class RoleController extends BladeController {
 	@ApiOperation(value = "详情", notes = "传入role", position = 1)
 	public R<RoleVO> detail(Role role) {
 		Role detail = roleService.getOne(Condition.getQueryWrapper(role));
-		RoleWrapper roleWrapper = new RoleWrapper(roleService);
-		return R.data(roleWrapper.entityVO(detail));
+		return R.data(RoleWrapper.build().entityVO(detail));
 	}
 
 	/**
@@ -78,8 +80,7 @@ public class RoleController extends BladeController {
 	public R<List<INode>> list(@ApiIgnore @RequestParam Map<String, Object> role, BladeUser bladeUser) {
 		QueryWrapper<Role> queryWrapper = Condition.getQueryWrapper(role, Role.class);
 		List<Role> list = roleService.list((!bladeUser.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE)) ? queryWrapper.lambda().eq(Role::getTenantCode, bladeUser.getTenantCode()) : queryWrapper);
-		RoleWrapper roleWrapper = new RoleWrapper(roleService);
-		return R.data(roleWrapper.listNodeVO(list));
+		return R.data(RoleWrapper.build().listNodeVO(list));
 	}
 
 	/**
@@ -97,6 +98,7 @@ public class RoleController extends BladeController {
 	 */
 	@PostMapping("/submit")
 	@ApiOperation(value = "新增或修改", notes = "传入role", position = 4)
+	@CacheEvict(cacheNames = {SYS_CACHE})
 	public R submit(@Valid @RequestBody Role role, BladeUser user) {
 		if (Func.isEmpty(role.getId())) {
 			role.setTenantCode(user.getTenantCode());
@@ -109,6 +111,7 @@ public class RoleController extends BladeController {
 	 */
 	@PostMapping("/remove")
 	@ApiOperation(value = "删除", notes = "传入ids", position = 5)
+	@CacheEvict(cacheNames = {SYS_CACHE})
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(roleService.removeByIds(Func.toLongList(ids)));
 	}

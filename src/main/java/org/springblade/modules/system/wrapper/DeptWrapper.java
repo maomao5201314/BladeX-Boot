@@ -16,7 +16,7 @@
  */
 package org.springblade.modules.system.wrapper;
 
-import lombok.AllArgsConstructor;
+import org.springblade.common.cache.SysCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.node.ForestNodeMerger;
@@ -24,7 +24,6 @@ import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dept;
-import org.springblade.modules.system.service.IDeptService;
 import org.springblade.modules.system.vo.DeptVO;
 
 import java.util.List;
@@ -35,21 +34,20 @@ import java.util.stream.Collectors;
  *
  * @author Chill
  */
-@AllArgsConstructor
 public class DeptWrapper extends BaseEntityWrapper<Dept, DeptVO> {
 
-	private IDeptService deptService;
-
-	public DeptWrapper() {
+	public static DeptWrapper build() {
+		return new DeptWrapper();
 	}
 
 	@Override
 	public DeptVO entityVO(Dept dept) {
 		DeptVO deptVO = BeanUtil.copy(dept, DeptVO.class);
+		assert deptVO != null;
 		if (Func.equals(dept.getParentId(), CommonConstant.TOP_PARENT_ID)) {
 			deptVO.setParentName(CommonConstant.TOP_PARENT_NAME);
 		} else {
-			Dept parent = deptService.getById(dept.getParentId());
+			Dept parent = SysCache.getDept(dept.getParentId());
 			deptVO.setParentName(parent.getDeptName());
 		}
 		return deptVO;

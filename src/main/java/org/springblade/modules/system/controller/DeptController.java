@@ -33,12 +33,15 @@ import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.service.IDeptService;
 import org.springblade.modules.system.vo.DeptVO;
 import org.springblade.modules.system.wrapper.DeptWrapper;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+
+import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
  * 控制器
@@ -62,8 +65,7 @@ public class DeptController extends BladeController {
 	@ApiOperation(value = "详情", notes = "传入dept", position = 1)
 	public R<DeptVO> detail(Dept dept) {
 		Dept detail = deptService.getOne(Condition.getQueryWrapper(dept));
-		DeptWrapper deptWrapper = new DeptWrapper(deptService);
-		return R.data(deptWrapper.entityVO(detail));
+		return R.data(DeptWrapper.build().entityVO(detail));
 	}
 
 	/**
@@ -78,8 +80,7 @@ public class DeptController extends BladeController {
 	public R<List<INode>> list(@ApiIgnore @RequestParam Map<String, Object> dept, BladeUser bladeUser) {
 		QueryWrapper<Dept> queryWrapper = Condition.getQueryWrapper(dept, Dept.class);
 		List<Dept> list = deptService.list((!bladeUser.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE)) ? queryWrapper.lambda().eq(Dept::getTenantCode, bladeUser.getTenantCode()) : queryWrapper);
-		DeptWrapper deptWrapper = new DeptWrapper();
-		return R.data(deptWrapper.listNodeVO(list));
+		return R.data(DeptWrapper.build().listNodeVO(list));
 	}
 
 	/**
@@ -99,6 +100,7 @@ public class DeptController extends BladeController {
 	 */
 	@PostMapping("/submit")
 	@ApiOperation(value = "新增或修改", notes = "传入dept", position = 4)
+	@CacheEvict(cacheNames = {SYS_CACHE})
 	public R submit(@Valid @RequestBody Dept dept, BladeUser user) {
 		if (Func.isEmpty(dept.getId())) {
 			dept.setTenantCode(user.getTenantCode());
@@ -111,6 +113,7 @@ public class DeptController extends BladeController {
 	 */
 	@PostMapping("/remove")
 	@ApiOperation(value = "删除", notes = "传入ids", position = 5)
+	@CacheEvict(cacheNames = {SYS_CACHE})
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(deptService.removeByIds(Func.toLongList(ids)));
 	}

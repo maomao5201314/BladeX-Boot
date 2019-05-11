@@ -16,7 +16,7 @@
  */
 package org.springblade.modules.system.wrapper;
 
-import lombok.AllArgsConstructor;
+import org.springblade.common.cache.DictCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.node.ForestNodeMerger;
@@ -24,32 +24,31 @@ import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dict;
-import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.vo.DictVO;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 /**
  * 包装类,返回视图层所需的字段
  *
  * @author Chill
  */
-@AllArgsConstructor
 public class DictWrapper extends BaseEntityWrapper<Dict, DictVO> {
 
-	private IDictService dictService;
-
-	public DictWrapper() {
+	public static DictWrapper build() {
+		return new DictWrapper();
 	}
 
 	@Override
 	public DictVO entityVO(Dict dict) {
 		DictVO dictVO = BeanUtil.copy(dict, DictVO.class);
+		assert dictVO != null;
 		if (Func.equals(dict.getParentId(), CommonConstant.TOP_PARENT_ID)) {
 			dictVO.setParentName(CommonConstant.TOP_PARENT_NAME);
 		} else {
-			Dict parent = dictService.getById(dict.getParentId());
+			Dict parent = DictCache.getById(dict.getParentId());
 			dictVO.setParentName(parent.getDictValue());
 		}
 		return dictVO;

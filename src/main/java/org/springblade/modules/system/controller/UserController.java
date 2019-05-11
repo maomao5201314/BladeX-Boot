@@ -34,7 +34,6 @@ import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.User;
-import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.service.IUserService;
 import org.springblade.modules.system.vo.UserVO;
 import org.springblade.modules.system.wrapper.UserWrapper;
@@ -58,8 +57,6 @@ public class UserController {
 
 	private IUserService userService;
 
-	private IDictService dictService;
-
 	/**
 	 * 查询单条
 	 */
@@ -68,7 +65,7 @@ public class UserController {
 	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R<UserVO> detail(User user) {
 		User detail = userService.getOne(Condition.getQueryWrapper(user));
-		UserWrapper userWrapper = new UserWrapper(userService, dictService);
+		UserWrapper userWrapper = new UserWrapper(userService);
 		return R.data(userWrapper.entityVO(detail));
 	}
 
@@ -85,7 +82,7 @@ public class UserController {
 	public R<IPage<UserVO>> list(@ApiIgnore @RequestParam Map<String, Object> user, Query query, BladeUser bladeUser) {
 		QueryWrapper<User> queryWrapper = Condition.getQueryWrapper(user, User.class);
 		IPage<User> pages = userService.page(Condition.getPage(query), (!bladeUser.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE)) ? queryWrapper.lambda().eq(User::getTenantCode, bladeUser.getTenantCode()) : queryWrapper);
-		UserWrapper userWrapper = new UserWrapper(userService, dictService);
+		UserWrapper userWrapper = new UserWrapper(userService);
 		return R.data(userWrapper.pageVO(pages));
 	}
 

@@ -28,7 +28,6 @@ import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Menu;
-import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.service.IMenuService;
 import org.springblade.modules.system.vo.MenuVO;
 import org.springblade.modules.system.wrapper.MenuWrapper;
@@ -40,7 +39,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-import static org.springblade.core.cache.constant.CacheConstant.AUTH_ROUTES;
+import static org.springblade.core.cache.constant.CacheConstant.MENU_CACHE;
 
 /**
  * 控制器
@@ -56,8 +55,6 @@ public class MenuController extends BladeController {
 
 	private IMenuService menuService;
 
-	private IDictService dictService;
-
 	/**
 	 * 详情
 	 */
@@ -66,8 +63,7 @@ public class MenuController extends BladeController {
 	@ApiOperation(value = "详情", notes = "传入menu", position = 1)
 	public R<MenuVO> detail(Menu menu) {
 		Menu detail = menuService.getOne(Condition.getQueryWrapper(menu));
-		MenuWrapper menuWrapper = new MenuWrapper(menuService, dictService);
-		return R.data(menuWrapper.entityVO(detail));
+		return R.data(MenuWrapper.build().entityVO(detail));
 	}
 
 	/**
@@ -83,15 +79,14 @@ public class MenuController extends BladeController {
 	public R<List<MenuVO>> list(@ApiIgnore @RequestParam Map<String, Object> menu) {
 		@SuppressWarnings("unchecked")
 		List<Menu> list = menuService.list(Condition.getQueryWrapper(menu, Menu.class).lambda().orderByAsc(Menu::getSort));
-		MenuWrapper menuWrapper = new MenuWrapper(menuService, dictService);
-		return R.data(menuWrapper.listNodeVO(list));
+		return R.data(MenuWrapper.build().listNodeVO(list));
 	}
 
 	/**
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
-	@CacheEvict(cacheNames = {AUTH_ROUTES})
+	@CacheEvict(cacheNames = {MENU_CACHE})
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	@ApiOperation(value = "新增或修改", notes = "传入menu", position = 8)
 	public R submit(@Valid @RequestBody Menu menu) {
@@ -103,7 +98,7 @@ public class MenuController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@CacheEvict(cacheNames = {AUTH_ROUTES})
+	@CacheEvict(cacheNames = {MENU_CACHE})
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	@ApiOperation(value = "删除", notes = "传入ids", position = 9)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {

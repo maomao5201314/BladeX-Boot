@@ -23,6 +23,6 @@ package org.springblade.common.cache;
  */
 public interface CacheNames {
 
-	String NOTICE_ONE = "blade_dict:notice:one";
+	String NOTICE_ONE = "notice:one";
 
 }

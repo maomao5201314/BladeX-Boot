@@ -12,8 +12,9 @@
     </cache>
 
     <!-- =================业务缓存================= -->
+
     <!-- 缓存半小时 -->
-    <cache name="blade:notice:one"
+    <cache name="blade:biz"
            maxElementsInMemory="10000"
            maxElementsOnDisk="100000"
            eternal="false"
@@ -23,7 +24,7 @@
            diskPersistent="false"/>
 
     <!-- 缓存半小时 -->
-    <cache name="blade:dict:value"
+    <cache name="blade:dict"
            maxElementsInMemory="10000"
            maxElementsOnDisk="100000"
            eternal="false"
@@ -33,17 +34,7 @@
            diskPersistent="false"/>
 
     <!-- 缓存半小时 -->
-    <cache name="blade:dict:list"
-           maxElementsInMemory="10000"
-           maxElementsOnDisk="100000"
-           eternal="false"
-           timeToIdleSeconds="1800"
-           timeToLiveSeconds="1800"
-           overflowToDisk="false"
-           diskPersistent="false"/>
-
-    <!-- 缓存半小时 -->
-    <cache name="blade:menu:auth:routes"
+    <cache name="blade:menu"
            maxElementsInMemory="10000"
            maxElementsOnDisk="100000"
            eternal="false"
@@ -63,7 +54,17 @@
            diskPersistent="false"/>
 
     <!-- 缓存半小时 -->
-    <cache name="flow:process"
+    <cache name="blade:sys"
+           maxElementsInMemory="10000"
+           maxElementsOnDisk="100000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="1800"
+           overflowToDisk="false"
+           diskPersistent="false"/>
+
+    <!-- 缓存半小时 -->
+    <cache name="blade:flow"
            maxElementsInMemory="10000"
            maxElementsOnDisk="100000"
            eternal="false"

@@ -16,7 +16,7 @@
  */
 package org.springblade.modules.system.wrapper;
 
-import lombok.AllArgsConstructor;
+import org.springblade.common.cache.SysCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.node.ForestNodeMerger;
@@ -24,7 +24,6 @@ import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Role;
-import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.vo.RoleVO;
 
 import java.util.List;
@@ -35,21 +34,20 @@ import java.util.stream.Collectors;
  *
  * @author Chill
  */
-@AllArgsConstructor
 public class RoleWrapper extends BaseEntityWrapper<Role, RoleVO> {
 
-	private IRoleService roleService;
-
-	public RoleWrapper() {
+	public static RoleWrapper build() {
+		return new RoleWrapper();
 	}
 
 	@Override
 	public RoleVO entityVO(Role role) {
 		RoleVO roleVO = BeanUtil.copy(role, RoleVO.class);
+		assert roleVO != null;
 		if (Func.equals(role.getParentId(), CommonConstant.TOP_PARENT_ID)) {
 			roleVO.setParentName(CommonConstant.TOP_PARENT_NAME);
 		} else {
-			Role parent = roleService.getById(role.getParentId());
+			Role parent = SysCache.getRole(role.getParentId());
 			roleVO.setParentName(parent.getRoleName());
 		}
 		return roleVO;

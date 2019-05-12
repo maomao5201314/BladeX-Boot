@@ -81,4 +81,14 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		return roleMenuService.saveBatch(roleMenus);
 	}
 
+	@Override
+	public List<String> getRoleNames(String roleIds) {
+		return baseMapper.getRoleNames(Func.toStrArray(roleIds));
+	}
+
+	@Override
+	public List<String> getRoleAliases(String roleIds) {
+		return baseMapper.getRoleAliases(Func.toStrArray(roleIds));
+	}
+
 }

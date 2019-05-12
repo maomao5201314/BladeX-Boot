@@ -48,4 +48,20 @@ public interface RoleMapper extends BaseMapper<Role> {
 	 */
 	List<RoleVO> tree(String tenantCode, String excludeRole);
 
+	/**
+	 * 获取角色名
+	 *
+	 * @param ids
+	 * @return
+	 */
+	List<String> getRoleNames(String[] ids);
+
+	/**
+	 * 获取角色名
+	 *
+	 * @param ids
+	 * @return
+	 */
+	List<String> getRoleAliases(String[] ids);
+
 }

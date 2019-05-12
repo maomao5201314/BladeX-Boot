@@ -19,6 +19,7 @@ package org.springblade.modules.system.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springblade.core.tool.node.ForestNodeMerger;
+import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.mapper.DeptMapper;
 import org.springblade.modules.system.service.IDeptService;
@@ -43,6 +44,11 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 	@Override
 	public List<DeptVO> tree(String tenantCode) {
 		return ForestNodeMerger.merge(baseMapper.tree(tenantCode));
+	}
+
+	@Override
+	public List<String> getDeptNames(String deptIds) {
+		return baseMapper.getDeptNames(Func.toStrArray(deptIds));
 	}
 
 }

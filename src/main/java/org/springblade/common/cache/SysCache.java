@@ -25,6 +25,8 @@ import org.springblade.modules.system.service.IDeptService;
 import org.springblade.modules.system.service.IMenuService;
 import org.springblade.modules.system.service.IRoleService;
 
+import java.util.List;
+
 import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
@@ -36,9 +38,12 @@ public class SysCache {
 	private static final String MENU_ID = "menu:id:";
 	private static final String DEPT_ID = "dept:id:";
 	private static final String DEPT_NAME_ID = "deptName:id:";
+	private static final String DEPT_NAMES_ID = "deptNames:id:";
 	private static final String ROLE_ID = "role:id:";
 	private static final String ROLE_NAME_ID = "roleName:id:";
+	private static final String ROLE_NAMES_ID = "roleNames:id:";
 	private static final String ROLE_ALIAS_ID = "roleAlias:id:";
+	private static final String ROLE_ALIASES_ID = "roleAliases:id:";
 
 	private static IMenuService menuService;
 	private static IDeptService deptService;
@@ -108,6 +113,37 @@ public class SysCache {
 	 */
 	public static String getRoleAlias(Long id) {
 		return CacheUtil.get(SYS_CACHE, ROLE_ALIAS_ID + id, () -> roleService.getById(id).getRoleAlias());
+	}
+
+
+	/**
+	 * 获取部门名集合
+	 *
+	 * @param deptIds 主键集合
+	 * @return 部门名
+	 */
+	public static List<String> getDeptNames(String deptIds) {
+		return CacheUtil.get(SYS_CACHE, DEPT_NAMES_ID + deptIds, () -> deptService.getDeptNames(deptIds));
+	}
+
+	/**
+	 * 获取角色名集合
+	 *
+	 * @param roleIds 主键集合
+	 * @return 角色名
+	 */
+	public static List<String> getRoleNames(String roleIds) {
+		return CacheUtil.get(SYS_CACHE, ROLE_NAMES_ID + roleIds, () -> roleService.getRoleNames(roleIds));
+	}
+
+	/**
+	 * 获取角色别名集合
+	 *
+	 * @param roleIds 主键集合
+	 * @return 角色别名
+	 */
+	public static List<String> getRoleAliases(String roleIds) {
+		return CacheUtil.get(SYS_CACHE, ROLE_ALIASES_ID + roleIds, () -> roleService.getRoleAliases(roleIds));
 	}
 
 }

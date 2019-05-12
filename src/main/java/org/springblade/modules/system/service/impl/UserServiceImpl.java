@@ -20,6 +20,7 @@ package org.springblade.modules.system.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
+import org.springblade.common.cache.SysCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.tool.constant.BladeConstant;
@@ -65,7 +66,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		User user = baseMapper.getUser(tenantCode, account, password);
 		userInfo.setUser(user);
 		if (Func.isNotEmpty(user)) {
-			List<String> roleAlias = baseMapper.getRoleAlias(Func.toStrArray(user.getRoleId()));
+			List<String> roleAlias = SysCache.getRoleAliases(user.getRoleId());
 			userInfo.setRoles(roleAlias);
 		}
 		return userInfo;
@@ -84,16 +85,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		user.setPassword(DigestUtil.encrypt(CommonConstant.DEFAULT_PASSWORD));
 		user.setUpdateTime(LocalDateTime.now());
 		return this.update(user, Wrappers.<User>update().lambda().in(User::getId, Func.toLongList(userIds)));
-	}
-
-	@Override
-	public List<String> getRoleName(String roleIds) {
-		return baseMapper.getRoleName(Func.toStrArray(roleIds));
-	}
-
-	@Override
-	public List<String> getDeptName(String deptIds) {
-		return baseMapper.getDeptName(Func.toStrArray(deptIds));
 	}
 
 }

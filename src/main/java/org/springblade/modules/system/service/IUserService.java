@@ -22,8 +22,6 @@ import org.springblade.core.mp.base.BaseService;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
 
-import java.util.List;
-
 /**
  * 服务类
  *
@@ -73,20 +71,4 @@ public interface IUserService extends BaseService<User> {
 	 * @return
 	 */
 	boolean resetPassword(String userIds);
-
-	/**
-	 * 获取角色名
-	 *
-	 * @param roleIds
-	 * @return
-	 */
-	List<String> getRoleName(String roleIds);
-
-	/**
-	 * 获取部门名
-	 *
-	 * @param deptIds
-	 * @return
-	 */
-	List<String> getDeptName(String deptIds);
 }

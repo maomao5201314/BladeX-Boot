@@ -23,6 +23,7 @@ import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import org.springblade.common.cache.SysCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.base.BaseServiceImpl;
+import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
@@ -85,6 +86,14 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		user.setPassword(DigestUtil.encrypt(CommonConstant.DEFAULT_PASSWORD));
 		user.setUpdateTime(LocalDateTime.now());
 		return this.update(user, Wrappers.<User>update().lambda().in(User::getId, Func.toLongList(userIds)));
+	}
+
+	@Override
+	public boolean removeUser(String userIds) {
+		if (Func.contains(Func.toLongArray(userIds), SecureUtil.getUserId())) {
+			throw new ApiException("不能删除本账号!");
+		}
+		return deleteLogic(Func.toLongList(userIds));
 	}
 
 }

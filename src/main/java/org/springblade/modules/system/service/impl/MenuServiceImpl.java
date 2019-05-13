@@ -18,6 +18,7 @@ package org.springblade.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springblade.core.secure.BladeUser;
@@ -118,6 +119,15 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 		List<Kv> list = new ArrayList<>();
 		routes.forEach(route -> list.add(Kv.create().set(route.getPath(), Kv.create().set("authority", Func.toStrArray(route.getAlias())))));
 		return list;
+	}
+
+	@Override
+	public boolean removeMenu(String ids) {
+		Integer cnt = baseMapper.selectCount(Wrappers.<Menu>query().lambda().in(Menu::getParentId, Func.toLongList(ids)));
+		if (cnt > 0) {
+			throw new ApiException("请先删除子节点!");
+		}
+		return removeByIds(Func.toLongList(ids));
 	}
 
 }

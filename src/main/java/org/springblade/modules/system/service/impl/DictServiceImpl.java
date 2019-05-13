@@ -73,4 +73,13 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 		}
 		return saveOrUpdate(dict);
 	}
+
+	@Override
+	public boolean removeDict(String ids) {
+		Integer cnt = baseMapper.selectCount(Wrappers.<Dict>query().lambda().in(Dict::getParentId, Func.toLongList(ids)));
+		if (cnt > 0) {
+			throw new ApiException("请先删除子节点!");
+		}
+		return removeByIds(Func.toLongList(ids));
+	}
 }

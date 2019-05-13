@@ -17,6 +17,8 @@
 package org.springblade.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.Func;
@@ -49,6 +51,15 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 	@Override
 	public List<String> getDeptNames(String deptIds) {
 		return baseMapper.getDeptNames(Func.toStrArray(deptIds));
+	}
+
+	@Override
+	public boolean removeDept(String ids) {
+		Integer cnt = baseMapper.selectCount(Wrappers.<Dept>query().lambda().in(Dept::getParentId, Func.toLongList(ids)));
+		if (cnt > 0) {
+			throw new ApiException("请先删除子节点!");
+		}
+		return removeByIds(Func.toLongList(ids));
 	}
 
 }

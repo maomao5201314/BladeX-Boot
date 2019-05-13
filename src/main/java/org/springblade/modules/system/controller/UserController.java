@@ -32,7 +32,6 @@ import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
-import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.service.IUserService;
 import org.springblade.modules.system.vo.UserVO;
@@ -108,10 +107,10 @@ public class UserController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "删除", notes = "传入地基和", position = 5)
+	@ApiOperation(value = "删除", notes = "传入id集合", position = 5)
 	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R remove(@RequestParam String ids) {
-		return R.status(userService.deleteLogic(Func.toLongList(ids)));
+		return R.status(userService.removeUser(ids));
 	}
 
 	/**

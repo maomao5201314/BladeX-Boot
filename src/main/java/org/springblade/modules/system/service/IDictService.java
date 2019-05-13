@@ -65,9 +65,18 @@ public interface IDictService extends IService<Dict> {
 
 	/**
 	 * 新增或修改
+	 *
 	 * @param dict
 	 * @return
 	 */
 	boolean submit(Dict dict);
+
+	/**
+	 * 删除字典
+	 *
+	 * @param ids
+	 * @return
+	 */
+	boolean removeDict(String ids);
 
 }

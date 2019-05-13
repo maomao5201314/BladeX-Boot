@@ -23,7 +23,6 @@ import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.node.INode;
-import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dict;
 import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.vo.DictVO;
@@ -36,7 +35,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-import static org.springblade.core.cache.constant.CacheConstant.*;
+import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
  * 控制器
@@ -107,7 +106,7 @@ public class DictController extends BladeController {
 	@ApiOperation(value = "删除", notes = "传入ids", position = 7)
 	@CacheEvict(cacheNames = {SYS_CACHE})
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-		return R.status(dictService.removeByIds(Func.toLongList(ids)));
+		return R.status(dictService.removeDict(ids));
 	}
 
 	/**

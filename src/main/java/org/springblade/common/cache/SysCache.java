@@ -62,7 +62,7 @@ public class SysCache {
 	 * @return
 	 */
 	public static Menu getMenu(Long id) {
-		return CacheUtil.get(SYS_CACHE, MENU_ID + id, () -> menuService.getById(id));
+		return CacheUtil.get(SYS_CACHE, MENU_ID, id, () -> menuService.getById(id));
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class SysCache {
 	 * @return
 	 */
 	public static Dept getDept(Long id) {
-		return CacheUtil.get(SYS_CACHE, DEPT_ID + id, () -> deptService.getById(id));
+		return CacheUtil.get(SYS_CACHE, DEPT_ID, id, () -> deptService.getById(id));
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class SysCache {
 	 * @return 部门名
 	 */
 	public static String getDeptName(Long id) {
-		return CacheUtil.get(SYS_CACHE, DEPT_NAME_ID + id, () -> deptService.getById(id).getDeptName());
+		return CacheUtil.get(SYS_CACHE, DEPT_NAME_ID, id, () -> deptService.getById(id).getDeptName());
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class SysCache {
 	 * @return Role
 	 */
 	public static Role getRole(Long id) {
-		return CacheUtil.get(SYS_CACHE, ROLE_ID + id, () -> roleService.getById(id));
+		return CacheUtil.get(SYS_CACHE, ROLE_ID, id, () -> roleService.getById(id));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class SysCache {
 	 * @return 角色名
 	 */
 	public static String getRoleName(Long id) {
-		return CacheUtil.get(SYS_CACHE, ROLE_NAME_ID + id, () -> roleService.getById(id).getRoleName());
+		return CacheUtil.get(SYS_CACHE, ROLE_NAME_ID, id, () -> roleService.getById(id).getRoleName());
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class SysCache {
 	 * @return 角色别名
 	 */
 	public static String getRoleAlias(Long id) {
-		return CacheUtil.get(SYS_CACHE, ROLE_ALIAS_ID + id, () -> roleService.getById(id).getRoleAlias());
+		return CacheUtil.get(SYS_CACHE, ROLE_ALIAS_ID, id, () -> roleService.getById(id).getRoleAlias());
 	}
 
 
@@ -123,7 +123,7 @@ public class SysCache {
 	 * @return 部门名
 	 */
 	public static List<String> getDeptNames(String deptIds) {
-		return CacheUtil.get(SYS_CACHE, DEPT_NAMES_ID + deptIds, () -> deptService.getDeptNames(deptIds));
+		return CacheUtil.get(SYS_CACHE, DEPT_NAMES_ID, deptIds, () -> deptService.getDeptNames(deptIds));
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class SysCache {
 	 * @return 角色名
 	 */
 	public static List<String> getRoleNames(String roleIds) {
-		return CacheUtil.get(SYS_CACHE, ROLE_NAMES_ID + roleIds, () -> roleService.getRoleNames(roleIds));
+		return CacheUtil.get(SYS_CACHE, ROLE_NAMES_ID, roleIds, () -> roleService.getRoleNames(roleIds));
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class SysCache {
 	 * @return 角色别名
 	 */
 	public static List<String> getRoleAliases(String roleIds) {
-		return CacheUtil.get(SYS_CACHE, ROLE_ALIASES_ID + roleIds, () -> roleService.getRoleAliases(roleIds));
+		return CacheUtil.get(SYS_CACHE, ROLE_ALIASES_ID, roleIds, () -> roleService.getRoleAliases(roleIds));
 	}
 
 }

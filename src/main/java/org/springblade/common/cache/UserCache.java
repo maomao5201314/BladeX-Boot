@@ -32,7 +32,7 @@ import static org.springblade.core.launch.constant.FlowConstant.TASK_USR_PREFIX;
  * @author Chill
  */
 public class UserCache {
-	private static final String USER_CACHE_ID_ = "user:id:";
+	private static final String USER_CACHE_ID = "user:id:";
 
 	private static IUserService userService;
 
@@ -58,7 +58,7 @@ public class UserCache {
 	 * @return
 	 */
 	public static User getUser(Long userId) {
-		return CacheUtil.get(USER_CACHE, USER_CACHE_ID_ + userId, () -> userService.getById(userId));
+		return CacheUtil.get(USER_CACHE, USER_CACHE_ID, userId, () -> userService.getById(userId));
 	}
 
 }

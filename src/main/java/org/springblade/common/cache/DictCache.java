@@ -50,7 +50,7 @@ public class DictCache {
 	 * @return
 	 */
 	public static Dict getById(Long id) {
-		return CacheUtil.get(DICT_CACHE, DICT_ID + id, () -> dictService.getById(id));
+		return CacheUtil.get(DICT_CACHE, DICT_ID, id, () -> dictService.getById(id));
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class DictCache {
 	 * @return
 	 */
 	public static String getValue(String code, Integer dictKey) {
-		return CacheUtil.get(DICT_CACHE, DICT_VALUE + code + StringPool.COLON + dictKey, () -> dictService.getValue(code, dictKey));
+		return CacheUtil.get(DICT_CACHE, DICT_VALUE + code + StringPool.COLON, dictKey, () -> dictService.getValue(code, dictKey));
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class DictCache {
 	 * @return
 	 */
 	public static List<Dict> getList(String code) {
-		return CacheUtil.get(DICT_CACHE, DICT_LIST + code, () -> dictService.getList(code));
+		return CacheUtil.get(DICT_CACHE, DICT_LIST, code, () -> dictService.getList(code));
 	}
 
 }

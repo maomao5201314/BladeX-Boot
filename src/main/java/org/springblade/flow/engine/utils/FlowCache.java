@@ -32,7 +32,7 @@ import org.springblade.core.tool.utils.StringPool;
 public class FlowCache {
 
 	private static final String FLOW_CACHE = "flow:process";
-	private static final String FLOW_CACHE_ID_ = "definition:id";
+	private static final String FLOW_DEFINITION_ID = "definition:id";
 	private static RepositoryService repositoryService;
 
 	static {
@@ -46,14 +46,7 @@ public class FlowCache {
 	 * @return
 	 */
 	public static ProcessDefinition getProcessDefinition(String processDefinitionId) {
-		ProcessDefinition processDefinition = CacheUtil.get(FLOW_CACHE, FLOW_CACHE_ID_ + processDefinitionId, ProcessDefinition.class);
-		if (Func.isEmpty(processDefinition)) {
-			processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionId(processDefinitionId).singleResult();
-			if (Func.isNotEmpty(processDefinition)) {
-				CacheUtil.put(FLOW_CACHE, FLOW_CACHE_ID_ + processDefinitionId, processDefinition);
-			}
-		}
-		return processDefinition;
+		return CacheUtil.get(FLOW_CACHE, FLOW_DEFINITION_ID , processDefinitionId, () -> repositoryService.createProcessDefinitionQuery().processDefinitionId(processDefinitionId).singleResult());
 	}
 
 	/**

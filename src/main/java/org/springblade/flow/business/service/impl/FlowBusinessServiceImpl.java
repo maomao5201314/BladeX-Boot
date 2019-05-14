@@ -123,7 +123,7 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 		}
 
 		// 查询列表
-		List<HistoricProcessInstance> historyList = historyQuery.listPage(Func.toInt(page.getCurrent() - 1), Func.toInt(page.getSize() * page.getCurrent()));
+		List<HistoricProcessInstance> historyList = historyQuery.listPage(Func.toInt((page.getCurrent() - 1) * page.getSize()), Func.toInt(page.getSize()));
 
 		historyList.forEach(historicProcessInstance -> {
 			BladeFlow flow = new BladeFlow();
@@ -190,7 +190,7 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 		}
 
 		// 查询列表
-		List<HistoricTaskInstance> doneList = doneQuery.listPage(Func.toInt(page.getCurrent() - 1), Func.toInt(page.getSize() * page.getCurrent()));
+		List<HistoricTaskInstance> doneList = doneQuery.listPage(Func.toInt((page.getCurrent() - 1) * page.getSize()), Func.toInt(page.getSize()));
 		doneList.forEach(historicTaskInstance -> {
 			BladeFlow flow = new BladeFlow();
 			flow.setTaskId(historicTaskInstance.getId());

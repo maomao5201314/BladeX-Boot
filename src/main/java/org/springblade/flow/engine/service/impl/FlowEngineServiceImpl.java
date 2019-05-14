@@ -93,7 +93,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 		if (StringUtils.isNotEmpty(category)) {
 			processDefinitionQuery.processDefinitionCategory(category);
 		}
-		List<ProcessDefinition> processDefinitionList = processDefinitionQuery.listPage(Func.toInt(page.getCurrent() - 1), Func.toInt(page.getSize() * page.getCurrent()));
+		List<ProcessDefinition> processDefinitionList = processDefinitionQuery.listPage(Func.toInt((page.getCurrent() - 1) * page.getSize()), Func.toInt(page.getSize()));
 		List<FlowProcess> flowProcessList = new ArrayList<>();
 		processDefinitionList.forEach(processDefinition -> {
 			String deploymentId = processDefinition.getDeploymentId();
@@ -117,7 +117,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 			processInstanceQuery.processDefinitionKey(processDefinitionKey);
 		}
 		List<FlowExecution> flowList = new ArrayList<>();
-		List<ProcessInstance> procInsList = processInstanceQuery.listPage(Func.toInt(page.getCurrent() - 1), Func.toInt(page.getSize() * page.getCurrent()));
+		List<ProcessInstance> procInsList = processInstanceQuery.listPage(Func.toInt((page.getCurrent() - 1) * page.getSize()), Func.toInt(page.getSize()));
 		procInsList.forEach(processInstance -> {
 			ExecutionEntityImpl execution = (ExecutionEntityImpl) processInstance;
 			FlowExecution flowExecution = new FlowExecution();

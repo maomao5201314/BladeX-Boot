@@ -32,6 +32,7 @@ import org.springblade.modules.system.service.IRoleMenuService;
 import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.vo.RoleVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotEmpty;
@@ -66,6 +67,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds) {
 		// 删除角色配置的菜单集合
 		roleMenuService.remove(Wrappers.<RoleMenu>update().lambda().in(RoleMenu::getRoleId, roleIds));

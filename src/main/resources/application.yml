@@ -49,9 +49,9 @@ mybatis-plus:
     banner: false
     db-config:
       #主键类型  0:"数据库ID自增", 1:"不操作", 2:"用户输入ID",3:"数字型snowflake", 4:"全局唯一ID UUID", 5:"字符串型snowflake";
-      id-type: 3
+      id-type: id_worker
       #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
-      field-strategy: 1
+      field-strategy: not_null
       #驼峰下划线转换
       table-underline: true
       # 逻辑删除配置

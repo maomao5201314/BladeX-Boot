@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.auth;
 
+import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -28,6 +29,7 @@ import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.core.tool.utils.WebUtil;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springblade.modules.system.service.IUserService;
@@ -39,6 +41,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 认证模块
@@ -58,29 +61,52 @@ public class AuthController {
 	@PostMapping("/oauth/token")
 	@ApiOperation(value = "获取认证token", notes = "传入租户编号:tenantCode,账号:account,密码:password")
 	public Kv token(@ApiParam(value = "租户编号", required = true) @RequestParam(defaultValue = "000000", required = false) String tenantCode,
-					@ApiParam(value = "账号", required = true) @RequestParam String username,
-					@ApiParam(value = "密码", required = true) @RequestParam String password) {
+					@ApiParam(value = "账号", required = true) String username,
+					@ApiParam(value = "密码", required = true) String password) {
 
 		Kv authInfo = Kv.create();
 
-		if (Func.hasEmpty(username, password)) {
+		String grantType = WebUtil.getRequest().getParameter("grant_type");
+		String refreshToken = WebUtil.getRequest().getParameter("refresh_token");
+
+		UserInfo userInfo = null;
+
+		if (Func.isNoneBlank(username, password)) {
+			userInfo = service.userInfo(tenantCode, username, DigestUtil.encrypt(password));
+		} else if (Func.isNoneBlank(grantType, refreshToken) && grantType.equals(TokenConstant.REFRESH_TOKEN)) {
+			Claims claims = SecureUtil.parseJWT(refreshToken);
+			String tokenType = Func.toStr(Objects.requireNonNull(claims).get(TokenConstant.TOKEN_TYPE));
+			if (tokenType.equals(TokenConstant.REFRESH_TOKEN)) {
+				userInfo = service.userInfo(Func.toLong(claims.get(TokenConstant.USER_ID)));
+			}
+		} else {
 			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_description", "接口调用不合法");
 		}
 
-		UserInfo userInfo = service.userInfo(tenantCode, username, DigestUtil.encrypt(password));
-
-		User user = userInfo.getUser();
-
-		//验证用户
-		if (user == null) {
+		if (userInfo == null || userInfo.getUser() == null) {
 			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_description", "用户名或密码不正确");
 		}
 
+		return createAuthInfo(userInfo);
+	}
+
+	private String createRefreshToken(UserInfo userInfo) {
+		User user = userInfo.getUser();
+		Map<String, String> param = new HashMap<>(16);
+		param.put(TokenConstant.TOKEN_TYPE, TokenConstant.REFRESH_TOKEN);
+		param.put(TokenConstant.USER_ID, Func.toStr(user.getId()));
+		return SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.REFRESH_TOKEN);
+	}
+
+	private Kv createAuthInfo(UserInfo userInfo) {
+		Kv authInfo = Kv.create();
+		User user = userInfo.getUser();
 		//设置jwt参数
 		Map<String, String> param = new HashMap<>(16);
+		param.put(TokenConstant.TOKEN_TYPE, TokenConstant.ACCESS_TOKEN);
+		param.put(TokenConstant.TENANT_CODE, user.getTenantCode());
 		param.put(TokenConstant.USER_ID, Func.toStr(user.getId()));
 		param.put(TokenConstant.ROLE_ID, user.getRoleId());
-		param.put(TokenConstant.TENANT_CODE, user.getTenantCode());
 		param.put(TokenConstant.ACCOUNT, user.getAccount());
 		param.put(TokenConstant.USER_NAME, user.getAccount());
 		param.put(TokenConstant.NICK_NAME, user.getRealName());
@@ -88,7 +114,7 @@ public class AuthController {
 
 		//拼装accessToken
 		try {
-			String accessToken = SecureUtil.createJWT(param, "audience", "issuser", true);
+			String accessToken = SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.ACCESS_TOKEN);
 			//返回accessToken
 			return authInfo.set(TokenConstant.ACCOUNT, user.getAccount())
 				.set(TokenConstant.USER_NAME, user.getAccount())
@@ -96,7 +122,7 @@ public class AuthController {
 				.set(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()))
 				.set(TokenConstant.AVATAR, TokenConstant.DEFAULT_AVATAR)
 				.set(TokenConstant.ACCESS_TOKEN, accessToken)
-				.set(TokenConstant.REFRESH_TOKEN, accessToken)
+				.set(TokenConstant.REFRESH_TOKEN, createRefreshToken(userInfo))
 				.set(TokenConstant.TOKEN_TYPE, TokenConstant.BEARER)
 				.set(TokenConstant.EXPIRES_IN, SecureUtil.getExpireSeconds())
 				.set(TokenConstant.LICENSE, TokenConstant.LICENSE_NAME);

@@ -318,21 +318,24 @@ public class SecureUtil {
 	/**
 	 * 创建令牌
 	 *
-	 * @param user     user
-	 * @param audience audience
-	 * @param issuer   issuer
-	 * @param isExpire isExpire
+	 * @param user      user
+	 * @param audience  audience
+	 * @param issuer    issuer
+	 * @param tokenType tokenType
 	 * @return jwt
 	 */
-	public static String createJWT(Map<String, String> user, String audience, String issuer, boolean isExpire) {
+	public static String createJWT(Map<String, String> user, String audience, String issuer, String tokenType) {
 
 		String[] tokens = extractAndDecodeHeader();
 		assert tokens.length == 2;
 		String clientId = tokens[0];
 		String clientSecret = tokens[1];
 
+		// 获取客户端信息
+		IClientDetails clientDetails = clientDetails(clientId);
+
 		// 校验客户端信息
-		if (!validateClient(clientId, clientSecret)) {
+		if (!validateClient(clientDetails, clientId, clientSecret)) {
 			throw new SecureException("客户端认证失败!");
 		}
 
@@ -358,11 +361,17 @@ public class SecureUtil {
 		builder.claim(CLIENT_ID, clientId);
 
 		//添加Token过期时间
-		if (isExpire) {
-			long expMillis = nowMillis + getExpire();
-			Date exp = new Date(expMillis);
-			builder.setExpiration(exp).setNotBefore(now);
+		long expireMillis;
+		if (tokenType.equals(TokenConstant.ACCESS_TOKEN)) {
+			expireMillis = clientDetails.getAccessTokenValidity() * 1000;
+		} else if (tokenType.equals(TokenConstant.REFRESH_TOKEN)) {
+			expireMillis = clientDetails.getRefreshTokenValidity() * 1000;
+		} else {
+			expireMillis = getExpire();
 		}
+		long expMillis = nowMillis + expireMillis;
+		Date exp = new Date(expMillis);
+		builder.setExpiration(exp).setNotBefore(now);
 
 		//生成JWT
 		return builder.compact();
@@ -430,14 +439,23 @@ public class SecureUtil {
 	}
 
 	/**
+	 * 获取客户端信息
+	 *
+	 * @param clientId 客户端id
+	 * @return clientDetails
+	 */
+	private static IClientDetails clientDetails(String clientId) {
+		return clientDetailsService.loadClientByClientId(clientId);
+	}
+
+	/**
 	 * 校验Client
 	 *
 	 * @param clientId     客户端id
 	 * @param clientSecret 客户端密钥
 	 * @return boolean
 	 */
-	private static boolean validateClient(String clientId, String clientSecret) {
-		IClientDetails clientDetails = clientDetailsService.loadClientByClientId(clientId);
+	private static boolean validateClient(IClientDetails clientDetails, String clientId, String clientSecret) {
 		if (clientDetails != null) {
 			return StringUtil.equals(clientId, clientDetails.getClientId()) && StringUtil.equals(clientSecret, clientDetails.getClientSecret());
 		}

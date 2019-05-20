@@ -62,6 +62,18 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	}
 
 	@Override
+	public UserInfo userInfo(Long userId) {
+		UserInfo userInfo = new UserInfo();
+		User user = baseMapper.selectById(userId);
+		userInfo.setUser(user);
+		if (Func.isNotEmpty(user)) {
+			List<String> roleAlias = SysCache.getRoleAliases(user.getRoleId());
+			userInfo.setRoles(roleAlias);
+		}
+		return userInfo;
+	}
+
+	@Override
 	public UserInfo userInfo(String tenantCode, String account, String password) {
 		UserInfo userInfo = new UserInfo();
 		User user = baseMapper.getUser(tenantCode, account, password);

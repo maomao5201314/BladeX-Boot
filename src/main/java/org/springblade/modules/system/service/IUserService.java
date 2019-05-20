@@ -49,6 +49,14 @@ public interface IUserService extends BaseService<User> {
 	/**
 	 * 用户信息
 	 *
+	 * @param userId
+	 * @return
+	 */
+	UserInfo userInfo(Long userId);
+
+	/**
+	 * 用户信息
+	 *
 	 * @param tenantCode
 	 * @param account
 	 * @param password

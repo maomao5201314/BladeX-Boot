@@ -18,6 +18,7 @@ package org.springblade.modules.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
@@ -115,6 +116,18 @@ public class TenantController extends BladeController {
 	@ApiOperation(value = "逻辑删除", notes = "传入ids", position = 8)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(tenantService.deleteLogic(Func.toLongList(ids)));
+	}
+
+	/**
+	 * 根据名称查询列表
+	 *
+	 * @param name 租户名称
+	 */
+	@GetMapping("/find-by-name")
+	@ApiOperation(value = "详情", notes = "传入tenant", position = 9)
+	public R<List<Tenant>> findByName(String name) {
+		List<Tenant> list = tenantService.list(Wrappers.<Tenant>query().lambda().like(Tenant::getTenantName, name));
+		return R.data(list);
 	}
 
 

@@ -37,6 +37,7 @@ import org.springblade.modules.resource.entity.OssVO;
 import org.springblade.modules.resource.service.IOssService;
 import org.springblade.modules.resource.wrapper.OssWrapper;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
@@ -52,7 +53,8 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_RESOURCE_NAME + "/oss")
 @PreAuth(RoleConstant.HAS_ROLE_ADMIN)
-@Api(value = "对象存储接口", tags = "接口")
+@ApiIgnore
+@Api(value = "对象存储接口", tags = "对象存储接口")
 public class OssController extends BladeController {
 
 	private IOssService ossService;

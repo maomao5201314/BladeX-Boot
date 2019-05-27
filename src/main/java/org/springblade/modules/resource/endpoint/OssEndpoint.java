@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.resource.endpoint;
 
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springblade.core.launch.constant.AppConstant;
@@ -33,6 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 @AllArgsConstructor
+@Api(value = "对象存储端点", tags = "对象存储端点")
 @RequestMapping(AppConstant.APPLICATION_RESOURCE_NAME + "/oss/endpoint")
 public class OssEndpoint {
 

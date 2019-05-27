@@ -18,10 +18,8 @@ package org.springblade.modules.resource.config;
 
 import lombok.AllArgsConstructor;
 import org.springblade.core.oss.props.OssProperties;
-import org.springblade.core.oss.rule.OssRule;
 import org.springblade.modules.resource.builder.OssBuilder;
 import org.springblade.modules.resource.mapper.OssMapper;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -38,12 +36,9 @@ public class OssConfiguration {
 
 	private OssMapper ossMapper;
 
-	private OssRule ossRule;
-
 	@Bean
-	@ConditionalOnBean(OssRule.class)
 	public OssBuilder ossBuilder() {
-		return new OssBuilder(ossProperties, ossMapper, ossRule);
+		return new OssBuilder(ossProperties, ossMapper);
 	}
 
 }

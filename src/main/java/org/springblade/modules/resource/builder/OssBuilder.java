@@ -22,6 +22,7 @@ import org.springblade.core.oss.OssTemplate;
 import org.springblade.core.oss.enums.OssEnum;
 import org.springblade.core.oss.enums.OssStatusEnum;
 import org.springblade.core.oss.props.OssProperties;
+import org.springblade.core.oss.rule.BladeOssRule;
 import org.springblade.core.oss.rule.OssRule;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.utils.Func;
@@ -44,12 +45,10 @@ public class OssBuilder {
 
 	private final OssProperties ossProperties;
 	private final OssMapper ossMapper;
-	private final OssRule ossRule;
 
-	public OssBuilder(OssProperties ossProperties, OssMapper ossMapper, OssRule ossRule) {
+	public OssBuilder(OssProperties ossProperties, OssMapper ossMapper) {
 		this.ossProperties = ossProperties;
 		this.ossMapper = ossMapper;
-		this.ossRule = ossRule;
 	}
 
 	/**
@@ -77,6 +76,13 @@ public class OssBuilder {
 			synchronized (OssBuilder.class) {
 				template = templatePool.get(tenantCode);
 				if (Func.hasEmpty(template, ossCached) || oss.getEndpoint().equals(ossCached.getEndpoint()) || !oss.getAccessKey().equals(ossCached.getAccessKey())) {
+					OssRule ossRule;
+					// 若采用默认设置则开启多租户模式, 若是用户自定义oss则不开启
+					if (oss.getEndpoint().equals(ossProperties.getEndpoint()) && oss.getAccessKey().equals(ossProperties.getAccessKey())) {
+						ossRule = new BladeOssRule(Boolean.TRUE);
+					} else {
+						ossRule = new BladeOssRule(Boolean.FALSE);
+					}
 					if (oss.getCategory() == OssEnum.MINIO.getCategory()) {
 						template = MinioBuilder.template(oss, ossRule);
 					} else if (oss.getCategory() == OssEnum.QINIU.getCategory()) {

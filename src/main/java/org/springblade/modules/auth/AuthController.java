@@ -61,8 +61,8 @@ public class AuthController {
 	@PostMapping("/oauth/token")
 	@ApiOperation(value = "获取认证token", notes = "传入租户编号:tenantCode,账号:account,密码:password")
 	public Kv token(@ApiParam(value = "租户编号", required = true) @RequestParam(defaultValue = "000000", required = false) String tenantCode,
-					@ApiParam(value = "账号", required = true) String username,
-					@ApiParam(value = "密码", required = true) String password) {
+					@ApiParam(value = "账号", required = true) @RequestParam(required = false) String username,
+					@ApiParam(value = "密码", required = true) @RequestParam(required = false)  String password) {
 
 		Kv authInfo = Kv.create();
 

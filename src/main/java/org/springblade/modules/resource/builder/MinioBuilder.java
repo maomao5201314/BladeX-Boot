@@ -19,8 +19,8 @@ package org.springblade.modules.resource.builder;
 import io.minio.MinioClient;
 import lombok.SneakyThrows;
 import org.springblade.core.minio.MinioTemplate;
-import org.springblade.core.minio.props.MinioProperties;
 import org.springblade.core.oss.OssTemplate;
+import org.springblade.core.oss.props.OssProperties;
 import org.springblade.core.oss.rule.OssRule;
 import org.springblade.modules.resource.entity.Oss;
 
@@ -34,12 +34,12 @@ public class MinioBuilder {
 	@SneakyThrows
 	public static OssTemplate template(Oss oss, OssRule ossRule) {
 		MinioClient minioClient = new MinioClient(oss.getEndpoint(), oss.getAccessKey(), oss.getSecretKey());
-		MinioProperties minioProperties = new MinioProperties();
-		minioProperties.setEndpoint(oss.getEndpoint());
-		minioProperties.setAccessKey(oss.getAccessKey());
-		minioProperties.setSecretKey(oss.getSecretKey());
-		minioProperties.setBucketName(oss.getBucketName());
-		return new MinioTemplate(minioClient, ossRule, minioProperties);
+		OssProperties ossProperties = new OssProperties();
+		ossProperties.setEndpoint(oss.getEndpoint());
+		ossProperties.setAccessKey(oss.getAccessKey());
+		ossProperties.setSecretKey(oss.getSecretKey());
+		ossProperties.setBucketName(oss.getBucketName());
+		return new MinioTemplate(minioClient, ossRule, ossProperties);
 	}
 
 }

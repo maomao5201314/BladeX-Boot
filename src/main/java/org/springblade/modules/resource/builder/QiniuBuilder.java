@@ -23,9 +23,9 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import lombok.SneakyThrows;
 import org.springblade.core.oss.OssTemplate;
+import org.springblade.core.oss.props.OssProperties;
 import org.springblade.core.oss.rule.OssRule;
 import org.springblade.core.qiniu.QiniuTemplate;
-import org.springblade.core.qiniu.props.QiniuProperties;
 import org.springblade.modules.resource.entity.Oss;
 
 /**
@@ -41,12 +41,12 @@ public class QiniuBuilder {
 		Auth auth = Auth.create(oss.getAccessKey(), oss.getSecretKey());
 		UploadManager uploadManager = new UploadManager(cfg);
 		BucketManager bucketManager = new BucketManager(auth, cfg);
-		QiniuProperties qiniuProperties = new QiniuProperties();
-		qiniuProperties.setEndpoint(oss.getEndpoint());
-		qiniuProperties.setAccessKey(oss.getAccessKey());
-		qiniuProperties.setSecretKey(oss.getSecretKey());
-		qiniuProperties.setBucketName(oss.getBucketName());
-		return new QiniuTemplate(auth, uploadManager, bucketManager, qiniuProperties, ossRule);
+		OssProperties ossProperties = new OssProperties();
+		ossProperties.setEndpoint(oss.getEndpoint());
+		ossProperties.setAccessKey(oss.getAccessKey());
+		ossProperties.setSecretKey(oss.getSecretKey());
+		ossProperties.setBucketName(oss.getBucketName());
+		return new QiniuTemplate(auth, uploadManager, bucketManager, ossProperties, ossRule);
 	}
 
 }

@@ -59,8 +59,8 @@ public class AuthController {
 
 	@ApiLog("登录用户验证")
 	@PostMapping("/oauth/token")
-	@ApiOperation(value = "获取认证token", notes = "传入租户编号:tenantCode,账号:account,密码:password")
-	public Kv token(@ApiParam(value = "租户编号", required = true) @RequestParam(defaultValue = "000000", required = false) String tenantCode,
+	@ApiOperation(value = "获取认证token", notes = "传入租户ID:tenantId,账号:account,密码:password")
+	public Kv token(@ApiParam(value = "租户ID", required = true) @RequestParam(defaultValue = "000000", required = false) String tenantId,
 					@ApiParam(value = "账号", required = true) @RequestParam(required = false) String username,
 					@ApiParam(value = "密码", required = true) @RequestParam(required = false)  String password) {
 
@@ -72,7 +72,7 @@ public class AuthController {
 		UserInfo userInfo = null;
 
 		if (Func.isNoneBlank(username, password)) {
-			userInfo = service.userInfo(tenantCode, username, DigestUtil.encrypt(password));
+			userInfo = service.userInfo(tenantId, username, DigestUtil.encrypt(password));
 		} else if (Func.isNoneBlank(grantType, refreshToken) && grantType.equals(TokenConstant.REFRESH_TOKEN)) {
 			Claims claims = SecureUtil.parseJWT(refreshToken);
 			String tokenType = Func.toStr(Objects.requireNonNull(claims).get(TokenConstant.TOKEN_TYPE));
@@ -104,7 +104,7 @@ public class AuthController {
 		//设置jwt参数
 		Map<String, String> param = new HashMap<>(16);
 		param.put(TokenConstant.TOKEN_TYPE, TokenConstant.ACCESS_TOKEN);
-		param.put(TokenConstant.TENANT_CODE, user.getTenantCode());
+		param.put(TokenConstant.TENANT_ID, user.getTenantId());
 		param.put(TokenConstant.USER_ID, Func.toStr(user.getId()));
 		param.put(TokenConstant.ROLE_ID, user.getRoleId());
 		param.put(TokenConstant.ACCOUNT, user.getAccount());

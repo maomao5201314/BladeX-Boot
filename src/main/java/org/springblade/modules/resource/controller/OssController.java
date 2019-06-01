@@ -133,7 +133,7 @@ public class OssController extends BladeController {
 	@PostMapping("/enable")
 	@ApiOperation(value = "配置启用", notes = "传入id", position = 7)
 	public R enable(@ApiParam(value = "主键", required = true) @RequestParam Long id) {
-		CacheUtil.evict(SYS_CACHE, OssBuilder.OSS_CODE, SecureUtil.getTenantCode());
+		CacheUtil.evict(SYS_CACHE, OssBuilder.OSS_CODE, SecureUtil.getTenantId());
 		return R.status(ossService.enable(id));
 	}
 

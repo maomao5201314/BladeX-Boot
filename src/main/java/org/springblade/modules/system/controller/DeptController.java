@@ -79,7 +79,7 @@ public class DeptController extends BladeController {
 	@ApiOperation(value = "列表", notes = "传入dept", position = 2)
 	public R<List<INode>> list(@ApiIgnore @RequestParam Map<String, Object> dept, BladeUser bladeUser) {
 		QueryWrapper<Dept> queryWrapper = Condition.getQueryWrapper(dept, Dept.class);
-		List<Dept> list = deptService.list((!bladeUser.getTenantCode().equals(BladeConstant.ADMIN_TENANT_CODE)) ? queryWrapper.lambda().eq(Dept::getTenantCode, bladeUser.getTenantCode()) : queryWrapper);
+		List<Dept> list = deptService.list((!bladeUser.getTenantId().equals(BladeConstant.ADMIN_TENANT_ID)) ? queryWrapper.lambda().eq(Dept::getTenantId, bladeUser.getTenantId()) : queryWrapper);
 		return R.data(DeptWrapper.build().listNodeVO(list));
 	}
 
@@ -90,8 +90,8 @@ public class DeptController extends BladeController {
 	 */
 	@GetMapping("/tree")
 	@ApiOperation(value = "树形结构", notes = "树形结构", position = 3)
-	public R<List<DeptVO>> tree(String tenantCode, BladeUser bladeUser) {
-		List<DeptVO> tree = deptService.tree(Func.toStr(tenantCode, bladeUser.getTenantCode()));
+	public R<List<DeptVO>> tree(String tenantId, BladeUser bladeUser) {
+		List<DeptVO> tree = deptService.tree(Func.toStr(tenantId, bladeUser.getTenantId()));
 		return R.data(tree);
 	}
 
@@ -103,7 +103,7 @@ public class DeptController extends BladeController {
 	@CacheEvict(cacheNames = {SYS_CACHE})
 	public R submit(@Valid @RequestBody Dept dept, BladeUser user) {
 		if (Func.isEmpty(dept.getId())) {
-			dept.setTenantCode(user.getTenantCode());
+			dept.setTenantId(user.getTenantId());
 		}
 		return R.status(deptService.saveOrUpdate(dept));
 	}

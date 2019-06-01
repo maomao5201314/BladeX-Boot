@@ -37,10 +37,10 @@ public class Tenant extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 租户编号
+	 * 租户ID
 	 */
-	@ApiModelProperty(value = "租户编号")
-	private String tenantCode;
+	@ApiModelProperty(value = "租户ID")
+	private String tenantId;
 	/**
 	 * 租户名称
 	 */

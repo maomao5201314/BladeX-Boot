@@ -49,7 +49,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (Func.isNotEmpty(user.getPassword())) {
 			user.setPassword(DigestUtil.encrypt(user.getPassword()));
 		}
-		Integer cnt = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantCode, Func.toStr(user.getTenantCode(), BladeConstant.ADMIN_TENANT_CODE)).eq(User::getAccount, user.getAccount()));
+		Integer cnt = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(user.getTenantId(), BladeConstant.ADMIN_TENANT_ID)).eq(User::getAccount, user.getAccount()));
 		if (cnt > 0) {
 			throw new ApiException("当前用户已存在!");
 		}
@@ -74,9 +74,9 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	}
 
 	@Override
-	public UserInfo userInfo(String tenantCode, String account, String password) {
+	public UserInfo userInfo(String tenantId, String account, String password) {
 		UserInfo userInfo = new UserInfo();
-		User user = baseMapper.getUser(tenantCode, account, password);
+		User user = baseMapper.getUser(tenantId, account, password);
 		userInfo.setUser(user);
 		if (Func.isNotEmpty(user)) {
 			List<String> roleAlias = SysCache.getRoleAliases(user.getRoleId());

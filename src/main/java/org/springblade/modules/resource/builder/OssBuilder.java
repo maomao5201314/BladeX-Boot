@@ -67,14 +67,14 @@ public class OssBuilder {
 	 * @return OssTemplate
 	 */
 	public OssTemplate template() {
-		String tenantCode = SecureUtil.getTenantCode();
-		Oss oss = getOss(tenantCode);
-		Oss ossCached = ossPool.get(tenantCode);
-		OssTemplate template = templatePool.get(tenantCode);
+		String tenantId = SecureUtil.getTenantId();
+		Oss oss = getOss(tenantId);
+		Oss ossCached = ossPool.get(tenantId);
+		OssTemplate template = templatePool.get(tenantId);
 		// 若为空或者不一致，则重新加载
 		if (Func.hasEmpty(template, ossCached) || oss.getEndpoint().equals(ossCached.getEndpoint()) || !oss.getAccessKey().equals(ossCached.getAccessKey())) {
 			synchronized (OssBuilder.class) {
-				template = templatePool.get(tenantCode);
+				template = templatePool.get(tenantId);
 				if (Func.hasEmpty(template, ossCached) || oss.getEndpoint().equals(ossCached.getEndpoint()) || !oss.getAccessKey().equals(ossCached.getAccessKey())) {
 					OssRule ossRule;
 					// 若采用默认设置则开启多租户模式, 若是用户自定义oss则不开启
@@ -88,8 +88,8 @@ public class OssBuilder {
 					} else if (oss.getCategory() == OssEnum.QINIU.getCategory()) {
 						template = QiniuBuilder.template(oss, ossRule);
 					}
-					templatePool.put(tenantCode, template);
-					ossPool.put(tenantCode, oss);
+					templatePool.put(tenantId, template);
+					ossPool.put(tenantId, oss);
 				}
 			}
 		}
@@ -99,11 +99,11 @@ public class OssBuilder {
 	/**
 	 * 获取对象存储实体
 	 *
-	 * @param tenantCode 租户编号
+	 * @param tenantId 租户ID
 	 * @return Role
 	 */
-	public Oss getOss(String tenantCode) {
-		return CacheUtil.get(SYS_CACHE, OSS_CODE, tenantCode, () -> {
+	public Oss getOss(String tenantId) {
+		return CacheUtil.get(SYS_CACHE, OSS_CODE, tenantId, () -> {
 			Oss o = ossMapper.selectOne(Wrappers.<Oss>query().lambda().eq(Oss::getStatus, OssStatusEnum.ENABLE.getNum()));
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(o))) {

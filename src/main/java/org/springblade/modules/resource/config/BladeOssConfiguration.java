@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @AllArgsConstructor
-public class OssConfiguration {
+public class BladeOssConfiguration {
 
 	private OssProperties ossProperties;
 

@@ -24,6 +24,7 @@ import org.springblade.core.launch.server.ServerInfo;
 import org.springblade.core.log.constant.EventConstant;
 import org.springblade.core.log.model.LogError;
 import org.springblade.core.secure.utils.SecureUtil;
+import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.WebUtil;
 import org.springblade.modules.system.service.ILogService;
 import org.springframework.context.event.EventListener;
@@ -31,7 +32,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
@@ -62,7 +62,7 @@ public class ErrorLogListener {
 		logError.setServerIp(serverInfo.getIpWithPort());
 		logError.setEnv(bladeProperties.getEnv());
 		logError.setCreateBy(SecureUtil.getUserAccount(request));
-		logError.setCreateTime(LocalDateTime.now());
+		logError.setCreateTime(DateUtil.now());
 		logService.saveErrorLog(logError);
 	}
 

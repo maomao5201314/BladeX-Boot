@@ -25,6 +25,7 @@ import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.constant.BladeConstant;
+import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.User;
@@ -33,7 +34,7 @@ import org.springblade.modules.system.mapper.UserMapper;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -96,7 +97,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	public boolean resetPassword(String userIds) {
 		User user = new User();
 		user.setPassword(DigestUtil.encrypt(CommonConstant.DEFAULT_PASSWORD));
-		user.setUpdateTime(LocalDateTime.now());
+		user.setUpdateTime(DateUtil.now());
 		return this.update(user, Wrappers.<User>update().lambda().in(User::getId, Func.toLongList(userIds)));
 	}
 

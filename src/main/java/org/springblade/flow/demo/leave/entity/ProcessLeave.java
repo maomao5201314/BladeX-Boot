@@ -21,7 +21,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springblade.flow.core.entity.FlowEntity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 请假流程实体类
@@ -46,11 +46,11 @@ public class ProcessLeave extends FlowEntity {
 	/**
 	 * 请假开始时间
 	 */
-	private LocalDateTime startTime;
+	private Date startTime;
 	/**
 	 * 请假结束时间
 	 */
-	private LocalDateTime endTime;
+	private Date endTime;
 	/**
 	 * 请假理由
 	 */
@@ -62,6 +62,6 @@ public class ProcessLeave extends FlowEntity {
 	/**
 	 * 流程申请时间
 	 */
-	private LocalDateTime applyTime;
+	private Date applyTime;
 
 }

@@ -22,20 +22,18 @@ import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.support.Kv;
+import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.flow.demo.leave.entity.ProcessLeave;
-import org.springblade.flow.demo.leave.mapper.LeaveMapper;
-import org.springblade.flow.demo.leave.service.ILeaveService;
 import org.springblade.flow.business.service.IFlowService;
 import org.springblade.flow.core.constant.ProcessConstant;
 import org.springblade.flow.core.entity.BladeFlow;
 import org.springblade.flow.core.utils.FlowUtil;
 import org.springblade.flow.core.utils.TaskUtil;
+import org.springblade.flow.demo.leave.entity.ProcessLeave;
+import org.springblade.flow.demo.leave.mapper.LeaveMapper;
+import org.springblade.flow.demo.leave.service.ILeaveService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
 
 /**
  * 服务实现类
@@ -55,13 +53,13 @@ public class LeaveServiceImpl extends BaseServiceImpl<LeaveMapper, ProcessLeave>
 		String businessTable = FlowUtil.getBusinessTable(ProcessConstant.LEAVE_KEY);
 		if (Func.isEmpty(leave.getId())) {
 			// 保存leave
-			leave.setApplyTime(LocalDateTime.now());
+			leave.setApplyTime(DateUtil.now());
 			save(leave);
 			// 启动流程
 			Kv variables = Kv.create()
 				.set(ProcessConstant.TASK_VARIABLE_CREATE_USER, SecureUtil.getUserName())
 				.set("taskUser", TaskUtil.getTaskUser(leave.getTaskUser()))
-				.set("days", Duration.between(leave.getStartTime(), leave.getEndTime()).toDays());
+				.set("days", DateUtil.between(leave.getStartTime(), leave.getEndTime()).toDays());
 			BladeFlow flow = flowService.startProcessInstanceById(leave.getProcessDefinitionId(), FlowUtil.getBusinessKey(businessTable, String.valueOf(leave.getId())), variables);
 			if (Func.isNotEmpty(flow)) {
 				log.debug("流程已启动,流程ID:" + flow.getProcessInstanceId());

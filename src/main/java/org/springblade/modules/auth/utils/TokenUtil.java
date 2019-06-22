@@ -34,20 +34,6 @@ import java.util.Map;
  */
 public class TokenUtil {
 
-	public final static String AVATAR = TokenConstant.AVATAR;
-	public final static String ACCOUNT = TokenConstant.ACCOUNT;
-	public final static String USER_NAME = TokenConstant.USER_NAME;
-	public final static String NICK_NAME = TokenConstant.NICK_NAME;
-	public final static String USER_ID = TokenConstant.USER_ID;
-	public final static String DEPT_ID = TokenConstant.DEPT_ID;
-	public final static String ROLE_ID = TokenConstant.ROLE_ID;
-	public final static String ROLE_NAME = TokenConstant.ROLE_NAME;
-	public final static String TENANT_ID = TokenConstant.TENANT_ID;
-	public final static String CLIENT_ID = TokenConstant.CLIENT_ID;
-	public final static String LICENSE = TokenConstant.LICENSE;
-	public final static String LICENSE_NAME = TokenConstant.LICENSE_NAME;
-
-
 	public final static String TENANT_HEADER_KEY = "Tenant-Id";
 	public final static String DEFAULT_TENANT_ID = "000000";
 	public final static String USER_TYPE_HEADER_KEY = "User-Type";

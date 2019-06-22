@@ -14,26 +14,19 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.desk.service;
+package org.springblade.modules.auth.granter;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springblade.core.mp.base.BaseService;
-import org.springblade.modules.desk.entity.Notice;
-import org.springblade.modules.desk.vo.NoticeVO;
+import lombok.Data;
+import org.springblade.core.tool.support.Kv;
 
 /**
- * 服务类
+ * TokenParameter
  *
  * @author Chill
  */
-public interface INoticeService extends BaseService<Notice> {
+@Data
+public class TokenParameter {
 
-	/**
-	 * 自定义分页
-	 * @param page
-	 * @param notice
-	 * @return
-	 */
-	IPage<NoticeVO> selectNoticePage(IPage<NoticeVO> page, NoticeVO notice);
+	private Kv args = Kv.create();
 
 }

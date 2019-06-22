@@ -14,26 +14,25 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.desk.service;
+package org.springblade.modules.auth.granter;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springblade.core.mp.base.BaseService;
-import org.springblade.modules.desk.entity.Notice;
-import org.springblade.modules.desk.vo.NoticeVO;
+import org.springblade.modules.system.entity.UserInfo;
+import org.springblade.modules.system.service.IUserService;
 
 /**
- * 服务类
+ * 授权认证统一接口.
  *
  * @author Chill
  */
-public interface INoticeService extends BaseService<Notice> {
+public interface ITokenGranter {
 
 	/**
-	 * 自定义分页
-	 * @param page
-	 * @param notice
-	 * @return
+	 * 获取用户信息
+	 *
+	 * @param service        用户模块业务
+	 * @param tokenParameter 授权参数
+	 * @return UserInfo
 	 */
-	IPage<NoticeVO> selectNoticePage(IPage<NoticeVO> page, NoticeVO notice);
+	UserInfo grant(IUserService service, TokenParameter tokenParameter);
 
 }

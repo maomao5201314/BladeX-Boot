@@ -16,24 +16,38 @@
         <result column="content" property="content"/>
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="baseColumnList">
-        select id,
-        create_user AS createUser,
-        create_time AS createTime,
-        update_user AS updateUser,
-        update_time AS updateTime,
-        status,
-        is_deleted AS isDeleted,
-        title, content
-    </sql>
+    <!-- 通用查询映射结果 -->
+    <resultMap id="noticeVOResultMap" type="org.springblade.modules.desk.vo.NoticeVO">
+        <result column="id" property="id"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="release_time" property="releaseTime"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+    </resultMap>
 
     <select id="topList" resultMap="noticeResultMap">
         select * from blade_notice limit #{number}
     </select>
 
-    <select id="selectNoticePage" resultMap="noticeResultMap">
-        select * from blade_notice where title like concat('%', #{notice.title}, '%') and is_deleted = 0
+    <select id="selectNoticePage" resultMap="noticeVOResultMap">
+        SELECT
+        n.*,
+        d.dict_value AS categoryName
+        FROM
+        blade_notice n
+        LEFT JOIN ( SELECT * FROM blade_dict WHERE CODE = 'notice' ) d ON n.category = d.dict_key
+        WHERE
+        n.is_deleted = 0 and n.tenant_id = #{notice.tenantId}
+        <if test="notice.title!=null">
+            and n.title like concat('%', #{notice.title}, '%')
+        </if>
+        <if test="notice.category!=null">
+            and n.category = #{notice.category}
+        </if>
     </select>
-
 </mapper>

@@ -14,26 +14,32 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.desk.service;
+package org.springblade.modules.auth.enums;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springblade.core.mp.base.BaseService;
-import org.springblade.modules.desk.entity.Notice;
-import org.springblade.modules.desk.vo.NoticeVO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
- * 服务类
+ * 用户类型枚举
  *
  * @author Chill
  */
-public interface INoticeService extends BaseService<Notice> {
+@Getter
+@AllArgsConstructor
+public enum BladeUserEnum {
 
 	/**
-	 * 自定义分页
-	 * @param page
-	 * @param notice
-	 * @return
+	 * web
 	 */
-	IPage<NoticeVO> selectNoticePage(IPage<NoticeVO> page, NoticeVO notice);
+	WEB("web", 1),
+
+	/**
+	 * app
+	 */
+	APP("app", 2),
+	;
+
+	final String name;
+	final int category;
 
 }

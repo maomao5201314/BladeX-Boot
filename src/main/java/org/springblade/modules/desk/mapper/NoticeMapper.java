@@ -19,6 +19,7 @@ package org.springblade.modules.desk.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springblade.modules.desk.entity.Notice;
+import org.springblade.modules.desk.vo.NoticeVO;
 
 import java.util.List;
 
@@ -42,6 +43,6 @@ public interface NoticeMapper extends BaseMapper<Notice> {
 	 * @param notice
 	 * @return
 	 */
-	List<Notice> selectNoticePage(IPage page, Notice notice);
+	List<NoticeVO> selectNoticePage(IPage page, NoticeVO notice);
 
 }

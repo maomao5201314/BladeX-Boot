@@ -14,26 +14,39 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.desk.service;
+package org.springblade.modules.auth.granter;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springblade.core.mp.base.BaseService;
-import org.springblade.modules.desk.entity.Notice;
-import org.springblade.modules.desk.vo.NoticeVO;
+import lombok.AllArgsConstructor;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 服务类
+ * TokenGranterBuilder
  *
  * @author Chill
  */
-public interface INoticeService extends BaseService<Notice> {
+@AllArgsConstructor
+public class TokenGranterBuilder {
 
 	/**
-	 * 自定义分页
-	 * @param page
-	 * @param notice
-	 * @return
+	 * TokenGranter缓存池子
 	 */
-	IPage<NoticeVO> selectNoticePage(IPage<NoticeVO> page, NoticeVO notice);
+	private static Map<String, ITokenGranter> granterPool = new ConcurrentHashMap<>();
+
+	static {
+		granterPool.put(PasswordTokenGranter.GRANT_TYPE, new PasswordTokenGranter());
+		granterPool.put(RefreshTokenGranter.GRANT_TYPE, new RefreshTokenGranter());
+	}
+
+	/**
+	 * 获取TokenGranter
+	 *
+	 * @param grantType 授权类型
+	 * @return ITokenGranter
+	 */
+	public static ITokenGranter getGranter(String grantType) {
+		return granterPool.get(grantType);
+	}
 
 }

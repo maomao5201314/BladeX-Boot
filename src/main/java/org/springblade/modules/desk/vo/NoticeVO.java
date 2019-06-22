@@ -17,4 +17,7 @@ public class NoticeVO extends Notice {
 	@ApiModelProperty(value = "通知类型名")
 	private String categoryName;
 
+	@ApiModelProperty(value = "租户编号")
+	private String tenantId;
+
 }

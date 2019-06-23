@@ -72,11 +72,11 @@ INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `s
 INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675229, 1123598814738675227, 'org_category', 2, '部门', 2, NULL, 0);
 INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675230, 1123598814738675227, 'org_category', 3, '小组', 3, NULL, 0);
 INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675231, 0, 'scope_type', -1, '数据权限', 8, NULL, 0);
-INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675232, 1123598814738675230, 'scope_type', 1, '全部可见', 1, NULL, 0);
-INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675233, 1123598814738675230, 'scope_type', 2, '本人可见', 2, NULL, 0);
-INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675234, 1123598814738675230, 'scope_type', 3, '所在机构可见', 3, NULL, 0);
-INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675235, 1123598814738675230, 'scope_type', 4, '所在机构及子级可见', 4, NULL, 0);
-INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675236, 1123598814738675230, 'scope_type', 5, '自定义', 5, NULL, 0);
+INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675232, 1123598814738675231, 'scope_type', 1, '全部可见', 1, NULL, 0);
+INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675233, 1123598814738675231, 'scope_type', 2, '本人可见', 2, NULL, 0);
+INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675234, 1123598814738675231, 'scope_type', 3, '所在机构可见', 3, NULL, 0);
+INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675235, 1123598814738675231, 'scope_type', 4, '所在机构及子级可见', 4, NULL, 0);
+INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_deleted`) VALUES (1123598814738675236, 1123598814738675231, 'scope_type', 5, '自定义', 5, NULL, 0);
 
 -- ----------------------------
 -- 增加数据权限菜单及权限

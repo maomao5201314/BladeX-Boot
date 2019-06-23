@@ -14,61 +14,22 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.service;
+package org.springblade.modules.system.vo;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.IService;
-import org.springblade.modules.system.entity.Dept;
-import org.springblade.modules.system.vo.DeptVO;
+import lombok.Data;
 
 import java.util.List;
 
 /**
- * 服务类
+ * GrantTreeVO
  *
  * @author Chill
  */
-public interface IDeptService extends IService<Dept> {
+@Data
+public class GrantTreeVO {
 
-	/**
-	 * 自定义分页
-	 *
-	 * @param page
-	 * @param dept
-	 * @return
-	 */
-	IPage<DeptVO> selectDeptPage(IPage<DeptVO> page, DeptVO dept);
+	private List<MenuVO> menu;
 
-	/**
-	 * 树形结构
-	 *
-	 * @param tenantId
-	 * @return
-	 */
-	List<DeptVO> tree(String tenantId);
-
-	/**
-	 * 获取部门名
-	 *
-	 * @param deptIds
-	 * @return
-	 */
-	List<String> getDeptNames(String deptIds);
-
-	/**
-	 * 删除部门
-	 *
-	 * @param ids
-	 * @return
-	 */
-	boolean removeDept(String ids);
-
-	/**
-	 * 提交
-	 *
-	 * @param dept
-	 * @return
-	 */
-	boolean submit(Dept dept);
+	private List<MenuVO> scope;
 
 }

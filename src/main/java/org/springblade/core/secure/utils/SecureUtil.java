@@ -48,6 +48,7 @@ public class SecureUtil {
 	private final static String USER_NAME = TokenConstant.USER_NAME;
 	private final static String NICK_NAME = TokenConstant.NICK_NAME;
 	private final static String USER_ID = TokenConstant.USER_ID;
+	private final static String DEPT_ID = TokenConstant.DEPT_ID;
 	private final static String ROLE_ID = TokenConstant.ROLE_ID;
 	private final static String ROLE_NAME = TokenConstant.ROLE_NAME;
 	private final static String TENANT_ID = TokenConstant.TENANT_ID;
@@ -97,6 +98,7 @@ public class SecureUtil {
 		String clientId = Func.toStr(claims.get(SecureUtil.CLIENT_ID));
 		Long userId = Func.toLong(claims.get(SecureUtil.USER_ID));
 		String tenantId = Func.toStr(claims.get(SecureUtil.TENANT_ID));
+		String deptId = Func.toStr(claims.get(SecureUtil.DEPT_ID));
 		String roleId = Func.toStr(claims.get(SecureUtil.ROLE_ID));
 		String account = Func.toStr(claims.get(SecureUtil.ACCOUNT));
 		String roleName = Func.toStr(claims.get(SecureUtil.ROLE_NAME));
@@ -107,6 +109,7 @@ public class SecureUtil {
 		bladeUser.setUserId(userId);
 		bladeUser.setTenantId(tenantId);
 		bladeUser.setAccount(account);
+		bladeUser.setDeptId(deptId);
 		bladeUser.setRoleId(roleId);
 		bladeUser.setRoleName(roleName);
 		bladeUser.setUserName(userName);
@@ -200,6 +203,27 @@ public class SecureUtil {
 	}
 
 	/**
+	 * 获取用户部门
+	 *
+	 * @return userName
+	 */
+	public static String getDeptId() {
+		BladeUser user = getUser();
+		return (null == user) ? StringPool.EMPTY : user.getDeptId();
+	}
+
+	/**
+	 * 获取用户部门
+	 *
+	 * @param request request
+	 * @return userName
+	 */
+	public static String getDeptId(HttpServletRequest request) {
+		BladeUser user = getUser(request);
+		return (null == user) ? StringPool.EMPTY : user.getDeptId();
+	}
+
+	/**
 	 * 获取用户角色
 	 *
 	 * @return userName
@@ -244,7 +268,7 @@ public class SecureUtil {
 	/**
 	 * 获取客户端id
 	 *
-	 * @return tenantId
+	 * @return clientId
 	 */
 	public static String getClientId() {
 		BladeUser user = getUser();
@@ -255,7 +279,7 @@ public class SecureUtil {
 	 * 获取客户端id
 	 *
 	 * @param request request
-	 * @return tenantId
+	 * @return clientId
 	 */
 	public static String getClientId(HttpServletRequest request) {
 		BladeUser user = getUser(request);

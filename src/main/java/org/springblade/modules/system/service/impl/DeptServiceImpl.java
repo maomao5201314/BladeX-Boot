@@ -22,6 +22,7 @@ import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.core.tool.utils.StringPool;
 import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.mapper.DeptMapper;
 import org.springblade.modules.system.service.IDeptService;
@@ -60,6 +61,16 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 			throw new ApiException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));
+	}
+
+	@Override
+	public boolean submit(Dept dept) {
+		if (dept.getParentId() > 0) {
+			Dept parent = getById(dept.getParentId());
+			String ancestors = parent.getAncestors() + StringPool.COMMA + dept.getParentId();
+			dept.setAncestors(ancestors);
+		}
+		return saveOrUpdate(dept);
 	}
 
 }

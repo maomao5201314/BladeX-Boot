@@ -8,6 +8,8 @@
         <result column="parent_id" property="parentId"/>
         <result column="dept_name" property="deptName"/>
         <result column="full_name" property="fullName"/>
+        <result column="ancestors" property="ancestors"/>
+        <result column="dept_category" property="deptCategory"/>
         <result column="sort" property="sort"/>
         <result column="remark" property="remark"/>
         <result column="is_deleted" property="isDeleted"/>

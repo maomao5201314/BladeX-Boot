@@ -81,12 +81,28 @@ public interface IMenuService extends IService<Menu> {
 	List<MenuVO> grantTree(BladeUser user);
 
 	/**
+	 * 数据权限授权树形结构
+	 *
+	 * @param user
+	 * @return
+	 */
+	List<MenuVO> grantScopeTree(BladeUser user);
+
+	/**
 	 * 默认选中节点
 	 *
 	 * @param roleIds
 	 * @return
 	 */
 	List<String> roleTreeKeys(String roleIds);
+
+	/**
+	 * 默认选中节点
+	 *
+	 * @param roleIds
+	 * @return
+	 */
+	List<String> scopeTreeKeys(String roleIds);
 
 	/**
 	 * 获取配置的角色权限

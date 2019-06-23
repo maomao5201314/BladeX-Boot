@@ -117,17 +117,14 @@ public class RoleController extends BladeController {
 	}
 
 	/**
-	 * 设置菜单权限
-	 *
-	 * @param roleIds
-	 * @param menuIds
-	 * @return
+	 * 设置角色权限
 	 */
 	@PostMapping("/grant")
 	@ApiOperation(value = "权限设置", notes = "传入roleId集合以及menuId集合", position = 6)
 	public R grant(@ApiParam(value = "roleId集合", required = true) @RequestParam String roleIds,
-				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds) {
-		boolean temp = roleService.grant(Func.toLongList(roleIds), Func.toLongList(menuIds));
+				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds,
+				   @ApiParam(value = "scopeId集合") String scopeIds) {
+		boolean temp = roleService.grant(Func.toLongList(roleIds), Func.toLongList(menuIds), Func.toLongList(scopeIds));
 		return R.status(temp);
 	}
 

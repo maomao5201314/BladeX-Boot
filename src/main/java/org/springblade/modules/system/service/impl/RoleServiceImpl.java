@@ -27,8 +27,10 @@ import org.springblade.core.tool.utils.CollectionUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Role;
 import org.springblade.modules.system.entity.RoleMenu;
+import org.springblade.modules.system.entity.RoleScope;
 import org.springblade.modules.system.mapper.RoleMapper;
 import org.springblade.modules.system.service.IRoleMenuService;
+import org.springblade.modules.system.service.IRoleScopeService;
 import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.vo.RoleVO;
 import org.springframework.stereotype.Service;
@@ -49,7 +51,8 @@ import java.util.List;
 @AllArgsConstructor
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 
-	IRoleMenuService roleMenuService;
+	private IRoleMenuService roleMenuService;
+	private IRoleScopeService roleScopeService;
 
 	@Override
 	public IPage<RoleVO> selectRolePage(IPage<RoleVO> page, RoleVO role) {
@@ -68,7 +71,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds) {
+	public boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds, List<Long> scopeIds) {
+		// 菜单权限模块
 		// 删除角色配置的菜单集合
 		roleMenuService.remove(Wrappers.<RoleMenu>update().lambda().in(RoleMenu::getRoleId, roleIds));
 		// 组装配置
@@ -80,7 +84,25 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 			roleMenus.add(roleMenu);
 		}));
 		// 新增配置
-		return roleMenuService.saveBatch(roleMenus);
+		roleMenuService.saveBatch(roleMenus);
+
+		// 数据权限模块
+		if (CollectionUtil.isNotEmpty(scopeIds)) {
+			// 删除角色配置的数据权限集合
+			roleScopeService.remove(Wrappers.<RoleScope>update().lambda().in(RoleScope::getRoleId, roleIds));
+			// 组装配置
+			List<RoleScope> roleScopes = new ArrayList<>();
+			roleIds.forEach(roleId -> scopeIds.forEach(scopeId -> {
+				RoleScope roleScope = new RoleScope();
+				roleScope.setRoleId(roleId);
+				roleScope.setScopeId(scopeId);
+				roleScopes.add(roleScope);
+			}));
+			// 新增配置
+			roleScopeService.saveBatch(roleScopes);
+		}
+
+		return true;
 	}
 
 	@Override

@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.system.wrapper;
 
+import org.springblade.common.cache.DictCache;
 import org.springblade.common.cache.SysCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.support.BaseEntityWrapper;
@@ -27,6 +28,7 @@ import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.vo.DeptVO;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -50,12 +52,19 @@ public class DeptWrapper extends BaseEntityWrapper<Dept, DeptVO> {
 			Dept parent = SysCache.getDept(dept.getParentId());
 			deptVO.setParentName(parent.getDeptName());
 		}
+		String category = DictCache.getValue("org_category", dept.getDeptCategory());
+		deptVO.setDeptCategoryName(category);
 		return deptVO;
 	}
 
 
 	public List<INode> listNodeVO(List<Dept> list) {
-		List<INode> collect = list.stream().map(dept -> BeanUtil.copy(dept, DeptVO.class)).collect(Collectors.toList());
+		List<INode> collect = list.stream().map(dept -> {
+			DeptVO deptVO = BeanUtil.copy(dept, DeptVO.class);
+			String category = DictCache.getValue("org_category", dept.getDeptCategory());
+			Objects.requireNonNull(deptVO).setDeptCategoryName(category);
+			return deptVO;
+		}).collect(Collectors.toList());
 		return ForestNodeMerger.merge(collect);
 	}
 

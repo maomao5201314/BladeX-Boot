@@ -139,6 +139,100 @@
         order by sort
     </select>
 
+    <select id="grantScopeTree" resultMap="treeNodeResultMap">
+        SELECT
+            *
+        FROM
+            (
+                SELECT
+                    id,
+                    parent_id,
+                    NAME AS title,
+                    id AS 'value',
+                    id AS 'key'
+                FROM
+                    blade_menu
+                WHERE
+                    category = 1
+                  AND is_deleted = 0
+                  AND id IN ( SELECT menu_id FROM blade_data_scope WHERE is_deleted = 0 AND menu_id IS NOT NULL )
+                ORDER BY
+                    sort
+            ) menu
+
+        UNION ALL
+
+        SELECT
+            id,
+            menu_id AS parent_id,
+            scope_name AS title,
+            id AS 'value',
+            id AS 'key'
+        FROM
+            blade_data_scope
+        WHERE
+            is_deleted = 0
+          AND menu_id IS NOT NULL
+    </select>
+
+    <select id="grantScopeTreeByRole" resultMap="treeNodeResultMap">
+        SELECT
+            *
+        FROM
+            (
+                SELECT
+                    id,
+                    parent_id,
+                    NAME AS title,
+                    id AS 'value',
+                    id AS 'key'
+                FROM
+                    blade_menu
+                WHERE
+                    category = 1
+                  AND is_deleted = 0
+                  AND id IN ( SELECT menu_id FROM blade_data_scope WHERE is_deleted = 0 AND menu_id IS NOT NULL )
+                  AND id IN ( select menu_id from blade_role_menu where role_id in
+                    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach> )
+                    OR id IN (
+                    select parent_id from blade_menu where is_deleted = 0
+                    and id in ( select menu_id from blade_role_menu where role_id in
+                    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach> )
+                  )
+                ORDER BY
+                    sort
+            ) menu
+
+        UNION ALL
+
+        SELECT
+            id,
+            menu_id AS parent_id,
+            scope_name AS title,
+            id AS 'value',
+            id AS 'key'
+        FROM
+            blade_data_scope
+        WHERE
+            is_deleted = 0
+            AND menu_id IN ( select menu_id from blade_role_menu where role_id in
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach> )
+            OR menu_id IN (
+            select parent_id from blade_menu where is_deleted = 0
+            and id in ( select menu_id from blade_role_menu where role_id in
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach> )
+            )
+          AND menu_id IS NOT NULL
+    </select>
+
     <select id="authRoutes" resultType="org.springblade.modules.system.dto.MenuDTO">
         SELECT
             GROUP_CONCAT(r.role_alias) as alias,

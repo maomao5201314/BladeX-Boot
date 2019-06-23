@@ -62,16 +62,28 @@ public class Dept implements Serializable {
 	private Long parentId;
 
 	/**
-	 * 部门名
+	 * 机构全称
 	 */
-	@ApiModelProperty(value = "部门名")
+	@ApiModelProperty(value = "机构全称")
+	private String fullName;
+
+	/**
+	 * 机构名
+	 */
+	@ApiModelProperty(value = "机构名")
 	private String deptName;
 
 	/**
-	 * 部门全称
+	 * 租级机构主键
 	 */
-	@ApiModelProperty(value = "部门全称")
-	private String fullName;
+	@ApiModelProperty(value = "祖级机构主键")
+	private String ancestors;
+
+	/**
+	 * 机构类型
+	 */
+	@ApiModelProperty(value = "机构类型")
+	private Integer deptCategory;
 
 	/**
 	 * 排序

@@ -32,6 +32,7 @@ CREATE TABLE `blade_data_scope`  (
   `scope_value` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '数据权限值域',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '数据权限备注',
   `create_user` bigint(64) NULL DEFAULT NULL COMMENT '创建人',
+  `create_dept` bigint(64) NULL DEFAULT NULL COMMENT '创建部门',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_user` bigint(64) NULL DEFAULT NULL COMMENT '修改人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
@@ -84,3 +85,29 @@ INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `s
 UPDATE `blade_menu` SET `name` = '机构管理' WHERE `id` = 1123598815738675205;
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675306, 1123598815738675207, 'menu_data_scope', '数据权限', 'datascope', NULL, 'setting', 5, 2, 2, 1, NULL, 0);
 INSERT INTO `blade_role_menu`(`id`, `menu_id`, `role_id`) VALUES (1132812106487730179, 1123598815738675306, 1123598816738675201);
+
+-- ----------------------------
+-- 增加create_dept字段并赋默认值
+-- ----------------------------
+ALTER TABLE `blade_client`
+    ADD COLUMN `create_dept` bigint(64) NULL COMMENT '创建部门' AFTER `create_user`;
+ALTER TABLE `blade_notice`
+    ADD COLUMN `create_dept` bigint(64) NULL COMMENT '创建部门' AFTER `create_user`;
+ALTER TABLE `blade_oss`
+    ADD COLUMN `create_dept` bigint(64) NULL COMMENT '创建部门' AFTER `create_user`;
+ALTER TABLE `blade_param`
+    ADD COLUMN `create_dept` bigint(64) NULL COMMENT '创建部门' AFTER `create_user`;
+ALTER TABLE `blade_process_leave`
+    ADD COLUMN `create_dept` bigint(64) NULL COMMENT '创建部门' AFTER `create_user`;
+ALTER TABLE `blade_tenant`
+    ADD COLUMN `create_dept` bigint(64) NULL COMMENT '创建部门' AFTER `create_user`;
+ALTER TABLE `blade_user`
+    ADD COLUMN `create_dept` bigint(64) NULL COMMENT '创建部门' AFTER `create_user`;
+
+UPDATE `blade_client` SET create_dept = 1123598813738675201 WHERE create_dept IS NULL;
+UPDATE `blade_notice` SET create_dept = 1123598813738675201 WHERE create_dept IS NULL;
+UPDATE `blade_oss` SET create_dept = 1123598813738675201 WHERE create_dept IS NULL;
+UPDATE `blade_param` SET create_dept = 1123598813738675201 WHERE create_dept IS NULL;
+UPDATE `blade_process_leave` SET create_dept = 1123598813738675201 WHERE create_dept IS NULL;
+UPDATE `blade_tenant` SET create_dept = 1123598813738675201 WHERE create_dept IS NULL;
+UPDATE `blade_user` SET create_dept = 1123598813738675201 WHERE create_dept IS NULL;

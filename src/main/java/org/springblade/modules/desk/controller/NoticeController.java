@@ -74,6 +74,20 @@ public class NoticeController extends BladeController implements CacheNames {
 	}
 
 	/**
+	 * 多表联合查询自定义分页
+	 */
+	@GetMapping("/page")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "category", value = "公告类型", paramType = "query", dataType = "integer"),
+		@ApiImplicitParam(name = "title", value = "公告标题", paramType = "query", dataType = "string")
+	})
+	@ApiOperation(value = "分页", notes = "传入notice", position = 1)
+	public R<IPage<NoticeVO>> page(@ApiIgnore NoticeVO notice, Query query) {
+		IPage<NoticeVO> pages = noticeService.selectNoticePage(Condition.getPage(query), notice);
+		return R.data(pages);
+	}
+
+	/**
 	 * 新增
 	 */
 	@PostMapping("/save")

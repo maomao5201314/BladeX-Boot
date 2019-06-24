@@ -74,7 +74,7 @@ public class DataScopeController extends BladeController {
 	 * 新增
 	 */
 	@PostMapping("/save")
-	@CacheEvict(cacheNames = {SYS_CACHE})
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "新增", notes = "传入dataScope", position = 4)
 	public R save(@Valid @RequestBody DataScope dataScope) {
 		return R.status(dataScopeService.save(dataScope));
@@ -84,7 +84,7 @@ public class DataScopeController extends BladeController {
 	 * 修改
 	 */
 	@PostMapping("/update")
-	@CacheEvict(cacheNames = {SYS_CACHE})
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "修改", notes = "传入dataScope", position = 5)
 	public R update(@Valid @RequestBody DataScope dataScope) {
 		return R.status(dataScopeService.updateById(dataScope));
@@ -94,7 +94,7 @@ public class DataScopeController extends BladeController {
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
-	@CacheEvict(cacheNames = {SYS_CACHE})
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "新增或修改", notes = "传入dataScope", position = 6)
 	public R submit(@Valid @RequestBody DataScope dataScope) {
 		return R.status(dataScopeService.saveOrUpdate(dataScope));
@@ -105,7 +105,7 @@ public class DataScopeController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@CacheEvict(cacheNames = {SYS_CACHE})
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids", position = 7)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(dataScopeService.deleteLogic(Func.toLongList(ids)));

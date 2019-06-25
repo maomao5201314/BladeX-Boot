@@ -124,7 +124,10 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 			flowExecution.setId(execution.getId());
 			flowExecution.setName(execution.getName());
 			flowExecution.setStartUserId(execution.getStartUserId());
-			flowExecution.setStartUser(UserCache.getUserByTaskUser(execution.getStartUserId()).getName());
+			User taskUser = UserCache.getUserByTaskUser(execution.getStartUserId());
+			if (taskUser != null) {
+				flowExecution.setStartUser(taskUser.getName());
+			}
 			flowExecution.setStartTime(execution.getStartTime());
 			flowExecution.setExecutionId(execution.getId());
 			flowExecution.setProcessInstanceId(execution.getProcessInstanceId());

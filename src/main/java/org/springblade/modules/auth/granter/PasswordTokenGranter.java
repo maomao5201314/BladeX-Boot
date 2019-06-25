@@ -18,9 +18,7 @@ package org.springblade.modules.auth.granter;
 
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.core.tool.utils.WebUtil;
 import org.springblade.modules.auth.enums.BladeUserEnum;
-import org.springblade.modules.auth.utils.TokenUtil;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springblade.modules.system.service.IUserService;
 
@@ -40,7 +38,7 @@ public class PasswordTokenGranter implements ITokenGranter {
 		String password = tokenParameter.getArgs().getStr("password");
 		if (Func.isNoneBlank(username, password)) {
 			// 获取用户类型
-			String userType = Func.toStr(WebUtil.getRequest().getHeader(TokenUtil.USER_TYPE_HEADER_KEY), TokenUtil.DEFAULT_USER_TYPE);
+			String userType = tokenParameter.getArgs().getStr("userType");
 			UserInfo userInfo;
 			// 根据不同用户类型调用对应的接口返回数据，用户可自行拓展
 			if (userType.equals(BladeUserEnum.WEB.getName())) {

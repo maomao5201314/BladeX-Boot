@@ -24,6 +24,7 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.log.annotation.ApiLog;
 import org.springblade.core.tool.support.Kv;
+import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.WebUtil;
 import org.springblade.modules.auth.granter.ITokenGranter;
 import org.springblade.modules.auth.granter.TokenGranterBuilder;
@@ -64,8 +65,10 @@ public class AuthController {
 		String grantType = WebUtil.getRequest().getParameter("grant_type");
 		String refreshToken = WebUtil.getRequest().getParameter("refresh_token");
 
+		String userType = Func.toStr(WebUtil.getRequest().getHeader(TokenUtil.USER_TYPE_HEADER_KEY), TokenUtil.DEFAULT_USER_TYPE);
+
 		TokenParameter tokenParameter = new TokenParameter();
-		tokenParameter.getArgs().set("tenantId", tenantId).set("username", username).set("password", password).set("grantType", grantType).set("refreshToken", refreshToken);
+		tokenParameter.getArgs().set("tenantId", tenantId).set("username", username).set("password", password).set("grantType", grantType).set("refreshToken", refreshToken).set("userType", userType);
 
 		ITokenGranter granter = TokenGranterBuilder.getGranter(grantType);
 		UserInfo userInfo = granter.grant(service, tokenParameter);

@@ -16,23 +16,29 @@
  */
 package org.springblade.modules.auth.granter;
 
+import lombok.AllArgsConstructor;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.auth.enums.BladeUserEnum;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springblade.modules.system.service.IUserService;
+import org.springframework.stereotype.Component;
 
 /**
  * PasswordTokenGranter
  *
  * @author Chill
  */
+@Component
+@AllArgsConstructor
 public class PasswordTokenGranter implements ITokenGranter {
 
 	public static final String GRANT_TYPE = "password";
 
+	private IUserService service;
+
 	@Override
-	public UserInfo grant(IUserService service, TokenParameter tokenParameter) {
+	public UserInfo grant(TokenParameter tokenParameter) {
 		String tenantId = tokenParameter.getArgs().getStr("tenantId");
 		String username = tokenParameter.getArgs().getStr("username");
 		String password = tokenParameter.getArgs().getStr("password");

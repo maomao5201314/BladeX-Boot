@@ -17,7 +17,6 @@
 package org.springblade.modules.auth.granter;
 
 import org.springblade.modules.system.entity.UserInfo;
-import org.springblade.modules.system.service.IUserService;
 
 /**
  * 授权认证统一接口.
@@ -29,10 +28,9 @@ public interface ITokenGranter {
 	/**
 	 * 获取用户信息
 	 *
-	 * @param service        用户模块业务
 	 * @param tokenParameter 授权参数
 	 * @return UserInfo
 	 */
-	UserInfo grant(IUserService service, TokenParameter tokenParameter);
+	UserInfo grant(TokenParameter tokenParameter);
 
 }

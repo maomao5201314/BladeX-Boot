@@ -31,7 +31,6 @@ import org.springblade.modules.auth.granter.TokenGranterBuilder;
 import org.springblade.modules.auth.granter.TokenParameter;
 import org.springblade.modules.auth.utils.TokenUtil;
 import org.springblade.modules.system.entity.UserInfo;
-import org.springblade.modules.system.service.IUserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,8 +50,6 @@ import javax.servlet.http.HttpServletResponse;
 @Api(value = "用户授权认证", tags = "授权接口")
 public class AuthController {
 
-	private IUserService service;
-
 	@ApiLog("登录用户验证")
 	@PostMapping("/oauth/token")
 	@ApiOperation(value = "获取认证token", notes = "传入租户ID:tenantId,账号:account,密码:password")
@@ -71,7 +68,7 @@ public class AuthController {
 		tokenParameter.getArgs().set("tenantId", tenantId).set("username", username).set("password", password).set("grantType", grantType).set("refreshToken", refreshToken).set("userType", userType);
 
 		ITokenGranter granter = TokenGranterBuilder.getGranter(grantType);
-		UserInfo userInfo = granter.grant(service, tokenParameter);
+		UserInfo userInfo = granter.grant(tokenParameter);
 
 		if (userInfo == null || userInfo.getUser() == null) {
 			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_description", "用户名或密码不正确");

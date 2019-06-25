@@ -17,6 +17,7 @@
 package org.springblade.modules.auth.granter;
 
 import lombok.AllArgsConstructor;
+import org.springblade.core.tool.utils.SpringUtil;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -35,8 +36,8 @@ public class TokenGranterBuilder {
 	private static Map<String, ITokenGranter> granterPool = new ConcurrentHashMap<>();
 
 	static {
-		granterPool.put(PasswordTokenGranter.GRANT_TYPE, new PasswordTokenGranter());
-		granterPool.put(RefreshTokenGranter.GRANT_TYPE, new RefreshTokenGranter());
+		granterPool.put(PasswordTokenGranter.GRANT_TYPE, SpringUtil.getBean(PasswordTokenGranter.class));
+		granterPool.put(RefreshTokenGranter.GRANT_TYPE, SpringUtil.getBean(RefreshTokenGranter.class));
 	}
 
 	/**

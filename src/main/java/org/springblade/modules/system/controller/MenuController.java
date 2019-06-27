@@ -113,7 +113,7 @@ public class MenuController extends BladeController {
 	@GetMapping("/routes")
 	@ApiOperation(value = "前端菜单数据", notes = "前端菜单数据", position = 3)
 	public R<List<MenuVO>> routes(BladeUser user) {
-		List<MenuVO> list = menuService.routes(user.getRoleId());
+		List<MenuVO> list = menuService.routes((user == null) ? null : user.getRoleId());
 		return R.data(list);
 	}
 

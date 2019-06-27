@@ -29,6 +29,8 @@ import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.DataScope;
 import org.springblade.modules.system.service.IDataScopeService;
+import org.springblade.modules.system.vo.DataScopeVO;
+import org.springblade.modules.system.wrapper.DataScopeWrapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
@@ -65,9 +67,9 @@ public class DataScopeController extends BladeController {
 	 */
 	@GetMapping("/list")
 	@ApiOperation(value = "分页", notes = "传入dataScope", position = 2)
-	public R<IPage<DataScope>> list(DataScope dataScope, Query query) {
+	public R<IPage<DataScopeVO>> list(DataScope dataScope, Query query) {
 		IPage<DataScope> pages = dataScopeService.page(Condition.getPage(query), Condition.getQueryWrapper(dataScope));
-		return R.data(pages);
+		return R.data(DataScopeWrapper.build().pageVO(pages));
 	}
 
 	/**

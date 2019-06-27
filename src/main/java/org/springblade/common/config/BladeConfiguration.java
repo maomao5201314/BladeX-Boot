@@ -35,6 +35,7 @@ public class BladeConfiguration implements WebMvcConfigurer {
 		SecureRegistry secureRegistry = new SecureRegistry();
 		secureRegistry.excludePathPatterns("/blade-auth/**");
 		secureRegistry.excludePathPatterns("/blade-log/**");
+		secureRegistry.excludePathPatterns("/blade-system/menu/routes");
 		secureRegistry.excludePathPatterns("/blade-system/menu/auth-routes");
 		secureRegistry.excludePathPatterns("/blade-flow/process/resource-view");
 		secureRegistry.excludePathPatterns("/blade-flow/process/diagram-view");

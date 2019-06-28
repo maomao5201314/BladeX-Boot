@@ -19,6 +19,7 @@ package org.springblade.flow.business.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperationSupport;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.flowable.engine.TaskService;
@@ -52,7 +53,8 @@ public class WorkController {
 	 * 发起事务列表页
 	 */
 	@GetMapping("start-list")
-	@ApiOperation(value = "发起事务列表页", notes = "传入流程类型", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "发起事务列表页", notes = "传入流程类型")
 	public R<IPage<FlowProcess>> startList(@ApiParam("流程类型") String category, Query query) {
 		IPage<FlowProcess> pages = flowEngineService.selectProcessPage(Condition.getPage(query), category);
 		return R.data(pages);
@@ -62,7 +64,8 @@ public class WorkController {
 	 * 待签事务列表页
 	 */
 	@GetMapping("claim-list")
-	@ApiOperation(value = "待签事务列表页", notes = "传入流程信息", position = 2)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "待签事务列表页", notes = "传入流程信息")
 	public R<IPage<BladeFlow>> claimList(@ApiParam("流程信息") BladeFlow bladeFlow, Query query) {
 		IPage<BladeFlow> pages = flowBusinessService.selectClaimPage(Condition.getPage(query), bladeFlow);
 		return R.data(pages);
@@ -72,7 +75,8 @@ public class WorkController {
 	 * 待办事务列表页
 	 */
 	@GetMapping("todo-list")
-	@ApiOperation(value = "待办事务列表页", notes = "传入流程信息", position = 3)
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "待办事务列表页", notes = "传入流程信息")
 	public R<IPage<BladeFlow>> todoList(@ApiParam("流程信息") BladeFlow bladeFlow, Query query) {
 		IPage<BladeFlow> pages = flowBusinessService.selectTodoPage(Condition.getPage(query), bladeFlow);
 		return R.data(pages);
@@ -82,7 +86,8 @@ public class WorkController {
 	 * 已发事务列表页
 	 */
 	@GetMapping("send-list")
-	@ApiOperation(value = "已发事务列表页", notes = "传入流程信息", position = 4)
+	@ApiOperationSupport(order = 4)
+	@ApiOperation(value = "已发事务列表页", notes = "传入流程信息")
 	public R<IPage<BladeFlow>> sendList(@ApiParam("流程信息") BladeFlow bladeFlow, Query query) {
 		IPage<BladeFlow> pages = flowBusinessService.selectSendPage(Condition.getPage(query), bladeFlow);
 		return R.data(pages);
@@ -92,7 +97,8 @@ public class WorkController {
 	 * 办结事务列表页
 	 */
 	@GetMapping("done-list")
-	@ApiOperation(value = "办结事务列表页", notes = "传入流程信息", position = 5)
+	@ApiOperationSupport(order = 5)
+	@ApiOperation(value = "办结事务列表页", notes = "传入流程信息")
 	public R<IPage<BladeFlow>> doneList(@ApiParam("流程信息") BladeFlow bladeFlow, Query query) {
 		IPage<BladeFlow> pages = flowBusinessService.selectDonePage(Condition.getPage(query), bladeFlow);
 		return R.data(pages);
@@ -104,7 +110,8 @@ public class WorkController {
 	 * @param taskId 任务id
 	 */
 	@PostMapping("claim-task")
-	@ApiOperation(value = "签收事务", notes = "传入流程信息", position = 6)
+	@ApiOperationSupport(order = 6)
+	@ApiOperation(value = "签收事务", notes = "传入流程信息")
 	public R claimTask(@ApiParam("任务id") String taskId) {
 		taskService.claim(taskId, TaskUtil.getTaskUser());
 		return R.success("签收事务成功");
@@ -116,7 +123,8 @@ public class WorkController {
 	 * @param flow 请假信息
 	 */
 	@PostMapping("complete-task")
-	@ApiOperation(value = "完成任务", notes = "传入流程信息", position = 7)
+	@ApiOperationSupport(order = 7)
+	@ApiOperation(value = "完成任务", notes = "传入流程信息")
 	public R completeTask(@ApiParam("任务信息") @RequestBody BladeFlow flow) {
 		return R.status(flowBusinessService.completeTask(flow));
 	}
@@ -128,7 +136,8 @@ public class WorkController {
 	 * @param reason 删除原因
 	 */
 	@PostMapping("delete-task")
-	@ApiOperation(value = "删除任务", notes = "传入流程信息", position = 8)
+	@ApiOperationSupport(order = 8)
+	@ApiOperation(value = "删除任务", notes = "传入流程信息")
 	public R deleteTask(@ApiParam("任务id") String taskId, @ApiParam("删除原因") String reason) {
 		taskService.deleteTask(taskId, reason);
 		return R.success("删除任务成功");

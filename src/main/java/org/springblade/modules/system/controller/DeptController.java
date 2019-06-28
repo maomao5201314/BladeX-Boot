@@ -62,7 +62,8 @@ public class DeptController extends BladeController {
 	 * 详情
 	 */
 	@GetMapping("/detail")
-	@ApiOperation(value = "详情", notes = "传入dept", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "详情", notes = "传入dept")
 	public R<DeptVO> detail(Dept dept) {
 		Dept detail = deptService.getOne(Condition.getQueryWrapper(dept));
 		return R.data(DeptWrapper.build().entityVO(detail));
@@ -76,7 +77,8 @@ public class DeptController extends BladeController {
 		@ApiImplicitParam(name = "deptName", value = "部门名称", paramType = "query", dataType = "string"),
 		@ApiImplicitParam(name = "fullName", value = "部门全称", paramType = "query", dataType = "string")
 	})
-	@ApiOperation(value = "列表", notes = "传入dept", position = 2)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "列表", notes = "传入dept")
 	public R<List<INode>> list(@ApiIgnore @RequestParam Map<String, Object> dept, BladeUser bladeUser) {
 		QueryWrapper<Dept> queryWrapper = Condition.getQueryWrapper(dept, Dept.class);
 		List<Dept> list = deptService.list((!bladeUser.getTenantId().equals(BladeConstant.ADMIN_TENANT_ID)) ? queryWrapper.lambda().eq(Dept::getTenantId, bladeUser.getTenantId()) : queryWrapper);
@@ -85,11 +87,10 @@ public class DeptController extends BladeController {
 
 	/**
 	 * 获取部门树形结构
-	 *
-	 * @return
 	 */
 	@GetMapping("/tree")
-	@ApiOperation(value = "树形结构", notes = "树形结构", position = 3)
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "树形结构", notes = "树形结构")
 	public R<List<DeptVO>> tree(String tenantId, BladeUser bladeUser) {
 		List<DeptVO> tree = deptService.tree(Func.toStr(tenantId, bladeUser.getTenantId()));
 		return R.data(tree);
@@ -99,8 +100,9 @@ public class DeptController extends BladeController {
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
-	@ApiOperation(value = "新增或修改", notes = "传入dept", position = 4)
-	@CacheEvict(cacheNames = {SYS_CACHE})
+	@ApiOperationSupport(order = 4)
+	@ApiOperation(value = "新增或修改", notes = "传入dept")
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R submit(@Valid @RequestBody Dept dept, BladeUser user) {
 		if (Func.isEmpty(dept.getId())) {
 			dept.setTenantId(user.getTenantId());
@@ -112,8 +114,9 @@ public class DeptController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "删除", notes = "传入ids", position = 5)
-	@CacheEvict(cacheNames = {SYS_CACHE})
+	@ApiOperationSupport(order = 5)
+	@ApiOperation(value = "删除", notes = "传入ids")
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(deptService.removeDept(ids));
 	}

@@ -19,6 +19,7 @@ package org.springblade.modules.resource.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperationSupport;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
@@ -63,7 +64,8 @@ public class OssController extends BladeController {
 	 * 详情
 	 */
 	@GetMapping("/detail")
-	@ApiOperation(value = "详情", notes = "传入oss", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "详情", notes = "传入oss")
 	public R<OssVO> detail(Oss oss) {
 		Oss detail = ossService.getOne(Condition.getQueryWrapper(oss));
 		return R.data(OssWrapper.build().entityVO(detail));
@@ -73,7 +75,8 @@ public class OssController extends BladeController {
 	 * 分页
 	 */
 	@GetMapping("/list")
-	@ApiOperation(value = "分页", notes = "传入oss", position = 2)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "分页", notes = "传入oss")
 	public R<IPage<OssVO>> list(Oss oss, Query query) {
 		IPage<Oss> pages = ossService.page(Condition.getPage(query), Condition.getQueryWrapper(oss));
 		return R.data(OssWrapper.build().pageVO(pages));
@@ -83,7 +86,8 @@ public class OssController extends BladeController {
 	 * 自定义分页
 	 */
 	@GetMapping("/page")
-	@ApiOperation(value = "分页", notes = "传入oss", position = 3)
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "分页", notes = "传入oss")
 	public R<IPage<OssVO>> page(OssVO oss, Query query) {
 		IPage<OssVO> pages = ossService.selectOssPage(Condition.getPage(query), oss);
 		return R.data(pages);
@@ -93,7 +97,8 @@ public class OssController extends BladeController {
 	 * 新增
 	 */
 	@PostMapping("/save")
-	@ApiOperation(value = "新增", notes = "传入oss", position = 4)
+	@ApiOperationSupport(order = 4)
+	@ApiOperation(value = "新增", notes = "传入oss")
 	public R save(@Valid @RequestBody Oss oss) {
 		return R.status(ossService.save(oss));
 	}
@@ -102,7 +107,8 @@ public class OssController extends BladeController {
 	 * 修改
 	 */
 	@PostMapping("/update")
-	@ApiOperation(value = "修改", notes = "传入oss", position = 5)
+	@ApiOperationSupport(order = 5)
+	@ApiOperation(value = "修改", notes = "传入oss")
 	public R update(@Valid @RequestBody Oss oss) {
 		return R.status(ossService.updateById(oss));
 	}
@@ -111,7 +117,8 @@ public class OssController extends BladeController {
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
-	@ApiOperation(value = "新增或修改", notes = "传入oss", position = 6)
+	@ApiOperationSupport(order = 6)
+	@ApiOperation(value = "新增或修改", notes = "传入oss")
 	public R submit(@Valid @RequestBody Oss oss) {
 		return R.status(ossService.saveOrUpdate(oss));
 	}
@@ -121,7 +128,8 @@ public class OssController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "逻辑删除", notes = "传入ids", position = 7)
+	@ApiOperationSupport(order = 7)
+	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(ossService.deleteLogic(Func.toLongList(ids)));
 	}
@@ -131,7 +139,8 @@ public class OssController extends BladeController {
 	 * 启用
 	 */
 	@PostMapping("/enable")
-	@ApiOperation(value = "配置启用", notes = "传入id", position = 7)
+	@ApiOperationSupport(order = 8)
+	@ApiOperation(value = "配置启用", notes = "传入id")
 	public R enable(@ApiParam(value = "主键", required = true) @RequestParam Long id) {
 		CacheUtil.evict(SYS_CACHE, OssBuilder.OSS_CODE, SecureUtil.getTenantId());
 		return R.status(ossService.enable(id));

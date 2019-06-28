@@ -19,6 +19,7 @@ package org.springblade.modules.system.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperationSupport;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
@@ -56,7 +57,8 @@ public class DataScopeController extends BladeController {
 	 * 详情
 	 */
 	@GetMapping("/detail")
-	@ApiOperation(value = "详情", notes = "传入dataScope", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "详情", notes = "传入dataScope")
 	public R<DataScope> detail(DataScope dataScope) {
 		DataScope detail = dataScopeService.getOne(Condition.getQueryWrapper(dataScope));
 		return R.data(detail);
@@ -66,7 +68,8 @@ public class DataScopeController extends BladeController {
 	 * 分页
 	 */
 	@GetMapping("/list")
-	@ApiOperation(value = "分页", notes = "传入dataScope", position = 2)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "分页", notes = "传入dataScope")
 	public R<IPage<DataScopeVO>> list(DataScope dataScope, Query query) {
 		IPage<DataScope> pages = dataScopeService.page(Condition.getPage(query), Condition.getQueryWrapper(dataScope));
 		return R.data(DataScopeWrapper.build().pageVO(pages));
@@ -76,8 +79,9 @@ public class DataScopeController extends BladeController {
 	 * 新增
 	 */
 	@PostMapping("/save")
+	@ApiOperationSupport(order = 3)
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
-	@ApiOperation(value = "新增", notes = "传入dataScope", position = 4)
+	@ApiOperation(value = "新增", notes = "传入dataScope")
 	public R save(@Valid @RequestBody DataScope dataScope) {
 		return R.status(dataScopeService.save(dataScope));
 	}
@@ -86,8 +90,9 @@ public class DataScopeController extends BladeController {
 	 * 修改
 	 */
 	@PostMapping("/update")
+	@ApiOperationSupport(order = 4)
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
-	@ApiOperation(value = "修改", notes = "传入dataScope", position = 5)
+	@ApiOperation(value = "修改", notes = "传入dataScope")
 	public R update(@Valid @RequestBody DataScope dataScope) {
 		return R.status(dataScopeService.updateById(dataScope));
 	}
@@ -96,8 +101,9 @@ public class DataScopeController extends BladeController {
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
+	@ApiOperationSupport(order = 5)
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
-	@ApiOperation(value = "新增或修改", notes = "传入dataScope", position = 6)
+	@ApiOperation(value = "新增或修改", notes = "传入dataScope")
 	public R submit(@Valid @RequestBody DataScope dataScope) {
 		return R.status(dataScopeService.saveOrUpdate(dataScope));
 	}
@@ -107,8 +113,9 @@ public class DataScopeController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
+	@ApiOperationSupport(order = 6)
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
-	@ApiOperation(value = "逻辑删除", notes = "传入ids", position = 7)
+	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(dataScopeService.deleteLogic(Func.toLongList(ids)));
 	}

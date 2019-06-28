@@ -19,6 +19,7 @@ package org.springblade.flow.engine.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperationSupport;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
@@ -57,7 +58,8 @@ public class FlowManagerController {
 	 * 分页
 	 */
 	@GetMapping("list")
-	@ApiOperation(value = "分页", notes = "传入流程类型", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "分页", notes = "传入流程类型")
 	public R<IPage<FlowProcess>> list(@ApiParam("流程类型") String category, Query query) {
 		IPage<FlowProcess> pages = flowEngineService.selectProcessPage(Condition.getPage(query), category);
 		return R.data(pages);
@@ -70,7 +72,8 @@ public class FlowManagerController {
 	 * @param processId 流程id
 	 */
 	@PostMapping("change-state")
-	@ApiOperation(value = "变更流程状态", notes = "传入state,processId", position = 2)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "变更流程状态", notes = "传入state,processId")
 	public R changeState(@RequestParam String state, @RequestParam String processId) {
 		String msg = flowEngineService.changeState(state, processId);
 		return R.success(msg);
@@ -82,7 +85,8 @@ public class FlowManagerController {
 	 * @param deploymentIds 部署流程id集合
 	 */
 	@PostMapping("delete-deployment")
-	@ApiOperation(value = "删除部署流程", notes = "部署流程id集合", position = 3)
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "删除部署流程", notes = "部署流程id集合")
 	public R deleteDeployment(String deploymentIds) {
 		return R.status(flowEngineService.deleteDeployment(deploymentIds));
 	}
@@ -93,7 +97,8 @@ public class FlowManagerController {
 	 * @param file    流程文件
 	 */
 	@PostMapping("check-upload")
-	@ApiOperation(value = "上传部署流程文件", notes = "传入文件", position = 4)
+	@ApiOperationSupport(order = 4)
+	@ApiOperation(value = "上传部署流程文件", notes = "传入文件")
 	public R checkUpload(@RequestParam MultipartFile file) {
 		boolean temp = Objects.requireNonNull(file.getOriginalFilename()).endsWith(FlowEngineConstant.SUFFIX);
 		return R.data(Kv.create().set("name", file.getOriginalFilename()).set("success", temp));
@@ -106,7 +111,8 @@ public class FlowManagerController {
 	 * @param category 类型
 	 */
 	@PostMapping("deploy-upload")
-	@ApiOperation(value = "上传部署流程文件", notes = "传入文件", position = 5)
+	@ApiOperationSupport(order = 5)
+	@ApiOperation(value = "上传部署流程文件", notes = "传入文件")
 	public R deployUpload(@RequestParam List<MultipartFile> files, @RequestParam String category) {
 		return R.status(flowEngineService.deployUpload(files, category));
 	}

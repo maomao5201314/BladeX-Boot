@@ -17,10 +17,7 @@
 package org.springblade.flow.engine.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
@@ -58,7 +55,8 @@ public class FlowModelController {
 		@ApiImplicitParam(name = "modelKey", value = "模型标识", paramType = "query", dataType = "string"),
 		@ApiImplicitParam(name = "name", value = "模型名称", paramType = "query", dataType = "string")
 	})
-	@ApiOperation(value = "分页", notes = "传入notice", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "分页", notes = "传入notice")
 	public R<IPage<FlowModel>> list(@ApiIgnore @RequestParam Map<String, Object> flow, Query query) {
 		IPage<FlowModel> pages = flowEngineService.page(Condition.getPage(query), Condition.getQueryWrapper(flow, FlowModel.class));
 		return R.data(pages);
@@ -68,7 +66,8 @@ public class FlowModelController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "删除", notes = "传入主键集合", position = 2)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "删除", notes = "传入主键集合")
 	public R remove(@ApiParam(value = "主键集合") @RequestParam String ids) {
 		boolean temp = flowEngineService.removeByIds(Func.toStrList(ids));
 		return R.status(temp);
@@ -78,7 +77,8 @@ public class FlowModelController {
 	 * 部署
 	 */
 	@PostMapping("/deploy")
-	@ApiOperation(value = "部署", notes = "传入模型id和分类", position = 3)
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "部署", notes = "传入模型id和分类")
 	public R deploy(@ApiParam(value = "模型id") @RequestParam String modelId, @ApiParam(value = "工作流分类") @RequestParam String category) {
 		boolean temp = flowEngineService.deployModel(modelId, category);
 		return R.status(temp);

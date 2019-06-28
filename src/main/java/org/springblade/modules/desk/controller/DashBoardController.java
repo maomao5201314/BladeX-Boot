@@ -2,6 +2,7 @@ package org.springblade.modules.desk.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperationSupport;
 import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.tool.api.R;
@@ -34,7 +35,8 @@ public class DashBoardController {
 	 * @return
 	 */
 	@GetMapping("/dashboard/activities")
-	@ApiOperation(value = "活跃用户", notes = "活跃用户", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "活跃用户", notes = "活跃用户")
 	public R activities() {
 
 		List<Map<String, Object>> list = new ArrayList<>();
@@ -65,7 +67,8 @@ public class DashBoardController {
 	 * @return
 	 */
 	@GetMapping("/notice/notices")
-	@ApiOperation(value = "消息", notes = "消息", position = 8)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "消息", notes = "消息")
 	public R notices() {
 		List<Map<String, String>> list = new ArrayList<>();
 		Map<String, String> map1 = new HashMap<>(16);
@@ -125,7 +128,8 @@ public class DashBoardController {
 	 * @return
 	 */
 	@GetMapping("/notice/my-notices")
-	@ApiOperation(value = "消息", notes = "消息", position = 9)
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "消息", notes = "消息")
 	public R myNotices() {
 		List<Map<String, String>> list = new ArrayList<>();
 		Map<String, String> map1 = new HashMap<>(16);

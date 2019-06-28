@@ -18,6 +18,7 @@ package org.springblade.flow.engine.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperationSupport;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
@@ -49,7 +50,8 @@ public class FlowFollowController {
 	 * 流程状态列表
 	 */
 	@GetMapping("list")
-	@ApiOperation(value = "分页", notes = "传入notice", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "分页", notes = "传入notice")
 	public R<IPage<FlowExecution>> list(Query query, @ApiParam(value = "流程实例id") String processInstanceId, @ApiParam(value = "流程key") String processDefinitionKey) {
 		IPage<FlowExecution> pages = flowEngineService.selectFollowPage(Condition.getPage(query), processInstanceId, processDefinitionKey);
 		return R.data(pages);
@@ -59,7 +61,8 @@ public class FlowFollowController {
 	 * 删除流程实例
 	 */
 	@PostMapping("delete-process-instance")
-	@ApiOperation(value = "删除", notes = "传入主键集合", position = 2)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "删除", notes = "传入主键集合")
 	public R deleteProcessInstance(@ApiParam(value = "流程实例id") @RequestParam String processInstanceId, @ApiParam(value = "删除原因") @RequestParam String deleteReason) {
 		boolean temp = flowEngineService.deleteProcessInstance(processInstanceId, deleteReason);
 		return R.status(temp);

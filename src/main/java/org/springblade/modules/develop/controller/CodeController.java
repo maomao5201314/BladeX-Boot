@@ -56,7 +56,8 @@ public class CodeController extends BladeController {
 	 * 详情
 	 */
 	@GetMapping("/detail")
-	@ApiOperation(value = "详情", notes = "传入code", position = 1)
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "详情", notes = "传入code")
 	public R<Code> detail(Code code) {
 		Code detail = codeService.getOne(Condition.getQueryWrapper(code));
 		return R.data(detail);
@@ -71,7 +72,8 @@ public class CodeController extends BladeController {
 		@ApiImplicitParam(name = "tableName", value = "表名", paramType = "query", dataType = "string"),
 		@ApiImplicitParam(name = "modelName", value = "实体名", paramType = "query", dataType = "string")
 	})
-	@ApiOperation(value = "分页", notes = "传入code", position = 2)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "分页", notes = "传入code")
 	public R<IPage<Code>> list(@ApiIgnore @RequestParam Map<String, Object> code, Query query) {
 		IPage<Code> pages = codeService.page(Condition.getPage(query), Condition.getQueryWrapper(code, Code.class));
 		return R.data(pages);
@@ -81,7 +83,8 @@ public class CodeController extends BladeController {
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
-	@ApiOperation(value = "新增或修改", notes = "传入code", position = 6)
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "新增或修改", notes = "传入code")
 	public R submit(@Valid @RequestBody Code code) {
 		return R.status(codeService.saveOrUpdate(code));
 	}
@@ -91,7 +94,8 @@ public class CodeController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperation(value = "删除", notes = "传入ids", position = 7)
+	@ApiOperationSupport(order = 4)
+	@ApiOperation(value = "删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(codeService.removeByIds(Func.toLongList(ids)));
 	}
@@ -100,7 +104,8 @@ public class CodeController extends BladeController {
 	 * 代码生成
 	 */
 	@PostMapping("/gen-code")
-	@ApiOperation(value = "代码生成", notes = "传入ids", position = 8)
+	@ApiOperationSupport(order = 5)
+	@ApiOperation(value = "代码生成", notes = "传入ids")
 	public R genCode(@ApiParam(value = "主键集合", required = true) @RequestParam String ids, @RequestParam(defaultValue = "sword") String system) {
 		Collection<Code> codes = codeService.listByIds(Func.toLongList(ids));
 		codes.forEach(code -> {

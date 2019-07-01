@@ -20,7 +20,7 @@
         <swagger.version>2.9.2</swagger.version>
         <swagger.models.version>1.5.21</swagger.models.version>
         <swagger.bootstrapui.version>1.9.4</swagger.bootstrapui.version>
-        <mybatis.plus.version>3.1.0</mybatis.plus.version>
+        <mybatis.plus.version>3.1.2</mybatis.plus.version>
         <protostuff.version>1.6.0</protostuff.version>
         <flowable.version>6.4.1</flowable.version>
 
@@ -30,7 +30,7 @@
         <!-- 推荐使用Harbor -->
         <docker.registry.url>10.211.55.5</docker.registry.url>
         <docker.registry.host>http://${docker.registry.url}:2375</docker.registry.host>
-        <docker.plugin.version>1.2.0</docker.plugin.version>
+        <docker.plugin.version>1.1.0</docker.plugin.version>
     </properties>
 
     <dependencyManagement>

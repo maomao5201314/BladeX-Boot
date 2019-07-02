@@ -34,7 +34,6 @@ import org.springblade.modules.system.mapper.UserMapper;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,7 +50,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			user.setPassword(DigestUtil.encrypt(user.getPassword()));
 		}
 		Integer cnt = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(user.getTenantId(), BladeConstant.ADMIN_TENANT_ID)).eq(User::getAccount, user.getAccount()));
-		if (cnt > 0) {
+		if (cnt > 0 && Func.isEmpty(user.getId())) {
 			throw new ApiException("当前用户已存在!");
 		}
 		return saveOrUpdate(user);

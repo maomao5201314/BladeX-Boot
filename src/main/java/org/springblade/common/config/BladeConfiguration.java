@@ -20,6 +20,7 @@ package org.springblade.common.config;
 import org.springblade.core.secure.registry.SecureRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -46,6 +47,16 @@ public class BladeConfiguration implements WebMvcConfigurer {
 		secureRegistry.excludePathPatterns("/swagger-resources/**");
 		secureRegistry.excludePathPatterns("/druid/**");
 		return secureRegistry;
+	}
+
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/cors/**")
+			.allowedOrigins("*")
+			.allowedHeaders("*")
+			.allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
+			.maxAge(3600)
+			.allowCredentials(true);
 	}
 
 }

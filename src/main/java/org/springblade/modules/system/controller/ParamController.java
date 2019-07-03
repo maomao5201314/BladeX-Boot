@@ -38,11 +38,10 @@ import java.util.Map;
  *
  * @author Chill
  */
-@ApiIgnore
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/param")
-@Api(value = "参数管理", tags = "接口")
+@Api(value = "参数管理", tags = "参数管理")
 public class ParamController extends BladeController {
 
 	private IParamService paramService;

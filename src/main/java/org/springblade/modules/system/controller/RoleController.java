@@ -48,7 +48,6 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
  *
  * @author Chill
  */
-@ApiIgnore
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/role")

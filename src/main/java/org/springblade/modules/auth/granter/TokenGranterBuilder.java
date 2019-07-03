@@ -17,6 +17,7 @@
 package org.springblade.modules.auth.granter;
 
 import lombok.AllArgsConstructor;
+import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.SpringUtil;
 
 import java.util.Map;
@@ -47,7 +48,7 @@ public class TokenGranterBuilder {
 	 * @return ITokenGranter
 	 */
 	public static ITokenGranter getGranter(String grantType) {
-		return granterPool.get(grantType);
+		return granterPool.get(Func.toStr(grantType, PasswordTokenGranter.GRANT_TYPE));
 	}
 
 }

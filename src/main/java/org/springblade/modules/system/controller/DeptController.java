@@ -51,7 +51,6 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/dept")
-@ApiIgnore
 @Api(value = "部门", tags = "部门")
 @PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 public class DeptController extends BladeController {

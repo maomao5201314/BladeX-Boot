@@ -33,7 +33,6 @@ import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.AuthClient;
 import org.springblade.modules.system.service.IAuthClientService;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
@@ -45,8 +44,7 @@ import javax.validation.Valid;
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/client")
-@ApiIgnore
-@Api(value = "应用管理", tags = "接口")
+@Api(value = "应用管理", tags = "应用管理")
 @PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 public class AuthClientController extends BladeController {
 

@@ -48,8 +48,7 @@ import java.util.Map;
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/tenant")
-@ApiIgnore
-@Api(value = "租户管理", tags = "接口")
+@Api(value = "租户管理", tags = "租户管理")
 @PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 public class TenantController extends BladeController {
 

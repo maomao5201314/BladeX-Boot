@@ -45,7 +45,6 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/dict")
-@ApiIgnore
 @Api(value = "字典", tags = "字典")
 public class DictController extends BladeController {
 

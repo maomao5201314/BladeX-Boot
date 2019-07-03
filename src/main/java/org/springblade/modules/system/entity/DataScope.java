@@ -53,6 +53,11 @@ public class DataScope extends BaseEntity {
 	@ApiModelProperty(value = "数据权限名称")
 	private String scopeName;
 	/**
+	 * 数据权限可见字段
+	 */
+	@ApiModelProperty(value = "数据权限可见字段")
+	private String scopeField;
+	/**
 	 * 数据权限类名
 	 */
 	@ApiModelProperty(value = "数据权限类名")

@@ -126,6 +126,7 @@ public class RoleController extends BladeController {
 	@PostMapping("/grant")
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "权限设置", notes = "传入roleId集合以及menuId集合")
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R grant(@ApiParam(value = "roleId集合", required = true) @RequestParam String roleIds,
 				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds,
 				   @ApiParam(value = "scopeId集合") String scopeIds) {

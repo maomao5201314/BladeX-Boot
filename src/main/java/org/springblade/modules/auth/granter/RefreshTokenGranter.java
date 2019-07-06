@@ -44,16 +44,14 @@ public class RefreshTokenGranter implements ITokenGranter {
 	public UserInfo grant(TokenParameter tokenParameter) {
 		String grantType = tokenParameter.getArgs().getStr("grantType");
 		String refreshToken = tokenParameter.getArgs().getStr("refreshToken");
+		UserInfo userInfo = null;
 		if (Func.isNoneBlank(grantType, refreshToken) && grantType.equals(TokenConstant.REFRESH_TOKEN)) {
 			Claims claims = SecureUtil.parseJWT(refreshToken);
 			String tokenType = Func.toStr(Objects.requireNonNull(claims).get(TokenConstant.TOKEN_TYPE));
 			if (tokenType.equals(TokenConstant.REFRESH_TOKEN)) {
-				return service.userInfo(Func.toLong(claims.get(TokenConstant.USER_ID)));
-			} else {
-				return null;
+				userInfo = service.userInfo(Func.toLong(claims.get(TokenConstant.USER_ID)));
 			}
-		} else {
-			return null;
 		}
+		return userInfo;
 	}
 }

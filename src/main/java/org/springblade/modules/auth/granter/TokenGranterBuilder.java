@@ -17,6 +17,7 @@
 package org.springblade.modules.auth.granter;
 
 import lombok.AllArgsConstructor;
+import org.springblade.core.secure.exception.SecureException;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.SpringUtil;
 
@@ -48,7 +49,12 @@ public class TokenGranterBuilder {
 	 * @return ITokenGranter
 	 */
 	public static ITokenGranter getGranter(String grantType) {
-		return granterPool.get(Func.toStr(grantType, PasswordTokenGranter.GRANT_TYPE));
+		ITokenGranter tokenGranter = granterPool.get(Func.toStr(grantType, PasswordTokenGranter.GRANT_TYPE));
+		if (tokenGranter == null) {
+			throw new SecureException("no grantType was found");
+		} else {
+			return granterPool.get(Func.toStr(grantType, PasswordTokenGranter.GRANT_TYPE));
+		}
 	}
 
 }

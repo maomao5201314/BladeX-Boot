@@ -42,10 +42,10 @@ public class PasswordTokenGranter implements ITokenGranter {
 		String tenantId = tokenParameter.getArgs().getStr("tenantId");
 		String username = tokenParameter.getArgs().getStr("username");
 		String password = tokenParameter.getArgs().getStr("password");
+		UserInfo userInfo = null;
 		if (Func.isNoneBlank(username, password)) {
 			// 获取用户类型
 			String userType = tokenParameter.getArgs().getStr("userType");
-			UserInfo userInfo;
 			// 根据不同用户类型调用对应的接口返回数据，用户可自行拓展
 			if (userType.equals(BladeUserEnum.WEB.getName())) {
 				userInfo = service.userInfo(tenantId, username, DigestUtil.encrypt(password));
@@ -54,10 +54,8 @@ public class PasswordTokenGranter implements ITokenGranter {
 			} else {
 				userInfo = service.userInfo(tenantId, username, DigestUtil.encrypt(password));
 			}
-			return userInfo;
-		} else {
-			return null;
 		}
+		return userInfo;
 	}
 
 }

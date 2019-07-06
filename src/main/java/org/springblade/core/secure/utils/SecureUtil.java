@@ -23,6 +23,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.SneakyThrows;
 import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.secure.BladeUser;
+import org.springblade.core.secure.TokenInfo;
 import org.springblade.core.secure.constant.SecureConstant;
 import org.springblade.core.secure.exception.SecureException;
 import org.springblade.core.secure.provider.IClientDetails;
@@ -348,7 +349,7 @@ public class SecureUtil {
 	 * @param tokenType tokenType
 	 * @return jwt
 	 */
-	public static String createJWT(Map<String, String> user, String audience, String issuer, String tokenType) {
+	public static TokenInfo createJWT(Map<String, String> user, String audience, String issuer, String tokenType) {
 
 		String[] tokens = extractAndDecodeHeader();
 		assert tokens.length == 2;
@@ -397,8 +398,12 @@ public class SecureUtil {
 		Date exp = new Date(expMillis);
 		builder.setExpiration(exp).setNotBefore(now);
 
-		//生成JWT
-		return builder.compact();
+		// 组装Token信息
+		TokenInfo tokenInfo = new TokenInfo();
+		tokenInfo.setToken(builder.compact());
+		tokenInfo.setExpire((int) expireMillis / 1000);
+
+		return tokenInfo;
 	}
 
 	/**
@@ -414,15 +419,6 @@ public class SecureUtil {
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.MILLISECOND, 0);
 		return cal.getTimeInMillis() - System.currentTimeMillis();
-	}
-
-	/**
-	 * 获取过期时间的秒数(次日凌晨3点)
-	 *
-	 * @return expire
-	 */
-	public static int getExpireSeconds() {
-		return (int) (getExpire() / 1000);
 	}
 
 	/**

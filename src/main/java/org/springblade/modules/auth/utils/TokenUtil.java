@@ -17,6 +17,7 @@
 package org.springblade.modules.auth.utils;
 
 import org.springblade.core.launch.constant.TokenConstant;
+import org.springblade.core.secure.TokenInfo;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
@@ -66,17 +67,17 @@ public class TokenUtil {
 
 		//拼装accessToken
 		try {
-			String accessToken = SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.ACCESS_TOKEN);
+			TokenInfo accessToken = SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.ACCESS_TOKEN);
 			//返回accessToken
 			return authInfo.set(TokenConstant.ACCOUNT, user.getAccount())
 				.set(TokenConstant.USER_NAME, user.getAccount())
 				.set(TokenConstant.NICK_NAME, user.getRealName())
 				.set(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()))
 				.set(TokenConstant.AVATAR, TokenConstant.DEFAULT_AVATAR)
-				.set(TokenConstant.ACCESS_TOKEN, accessToken)
-				.set(TokenConstant.REFRESH_TOKEN, createRefreshToken(userInfo))
+				.set(TokenConstant.ACCESS_TOKEN, accessToken.getToken())
+				.set(TokenConstant.REFRESH_TOKEN, createRefreshToken(userInfo).getToken())
 				.set(TokenConstant.TOKEN_TYPE, TokenConstant.BEARER)
-				.set(TokenConstant.EXPIRES_IN, SecureUtil.getExpireSeconds())
+				.set(TokenConstant.EXPIRES_IN, accessToken.getExpire())
 				.set(TokenConstant.LICENSE, TokenConstant.LICENSE_NAME);
 		} catch (Exception ex) {
 			return authInfo.set("error_code", HttpServletResponse.SC_UNAUTHORIZED).set("error_description", ex.getMessage());
@@ -89,7 +90,7 @@ public class TokenUtil {
 	 * @param userInfo 用户信息
 	 * @return refreshToken
 	 */
-	private static String createRefreshToken(UserInfo userInfo) {
+	private static TokenInfo createRefreshToken(UserInfo userInfo) {
 		User user = userInfo.getUser();
 		Map<String, String> param = new HashMap<>(16);
 		param.put(TokenConstant.TOKEN_TYPE, TokenConstant.REFRESH_TOKEN);

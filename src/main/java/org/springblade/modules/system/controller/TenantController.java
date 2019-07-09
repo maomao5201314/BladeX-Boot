@@ -49,7 +49,7 @@ import java.util.Map;
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/tenant")
 @Api(value = "租户管理", tags = "租户管理")
-@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 public class TenantController extends BladeController {
 
 	private ITenantService tenantService;

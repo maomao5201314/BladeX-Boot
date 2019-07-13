@@ -85,6 +85,7 @@ INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `so
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675314, 1123598815738675208, 'topmenu_edit', '修改', 'edit', '/system/topmenu/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675315, 1123598815738675208, 'topmenu_delete', '删除', 'delete', '/api/blade-system/topmenu/remove', 'delete', 3, 2, 3, 1, NULL, 0);
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675316, 1123598815738675208, 'topmenu_view', '查看', 'view', '/system/topmenu/view', 'file-text', 4, 2, 2, 1, NULL, 0);
+INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675317, 1123598815738675208, 'topmenu_setting', '菜单配置', 'setting', NULL, 'setting', 5, 2, 2, 1, NULL, 0);
 
 -- ----------------------------
 -- 增加权限管理模块
@@ -94,18 +95,18 @@ INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `so
 -- ----------------------------
 -- 角色管理迁移至权限管理
 -- ----------------------------
-INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675308, 1123598815738675307, 'role', '角色管理', 'menu', '/system/role', 'iconfont iconicon_boss', 1, 1, 0, 1, NULL, 0);
-UPDATE `blade_menu` SET `parent_id` = 1123598815738675308, `code` = 'role_add', `name` = '新增', `alias` = 'add', `path` = '/system/role/add', `source` = 'plus', `sort` = 1, `category` = 2, `action` = 1, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675241;
-UPDATE `blade_menu` SET `parent_id` = 1123598815738675308, `code` = 'role_edit', `name` = '修改', `alias` = 'edit', `path` = '/system/role/edit', `source` = 'form', `sort` = 2, `category` = 2, `action` = 2, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675242;
+INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675308, 1123598815738675307, 'role', '角色管理', 'menu', '/authority/role', 'iconfont iconicon_boss', 1, 1, 0, 1, NULL, 0);
+UPDATE `blade_menu` SET `parent_id` = 1123598815738675308, `code` = 'role_add', `name` = '新增', `alias` = 'add', `path` = '/authority/role/add', `source` = 'plus', `sort` = 1, `category` = 2, `action` = 1, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675241;
+UPDATE `blade_menu` SET `parent_id` = 1123598815738675308, `code` = 'role_edit', `name` = '修改', `alias` = 'edit', `path` = '/authority/role/edit', `source` = 'form', `sort` = 2, `category` = 2, `action` = 2, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675242;
 UPDATE `blade_menu` SET `parent_id` = 1123598815738675308, `code` = 'role_delete', `name` = '删除', `alias` = 'delete', `path` = '/api/blade-system/role/remove', `source` = 'delete', `sort` = 3, `category` = 2, `action` = 3, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675243;
-UPDATE `blade_menu` SET `parent_id` = 1123598815738675308, `code` = 'role_view', `name` = '查看', `alias` = 'view', `path` = '/system/role/view', `source` = 'file-text', `sort` = 4, `category` = 2, `action` = 2, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675244;
+UPDATE `blade_menu` SET `parent_id` = 1123598815738675308, `code` = 'role_view', `name` = '查看', `alias` = 'view', `path` = '/authority/role/view', `source` = 'file-text', `sort` = 4, `category` = 2, `action` = 2, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675244;
 
 -- ----------------------------
 -- 增加数据权限及接口权限独立菜单
 -- ----------------------------
-INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675309, 1123598815738675307, 'data_scope', '数据权限', 'menu', '/system/datascope', 'iconfont icon-shujuzhanshi2', 2, 1, 0, 1, '', 0);
+INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675309, 1123598815738675307, 'data_scope', '数据权限', 'menu', '/authority/datascope', 'iconfont icon-shujuzhanshi2', 2, 1, 0, 1, '', 0);
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675310, 1123598815738675309, 'data_scope_setting', '权限配置', 'setting', NULL, 'setting', 1, 2, 2, 1, NULL, 0);
-INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675311, 1123598815738675307, 'api_scope', '接口权限', 'menu', '/system/apiscope', 'iconfont icon-iconset0216', 3, 1, 0, 1, '', 0);
+INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675311, 1123598815738675307, 'api_scope', '接口权限', 'menu', '/authority/apiscope', 'iconfont icon-iconset0216', 3, 1, 0, 1, '', 0);
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675312, 1123598815738675311, 'api_scope_setting', '权限配置', 'setting', NULL, 'setting', 1, 2, 2, 1, NULL, 0);
 
 -- ----------------------------
@@ -113,4 +114,8 @@ INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `so
 -- ----------------------------
 UPDATE `blade_menu` SET `parent_id` = 0, `code` = 'work', `name` = '我的事务', `alias` = 'menu', `path` = '/work', `source` = 'iconfont iconicon_notice', `sort` = 2, `category` = 1, `action` = 0, `is_open` = 1, `remark` = '', `is_deleted` = 0 WHERE `id` = 1123598815738675280;
 
+-- ----------------------------
+-- 删除原菜单管理的数据权限按钮
+-- ----------------------------
+DELETE FROM blade_menu where id = 1123598815738675306
 

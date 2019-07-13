@@ -14,24 +14,33 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.vo;
+package org.springblade.modules.system.wrapper;
 
-import lombok.Data;
+import org.springblade.common.cache.DictCache;
+import org.springblade.core.mp.support.BaseEntityWrapper;
+import org.springblade.core.tool.utils.BeanUtil;
+import org.springblade.modules.system.entity.ApiScope;
+import org.springblade.modules.system.vo.ApiScopeVO;
 
-import java.util.List;
 
 /**
- * GrantTreeVO
+ * 包装类,返回视图层所需的字段
  *
  * @author Chill
  */
-@Data
-public class GrantTreeVO {
+public class ApiScopeWrapper extends BaseEntityWrapper<ApiScope, ApiScopeVO> {
 
-	private List<MenuVO> menu;
+	public static ApiScopeWrapper build() {
+		return new ApiScopeWrapper();
+	}
 
-	private List<MenuVO> dataScope;
-
-	private List<MenuVO> apiScope;
+	@Override
+	public ApiScopeVO entityVO(ApiScope dataScope) {
+		ApiScopeVO apiScopeVO = BeanUtil.copy(dataScope, ApiScopeVO.class);
+		assert apiScopeVO != null;
+		String scopeTypeName = DictCache.getValue("api_scope_type", dataScope.getScopeType());
+		apiScopeVO.setScopeTypeName(scopeTypeName);
+		return apiScopeVO;
+	}
 
 }

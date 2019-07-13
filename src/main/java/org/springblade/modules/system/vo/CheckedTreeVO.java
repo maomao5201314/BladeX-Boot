@@ -30,6 +30,8 @@ public class CheckedTreeVO {
 
 	private List<String> menu;
 
-	private List<String> scope;
+	private List<String> dataScope;
+
+	private List<String> apiScope;
 
 }

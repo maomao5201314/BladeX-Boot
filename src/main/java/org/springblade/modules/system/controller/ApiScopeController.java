@@ -28,10 +28,10 @@ import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.modules.system.entity.DataScope;
-import org.springblade.modules.system.service.IDataScopeService;
-import org.springblade.modules.system.vo.DataScopeVO;
-import org.springblade.modules.system.wrapper.DataScopeWrapper;
+import org.springblade.modules.system.entity.ApiScope;
+import org.springblade.modules.system.service.IApiScopeService;
+import org.springblade.modules.system.vo.ApiScopeVO;
+import org.springblade.modules.system.wrapper.ApiScopeWrapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,17 +40,17 @@ import javax.validation.Valid;
 import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
- * 数据权限控制器
+ * 接口权限控制器
  *
  * @author BladeX
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/data-scope")
-@Api(value = "数据权限", tags = "数据权限")
-public class DataScopeController extends BladeController {
+@RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/api-scope")
+@Api(value = "接口权限", tags = "接口权限")
+public class ApiScopeController extends BladeController {
 
-	private IDataScopeService dataScopeService;
+	private IApiScopeService apiScopeService;
 
 	/**
 	 * 详情
@@ -58,8 +58,8 @@ public class DataScopeController extends BladeController {
 	@GetMapping("/detail")
 	@ApiOperationSupport(order = 1)
 	@ApiOperation(value = "详情", notes = "传入dataScope")
-	public R<DataScope> detail(DataScope dataScope) {
-		DataScope detail = dataScopeService.getOne(Condition.getQueryWrapper(dataScope));
+	public R<ApiScope> detail(ApiScope dataScope) {
+		ApiScope detail = apiScopeService.getOne(Condition.getQueryWrapper(dataScope));
 		return R.data(detail);
 	}
 
@@ -69,9 +69,9 @@ public class DataScopeController extends BladeController {
 	@GetMapping("/list")
 	@ApiOperationSupport(order = 2)
 	@ApiOperation(value = "分页", notes = "传入dataScope")
-	public R<IPage<DataScopeVO>> list(DataScope dataScope, Query query) {
-		IPage<DataScope> pages = dataScopeService.page(Condition.getPage(query), Condition.getQueryWrapper(dataScope));
-		return R.data(DataScopeWrapper.build().pageVO(pages));
+	public R<IPage<ApiScopeVO>> list(ApiScope dataScope, Query query) {
+		IPage<ApiScope> pages = apiScopeService.page(Condition.getPage(query), Condition.getQueryWrapper(dataScope));
+		return R.data(ApiScopeWrapper.build().pageVO(pages));
 	}
 
 	/**
@@ -81,8 +81,8 @@ public class DataScopeController extends BladeController {
 	@ApiOperationSupport(order = 3)
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "新增", notes = "传入dataScope")
-	public R save(@Valid @RequestBody DataScope dataScope) {
-		return R.status(dataScopeService.save(dataScope));
+	public R save(@Valid @RequestBody ApiScope dataScope) {
+		return R.status(apiScopeService.save(dataScope));
 	}
 
 	/**
@@ -92,8 +92,8 @@ public class DataScopeController extends BladeController {
 	@ApiOperationSupport(order = 4)
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "修改", notes = "传入dataScope")
-	public R update(@Valid @RequestBody DataScope dataScope) {
-		return R.status(dataScopeService.updateById(dataScope));
+	public R update(@Valid @RequestBody ApiScope dataScope) {
+		return R.status(apiScopeService.updateById(dataScope));
 	}
 
 	/**
@@ -103,8 +103,8 @@ public class DataScopeController extends BladeController {
 	@ApiOperationSupport(order = 5)
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "新增或修改", notes = "传入dataScope")
-	public R submit(@Valid @RequestBody DataScope dataScope) {
-		return R.status(dataScopeService.saveOrUpdate(dataScope));
+	public R submit(@Valid @RequestBody ApiScope dataScope) {
+		return R.status(apiScopeService.saveOrUpdate(dataScope));
 	}
 
 
@@ -116,7 +116,7 @@ public class DataScopeController extends BladeController {
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-		return R.status(dataScopeService.deleteLogic(Func.toLongList(ids)));
+		return R.status(apiScopeService.deleteLogic(Func.toLongList(ids)));
 	}
 
 }

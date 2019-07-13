@@ -80,8 +80,23 @@ public class MenuController extends BladeController {
 	@ApiOperationSupport(order = 2)
 	@ApiOperation(value = "列表", notes = "传入menu")
 	public R<List<MenuVO>> list(@ApiIgnore @RequestParam Map<String, Object> menu) {
-		@SuppressWarnings("unchecked")
 		List<Menu> list = menuService.list(Condition.getQueryWrapper(menu, Menu.class).lambda().orderByAsc(Menu::getSort));
+		return R.data(MenuWrapper.build().listNodeVO(list));
+	}
+
+	/**
+	 * 列表
+	 */
+	@GetMapping("/menu-list")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "code", value = "菜单编号", paramType = "query", dataType = "string"),
+		@ApiImplicitParam(name = "name", value = "菜单名称", paramType = "query", dataType = "string")
+	})
+	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "列表", notes = "传入menu")
+	public R<List<MenuVO>> menuList(@ApiIgnore @RequestParam Map<String, Object> menu) {
+		List<Menu> list = menuService.list(Condition.getQueryWrapper(menu, Menu.class).lambda().eq(Menu::getAlias, "menu").orderByAsc(Menu::getSort));
 		return R.data(MenuWrapper.build().listNodeVO(list));
 	}
 
@@ -158,12 +173,13 @@ public class MenuController extends BladeController {
 	 * 获取权限分配树形结构
 	 */
 	@GetMapping("/grant-tree")
-	@ApiOperationSupport(order = 9)
+	@ApiOperationSupport(order = 8)
 	@ApiOperation(value = "权限分配树形结构", notes = "权限分配树形结构")
 	public R<GrantTreeVO> grantTree(BladeUser user) {
 		GrantTreeVO vo = new GrantTreeVO();
 		vo.setMenu(menuService.grantTree(user));
-		vo.setScope(menuService.grantScopeTree(user));
+		vo.setDataScope(menuService.grantDataScopeTree(user));
+		vo.setApiScope(menuService.grantApiScopeTree(user));
 		return R.data(vo);
 	}
 
@@ -171,12 +187,13 @@ public class MenuController extends BladeController {
 	 * 获取权限分配树形结构
 	 */
 	@GetMapping("/role-tree-keys")
-	@ApiOperationSupport(order = 10)
+	@ApiOperationSupport(order = 9)
 	@ApiOperation(value = "角色所分配的树", notes = "角色所分配的树")
 	public R<CheckedTreeVO> roleTreeKeys(String roleIds) {
 		CheckedTreeVO vo = new CheckedTreeVO();
 		vo.setMenu(menuService.roleTreeKeys(roleIds));
-		vo.setScope(menuService.scopeTreeKeys(roleIds));
+		vo.setDataScope(menuService.dataScopeTreeKeys(roleIds));
+		vo.setApiScope(menuService.apiScopeTreeKeys(roleIds));
 		return R.data(vo);
 	}
 

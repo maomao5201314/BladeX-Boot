@@ -48,10 +48,16 @@ public class RoleScope implements Serializable {
 	private Long id;
 
 	/**
-	 * 数据权限id
+	 * 权限类型
+	 */
+	@ApiModelProperty(value = "权限类型")
+	private Integer scopeCategory;
+
+	/**
+	 * 权限id
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
-	@ApiModelProperty(value = "数据权限id")
+	@ApiModelProperty(value = "权限id")
 	private Long scopeId;
 
 	/**

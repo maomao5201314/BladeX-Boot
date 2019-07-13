@@ -54,6 +54,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 	private IRoleMenuService roleMenuService;
 	private IRoleScopeService roleScopeService;
 
+	private static Integer DATA_SCOPE_CATEGORY = 1;
+	private static Integer API_SCOPE_CATEGORY = 2;
+
 	@Override
 	public IPage<RoleVO> selectRolePage(IPage<RoleVO> page, RoleVO role) {
 		return page.setRecords(baseMapper.selectRolePage(page, role));
@@ -71,7 +74,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds, List<Long> scopeIds) {
+	public boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds, List<Long> dataScopeIds, List<Long> apiScopeIds) {
 		// 菜单权限模块
 		// 删除角色配置的菜单集合
 		roleMenuService.remove(Wrappers.<RoleMenu>update().lambda().in(RoleMenu::getRoleId, roleIds));
@@ -87,15 +90,33 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		roleMenuService.saveBatch(roleMenus);
 
 		// 数据权限模块
-		if (CollectionUtil.isNotEmpty(scopeIds)) {
+		if (CollectionUtil.isNotEmpty(dataScopeIds)) {
 			// 删除角色配置的数据权限集合
-			roleScopeService.remove(Wrappers.<RoleScope>update().lambda().in(RoleScope::getRoleId, roleIds));
+			roleScopeService.remove(Wrappers.<RoleScope>update().lambda().eq(RoleScope::getScopeCategory, DATA_SCOPE_CATEGORY).in(RoleScope::getRoleId, roleIds));
 			// 组装配置
 			List<RoleScope> roleScopes = new ArrayList<>();
-			roleIds.forEach(roleId -> scopeIds.forEach(scopeId -> {
+			roleIds.forEach(roleId -> dataScopeIds.forEach(scopeId -> {
 				RoleScope roleScope = new RoleScope();
+				roleScope.setScopeCategory(DATA_SCOPE_CATEGORY);
 				roleScope.setRoleId(roleId);
 				roleScope.setScopeId(scopeId);
+				roleScopes.add(roleScope);
+			}));
+			// 新增配置
+			roleScopeService.saveBatch(roleScopes);
+		}
+
+		// 接口权限模块
+		if (CollectionUtil.isNotEmpty(apiScopeIds)) {
+			// 删除角色配置的数据权限集合
+			roleScopeService.remove(Wrappers.<RoleScope>update().lambda().eq(RoleScope::getScopeCategory, API_SCOPE_CATEGORY).in(RoleScope::getRoleId, roleIds));
+			// 组装配置
+			List<RoleScope> roleScopes = new ArrayList<>();
+			roleIds.forEach(roleId -> apiScopeIds.forEach(scopeId -> {
+				RoleScope roleScope = new RoleScope();
+				roleScope.setScopeCategory(API_SCOPE_CATEGORY);
+				roleScope.setScopeId(scopeId);
+				roleScope.setRoleId(roleId);
 				roleScopes.add(roleScope);
 			}));
 			// 新增配置

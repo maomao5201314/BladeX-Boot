@@ -14,24 +14,17 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.vo;
+package org.springblade.modules.system.mapper;
 
-import lombok.Data;
-
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springblade.modules.system.entity.ApiScope;
 
 /**
- * GrantTreeVO
+ *  Mapper 接口
  *
- * @author Chill
+ * @author BladeX
+ * @since 2019-06-23
  */
-@Data
-public class GrantTreeVO {
-
-	private List<MenuVO> menu;
-
-	private List<MenuVO> dataScope;
-
-	private List<MenuVO> apiScope;
+public interface ApiScopeMapper extends BaseMapper<ApiScope> {
 
 }

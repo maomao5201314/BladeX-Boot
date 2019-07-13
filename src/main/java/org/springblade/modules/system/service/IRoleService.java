@@ -51,12 +51,13 @@ public interface IRoleService extends IService<Role> {
 	/**
 	 * 权限配置
 	 *
-	 * @param roleIds  角色id集合
-	 * @param menuIds  菜单id集合
-	 * @param scopeIds 数据权限id集合
+	 * @param roleIds 角色id集合
+	 * @param menuIds 菜单id集合
+	 * @param dataScopeIds 数据权限id集合
+	 * @param apiScopeIds 接口权限id集合
 	 * @return 是否成功
 	 */
-	boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds, List<Long> scopeIds);
+	boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds, List<Long> dataScopeIds, List<Long> apiScopeIds);
 
 	/**
 	 * 获取角色名

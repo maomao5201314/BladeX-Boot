@@ -129,8 +129,9 @@ public class RoleController extends BladeController {
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R grant(@ApiParam(value = "roleId集合", required = true) @RequestParam String roleIds,
 				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds,
-				   @ApiParam(value = "scopeId集合") String scopeIds) {
-		boolean temp = roleService.grant(Func.toLongList(roleIds), Func.toLongList(menuIds), Func.toLongList(scopeIds));
+				   @ApiParam(value = "dataScopeId集合") String dataScopeIds,
+				   @ApiParam(value = "apiScopeId集合") String apiScopeIds) {
+		boolean temp = roleService.grant(Func.toLongList(roleIds), Func.toLongList(menuIds), Func.toLongList(dataScopeIds), Func.toLongList(apiScopeIds));
 		return R.status(temp);
 	}
 

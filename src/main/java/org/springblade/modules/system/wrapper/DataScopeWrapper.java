@@ -38,7 +38,7 @@ public class DataScopeWrapper extends BaseEntityWrapper<DataScope, DataScopeVO> 
 	public DataScopeVO entityVO(DataScope dataScope) {
 		DataScopeVO dataScopeVO = BeanUtil.copy(dataScope, DataScopeVO.class);
 		assert dataScopeVO != null;
-		String scopeTypeName = DictCache.getValue("scope_type", dataScope.getScopeType());
+		String scopeTypeName = DictCache.getValue("data_scope_type", dataScope.getScopeType());
 		dataScopeVO.setScopeTypeName(scopeTypeName);
 		return dataScopeVO;
 	}

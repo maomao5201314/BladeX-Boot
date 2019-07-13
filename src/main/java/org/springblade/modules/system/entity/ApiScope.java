@@ -17,11 +17,11 @@
 package org.springblade.modules.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import org.springblade.core.mp.base.BaseEntity;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springblade.core.mp.base.BaseEntity;
 
 /**
  * 实体类
@@ -30,10 +30,10 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2019-06-23
  */
 @Data
-@TableName("blade_scope_data")
+@TableName("blade_scope_api")
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value = "DataScope对象", description = "DataScope对象")
-public class DataScope extends BaseEntity {
+@ApiModel(value = "ApiScope对象", description = "ApiScope对象")
+public class ApiScope extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,39 +48,24 @@ public class DataScope extends BaseEntity {
 	@ApiModelProperty(value = "资源编号")
 	private String resourceCode;
 	/**
-	 * 数据权限名称
+	 * 接口权限名称
 	 */
-	@ApiModelProperty(value = "数据权限名称")
+	@ApiModelProperty(value = "接口权限名称")
 	private String scopeName;
 	/**
-	 * 数据权限可见字段
+	 * 接口权限字段
 	 */
-	@ApiModelProperty(value = "数据权限可见字段")
-	private String scopeField;
+	@ApiModelProperty(value = "接口权限字段")
+	private String scopePath;
 	/**
-	 * 数据权限类名
+	 * 接口权限类型
 	 */
-	@ApiModelProperty(value = "数据权限类名")
-	private String scopeClass;
-	/**
-	 * 数据权限字段
-	 */
-	@ApiModelProperty(value = "数据权限字段")
-	private String scopeColumn;
-	/**
-	 * 数据权限类型
-	 */
-	@ApiModelProperty(value = "数据权限类型")
+	@ApiModelProperty(value = "接口权限类型")
 	private Integer scopeType;
 	/**
-	 * 数据权限值域
+	 * 接口权限备注
 	 */
-	@ApiModelProperty(value = "数据权限值域")
-	private String scopeValue;
-	/**
-	 * 数据权限备注
-	 */
-	@ApiModelProperty(value = "数据权限备注")
+	@ApiModelProperty(value = "接口权限备注")
 	private String remark;
 
 

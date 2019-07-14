@@ -31,10 +31,12 @@ import org.springblade.modules.system.dto.MenuDTO;
 import org.springblade.modules.system.entity.Menu;
 import org.springblade.modules.system.entity.RoleMenu;
 import org.springblade.modules.system.entity.RoleScope;
+import org.springblade.modules.system.entity.TopMenuSetting;
 import org.springblade.modules.system.mapper.MenuMapper;
 import org.springblade.modules.system.service.IMenuService;
 import org.springblade.modules.system.service.IRoleMenuService;
 import org.springblade.modules.system.service.IRoleScopeService;
+import org.springblade.modules.system.service.ITopMenuSettingService;
 import org.springblade.modules.system.vo.MenuVO;
 import org.springblade.modules.system.wrapper.MenuWrapper;
 import org.springframework.cache.annotation.Cacheable;
@@ -56,6 +58,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	private IRoleMenuService roleMenuService;
 	private IRoleScopeService roleScopeService;
+	private ITopMenuSettingService topMenuSettingService;
 
 	@Override
 	public IPage<MenuVO> selectMenuPage(IPage<MenuVO> page, MenuVO menu) {
@@ -117,6 +120,11 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	}
 
 	@Override
+	public List<MenuVO> grantTopTree(BladeUser user) {
+		return ForestNodeMerger.merge(user.getTenantId().equals(BladeConstant.ADMIN_TENANT_ID) ? baseMapper.grantTopTree() : baseMapper.grantTopTreeByRole(Func.toLongList(user.getRoleId())));
+	}
+
+	@Override
 	public List<MenuVO> grantDataScopeTree(BladeUser user) {
 		return ForestNodeMerger.merge(user.getTenantId().equals(BladeConstant.ADMIN_TENANT_ID) ? baseMapper.grantDataScopeTree() : baseMapper.grantDataScopeTreeByRole(Func.toLongList(user.getRoleId())));
 	}
@@ -130,6 +138,12 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	public List<String> roleTreeKeys(String roleIds) {
 		List<RoleMenu> roleMenus = roleMenuService.list(Wrappers.<RoleMenu>query().lambda().in(RoleMenu::getRoleId, Func.toLongList(roleIds)));
 		return roleMenus.stream().map(roleMenu -> Func.toStr(roleMenu.getMenuId())).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<String> topTreeKeys(String topMenuIds) {
+		List<TopMenuSetting> settings = topMenuSettingService.list(Wrappers.<TopMenuSetting>query().lambda().in(TopMenuSetting::getTopMenuId, Func.toLongList(topMenuIds)));
+		return settings.stream().map(setting -> Func.toStr(setting.getMenuId())).collect(Collectors.toList());
 	}
 
 	@Override

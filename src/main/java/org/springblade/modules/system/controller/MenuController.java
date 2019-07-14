@@ -198,10 +198,34 @@ public class MenuController extends BladeController {
 	}
 
 	/**
+	 * 获取顶部菜单树形结构
+	 */
+	@GetMapping("/grant-top-tree")
+	@ApiOperationSupport(order = 10)
+	@ApiOperation(value = "顶部菜单树形结构", notes = "顶部菜单树形结构")
+	public R<GrantTreeVO> grantTopTree(BladeUser user) {
+		GrantTreeVO vo = new GrantTreeVO();
+		vo.setMenu(menuService.grantTopTree(user));
+		return R.data(vo);
+	}
+
+	/**
+	 * 获取顶部菜单树形结构
+	 */
+	@GetMapping("/top-tree-keys")
+	@ApiOperationSupport(order = 11)
+	@ApiOperation(value = "顶部菜单所分配的树", notes = "顶部菜单所分配的树")
+	public R<CheckedTreeVO> topTreeKeys(String topMenuIds) {
+		CheckedTreeVO vo = new CheckedTreeVO();
+		vo.setMenu(menuService.topTreeKeys(topMenuIds));
+		return R.data(vo);
+	}
+
+	/**
 	 * 获取配置的角色权限
 	 */
 	@GetMapping("auth-routes")
-	@ApiOperationSupport(order = 11)
+	@ApiOperationSupport(order = 12)
 	@ApiOperation(value = "菜单的角色权限")
 	public R<List<Kv>> authRoutes(BladeUser user) {
 		if (Func.isEmpty(user)) {

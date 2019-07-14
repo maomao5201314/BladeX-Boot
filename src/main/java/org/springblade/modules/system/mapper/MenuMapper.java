@@ -63,6 +63,21 @@ public interface MenuMapper extends BaseMapper<Menu> {
 	List<MenuVO> grantTreeByRole(List<Long> roleId);
 
 	/**
+	 * 顶部菜单树形结构
+	 *
+	 * @return
+	 */
+	List<MenuVO> grantTopTree();
+
+	/**
+	 * 顶部菜单树形结构
+	 *
+	 * @param roleId
+	 * @return
+	 */
+	List<MenuVO> grantTopTreeByRole(List<Long> roleId);
+
+	/**
 	 * 数据权限授权树形结构
 	 *
 	 * @return

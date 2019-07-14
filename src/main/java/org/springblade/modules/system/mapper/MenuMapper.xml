@@ -27,12 +27,6 @@
         <result column="key" property="key"/>
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="baseColumnList">
-        select
-        id, code, parent_id, name, alias, path, source, sort, category, action, is_open, remark, is_deleted
-    </sql>
-
     <select id="selectMenuPage" resultMap="menuResultMap">
         select * from blade_menu where is_deleted = 0
     </select>
@@ -136,6 +130,26 @@
                 #{item}
             </foreach> )
           )
+        order by sort
+    </select>
+
+    <select id="grantTopTree" resultMap="treeNodeResultMap">
+        select id, parent_id, name as title, id as 'value', id as 'key' from blade_menu where category = 1 and is_deleted = 0 order by sort
+    </select>
+
+    <select id="grantTopTreeByRole" resultMap="treeNodeResultMap">
+        select id, parent_id, name as title, id as 'value', id as 'key' from blade_menu where category = 1 and is_deleted = 0
+        and id in ( select menu_id from blade_role_menu where role_id in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach> )
+        or id in (
+        select parent_id from blade_menu where is_deleted = 0
+        and id in ( select menu_id from blade_role_menu where role_id in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach> )
+        )
         order by sort
     </select>
 

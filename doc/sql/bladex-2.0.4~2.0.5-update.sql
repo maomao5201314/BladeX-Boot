@@ -80,7 +80,7 @@ INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `s
 -- ----------------------------
 -- 系统管理增加顶部菜单
 -- ----------------------------
-UPDATE `blade_menu` SET `parent_id` = 1123598815738675203, `code` = 'topmenu', `name` = '顶部菜单', `alias` = 'menu', `path` = '/system/topmenu', `source` = 'iconfont iconicon_boss', `sort` = 5, `category` = 1, `action` = 0, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675208;
+UPDATE `blade_menu` SET `parent_id` = 1123598815738675203, `code` = 'topmenu', `name` = '顶部菜单', `alias` = 'menu', `path` = '/system/topmenu', `source` = 'iconfont icon-canshu', `sort` = 5, `category` = 1, `action` = 0, `is_open` = 1, `remark` = NULL, `is_deleted` = 0 WHERE `id` = 1123598815738675208;
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675313, 1123598815738675208, 'topmenu_add', '新增', 'add', '/system/topmenu/add', 'plus', 1, 2, 1, 1, NULL, 0);
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675314, 1123598815738675208, 'topmenu_edit', '修改', 'edit', '/system/topmenu/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO `blade_menu`(`id`, `parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`) VALUES (1123598815738675315, 1123598815738675208, 'topmenu_delete', '删除', 'delete', '/api/blade-system/topmenu/remove', 'delete', 3, 2, 3, 1, NULL, 0);
@@ -117,5 +117,40 @@ UPDATE `blade_menu` SET `parent_id` = 0, `code` = 'work', `name` = '我的事务
 -- ----------------------------
 -- 删除原菜单管理的数据权限按钮
 -- ----------------------------
-DELETE FROM blade_menu where id = 1123598815738675306
+DELETE FROM blade_menu where id = 1123598815738675306;
+
+-- ----------------------------
+-- 新增顶部菜单表
+-- ----------------------------
+DROP TABLE IF EXISTS `blade_top_menu`;
+CREATE TABLE `blade_top_menu`  (
+`id` bigint(64) NOT NULL COMMENT '主键',
+`code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '顶部菜单编号',
+`name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '顶部菜单名',
+`source` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '顶部菜单资源',
+`sort` int(2) NULL DEFAULT NULL COMMENT '顶部菜单排序',
+`create_user` bigint(64) NULL DEFAULT NULL COMMENT '创建人',
+`create_dept` bigint(64) NULL DEFAULT NULL COMMENT '创建部门',
+`create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+`update_user` bigint(64) NULL DEFAULT NULL COMMENT '修改人',
+`update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+`status` int(2) NULL DEFAULT NULL COMMENT '状态',
+`is_deleted` int(2) NULL DEFAULT NULL COMMENT '是否已删除',
+PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '顶部菜单表';
+
+-- ----------------------------
+-- 新增顶部菜单配置表
+-- ----------------------------
+DROP TABLE IF EXISTS `blade_top_menu_setting`;
+CREATE TABLE `blade_top_menu_setting`  (
+`id` bigint(64) NOT NULL COMMENT '主键',
+`top_menu_id` bigint(64) NULL DEFAULT NULL COMMENT '顶部菜单主键',
+`menu_id` bigint(64) NULL DEFAULT NULL COMMENT '菜单主键',
+PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '顶部菜单配置表';
+
+
+
+
 

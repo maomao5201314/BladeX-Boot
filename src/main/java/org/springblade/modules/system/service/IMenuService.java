@@ -81,6 +81,14 @@ public interface IMenuService extends IService<Menu> {
 	List<MenuVO> grantTree(BladeUser user);
 
 	/**
+	 * 顶部菜单树形结构
+	 *
+	 * @param user
+	 * @return
+	 */
+	List<MenuVO> grantTopTree(BladeUser user);
+
+	/**
 	 * 数据权限授权树形结构
 	 *
 	 * @param user
@@ -103,6 +111,14 @@ public interface IMenuService extends IService<Menu> {
 	 * @return
 	 */
 	List<String> roleTreeKeys(String roleIds);
+
+	/**
+	 * 默认选中节点
+	 *
+	 * @param topMenuIds
+	 * @return
+	 */
+	List<String> topTreeKeys(String topMenuIds);
 
 	/**
 	 * 默认选中节点

@@ -26,7 +26,9 @@ import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
+import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
+import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.TopMenu;
 import org.springblade.modules.system.service.ITopMenuService;
@@ -47,6 +49,7 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/topmenu")
 @Api(value = "顶部菜单表", tags = "顶部菜单")
+@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 public class TopMenuController extends BladeController {
 
 	private ITopMenuService topMenuService;

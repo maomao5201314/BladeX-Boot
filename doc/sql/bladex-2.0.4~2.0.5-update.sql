@@ -125,6 +125,7 @@ DELETE FROM blade_menu where id = 1123598815738675306;
 DROP TABLE IF EXISTS `blade_top_menu`;
 CREATE TABLE `blade_top_menu`  (
 `id` bigint(64) NOT NULL COMMENT '主键',
+`tenant_id` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '租户id',
 `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '顶部菜单编号',
 `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '顶部菜单名',
 `source` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '顶部菜单资源',

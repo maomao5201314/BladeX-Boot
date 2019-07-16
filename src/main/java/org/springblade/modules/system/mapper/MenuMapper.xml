@@ -85,46 +85,48 @@
     </select>
 
     <select id="buttons" resultMap="menuResultMap">
-        SELECT
-            id,
-            parent_id,
-            `code`,
-            `name`,
-            alias,
-            path,
-            source,
-            action,
-            sort
-        FROM
-            blade_menu
-        WHERE
-            is_deleted = 0 and id IN (
-              SELECT parent_id FROM blade_menu
-              WHERE ( category = 2 AND id IN ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
+        SELECT  * FROM (
+            SELECT
+                id,
+                parent_id,
+                `code`,
+                `name`,
+                alias,
+                path,
+                source,
+                action,
+                sort
+            FROM
+                blade_menu
+            WHERE
+                is_deleted = 0 and id IN (
+                  SELECT parent_id FROM blade_menu
+                  WHERE ( category = 2 AND id IN ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
+                    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                  ) ) )
+
+            UNION ALL
+
+            SELECT
+                id,
+                parent_id,
+                `code`,
+                `name`,
+                alias,
+                path,
+                source,
+                action,
+                sort
+            FROM
+                blade_menu
+            WHERE
+                is_deleted = 0 and  category = 2 AND id IN ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
                 <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
                     #{item}
-                </foreach>
-              ) ) )
-
-        UNION ALL
-
-        SELECT
-            id,
-            parent_id,
-            `code`,
-            `name`,
-            alias,
-            path,
-            source,
-            action,
-            sort
-        FROM
-            blade_menu
-        WHERE
-            is_deleted = 0 and  category = 2 AND id IN ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
-            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
-                #{item}
-            </foreach>)
+                </foreach>)
+        ) a ORDER BY sort
     </select>
 
     <select id="grantTree" resultMap="treeNodeResultMap">

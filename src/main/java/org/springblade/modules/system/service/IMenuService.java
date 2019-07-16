@@ -45,17 +45,19 @@ public interface IMenuService extends IService<Menu> {
 	 * 菜单树形结构
 	 *
 	 * @param roleId
+	 * @param topMenuId
 	 * @return
 	 */
-	List<MenuVO> routes(String roleId);
+	List<MenuVO> routes(String roleId, Long topMenuId);
 
 	/**
 	 * 菜单树形结构
 	 *
 	 * @param roleId
+	 * @param topMenuId
 	 * @return
 	 */
-	List<MenuVO> routesExt(String roleId);
+	List<MenuVO> routesExt(String roleId, Long topMenuId);
 
 	/**
 	 * 按钮树形结构

@@ -66,22 +66,22 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	}
 
 	@Override
-	public List<MenuVO> routes(String roleId) {
+	public List<MenuVO> routes(String roleId, Long topMenuId) {
 		if (StringUtil.isBlank(roleId)) {
 			return null;
 		}
 		List<Menu> allMenus = baseMapper.allMenu();
-		List<Menu> roleMenus = baseMapper.roleMenu(Func.toLongList(roleId));
+		List<Menu> roleMenus = baseMapper.roleMenu(Func.toLongList(roleId), topMenuId);
 		return buildRoutes(allMenus, roleMenus);
 	}
 
 	@Override
-	public List<MenuVO> routesExt(String roleId) {
+	public List<MenuVO> routesExt(String roleId, Long topMenuId) {
 		if (StringUtil.isBlank(roleId)) {
 			return null;
 		}
 		List<Menu> allMenus = baseMapper.allMenuExt();
-		List<Menu> roleMenus = baseMapper.roleMenuExt(Func.toLongList(roleId));
+		List<Menu> roleMenus = baseMapper.roleMenuExt(Func.toLongList(roleId), topMenuId);
 		return buildRoutes(allMenus, roleMenus);
 	}
 

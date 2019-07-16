@@ -40,10 +40,18 @@
     </select>
 
     <select id="roleMenu" resultMap="menuResultMap">
-        select * from blade_menu where is_deleted = 0 and id IN ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
-        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
-            #{item}
-        </foreach> )
+        select * from blade_menu where is_deleted = 0 and id IN
+            ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
+                <foreach collection="param1" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            )
+        <if test="param2!=null and param2>0">
+            AND id IN
+            (
+            SELECT menu_id FROM blade_top_menu_setting WHERE top_menu_id = #{param2}
+            )
+        </if>
     </select>
 
     <select id="allMenuExt" resultMap="menuResultMap">
@@ -55,6 +63,12 @@
         <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
             #{item}
         </foreach> )
+        <if test="param2!=null and param2>0">
+            AND id IN
+            (
+            SELECT menu_id FROM blade_top_menu_setting WHERE top_menu_id = #{param2}
+            )
+        </if>
     </select>
 
     <select id="routes" resultMap="menuResultMap">

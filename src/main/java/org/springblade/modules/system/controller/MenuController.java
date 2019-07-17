@@ -230,7 +230,10 @@ public class MenuController extends BladeController {
 	@GetMapping("/top-menu")
 	@ApiOperationSupport(order = 12)
 	@ApiOperation(value = "顶部菜单数据", notes = "顶部菜单数据")
-	public R<List<TopMenu>> topMenu() {
+	public R<List<TopMenu>> topMenu(BladeUser user) {
+		if (Func.isEmpty(user)) {
+			return null;
+		}
 		List<TopMenu> list = topMenuService.list();
 		return R.data(list);
 	}

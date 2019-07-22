@@ -60,7 +60,7 @@
 
     <select id="roleMenuExt" resultMap="menuResultMap">
         select * from blade_menu_ext where is_deleted = 0 and id IN ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
-        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+        <foreach collection="param1" index="index" item="item" open="(" separator="," close=")">
             #{item}
         </foreach> )
         <if test="param2!=null and param2>0">

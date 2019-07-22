@@ -37,7 +37,6 @@ public class PreviewFilter implements Filter {
 		keys.add("process");
 		keys.add("work");
 		keys.add("token");
-		keys.add("data-scope");
 	}
 
 

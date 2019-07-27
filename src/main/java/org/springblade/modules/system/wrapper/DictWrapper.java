@@ -17,8 +17,8 @@
 package org.springblade.modules.system.wrapper;
 
 import org.springblade.common.cache.DictCache;
-import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.support.BaseEntityWrapper;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.BeanUtil;
@@ -45,8 +45,8 @@ public class DictWrapper extends BaseEntityWrapper<Dict, DictVO> {
 	public DictVO entityVO(Dict dict) {
 		DictVO dictVO = BeanUtil.copy(dict, DictVO.class);
 		assert dictVO != null;
-		if (Func.equals(dict.getParentId(), CommonConstant.TOP_PARENT_ID)) {
-			dictVO.setParentName(CommonConstant.TOP_PARENT_NAME);
+		if (Func.equals(dict.getParentId(), BladeConstant.TOP_PARENT_ID)) {
+			dictVO.setParentName(BladeConstant.TOP_PARENT_NAME);
 		} else {
 			Dict parent = DictCache.getById(dict.getParentId());
 			dictVO.setParentName(parent.getDictValue());

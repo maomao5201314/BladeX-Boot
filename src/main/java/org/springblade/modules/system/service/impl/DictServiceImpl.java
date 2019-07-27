@@ -21,6 +21,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringPool;
@@ -71,6 +72,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 		if (cnt > 0) {
 			throw new ApiException("当前字典键值已存在!");
 		}
+		dict.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		return saveOrUpdate(dict);
 	}
 

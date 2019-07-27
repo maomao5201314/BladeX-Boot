@@ -112,7 +112,7 @@ public class MenuController extends BladeController {
 	@ApiOperationSupport(order = 3)
 	@ApiOperation(value = "新增或修改", notes = "传入menu")
 	public R submit(@Valid @RequestBody Menu menu) {
-		return R.status(menuService.saveOrUpdate(menu));
+		return R.status(menuService.submit(menu));
 	}
 
 

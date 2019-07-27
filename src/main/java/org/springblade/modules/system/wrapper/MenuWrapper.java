@@ -18,8 +18,8 @@ package org.springblade.modules.system.wrapper;
 
 import org.springblade.common.cache.DictCache;
 import org.springblade.common.cache.SysCache;
-import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.support.BaseEntityWrapper;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
@@ -44,8 +44,8 @@ public class MenuWrapper extends BaseEntityWrapper<Menu, MenuVO> {
 	public MenuVO entityVO(Menu menu) {
 		MenuVO menuVO = BeanUtil.copy(menu, MenuVO.class);
 		assert menuVO != null;
-		if (Func.equals(menu.getParentId(), CommonConstant.TOP_PARENT_ID)) {
-			menuVO.setParentName(CommonConstant.TOP_PARENT_NAME);
+		if (Func.equals(menu.getParentId(), BladeConstant.TOP_PARENT_ID)) {
+			menuVO.setParentName(BladeConstant.TOP_PARENT_NAME);
 		} else {
 			Menu parent = SysCache.getMenu(menu.getParentId());
 			menuVO.setParentName(parent.getName());

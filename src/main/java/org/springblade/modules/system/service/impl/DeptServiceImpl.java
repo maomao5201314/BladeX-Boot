@@ -20,7 +20,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springblade.common.constant.CommonConstant;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringPool;
@@ -67,13 +67,14 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 	@Override
 	public boolean submit(Dept dept) {
 		if (dept.getParentId() == null) {
-			dept.setParentId(CommonConstant.TOP_PARENT_ID);
+			dept.setParentId(BladeConstant.TOP_PARENT_ID);
 		}
 		if (dept.getParentId() > 0) {
 			Dept parent = getById(dept.getParentId());
 			String ancestors = parent.getAncestors() + StringPool.COMMA + dept.getParentId();
 			dept.setAncestors(ancestors);
 		}
+		dept.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		return saveOrUpdate(dept);
 	}
 

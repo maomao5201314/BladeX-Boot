@@ -18,8 +18,8 @@ package org.springblade.modules.system.wrapper;
 
 import org.springblade.common.cache.DictCache;
 import org.springblade.common.cache.SysCache;
-import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.support.BaseEntityWrapper;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.BeanUtil;
@@ -46,8 +46,8 @@ public class DeptWrapper extends BaseEntityWrapper<Dept, DeptVO> {
 	public DeptVO entityVO(Dept dept) {
 		DeptVO deptVO = BeanUtil.copy(dept, DeptVO.class);
 		assert deptVO != null;
-		if (Func.equals(dept.getParentId(), CommonConstant.TOP_PARENT_ID)) {
-			deptVO.setParentName(CommonConstant.TOP_PARENT_NAME);
+		if (Func.equals(dept.getParentId(), BladeConstant.TOP_PARENT_ID)) {
+			deptVO.setParentName(BladeConstant.TOP_PARENT_NAME);
 		} else {
 			Dept parent = SysCache.getDept(dept.getParentId());
 			deptVO.setParentName(parent.getDeptName());

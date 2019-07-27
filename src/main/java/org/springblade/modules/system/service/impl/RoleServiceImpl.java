@@ -21,6 +21,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springblade.core.secure.utils.SecureUtil;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.CollectionUtil;
@@ -134,6 +135,12 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 	@Override
 	public List<String> getRoleAliases(String roleIds) {
 		return baseMapper.getRoleAliases(Func.toStrArray(roleIds));
+	}
+
+	@Override
+	public boolean submit(Role role) {
+		role.setIsDeleted(BladeConstant.DB_NOT_DELETED);
+		return saveOrUpdate(role);
 	}
 
 }

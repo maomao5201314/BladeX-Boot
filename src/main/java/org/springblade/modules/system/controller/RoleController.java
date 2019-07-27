@@ -106,7 +106,7 @@ public class RoleController extends BladeController {
 		if (Func.isEmpty(role.getId())) {
 			role.setTenantId(user.getTenantId());
 		}
-		return R.status(roleService.saveOrUpdate(role));
+		return R.status(roleService.submit(role));
 	}
 
 	/**

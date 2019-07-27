@@ -176,4 +176,10 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 		return removeByIds(Func.toLongList(ids));
 	}
 
+	@Override
+	public boolean submit(Menu menu) {
+		menu.setIsDeleted(BladeConstant.DB_NOT_DELETED);
+		return saveOrUpdate(menu);
+	}
+
 }

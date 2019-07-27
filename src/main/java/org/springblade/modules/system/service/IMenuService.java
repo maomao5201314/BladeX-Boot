@@ -154,4 +154,12 @@ public interface IMenuService extends IService<Menu> {
 	 */
 	boolean removeMenu(String ids);
 
+	/**
+	 * 提交
+	 *
+	 * @param menu
+	 * @return
+	 */
+	boolean submit(Menu menu);
+
 }

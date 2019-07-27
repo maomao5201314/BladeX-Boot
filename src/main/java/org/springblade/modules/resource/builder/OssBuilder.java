@@ -78,7 +78,7 @@ public class OssBuilder {
 				if (Func.hasEmpty(template, ossCached) || oss.getEndpoint().equals(ossCached.getEndpoint()) || !oss.getAccessKey().equals(ossCached.getAccessKey())) {
 					OssRule ossRule;
 					// 若采用默认设置则开启多租户模式, 若是用户自定义oss则不开启
-					if (oss.getEndpoint().equals(ossProperties.getEndpoint()) && oss.getAccessKey().equals(ossProperties.getAccessKey())) {
+					if (oss.getEndpoint().equals(ossProperties.getEndpoint()) && oss.getAccessKey().equals(ossProperties.getAccessKey()) && ossProperties.getTenantMode()) {
 						ossRule = new BladeOssRule(Boolean.TRUE);
 					} else {
 						ossRule = new BladeOssRule(Boolean.FALSE);

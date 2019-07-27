@@ -134,7 +134,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	@Override
 	public List<String> getRoleAliases(String roleIds) {
-		return baseMapper.getRoleAliases(Func.toStrArray(roleIds));
+
+		return baseMapper.getRoleAliases(Func.toLongArray(roleIds));
 	}
 
 	@Override

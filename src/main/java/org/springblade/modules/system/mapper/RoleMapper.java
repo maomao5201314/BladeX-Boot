@@ -62,6 +62,6 @@ public interface RoleMapper extends BaseMapper<Role> {
 	 * @param ids
 	 * @return
 	 */
-	List<String> getRoleAliases(String[] ids);
+	List<String> getRoleAliases(Long[] ids);
 
 }

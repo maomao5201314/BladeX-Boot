@@ -12,10 +12,18 @@ spring:
     #  nodes: 127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003
     #  commandTimeout: 5000
   datasource:
+    # MySql
     url: jdbc:mysql://localhost:3306/bladex_boot?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
     username: root
     password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    # PostgreSQL
+    #url: jdbc:oracle:thin:@127.0.0.1:49161:xe
+    #username: BLADEX_BOOT
+    #password: oracle
+    # Oracle
+    #url: jdbc:postgresql://127.0.0.1:5432/bladex
+    #username: postgres
+    #password: 123456
 
 #blade配置
 blade:

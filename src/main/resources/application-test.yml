@@ -15,9 +15,7 @@ spring:
     url: jdbc:mysql://localhost:3306/bladex_boot?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
     username: root
     password: root
-    #url: jdbc:oracle:thin:@192.168.0.1:49161:xe
-    #username: BLADEX_BOOT
-    #password: oracle
+
 
 #blade配置
 blade:

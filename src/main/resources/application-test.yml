@@ -16,7 +16,6 @@ spring:
     username: root
     password: root
 
-
 #blade配置
 blade:
   prop:

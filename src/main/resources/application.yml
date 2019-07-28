@@ -17,15 +17,15 @@ spring:
     #driver-class-name: org.postgresql.Driver
     #driver-class-name: oracle.jdbc.OracleDriver
     druid:
-      initial-size: 5
-      max-active: 20
-      min-idle: 5
-      max-wait: 60000
       # MySql、PostgreSQL校验
       validation-query: select 1
       # Oracle校验
       #validation-query: select 1 from dual
       validation-query-timeout: 2000
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
       test-on-borrow: false
       test-on-return: false
       test-while-idle: true

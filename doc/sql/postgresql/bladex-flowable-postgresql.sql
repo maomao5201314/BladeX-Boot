@@ -5,14 +5,14 @@
  Source Server Type    : PostgreSQL
  Source Server Version : 110001
  Source Host           : localhost:5432
- Source Catalog        : bladex
+ Source Catalog        : bladex_flow
  Source Schema         : public
 
  Target Server Type    : PostgreSQL
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 27/07/2019 21:18:50
+ Date: 01/08/2019 11:17:08
 */
 
 
@@ -82,8 +82,8 @@ CREATE TABLE "act_app_databasechangelog" (
 -- Records of act_app_databasechangelog
 -- ----------------------------
 BEGIN;
-INSERT INTO "act_app_databasechangelog" VALUES ('1', 'flowable', 'org/flowable/app/db/liquibase/flowable-app-db-changelog.xml', '2019-07-27 21:07:33.70799', 1, 'EXECUTED', '8:496fc778bdf2ab13f2e1926d0e63e0a2', 'createTable tableName=ACT_APP_DEPLOYMENT; createTable tableName=ACT_APP_DEPLOYMENT_RESOURCE; addForeignKeyConstraint baseTableName=ACT_APP_DEPLOYMENT_RESOURCE, constraintName=ACT_FK_APP_RSRC_DPL, referencedTableName=ACT_APP_DEPLOYMENT; createIndex...', '', NULL, '3.6.3', NULL, NULL, '4232853648');
-INSERT INTO "act_app_databasechangelog" VALUES ('3', 'flowable', 'org/flowable/app/db/liquibase/flowable-app-db-changelog.xml', '2019-07-27 21:07:33.71808', 2, 'EXECUTED', '8:f1f8aff320aade831944ebad24355f3d', 'createIndex indexName=ACT_IDX_APP_DEF_UNIQ, tableName=ACT_APP_APPDEF', '', NULL, '3.6.3', NULL, NULL, '4232853648');
+INSERT INTO "act_app_databasechangelog" VALUES ('1', 'flowable', 'org/flowable/app/db/liquibase/flowable-app-db-changelog.xml', '2019-08-01 11:14:44.941879', 1, 'EXECUTED', '8:496fc778bdf2ab13f2e1926d0e63e0a2', 'createTable tableName=ACT_APP_DEPLOYMENT; createTable tableName=ACT_APP_DEPLOYMENT_RESOURCE; addForeignKeyConstraint baseTableName=ACT_APP_DEPLOYMENT_RESOURCE, constraintName=ACT_FK_APP_RSRC_DPL, referencedTableName=ACT_APP_DEPLOYMENT; createIndex...', '', NULL, '3.6.3', NULL, NULL, '4629284892');
+INSERT INTO "act_app_databasechangelog" VALUES ('3', 'flowable', 'org/flowable/app/db/liquibase/flowable-app-db-changelog.xml', '2019-08-01 11:14:44.954037', 2, 'EXECUTED', '8:f1f8aff320aade831944ebad24355f3d', 'createIndex indexName=ACT_IDX_APP_DEF_UNIQ, tableName=ACT_APP_APPDEF', '', NULL, '3.6.3', NULL, NULL, '4629284892');
 COMMIT;
 
 -- ----------------------------
@@ -178,12 +178,12 @@ CREATE TABLE "act_cmmn_databasechangelog" (
 -- Records of act_cmmn_databasechangelog
 -- ----------------------------
 BEGIN;
-INSERT INTO "act_cmmn_databasechangelog" VALUES ('1', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-07-27 21:07:33.506249', 1, 'EXECUTED', '8:8b4b922d90b05ff27483abefc9597aa6', 'createTable tableName=ACT_CMMN_DEPLOYMENT; createTable tableName=ACT_CMMN_DEPLOYMENT_RESOURCE; addForeignKeyConstraint baseTableName=ACT_CMMN_DEPLOYMENT_RESOURCE, constraintName=ACT_FK_CMMN_RSRC_DPL, referencedTableName=ACT_CMMN_DEPLOYMENT; create...', '', NULL, '3.6.3', NULL, NULL, '4232853342');
-INSERT INTO "act_cmmn_databasechangelog" VALUES ('2', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-07-27 21:07:33.524612', 2, 'EXECUTED', '8:65e39b3d385706bb261cbeffe7533cbe', 'addColumn tableName=ACT_CMMN_CASEDEF; addColumn tableName=ACT_CMMN_DEPLOYMENT_RESOURCE; addColumn tableName=ACT_CMMN_RU_CASE_INST; addColumn tableName=ACT_CMMN_RU_PLAN_ITEM_INST', '', NULL, '3.6.3', NULL, NULL, '4232853342');
-INSERT INTO "act_cmmn_databasechangelog" VALUES ('3', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-07-27 21:07:33.539869', 3, 'EXECUTED', '8:c01f6e802b49436b4489040da3012359', 'addColumn tableName=ACT_CMMN_RU_PLAN_ITEM_INST; addColumn tableName=ACT_CMMN_RU_CASE_INST; createIndex indexName=ACT_IDX_PLAN_ITEM_STAGE_INST, tableName=ACT_CMMN_RU_PLAN_ITEM_INST; addColumn tableName=ACT_CMMN_RU_PLAN_ITEM_INST; addColumn tableNam...', '', NULL, '3.6.3', NULL, NULL, '4232853342');
-INSERT INTO "act_cmmn_databasechangelog" VALUES ('4', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-07-27 21:07:33.556112', 4, 'EXECUTED', '8:e40d29cb79345b7fb5afd38a7f0ba8fc', 'createTable tableName=ACT_CMMN_HI_PLAN_ITEM_INST; addColumn tableName=ACT_CMMN_RU_MIL_INST; addColumn tableName=ACT_CMMN_HI_MIL_INST', '', NULL, '3.6.3', NULL, NULL, '4232853342');
-INSERT INTO "act_cmmn_databasechangelog" VALUES ('6', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-07-27 21:07:33.56589', 5, 'EXECUTED', '8:10e82e26a7fee94c32a92099c059c18c', 'createIndex indexName=ACT_IDX_CASE_DEF_UNIQ, tableName=ACT_CMMN_CASEDEF', '', NULL, '3.6.3', NULL, NULL, '4232853342');
-INSERT INTO "act_cmmn_databasechangelog" VALUES ('7', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-07-27 21:07:33.58945', 6, 'EXECUTED', '8:530bc81a1e30618ccf4a2da1f7c6c043', 'renameColumn newColumnName=CREATE_TIME_, oldColumnName=START_TIME_, tableName=ACT_CMMN_RU_PLAN_ITEM_INST; renameColumn newColumnName=CREATE_TIME_, oldColumnName=CREATED_TIME_, tableName=ACT_CMMN_HI_PLAN_ITEM_INST; addColumn tableName=ACT_CMMN_RU_P...', '', NULL, '3.6.3', NULL, NULL, '4232853342');
+INSERT INTO "act_cmmn_databasechangelog" VALUES ('1', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-08-01 11:14:44.726809', 1, 'EXECUTED', '8:8b4b922d90b05ff27483abefc9597aa6', 'createTable tableName=ACT_CMMN_DEPLOYMENT; createTable tableName=ACT_CMMN_DEPLOYMENT_RESOURCE; addForeignKeyConstraint baseTableName=ACT_CMMN_DEPLOYMENT_RESOURCE, constraintName=ACT_FK_CMMN_RSRC_DPL, referencedTableName=ACT_CMMN_DEPLOYMENT; create...', '', NULL, '3.6.3', NULL, NULL, '4629284549');
+INSERT INTO "act_cmmn_databasechangelog" VALUES ('2', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-08-01 11:14:44.745381', 2, 'EXECUTED', '8:65e39b3d385706bb261cbeffe7533cbe', 'addColumn tableName=ACT_CMMN_CASEDEF; addColumn tableName=ACT_CMMN_DEPLOYMENT_RESOURCE; addColumn tableName=ACT_CMMN_RU_CASE_INST; addColumn tableName=ACT_CMMN_RU_PLAN_ITEM_INST', '', NULL, '3.6.3', NULL, NULL, '4629284549');
+INSERT INTO "act_cmmn_databasechangelog" VALUES ('3', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-08-01 11:14:44.760777', 3, 'EXECUTED', '8:c01f6e802b49436b4489040da3012359', 'addColumn tableName=ACT_CMMN_RU_PLAN_ITEM_INST; addColumn tableName=ACT_CMMN_RU_CASE_INST; createIndex indexName=ACT_IDX_PLAN_ITEM_STAGE_INST, tableName=ACT_CMMN_RU_PLAN_ITEM_INST; addColumn tableName=ACT_CMMN_RU_PLAN_ITEM_INST; addColumn tableNam...', '', NULL, '3.6.3', NULL, NULL, '4629284549');
+INSERT INTO "act_cmmn_databasechangelog" VALUES ('4', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-08-01 11:14:44.77726', 4, 'EXECUTED', '8:e40d29cb79345b7fb5afd38a7f0ba8fc', 'createTable tableName=ACT_CMMN_HI_PLAN_ITEM_INST; addColumn tableName=ACT_CMMN_RU_MIL_INST; addColumn tableName=ACT_CMMN_HI_MIL_INST', '', NULL, '3.6.3', NULL, NULL, '4629284549');
+INSERT INTO "act_cmmn_databasechangelog" VALUES ('6', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-08-01 11:14:44.786077', 5, 'EXECUTED', '8:10e82e26a7fee94c32a92099c059c18c', 'createIndex indexName=ACT_IDX_CASE_DEF_UNIQ, tableName=ACT_CMMN_CASEDEF', '', NULL, '3.6.3', NULL, NULL, '4629284549');
+INSERT INTO "act_cmmn_databasechangelog" VALUES ('7', 'flowable', 'org/flowable/cmmn/db/liquibase/flowable-cmmn-db-changelog.xml', '2019-08-01 11:14:44.810331', 6, 'EXECUTED', '8:530bc81a1e30618ccf4a2da1f7c6c043', 'renameColumn newColumnName=CREATE_TIME_, oldColumnName=START_TIME_, tableName=ACT_CMMN_RU_PLAN_ITEM_INST; renameColumn newColumnName=CREATE_TIME_, oldColumnName=CREATED_TIME_, tableName=ACT_CMMN_HI_PLAN_ITEM_INST; addColumn tableName=ACT_CMMN_RU_P...', '', NULL, '3.6.3', NULL, NULL, '4629284549');
 COMMIT;
 
 -- ----------------------------
@@ -451,8 +451,8 @@ CREATE TABLE "act_co_databasechangelog" (
 -- Records of act_co_databasechangelog
 -- ----------------------------
 BEGIN;
-INSERT INTO "act_co_databasechangelog" VALUES ('1', 'activiti', 'org/flowable/content/db/liquibase/flowable-content-db-changelog.xml', '2019-07-27 21:07:33.198345', 1, 'EXECUTED', '8:7644d7165cfe799200a2abdd3419e8b6', 'createTable tableName=ACT_CO_CONTENT_ITEM; createIndex indexName=idx_contitem_taskid, tableName=ACT_CO_CONTENT_ITEM; createIndex indexName=idx_contitem_procid, tableName=ACT_CO_CONTENT_ITEM', '', NULL, '3.6.3', NULL, NULL, '4232853149');
-INSERT INTO "act_co_databasechangelog" VALUES ('2', 'flowable', 'org/flowable/content/db/liquibase/flowable-content-db-changelog.xml', '2019-07-27 21:07:33.211702', 2, 'EXECUTED', '8:fe7b11ac7dbbf9c43006b23bbab60bab', 'addColumn tableName=ACT_CO_CONTENT_ITEM; createIndex indexName=idx_contitem_scope, tableName=ACT_CO_CONTENT_ITEM', '', NULL, '3.6.3', NULL, NULL, '4232853149');
+INSERT INTO "act_co_databasechangelog" VALUES ('1', 'activiti', 'org/flowable/content/db/liquibase/flowable-content-db-changelog.xml', '2019-08-01 11:14:44.385299', 1, 'EXECUTED', '8:7644d7165cfe799200a2abdd3419e8b6', 'createTable tableName=ACT_CO_CONTENT_ITEM; createIndex indexName=idx_contitem_taskid, tableName=ACT_CO_CONTENT_ITEM; createIndex indexName=idx_contitem_procid, tableName=ACT_CO_CONTENT_ITEM', '', NULL, '3.6.3', NULL, NULL, '4629284351');
+INSERT INTO "act_co_databasechangelog" VALUES ('2', 'flowable', 'org/flowable/content/db/liquibase/flowable-content-db-changelog.xml', '2019-08-01 11:14:44.398737', 2, 'EXECUTED', '8:fe7b11ac7dbbf9c43006b23bbab60bab', 'addColumn tableName=ACT_CO_CONTENT_ITEM; createIndex indexName=idx_contitem_scope, tableName=ACT_CO_CONTENT_ITEM', '', NULL, '3.6.3', NULL, NULL, '4629284351');
 COMMIT;
 
 -- ----------------------------
@@ -500,8 +500,8 @@ CREATE TABLE "act_de_databasechangelog" (
 -- Records of act_de_databasechangelog
 -- ----------------------------
 BEGIN;
-INSERT INTO "act_de_databasechangelog" VALUES ('1', 'flowable', 'META-INF/liquibase/flowable-modeler-app-db-changelog.xml', '2019-07-27 21:16:16.898063', 1, 'EXECUTED', '8:e70d1d9d3899a734296b2514ccc71501', 'createTable tableName=ACT_DE_MODEL; createIndex indexName=idx_proc_mod_created, tableName=ACT_DE_MODEL; createTable tableName=ACT_DE_MODEL_HISTORY; createIndex indexName=idx_proc_mod_history_proc, tableName=ACT_DE_MODEL_HISTORY; createTable tableN...', '', NULL, '3.6.3', NULL, NULL, '4233376845');
-INSERT INTO "act_de_databasechangelog" VALUES ('3', 'flowable', 'META-INF/liquibase/flowable-modeler-app-db-changelog.xml', '2019-07-27 21:16:16.908333', 2, 'EXECUTED', '8:3a9143bef2e45f2316231cc1369138b6', 'addColumn tableName=ACT_DE_MODEL; addColumn tableName=ACT_DE_MODEL_HISTORY', '', NULL, '3.6.3', NULL, NULL, '4233376845');
+INSERT INTO "act_de_databasechangelog" VALUES ('1', 'flowable', 'META-INF/liquibase/flowable-modeler-app-db-changelog.xml', '2019-08-01 11:15:20.699493', 1, 'EXECUTED', '8:e70d1d9d3899a734296b2514ccc71501', 'createTable tableName=ACT_DE_MODEL; createIndex indexName=idx_proc_mod_created, tableName=ACT_DE_MODEL; createTable tableName=ACT_DE_MODEL_HISTORY; createIndex indexName=idx_proc_mod_history_proc, tableName=ACT_DE_MODEL_HISTORY; createTable tableN...', '', NULL, '3.6.3', NULL, NULL, '4629320613');
+INSERT INTO "act_de_databasechangelog" VALUES ('3', 'flowable', 'META-INF/liquibase/flowable-modeler-app-db-changelog.xml', '2019-08-01 11:15:20.714118', 2, 'EXECUTED', '8:3a9143bef2e45f2316231cc1369138b6', 'addColumn tableName=ACT_DE_MODEL; addColumn tableName=ACT_DE_MODEL_HISTORY', '', NULL, '3.6.3', NULL, NULL, '4629320613');
 COMMIT;
 
 -- ----------------------------
@@ -606,11 +606,11 @@ CREATE TABLE "act_dmn_databasechangelog" (
 -- Records of act_dmn_databasechangelog
 -- ----------------------------
 BEGIN;
-INSERT INTO "act_dmn_databasechangelog" VALUES ('1', 'activiti', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-07-27 21:07:32.929414', 1, 'EXECUTED', '8:c8701f1c71018b55029f450b2e9a10a1', 'createTable tableName=ACT_DMN_DEPLOYMENT; createTable tableName=ACT_DMN_DEPLOYMENT_RESOURCE; createTable tableName=ACT_DMN_DECISION_TABLE', '', NULL, '3.6.3', NULL, NULL, '4232852863');
-INSERT INTO "act_dmn_databasechangelog" VALUES ('2', 'flowable', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-07-27 21:07:32.944227', 2, 'EXECUTED', '8:47f94b27feb7df8a30d4e338c7bd5fb8', 'createTable tableName=ACT_DMN_HI_DECISION_EXECUTION', '', NULL, '3.6.3', NULL, NULL, '4232852863');
-INSERT INTO "act_dmn_databasechangelog" VALUES ('3', 'flowable', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-07-27 21:07:32.951507', 3, 'EXECUTED', '8:ac17eae89fbdccb6e08daf3c7797b579', 'addColumn tableName=ACT_DMN_HI_DECISION_EXECUTION', '', NULL, '3.6.3', NULL, NULL, '4232852863');
-INSERT INTO "act_dmn_databasechangelog" VALUES ('4', 'flowable', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-07-27 21:07:32.958369', 4, 'EXECUTED', '8:f73aabc4529e7292c2942073d1cff6f9', 'dropColumn columnName=PARENT_DEPLOYMENT_ID_, tableName=ACT_DMN_DECISION_TABLE', '', NULL, '3.6.3', NULL, NULL, '4232852863');
-INSERT INTO "act_dmn_databasechangelog" VALUES ('6', 'flowable', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-07-27 21:07:32.967405', 5, 'EXECUTED', '8:646c6a061e0b6e8a62e69844ff96abb0', 'createIndex indexName=ACT_IDX_DEC_TBL_UNIQ, tableName=ACT_DMN_DECISION_TABLE', '', NULL, '3.6.3', NULL, NULL, '4232852863');
+INSERT INTO "act_dmn_databasechangelog" VALUES ('1', 'activiti', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-08-01 11:14:44.107764', 1, 'EXECUTED', '8:c8701f1c71018b55029f450b2e9a10a1', 'createTable tableName=ACT_DMN_DEPLOYMENT; createTable tableName=ACT_DMN_DEPLOYMENT_RESOURCE; createTable tableName=ACT_DMN_DECISION_TABLE', '', NULL, '3.6.3', NULL, NULL, '4629284058');
+INSERT INTO "act_dmn_databasechangelog" VALUES ('2', 'flowable', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-08-01 11:14:44.126839', 2, 'EXECUTED', '8:47f94b27feb7df8a30d4e338c7bd5fb8', 'createTable tableName=ACT_DMN_HI_DECISION_EXECUTION', '', NULL, '3.6.3', NULL, NULL, '4629284058');
+INSERT INTO "act_dmn_databasechangelog" VALUES ('3', 'flowable', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-08-01 11:14:44.132822', 3, 'EXECUTED', '8:ac17eae89fbdccb6e08daf3c7797b579', 'addColumn tableName=ACT_DMN_HI_DECISION_EXECUTION', '', NULL, '3.6.3', NULL, NULL, '4629284058');
+INSERT INTO "act_dmn_databasechangelog" VALUES ('4', 'flowable', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-08-01 11:14:44.140014', 4, 'EXECUTED', '8:f73aabc4529e7292c2942073d1cff6f9', 'dropColumn columnName=PARENT_DEPLOYMENT_ID_, tableName=ACT_DMN_DECISION_TABLE', '', NULL, '3.6.3', NULL, NULL, '4629284058');
+INSERT INTO "act_dmn_databasechangelog" VALUES ('6', 'flowable', 'org/flowable/dmn/db/liquibase/flowable-dmn-db-changelog.xml', '2019-08-01 11:14:44.147178', 5, 'EXECUTED', '8:646c6a061e0b6e8a62e69844ff96abb0', 'createIndex indexName=ACT_IDX_DEC_TBL_UNIQ, tableName=ACT_DMN_DECISION_TABLE', '', NULL, '3.6.3', NULL, NULL, '4629284058');
 COMMIT;
 
 -- ----------------------------
@@ -741,10 +741,10 @@ CREATE TABLE "act_fo_databasechangelog" (
 -- Records of act_fo_databasechangelog
 -- ----------------------------
 BEGIN;
-INSERT INTO "act_fo_databasechangelog" VALUES ('1', 'activiti', 'org/flowable/form/db/liquibase/flowable-form-db-changelog.xml', '2019-07-27 21:07:33.076719', 1, 'EXECUTED', '8:033ebf9380889aed7c453927ecc3250d', 'createTable tableName=ACT_FO_FORM_DEPLOYMENT; createTable tableName=ACT_FO_FORM_RESOURCE; createTable tableName=ACT_FO_FORM_DEFINITION; createTable tableName=ACT_FO_FORM_INSTANCE', '', NULL, '3.6.3', NULL, NULL, '4232853013');
-INSERT INTO "act_fo_databasechangelog" VALUES ('2', 'flowable', 'org/flowable/form/db/liquibase/flowable-form-db-changelog.xml', '2019-07-27 21:07:33.088459', 2, 'EXECUTED', '8:986365ceb40445ce3b27a8e6b40f159b', 'addColumn tableName=ACT_FO_FORM_INSTANCE', '', NULL, '3.6.3', NULL, NULL, '4232853013');
-INSERT INTO "act_fo_databasechangelog" VALUES ('3', 'flowable', 'org/flowable/form/db/liquibase/flowable-form-db-changelog.xml', '2019-07-27 21:07:33.094636', 3, 'EXECUTED', '8:abf482518ceb09830ef674e52c06bf15', 'dropColumn columnName=PARENT_DEPLOYMENT_ID_, tableName=ACT_FO_FORM_DEFINITION', '', NULL, '3.6.3', NULL, NULL, '4232853013');
-INSERT INTO "act_fo_databasechangelog" VALUES ('5', 'flowable', 'org/flowable/form/db/liquibase/flowable-form-db-changelog.xml', '2019-07-27 21:07:33.10449', 4, 'EXECUTED', '8:b4be732b89e5ca028bdd520c6ad4d446', 'createIndex indexName=ACT_IDX_FORM_DEF_UNIQ, tableName=ACT_FO_FORM_DEFINITION', '', NULL, '3.6.3', NULL, NULL, '4232853013');
+INSERT INTO "act_fo_databasechangelog" VALUES ('1', 'activiti', 'org/flowable/form/db/liquibase/flowable-form-db-changelog.xml', '2019-08-01 11:14:44.257713', 1, 'EXECUTED', '8:033ebf9380889aed7c453927ecc3250d', 'createTable tableName=ACT_FO_FORM_DEPLOYMENT; createTable tableName=ACT_FO_FORM_RESOURCE; createTable tableName=ACT_FO_FORM_DEFINITION; createTable tableName=ACT_FO_FORM_INSTANCE', '', NULL, '3.6.3', NULL, NULL, '4629284208');
+INSERT INTO "act_fo_databasechangelog" VALUES ('2', 'flowable', 'org/flowable/form/db/liquibase/flowable-form-db-changelog.xml', '2019-08-01 11:14:44.269617', 2, 'EXECUTED', '8:986365ceb40445ce3b27a8e6b40f159b', 'addColumn tableName=ACT_FO_FORM_INSTANCE', '', NULL, '3.6.3', NULL, NULL, '4629284208');
+INSERT INTO "act_fo_databasechangelog" VALUES ('3', 'flowable', 'org/flowable/form/db/liquibase/flowable-form-db-changelog.xml', '2019-08-01 11:14:44.276052', 3, 'EXECUTED', '8:abf482518ceb09830ef674e52c06bf15', 'dropColumn columnName=PARENT_DEPLOYMENT_ID_, tableName=ACT_FO_FORM_DEFINITION', '', NULL, '3.6.3', NULL, NULL, '4629284208');
+INSERT INTO "act_fo_databasechangelog" VALUES ('5', 'flowable', 'org/flowable/form/db/liquibase/flowable-form-db-changelog.xml', '2019-08-01 11:14:44.2847', 4, 'EXECUTED', '8:b4be732b89e5ca028bdd520c6ad4d446', 'createIndex indexName=ACT_IDX_FORM_DEF_UNIQ, tableName=ACT_FO_FORM_DEFINITION', '', NULL, '3.6.3', NULL, NULL, '4629284208');
 COMMIT;
 
 -- ----------------------------
@@ -858,15 +858,16 @@ CREATE TABLE "act_ge_property" (
 -- Records of act_ge_property
 -- ----------------------------
 BEGIN;
-INSERT INTO "act_ge_property" VALUES ('common.schema.version', '6.4.1.3', 1);
+INSERT INTO "act_ge_property" VALUES ('common.schema.version', '6.5.0.1', 1);
 INSERT INTO "act_ge_property" VALUES ('next.dbid', '1', 1);
-INSERT INTO "act_ge_property" VALUES ('identitylink.schema.version', '6.4.1.3', 1);
-INSERT INTO "act_ge_property" VALUES ('entitylink.schema.version', '6.4.1.3', 1);
-INSERT INTO "act_ge_property" VALUES ('task.schema.version', '6.4.1.3', 1);
-INSERT INTO "act_ge_property" VALUES ('variable.schema.version', '6.4.1.3', 1);
-INSERT INTO "act_ge_property" VALUES ('job.schema.version', '6.4.1.3', 1);
-INSERT INTO "act_ge_property" VALUES ('schema.version', '6.4.1.3', 1);
-INSERT INTO "act_ge_property" VALUES ('schema.history', 'create(6.4.1.3)', 1);
+INSERT INTO "act_ge_property" VALUES ('identitylink.schema.version', '6.5.0.1', 1);
+INSERT INTO "act_ge_property" VALUES ('entitylink.schema.version', '6.5.0.1', 1);
+INSERT INTO "act_ge_property" VALUES ('eventsubscription.schema.version', '6.5.0.1', 1);
+INSERT INTO "act_ge_property" VALUES ('task.schema.version', '6.5.0.1', 1);
+INSERT INTO "act_ge_property" VALUES ('variable.schema.version', '6.5.0.1', 1);
+INSERT INTO "act_ge_property" VALUES ('job.schema.version', '6.5.0.1', 1);
+INSERT INTO "act_ge_property" VALUES ('schema.version', '6.5.0.1', 1);
+INSERT INTO "act_ge_property" VALUES ('schema.history', 'create(6.5.0.1)', 1);
 INSERT INTO "act_ge_property" VALUES ('cfg.execution-related-entities-count', 'true', 1);
 INSERT INTO "act_ge_property" VALUES ('cfg.task-related-entities-count', 'true', 1);
 COMMIT;
@@ -1184,7 +1185,7 @@ CREATE TABLE "act_id_property" (
 -- Records of act_id_property
 -- ----------------------------
 BEGIN;
-INSERT INTO "act_id_property" VALUES ('schema.version', '6.4.1.3', 1);
+INSERT INTO "act_id_property" VALUES ('schema.version', '6.5.0.1', 1);
 COMMIT;
 
 -- ----------------------------
@@ -1333,6 +1334,8 @@ CREATE TABLE "act_ru_deadletter_job" (
   "execution_id_" varchar(64) COLLATE "pg_catalog"."default",
   "process_instance_id_" varchar(64) COLLATE "pg_catalog"."default",
   "proc_def_id_" varchar(64) COLLATE "pg_catalog"."default",
+  "element_id_" varchar(255) COLLATE "pg_catalog"."default",
+  "element_name_" varchar(255) COLLATE "pg_catalog"."default",
   "scope_id_" varchar(255) COLLATE "pg_catalog"."default",
   "sub_scope_id_" varchar(255) COLLATE "pg_catalog"."default",
   "scope_type_" varchar(255) COLLATE "pg_catalog"."default",
@@ -1383,6 +1386,10 @@ CREATE TABLE "act_ru_event_subscr" (
   "configuration_" varchar(255) COLLATE "pg_catalog"."default",
   "created_" timestamp(6) NOT NULL,
   "proc_def_id_" varchar(64) COLLATE "pg_catalog"."default",
+  "sub_scope_id_" varchar(64) COLLATE "pg_catalog"."default",
+  "scope_id_" varchar(64) COLLATE "pg_catalog"."default",
+  "scope_definition_id_" varchar(64) COLLATE "pg_catalog"."default",
+  "scope_type_" varchar(64) COLLATE "pg_catalog"."default",
   "tenant_id_" varchar(255) COLLATE "pg_catalog"."default" DEFAULT ''::character varying
 )
 ;
@@ -1483,6 +1490,8 @@ CREATE TABLE "act_ru_job" (
   "execution_id_" varchar(64) COLLATE "pg_catalog"."default",
   "process_instance_id_" varchar(64) COLLATE "pg_catalog"."default",
   "proc_def_id_" varchar(64) COLLATE "pg_catalog"."default",
+  "element_id_" varchar(255) COLLATE "pg_catalog"."default",
+  "element_name_" varchar(255) COLLATE "pg_catalog"."default",
   "scope_id_" varchar(255) COLLATE "pg_catalog"."default",
   "sub_scope_id_" varchar(255) COLLATE "pg_catalog"."default",
   "scope_type_" varchar(255) COLLATE "pg_catalog"."default",
@@ -1512,6 +1521,8 @@ CREATE TABLE "act_ru_suspended_job" (
   "execution_id_" varchar(64) COLLATE "pg_catalog"."default",
   "process_instance_id_" varchar(64) COLLATE "pg_catalog"."default",
   "proc_def_id_" varchar(64) COLLATE "pg_catalog"."default",
+  "element_id_" varchar(255) COLLATE "pg_catalog"."default",
+  "element_name_" varchar(255) COLLATE "pg_catalog"."default",
   "scope_id_" varchar(255) COLLATE "pg_catalog"."default",
   "sub_scope_id_" varchar(255) COLLATE "pg_catalog"."default",
   "scope_type_" varchar(255) COLLATE "pg_catalog"."default",
@@ -1580,6 +1591,8 @@ CREATE TABLE "act_ru_timer_job" (
   "execution_id_" varchar(64) COLLATE "pg_catalog"."default",
   "process_instance_id_" varchar(64) COLLATE "pg_catalog"."default",
   "proc_def_id_" varchar(64) COLLATE "pg_catalog"."default",
+  "element_id_" varchar(255) COLLATE "pg_catalog"."default",
+  "element_name_" varchar(255) COLLATE "pg_catalog"."default",
   "scope_id_" varchar(255) COLLATE "pg_catalog"."default",
   "sub_scope_id_" varchar(255) COLLATE "pg_catalog"."default",
   "scope_type_" varchar(255) COLLATE "pg_catalog"."default",

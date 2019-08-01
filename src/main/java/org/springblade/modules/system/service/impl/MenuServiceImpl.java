@@ -22,6 +22,7 @@ import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springblade.core.secure.BladeUser;
+import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.support.Kv;
@@ -71,7 +72,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 			return null;
 		}
 		List<Menu> allMenus = baseMapper.allMenu();
-		List<Menu> roleMenus = baseMapper.roleMenu(Func.toLongList(roleId), topMenuId);
+		List<Menu> roleMenus = (SecureUtil.isAdministrator()) ? allMenus : baseMapper.roleMenu(Func.toLongList(roleId), topMenuId);
 		return buildRoutes(allMenus, roleMenus);
 	}
 
@@ -104,7 +105,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	@Override
 	public List<MenuVO> buttons(String roleId) {
-		List<Menu> buttons = baseMapper.buttons(Func.toLongList(roleId));
+		List<Menu> buttons = (SecureUtil.isAdministrator()) ? baseMapper.allButtons() : baseMapper.buttons(Func.toLongList(roleId));
 		MenuWrapper menuWrapper = new MenuWrapper();
 		return menuWrapper.listNodeVO(buttons);
 	}

@@ -84,6 +84,48 @@
                         </foreach> )
     </select>
 
+    <select id="allButtons" resultMap="menuResultMap">
+        SELECT
+            *
+        FROM
+            (
+                SELECT
+                    id,
+                    parent_id,
+                    CODE,
+                    NAME,
+                    alias,
+                    path,
+                    source,
+                    action,
+                    sort
+                FROM
+                    blade_menu
+                WHERE
+                        id IN ( SELECT parent_id FROM blade_menu WHERE is_deleted = 0 AND category = 2 )
+
+                UNION ALL
+
+                SELECT
+                    id,
+                    parent_id,
+                    CODE,
+                    NAME,
+                    alias,
+                    path,
+                    source,
+                    action,
+                    sort
+                FROM
+                    blade_menu
+                WHERE
+                    is_deleted = 0
+                  AND category = 2
+            ) menu
+        ORDER BY
+            sort
+    </select>
+
     <select id="buttons" resultMap="menuResultMap">
         SELECT  * FROM (
             SELECT

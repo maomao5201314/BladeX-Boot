@@ -28,6 +28,7 @@ import org.springblade.core.secure.constant.SecureConstant;
 import org.springblade.core.secure.exception.SecureException;
 import org.springblade.core.secure.provider.IClientDetails;
 import org.springblade.core.secure.provider.IClientDetailsService;
+import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.*;
 
 import javax.crypto.spec.SecretKeySpec;
@@ -118,6 +119,13 @@ public class SecureUtil {
 		return bladeUser;
 	}
 
+	/**
+	 * 是否为超管
+	 * @return boolean
+	 */
+	public static boolean isAdministrator() {
+		return StringUtil.containsAny(getUserRole(), RoleConstant.ADMINISTRATOR);
+	}
 
 	/**
 	 * 获取用户id

@@ -22,7 +22,7 @@
         <swagger.bootstrapui.version>1.9.4</swagger.bootstrapui.version>
         <mybatis.plus.version>3.1.2</mybatis.plus.version>
         <protostuff.version>1.6.0</protostuff.version>
-        <flowable.version>6.4.1</flowable.version>
+        <flowable.version>6.4.2</flowable.version>
 
         <spring.boot.version>2.1.6.RELEASE</spring.boot.version>
         <spring.platform.version>Cairo-SR8</spring.platform.version>

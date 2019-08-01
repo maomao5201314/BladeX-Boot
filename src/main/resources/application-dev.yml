@@ -17,11 +17,11 @@ spring:
     username: root
     password: root
     # PostgreSQL
-    #url: jdbc:postgresql://127.0.0.1:5432/bladex
+    #url: jdbc:postgresql://127.0.0.1:5432/bladex_boot
     #username: postgres
     #password: 123456
     # Oracle
-    #url: jdbc:oracle:thin:@127.0.0.1:49161:xe
+    #url: jdbc:oracle:thin:@127.0.0.1:49161:orcl
     #username: BLADEX_BOOT
     #password: oracle
 

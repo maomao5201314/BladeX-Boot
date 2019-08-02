@@ -101,7 +101,7 @@ public class UserController {
 	@ApiOperation(value = "修改", notes = "传入User")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R update(@Valid @RequestBody User user) {
-		return R.status(userService.submit(user));
+		return R.status(userService.updateUser(user));
 	}
 
 	/**

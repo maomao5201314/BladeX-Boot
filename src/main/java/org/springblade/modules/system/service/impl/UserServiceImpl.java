@@ -53,7 +53,13 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (cnt > 0 && Func.isEmpty(user.getId())) {
 			throw new ApiException("当前用户已存在!");
 		}
-		return saveOrUpdate(user);
+		return save(user);
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		user.setPassword(null);
+		return updateById(user);
 	}
 
 	@Override

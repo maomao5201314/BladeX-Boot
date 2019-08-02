@@ -30,12 +30,20 @@ import org.springblade.modules.system.entity.UserInfo;
 public interface IUserService extends BaseService<User> {
 
 	/**
-	 * 新增或修改用户
+	 * 新增用户
 	 *
 	 * @param user
 	 * @return
 	 */
 	boolean submit(User user);
+
+	/**
+	 * 修改用户
+	 *
+	 * @param user
+	 * @return
+	 */
+	boolean updateUser(User user);
 
 	/**
 	 * 自定义分页

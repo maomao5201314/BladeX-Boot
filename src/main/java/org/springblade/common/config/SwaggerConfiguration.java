@@ -21,6 +21,7 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.swagger.SwaggerProperties;
 import org.springblade.core.swagger.SwaggerUtil;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -44,6 +45,7 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 @AllArgsConstructor
+@EnableConfigurationProperties(SwaggerProperties.class)
 public class SwaggerConfiguration {
 
 	private SwaggerProperties swaggerProperties;

@@ -14,7 +14,7 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.core.log.event;
+package org.springblade.common.event;
 
 
 import lombok.AllArgsConstructor;
@@ -22,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springblade.core.launch.props.BladeProperties;
 import org.springblade.core.launch.server.ServerInfo;
 import org.springblade.core.log.constant.EventConstant;
+import org.springblade.core.log.event.ErrorLogEvent;
 import org.springblade.core.log.model.LogError;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.utils.DateUtil;

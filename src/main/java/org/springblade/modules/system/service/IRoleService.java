@@ -57,7 +57,7 @@ public interface IRoleService extends IService<Role> {
 	 * @param apiScopeIds  接口权限id集合
 	 * @return 是否成功
 	 */
-	boolean grant(@NotEmpty List<Long> roleIds, @NotEmpty List<Long> menuIds, List<Long> dataScopeIds, List<Long> apiScopeIds);
+	boolean grant(@NotEmpty List<Long> roleIds, List<Long> menuIds, List<Long> dataScopeIds, List<Long> apiScopeIds);
 
 	/**
 	 * 获取角色名

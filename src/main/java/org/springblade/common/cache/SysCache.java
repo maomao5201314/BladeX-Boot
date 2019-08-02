@@ -21,9 +21,11 @@ import org.springblade.core.tool.utils.SpringUtil;
 import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.entity.Menu;
 import org.springblade.modules.system.entity.Role;
+import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.service.IDeptService;
 import org.springblade.modules.system.service.IMenuService;
 import org.springblade.modules.system.service.IRoleService;
+import org.springblade.modules.system.service.ITenantService;
 
 import java.util.List;
 
@@ -44,15 +46,18 @@ public class SysCache {
 	private static final String ROLE_NAMES_ID = "roleNames:id:";
 	private static final String ROLE_ALIAS_ID = "roleAlias:id:";
 	private static final String ROLE_ALIASES_ID = "roleAliases:id:";
+	private static final String TENANT_ID = "tenant:id:";
 
 	private static IMenuService menuService;
 	private static IDeptService deptService;
 	private static IRoleService roleService;
+	private static ITenantService tenantService;
 
 	static {
 		menuService = SpringUtil.getBean(IMenuService.class);
 		deptService = SpringUtil.getBean(IDeptService.class);
 		roleService = SpringUtil.getBean(IRoleService.class);
+		tenantService = SpringUtil.getBean(ITenantService.class);
 	}
 
 	/**
@@ -144,6 +149,16 @@ public class SysCache {
 	 */
 	public static List<String> getRoleAliases(String roleIds) {
 		return CacheUtil.get(SYS_CACHE, ROLE_ALIASES_ID, roleIds, () -> roleService.getRoleAliases(roleIds));
+	}
+
+	/**
+	 * 获取租户
+	 *
+	 * @param id 主键
+	 * @return Tenant
+	 */
+	public static Tenant getTenant(Long id) {
+		return CacheUtil.get(SYS_CACHE, TENANT_ID, id, () -> tenantService.getById(id));
 	}
 
 }

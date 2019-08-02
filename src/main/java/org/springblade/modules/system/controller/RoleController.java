@@ -31,6 +31,7 @@ import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Role;
 import org.springblade.modules.system.service.IRoleService;
+import org.springblade.modules.system.vo.GrantVO;
 import org.springblade.modules.system.vo.RoleVO;
 import org.springblade.modules.system.wrapper.RoleWrapper;
 import org.springframework.cache.annotation.CacheEvict;
@@ -127,11 +128,8 @@ public class RoleController extends BladeController {
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "权限设置", notes = "传入roleId集合以及menuId集合")
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
-	public R grant(@ApiParam(value = "roleId集合", required = true) @RequestParam String roleIds,
-				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds,
-				   @ApiParam(value = "dataScopeId集合") String dataScopeIds,
-				   @ApiParam(value = "apiScopeId集合") String apiScopeIds) {
-		boolean temp = roleService.grant(Func.toLongList(roleIds), Func.toLongList(menuIds), Func.toLongList(dataScopeIds), Func.toLongList(apiScopeIds));
+	public R grant(@RequestBody GrantVO grantVO) {
+		boolean temp = roleService.grant(grantVO.getRoleIds(), grantVO.getMenuIds(), grantVO.getDataScopeIds(), grantVO.getApiScopeIds());
 		return R.status(temp);
 	}
 

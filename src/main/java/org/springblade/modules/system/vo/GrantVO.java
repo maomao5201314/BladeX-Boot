@@ -16,24 +16,31 @@
  */
 package org.springblade.modules.system.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * GrantTreeVO
+ * GrantVO
  *
  * @author Chill
  */
 @Data
-public class GrantTreeVO implements Serializable {
+public class GrantVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private List<MenuVO> menu;
+	@ApiModelProperty(value = "roleIds集合")
+	private List<Long> roleIds;
 
-	private List<MenuVO> dataScope;
+	@ApiModelProperty(value = "menuIds集合")
+	private List<Long> menuIds;
 
-	private List<MenuVO> apiScope;
+	@ApiModelProperty(value = "dataScopeIds集合")
+	private List<Long> dataScopeIds;
+
+	@ApiModelProperty(value = "apiScopeIds集合")
+	private List<Long> apiScopeIds;
 
 }

@@ -106,6 +106,7 @@ blade:
     url:
       exclude-patterns:
         - /weixin
+        - /notice/submit
   secure:
     url:
       exclude-patterns:

@@ -515,7 +515,7 @@ CREATE TABLE "blade_notice" (
   "title" varchar(255) COLLATE "pg_catalog"."default",
   "category" int4,
   "release_time" timestamp(6),
-  "content" varchar(255) COLLATE "pg_catalog"."default",
+  "content" varchar(2000) COLLATE "pg_catalog"."default",
   "create_user" int8,
   "create_dept" int8,
   "create_time" timestamp(6),

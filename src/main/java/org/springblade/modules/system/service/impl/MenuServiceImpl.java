@@ -72,7 +72,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 			return null;
 		}
 		List<Menu> allMenus = baseMapper.allMenu();
-		List<Menu> roleMenus = (SecureUtil.isAdministrator()) ? allMenus : baseMapper.roleMenu(Func.toLongList(roleId), topMenuId);
+		List<Menu> roleMenus = (SecureUtil.isAdministrator() && Func.isEmpty(topMenuId)) ? allMenus : baseMapper.roleMenu(Func.toLongList(roleId), topMenuId);
 		return buildRoutes(allMenus, roleMenus);
 	}
 

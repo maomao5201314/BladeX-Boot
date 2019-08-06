@@ -18,7 +18,7 @@
 -- ----------------------------
 -- Table structure for ACT_APP_APPDEF
 -- ----------------------------
-DROP TABLE "ACT_APP_APPDEF";
+-- DROP TABLE "ACT_APP_APPDEF";
 CREATE TABLE "ACT_APP_APPDEF" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "REV_" NUMBER NOT NULL ,
@@ -51,7 +51,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_APP_DATABASECHANGELOG
 -- ----------------------------
-DROP TABLE "ACT_APP_DATABASECHANGELOG";
+-- DROP TABLE "ACT_APP_DATABASECHANGELOG";
 CREATE TABLE "ACT_APP_DATABASECHANGELOG" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "AUTHOR" VARCHAR2(255 BYTE) NOT NULL ,
@@ -95,7 +95,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_APP_DATABASECHANGELOGLOCK
 -- ----------------------------
-DROP TABLE "ACT_APP_DATABASECHANGELOGLOCK";
+-- DROP TABLE "ACT_APP_DATABASECHANGELOGLOCK";
 CREATE TABLE "ACT_APP_DATABASECHANGELOGLOCK" (
   "ID" NUMBER NOT NULL ,
   "LOCKED" NUMBER(1) NOT NULL ,
@@ -128,7 +128,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_APP_DEPLOYMENT
 -- ----------------------------
-DROP TABLE "ACT_APP_DEPLOYMENT";
+-- DROP TABLE "ACT_APP_DEPLOYMENT";
 CREATE TABLE "ACT_APP_DEPLOYMENT" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -157,7 +157,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_APP_DEPLOYMENT_RESOURCE
 -- ----------------------------
-DROP TABLE "ACT_APP_DEPLOYMENT_RESOURCE";
+-- DROP TABLE "ACT_APP_DEPLOYMENT_RESOURCE";
 CREATE TABLE "ACT_APP_DEPLOYMENT_RESOURCE" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -184,7 +184,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_CASEDEF
 -- ----------------------------
-DROP TABLE "ACT_CMMN_CASEDEF";
+-- DROP TABLE "ACT_CMMN_CASEDEF";
 CREATE TABLE "ACT_CMMN_CASEDEF" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "REV_" NUMBER NOT NULL ,
@@ -220,7 +220,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_DATABASECHANGELOG
 -- ----------------------------
-DROP TABLE "ACT_CMMN_DATABASECHANGELOG";
+-- DROP TABLE "ACT_CMMN_DATABASECHANGELOG";
 CREATE TABLE "ACT_CMMN_DATABASECHANGELOG" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "AUTHOR" VARCHAR2(255 BYTE) NOT NULL ,
@@ -268,7 +268,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_CMMN_DATABASECHANGELOGLOCK
 -- ----------------------------
-DROP TABLE "ACT_CMMN_DATABASECHANGELOGLOCK";
+-- DROP TABLE "ACT_CMMN_DATABASECHANGELOGLOCK";
 CREATE TABLE "ACT_CMMN_DATABASECHANGELOGLOCK" (
   "ID" NUMBER NOT NULL ,
   "LOCKED" NUMBER(1) NOT NULL ,
@@ -301,7 +301,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_CMMN_DEPLOYMENT
 -- ----------------------------
-DROP TABLE "ACT_CMMN_DEPLOYMENT";
+-- DROP TABLE "ACT_CMMN_DEPLOYMENT";
 CREATE TABLE "ACT_CMMN_DEPLOYMENT" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -331,7 +331,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_DEPLOYMENT_RESOURCE
 -- ----------------------------
-DROP TABLE "ACT_CMMN_DEPLOYMENT_RESOURCE";
+-- DROP TABLE "ACT_CMMN_DEPLOYMENT_RESOURCE";
 CREATE TABLE "ACT_CMMN_DEPLOYMENT_RESOURCE" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -359,7 +359,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_HI_CASE_INST
 -- ----------------------------
-DROP TABLE "ACT_CMMN_HI_CASE_INST";
+-- DROP TABLE "ACT_CMMN_HI_CASE_INST";
 CREATE TABLE "ACT_CMMN_HI_CASE_INST" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "REV_" NUMBER NOT NULL ,
@@ -395,7 +395,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_HI_MIL_INST
 -- ----------------------------
-DROP TABLE "ACT_CMMN_HI_MIL_INST";
+-- DROP TABLE "ACT_CMMN_HI_MIL_INST";
 CREATE TABLE "ACT_CMMN_HI_MIL_INST" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "REV_" NUMBER NOT NULL ,
@@ -426,7 +426,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_HI_PLAN_ITEM_INST
 -- ----------------------------
-DROP TABLE "ACT_CMMN_HI_PLAN_ITEM_INST";
+-- DROP TABLE "ACT_CMMN_HI_PLAN_ITEM_INST";
 CREATE TABLE "ACT_CMMN_HI_PLAN_ITEM_INST" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "REV_" NUMBER NOT NULL ,
@@ -478,7 +478,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_RU_CASE_INST
 -- ----------------------------
-DROP TABLE "ACT_CMMN_RU_CASE_INST";
+-- DROP TABLE "ACT_CMMN_RU_CASE_INST";
 CREATE TABLE "ACT_CMMN_RU_CASE_INST" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "REV_" NUMBER NOT NULL ,
@@ -515,7 +515,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_RU_MIL_INST
 -- ----------------------------
-DROP TABLE "ACT_CMMN_RU_MIL_INST";
+-- DROP TABLE "ACT_CMMN_RU_MIL_INST";
 CREATE TABLE "ACT_CMMN_RU_MIL_INST" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) NOT NULL ,
@@ -545,7 +545,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_RU_PLAN_ITEM_INST
 -- ----------------------------
-DROP TABLE "ACT_CMMN_RU_PLAN_ITEM_INST";
+-- DROP TABLE "ACT_CMMN_RU_PLAN_ITEM_INST";
 CREATE TABLE "ACT_CMMN_RU_PLAN_ITEM_INST" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "REV_" NUMBER NOT NULL ,
@@ -600,7 +600,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CMMN_RU_SENTRY_PART_INST
 -- ----------------------------
-DROP TABLE "ACT_CMMN_RU_SENTRY_PART_INST";
+-- DROP TABLE "ACT_CMMN_RU_SENTRY_PART_INST";
 CREATE TABLE "ACT_CMMN_RU_SENTRY_PART_INST" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "REV_" NUMBER NOT NULL ,
@@ -631,7 +631,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CO_CONTENT_ITEM
 -- ----------------------------
-DROP TABLE "ACT_CO_CONTENT_ITEM";
+-- DROP TABLE "ACT_CO_CONTENT_ITEM";
 CREATE TABLE "ACT_CO_CONTENT_ITEM" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) NOT NULL ,
@@ -671,7 +671,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_CO_DATABASECHANGELOG
 -- ----------------------------
-DROP TABLE "ACT_CO_DATABASECHANGELOG";
+-- DROP TABLE "ACT_CO_DATABASECHANGELOG";
 CREATE TABLE "ACT_CO_DATABASECHANGELOG" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "AUTHOR" VARCHAR2(255 BYTE) NOT NULL ,
@@ -715,7 +715,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_CO_DATABASECHANGELOGLOCK
 -- ----------------------------
-DROP TABLE "ACT_CO_DATABASECHANGELOGLOCK";
+-- DROP TABLE "ACT_CO_DATABASECHANGELOGLOCK";
 CREATE TABLE "ACT_CO_DATABASECHANGELOGLOCK" (
   "ID" NUMBER NOT NULL ,
   "LOCKED" NUMBER(1) NOT NULL ,
@@ -748,7 +748,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_DE_DATABASECHANGELOG
 -- ----------------------------
-DROP TABLE "ACT_DE_DATABASECHANGELOG";
+-- DROP TABLE "ACT_DE_DATABASECHANGELOG";
 CREATE TABLE "ACT_DE_DATABASECHANGELOG" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "AUTHOR" VARCHAR2(255 BYTE) NOT NULL ,
@@ -792,7 +792,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_DE_DATABASECHANGELOGLOCK
 -- ----------------------------
-DROP TABLE "ACT_DE_DATABASECHANGELOGLOCK";
+-- DROP TABLE "ACT_DE_DATABASECHANGELOGLOCK";
 CREATE TABLE "ACT_DE_DATABASECHANGELOGLOCK" (
   "ID" NUMBER NOT NULL ,
   "LOCKED" NUMBER(1) NOT NULL ,
@@ -825,7 +825,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_DE_MODEL
 -- ----------------------------
-DROP TABLE "ACT_DE_MODEL";
+-- DROP TABLE "ACT_DE_MODEL";
 CREATE TABLE "ACT_DE_MODEL" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME" VARCHAR2(400 BYTE) NOT NULL ,
@@ -862,7 +862,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_DE_MODEL_HISTORY
 -- ----------------------------
-DROP TABLE "ACT_DE_MODEL_HISTORY";
+-- DROP TABLE "ACT_DE_MODEL_HISTORY";
 CREATE TABLE "ACT_DE_MODEL_HISTORY" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME" VARCHAR2(400 BYTE) NOT NULL ,
@@ -900,7 +900,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_DE_MODEL_RELATION
 -- ----------------------------
-DROP TABLE "ACT_DE_MODEL_RELATION";
+-- DROP TABLE "ACT_DE_MODEL_RELATION";
 CREATE TABLE "ACT_DE_MODEL_RELATION" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "PARENT_MODEL_ID" VARCHAR2(255 BYTE) ,
@@ -927,7 +927,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_DMN_DATABASECHANGELOG
 -- ----------------------------
-DROP TABLE "ACT_DMN_DATABASECHANGELOG";
+-- DROP TABLE "ACT_DMN_DATABASECHANGELOG";
 CREATE TABLE "ACT_DMN_DATABASECHANGELOG" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "AUTHOR" VARCHAR2(255 BYTE) NOT NULL ,
@@ -974,7 +974,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_DMN_DATABASECHANGELOGLOCK
 -- ----------------------------
-DROP TABLE "ACT_DMN_DATABASECHANGELOGLOCK";
+-- DROP TABLE "ACT_DMN_DATABASECHANGELOGLOCK";
 CREATE TABLE "ACT_DMN_DATABASECHANGELOGLOCK" (
   "ID" NUMBER NOT NULL ,
   "LOCKED" NUMBER(1) NOT NULL ,
@@ -1007,7 +1007,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_DMN_DECISION_TABLE
 -- ----------------------------
-DROP TABLE "ACT_DMN_DECISION_TABLE";
+-- DROP TABLE "ACT_DMN_DECISION_TABLE";
 CREATE TABLE "ACT_DMN_DECISION_TABLE" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -1039,7 +1039,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_DMN_DEPLOYMENT
 -- ----------------------------
-DROP TABLE "ACT_DMN_DEPLOYMENT";
+-- DROP TABLE "ACT_DMN_DEPLOYMENT";
 CREATE TABLE "ACT_DMN_DEPLOYMENT" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -1068,7 +1068,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_DMN_DEPLOYMENT_RESOURCE
 -- ----------------------------
-DROP TABLE "ACT_DMN_DEPLOYMENT_RESOURCE";
+-- DROP TABLE "ACT_DMN_DEPLOYMENT_RESOURCE";
 CREATE TABLE "ACT_DMN_DEPLOYMENT_RESOURCE" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -1095,7 +1095,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_DMN_HI_DECISION_EXECUTION
 -- ----------------------------
-DROP TABLE "ACT_DMN_HI_DECISION_EXECUTION";
+-- DROP TABLE "ACT_DMN_HI_DECISION_EXECUTION";
 CREATE TABLE "ACT_DMN_HI_DECISION_EXECUTION" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "DECISION_DEFINITION_ID_" VARCHAR2(255 BYTE) ,
@@ -1130,7 +1130,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_EVT_LOG
 -- ----------------------------
-DROP TABLE "ACT_EVT_LOG";
+-- DROP TABLE "ACT_EVT_LOG";
 CREATE TABLE "ACT_EVT_LOG" (
   "LOG_NR_" NUMBER(19) NOT NULL ,
   "TYPE_" NVARCHAR2(64) ,
@@ -1165,7 +1165,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_FO_DATABASECHANGELOG
 -- ----------------------------
-DROP TABLE "ACT_FO_DATABASECHANGELOG";
+-- DROP TABLE "ACT_FO_DATABASECHANGELOG";
 CREATE TABLE "ACT_FO_DATABASECHANGELOG" (
   "ID" VARCHAR2(255 BYTE) NOT NULL ,
   "AUTHOR" VARCHAR2(255 BYTE) NOT NULL ,
@@ -1211,7 +1211,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_FO_DATABASECHANGELOGLOCK
 -- ----------------------------
-DROP TABLE "ACT_FO_DATABASECHANGELOGLOCK";
+-- DROP TABLE "ACT_FO_DATABASECHANGELOGLOCK";
 CREATE TABLE "ACT_FO_DATABASECHANGELOGLOCK" (
   "ID" NUMBER NOT NULL ,
   "LOCKED" NUMBER(1) NOT NULL ,
@@ -1244,7 +1244,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_FO_FORM_DEFINITION
 -- ----------------------------
-DROP TABLE "ACT_FO_FORM_DEFINITION";
+-- DROP TABLE "ACT_FO_FORM_DEFINITION";
 CREATE TABLE "ACT_FO_FORM_DEFINITION" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -1276,7 +1276,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_FO_FORM_DEPLOYMENT
 -- ----------------------------
-DROP TABLE "ACT_FO_FORM_DEPLOYMENT";
+-- DROP TABLE "ACT_FO_FORM_DEPLOYMENT";
 CREATE TABLE "ACT_FO_FORM_DEPLOYMENT" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -1305,7 +1305,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_FO_FORM_INSTANCE
 -- ----------------------------
-DROP TABLE "ACT_FO_FORM_INSTANCE";
+-- DROP TABLE "ACT_FO_FORM_INSTANCE";
 CREATE TABLE "ACT_FO_FORM_INSTANCE" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "FORM_DEFINITION_ID_" VARCHAR2(255 BYTE) NOT NULL ,
@@ -1340,7 +1340,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_FO_FORM_RESOURCE
 -- ----------------------------
-DROP TABLE "ACT_FO_FORM_RESOURCE";
+-- DROP TABLE "ACT_FO_FORM_RESOURCE";
 CREATE TABLE "ACT_FO_FORM_RESOURCE" (
   "ID_" VARCHAR2(255 BYTE) NOT NULL ,
   "NAME_" VARCHAR2(255 BYTE) ,
@@ -1367,7 +1367,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_GE_BYTEARRAY
 -- ----------------------------
-DROP TABLE "ACT_GE_BYTEARRAY";
+-- DROP TABLE "ACT_GE_BYTEARRAY";
 CREATE TABLE "ACT_GE_BYTEARRAY" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -1396,7 +1396,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_GE_PROPERTY
 -- ----------------------------
-DROP TABLE "ACT_GE_PROPERTY";
+-- DROP TABLE "ACT_GE_PROPERTY";
 CREATE TABLE "ACT_GE_PROPERTY" (
   "NAME_" NVARCHAR2(64) NOT NULL ,
   "VALUE_" NVARCHAR2(300) ,
@@ -1439,7 +1439,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_HI_ACTINST
 -- ----------------------------
-DROP TABLE "ACT_HI_ACTINST";
+-- DROP TABLE "ACT_HI_ACTINST";
 CREATE TABLE "ACT_HI_ACTINST" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER DEFAULT 1 ,
@@ -1478,7 +1478,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_ATTACHMENT
 -- ----------------------------
-DROP TABLE "ACT_HI_ATTACHMENT";
+-- DROP TABLE "ACT_HI_ATTACHMENT";
 CREATE TABLE "ACT_HI_ATTACHMENT" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -1512,7 +1512,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_COMMENT
 -- ----------------------------
-DROP TABLE "ACT_HI_COMMENT";
+-- DROP TABLE "ACT_HI_COMMENT";
 CREATE TABLE "ACT_HI_COMMENT" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "TYPE_" NVARCHAR2(255) ,
@@ -1544,7 +1544,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_DETAIL
 -- ----------------------------
-DROP TABLE "ACT_HI_DETAIL";
+-- DROP TABLE "ACT_HI_DETAIL";
 CREATE TABLE "ACT_HI_DETAIL" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "TYPE_" NVARCHAR2(255) NOT NULL ,
@@ -1582,7 +1582,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_ENTITYLINK
 -- ----------------------------
-DROP TABLE "ACT_HI_ENTITYLINK";
+-- DROP TABLE "ACT_HI_ENTITYLINK";
 CREATE TABLE "ACT_HI_ENTITYLINK" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "LINK_TYPE_" NVARCHAR2(255) ,
@@ -1615,7 +1615,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_IDENTITYLINK
 -- ----------------------------
-DROP TABLE "ACT_HI_IDENTITYLINK";
+-- DROP TABLE "ACT_HI_IDENTITYLINK";
 CREATE TABLE "ACT_HI_IDENTITYLINK" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "GROUP_ID_" NVARCHAR2(255) ,
@@ -1648,7 +1648,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_PROCINST
 -- ----------------------------
-DROP TABLE "ACT_HI_PROCINST";
+-- DROP TABLE "ACT_HI_PROCINST";
 CREATE TABLE "ACT_HI_PROCINST" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER DEFAULT 1 ,
@@ -1688,7 +1688,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_TASKINST
 -- ----------------------------
-DROP TABLE "ACT_HI_TASKINST";
+-- DROP TABLE "ACT_HI_TASKINST";
 CREATE TABLE "ACT_HI_TASKINST" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER DEFAULT 1 ,
@@ -1738,7 +1738,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_TSK_LOG
 -- ----------------------------
-DROP TABLE "ACT_HI_TSK_LOG";
+-- DROP TABLE "ACT_HI_TSK_LOG";
 CREATE TABLE "ACT_HI_TSK_LOG" (
   "ID_" NUMBER(19) NOT NULL ,
   "TYPE_" NVARCHAR2(64) ,
@@ -1775,7 +1775,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_HI_VARINST
 -- ----------------------------
-DROP TABLE "ACT_HI_VARINST";
+-- DROP TABLE "ACT_HI_VARINST";
 CREATE TABLE "ACT_HI_VARINST" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER DEFAULT 1 ,
@@ -1815,7 +1815,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_ID_BYTEARRAY
 -- ----------------------------
-DROP TABLE "ACT_ID_BYTEARRAY";
+-- DROP TABLE "ACT_ID_BYTEARRAY";
 CREATE TABLE "ACT_ID_BYTEARRAY" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -1842,7 +1842,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_ID_GROUP
 -- ----------------------------
-DROP TABLE "ACT_ID_GROUP";
+-- DROP TABLE "ACT_ID_GROUP";
 CREATE TABLE "ACT_ID_GROUP" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -1869,7 +1869,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_ID_INFO
 -- ----------------------------
-DROP TABLE "ACT_ID_INFO";
+-- DROP TABLE "ACT_ID_INFO";
 CREATE TABLE "ACT_ID_INFO" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -1900,7 +1900,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_ID_MEMBERSHIP
 -- ----------------------------
-DROP TABLE "ACT_ID_MEMBERSHIP";
+-- DROP TABLE "ACT_ID_MEMBERSHIP";
 CREATE TABLE "ACT_ID_MEMBERSHIP" (
   "USER_ID_" NVARCHAR2(64) NOT NULL ,
   "GROUP_ID_" NVARCHAR2(64) NOT NULL 
@@ -1925,7 +1925,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_ID_PRIV
 -- ----------------------------
-DROP TABLE "ACT_ID_PRIV";
+-- DROP TABLE "ACT_ID_PRIV";
 CREATE TABLE "ACT_ID_PRIV" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "NAME_" NVARCHAR2(255) NOT NULL 
@@ -1950,7 +1950,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_ID_PRIV_MAPPING
 -- ----------------------------
-DROP TABLE "ACT_ID_PRIV_MAPPING";
+-- DROP TABLE "ACT_ID_PRIV_MAPPING";
 CREATE TABLE "ACT_ID_PRIV_MAPPING" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "PRIV_ID_" NVARCHAR2(64) NOT NULL ,
@@ -1977,7 +1977,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_ID_PROPERTY
 -- ----------------------------
-DROP TABLE "ACT_ID_PROPERTY";
+-- DROP TABLE "ACT_ID_PROPERTY";
 CREATE TABLE "ACT_ID_PROPERTY" (
   "NAME_" NVARCHAR2(64) NOT NULL ,
   "VALUE_" NVARCHAR2(300) ,
@@ -2009,7 +2009,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for ACT_ID_TOKEN
 -- ----------------------------
-DROP TABLE "ACT_ID_TOKEN";
+-- DROP TABLE "ACT_ID_TOKEN";
 CREATE TABLE "ACT_ID_TOKEN" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2040,7 +2040,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_ID_USER
 -- ----------------------------
-DROP TABLE "ACT_ID_USER";
+-- DROP TABLE "ACT_ID_USER";
 CREATE TABLE "ACT_ID_USER" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2072,7 +2072,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_PROCDEF_INFO
 -- ----------------------------
-DROP TABLE "ACT_PROCDEF_INFO";
+-- DROP TABLE "ACT_PROCDEF_INFO";
 CREATE TABLE "ACT_PROCDEF_INFO" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "PROC_DEF_ID_" NVARCHAR2(64) NOT NULL ,
@@ -2099,7 +2099,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RE_DEPLOYMENT
 -- ----------------------------
-DROP TABLE "ACT_RE_DEPLOYMENT";
+-- DROP TABLE "ACT_RE_DEPLOYMENT";
 CREATE TABLE "ACT_RE_DEPLOYMENT" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "NAME_" NVARCHAR2(255) ,
@@ -2132,7 +2132,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RE_MODEL
 -- ----------------------------
-DROP TABLE "ACT_RE_MODEL";
+-- DROP TABLE "ACT_RE_MODEL";
 CREATE TABLE "ACT_RE_MODEL" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2168,7 +2168,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RE_PROCDEF
 -- ----------------------------
-DROP TABLE "ACT_RE_PROCDEF";
+-- DROP TABLE "ACT_RE_PROCDEF";
 CREATE TABLE "ACT_RE_PROCDEF" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2209,7 +2209,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_ACTINST
 -- ----------------------------
-DROP TABLE "ACT_RU_ACTINST";
+-- DROP TABLE "ACT_RU_ACTINST";
 CREATE TABLE "ACT_RU_ACTINST" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER DEFAULT 1 ,
@@ -2248,7 +2248,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_DEADLETTER_JOB
 -- ----------------------------
-DROP TABLE "ACT_RU_DEADLETTER_JOB";
+-- DROP TABLE "ACT_RU_DEADLETTER_JOB";
 CREATE TABLE "ACT_RU_DEADLETTER_JOB" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2293,7 +2293,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_ENTITYLINK
 -- ----------------------------
-DROP TABLE "ACT_RU_ENTITYLINK";
+-- DROP TABLE "ACT_RU_ENTITYLINK";
 CREATE TABLE "ACT_RU_ENTITYLINK" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2327,7 +2327,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_EVENT_SUBSCR
 -- ----------------------------
-DROP TABLE "ACT_RU_EVENT_SUBSCR";
+-- DROP TABLE "ACT_RU_EVENT_SUBSCR";
 CREATE TABLE "ACT_RU_EVENT_SUBSCR" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2365,7 +2365,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_EXECUTION
 -- ----------------------------
-DROP TABLE "ACT_RU_EXECUTION";
+-- DROP TABLE "ACT_RU_EXECUTION";
 CREATE TABLE "ACT_RU_EXECUTION" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2421,7 +2421,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_HISTORY_JOB
 -- ----------------------------
-DROP TABLE "ACT_RU_HISTORY_JOB";
+-- DROP TABLE "ACT_RU_HISTORY_JOB";
 CREATE TABLE "ACT_RU_HISTORY_JOB" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2458,7 +2458,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_IDENTITYLINK
 -- ----------------------------
-DROP TABLE "ACT_RU_IDENTITYLINK";
+-- DROP TABLE "ACT_RU_IDENTITYLINK";
 CREATE TABLE "ACT_RU_IDENTITYLINK" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2492,7 +2492,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_JOB
 -- ----------------------------
-DROP TABLE "ACT_RU_JOB";
+-- DROP TABLE "ACT_RU_JOB";
 CREATE TABLE "ACT_RU_JOB" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2540,7 +2540,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_SUSPENDED_JOB
 -- ----------------------------
-DROP TABLE "ACT_RU_SUSPENDED_JOB";
+-- DROP TABLE "ACT_RU_SUSPENDED_JOB";
 CREATE TABLE "ACT_RU_SUSPENDED_JOB" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2586,7 +2586,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_TASK
 -- ----------------------------
-DROP TABLE "ACT_RU_TASK";
+-- DROP TABLE "ACT_RU_TASK";
 CREATE TABLE "ACT_RU_TASK" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2638,7 +2638,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_TIMER_JOB
 -- ----------------------------
-DROP TABLE "ACT_RU_TIMER_JOB";
+-- DROP TABLE "ACT_RU_TIMER_JOB";
 CREATE TABLE "ACT_RU_TIMER_JOB" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,
@@ -2686,7 +2686,7 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Table structure for ACT_RU_VARIABLE
 -- ----------------------------
-DROP TABLE "ACT_RU_VARIABLE";
+-- DROP TABLE "ACT_RU_VARIABLE";
 CREATE TABLE "ACT_RU_VARIABLE" (
   "ID_" NVARCHAR2(64) NOT NULL ,
   "REV_" NUMBER ,

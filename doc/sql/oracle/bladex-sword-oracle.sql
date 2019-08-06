@@ -80,8 +80,8 @@ COMMENT ON TABLE "BLADE_CLIENT" IS '客户端表';
 -- ----------------------------
 -- Records of BLADE_CLIENT
 -- ----------------------------
-INSERT INTO "BLADE_CLIENT" VALUES ('1123598811738675201', 'sword', 'sword_secret', NULL, 'all', 'refresh_token,PASSWORD,authorization_CODE', 'http://localhost:8888', NULL, '3600', '604800', NULL, NULL, '1123598815738675201', '1123598813738675201', TO_DATE('2019-03-24 10:40:55', 'SYYYY-MM-DD HH24:MI:SS'), '1123598815738675201', TO_DATE('2019-03-24 10:40:59', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
-INSERT INTO "BLADE_CLIENT" VALUES ('1123598811738675202', 'saber', 'saber_secret', NULL, 'all', 'refresh_token,PASSWORD,authorization_CODE', 'http://localhost:8080', NULL, '3600', '604800', NULL, NULL, '1123598815738675201', '1123598813738675201', TO_DATE('2019-03-24 10:42:29', 'SYYYY-MM-DD HH24:MI:SS'), '1123598815738675201', TO_DATE('2019-03-24 10:42:32', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "BLADE_CLIENT" VALUES ('1123598811738675201', 'sword', 'sword_secret', NULL, 'all', 'refresh_token,password,authorization_code', 'http://localhost:8888', NULL, '3600', '604800', NULL, NULL, '1123598815738675201', '1123598813738675201', TO_DATE('2019-03-24 10:40:55', 'SYYYY-MM-DD HH24:MI:SS'), '1123598815738675201', TO_DATE('2019-03-24 10:40:59', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "BLADE_CLIENT" VALUES ('1123598811738675202', 'saber', 'saber_secret', NULL, 'all', 'refresh_token,password,authorization_code', 'http://localhost:8080', NULL, '3600', '604800', NULL, NULL, '1123598815738675201', '1123598813738675201', TO_DATE('2019-03-24 10:42:29', 'SYYYY-MM-DD HH24:MI:SS'), '1123598815738675201', TO_DATE('2019-03-24 10:42:32', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
 COMMIT;
 
 -- ----------------------------
@@ -519,7 +519,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675214', '1123598815738675213', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675215', '1123598815738675213', 'log_api', '接口日志', 'menu', '/monitor/log/api', NULL, '2', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675216', '1123598815738675213', 'log_error', '错误日志', 'menu', '/monitor/log/error', NULL, '3', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675217', '0', 'tool', '研发工具', 'menu', '/tool', 'tool', '4', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675218', '1123598815738675217', 'CODE', '代码生成', 'menu', '/tool/CODE', NULL, '1', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675218', '1123598815738675217', 'code', '代码生成', 'menu', '/tool/code', NULL, '1', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675219', '1123598815738675202', 'notice_add', '新增', 'add', '/desk/notice/add', 'plus', '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675220', '1123598815738675202', 'notice_edit', '修改', 'edit', '/desk/notice/edit', 'form', '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675221', '1123598815738675202', 'notice_delete', '删除', 'delete', '/api/blade-desk/notice/remove', 'delete', '3', '2', '3', '1', NULL, '0');
@@ -528,7 +528,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675223', '1123598815738675204', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675224', '1123598815738675204', 'user_edit', '修改', 'edit', '/system/user/edit', 'form', '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675225', '1123598815738675204', 'user_delete', '删除', 'delete', '/api/blade-user/remove', 'delete', '3', '2', '3', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675226', '1123598815738675204', 'user_role', '角色配置', 'role', NULL, 'user-add', '4', '2', '1', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675227', '1123598815738675204', 'user_reset', '密码重置', 'reset-PASSWORD', '/api/blade-user/reset-PASSWORD', 'retweet', '5', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675227', '1123598815738675204', 'user_reset', '密码重置', 'reset-password', '/api/blade-user/reset-password', 'retweet', '5', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675228', '1123598815738675204', 'user_view', '查看', 'view', '/system/user/view', 'file-text', '6', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675229', '1123598815738675205', 'dept_add', '新增', 'add', '/system/dept/add', 'plus', '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675230', '1123598815738675205', 'dept_edit', '修改', 'edit', '/system/dept/edit', 'form', '2', '2', '2', '1', NULL, '0');
@@ -553,10 +553,10 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675248', '1123598815738675209', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675249', '1123598815738675214', 'log_usual_view', '查看', 'view', '/monitor/log/usual/view', 'file-text', '4', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675250', '1123598815738675215', 'log_api_view', '查看', 'view', '/monitor/log/api/view', 'file-text', '4', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675251', '1123598815738675216', 'log_error_view', '查看', 'view', '/monitor/log/error/view', 'file-text', '4', '2', '2', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675252', '1123598815738675218', 'CODE_add', '新增', 'add', '/tool/CODE/add', 'plus', '1', '2', '1', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675253', '1123598815738675218', 'CODE_edit', '修改', 'edit', '/tool/CODE/edit', 'form', '2', '2', '2', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675254', '1123598815738675218', 'CODE_delete', '删除', 'delete', '/api/blade-develop/CODE/remove', 'delete', '3', '2', '3', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675255', '1123598815738675218', 'CODE_view', '查看', 'view', '/tool/CODE/view', 'file-text', '4', '2', '2', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675252', '1123598815738675218', 'code_add', '新增', 'add', '/tool/code/add', 'plus', '1', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675253', '1123598815738675218', 'code_edit', '修改', 'edit', '/tool/code/edit', 'form', '2', '2', '2', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675254', '1123598815738675218', 'code_delete', '删除', 'delete', '/api/blade-develop/code/remove', 'delete', '3', '2', '3', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675255', '1123598815738675218', 'code_view', '查看', 'view', '/tool/code/view', 'file-text', '4', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675256', '1123598815738675203', 'tenant', '租户管理', 'menu', '/system/tenant', NULL, '7', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675257', '1123598815738675256', 'tenant_add', '新增', 'add', '/system/tenant/add', 'plus', '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675258', '1123598815738675256', 'tenant_edit', '修改', 'edit', '/system/tenant/edit', 'form', '2', '2', '2', '1', NULL, '0');

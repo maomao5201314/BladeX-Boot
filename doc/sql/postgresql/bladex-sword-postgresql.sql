@@ -1137,25 +1137,26 @@ COMMENT ON TABLE "blade_top_menu_setting" IS '顶部菜单配置表';
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_user";
 CREATE TABLE "blade_user" (
-  "id" int8 NOT NULL,
-  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
-  "account" varchar(45) COLLATE "pg_catalog"."default",
-  "password" varchar(45) COLLATE "pg_catalog"."default",
-  "name" varchar(20) COLLATE "pg_catalog"."default",
-  "real_name" varchar(10) COLLATE "pg_catalog"."default",
-  "email" varchar(45) COLLATE "pg_catalog"."default",
-  "phone" varchar(45) COLLATE "pg_catalog"."default",
-  "birthday" timestamp(6),
-  "sex" int2,
-  "role_id" varchar(1000) COLLATE "pg_catalog"."default",
-  "dept_id" varchar(1000) COLLATE "pg_catalog"."default",
-  "create_user" int8,
-  "create_dept" int8,
-  "create_time" timestamp(6),
-  "update_user" int8,
-  "update_time" timestamp(6),
-  "status" int4,
-  "is_deleted" int4
+"id" int8 NOT NULL,
+"tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+"account" varchar(45) COLLATE "pg_catalog"."default",
+"password" varchar(45) COLLATE "pg_catalog"."default",
+"name" varchar(20) COLLATE "pg_catalog"."default",
+"real_name" varchar(10) COLLATE "pg_catalog"."default",
+"avatar" varchar(500) COLLATE "pg_catalog"."default",
+"email" varchar(45) COLLATE "pg_catalog"."default",
+"phone" varchar(45) COLLATE "pg_catalog"."default",
+"birthday" timestamp(6),
+"sex" int2,
+"role_id" varchar(1000) COLLATE "pg_catalog"."default",
+"dept_id" varchar(1000) COLLATE "pg_catalog"."default",
+"create_user" int8,
+"create_dept" int8,
+"create_time" timestamp(6),
+"update_user" int8,
+"update_time" timestamp(6),
+"status" int4,
+"is_deleted" int4
 )
 ;
 COMMENT ON COLUMN "blade_user"."id" IS '主键';
@@ -1164,6 +1165,7 @@ COMMENT ON COLUMN "blade_user"."account" IS '账号';
 COMMENT ON COLUMN "blade_user"."password" IS '密码';
 COMMENT ON COLUMN "blade_user"."name" IS '昵称';
 COMMENT ON COLUMN "blade_user"."real_name" IS '真名';
+COMMENT ON COLUMN "blade_user"."email" IS '头像';
 COMMENT ON COLUMN "blade_user"."email" IS '邮箱';
 COMMENT ON COLUMN "blade_user"."phone" IS '手机';
 COMMENT ON COLUMN "blade_user"."birthday" IS '生日';
@@ -1183,10 +1185,10 @@ COMMENT ON TABLE "blade_user" IS '用户表';
 -- Records of blade_user
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_user" VALUES (1123598821738675201, '000000', 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员', '管理员', 'admin@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675201', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2018-08-08 00:00:00', 1123598821738675201, '2018-08-08 00:00:00', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675202, '000000', 'hr', '5e79b90f7bba52d54115f086e48f539016a27ec6', '人事', '人事', 'hr@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675203', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:10', 1123598821738675201, '2019-04-27 17:03:10', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675203, '000000', 'manager', 'dfbaa3b61caa3a319f463cc165085aa8c822d2ce', '经理', '经理', 'manager@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675204', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:38', 1123598821738675201, '2019-04-27 17:03:38', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675204, '000000', 'boss', 'abe57d23e18f7ad8ea99c86e430c90a05119a9d3', '老板', '老板', 'boss@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675205', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:55', 1123598821738675201, '2019-04-27 17:03:55', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675201, '000000', 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员', '管理员', '', 'admin@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675201', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2018-08-08 00:00:00', 1123598821738675201, '2018-08-08 00:00:00', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675202, '000000', 'hr', '5e79b90f7bba52d54115f086e48f539016a27ec6', '人事', '人事', '', 'hr@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675203', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:10', 1123598821738675201, '2019-04-27 17:03:10', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675203, '000000', 'manager', 'dfbaa3b61caa3a319f463cc165085aa8c822d2ce', '经理', '经理', '', 'manager@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675204', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:38', 1123598821738675201, '2019-04-27 17:03:38', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675204, '000000', 'boss', 'abe57d23e18f7ad8ea99c86e430c90a05119a9d3', '老板', '老板', '', 'boss@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675205', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:55', 1123598821738675201, '2019-04-27 17:03:55', 1, 0);
 COMMIT;
 
 -- ----------------------------

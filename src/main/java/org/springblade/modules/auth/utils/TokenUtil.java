@@ -73,7 +73,7 @@ public class TokenUtil {
 				.set(TokenConstant.USER_NAME, user.getAccount())
 				.set(TokenConstant.NICK_NAME, user.getRealName())
 				.set(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()))
-				.set(TokenConstant.AVATAR, TokenConstant.DEFAULT_AVATAR)
+				.set(TokenConstant.AVATAR, Func.toStr(user.getAvatar(), TokenConstant.DEFAULT_AVATAR))
 				.set(TokenConstant.ACCESS_TOKEN, accessToken.getToken())
 				.set(TokenConstant.REFRESH_TOKEN, createRefreshToken(userInfo).getToken())
 				.set(TokenConstant.TOKEN_TYPE, TokenConstant.BEARER)

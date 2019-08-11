@@ -149,10 +149,13 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 			flow.setCategoryName(FlowCache.getCategoryName(processDefinition.getCategory()));
 			flow.setProcessInstanceId(historicProcessInstance.getId());
 			// HistoricTaskInstance
-			HistoricTaskInstance historyTask = historyService.createHistoricTaskInstanceQuery().processInstanceId(historicProcessInstance.getId()).orderByHistoricTaskInstanceEndTime().desc().list().get(0);
-			flow.setTaskId(historyTask.getId());
-			flow.setTaskName(historyTask.getName());
-			flow.setTaskDefinitionKey(historyTask.getTaskDefinitionKey());
+			List<HistoricTaskInstance> historyTasks = historyService.createHistoricTaskInstanceQuery().processInstanceId(historicProcessInstance.getId()).orderByHistoricTaskInstanceEndTime().desc().list();
+			if (Func.isNotEmpty(historyTasks)) {
+				HistoricTaskInstance historyTask = historyTasks.iterator().next();
+				flow.setTaskId(historyTask.getId());
+				flow.setTaskName(historyTask.getName());
+				flow.setTaskDefinitionKey(historyTask.getTaskDefinitionKey());
+			}
 			// Status
 			if (historicProcessInstance.getEndActivityId() != null) {
 				flow.setProcessIsFinished(FlowEngineConstant.STATUS_FINISHED);

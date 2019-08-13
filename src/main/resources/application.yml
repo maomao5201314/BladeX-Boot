@@ -103,14 +103,12 @@ oss:
 #blade配置
 blade:
   xss:
-    url:
-      exclude-patterns:
-        - /weixin
-        - /notice/submit
+    skip-url:
+      - /weixin
+      - /notice/submit
   secure:
-    url:
-      exclude-patterns:
-        - /blade-test/**
+    skip-url:
+      - /blade-test/**
     client:
       - client-id: sword
         path-patterns:

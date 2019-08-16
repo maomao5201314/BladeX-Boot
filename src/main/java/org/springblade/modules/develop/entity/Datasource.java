@@ -37,6 +37,11 @@ public class Datasource extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * 名称
+	 */
+	@ApiModelProperty(value = "名称")
+	private String name;
+	/**
 	 * 驱动类
 	 */
 	@ApiModelProperty(value = "驱动类")
@@ -45,7 +50,7 @@ public class Datasource extends BaseEntity {
 	 * 连接地址
 	 */
 	@ApiModelProperty(value = "连接地址")
-	private String jdbcUrl;
+	private String url;
 	/**
 	 * 用户名
 	 */

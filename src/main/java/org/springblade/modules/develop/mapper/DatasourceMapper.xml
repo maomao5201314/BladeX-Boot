@@ -13,7 +13,7 @@
         <result column="status" property="status"/>
         <result column="is_deleted" property="isDeleted"/>
         <result column="driver_class" property="driverClass"/>
-        <result column="jdbc_url" property="jdbcUrl"/>
+        <result column="url" property="url"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="remark" property="remark"/>

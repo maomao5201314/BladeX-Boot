@@ -14,12 +14,17 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+    #driver-class-name: org.postgresql.Driver
+    #driver-class-name: oracle.jdbc.OracleDriver
     druid:
+      # MySql、PostgreSQL校验
+      validation-query: select 1
+      # Oracle校验
+      #validation-query: select 1 from dual
       initial-size: 5
       max-active: 20
       min-idle: 5
       max-wait: 60000
-      validation-query: select 1
       validation-query-timeout: 2000
       test-on-borrow: false
       test-on-return: false

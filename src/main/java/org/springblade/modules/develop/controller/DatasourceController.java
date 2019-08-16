@@ -97,6 +97,7 @@ public class DatasourceController extends BladeController {
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "新增或修改", notes = "传入datasource")
 	public R submit(@Valid @RequestBody Datasource datasource) {
+		datasource.setUrl(datasource.getUrl().replace("&amp;", "&"));
 		return R.status(datasourceService.saveOrUpdate(datasource));
 	}
 

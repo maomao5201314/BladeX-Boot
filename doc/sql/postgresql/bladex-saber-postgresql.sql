@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 27/07/2019 21:02:41
+ Date: 16/08/2019 23:00:21
 */
 
 
@@ -77,12 +77,15 @@ COMMIT;
 DROP TABLE IF EXISTS "blade_code";
 CREATE TABLE "blade_code" (
   "id" int8 NOT NULL,
+  "datasource_id" int8,
   "service_name" varchar(64) COLLATE "pg_catalog"."default",
   "code_name" varchar(64) COLLATE "pg_catalog"."default",
   "table_name" varchar(64) COLLATE "pg_catalog"."default",
   "table_prefix" varchar(64) COLLATE "pg_catalog"."default",
   "pk_name" varchar(32) COLLATE "pg_catalog"."default",
   "package_name" varchar(500) COLLATE "pg_catalog"."default",
+  "base_mode" int2,
+  "wrap_mode" int2,
   "api_path" varchar(2000) COLLATE "pg_catalog"."default",
   "web_path" varchar(2000) COLLATE "pg_catalog"."default",
   "is_deleted" int4
@@ -98,13 +101,62 @@ COMMENT ON COLUMN "blade_code"."package_name" IS '后端包名';
 COMMENT ON COLUMN "blade_code"."api_path" IS '后端路径';
 COMMENT ON COLUMN "blade_code"."web_path" IS '前端路径';
 COMMENT ON COLUMN "blade_code"."is_deleted" IS '是否已删除';
+COMMENT ON COLUMN "blade_code"."datasource_id" IS '数据源主键';
+COMMENT ON COLUMN "blade_code"."base_mode" IS '基础业务模式';
+COMMENT ON COLUMN "blade_code"."wrap_mode" IS '包装器模式';
 COMMENT ON TABLE "blade_code" IS '代码生成表';
 
 -- ----------------------------
 -- Records of blade_code
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_code" VALUES (1123598812738675201, 'blade-demo', '通知公告', 'blade_notice', 'blade_', 'id', 'org.springblade.desktop', 'D:\Develop\WorkSpace\Git\SpringBlade\blade-ops\blade-develop', 'D:\Develop\WorkSpace\Git\Sword', 0);
+INSERT INTO "blade_code" VALUES (1123598812738675201, 1161483357481541634, 'blade-demo', '通知公告', 'blade_notice', 'blade_', 'id', 'org.springblade.desktop', 1, 1, 'D:\Develop\WorkSpace\Git\SpringBlade\blade-ops\blade-develop', 'D:\Develop\WorkSpace\Git\Sword', 0);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for blade_datasource
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_datasource";
+CREATE TABLE "blade_datasource" (
+  "id" int8 NOT NULL,
+  "name" varchar(100) COLLATE "pg_catalog"."default",
+  "driver_class" varchar(100) COLLATE "pg_catalog"."default",
+  "url" varchar(500) COLLATE "pg_catalog"."default",
+  "username" varchar(45) COLLATE "pg_catalog"."default",
+  "password" varchar(45) COLLATE "pg_catalog"."default",
+  "remark" varchar(500) COLLATE "pg_catalog"."default",
+  "create_user" int8,
+  "create_dept" int8,
+  "create_time" timestamp(6),
+  "update_user" int8,
+  "update_time" timestamp(6),
+  "status" int4,
+  "is_deleted" int4
+)
+;
+COMMENT ON COLUMN "blade_datasource"."id" IS '主键';
+COMMENT ON COLUMN "blade_datasource"."name" IS '名称';
+COMMENT ON COLUMN "blade_datasource"."driver_class" IS '驱动类';
+COMMENT ON COLUMN "blade_datasource"."url" IS '链接地址';
+COMMENT ON COLUMN "blade_datasource"."username" IS '用户名';
+COMMENT ON COLUMN "blade_datasource"."password" IS '密码';
+COMMENT ON COLUMN "blade_datasource"."remark" IS '备注';
+COMMENT ON COLUMN "blade_datasource"."create_user" IS '创建人';
+COMMENT ON COLUMN "blade_datasource"."create_dept" IS '创建部门';
+COMMENT ON COLUMN "blade_datasource"."create_time" IS '创建时间';
+COMMENT ON COLUMN "blade_datasource"."update_user" IS '修改人';
+COMMENT ON COLUMN "blade_datasource"."update_time" IS '修改时间';
+COMMENT ON COLUMN "blade_datasource"."status" IS '状态';
+COMMENT ON COLUMN "blade_datasource"."is_deleted" IS '是否已删除';
+COMMENT ON TABLE "blade_datasource" IS '数据源配置表';
+
+-- ----------------------------
+-- Records of blade_datasource
+-- ----------------------------
+BEGIN;
+INSERT INTO "blade_datasource" VALUES (1161483357481541634, 'mysql', 'com.mysql.cj.jdbc.Driver', 'jdbc:mysql://localhost:3306/bladex?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true', 'root', 'root', 'mysql', 1123598821738675201, 1123598813738675201, '2019-08-14 11:43:06', 1123598821738675201, '2019-08-14 11:43:06', 1, 0);
+INSERT INTO "blade_datasource" VALUES (1161483504353484802, 'postgresql', 'org.postgresql.Driver', 'jdbc:postgresql://127.0.0.1:5432/bladex', 'postgres', '123456', 'postgresql', 1123598821738675201, 1123598813738675201, '2019-08-14 11:43:41', 1123598821738675201, '2019-08-14 11:43:41', 1, 0);
+INSERT INTO "blade_datasource" VALUES (1161483594023510018, 'oracle', 'oracle.jdbc.OracleDriver', 'jdbc:oracle:thin:@127.0.0.1:49161:orcl', 'BLADEX', 'bladex', 'oracle', 1123598821738675201, 1123598813738675201, '2019-08-14 11:44:03', 1123598821738675201, '2019-08-14 11:44:03', 1, 0);
 COMMIT;
 
 -- ----------------------------
@@ -503,6 +555,11 @@ INSERT INTO "blade_menu" VALUES (1123598815738675314, 1123598815738675208, 'topm
 INSERT INTO "blade_menu" VALUES (1123598815738675315, 1123598815738675208, 'topmenu_delete', '删除', 'delete', '/api/blade-system/topmenu/remove', 'delete', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675316, 1123598815738675208, 'topmenu_view', '查看', 'view', '/system/topmenu/view', 'file-text', 4, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675317, 1123598815738675208, 'topmenu_setting', '菜单配置', 'setting', NULL, 'setting', 5, 2, 1, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1161272593873321991, 1123598815738675217, 'datasource', '数据源管理', 'menu', '/tool/datasource', 'iconfont icon-caidanguanli', 2, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1161272593873321992, 1161272593873321991, 'datasource_add', '新增', 'add', '/tool/datasource/add', 'plus', 1, 2, 1, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1161272593873321993, 1161272593873321991, 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', 2, 2, 2, 2, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1161272593873321994, 1161272593873321991, 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', 3, 2, 3, 3, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1161272593873321995, 1161272593873321991, 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', 4, 2, 2, 2, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -941,6 +998,11 @@ INSERT INTO "blade_role_menu" VALUES (1149888293999439874, 1123598815738675262, 
 INSERT INTO "blade_role_menu" VALUES (1149888294007828482, 1123598815738675263, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1149888294020411393, 1123598815738675264, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1149888294028800002, 1123598815738675265, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272593873322991, 1161272593873321991, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272593873322992, 1161272593873321992, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272593873322993, 1161272593873321993, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272593873322994, 1161272593873321994, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272593873322995, 1161272593873321995, 1123598816738675201);
 COMMIT;
 
 -- ----------------------------
@@ -1165,7 +1227,7 @@ COMMENT ON COLUMN "blade_user"."account" IS '账号';
 COMMENT ON COLUMN "blade_user"."password" IS '密码';
 COMMENT ON COLUMN "blade_user"."name" IS '昵称';
 COMMENT ON COLUMN "blade_user"."real_name" IS '真名';
-COMMENT ON COLUMN "blade_user"."email" IS '头像';
+COMMENT ON COLUMN "blade_user"."avatar" IS '头像';
 COMMENT ON COLUMN "blade_user"."email" IS '邮箱';
 COMMENT ON COLUMN "blade_user"."phone" IS '手机';
 COMMENT ON COLUMN "blade_user"."birthday" IS '生日';
@@ -1200,6 +1262,11 @@ ALTER TABLE "blade_client" ADD CONSTRAINT "blade_client_pkey" PRIMARY KEY ("id")
 -- Primary Key structure for table blade_code
 -- ----------------------------
 ALTER TABLE "blade_code" ADD CONSTRAINT "blade_code_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table blade_datasource
+-- ----------------------------
+ALTER TABLE "blade_datasource" ADD CONSTRAINT "blade_datasource_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table blade_dept

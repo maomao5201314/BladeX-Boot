@@ -69,7 +69,8 @@ public class TokenUtil {
 		try {
 			TokenInfo accessToken = SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.ACCESS_TOKEN);
 			//返回accessToken
-			return authInfo.set(TokenConstant.ACCOUNT, user.getAccount())
+			return authInfo.set(TokenConstant.TENANT_ID, user.getTenantId())
+				.set(TokenConstant.ACCOUNT, user.getAccount())
 				.set(TokenConstant.USER_NAME, user.getAccount())
 				.set(TokenConstant.NICK_NAME, user.getRealName())
 				.set(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()))

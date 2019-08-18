@@ -92,7 +92,7 @@ public class RoleController extends BladeController {
 	@ApiOperationSupport(order = 3)
 	@ApiOperation(value = "树形结构", notes = "树形结构")
 	public R<List<RoleVO>> tree(String tenantId, BladeUser bladeUser) {
-		List<RoleVO> tree = roleService.tree(Func.toStr(tenantId, bladeUser.getTenantId()));
+		List<RoleVO> tree = roleService.tree(Func.toStrWithEmpty(tenantId, bladeUser.getTenantId()));
 		return R.data(tree);
 	}
 

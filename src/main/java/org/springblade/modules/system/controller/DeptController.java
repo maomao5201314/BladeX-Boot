@@ -91,7 +91,7 @@ public class DeptController extends BladeController {
 	@ApiOperationSupport(order = 3)
 	@ApiOperation(value = "树形结构", notes = "树形结构")
 	public R<List<DeptVO>> tree(String tenantId, BladeUser bladeUser) {
-		List<DeptVO> tree = deptService.tree(Func.toStr(tenantId, bladeUser.getTenantId()));
+		List<DeptVO> tree = deptService.tree(Func.toStrWithEmpty(tenantId, bladeUser.getTenantId()));
 		return R.data(tree);
 	}
 

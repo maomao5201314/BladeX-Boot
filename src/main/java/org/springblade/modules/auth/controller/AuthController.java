@@ -74,6 +74,10 @@ public class AuthController {
 			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_description", "用户名或密码不正确");
 		}
 
+		if (Func.isEmpty(userInfo.getRoles())) {
+			return authInfo.set("error_code", HttpServletResponse.SC_BAD_REQUEST).set("error_description", "未获得用户的角色信息");
+		}
+
 		return TokenUtil.createAuthInfo(userInfo);
 	}
 

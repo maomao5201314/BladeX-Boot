@@ -87,6 +87,8 @@ public class OssBuilder {
 						template = MinioBuilder.template(oss, ossRule);
 					} else if (oss.getCategory() == OssEnum.QINIU.getCategory()) {
 						template = QiniuBuilder.template(oss, ossRule);
+					} else if (oss.getCategory() == OssEnum.ALI.getCategory()) {
+						template = AliBuilder.template(oss, ossRule);
 					}
 					templatePool.put(tenantId, template);
 					ossPool.put(tenantId, oss);

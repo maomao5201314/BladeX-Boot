@@ -22,4 +22,4 @@ DELETE FROM "blade_dict" WHERE CODE = 'oss';
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_deleted") VALUES (1123598814738676224, 0, 'oss', -1, '对象存储类型', 6, NULL, 0);
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_deleted") VALUES (1123598814738676225, 1123598814738676224, 'oss', 1, 'minio', 1, NULL, 0);
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_deleted") VALUES (1123598814738676226, 1123598814738676224, 'oss', 2, 'qiniu', 2, NULL, 0);
-INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_deleted") VALUES (1123598814738676227, 1123598814738676224, 'oss', 3, 'qiniu', 3, NULL, 0);
+INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_deleted") VALUES (1123598814738676227, 1123598814738676224, 'oss', 3, 'ali', 3, NULL, 0);

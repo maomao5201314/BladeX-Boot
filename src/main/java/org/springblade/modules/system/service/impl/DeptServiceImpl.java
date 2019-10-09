@@ -68,6 +68,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 	public boolean submit(Dept dept) {
 		if (dept.getParentId() == null) {
 			dept.setParentId(BladeConstant.TOP_PARENT_ID);
+			dept.setAncestors("0");
 		}
 		if (dept.getParentId() > 0) {
 			Dept parent = getById(dept.getParentId());

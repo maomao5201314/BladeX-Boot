@@ -66,7 +66,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
 	@Override
 	public boolean submit(Dept dept) {
-		if (dept.getParentId() == null) {
+		if (Func.isEmpty(dept.getParentId())) {
 			dept.setParentId(BladeConstant.TOP_PARENT_ID);
 			dept.setAncestors("0");
 		}

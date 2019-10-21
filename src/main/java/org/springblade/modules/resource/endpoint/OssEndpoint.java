@@ -22,7 +22,9 @@ import lombok.SneakyThrows;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.oss.model.BladeFile;
 import org.springblade.core.oss.model.OssFile;
+import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
+import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.resource.builder.OssBuilder;
 import org.springframework.web.bind.annotation.*;
@@ -49,6 +51,7 @@ public class OssEndpoint {
 	 */
 	@SneakyThrows
 	@PostMapping("/make-bucket")
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R makeBucket(@RequestParam String bucketName) {
 		ossBuilder.template().makeBucket(bucketName);
 		return R.success("创建成功");
@@ -62,6 +65,7 @@ public class OssEndpoint {
 	 */
 	@SneakyThrows
 	@PostMapping("/remove-bucket")
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R removeBucket(@RequestParam String bucketName) {
 		ossBuilder.template().removeBucket(bucketName);
 		return R.success("删除成功");
@@ -154,6 +158,7 @@ public class OssEndpoint {
 	 */
 	@SneakyThrows
 	@PostMapping("/remove-file")
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R removeFile(@RequestParam String fileName) {
 		ossBuilder.template().removeFile(fileName);
 		return R.success("操作成功");
@@ -167,6 +172,7 @@ public class OssEndpoint {
 	 */
 	@SneakyThrows
 	@PostMapping("/remove-files")
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R removeFiles(@RequestParam String fileNames) {
 		ossBuilder.template().removeFiles(Func.toStrList(fileNames));
 		return R.success("操作成功");

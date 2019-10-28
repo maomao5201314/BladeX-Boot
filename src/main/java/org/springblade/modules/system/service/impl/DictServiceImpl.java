@@ -72,6 +72,9 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 		if (cnt > 0) {
 			throw new ApiException("当前字典键值已存在!");
 		}
+		if (Func.isEmpty(dict.getParentId())) {
+			dict.setParentId(BladeConstant.TOP_PARENT_ID);
+		}
 		dict.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		return saveOrUpdate(dict);
 	}

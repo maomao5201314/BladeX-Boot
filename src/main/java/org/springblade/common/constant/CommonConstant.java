@@ -71,6 +71,11 @@ public interface CommonConstant {
 	String DEFAULT_PASSWORD = "123456";
 
 	/**
+	 * 默认排序字段
+	 */
+	String SORT_FIELD = "sort";
+
+	/**
 	 * 动态获取sentinel地址
 	 *
 	 * @param profile 环境变量

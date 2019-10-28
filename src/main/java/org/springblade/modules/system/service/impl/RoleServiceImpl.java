@@ -134,12 +134,15 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	@Override
 	public boolean submit(Role role) {
-		role.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		if (!SecureUtil.isAdministrator()) {
 			if (Func.toStr(role.getRoleAlias()).equals(RoleConstant.ADMINISTRATOR)) {
 				throw new ServiceException("无权限创建超管角色！");
 			}
 		}
+		if (Func.isEmpty(role.getParentId())) {
+			role.setParentId(BladeConstant.TOP_PARENT_ID);
+		}
+		role.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		return saveOrUpdate(role);
 	}
 

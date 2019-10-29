@@ -66,6 +66,11 @@ public interface CommonConstant {
 	String TOP_PARENT_NAME = "顶级";
 
 	/**
+	 * 未封存状态值
+	 */
+	Integer NOT_SEALED_ID = 0;
+
+	/**
 	 * 默认密码
 	 */
 	String DEFAULT_PASSWORD = "123456";

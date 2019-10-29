@@ -10,18 +10,12 @@
     <version>2.1.0.RELEASE</version>
 
     <properties>
-        <bladex.tool.version>2.1.0.RELEASE</bladex.tool.version>
 
         <java.version>1.8</java.version>
         <maven.plugin.version>3.8.1</maven.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <swagger.version>2.9.2</swagger.version>
-        <swagger.models.version>1.5.21</swagger.models.version>
-        <swagger.bootstrapui.version>1.9.6</swagger.bootstrapui.version>
-        <mybatis.plus.version>3.2.0</mybatis.plus.version>
-        <protostuff.version>1.6.0</protostuff.version>
         <flowable.version>6.4.2</flowable.version>
 
         <spring.boot.version>2.1.8.RELEASE</spring.boot.version>
@@ -49,6 +43,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springblade.platform</groupId>
+                <artifactId>blade-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -57,7 +58,6 @@
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-core-boot</artifactId>
-            <version>${bladex.tool.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springblade</groupId>
@@ -68,48 +68,39 @@
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-datascope</artifactId>
-            <version>${bladex.tool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-swagger</artifactId>
-            <version>${bladex.tool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-tenant</artifactId>
-            <version>${bladex.tool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-develop</artifactId>
-            <version>${bladex.tool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-minio</artifactId>
-            <version>${bladex.tool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-qiniu</artifactId>
-            <version>${bladex.tool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-alioss</artifactId>
-            <version>${bladex.tool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-core-auto</artifactId>
-            <version>${bladex.tool.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-core-test</artifactId>
-            <version>${bladex.tool.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- 工作流 -->
@@ -127,7 +118,6 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>${mybatis.plus.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

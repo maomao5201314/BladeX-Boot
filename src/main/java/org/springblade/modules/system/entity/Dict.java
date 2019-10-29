@@ -86,6 +86,12 @@ public class Dict implements Serializable {
 	private String remark;
 
 	/**
+	 * 是否已封存
+	 */
+	@ApiModelProperty(value = "是否已封存")
+	private Integer isSealed;
+
+	/**
 	 * 是否已删除
 	 */
 	@TableLogic

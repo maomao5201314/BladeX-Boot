@@ -42,10 +42,6 @@ spring:
         session-stat-enable: true
         session-stat-max-count: 10
 
-#配置日志地址
-logging:
-  config: classpath:log/logback-${blade.env}.xml
-
 # mybatis
 mybatis-plus:
   mapper-locations: classpath:org/springblade/**/mapper/*Mapper.xml
@@ -77,7 +73,7 @@ mybatis-plus:
 swagger:
   title: BladeX 接口文档系统
   description: BladeX 接口文档系统
-  version: 2.1.0
+  version: 2.2.0
   license: Powered By BladeX
   license-url: https://bladex.vip
   terms-of-service-url: https://bladex.vip
@@ -98,7 +94,7 @@ oss:
   enable: true
   name: qiniu
   tenant-mode: true
-  endpoint: prt1thnw3.bkt.clouddn.com
+  endpoint: http://prt1thnw3.bkt.clouddn.com
   access-key: N_Loh1ngBqcJovwiAJqR91Ifj2vgOWHOf8AwBA_h
   secret-key: AuzuA1KHAbkIndCU0dB3Zfii2O3crHNODDmpxHRS
   bucket-name: bladex

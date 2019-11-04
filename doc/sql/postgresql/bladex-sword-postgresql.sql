@@ -324,25 +324,26 @@ COMMENT ON TABLE "blade_log_api" IS '接口日志表';
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_log_error";
 CREATE TABLE "blade_log_error" (
-  "id" int8 NOT NULL,
-  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
-  "service_id" varchar(32) COLLATE "pg_catalog"."default",
-  "server_host" varchar(255) COLLATE "pg_catalog"."default",
-  "server_ip" varchar(255) COLLATE "pg_catalog"."default",
-  "env" varchar(255) COLLATE "pg_catalog"."default",
-  "method" varchar(10) COLLATE "pg_catalog"."default",
-  "request_uri" varchar(255) COLLATE "pg_catalog"."default",
-  "user_agent" varchar(1000) COLLATE "pg_catalog"."default",
-  "stack_trace" text COLLATE "pg_catalog"."default",
-  "exception_name" varchar(255) COLLATE "pg_catalog"."default",
-  "message" text COLLATE "pg_catalog"."default",
-  "line_number" int4,
-  "method_class" varchar(255) COLLATE "pg_catalog"."default",
-  "file_name" varchar(1000) COLLATE "pg_catalog"."default",
-  "method_name" varchar(255) COLLATE "pg_catalog"."default",
-  "params" text COLLATE "pg_catalog"."default",
-  "create_by" varchar(64) COLLATE "pg_catalog"."default",
-  "create_time" timestamp(6)
+   "id" int8 NOT NULL,
+   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+   "service_id" varchar(32) COLLATE "pg_catalog"."default",
+   "server_host" varchar(255) COLLATE "pg_catalog"."default",
+   "server_ip" varchar(255) COLLATE "pg_catalog"."default",
+   "env" varchar(255) COLLATE "pg_catalog"."default",
+   "method" varchar(10) COLLATE "pg_catalog"."default",
+   "request_uri" varchar(255) COLLATE "pg_catalog"."default",
+   "user_agent" varchar(1000) COLLATE "pg_catalog"."default",
+   "stack_trace" text COLLATE "pg_catalog"."default",
+   "exception_name" varchar(255) COLLATE "pg_catalog"."default",
+   "message" text COLLATE "pg_catalog"."default",
+   "line_number" int4,
+   "remote_ip" varchar(255) COLLATE "pg_catalog"."default",
+   "method_class" varchar(255) COLLATE "pg_catalog"."default",
+   "file_name" varchar(1000) COLLATE "pg_catalog"."default",
+   "method_name" varchar(255) COLLATE "pg_catalog"."default",
+   "params" text COLLATE "pg_catalog"."default",
+   "create_by" varchar(64) COLLATE "pg_catalog"."default",
+   "create_time" timestamp(6)
 )
 ;
 COMMENT ON COLUMN "blade_log_error"."id" IS '编号';
@@ -358,6 +359,7 @@ COMMENT ON COLUMN "blade_log_error"."stack_trace" IS '堆栈';
 COMMENT ON COLUMN "blade_log_error"."exception_name" IS '异常名';
 COMMENT ON COLUMN "blade_log_error"."message" IS '异常信息';
 COMMENT ON COLUMN "blade_log_error"."line_number" IS '错误行数';
+COMMENT ON COLUMN "blade_log_error"."remote_ip" IS '操作IP地址';
 COMMENT ON COLUMN "blade_log_error"."method_class" IS '方法类';
 COMMENT ON COLUMN "blade_log_error"."file_name" IS '文件名';
 COMMENT ON COLUMN "blade_log_error"."method_name" IS '方法名';
@@ -371,21 +373,24 @@ COMMENT ON TABLE "blade_log_error" IS '错误日志表';
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_log_usual";
 CREATE TABLE "blade_log_usual" (
-  "id" int8 NOT NULL,
-  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
-  "service_id" varchar(32) COLLATE "pg_catalog"."default",
-  "server_host" varchar(255) COLLATE "pg_catalog"."default",
-  "server_ip" varchar(255) COLLATE "pg_catalog"."default",
-  "env" varchar(255) COLLATE "pg_catalog"."default",
-  "log_level" varchar(10) COLLATE "pg_catalog"."default",
-  "log_id" varchar(100) COLLATE "pg_catalog"."default",
-  "log_data" text COLLATE "pg_catalog"."default",
-  "method" varchar(10) COLLATE "pg_catalog"."default",
-  "request_uri" varchar(255) COLLATE "pg_catalog"."default",
-  "user_agent" varchar(1000) COLLATE "pg_catalog"."default",
-  "params" text COLLATE "pg_catalog"."default",
-  "create_by" varchar(64) COLLATE "pg_catalog"."default",
-  "create_time" timestamp(6)
+   "id" int8 NOT NULL,
+   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+   "service_id" varchar(32) COLLATE "pg_catalog"."default",
+   "server_host" varchar(255) COLLATE "pg_catalog"."default",
+   "server_ip" varchar(255) COLLATE "pg_catalog"."default",
+   "env" varchar(255) COLLATE "pg_catalog"."default",
+   "log_level" varchar(10) COLLATE "pg_catalog"."default",
+   "log_id" varchar(100) COLLATE "pg_catalog"."default",
+   "log_data" text COLLATE "pg_catalog"."default",
+   "method" varchar(10) COLLATE "pg_catalog"."default",
+   "request_uri" varchar(255) COLLATE "pg_catalog"."default",
+   "remote_ip" varchar(255) COLLATE "pg_catalog"."default",
+   "method_class" varchar(255) COLLATE "pg_catalog"."default",
+   "method_name" varchar(255) COLLATE "pg_catalog"."default",
+   "user_agent" varchar(1000) COLLATE "pg_catalog"."default",
+   "params" text COLLATE "pg_catalog"."default",
+   "create_by" varchar(64) COLLATE "pg_catalog"."default",
+   "create_time" timestamp(6)
 )
 ;
 COMMENT ON COLUMN "blade_log_usual"."id" IS '编号';
@@ -399,6 +404,9 @@ COMMENT ON COLUMN "blade_log_usual"."log_id" IS '日志业务id';
 COMMENT ON COLUMN "blade_log_usual"."log_data" IS '日志数据';
 COMMENT ON COLUMN "blade_log_usual"."method" IS '操作方式';
 COMMENT ON COLUMN "blade_log_usual"."request_uri" IS '请求URI';
+COMMENT ON COLUMN "blade_log_error"."remote_ip" IS '操作IP地址';
+COMMENT ON COLUMN "blade_log_error"."method_class" IS '方法类';
+COMMENT ON COLUMN "blade_log_error"."method_name" IS '方法名';
 COMMENT ON COLUMN "blade_log_usual"."user_agent" IS '用户代理';
 COMMENT ON COLUMN "blade_log_usual"."params" IS '操作提交的数据';
 COMMENT ON COLUMN "blade_log_usual"."create_by" IS '创建者';

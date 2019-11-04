@@ -19,6 +19,7 @@ package org.springblade.common.launch;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.auto.service.AutoService;
 import org.springblade.core.launch.service.LauncherService;
+import org.springblade.core.launch.utils.PropsUtil;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import java.util.Properties;
@@ -34,7 +35,9 @@ public class LauncherServiceImpl implements LauncherService {
 	@Override
 	public void launcher(SpringApplicationBuilder builder, String appName, String profile, boolean isLocalDev) {
 		Properties props = System.getProperties();
-		props.setProperty("spring.cloud.sentinel.transport.dashboard", CommonConstant.sentinelAddr(profile));
+		PropsUtil.setProperty(props, "spring.cloud.sentinel.transport.dashboard", CommonConstant.sentinelAddr(profile));
+		// 开启elk日志
+		//PropsUtil.setProperty(props, "blade.log.elk.destination", CommonConstant.elkAddr(profile));
 	}
 
 }

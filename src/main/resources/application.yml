@@ -42,6 +42,10 @@ spring:
         session-stat-enable: true
         session-stat-max-count: 10
 
+#配置日志地址
+logging:
+  config: classpath:log/logback-${blade.env}.xml
+
 # mybatis
 mybatis-plus:
   mapper-locations: classpath:org/springblade/**/mapper/*Mapper.xml

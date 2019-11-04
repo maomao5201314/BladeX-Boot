@@ -24,16 +24,12 @@ import org.springblade.core.launch.server.ServerInfo;
 import org.springblade.core.log.constant.EventConstant;
 import org.springblade.core.log.event.ApiLogEvent;
 import org.springblade.core.log.model.LogApi;
-import org.springblade.core.secure.utils.SecureUtil;
-import org.springblade.core.tool.utils.DateUtil;
-import org.springblade.core.tool.utils.UrlUtil;
-import org.springblade.core.tool.utils.WebUtil;
+import org.springblade.core.log.utils.LogAbstractUtil;
 import org.springblade.modules.system.service.ILogService;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 
@@ -57,18 +53,7 @@ public class ApiLogListener {
 	public void saveApiLog(ApiLogEvent event) {
 		Map<String, Object> source = (Map<String, Object>) event.getSource();
 		LogApi logApi = (LogApi) source.get(EventConstant.EVENT_LOG);
-		HttpServletRequest request = (HttpServletRequest) source.get(EventConstant.EVENT_REQUEST);
-		logApi.setServiceId(bladeProperties.getName());
-		logApi.setServerHost(serverInfo.getHostName());
-		logApi.setServerIp(serverInfo.getIpWithPort());
-		logApi.setEnv(bladeProperties.getEnv());
-		logApi.setRemoteIp(WebUtil.getIP(request));
-		logApi.setUserAgent(request.getHeader(WebUtil.USER_AGENT_HEADER));
-		logApi.setRequestUri(UrlUtil.getPath(request.getRequestURI()));
-		logApi.setMethod(request.getMethod());
-		logApi.setParams(WebUtil.getRequestParamString(request));
-		logApi.setCreateBy(SecureUtil.getUserAccount(request));
-		logApi.setCreateTime(DateUtil.now());
+		LogAbstractUtil.addOtherInfoToLog(logApi, bladeProperties, serverInfo);
 		logService.saveApiLog(logApi);
 	}
 

@@ -220,7 +220,7 @@ COMMENT ON COLUMN "blade_dict"."dict_key" IS '字典值';
 COMMENT ON COLUMN "blade_dict"."dict_value" IS '字典名称';
 COMMENT ON COLUMN "blade_dict"."sort" IS '排序';
 COMMENT ON COLUMN "blade_dict"."remark" IS '字典备注';
-COMMENT ON COLUMN "blade_dict"."is_seal" IS '是否已封存';
+COMMENT ON COLUMN "blade_dict"."is_sealed" IS '是否已封存';
 COMMENT ON COLUMN "blade_dict"."is_deleted" IS '是否已删除';
 COMMENT ON TABLE "blade_dict" IS '字典表';
 

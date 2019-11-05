@@ -17,7 +17,6 @@
 package org.springblade.modules.system.wrapper;
 
 import org.springblade.common.cache.SysCache;
-import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
@@ -28,6 +27,7 @@ import org.springblade.modules.system.entity.Role;
 import org.springblade.modules.system.vo.RoleVO;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -43,8 +43,7 @@ public class RoleWrapper extends BaseEntityWrapper<Role, RoleVO> {
 
 	@Override
 	public RoleVO entityVO(Role role) {
-		RoleVO roleVO = BeanUtil.copy(role, RoleVO.class);
-		assert roleVO != null;
+		RoleVO roleVO = Objects.requireNonNull(BeanUtil.copy(role, RoleVO.class));
 		if (Func.equals(role.getParentId(), BladeConstant.TOP_PARENT_ID)) {
 			roleVO.setParentName(BladeConstant.TOP_PARENT_NAME);
 		} else {

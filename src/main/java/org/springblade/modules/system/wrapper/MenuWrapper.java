@@ -27,6 +27,7 @@ import org.springblade.modules.system.entity.Menu;
 import org.springblade.modules.system.vo.MenuVO;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -42,8 +43,7 @@ public class MenuWrapper extends BaseEntityWrapper<Menu, MenuVO> {
 
 	@Override
 	public MenuVO entityVO(Menu menu) {
-		MenuVO menuVO = BeanUtil.copy(menu, MenuVO.class);
-		assert menuVO != null;
+		MenuVO menuVO = Objects.requireNonNull(BeanUtil.copy(menu, MenuVO.class));
 		if (Func.equals(menu.getParentId(), BladeConstant.TOP_PARENT_ID)) {
 			menuVO.setParentName(BladeConstant.TOP_PARENT_NAME);
 		} else {

@@ -19,7 +19,7 @@ package org.springblade.common.constant;
 import org.springblade.core.launch.constant.AppConstant;
 
 /**
- * 通用常量
+ * 启动常量
  *
  * @author Chill
  */

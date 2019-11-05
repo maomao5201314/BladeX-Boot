@@ -25,6 +25,7 @@ import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.vo.UserVO;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 包装类,返回视图层所需的字段
@@ -39,8 +40,7 @@ public class UserWrapper extends BaseEntityWrapper<User, UserVO> {
 
 	@Override
 	public UserVO entityVO(User user) {
-		UserVO userVO = BeanUtil.copy(user, UserVO.class);
-		assert userVO != null;
+		UserVO userVO = Objects.requireNonNull(BeanUtil.copy(user, UserVO.class));
 		List<String> roleName = SysCache.getRoleNames(user.getRoleId());
 		List<String> deptName = SysCache.getDeptNames(user.getDeptId());
 		userVO.setRoleName(Func.join(roleName));

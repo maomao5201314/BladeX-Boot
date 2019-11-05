@@ -22,6 +22,8 @@ import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.modules.resource.entity.Oss;
 import org.springblade.modules.resource.entity.OssVO;
 
+import java.util.Objects;
+
 /**
  * 包装类,返回视图层所需的字段
  *
@@ -36,8 +38,7 @@ public class OssWrapper extends BaseEntityWrapper<Oss, OssVO> {
 
 	@Override
 	public OssVO entityVO(Oss oss) {
-		OssVO ossVO = BeanUtil.copy(oss, OssVO.class);
-		assert ossVO != null;
+		OssVO ossVO = Objects.requireNonNull(BeanUtil.copy(oss, OssVO.class));
 		String categoryName = DictCache.getValue("oss", oss.getCategory());
 		String statusName = DictCache.getValue("yes_no", oss.getStatus());
 		ossVO.setCategoryName(categoryName);

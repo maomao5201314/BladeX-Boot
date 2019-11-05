@@ -22,6 +22,8 @@ import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.modules.system.entity.ApiScope;
 import org.springblade.modules.system.vo.ApiScopeVO;
 
+import java.util.Objects;
+
 
 /**
  * 包装类,返回视图层所需的字段
@@ -36,8 +38,7 @@ public class ApiScopeWrapper extends BaseEntityWrapper<ApiScope, ApiScopeVO> {
 
 	@Override
 	public ApiScopeVO entityVO(ApiScope dataScope) {
-		ApiScopeVO apiScopeVO = BeanUtil.copy(dataScope, ApiScopeVO.class);
-		assert apiScopeVO != null;
+		ApiScopeVO apiScopeVO = Objects.requireNonNull(BeanUtil.copy(dataScope, ApiScopeVO.class));
 		String scopeTypeName = DictCache.getValue("api_scope_type", dataScope.getScopeType());
 		apiScopeVO.setScopeTypeName(scopeTypeName);
 		return apiScopeVO;

@@ -44,8 +44,7 @@ public class DeptWrapper extends BaseEntityWrapper<Dept, DeptVO> {
 
 	@Override
 	public DeptVO entityVO(Dept dept) {
-		DeptVO deptVO = BeanUtil.copy(dept, DeptVO.class);
-		assert deptVO != null;
+		DeptVO deptVO = Objects.requireNonNull(BeanUtil.copy(dept, DeptVO.class));
 		if (Func.equals(dept.getParentId(), BladeConstant.TOP_PARENT_ID)) {
 			deptVO.setParentName(BladeConstant.TOP_PARENT_NAME);
 		} else {

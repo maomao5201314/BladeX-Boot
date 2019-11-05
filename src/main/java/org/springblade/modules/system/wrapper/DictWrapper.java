@@ -27,6 +27,7 @@ import org.springblade.modules.system.entity.Dict;
 import org.springblade.modules.system.vo.DictVO;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -43,8 +44,7 @@ public class DictWrapper extends BaseEntityWrapper<Dict, DictVO> {
 
 	@Override
 	public DictVO entityVO(Dict dict) {
-		DictVO dictVO = BeanUtil.copy(dict, DictVO.class);
-		assert dictVO != null;
+		DictVO dictVO = Objects.requireNonNull(BeanUtil.copy(dict, DictVO.class));
 		if (Func.equals(dict.getParentId(), BladeConstant.TOP_PARENT_ID)) {
 			dictVO.setParentName(BladeConstant.TOP_PARENT_NAME);
 		} else {

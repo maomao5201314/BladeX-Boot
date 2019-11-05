@@ -22,6 +22,8 @@ import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.modules.system.entity.DataScope;
 import org.springblade.modules.system.vo.DataScopeVO;
 
+import java.util.Objects;
+
 
 /**
  * 包装类,返回视图层所需的字段
@@ -36,8 +38,7 @@ public class DataScopeWrapper extends BaseEntityWrapper<DataScope, DataScopeVO> 
 
 	@Override
 	public DataScopeVO entityVO(DataScope dataScope) {
-		DataScopeVO dataScopeVO = BeanUtil.copy(dataScope, DataScopeVO.class);
-		assert dataScopeVO != null;
+		DataScopeVO dataScopeVO = Objects.requireNonNull(BeanUtil.copy(dataScope, DataScopeVO.class));
 		String scopeTypeName = DictCache.getValue("data_scope_type", dataScope.getScopeType());
 		dataScopeVO.setScopeTypeName(scopeTypeName);
 		return dataScopeVO;

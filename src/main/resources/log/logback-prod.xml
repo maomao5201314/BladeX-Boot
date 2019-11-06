@@ -27,7 +27,7 @@
             <FileNamePattern>target/blade/log/info-%d{yyyy-MM-dd}.log</FileNamePattern>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%logger{50}] %n%-5level: %msg%n</pattern>
+            <pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{traceId}] [%logger{50}] %n%-5level: %msg%n</pattern>
         </encoder>
         <!-- 打印日志级别 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -44,7 +44,7 @@
             <FileNamePattern>target/blade/log/error-%d{yyyy-MM-dd}.log</FileNamePattern>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%logger{50}] %n%-5level: %msg%n</pattern>
+            <pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{traceId}] [%logger{50}] %n%-5level: %msg%n</pattern>
         </encoder>
         <!-- 打印日志级别 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -66,6 +66,7 @@
                 <pattern>
                     <pattern>
                         {
+                        "traceId": "%X{traceId}",
                         "logLevel": "%level",
                         "serviceName": "${springAppName:-SpringApp}",
                         "pid": "${PID:-}",
@@ -98,6 +99,7 @@
                 <pattern>
                     <pattern>
                         {
+                        "traceId": "%X{traceId}",
                         "logLevel": "%level",
                         "serviceName": "${springAppName:-SpringApp}",
                         "pid": "${PID:-}",

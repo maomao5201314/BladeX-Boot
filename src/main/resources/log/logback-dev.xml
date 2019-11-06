@@ -2,6 +2,7 @@
 <configuration scan="true" scanPeriod="60 seconds">
     <!-- 自定义参数监听 -->
     <contextListener class="org.springblade.core.log.listener.LoggerStartupListener"/>
+
     <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wex"
@@ -31,6 +32,7 @@
                 <pattern>
                     <pattern>
                         {
+                        "traceId": "%X{traceId}",
                         "logLevel": "%level",
                         "serviceName": "${springAppName:-SpringApp}",
                         "pid": "${PID:-}",

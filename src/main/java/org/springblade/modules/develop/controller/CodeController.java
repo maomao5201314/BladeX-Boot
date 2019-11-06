@@ -134,6 +134,7 @@ public class CodeController extends BladeController {
 			generator.setPassword(datasource.getPassword());
 			// 设置基础配置
 			generator.setSystemName(system);
+			generator.setCodeName(code.getCodeName());
 			generator.setServiceName(code.getServiceName());
 			generator.setPackageName(code.getPackageName());
 			generator.setPackageDir(code.getApiPath());

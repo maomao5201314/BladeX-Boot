@@ -123,7 +123,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	@Override
 	public List<String> getRoleNames(String roleIds) {
-		return baseMapper.getRoleNames(Func.toStrArray(roleIds));
+		return baseMapper.getRoleNames(Func.toLongArray(roleIds));
 	}
 
 	@Override

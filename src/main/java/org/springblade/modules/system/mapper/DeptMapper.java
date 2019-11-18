@@ -53,6 +53,6 @@ public interface DeptMapper extends BaseMapper<Dept> {
 	 * @param ids
 	 * @return
 	 */
-	List<String> getDeptNames(String[] ids);
+	List<String> getDeptNames(Long[] ids);
 
 }

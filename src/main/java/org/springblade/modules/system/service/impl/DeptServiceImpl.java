@@ -52,7 +52,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
 	@Override
 	public List<String> getDeptNames(String deptIds) {
-		return baseMapper.getDeptNames(Func.toStrArray(deptIds));
+		return baseMapper.getDeptNames(Func.toLongArray(deptIds));
 	}
 
 	@Override

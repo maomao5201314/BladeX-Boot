@@ -54,7 +54,7 @@ public interface RoleMapper extends BaseMapper<Role> {
 	 * @param ids
 	 * @return
 	 */
-	List<String> getRoleNames(String[] ids);
+	List<String> getRoleNames(Long[] ids);
 
 	/**
 	 * 获取角色名

@@ -20,32 +20,36 @@
         </encoder>
     </appender>
 
-    <!-- 推送日志至elk -->
-    <appender name="STDOUT_LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>${DESTINATION}</destination>
-        <!-- 日志输出编码 -->
-        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <providers>
-                <timestamp>
-                    <timeZone>UTC</timeZone>
-                </timestamp>
-                <pattern>
-                    <pattern>
-                        {
-                        "traceId": "%X{traceId}",
-                        "logLevel": "%level",
-                        "serviceName": "${springAppName:-SpringApp}",
-                        "pid": "${PID:-}",
-                        "thread": "%thread",
-                        "class": "%logger{40}",
-                        "line":"%L",
-                        "message": "%message"
-                        }
-                    </pattern>
-                </pattern>
-            </providers>
-        </encoder>
-    </appender>
+    <if condition='property("ELK_MODE").toUpperCase().contains("TRUE")'>
+        <then>
+            <!-- 推送日志至elk -->
+            <appender name="STDOUT_LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+                <destination>${DESTINATION}</destination>
+                <!-- 日志输出编码 -->
+                <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+                    <providers>
+                        <timestamp>
+                            <timeZone>UTC</timeZone>
+                        </timestamp>
+                        <pattern>
+                            <pattern>
+                                {
+                                "traceId": "%X{traceId}",
+                                "logLevel": "%level",
+                                "serviceName": "${springAppName:-SpringApp}",
+                                "pid": "${PID:-}",
+                                "thread": "%thread",
+                                "class": "%logger{40}",
+                                "line":"%L",
+                                "message": "%message"
+                                }
+                            </pattern>
+                        </pattern>
+                    </providers>
+                </encoder>
+            </appender>
+        </then>
+    </if>
 
     <!-- 日志输出级别 -->
     <root level="INFO">

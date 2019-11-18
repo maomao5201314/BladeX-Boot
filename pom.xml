@@ -208,7 +208,7 @@
 
     <repositories>
         <repository>
-            <id>release</id>
+            <id>blade-release</id>
             <name>Release Repository</name>
             <url>http://nexus.bladex.vip/repository/maven-releases/</url>
         </repository>

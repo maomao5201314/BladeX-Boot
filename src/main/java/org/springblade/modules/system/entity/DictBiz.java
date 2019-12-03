@@ -34,9 +34,9 @@ import java.io.Serializable;
  * @author Chill
  */
 @Data
-@TableName("blade_dict")
-@ApiModel(value = "Dict对象", description = "Dict对象")
-public class Dict implements Serializable {
+@TableName("blade_dict_biz")
+@ApiModel(value = "DictBiz对象", description = "DictBiz对象")
+public class DictBiz implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +47,12 @@ public class Dict implements Serializable {
 	@ApiModelProperty(value = "主键")
 	@TableId(value = "id", type = IdType.ID_WORKER)
 	private Long id;
+
+	/**
+	 * 租户ID
+	 */
+	@ApiModelProperty(value = "租户ID")
+	private String tenantId;
 
 	/**
 	 * 父主键

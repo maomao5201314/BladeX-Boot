@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.springblade.modules.system.mapper.DictMapper">
+<mapper namespace="org.springblade.modules.system.mapper.DictBizMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="dictResultMap" type="org.springblade.modules.system.entity.Dict">
+    <resultMap id="dictResultMap" type="org.springblade.modules.system.entity.DictBiz">
         <id column="id" property="id"/>
+        <result column="tenant_id" property="tenantId"/>
         <result column="parent_id" property="parentId"/>
         <result column="code" property="code"/>
         <result column="dict_key" property="dictKey"/>
@@ -22,29 +23,25 @@
         <result column="key" property="key"/>
     </resultMap>
 
-    <select id="selectDictPage" resultMap="dictResultMap">
-        select * from blade_dict where is_deleted = 0
-    </select>
-
     <select id="getValue" resultType="java.lang.String">
         select
             dict_value
-        from blade_dict where code = #{param1} and dict_key = #{param2} and is_deleted = 0
+        from blade_dict_biz where code = #{param1} and dict_key = #{param2} and is_deleted = 0
     </select>
 
     <!-- oracle 版本 -->
     <!--<select id="getValue" resultType="java.lang.String">
         select
             dict_value
-        from blade_dict where code = #{param1, jdbcType=VARCHAR} and dict_key = #{param2} and dict_key >= 0  rownum 1
+        from blade_dict_biz where code = #{param1, jdbcType=VARCHAR} and dict_key = #{param2} and dict_key >= 0  rownum 1
     </select>-->
 
     <select id="getList" resultMap="dictResultMap">
-        select code, dict_key, dict_value, sort, remark from blade_dict where code = #{param1} and dict_key >= 0 and is_sealed = 0 and is_deleted = 0
+        select code, dict_key, dict_value, sort, remark from blade_dict_biz where code = #{param1} and dict_key >= 0 and is_sealed = 0 and is_deleted = 0
     </select>
 
     <select id="tree" resultMap="treeNodeResultMap">
-        select id, parent_id, dict_value as title, id as "value", id as "key" from blade_dict where is_deleted = 0
+        select id, parent_id, dict_value as title, id as "value", id as "key" from blade_dict_biz where is_deleted = 0
     </select>
 
 </mapper>

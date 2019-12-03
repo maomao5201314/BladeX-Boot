@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 16/08/2019 23:01:18
+ Date: 03/12/2019 15:26:43
 */
 
 
@@ -92,18 +92,18 @@ CREATE TABLE "blade_code" (
 )
 ;
 COMMENT ON COLUMN "blade_code"."id" IS '主键';
+COMMENT ON COLUMN "blade_code"."datasource_id" IS '数据源主键';
 COMMENT ON COLUMN "blade_code"."service_name" IS '服务名称';
 COMMENT ON COLUMN "blade_code"."code_name" IS '模块名称';
 COMMENT ON COLUMN "blade_code"."table_name" IS '表名';
 COMMENT ON COLUMN "blade_code"."table_prefix" IS '表前缀';
 COMMENT ON COLUMN "blade_code"."pk_name" IS '主键名';
 COMMENT ON COLUMN "blade_code"."package_name" IS '后端包名';
+COMMENT ON COLUMN "blade_code"."base_mode" IS '基础业务模式';
+COMMENT ON COLUMN "blade_code"."wrap_mode" IS '包装器模式';
 COMMENT ON COLUMN "blade_code"."api_path" IS '后端路径';
 COMMENT ON COLUMN "blade_code"."web_path" IS '前端路径';
 COMMENT ON COLUMN "blade_code"."is_deleted" IS '是否已删除';
-COMMENT ON COLUMN "blade_code"."datasource_id" IS '数据源主键';
-COMMENT ON COLUMN "blade_code"."base_mode" IS '基础业务模式';
-COMMENT ON COLUMN "blade_code"."wrap_mode" IS '包装器模式';
 COMMENT ON TABLE "blade_code" IS '代码生成表';
 
 -- ----------------------------
@@ -202,15 +202,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_dict";
 CREATE TABLE "blade_dict" (
-"id" int8 NOT NULL,
-"parent_id" int8,
-"code" varchar(255) COLLATE "pg_catalog"."default",
-"dict_key" int4,
-"dict_value" varchar(255) COLLATE "pg_catalog"."default",
-"sort" int4,
-"remark" varchar(255) COLLATE "pg_catalog"."default",
-"is_sealed" int4,
-"is_deleted" int4
+  "id" int8 NOT NULL,
+  "parent_id" int8,
+  "code" varchar(255) COLLATE "pg_catalog"."default",
+  "dict_key" varchar(255) COLLATE "pg_catalog"."default",
+  "dict_value" varchar(255) COLLATE "pg_catalog"."default",
+  "sort" int4,
+  "remark" varchar(255) COLLATE "pg_catalog"."default",
+  "is_sealed" int4,
+  "is_deleted" int4
 )
 ;
 COMMENT ON COLUMN "blade_dict"."id" IS '主键';
@@ -228,51 +228,79 @@ COMMENT ON TABLE "blade_dict" IS '字典表';
 -- Records of blade_dict
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_dict" VALUES (1123598814738675201, 0, 'sex', -1, '性别', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675202, 1123598814738675201, 'sex', 1, '男', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675203, 1123598814738675201, 'sex', 2, '女', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675204, 0, 'notice', -1, '通知类型', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675205, 1123598814738675204, 'notice', 1, '发布通知', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675206, 1123598814738675204, 'notice', 2, '批转通知', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675207, 1123598814738675204, 'notice', 3, '转发通知', 3, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675208, 1123598814738675204, 'notice', 4, '指示通知', 4, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675209, 1123598814738675204, 'notice', 5, '任免通知', 5, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675210, 1123598814738675204, 'notice', 6, '事务通知', 6, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675211, 0, 'menu_category', -1, '菜单类型', 3, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675212, 1123598814738675211, 'menu_category', 1, '菜单', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675213, 1123598814738675211, 'menu_category', 2, '按钮', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675214, 0, 'button_func', -1, '按钮功能', 4, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675215, 1123598814738675214, 'button_func', 1, '工具栏', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675216, 1123598814738675214, 'button_func', 2, '操作栏', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675217, 1123598814738675214, 'button_func', 3, '工具操作栏', 3, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675218, 0, 'yes_no', -1, '是否', 5, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675219, 1123598814738675218, 'yes_no', 1, '否', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675220, 1123598814738675218, 'yes_no', 2, '是', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675221, 0, 'flow', -1, '流程类型', 5, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675222, 1123598814738675221, 'flow', 1, '请假流程', 1, 'leave', 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675223, 1123598814738675221, 'flow', 2, '报销流程', 2, 'expense', 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675227, 0, 'org_category', -1, '机构类型', 7, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675228, 1123598814738675227, 'org_category', 1, '公司', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675229, 1123598814738675227, 'org_category', 2, '部门', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675230, 1123598814738675227, 'org_category', 3, '小组', 3, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675231, 0, 'data_scope_type', -1, '数据权限', 8, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675232, 1123598814738675231, 'data_scope_type', 1, '全部可见', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675233, 1123598814738675231, 'data_scope_type', 2, '本人可见', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675234, 1123598814738675231, 'data_scope_type', 3, '所在机构可见', 3, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675235, 1123598814738675231, 'data_scope_type', 4, '所在机构及子级可见', 4, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675236, 1123598814738675231, 'data_scope_type', 5, '自定义', 5, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675237, 0, 'api_scope_type', -1, '接口权限', 10, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675238, 1123598814738675237, 'api_scope_type', 1, '系统接口', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675239, 1123598814738675237, 'api_scope_type', 2, '业务接口', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675240, 0, 'scope_category', -1, '权限类型', 10, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675241, 1123598814738675240, 'scope_category', 1, '数据权限', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738675242, 1123598814738675240, 'scope_category', 2, '接口权限', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738676224, 0, 'oss', -1, '对象存储类型', 6, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738676225, 1123598814738676224, 'oss', 1, 'minio', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738676226, 1123598814738676224, 'oss', 2, 'qiniu', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738676227, 1123598814738676224, 'oss', 3, 'ali', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675201, 0, 'sex', '-1', '性别', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675202, 1123598814738675201, 'sex', '1', '男', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675203, 1123598814738675201, 'sex', '2', '女', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675204, 0, 'notice', '-1', '通知类型', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675205, 1123598814738675204, 'notice', '1', '发布通知', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675206, 1123598814738675204, 'notice', '2', '批转通知', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675207, 1123598814738675204, 'notice', '3', '转发通知', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675208, 1123598814738675204, 'notice', '4', '指示通知', 4, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675209, 1123598814738675204, 'notice', '5', '任免通知', 5, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675210, 1123598814738675204, 'notice', '6', '事务通知', 6, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675211, 0, 'menu_category', '-1', '菜单类型', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675212, 1123598814738675211, 'menu_category', '1', '菜单', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675213, 1123598814738675211, 'menu_category', '2', '按钮', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675214, 0, 'button_func', '-1', '按钮功能', 4, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675215, 1123598814738675214, 'button_func', '1', '工具栏', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675216, 1123598814738675214, 'button_func', '2', '操作栏', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675217, 1123598814738675214, 'button_func', '3', '工具操作栏', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675218, 0, 'yes_no', '-1', '是否', 5, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675219, 1123598814738675218, 'yes_no', '1', '否', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675220, 1123598814738675218, 'yes_no', '2', '是', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675221, 0, 'flow', '-1', '流程类型', 5, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675222, 1123598814738675221, 'flow', '1', '请假流程', 1, 'leave', 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675223, 1123598814738675221, 'flow', '2', '报销流程', 2, 'expense', 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675227, 0, 'org_category', '-1', '机构类型', 7, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675228, 1123598814738675227, 'org_category', '1', '公司', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675229, 1123598814738675227, 'org_category', '2', '部门', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675230, 1123598814738675227, 'org_category', '3', '小组', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675231, 0, 'data_scope_type', '-1', '数据权限', 8, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675232, 1123598814738675231, 'data_scope_type', '1', '全部可见', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675233, 1123598814738675231, 'data_scope_type', '2', '本人可见', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675234, 1123598814738675231, 'data_scope_type', '3', '所在机构可见', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675235, 1123598814738675231, 'data_scope_type', '4', '所在机构及子级可见', 4, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675236, 1123598814738675231, 'data_scope_type', '5', '自定义', 5, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675237, 0, 'api_scope_type', '-1', '接口权限', 10, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675238, 1123598814738675237, 'api_scope_type', '1', '系统接口', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675239, 1123598814738675237, 'api_scope_type', '2', '业务接口', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675240, 0, 'scope_category', '-1', '权限类型', 10, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675241, 1123598814738675240, 'scope_category', '1', '数据权限', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738675242, 1123598814738675240, 'scope_category', '2', '接口权限', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738676224, 0, 'oss', '-1', '对象存储类型', 6, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738676225, 1123598814738676224, 'oss', '1', 'minio', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738676226, 1123598814738676224, 'oss', '2', 'qiniu', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738676227, 1123598814738676224, 'oss', '3', 'ali', 3, NULL, 0, 0);
 COMMIT;
 
+-- ----------------------------
+-- Table structure for blade_dict_biz
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_dict_biz";
+CREATE TABLE "blade_dict_biz" (
+  "id" int8 NOT NULL,
+  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+  "parent_id" int8,
+  "code" varchar(255) COLLATE "pg_catalog"."default",
+  "dict_key" varchar(255) COLLATE "pg_catalog"."default",
+  "dict_value" varchar(255) COLLATE "pg_catalog"."default",
+  "sort" int4,
+  "remark" varchar(255) COLLATE "pg_catalog"."default",
+  "is_sealed" int4,
+  "is_deleted" int4
+)
+;
+COMMENT ON COLUMN "blade_dict_biz"."id" IS '主键';
+COMMENT ON COLUMN "blade_dict_biz"."tenant_id" IS '租户ID';
+COMMENT ON COLUMN "blade_dict_biz"."parent_id" IS '父主键';
+COMMENT ON COLUMN "blade_dict_biz"."code" IS '字典码';
+COMMENT ON COLUMN "blade_dict_biz"."dict_key" IS '字典值';
+COMMENT ON COLUMN "blade_dict_biz"."dict_value" IS '字典名称';
+COMMENT ON COLUMN "blade_dict_biz"."sort" IS '排序';
+COMMENT ON COLUMN "blade_dict_biz"."remark" IS '字典备注';
+COMMENT ON COLUMN "blade_dict_biz"."is_sealed" IS '是否已封存';
+COMMENT ON COLUMN "blade_dict_biz"."is_deleted" IS '是否已删除';
+COMMENT ON TABLE "blade_dict_biz" IS '业务字典表';
 
 -- ----------------------------
 -- Table structure for blade_log_api
@@ -324,26 +352,26 @@ COMMENT ON TABLE "blade_log_api" IS '接口日志表';
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_log_error";
 CREATE TABLE "blade_log_error" (
-   "id" int8 NOT NULL,
-   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
-   "service_id" varchar(32) COLLATE "pg_catalog"."default",
-   "server_host" varchar(255) COLLATE "pg_catalog"."default",
-   "server_ip" varchar(255) COLLATE "pg_catalog"."default",
-   "env" varchar(255) COLLATE "pg_catalog"."default",
-   "method" varchar(10) COLLATE "pg_catalog"."default",
-   "request_uri" varchar(255) COLLATE "pg_catalog"."default",
-   "user_agent" varchar(1000) COLLATE "pg_catalog"."default",
-   "stack_trace" text COLLATE "pg_catalog"."default",
-   "exception_name" varchar(255) COLLATE "pg_catalog"."default",
-   "message" text COLLATE "pg_catalog"."default",
-   "line_number" int4,
-   "remote_ip" varchar(255) COLLATE "pg_catalog"."default",
-   "method_class" varchar(255) COLLATE "pg_catalog"."default",
-   "file_name" varchar(1000) COLLATE "pg_catalog"."default",
-   "method_name" varchar(255) COLLATE "pg_catalog"."default",
-   "params" text COLLATE "pg_catalog"."default",
-   "create_by" varchar(64) COLLATE "pg_catalog"."default",
-   "create_time" timestamp(6)
+  "id" int8 NOT NULL,
+  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+  "service_id" varchar(32) COLLATE "pg_catalog"."default",
+  "server_host" varchar(255) COLLATE "pg_catalog"."default",
+  "server_ip" varchar(255) COLLATE "pg_catalog"."default",
+  "env" varchar(255) COLLATE "pg_catalog"."default",
+  "method" varchar(10) COLLATE "pg_catalog"."default",
+  "request_uri" varchar(255) COLLATE "pg_catalog"."default",
+  "user_agent" varchar(1000) COLLATE "pg_catalog"."default",
+  "stack_trace" text COLLATE "pg_catalog"."default",
+  "exception_name" varchar(255) COLLATE "pg_catalog"."default",
+  "message" text COLLATE "pg_catalog"."default",
+  "line_number" int4,
+  "remote_ip" varchar(255) COLLATE "pg_catalog"."default",
+  "method_class" varchar(255) COLLATE "pg_catalog"."default",
+  "file_name" varchar(1000) COLLATE "pg_catalog"."default",
+  "method_name" varchar(255) COLLATE "pg_catalog"."default",
+  "params" text COLLATE "pg_catalog"."default",
+  "create_by" varchar(64) COLLATE "pg_catalog"."default",
+  "create_time" timestamp(6)
 )
 ;
 COMMENT ON COLUMN "blade_log_error"."id" IS '编号';
@@ -373,24 +401,24 @@ COMMENT ON TABLE "blade_log_error" IS '错误日志表';
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_log_usual";
 CREATE TABLE "blade_log_usual" (
-   "id" int8 NOT NULL,
-   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
-   "service_id" varchar(32) COLLATE "pg_catalog"."default",
-   "server_host" varchar(255) COLLATE "pg_catalog"."default",
-   "server_ip" varchar(255) COLLATE "pg_catalog"."default",
-   "env" varchar(255) COLLATE "pg_catalog"."default",
-   "log_level" varchar(10) COLLATE "pg_catalog"."default",
-   "log_id" varchar(100) COLLATE "pg_catalog"."default",
-   "log_data" text COLLATE "pg_catalog"."default",
-   "method" varchar(10) COLLATE "pg_catalog"."default",
-   "request_uri" varchar(255) COLLATE "pg_catalog"."default",
-   "remote_ip" varchar(255) COLLATE "pg_catalog"."default",
-   "method_class" varchar(255) COLLATE "pg_catalog"."default",
-   "method_name" varchar(255) COLLATE "pg_catalog"."default",
-   "user_agent" varchar(1000) COLLATE "pg_catalog"."default",
-   "params" text COLLATE "pg_catalog"."default",
-   "create_by" varchar(64) COLLATE "pg_catalog"."default",
-   "create_time" timestamp(6)
+  "id" int8 NOT NULL,
+  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+  "service_id" varchar(32) COLLATE "pg_catalog"."default",
+  "server_host" varchar(255) COLLATE "pg_catalog"."default",
+  "server_ip" varchar(255) COLLATE "pg_catalog"."default",
+  "env" varchar(255) COLLATE "pg_catalog"."default",
+  "log_level" varchar(10) COLLATE "pg_catalog"."default",
+  "log_id" varchar(100) COLLATE "pg_catalog"."default",
+  "log_data" text COLLATE "pg_catalog"."default",
+  "method" varchar(10) COLLATE "pg_catalog"."default",
+  "request_uri" varchar(255) COLLATE "pg_catalog"."default",
+  "remote_ip" varchar(255) COLLATE "pg_catalog"."default",
+  "method_class" varchar(255) COLLATE "pg_catalog"."default",
+  "method_name" varchar(255) COLLATE "pg_catalog"."default",
+  "user_agent" varchar(1000) COLLATE "pg_catalog"."default",
+  "params" text COLLATE "pg_catalog"."default",
+  "create_by" varchar(64) COLLATE "pg_catalog"."default",
+  "create_time" timestamp(6)
 )
 ;
 COMMENT ON COLUMN "blade_log_usual"."id" IS '编号';
@@ -457,7 +485,7 @@ INSERT INTO "blade_menu" VALUES (1123598815738675202, 1123598815738675201, 'noti
 INSERT INTO "blade_menu" VALUES (1123598815738675203, 0, 'system', '系统管理', 'menu', '/system', 'setting', 99, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675204, 1123598815738675203, 'user', '用户管理', 'menu', '/system/user', NULL, 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675205, 1123598815738675203, 'dept', '机构管理', 'menu', '/system/dept', NULL, 2, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675206, 1123598815738675203, 'dict', '字典管理', 'menu', '/system/dict', NULL, 3, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675206, 1123598815738675203, 'dict', '系统字典', 'menu', '/system/dict', NULL, 3, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675207, 1123598815738675203, 'menu', '菜单管理', 'menu', '/system/menu', NULL, 4, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675208, 1123598815738675203, 'topmenu', '顶部菜单', 'menu', '/system/topmenu', '', 5, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675209, 1123598815738675203, 'param', '参数管理', 'menu', '/system/param', NULL, 6, 1, 0, 1, NULL, 0);
@@ -572,20 +600,18 @@ INSERT INTO "blade_menu" VALUES (1161272593873321992, 1161272593873321991, 'data
 INSERT INTO "blade_menu" VALUES (1161272593873321993, 1161272593873321991, 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', 2, 2, 2, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1161272593873321994, 1161272593873321991, 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', 3, 2, 3, 3, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1161272593873321995, 1161272593873321991, 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', 4, 2, 2, 2, NULL, 0);
-INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
-VALUES ('1164733121140551682', '1123598815738675217', 'form', '表单设计', 'form', 'https://form.avuejs.com/', '', 3, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
-VALUES ('1164733349637844993', '1123598815738675217', 'crud', '表格设计', 'crud', 'https://crud.avuejs.com/', '', 4, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
-VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', '', 3, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
-VALUES ('1164733369658963252', '1123598815738675210', 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', '', 4, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
-VALUES ('1164733369658963253', '1123598815738675210', 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', '', 5, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
-VALUES ('1164733369658963254', '1123598815738675210', 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', '', 6, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
-VALUES ('1164733369658963255', '1123598815738675210', 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', '', 7, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733121140551682, 1123598815738675217, 'form', '表单设计', 'form', 'https://form.avuejs.com/', '', 3, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733349637844993, 1123598815738675217, 'crud', '表格设计', 'crud', 'https://crud.avuejs.com/', '', 4, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963251, 1123598815738675210, 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', '', 3, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963252, 1123598815738675210, 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', '', 4, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963253, 1123598815738675210, 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', '', 5, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963254, 1123598815738675210, 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', '', 6, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963255, 1123598815738675210, 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', '', 7, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963251, 1123598815738675203, 'dictbiz', '业务字典', 'menu', '/system/dictbiz', '', 3, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963252, 1164733379658963251, 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', 1, 2, 2, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963253, 1164733379658963251, 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', 2, 2, 1, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963254, 1164733379658963251, 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', 3, 2, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963255, 1164733379658963251, 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', 4, 2, 3, 1, '', 0);
 COMMIT;
 
 -- ----------------------------
@@ -1029,20 +1055,18 @@ INSERT INTO "blade_role_menu" VALUES (1161272593873322992, 1161272593873321992, 
 INSERT INTO "blade_role_menu" VALUES (1161272593873322993, 1161272593873321993, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272593873322994, 1161272593873321994, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272593873322995, 1161272593873321995, 1123598816738675201);
-INSERT INTO "blade_role_menu"("id","menu_id","role_id")
-VALUES ('1161272593873322996', '1164733121140551682', '1123598816738675201');
-INSERT INTO "blade_role_menu"("id","menu_id","role_id")
-VALUES ('1161272593873322997', '1164733349637844993', '1123598816738675201');
-INSERT INTO "blade_role_menu"("id","menu_id","role_id")
-VALUES ('1161272693873322991', '1164733369658963251', '1123598816738675201');
-INSERT INTO "blade_role_menu"("id","menu_id","role_id")
-VALUES ('1161272693873322992', '1164733369658963252', '1123598816738675201');
-INSERT INTO "blade_role_menu"("id","menu_id","role_id")
-VALUES ('1161272693873322993', '1164733369658963253', '1123598816738675201');
-INSERT INTO "blade_role_menu"("id","menu_id","role_id")
-VALUES ('1161272693873322994', '1164733369658963254', '1123598816738675201');
-INSERT INTO "blade_role_menu"("id","menu_id","role_id")
-VALUES ('1161272693873322995', '1164733369658963255', '1123598816738675201');
+INSERT INTO "blade_role_menu" VALUES (1161272593873322996, 1164733121140551682, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272593873322997, 1164733349637844993, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272693873322991, 1164733369658963251, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272693873322992, 1164733369658963252, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272693873322993, 1164733369658963253, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272693873322994, 1164733369658963254, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272693873322995, 1164733369658963255, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272793873322991, 1164733379658963251, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272793873322992, 116473337658963252, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272793873322993, 1164733379658963253, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272793873322994, 1164733379658963254, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272793873322995, 1164733379658963255, 1123598816738675201);
 COMMIT;
 
 -- ----------------------------
@@ -1317,6 +1341,11 @@ ALTER TABLE "blade_dept" ADD CONSTRAINT "blade_dept_pkey" PRIMARY KEY ("id");
 -- Primary Key structure for table blade_dict
 -- ----------------------------
 ALTER TABLE "blade_dict" ADD CONSTRAINT "blade_dict_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table blade_dict_biz
+-- ----------------------------
+ALTER TABLE "blade_dict_biz" ADD CONSTRAINT "blade_dict_biz_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table blade_log_api

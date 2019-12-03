@@ -16,14 +16,13 @@
  */
 package org.springblade.modules.system.wrapper;
 
-import org.springblade.common.cache.DictCache;
+import org.springblade.common.cache.DictBizCache;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.modules.system.entity.Dict;
 import org.springblade.modules.system.entity.DictBiz;
 import org.springblade.modules.system.vo.DictBizVO;
 
@@ -49,7 +48,7 @@ public class DictBizWrapper extends BaseEntityWrapper<DictBiz, DictBizVO> {
 		if (Func.equals(dict.getParentId(), BladeConstant.TOP_PARENT_ID)) {
 			dictVO.setParentName(BladeConstant.TOP_PARENT_NAME);
 		} else {
-			Dict parent = DictCache.getById(dict.getParentId());
+			DictBiz parent = DictBizCache.getById(dict.getParentId());
 			dictVO.setParentName(parent.getDictValue());
 		}
 		return dictVO;

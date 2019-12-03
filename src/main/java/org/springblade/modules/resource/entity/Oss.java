@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springblade.core.mp.base.BaseEntity;
+import org.springblade.core.tenant.mp.TenantEntity;
 
 /**
  * 实体类
@@ -33,7 +33,7 @@ import org.springblade.core.mp.base.BaseEntity;
 @TableName("blade_oss")
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "Oss对象", description = "Oss对象")
-public class Oss extends BaseEntity {
+public class Oss extends TenantEntity {
 
 	private static final long serialVersionUID = 1L;
 

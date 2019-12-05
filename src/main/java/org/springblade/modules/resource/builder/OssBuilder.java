@@ -106,7 +106,11 @@ public class OssBuilder {
 	 */
 	public Oss getOss(String tenantId) {
 		return CacheUtil.get(SYS_CACHE, OSS_CODE, tenantId, () -> {
-			Oss o = ossMapper.selectOne(Wrappers.<Oss>query().lambda().eq(Oss::getStatus, OssStatusEnum.ENABLE.getNum()));
+			Oss o = ossMapper.selectOne(
+				Wrappers.<Oss>query().lambda()
+					.eq(Oss::getStatus, OssStatusEnum.ENABLE.getNum())
+					.eq(Oss::getTenantId, tenantId)
+			);
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(o))) {
 				Oss defaultOss = new Oss();

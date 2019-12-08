@@ -63,6 +63,7 @@
                 </foreach>
             )
         </if>
+        ORDER BY id
     </select>
 
     <select id="getUser" resultMap="userResultMap">

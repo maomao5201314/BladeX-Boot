@@ -181,6 +181,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	@Override
 	public boolean submit(Menu menu) {
+		if (menu.getParentId() == null && menu.getId() == null) {
+			menu.setParentId(BladeConstant.TOP_PARENT_ID);
+		}
 		menu.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		return saveOrUpdate(menu);
 	}

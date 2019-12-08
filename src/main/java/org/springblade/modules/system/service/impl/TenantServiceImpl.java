@@ -77,6 +77,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			dept.setParentId(BladeConstant.TOP_PARENT_ID);
 			dept.setDeptName(tenant.getTenantName());
 			dept.setFullName(tenant.getTenantName());
+			dept.setDeptCategory(1);
 			dept.setSort(2);
 			dept.setIsDeleted(0);
 			deptMapper.insert(dept);

@@ -46,6 +46,8 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static org.springblade.common.constant.CommonConstant.API_SCOPE_CATEGORY;
+import static org.springblade.common.constant.CommonConstant.DATA_SCOPE_CATEGORY;
 import static org.springblade.core.cache.constant.CacheConstant.MENU_CACHE;
 
 /**
@@ -149,13 +151,13 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	@Override
 	public List<String> dataScopeTreeKeys(String roleIds) {
-		List<RoleScope> roleScopes = roleScopeService.list(Wrappers.<RoleScope>query().lambda().in(RoleScope::getRoleId, Func.toLongList(roleIds)));
+		List<RoleScope> roleScopes = roleScopeService.list(Wrappers.<RoleScope>query().lambda().eq(RoleScope::getScopeCategory, DATA_SCOPE_CATEGORY).in(RoleScope::getRoleId, Func.toLongList(roleIds)));
 		return roleScopes.stream().map(roleScope -> Func.toStr(roleScope.getScopeId())).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<String> apiScopeTreeKeys(String roleIds) {
-		List<RoleScope> roleScopes = roleScopeService.list(Wrappers.<RoleScope>query().lambda().in(RoleScope::getRoleId, Func.toLongList(roleIds)));
+		List<RoleScope> roleScopes = roleScopeService.list(Wrappers.<RoleScope>query().lambda().eq(RoleScope::getScopeCategory, API_SCOPE_CATEGORY).in(RoleScope::getRoleId, Func.toLongList(roleIds)));
 		return roleScopes.stream().map(roleScope -> Func.toStr(roleScope.getScopeId())).collect(Collectors.toList());
 	}
 

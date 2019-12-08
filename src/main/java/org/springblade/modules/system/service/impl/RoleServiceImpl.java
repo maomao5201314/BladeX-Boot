@@ -43,6 +43,9 @@ import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springblade.common.constant.CommonConstant.API_SCOPE_CATEGORY;
+import static org.springblade.common.constant.CommonConstant.DATA_SCOPE_CATEGORY;
+
 /**
  * 服务实现类
  *
@@ -55,9 +58,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	private IRoleMenuService roleMenuService;
 	private IRoleScopeService roleScopeService;
-
-	private static Integer DATA_SCOPE_CATEGORY = 1;
-	private static Integer API_SCOPE_CATEGORY = 2;
 
 	@Override
 	public IPage<RoleVO> selectRolePage(IPage<RoleVO> page, RoleVO role) {

@@ -52,7 +52,7 @@ public interface IUserService extends BaseService<User> {
 	 * @param user
 	 * @return
 	 */
-	IPage<User> selectUserPage(IPage<User> page, User user);
+	IPage<User> selectUserPage(IPage<User> page, User user, Long deptId, String tenantId);
 
 	/**
 	 * 用户信息

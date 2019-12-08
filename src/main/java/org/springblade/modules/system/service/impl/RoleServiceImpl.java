@@ -91,7 +91,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		roleMenuService.saveBatch(roleMenus);
 
 		// 删除角色配置的数据权限集合
-		roleScopeService.remove(Wrappers.<RoleScope>update().lambda().in(RoleScope::getRoleId, roleIds));
+		roleScopeService.remove(Wrappers.<RoleScope>update().lambda().eq(RoleScope::getScopeCategory, DATA_SCOPE_CATEGORY).in(RoleScope::getRoleId, roleIds));
 		// 组装配置
 		List<RoleScope> roleDataScopes = new ArrayList<>();
 		roleIds.forEach(roleId -> dataScopeIds.forEach(scopeId -> {
@@ -104,7 +104,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		// 新增配置
 		roleScopeService.saveBatch(roleDataScopes);
 
-		// 删除角色配置的数据权限集合
+		// 删除角色配置的接口权限集合
 		roleScopeService.remove(Wrappers.<RoleScope>update().lambda().eq(RoleScope::getScopeCategory, API_SCOPE_CATEGORY).in(RoleScope::getRoleId, roleIds));
 		// 组装配置
 		List<RoleScope> roleApiScopes = new ArrayList<>();

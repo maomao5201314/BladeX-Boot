@@ -49,3 +49,21 @@ CREATE TABLE `blade_dict_biz`  (
    `is_deleted` int(2) NULL DEFAULT 0 COMMENT '是否已删除',
    PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '业务字典表';
+
+-- ----------------------------
+-- 创建用户部门表
+-- ----------------------------
+CREATE TABLE `blade_user_dept`  (
+   `id` bigint(64) NOT NULL COMMENT '主键',
+   `user_id` bigint(64) NULL DEFAULT 0 COMMENT '用户ID',
+   `dept_id` bigint(64) NULL DEFAULT 0 COMMENT '部门ID',
+   PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户部门表';
+
+-- ----------------------------
+-- 新增用户部门表数据
+-- ----------------------------
+INSERT INTO `blade_user_dept`(`id`, `user_id`, `dept_id`) VALUES (1203503640757788674, 1123598821738675201, 1123598813738675201);
+INSERT INTO `blade_user_dept`(`id`, `user_id`, `dept_id`) VALUES (1203503653323923458, 1123598821738675202, 1123598813738675202);
+INSERT INTO `blade_user_dept`(`id`, `user_id`, `dept_id`) VALUES (1203503663402835969, 1123598821738675203, 1123598813738675202);
+INSERT INTO `blade_user_dept`(`id`, `user_id`, `dept_id`) VALUES (1203503672911323137, 1123598821738675204, 1123598813738675202);

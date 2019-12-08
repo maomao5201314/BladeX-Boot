@@ -56,6 +56,11 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 	}
 
 	@Override
+	public List<Dept> getDeptChild(Long deptId) {
+		return baseMapper.selectList(Wrappers.<Dept>query().lambda().like(Dept::getAncestors, deptId));
+	}
+
+	@Override
 	public boolean removeDept(String ids) {
 		Integer cnt = baseMapper.selectCount(Wrappers.<Dept>query().lambda().in(Dept::getParentId, Func.toLongList(ids)));
 		if (cnt > 0) {

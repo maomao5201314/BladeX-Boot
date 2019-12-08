@@ -57,3 +57,25 @@ COMMENT ON COLUMN "blade_dict_biz"."remark" IS '字典备注';
 COMMENT ON COLUMN "blade_dict_biz"."is_sealed" IS '是否已封存';
 COMMENT ON COLUMN "blade_dict_biz"."is_deleted" IS '是否已删除';
 COMMENT ON TABLE "blade_dict_biz" IS '业务字典表';
+
+-- ----------------------------
+-- 创建用户部门表
+-- ----------------------------
+CREATE TABLE "blade_user_dept" (
+  "id" int8 NOT NULL,
+  "user_id" int8,
+  "dept_id" int8,
+  PRIMARY KEY ("id")
+);
+COMMENT ON COLUMN "blade_user_dept"."id" IS '主键';
+COMMENT ON COLUMN "blade_user_dept"."user_id" IS '用户ID';
+COMMENT ON COLUMN "blade_user_dept"."dept_id" IS '部门ID';
+COMMENT ON TABLE "blade_user_dept" IS '用户部门表';
+
+-- ----------------------------
+-- 新增用户部门表数据
+-- ----------------------------
+INSERT INTO "blade_user_dept" VALUES (1203503640757788674, 1123598821738675201, 1123598813738675201);
+INSERT INTO "blade_user_dept" VALUES (1203503653323923458, 1123598821738675202, 1123598813738675202);
+INSERT INTO "blade_user_dept" VALUES (1203503663402835969, 1123598821738675203, 1123598813738675202);
+INSERT INTO "blade_user_dept" VALUES (1203503672911323137, 1123598821738675204, 1123598813738675202);

@@ -38,6 +38,31 @@
 
     <select id="selectUserPage" resultMap="userResultMap">
         select * from blade_user where is_deleted = 0
+        <if test="tenantId!=null and tenantId != ''">
+            and tenant_id = #{tenantId}
+        </if>
+        <if test="user.tenantId!=null">
+            and tenant_id = #{user.tenantId}
+        </if>
+        <if test="user.account!=null">
+            and account = #{user.account}
+        </if>
+        <if test="user.realName!=null">
+            and real_name = #{user.realName}
+        </if>
+        <if test="deptIdList!=null and deptIdList.size>0">
+            and id in (
+                SELECT
+                    user_id
+                FROM
+                    blade_user_dept
+                WHERE
+                dept_id IN
+                <foreach collection="deptIdList" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            )
+        </if>
     </select>
 
     <select id="getUser" resultMap="userResultMap">

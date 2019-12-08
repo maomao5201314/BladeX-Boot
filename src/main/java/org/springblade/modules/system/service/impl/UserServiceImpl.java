@@ -20,6 +20,7 @@ package org.springblade.modules.system.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
+import lombok.AllArgsConstructor;
 import org.springblade.common.cache.SysCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.log.exception.ServiceException;
@@ -30,11 +31,15 @@ import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.User;
+import org.springblade.modules.system.entity.UserDept;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springblade.modules.system.mapper.UserMapper;
+import org.springblade.modules.system.service.IUserDeptService;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,9 +48,13 @@ import java.util.List;
  * @author Chill
  */
 @Service
+@AllArgsConstructor
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
 
+	private IUserDeptService userDeptService;
+
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public boolean submit(User user) {
 		if (Func.isNotEmpty(user.getPassword())) {
 			user.setPassword(DigestUtil.encrypt(user.getPassword()));
@@ -54,18 +63,33 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (cnt > 0 && Func.isEmpty(user.getId())) {
 			throw new ApiException("当前用户已存在!");
 		}
-		return save(user);
+		return save(user) && submitUserDept(user);
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public boolean updateUser(User user) {
 		user.setPassword(null);
-		return updateById(user);
+		return updateById(user) && submitUserDept(user);
+	}
+
+	private boolean submitUserDept(User user) {
+		List<Long> deptIdList = Func.toLongList(user.getDeptId());
+		List<UserDept> userDeptList = new ArrayList<>();
+		deptIdList.forEach(deptId -> {
+			UserDept userDept = new UserDept();
+			userDept.setUserId(user.getId());
+			userDept.setDeptId(deptId);
+			userDeptList.add(userDept);
+		});
+		userDeptService.remove(Wrappers.<UserDept>query().lambda().eq(UserDept::getUserId, user.getId()));
+		return userDeptService.saveBatch(userDeptList);
 	}
 
 	@Override
-	public IPage<User> selectUserPage(IPage<User> page, User user) {
-		return page.setRecords(baseMapper.selectUserPage(page, user));
+	public IPage<User> selectUserPage(IPage<User> page, User user, Long deptId, String tenantId) {
+		List<Long> deptIdList = SysCache.getDeptChildIds(deptId);
+		return page.setRecords(baseMapper.selectUserPage(page, user, deptIdList, tenantId));
 	}
 
 	@Override

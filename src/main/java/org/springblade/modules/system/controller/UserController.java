@@ -29,6 +29,7 @@ import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
+import org.springblade.core.tool.utils.StringPool;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.service.IUserService;
 import org.springblade.modules.system.vo.UserVO;
@@ -93,6 +94,22 @@ public class UserController {
 	public R<IPage<UserVO>> list(@ApiIgnore @RequestParam Map<String, Object> user, Query query, BladeUser bladeUser) {
 		QueryWrapper<User> queryWrapper = Condition.getQueryWrapper(user, User.class);
 		IPage<User> pages = userService.page(Condition.getPage(query), (!bladeUser.getTenantId().equals(BladeConstant.ADMIN_TENANT_ID)) ? queryWrapper.lambda().eq(User::getTenantId, bladeUser.getTenantId()) : queryWrapper);
+		return R.data(UserWrapper.build().pageVO(pages));
+	}
+
+	/**
+	 * 自定义用户列表
+	 */
+	@GetMapping("/page")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "account", value = "账号名", paramType = "query", dataType = "string"),
+		@ApiImplicitParam(name = "realName", value = "姓名", paramType = "query", dataType = "string")
+	})
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "列表", notes = "传入account和realName")
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
+	public R<IPage<UserVO>> page(@ApiIgnore User user, Query query, Long deptId, BladeUser bladeUser) {
+		IPage<User> pages = userService.selectUserPage(Condition.getPage(query), user, deptId, (bladeUser.getTenantId().equals(BladeConstant.ADMIN_TENANT_ID) ? StringPool.EMPTY : bladeUser.getTenantId()));
 		return R.data(UserWrapper.build().pageVO(pages));
 	}
 

@@ -27,7 +27,9 @@ import org.springblade.modules.system.service.IMenuService;
 import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.service.ITenantService;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
@@ -41,6 +43,8 @@ public class SysCache {
 	private static final String DEPT_ID = "dept:id:";
 	private static final String DEPT_NAME_ID = "deptName:id:";
 	private static final String DEPT_NAMES_ID = "deptNames:id:";
+	private static final String DEPT_CHILD_ID = "deptChild:id:";
+	private static final String DEPT_CHILDIDS_ID = "deptChildIds:id:";
 	private static final String ROLE_ID = "role:id:";
 	private static final String ROLE_NAME_ID = "roleName:id:";
 	private static final String ROLE_NAMES_ID = "roleNames:id:";
@@ -129,6 +133,40 @@ public class SysCache {
 	 */
 	public static List<String> getDeptNames(String deptIds) {
 		return CacheUtil.get(SYS_CACHE, DEPT_NAMES_ID, deptIds, () -> deptService.getDeptNames(deptIds));
+	}
+
+	/**
+	 * 获取子部门集合
+	 *
+	 * @param deptId 主键
+	 * @return 子部门
+	 */
+	public static List<Dept> getDeptChild(Long deptId) {
+		return CacheUtil.get(SYS_CACHE, DEPT_CHILD_ID, deptId, () -> deptService.getDeptChild(deptId));
+	}
+
+	/**
+	 * 获取子部门ID集合
+	 *
+	 * @param deptId 主键
+	 * @return 子部门ID
+	 */
+	public static List<Long> getDeptChildIds(Long deptId) {
+		if (deptId == null) {
+			return null;
+		}
+		List<Long> deptIdList = CacheUtil.get(SYS_CACHE, DEPT_CHILDIDS_ID, deptId, List.class);
+		if (deptIdList == null) {
+			deptIdList = new ArrayList<>();
+			List<Dept> deptChild = getDeptChild(deptId);
+			if (deptChild != null) {
+				List<Long> collect = deptChild.stream().map(Dept::getId).collect(Collectors.toList());
+				deptIdList.addAll(collect);
+			}
+			deptIdList.add(deptId);
+			CacheUtil.put(SYS_CACHE, DEPT_CHILDIDS_ID, deptId, deptIdList);
+		}
+		return deptIdList;
 	}
 
 	/**

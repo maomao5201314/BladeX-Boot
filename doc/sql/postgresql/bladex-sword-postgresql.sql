@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 03/12/2019 15:26:43
+ Date: 08/12/2019 10:13:15
 */
 
 
@@ -1318,6 +1318,31 @@ INSERT INTO "blade_user" VALUES (1123598821738675204, '000000', 'boss', 'abe57d2
 COMMIT;
 
 -- ----------------------------
+-- Table structure for blade_user_dept
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_user_dept";
+CREATE TABLE "blade_user_dept" (
+  "id" int8 NOT NULL,
+  "user_id" int8,
+  "dept_id" int8
+)
+;
+COMMENT ON COLUMN "blade_user_dept"."id" IS '主键';
+COMMENT ON COLUMN "blade_user_dept"."user_id" IS '用户ID';
+COMMENT ON COLUMN "blade_user_dept"."dept_id" IS '部门ID';
+COMMENT ON TABLE "blade_user_dept" IS '用户部门表';
+
+-- ----------------------------
+-- Records of blade_user_dept
+-- ----------------------------
+BEGIN;
+INSERT INTO "blade_user_dept" VALUES (1203503640757788674, 1123598821738675201, 1123598813738675201);
+INSERT INTO "blade_user_dept" VALUES (1203503653323923458, 1123598821738675202, 1123598813738675202);
+INSERT INTO "blade_user_dept" VALUES (1203503663402835969, 1123598821738675203, 1123598813738675202);
+INSERT INTO "blade_user_dept" VALUES (1203503672911323137, 1123598821738675204, 1123598813738675202);
+COMMIT;
+
+-- ----------------------------
 -- Primary Key structure for table blade_client
 -- ----------------------------
 ALTER TABLE "blade_client" ADD CONSTRAINT "blade_client_pkey" PRIMARY KEY ("id");
@@ -1431,3 +1456,8 @@ ALTER TABLE "blade_top_menu_setting" ADD CONSTRAINT "blade_top_menu_setting_pkey
 -- Primary Key structure for table blade_user
 -- ----------------------------
 ALTER TABLE "blade_user" ADD CONSTRAINT "blade_user_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table blade_user_dept
+-- ----------------------------
+ALTER TABLE "blade_user_dept" ADD CONSTRAINT "blade_user_dept_pkey" PRIMARY KEY ("id");

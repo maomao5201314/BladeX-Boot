@@ -634,7 +634,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675314', '1123598815738675208', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675315', '1123598815738675208', 'topmenu_delete', '删除', 'delete', '/api/blade-system/topmenu/remove', 'delete', '3', '2', '3', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675316', '1123598815738675208', 'topmenu_view', '查看', 'view', '/system/topmenu/view', 'file-text', '4', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675317', '1123598815738675208', 'topmenu_setting', '菜单配置', 'setting', NULL, 'setting', '5', '2', '1', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321991', '1123598815738675217', 'datasource', '数据源管理', 'menu', '/tool/datasource', 'iconfont icon-caidanguanli', '2', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321991', '1123598815738675217', 'datasource', '数据源管理', 'menu', '/tool/datasource', NULL, '2', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1161272593873321992', '1161272593873321991', 'datasource_add', '新增', 'add', '/tool/datasource/add', 'plus', '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1161272593873321993', '1161272593873321991', 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', '2', '2', '2', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1161272593873321994', '1161272593873321991', 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', '3', '2', '3', '3', NULL, '0');

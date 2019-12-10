@@ -639,8 +639,6 @@ INSERT INTO "BLADE_MENU" VALUES ('1161272593873321992', '1161272593873321991', '
 INSERT INTO "BLADE_MENU" VALUES ('1161272593873321993', '1161272593873321991', 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', '2', '2', '2', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1161272593873321994', '1161272593873321991', 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', '3', '2', '3', '3', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1161272593873321995', '1161272593873321991', 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', '4', '2', '2', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733121140551682', '1123598815738675217', 'form', '表单设计', 'form', 'https://form.avuejs.com/', NULL, '3', '1', '0', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733349637844993', '1123598815738675217', 'crud', '表格设计', 'crud', 'https://crud.avuejs.com/', NULL, '4', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', NULL, '3', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963252', '1123598815738675210', 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', NULL, '4', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963253', '1123598815738675210', 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', NULL, '5', '1', '0', '2', NULL, '0');

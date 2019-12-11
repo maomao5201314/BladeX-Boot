@@ -63,4 +63,11 @@ public interface DictMapper extends BaseMapper<Dict> {
 	 */
 	List<DictVO> tree();
 
+	/**
+	 * 获取树形节点
+	 *
+	 * @return
+	 */
+	List<DictVO> parentTree();
+
 }

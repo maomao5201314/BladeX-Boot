@@ -49,6 +49,11 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 	}
 
 	@Override
+	public List<DictBizVO> parentTree() {
+		return ForestNodeMerger.merge(baseMapper.parentTree());
+	}
+
+	@Override
 	public String getValue(String code, Integer dictKey) {
 		return Func.toStr(baseMapper.getValue(code, dictKey), StringPool.EMPTY);
 	}

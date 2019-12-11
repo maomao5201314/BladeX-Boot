@@ -55,6 +55,11 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 	}
 
 	@Override
+	public List<DictVO> parentTree() {
+		return ForestNodeMerger.merge(baseMapper.parentTree());
+	}
+
+	@Override
 	public String getValue(String code, Integer dictKey) {
 		return Func.toStr(baseMapper.getValue(code, dictKey), StringPool.EMPTY);
 	}

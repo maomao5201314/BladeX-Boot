@@ -37,6 +37,13 @@ public interface IDictBizService extends IService<DictBiz> {
 	List<DictBizVO> tree();
 
 	/**
+	 * 树形结构
+	 *
+	 * @return
+	 */
+	List<DictBizVO> parentTree();
+
+	/**
 	 * 获取字典表对应中文
 	 *
 	 * @param code    字典编号

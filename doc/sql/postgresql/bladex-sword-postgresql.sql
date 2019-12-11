@@ -606,10 +606,10 @@ INSERT INTO "blade_menu" VALUES (1164733369658963253, 1123598815738675210, 'turb
 INSERT INTO "blade_menu" VALUES (1164733369658963254, 1123598815738675210, 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', '', 6, 1, 0, 2, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733369658963255, 1123598815738675210, 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', '', 7, 1, 0, 2, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963251, 1123598815738675203, 'dictbiz', '业务字典', 'menu', '/system/dictbiz', '', 3, 1, 0, 1, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733379658963252, 1164733379658963251, 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', 1, 2, 2, 1, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733379658963253, 1164733379658963251, 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', 2, 2, 1, 1, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733379658963254, 1164733379658963251, 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', 3, 2, 0, 1, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733379658963255, 1164733379658963251, 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', 4, 2, 3, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963252, 1164733379658963251, 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', 1, 2, 1, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963253, 1164733379658963251, 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', 2, 2, 2, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963254, 1164733379658963251, 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', 3, 2, 3, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963255, 1164733379658963251, 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', 4, 2, 2, 1, '', 0);
 COMMIT;
 
 -- ----------------------------

@@ -124,6 +124,19 @@ public class DictBizController extends BladeController {
 	}
 
 	/**
+	 * 获取字典树形结构
+	 *
+	 * @return
+	 */
+	@GetMapping("/parent-tree")
+	@ApiOperationSupport(order = 5)
+	@ApiOperation(value = "树形结构", notes = "树形结构")
+	public R<List<DictBizVO>> parentTree() {
+		List<DictBizVO> tree = dictService.parentTree();
+		return R.data(tree);
+	}
+
+	/**
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")

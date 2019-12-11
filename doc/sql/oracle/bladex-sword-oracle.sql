@@ -623,32 +623,6 @@ COMMENT ON TABLE "BLADE_MENU" IS '菜单表';
 -- ----------------------------
 -- Records of BLADE_MENU
 -- ----------------------------
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675307', '0', 'authority', '权限管理', 'menu', '/authority', 'safety-certificate', '98', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675308', '1123598815738675307', 'role', '角色管理', 'menu', '/authority/role', NULL, '1', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675309', '1123598815738675307', 'data_scope', '数据权限', 'menu', '/authority/datascope', NULL, '2', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675310', '1123598815738675309', 'data_scope_setting', '权限配置', 'setting', NULL, 'setting', '1', '2', '2', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675311', '1123598815738675307', 'api_scope', '接口权限', 'menu', '/authority/apiscope', NULL, '3', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675312', '1123598815738675311', 'api_scope_setting', '权限配置', 'setting', NULL, 'setting', '1', '2', '2', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675313', '1123598815738675208', 'topmenu_add', '新增', 'add', '/system/topmenu/add', 'plus', '1', '2', '1', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675314', '1123598815738675208', 'topmenu_edit', '修改', 'edit', '/system/topmenu/edit', 'form', '2', '2', '2', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675315', '1123598815738675208', 'topmenu_delete', '删除', 'delete', '/api/blade-system/topmenu/remove', 'delete', '3', '2', '3', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675316', '1123598815738675208', 'topmenu_view', '查看', 'view', '/system/topmenu/view', 'file-text', '4', '2', '2', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675317', '1123598815738675208', 'topmenu_setting', '菜单配置', 'setting', NULL, 'setting', '5', '2', '1', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321991', '1123598815738675217', 'datasource', '数据源管理', 'menu', '/tool/datasource', NULL, '2', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321992', '1161272593873321991', 'datasource_add', '新增', 'add', '/tool/datasource/add', 'plus', '1', '2', '1', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321993', '1161272593873321991', 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', '2', '2', '2', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321994', '1161272593873321991', 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', '3', '2', '3', '3', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321995', '1161272593873321991', 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', '4', '2', '2', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', NULL, '3', '1', '0', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963252', '1123598815738675210', 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', NULL, '4', '1', '0', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963253', '1123598815738675210', 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', NULL, '5', '1', '0', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963254', '1123598815738675210', 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', NULL, '6', '1', '0', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963255', '1123598815738675210', 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', NULL, '7', '1', '0', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963251', '1123598815738675203', 'dictbiz', '业务字典', 'menu', '/system/dictbiz', NULL, '3', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963252', '1164733379658963251', 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', '1', '2', '2', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963253', '1164733379658963251', 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', '2', '2', '1', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963254', '1164733379658963251', 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', '3', '2', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963255', '1164733379658963251', 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', '4', '2', '3', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675201', '0', 'desk', '工作台', 'menu', '/desk', 'desktop', '1', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675202', '1123598815738675201', 'notice', '通知公告', 'menu', '/desk/notice', NULL, '1', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675203', '0', 'system', '系统管理', 'menu', '/system', 'setting', '99', '1', '0', '1', NULL, '0');
@@ -753,6 +727,32 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675302', '1123598815738675299', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675303', '1123598815738675299', 'oss_delete', '删除', 'delete', '/api/blade-resource/oss/remove', 'delete', '3', '2', '3', '3', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675304', '1123598815738675299', 'oss_view', '查看', 'view', '/resource/oss/view', 'file-text', '4', '2', '2', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675305', '1123598815738675299', 'oss_enable', '启用', 'enable', '/api/blade-resource/oss/enable', 'key', '5', '2', '2', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675307', '0', 'authority', '权限管理', 'menu', '/authority', 'safety-certificate', '98', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675308', '1123598815738675307', 'role', '角色管理', 'menu', '/authority/role', NULL, '1', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675309', '1123598815738675307', 'data_scope', '数据权限', 'menu', '/authority/datascope', NULL, '2', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675310', '1123598815738675309', 'data_scope_setting', '权限配置', 'setting', NULL, 'setting', '1', '2', '2', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675311', '1123598815738675307', 'api_scope', '接口权限', 'menu', '/authority/apiscope', NULL, '3', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675312', '1123598815738675311', 'api_scope_setting', '权限配置', 'setting', NULL, 'setting', '1', '2', '2', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675313', '1123598815738675208', 'topmenu_add', '新增', 'add', '/system/topmenu/add', 'plus', '1', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675314', '1123598815738675208', 'topmenu_edit', '修改', 'edit', '/system/topmenu/edit', 'form', '2', '2', '2', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675315', '1123598815738675208', 'topmenu_delete', '删除', 'delete', '/api/blade-system/topmenu/remove', 'delete', '3', '2', '3', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675316', '1123598815738675208', 'topmenu_view', '查看', 'view', '/system/topmenu/view', 'file-text', '4', '2', '2', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675317', '1123598815738675208', 'topmenu_setting', '菜单配置', 'setting', NULL, 'setting', '5', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321991', '1123598815738675217', 'datasource', '数据源管理', 'menu', '/tool/datasource', NULL, '2', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321992', '1161272593873321991', 'datasource_add', '新增', 'add', '/tool/datasource/add', 'plus', '1', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321993', '1161272593873321991', 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', '2', '2', '2', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321994', '1161272593873321991', 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', '3', '2', '3', '3', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321995', '1161272593873321991', 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', '4', '2', '2', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', NULL, '3', '1', '0', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963252', '1123598815738675210', 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', NULL, '4', '1', '0', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963253', '1123598815738675210', 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', NULL, '5', '1', '0', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963254', '1123598815738675210', 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', NULL, '6', '1', '0', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963255', '1123598815738675210', 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', NULL, '7', '1', '0', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963251', '1123598815738675203', 'dictbiz', '业务字典', 'menu', '/system/dictbiz', NULL, '3', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963252', '1164733379658963251', 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', '1', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963253', '1164733379658963251', 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', '2', '2', '2', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963254', '1164733379658963251', 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', '3', '2', '3', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963255', '1164733379658963251', 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', '4', '2', '2', '1', NULL, '0');
 COMMIT;
 
 -- ----------------------------

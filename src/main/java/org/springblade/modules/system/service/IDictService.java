@@ -47,6 +47,13 @@ public interface IDictService extends IService<Dict> {
 	List<DictVO> tree();
 
 	/**
+	 * 树形结构
+	 *
+	 * @return
+	 */
+	List<DictVO> parentTree();
+
+	/**
 	 * 获取字典表对应中文
 	 *
 	 * @param code    字典编号

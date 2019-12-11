@@ -105,8 +105,9 @@ public class DictBizController extends BladeController {
 	})
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "列表", notes = "传入dict")
-	public R<IPage<DictBizVO>> childList(@ApiIgnore @RequestParam Map<String, Object> dict, Query query) {
-		IPage<DictBiz> page = dictService.page(Condition.getPage(query), Condition.getQueryWrapper(dict, DictBiz.class).lambda().orderByAsc(DictBiz::getSort));
+	public R<IPage<DictBizVO>> childList(@ApiIgnore @RequestParam Map<String, Object> dict, @RequestParam(required = false, defaultValue = "-1") Long parentId, Query query) {
+		dict.remove("parentId");
+		IPage<DictBiz> page = dictService.page(Condition.getPage(query), Condition.getQueryWrapper(dict, DictBiz.class).lambda().eq(DictBiz::getParentId, parentId).orderByAsc(DictBiz::getSort));
 		return R.data(DictBizWrapper.build().pageVO(page));
 	}
 

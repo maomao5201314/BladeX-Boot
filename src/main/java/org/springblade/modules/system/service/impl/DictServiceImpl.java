@@ -21,6 +21,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springblade.common.constant.CommonConstant;
+import org.springblade.core.mp.support.Condition;
+import org.springblade.core.mp.support.Query;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.Func;
@@ -29,10 +32,12 @@ import org.springblade.modules.system.entity.Dict;
 import org.springblade.modules.system.mapper.DictMapper;
 import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.vo.DictVO;
+import org.springblade.modules.system.wrapper.DictWrapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.springblade.core.cache.constant.CacheConstant.DICT_CACHE;
 
@@ -91,5 +96,18 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 			throw new ApiException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));
+	}
+
+	@Override
+	public IPage<DictVO> parentList(Map<String, Object> dict, Query query) {
+		IPage<Dict> page = this.page(Condition.getPage(query), Condition.getQueryWrapper(dict, Dict.class).lambda().eq(Dict::getParentId, CommonConstant.TOP_PARENT_ID).orderByAsc(Dict::getSort));
+		return DictWrapper.build().pageVO(page);
+	}
+
+	@Override
+	public IPage<DictVO> childList(Map<String, Object> dict, Long parentId, Query query) {
+		dict.remove("parentId");
+		IPage<Dict> page = this.page(Condition.getPage(query), Condition.getQueryWrapper(dict, Dict.class).lambda().eq(Dict::getParentId, parentId).orderByAsc(Dict::getSort));
+		return DictWrapper.build().pageVO(page);
 	}
 }

@@ -35,7 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
- * Oss存储
+ * Oss云存储统一构建类
  *
  * @author Chill
  */

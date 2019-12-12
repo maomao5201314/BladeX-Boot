@@ -29,7 +29,7 @@ import org.springblade.core.qiniu.QiniuTemplate;
 import org.springblade.modules.resource.entity.Oss;
 
 /**
- * QiniuBuilder
+ * 七牛云存储构建类
  *
  * @author Chill
  */

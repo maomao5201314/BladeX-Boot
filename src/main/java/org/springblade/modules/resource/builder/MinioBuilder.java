@@ -25,7 +25,7 @@ import org.springblade.core.oss.rule.OssRule;
 import org.springblade.modules.resource.entity.Oss;
 
 /**
- * MinioBuilder
+ * Minio云存储构建类
  *
  * @author Chill
  */

@@ -41,13 +41,13 @@
         <if test="tenantId!=null and tenantId != ''">
             and tenant_id = #{tenantId}
         </if>
-        <if test="user.tenantId!=null">
+        <if test="user.tenantId!=null and user.tenantId != ''">
             and tenant_id = #{user.tenantId}
         </if>
-        <if test="user.account!=null">
+        <if test="user.account!=null and user.account != ''">
             and account = #{user.account}
         </if>
-        <if test="user.realName!=null">
+        <if test="user.realName!=null and user.realName != ''">
             and real_name = #{user.realName}
         </if>
         <if test="deptIdList!=null and deptIdList.size>0">

@@ -60,7 +60,7 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 	}
 
 	@Override
-	public String getValue(String code, Integer dictKey) {
+	public String getValue(String code, String dictKey) {
 		return Func.toStr(baseMapper.getValue(code, dictKey), StringPool.EMPTY);
 	}
 

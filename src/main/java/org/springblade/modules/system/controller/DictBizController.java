@@ -37,7 +37,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
+import static org.springblade.core.cache.constant.CacheConstant.DICT_CACHE;
 
 /**
  * 控制器
@@ -139,7 +139,7 @@ public class DictBizController extends BladeController {
 	@PostMapping("/submit")
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "新增或修改", notes = "传入dict")
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
+	@CacheEvict(cacheNames = {DICT_CACHE}, allEntries = true)
 	public R submit(@Valid @RequestBody DictBiz dict) {
 		return R.status(dictService.submit(dict));
 	}
@@ -151,7 +151,7 @@ public class DictBizController extends BladeController {
 	@PostMapping("/remove")
 	@ApiOperationSupport(order = 7)
 	@ApiOperation(value = "删除", notes = "传入ids")
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
+	@CacheEvict(cacheNames = {DICT_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(dictService.removeDict(ids));
 	}

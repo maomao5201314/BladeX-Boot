@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import static org.springblade.core.cache.constant.CacheConstant.MENU_CACHE;
 import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
@@ -123,7 +124,7 @@ public class TopMenuController extends BladeController {
 	@PostMapping("/grant")
 	@ApiOperationSupport(order = 8)
 	@ApiOperation(value = "顶部菜单配置", notes = "传入topMenuId集合以及menuId集合")
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
+	@CacheEvict(cacheNames = {SYS_CACHE, MENU_CACHE}, allEntries = true)
 	public R grant(@ApiParam(value = "topMenuId集合", required = true) @RequestParam String topMenuIds,
 				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds) {
 		boolean temp = topMenuService.grant(Func.toLongList(topMenuIds), Func.toLongList(menuIds));

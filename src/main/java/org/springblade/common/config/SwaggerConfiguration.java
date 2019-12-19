@@ -71,7 +71,7 @@ public class SwaggerConfiguration {
 			.select()
 			.apis(SwaggerUtil.basePackages(basePackages))
 			.paths(PathSelectors.any())
-			.build().securitySchemes(Lists.<SecurityScheme>newArrayList(SwaggerUtil.clientInfo(), SwaggerUtil.bladeAuth()));
+			.build().securitySchemes(Lists.<SecurityScheme>newArrayList(SwaggerUtil.clientInfo(), SwaggerUtil.bladeAuth(), SwaggerUtil.bladeTenant()));
 	}
 
 	private ApiInfo apiInfo() {

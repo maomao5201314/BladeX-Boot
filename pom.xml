@@ -70,10 +70,6 @@
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
-            <artifactId>blade-starter-swagger</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springblade</groupId>
             <artifactId>blade-starter-tenant</artifactId>
         </dependency>
         <dependency>
@@ -91,6 +87,14 @@
         <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-alioss</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springblade</groupId>
+            <artifactId>blade-starter-swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-ui</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>

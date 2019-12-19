@@ -16,10 +16,10 @@
  */
 package org.springblade.modules.auth.controller;
 
+import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiSort;
 import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.log.annotation.ApiLog;

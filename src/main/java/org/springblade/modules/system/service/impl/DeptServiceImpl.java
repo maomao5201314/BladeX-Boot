@@ -84,7 +84,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 		if (dept.getParentId() > 0) {
 			Dept parent = getById(dept.getParentId());
 			if (Func.toLong(dept.getParentId()) == Func.toLong(dept.getId())) {
-				throw new ServiceException("父节点不选选择自身!");
+				throw new ServiceException("父节点不可选择自身!");
 			}
 			dept.setTenantId(parent.getTenantId());
 			String ancestors = parent.getAncestors() + StringPool.COMMA + dept.getParentId();

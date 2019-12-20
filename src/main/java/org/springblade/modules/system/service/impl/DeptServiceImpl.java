@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.Func;
@@ -47,6 +48,9 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
 	@Override
 	public List<DeptVO> tree(String tenantId) {
+		if (AuthUtil.isAdministrator()) {
+			tenantId = StringPool.EMPTY;
+		}
 		return ForestNodeMerger.merge(baseMapper.tree(tenantId));
 	}
 

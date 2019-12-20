@@ -103,10 +103,7 @@ public class DeptController extends BladeController {
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "新增或修改", notes = "传入dept")
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
-	public R submit(@Valid @RequestBody Dept dept, BladeUser user) {
-		if (Func.isEmpty(dept.getId())) {
-			dept.setTenantId(user.getTenantId());
-		}
+	public R submit(@Valid @RequestBody Dept dept) {
 		return R.status(deptService.submit(dept));
 	}
 

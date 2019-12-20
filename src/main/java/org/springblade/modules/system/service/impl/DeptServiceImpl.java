@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
@@ -76,11 +77,16 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 	@Override
 	public boolean submit(Dept dept) {
 		if (Func.isEmpty(dept.getParentId())) {
+			dept.setTenantId(AuthUtil.getTenantId());
 			dept.setParentId(BladeConstant.TOP_PARENT_ID);
-			dept.setAncestors("0");
+			dept.setAncestors(String.valueOf(BladeConstant.TOP_PARENT_ID));
 		}
 		if (dept.getParentId() > 0) {
 			Dept parent = getById(dept.getParentId());
+			if (Func.toLong(dept.getParentId()) == Func.toLong(dept.getId())) {
+				throw new ServiceException("父节点不选选择自身!");
+			}
+			dept.setTenantId(parent.getTenantId());
 			String ancestors = parent.getAncestors() + StringPool.COMMA + dept.getParentId();
 			dept.setAncestors(ancestors);
 		}

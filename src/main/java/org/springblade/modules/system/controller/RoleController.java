@@ -104,10 +104,7 @@ public class RoleController extends BladeController {
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "新增或修改", notes = "传入role")
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
-	public R submit(@Valid @RequestBody Role role, BladeUser user) {
-		if (Func.isEmpty(role.getId())) {
-			role.setTenantId(user.getTenantId());
-		}
+	public R submit(@Valid @RequestBody Role role) {
 		return R.status(roleService.submit(role));
 	}
 

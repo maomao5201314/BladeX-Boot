@@ -21,6 +21,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springblade.core.log.exception.ServiceException;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
@@ -134,10 +135,13 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	@Override
 	public boolean submit(Role role) {
-		if (!SecureUtil.isAdministrator()) {
+		if (!AuthUtil.isAdministrator()) {
 			if (Func.toStr(role.getRoleAlias()).equals(RoleConstant.ADMINISTRATOR)) {
 				throw new ServiceException("无权限创建超管角色！");
 			}
+		}
+		if (Func.isEmpty(role.getId())) {
+			role.setTenantId(AuthUtil.getTenantId());
 		}
 		if (Func.isEmpty(role.getParentId())) {
 			role.setParentId(BladeConstant.TOP_PARENT_ID);

@@ -45,7 +45,7 @@
     </resultMap>
 
 
-    <select id="lazyList" resultType="org.springblade.modules.system.vo.MenuVO">
+    <select id="lazyList" resultMap="menuVOResultMap">
         SELECT
             menu.*,
             (

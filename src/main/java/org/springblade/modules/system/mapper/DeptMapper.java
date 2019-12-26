@@ -17,11 +17,12 @@
 package org.springblade.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springblade.modules.system.entity.Dept;
+import org.springblade.modules.system.vo.DeptLazyVO;
 import org.springblade.modules.system.vo.DeptVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Mapper 接口
@@ -31,13 +32,14 @@ import java.util.List;
 public interface DeptMapper extends BaseMapper<Dept> {
 
 	/**
-	 * 自定义分页
+	 * 懒加载部门列表
 	 *
-	 * @param page
-	 * @param dept
+	 * @param tenantId
+	 * @param parentId
+	 * @param param
 	 * @return
 	 */
-	List<DeptVO> selectDeptPage(IPage page, DeptVO dept);
+	List<DeptLazyVO> lazyList(String tenantId, Long parentId, Map<String, Object> param);
 
 	/**
 	 * 获取树形节点
@@ -46,6 +48,15 @@ public interface DeptMapper extends BaseMapper<Dept> {
 	 * @return
 	 */
 	List<DeptVO> tree(String tenantId);
+
+	/**
+	 * 懒加载获取树形节点
+	 *
+	 * @param tenantId
+	 * @param parentId
+	 * @return
+	 */
+	List<DeptVO> lazyTree(String tenantId, Long parentId);
 
 	/**
 	 * 获取部门名

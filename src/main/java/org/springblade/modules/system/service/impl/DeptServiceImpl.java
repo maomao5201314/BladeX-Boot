@@ -16,7 +16,6 @@
  */
 package org.springblade.modules.system.service.impl;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -29,10 +28,12 @@ import org.springblade.core.tool.utils.StringPool;
 import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.mapper.DeptMapper;
 import org.springblade.modules.system.service.IDeptService;
+import org.springblade.modules.system.vo.DeptLazyVO;
 import org.springblade.modules.system.vo.DeptVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 服务实现类
@@ -43,8 +44,15 @@ import java.util.List;
 public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements IDeptService {
 
 	@Override
-	public IPage<DeptVO> selectDeptPage(IPage<DeptVO> page, DeptVO dept) {
-		return page.setRecords(baseMapper.selectDeptPage(page, dept));
+	public List<DeptLazyVO> lazyList(String tenantId, Long parentId, Map<String, Object> param) {
+		if (AuthUtil.isAdministrator()) {
+			tenantId = StringPool.EMPTY;
+		}
+		String paramTenantId = Func.toStr(param.get("tenantId"));
+		if (Func.isNotEmpty(paramTenantId) && AuthUtil.isAdministrator()) {
+			tenantId = paramTenantId;
+		}
+		return baseMapper.lazyList(tenantId, parentId, param);
 	}
 
 	@Override
@@ -53,6 +61,14 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 			tenantId = StringPool.EMPTY;
 		}
 		return ForestNodeMerger.merge(baseMapper.tree(tenantId));
+	}
+
+	@Override
+	public List<DeptVO> lazyTree(String tenantId, Long parentId) {
+		if (AuthUtil.isAdministrator()) {
+			tenantId = StringPool.EMPTY;
+		}
+		return ForestNodeMerger.merge(baseMapper.lazyTree(tenantId, parentId));
 	}
 
 	@Override

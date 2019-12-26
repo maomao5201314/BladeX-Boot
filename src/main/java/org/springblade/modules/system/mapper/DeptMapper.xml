@@ -15,12 +15,26 @@
         <result column="is_deleted" property="isDeleted"/>
     </resultMap>
 
+    <resultMap id="deptLazyVOResultMap" type="org.springblade.modules.system.vo.DeptLazyVO">
+        <id column="id" property="id"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="dept_name" property="deptName"/>
+        <result column="full_name" property="fullName"/>
+        <result column="ancestors" property="ancestors"/>
+        <result column="dept_category" property="deptCategory"/>
+        <result column="sort" property="sort"/>
+        <result column="remark" property="remark"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="has_children" property="hasChildren"/>
+    </resultMap>
+
     <resultMap id="treeNodeResultMap" type="org.springblade.core.tool.node.TreeNode">
         <id column="id" property="id"/>
         <result column="parent_id" property="parentId"/>
         <result column="title" property="title"/>
         <result column="value" property="value"/>
         <result column="key" property="key"/>
+        <result column="has_children" property="hasChildren"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -29,14 +43,63 @@
         id, parent_id, dept_name, full_name, sort, remark, is_deleted
     </sql>
 
-    <select id="selectDeptPage" resultMap="deptResultMap">
-        select * from blade_dept where is_deleted = 0
+    <select id="lazyList" resultMap="deptLazyVOResultMap">
+        SELECT
+            dept.* ,
+            (
+                SELECT
+                    CASE WHEN count(1) > 0 THEN 1 ELSE 0 END
+                FROM
+                    blade_dept
+                WHERE
+                    parent_id = dept.id
+            ) AS "has_children"
+        FROM
+            blade_dept dept
+        <where>
+            <if test="param1!=null and param1!=''">
+                and tenant_id = #{param1}
+            </if>
+            <if test="param2!=null and param2!=''">
+                and parent_id = #{param2}
+            </if>
+            <if test="param.deptName!=null and param.deptName!=''">
+                and dept.dept_name like concat('%', #{param.deptName},'%')
+            </if>
+            <if test="param.fullName!=null and param.fullName!=''">
+                and dept.full_name like concat('%', #{param.fullName},'%')
+            </if>
+        </where>
     </select>
 
     <select id="tree" resultMap="treeNodeResultMap">
         select id, parent_id, dept_name as title, id as "value", id as "key" from blade_dept where is_deleted = 0
         <if test="_parameter!=null and _parameter!=''">
             and tenant_id = #{_parameter}
+        </if>
+    </select>
+
+    <select id="lazyTree" resultMap="treeNodeResultMap" >
+        SELECT
+            dept.id,
+            dept.parent_id,
+            dept.dept_name AS title,
+            dept.id AS "value",
+            dept.id AS "key",
+            (
+                SELECT
+                    count( 1 ) > 0
+                FROM
+                    blade_dept
+                WHERE
+                    parent_id = dept.id
+            ) AS "has_children"
+        FROM
+            blade_dept dept
+        WHERE
+            parent_id = #{param2}
+        <if test="param1!=null and param1!=''">
+            and tenant_id = #{param1}
         </if>
     </select>
 

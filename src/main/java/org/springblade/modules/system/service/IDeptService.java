@@ -16,12 +16,13 @@
  */
 package org.springblade.modules.system.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springblade.modules.system.entity.Dept;
+import org.springblade.modules.system.vo.DeptLazyVO;
 import org.springblade.modules.system.vo.DeptVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 服务类
@@ -31,13 +32,14 @@ import java.util.List;
 public interface IDeptService extends IService<Dept> {
 
 	/**
-	 * 自定义分页
+	 * 懒加载部门列表
 	 *
-	 * @param page
-	 * @param dept
+	 * @param tenantId
+	 * @param parentId
+	 * @param param
 	 * @return
 	 */
-	IPage<DeptVO> selectDeptPage(IPage<DeptVO> page, DeptVO dept);
+	List<DeptLazyVO> lazyList(String tenantId, Long parentId, Map<String, Object> param);
 
 	/**
 	 * 树形结构
@@ -46,6 +48,15 @@ public interface IDeptService extends IService<Dept> {
 	 * @return
 	 */
 	List<DeptVO> tree(String tenantId);
+
+	/**
+	 * 懒加载树形结构
+	 *
+	 * @param tenantId
+	 * @param parentId
+	 * @return
+	 */
+	List<DeptVO> lazyTree(String tenantId, Long parentId);
 
 	/**
 	 * 获取部门名

@@ -89,6 +89,22 @@ public class MenuController extends BladeController {
 	}
 
 	/**
+	 * 懒加载列表
+	 */
+	@GetMapping("/lazy-list")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "code", value = "菜单编号", paramType = "query", dataType = "string"),
+		@ApiImplicitParam(name = "name", value = "菜单名称", paramType = "query", dataType = "string")
+	})
+	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "列表", notes = "传入menu")
+	public R<List<MenuVO>> lazyList(Long parentId, @ApiIgnore @RequestParam Map<String, Object> menu) {
+		List<MenuVO> list = menuService.lazyList(parentId, menu);
+		return R.data(MenuWrapper.build().listNodeLazyVO(list));
+	}
+
+	/**
 	 * 列表
 	 */
 	@GetMapping("/menu-list")

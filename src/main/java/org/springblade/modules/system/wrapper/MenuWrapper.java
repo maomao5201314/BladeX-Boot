@@ -64,4 +64,8 @@ public class MenuWrapper extends BaseEntityWrapper<Menu, MenuVO> {
 		return ForestNodeMerger.merge(collect);
 	}
 
+	public List<MenuVO> listNodeLazyVO(List<MenuVO> list) {
+		return ForestNodeMerger.merge(list);
+	}
+
 }

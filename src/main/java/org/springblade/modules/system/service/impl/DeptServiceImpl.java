@@ -29,7 +29,6 @@ import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.mapper.DeptMapper;
 import org.springblade.modules.system.service.IDeptService;
 import org.springblade.modules.system.vo.DeptVO;
-import org.springblade.modules.system.vo.DeptVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,6 +50,9 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 		String paramTenantId = Func.toStr(param.get("tenantId"));
 		if (Func.isNotEmpty(paramTenantId) && AuthUtil.isAdministrator()) {
 			tenantId = paramTenantId;
+		}
+		if (Func.isEmpty(param.get("parentId"))) {
+			parentId = null;
 		}
 		return baseMapper.lazyList(tenantId, parentId, param);
 	}

@@ -95,7 +95,7 @@ public class DeptController extends BladeController {
 	})
 	@ApiOperationSupport(order = 3)
 	@ApiOperation(value = "懒加载列表", notes = "传入dept")
-	public R<List<INode>> lazyList(@ApiIgnore @RequestParam Map<String, Object> dept, @RequestParam(required = false, defaultValue = "0") Long parentId, BladeUser bladeUser) {
+	public R<List<INode>> lazyList(@ApiIgnore @RequestParam Map<String, Object> dept, Long parentId, BladeUser bladeUser) {
 		List<DeptVO> list = deptService.lazyList(bladeUser.getTenantId(), parentId, dept);
 		return R.data(DeptWrapper.build().listNodeLazyVO(list));
 	}
@@ -117,7 +117,7 @@ public class DeptController extends BladeController {
 	@GetMapping("/lazy-tree")
 	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "懒加载树形结构", notes = "树形结构")
-	public R<List<DeptVO>> lazyTree(String tenantId, @RequestParam(required = false, defaultValue = "0") Long parentId, BladeUser bladeUser) {
+	public R<List<DeptVO>> lazyTree(String tenantId, Long parentId, BladeUser bladeUser) {
 		List<DeptVO> tree = deptService.lazyTree(Func.toStrWithEmpty(tenantId, bladeUser.getTenantId()), parentId);
 		return R.data(tree);
 	}

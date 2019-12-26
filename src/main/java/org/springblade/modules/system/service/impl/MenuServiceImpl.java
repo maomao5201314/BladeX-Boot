@@ -16,7 +16,6 @@
  */
 package org.springblade.modules.system.service.impl;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -64,8 +63,11 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	private ITopMenuSettingService topMenuSettingService;
 
 	@Override
-	public IPage<MenuVO> selectMenuPage(IPage<MenuVO> page, MenuVO menu) {
-		return page.setRecords(baseMapper.selectMenuPage(page, menu));
+	public List<MenuVO> lazyList(Long parentId, Map<String, Object> param) {
+		if (Func.isEmpty(Func.toStr(param.get("parentId")))) {
+			parentId = null;
+		}
+		return baseMapper.lazyList(parentId, param);
 	}
 
 	@Override

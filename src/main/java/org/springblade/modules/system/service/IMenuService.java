@@ -16,7 +16,6 @@
  */
 package org.springblade.modules.system.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.tool.support.Kv;
@@ -24,6 +23,7 @@ import org.springblade.modules.system.entity.Menu;
 import org.springblade.modules.system.vo.MenuVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 服务类
@@ -33,13 +33,13 @@ import java.util.List;
 public interface IMenuService extends IService<Menu> {
 
 	/**
-	 * 自定义分页
+	 * 懒加载部门列表
 	 *
-	 * @param page
-	 * @param menu
+	 * @param parentId
+	 * @param param
 	 * @return
 	 */
-	IPage<MenuVO> selectMenuPage(IPage<MenuVO> page, MenuVO menu);
+	List<MenuVO> lazyList(Long parentId, Map<String, Object> param);
 
 	/**
 	 * 菜单树形结构

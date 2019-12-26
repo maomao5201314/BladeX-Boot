@@ -28,7 +28,7 @@ import org.springblade.core.tool.utils.StringPool;
 import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.mapper.DeptMapper;
 import org.springblade.modules.system.service.IDeptService;
-import org.springblade.modules.system.vo.DeptLazyVO;
+import org.springblade.modules.system.vo.DeptVO;
 import org.springblade.modules.system.vo.DeptVO;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +44,7 @@ import java.util.Map;
 public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements IDeptService {
 
 	@Override
-	public List<DeptLazyVO> lazyList(String tenantId, Long parentId, Map<String, Object> param) {
+	public List<DeptVO> lazyList(String tenantId, Long parentId, Map<String, Object> param) {
 		if (AuthUtil.isAdministrator()) {
 			tenantId = StringPool.EMPTY;
 		}

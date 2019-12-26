@@ -57,12 +57,27 @@ public class DeptVO extends Dept implements INode {
 	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	private List<INode> children;
 
+	/**
+	 * 是否有子孙节点
+	 */
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+	private Boolean hasChildren;
+
 	@Override
 	public List<INode> getChildren() {
 		if (this.children == null) {
 			this.children = new ArrayList<>();
 		}
 		return this.children;
+	}
+
+	@Override
+	public Boolean getHasChildren() {
+		if (children.size() > 0) {
+			return true;
+		} else {
+			return this.hasChildren;
+		}
 	}
 
 	/**

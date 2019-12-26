@@ -18,7 +18,6 @@ package org.springblade.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springblade.modules.system.entity.Dept;
-import org.springblade.modules.system.vo.DeptLazyVO;
 import org.springblade.modules.system.vo.DeptVO;
 
 import java.util.List;
@@ -39,7 +38,7 @@ public interface IDeptService extends IService<Dept> {
 	 * @param param
 	 * @return
 	 */
-	List<DeptLazyVO> lazyList(String tenantId, Long parentId, Map<String, Object> param);
+	List<DeptVO> lazyList(String tenantId, Long parentId, Map<String, Object> param);
 
 	/**
 	 * 树形结构

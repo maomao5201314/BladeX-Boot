@@ -15,7 +15,7 @@
         <result column="is_deleted" property="isDeleted"/>
     </resultMap>
 
-    <resultMap id="deptLazyVOResultMap" type="org.springblade.modules.system.vo.DeptLazyVO">
+    <resultMap id="deptLazyVOResultMap" type="org.springblade.modules.system.vo.DeptVO">
         <id column="id" property="id"/>
         <result column="parent_id" property="parentId"/>
         <result column="dept_name" property="deptName"/>
@@ -88,7 +88,7 @@
             dept.id AS "key",
             (
                 SELECT
-                    count( 1 ) > 0
+                    CASE WHEN count(1) > 0 THEN 1 ELSE 0 END
                 FROM
                     blade_dept
                 WHERE

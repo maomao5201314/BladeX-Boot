@@ -18,7 +18,7 @@ package org.springblade.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springblade.modules.system.entity.Dept;
-import org.springblade.modules.system.vo.DeptLazyVO;
+import org.springblade.modules.system.vo.DeptVO;
 import org.springblade.modules.system.vo.DeptVO;
 
 import java.util.List;
@@ -39,7 +39,7 @@ public interface DeptMapper extends BaseMapper<Dept> {
 	 * @param param
 	 * @return
 	 */
-	List<DeptLazyVO> lazyList(String tenantId, Long parentId, Map<String, Object> param);
+	List<DeptVO> lazyList(String tenantId, Long parentId, Map<String, Object> param);
 
 	/**
 	 * 获取树形节点

@@ -16,10 +16,8 @@
  */
 package org.springblade.modules.system.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springblade.core.mp.base.BaseService;
 import org.springblade.modules.system.entity.Param;
-import org.springblade.modules.system.vo.ParamVO;
 
 /**
  * 服务类
@@ -28,12 +26,12 @@ import org.springblade.modules.system.vo.ParamVO;
  */
 public interface IParamService extends BaseService<Param> {
 
-	/***
-	 * 自定义分页
-	 * @param page
-	 * @param param
-	 * @return
+	/**
+	 * 获取参数值
+	 *
+	 * @param paramKey 参数key
+	 * @return String
 	 */
-	IPage<ParamVO> selectParamPage(IPage<ParamVO> page, ParamVO param);
+	String getValue(String paramKey);
 
 }

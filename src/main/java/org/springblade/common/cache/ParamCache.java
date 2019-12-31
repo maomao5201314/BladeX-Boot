@@ -14,27 +14,49 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.service.impl;
+package org.springblade.common.cache;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import org.springblade.core.mp.base.BaseServiceImpl;
+import org.springblade.core.cache.utils.CacheUtil;
+import org.springblade.core.tool.utils.SpringUtil;
 import org.springblade.modules.system.entity.Param;
-import org.springblade.modules.system.mapper.ParamMapper;
 import org.springblade.modules.system.service.IParamService;
-import org.springframework.stereotype.Service;
+
+import static org.springblade.core.cache.constant.CacheConstant.PARAM_CACHE;
 
 /**
- * 服务实现类
+ * 参数缓存工具类
  *
  * @author Chill
  */
-@Service
-public class ParamServiceImpl extends BaseServiceImpl<ParamMapper, Param> implements IParamService {
+public class ParamCache {
 
-	@Override
-	public String getValue(String paramKey) {
-		Param param = this.getOne(Wrappers.<Param>query().lambda().eq(Param::getParamKey, paramKey));
-		return param.getParamValue();
+	private static final String PARAM_ID = "param:id:";
+	private static final String PARAM_VALUE = "param:value:";
+
+	private static IParamService paramService;
+
+	static {
+		paramService = SpringUtil.getBean(IParamService.class);
+	}
+
+	/**
+	 * 获取参数实体
+	 *
+	 * @param id 主键
+	 * @return Param
+	 */
+	public static Param getById(Long id) {
+		return CacheUtil.get(PARAM_CACHE, PARAM_ID, id, () -> paramService.getById(id));
+	}
+
+	/**
+	 * 获取参数配置
+	 *
+	 * @param paramKey 参数值
+	 * @return String
+	 */
+	public static String getValue(String paramKey) {
+		return CacheUtil.get(PARAM_CACHE, PARAM_VALUE, paramKey, () -> paramService.getValue(paramKey));
 	}
 
 }

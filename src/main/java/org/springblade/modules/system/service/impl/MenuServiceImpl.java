@@ -71,6 +71,14 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	}
 
 	@Override
+	public List<MenuVO> lazyMenuList(Long parentId, Map<String, Object> param) {
+		if (Func.isEmpty(Func.toStr(param.get("parentId")))) {
+			parentId = null;
+		}
+		return baseMapper.lazyMenuList(parentId, param);
+	}
+
+	@Override
 	public List<MenuVO> routes(String roleId, Long topMenuId) {
 		if (StringUtil.isBlank(roleId)) {
 			return null;

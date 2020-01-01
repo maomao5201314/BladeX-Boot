@@ -71,15 +71,6 @@ public class MenuVO extends Menu implements INode {
 		return this.children;
 	}
 
-	@Override
-	public Boolean getHasChildren() {
-		if (children.size() > 0) {
-			return true;
-		} else {
-			return this.hasChildren;
-		}
-	}
-
 	/**
 	 * 上级菜单
 	 */

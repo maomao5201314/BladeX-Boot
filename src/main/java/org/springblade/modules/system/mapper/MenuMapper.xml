@@ -54,11 +54,39 @@
                 FROM
                      blade_menu
                 WHERE
-                     parent_id = menu.id and is_deleted = 0
+                     parent_id = menu.id AND is_deleted = 0
             ) AS "has_children"
         FROM
             blade_menu menu
         WHERE menu.is_deleted = 0
+        <if test="param1!=null">
+            and menu.parent_id = #{param1}
+        </if>
+        <if test="param.name!=null and param.name!=''">
+            and menu.name like concat('%', #{param.name},'%')
+        </if>
+        <if test="param.code!=null and param.code!=''">
+            and menu.code like concat('%', #{param.code},'%')
+        </if>
+        <if test="param.alias!=null and param.alias!=''">
+            and menu.alias like concat('%', #{param.alias},'%')
+        </if>
+    </select>
+
+    <select id="lazyMenuList" resultMap="menuVOResultMap">
+        SELECT
+            menu.*,
+            (
+                SELECT
+                    CASE WHEN count( 1 ) > 0 THEN 1 ELSE 0 END
+                FROM
+                    blade_menu
+                WHERE
+                    parent_id = menu.id AND is_deleted = 0  AND category = 1
+            ) AS "has_children"
+        FROM
+            blade_menu menu
+        WHERE menu.is_deleted = 0 AND menu.category = 1
         <if test="param1!=null">
             and menu.parent_id = #{param1}
         </if>

@@ -32,13 +32,22 @@ import java.util.Map;
 public interface MenuMapper extends BaseMapper<Menu> {
 
 	/**
-	 * 懒加载部门列表
+	 * 懒加载列表
 	 *
 	 * @param parentId
 	 * @param param
 	 * @return
 	 */
 	List<MenuVO> lazyList(Long parentId, Map<String, Object> param);
+
+	/**
+	 * 懒加载菜单列表
+	 *
+	 * @param parentId
+	 * @param param
+	 * @return
+	 */
+	List<MenuVO> lazyMenuList(Long parentId, Map<String, Object> param);
 
 	/**
 	 * 树形结构

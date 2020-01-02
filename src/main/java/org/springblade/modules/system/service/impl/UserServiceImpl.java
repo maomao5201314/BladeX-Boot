@@ -19,7 +19,6 @@ package org.springblade.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.SysCache;
 import org.springblade.common.constant.CommonConstant;
@@ -69,7 +68,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		}
 		Integer userCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(tenantId, BladeConstant.ADMIN_TENANT_ID)).eq(User::getAccount, user.getAccount()));
 		if (userCount > 0 && Func.isEmpty(user.getId())) {
-			throw new ApiException("当前用户已存在!");
+			throw new ServiceException("当前用户已存在!");
 		}
 		return save(user) && submitUserDept(user);
 	}
@@ -154,7 +153,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	@Override
 	public boolean removeUser(String userIds) {
 		if (Func.contains(Func.toLongArray(userIds), SecureUtil.getUserId())) {
-			throw new ApiException("不能删除本账号!");
+			throw new ServiceException("不能删除本账号!");
 		}
 		return deleteLogic(Func.toLongList(userIds));
 	}

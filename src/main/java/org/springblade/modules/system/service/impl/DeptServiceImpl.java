@@ -17,7 +17,6 @@
 package org.springblade.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.utils.AuthUtil;
@@ -87,7 +86,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 	public boolean removeDept(String ids) {
 		Integer cnt = baseMapper.selectCount(Wrappers.<Dept>query().lambda().in(Dept::getParentId, Func.toLongList(ids)));
 		if (cnt > 0) {
-			throw new ApiException("请先删除子节点!");
+			throw new ServiceException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));
 	}

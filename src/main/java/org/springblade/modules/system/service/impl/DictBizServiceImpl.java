@@ -19,9 +19,9 @@ package org.springblade.modules.system.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springblade.common.constant.CommonConstant;
+import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.tool.constant.BladeConstant;
@@ -75,7 +75,7 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 		LambdaQueryWrapper<DictBiz> lqw = Wrappers.<DictBiz>query().lambda().eq(DictBiz::getCode, dict.getCode()).eq(DictBiz::getDictKey, dict.getDictKey());
 		Integer cnt = baseMapper.selectCount((Func.isEmpty(dict.getId())) ? lqw : lqw.notIn(DictBiz::getId, dict.getId()));
 		if (cnt > 0) {
-			throw new ApiException("当前字典键值已存在!");
+			throw new ServiceException("当前字典键值已存在!");
 		}
 		if (Func.isEmpty(dict.getParentId())) {
 			dict.setParentId(BladeConstant.TOP_PARENT_ID);
@@ -88,7 +88,7 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 	public boolean removeDict(String ids) {
 		Integer cnt = baseMapper.selectCount(Wrappers.<DictBiz>query().lambda().in(DictBiz::getParentId, Func.toLongList(ids)));
 		if (cnt > 0) {
-			throw new ApiException("请先删除子节点!");
+			throw new ServiceException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));
 	}

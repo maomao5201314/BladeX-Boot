@@ -37,6 +37,14 @@ public interface ITenantService extends BaseService<Tenant> {
 	IPage<Tenant> selectTenantPage(IPage<Tenant> page, Tenant tenant);
 
 	/**
+	 * 根据租户编号获取实体
+	 *
+	 * @param tenantId
+	 * @return
+	 */
+	Tenant getByTenantId(String tenantId);
+
+	/**
 	 * 新增
 	 *
 	 * @param tenant

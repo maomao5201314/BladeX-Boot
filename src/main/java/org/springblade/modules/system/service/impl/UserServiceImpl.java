@@ -30,6 +30,7 @@ import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserDept;
 import org.springblade.modules.system.entity.UserInfo;
@@ -56,11 +57,18 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public boolean submit(User user) {
+		String tenantId = user.getTenantId();
+		Tenant tenant = SysCache.getTenant(tenantId);
+		Integer accountNumber = tenant.getAccountNumber();
+		Integer tenantCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(tenantId, BladeConstant.ADMIN_TENANT_ID)));
+		if (accountNumber != null && accountNumber > 0 && accountNumber < tenantCount) {
+			throw new ServiceException("当前租户已到最大账号额度");
+		}
 		if (Func.isNotEmpty(user.getPassword())) {
 			user.setPassword(DigestUtil.encrypt(user.getPassword()));
 		}
-		Integer cnt = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(user.getTenantId(), BladeConstant.ADMIN_TENANT_ID)).eq(User::getAccount, user.getAccount()));
-		if (cnt > 0 && Func.isEmpty(user.getId())) {
+		Integer userCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(tenantId, BladeConstant.ADMIN_TENANT_ID)).eq(User::getAccount, user.getAccount()));
+		if (userCount > 0 && Func.isEmpty(user.getId())) {
 			throw new ApiException("当前用户已存在!");
 		}
 		return save(user) && submitUserDept(user);

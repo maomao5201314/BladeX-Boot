@@ -51,6 +51,7 @@ public class SysCache {
 	private static final String ROLE_ALIAS_ID = "roleAlias:id:";
 	private static final String ROLE_ALIASES_ID = "roleAliases:id:";
 	private static final String TENANT_ID = "tenant:id:";
+	private static final String TENANT_TENANT_ID = "tenant:tenantId:";
 
 	private static IMenuService menuService;
 	private static IDeptService deptService;
@@ -197,6 +198,16 @@ public class SysCache {
 	 */
 	public static Tenant getTenant(Long id) {
 		return CacheUtil.get(SYS_CACHE, TENANT_ID, id, () -> tenantService.getById(id));
+	}
+
+	/**
+	 * 获取租户
+	 *
+	 * @param tenantId 租户id
+	 * @return Tenant
+	 */
+	public static Tenant getTenant(String tenantId) {
+		return CacheUtil.get(SYS_CACHE, TENANT_TENANT_ID, tenantId, () -> tenantService.getByTenantId(tenantId));
 	}
 
 }

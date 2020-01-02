@@ -34,6 +34,7 @@ import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.service.ITenantService;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -41,6 +42,8 @@ import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
  * 控制器
@@ -117,6 +120,7 @@ public class TenantController extends BladeController {
 	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "新增或修改", notes = "传入tenant")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R submit(@Valid @RequestBody Tenant tenant) {
 		return R.status(tenantService.saveTenant(tenant));
 	}
@@ -129,6 +133,7 @@ public class TenantController extends BladeController {
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(tenantService.deleteLogic(Func.toLongList(ids)));
 	}
@@ -140,6 +145,7 @@ public class TenantController extends BladeController {
 	@ApiOperationSupport(order = 7)
 	@ApiOperation(value = "授权配置", notes = "传入ids,accountNumber,expireTime")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R setting(@ApiParam(value = "主键集合", required = true) @RequestParam String ids, @ApiParam(value = "账号额度") Integer accountNumber, @ApiParam(value = "过期时间") Date expireTime) {
 		boolean temp = tenantService.update(
 			Wrappers.<Tenant>update().lambda()

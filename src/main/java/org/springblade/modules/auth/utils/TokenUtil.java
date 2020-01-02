@@ -17,14 +17,18 @@
 package org.springblade.modules.auth.utils;
 
 import org.springblade.core.launch.constant.TokenConstant;
+import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.TokenInfo;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.support.Kv;
+import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +44,9 @@ public class TokenUtil {
 	public final static String USER_TYPE_HEADER_KEY = "User-Type";
 	public final static String DEFAULT_USER_TYPE = "web";
 	public final static String USER_NOT_FOUND = "用户名或密码错误";
+	public final static String USER_HAS_NO_ROLE = "未获得用户的角色信息";
+	public final static String USER_HAS_NO_TENANT = "未获得用户的租户信息";
+	public final static String USER_HAS_NO_TENANT_PERMISSION = "租户授权已过期,请联系管理员";
 	public final static String HEADER_KEY = "Authorization";
 	public final static String HEADER_PREFIX = "Basic ";
 	public final static String DEFAULT_AVATAR = "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png";
@@ -97,6 +104,23 @@ public class TokenUtil {
 		param.put(TokenConstant.TOKEN_TYPE, TokenConstant.REFRESH_TOKEN);
 		param.put(TokenConstant.USER_ID, Func.toStr(user.getId()));
 		return SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.REFRESH_TOKEN);
+	}
+
+	/**
+	 * 判断租户权限
+	 *
+	 * @param tenant 租户信息
+	 * @return boolean
+	 */
+	public static boolean judgeTenant(Tenant tenant) {
+		if (tenant == null) {
+			throw new ServiceException(TokenUtil.USER_HAS_NO_TENANT);
+		}
+		Date expireTime = tenant.getExpireTime();
+		if (expireTime != null && expireTime.before(DateUtil.now())) {
+			throw new ServiceException(TokenUtil.USER_HAS_NO_TENANT_PERMISSION);
+		}
+		return true;
 	}
 
 }

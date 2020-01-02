@@ -22,18 +22,16 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.tenant.TenantId;
 import org.springblade.core.tool.constant.BladeConstant;
+import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.modules.system.entity.Dept;
-import org.springblade.modules.system.entity.Role;
-import org.springblade.modules.system.entity.Tenant;
-import org.springblade.modules.system.mapper.DeptMapper;
-import org.springblade.modules.system.mapper.RoleMapper;
-import org.springblade.modules.system.mapper.TenantMapper;
+import org.springblade.modules.system.entity.*;
+import org.springblade.modules.system.mapper.*;
+import org.springblade.modules.system.service.IRoleMenuService;
 import org.springblade.modules.system.service.ITenantService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -47,7 +45,17 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 
 	private final TenantId tenantId;
 	private final RoleMapper roleMapper;
+	private final MenuMapper menuMapper;
 	private final DeptMapper deptMapper;
+	private final UserMapper userMapper;
+	private final IRoleMenuService roleMenuService;
+
+	/**
+	 * 新建默认租户角色所分配的菜单主节点
+	 */
+	private final List<String> menuCodes = Arrays.asList(
+		"desk", "flow", "work", "monitor", "resource", "authority", "user", "dept", "dictbiz", "topmenu", "param"
+	);
 
 	@Override
 	public IPage<Tenant> selectTenantPage(IPage<Tenant> page, Tenant tenant) {
@@ -88,6 +96,30 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			dept.setSort(2);
 			dept.setIsDeleted(0);
 			deptMapper.insert(dept);
+			// 新建租户对应的默认管理用户
+			User user = new User();
+			user.setTenantId(tenantId);
+			user.setName("admin");
+			user.setRealName("admin");
+			user.setAccount("admin");
+			user.setPassword(DigestUtil.encrypt("admin"));
+			user.setRoleId(String.valueOf(role.getId()));
+			user.setDeptId(String.valueOf(dept.getId()));
+			user.setBirthday(new Date());
+			user.setSex(1);
+			user.setIsDeleted(0);
+			userMapper.insert(user);
+			// 新建租户对应的角色菜单权限
+			LinkedList<Menu> userMenus = new LinkedList<>();
+			List<Menu> menus = getMenus(menuCodes, userMenus);
+			List<RoleMenu> roleMenus = new ArrayList<>();
+			menus.forEach(menu -> {
+				RoleMenu roleMenu = new RoleMenu();
+				roleMenu.setMenuId(menu.getId());
+				roleMenu.setRoleId(role.getId());
+				roleMenus.add(roleMenu);
+			});
+			roleMenuService.saveBatch(roleMenus);
 		}
 		return super.saveOrUpdate(tenant);
 	}
@@ -98,6 +130,21 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			return getTenantId(codes);
 		}
 		return code;
+	}
+
+	private List<Menu> getMenus(List<String> codes, LinkedList<Menu> menus) {
+		codes.forEach(code -> {
+			Menu menu = menuMapper.selectOne(Wrappers.<Menu>query().lambda().eq(Menu::getCode, code).eq(Menu::getIsDeleted, BladeConstant.DB_NOT_DELETED));
+			menus.add(menu);
+			recursion(menu.getId(), menus);
+		});
+		return menus;
+	}
+
+	private void recursion(Long parentId, LinkedList<Menu> menus) {
+		List<Menu> menuList = menuMapper.selectList(Wrappers.<Menu>query().lambda().eq(Menu::getParentId, parentId).eq(Menu::getIsDeleted, BladeConstant.DB_NOT_DELETED));
+		menus.addAll(menuList);
+		menuList.forEach(menu -> recursion(menu.getId(), menus));
 	}
 
 }

@@ -38,6 +38,7 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -133,12 +134,29 @@ public class TenantController extends BladeController {
 	}
 
 	/**
+	 * 授权配置
+	 */
+	@PostMapping("/setting")
+	@ApiOperationSupport(order = 7)
+	@ApiOperation(value = "授权配置", notes = "传入ids,accountNumber,expireTime")
+	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	public R setting(@ApiParam(value = "主键集合", required = true) @RequestParam String ids, @ApiParam(value = "账号额度") Integer accountNumber, @ApiParam(value = "过期时间") Date expireTime) {
+		boolean temp = tenantService.update(
+			Wrappers.<Tenant>update().lambda()
+				.set(Tenant::getAccountNumber, accountNumber)
+				.set(Tenant::getExpireTime, expireTime)
+				.in(Tenant::getId, Func.toLongList(ids))
+		);
+		return R.status(temp);
+	}
+
+	/**
 	 * 根据名称查询列表
 	 *
 	 * @param name 租户名称
 	 */
 	@GetMapping("/find-by-name")
-	@ApiOperationSupport(order = 7)
+	@ApiOperationSupport(order = 8)
 	@ApiOperation(value = "详情", notes = "传入tenant")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R<List<Tenant>> findByName(String name) {

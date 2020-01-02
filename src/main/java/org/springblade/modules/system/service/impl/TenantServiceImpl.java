@@ -62,6 +62,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			List<String> codes = tenants.stream().map(Tenant::getTenantId).collect(Collectors.toList());
 			String tenantId = getTenantId(codes);
 			tenant.setTenantId(tenantId);
+			tenant.setAccountNumber(-1);
 			// 新建租户对应的默认角色
 			Role role = new Role();
 			role.setTenantId(tenantId);

@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 08/12/2019 10:13:15
+ Date: 02/01/2020 13:56:57
 */
 
 
@@ -610,6 +610,7 @@ INSERT INTO "blade_menu" VALUES (1164733379658963252, 1164733379658963251, 'dict
 INSERT INTO "blade_menu" VALUES (1164733379658963253, 1164733379658963251, 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', 2, 2, 2, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963254, 1164733379658963251, 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', 3, 2, 3, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963255, 1164733379658963251, 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', 4, 2, 2, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733389658963251, 1123598815738675298, 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', '', 2, 1, 0, 2, '', 0);
 COMMIT;
 
 -- ----------------------------
@@ -1065,6 +1066,7 @@ INSERT INTO "blade_role_menu" VALUES (1161272793873322992, 116473337658963252, 1
 INSERT INTO "blade_role_menu" VALUES (1161272793873322993, 1164733379658963253, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272793873322994, 1164733379658963254, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272793873322995, 1164733379658963255, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893873322991, 1164733389658963251, 1123598816738675201);
 COMMIT;
 
 -- ----------------------------
@@ -1169,27 +1171,35 @@ COMMENT ON TABLE "blade_scope_data" IS '数据权限表';
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_tenant";
 CREATE TABLE "blade_tenant" (
-  "id" int8 NOT NULL,
-  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
-  "tenant_name" varchar(50) COLLATE "pg_catalog"."default" NOT NULL,
-  "linkman" varchar(20) COLLATE "pg_catalog"."default",
-  "contact_number" varchar(20) COLLATE "pg_catalog"."default",
-  "address" varchar(255) COLLATE "pg_catalog"."default",
-  "create_user" int8,
-  "create_dept" int8,
-  "create_time" timestamp(6),
-  "update_user" int8,
-  "update_time" timestamp(6),
-  "status" int4,
-  "is_deleted" int4
+"id" int8 NOT NULL,
+"tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+"tenant_name" varchar(50) COLLATE "pg_catalog"."default" NOT NULL,
+"domain" varchar(255) COLLATE "pg_catalog"."default",
+"background_url" varchar(1000) COLLATE "pg_catalog"."default",
+"linkman" varchar(20) COLLATE "pg_catalog"."default",
+"contact_number" varchar(20) COLLATE "pg_catalog"."default",
+"address" varchar(255) COLLATE "pg_catalog"."default",
+"account_number" int2 DEFAULT '-1'::integer,
+"expire_time" timestamp(6),
+"create_user" int8,
+"create_dept" int8,
+"create_time" timestamp(6),
+"update_user" int8,
+"update_time" timestamp(6),
+"status" int4,
+"is_deleted" int4
 )
 ;
 COMMENT ON COLUMN "blade_tenant"."id" IS '主键';
 COMMENT ON COLUMN "blade_tenant"."tenant_id" IS '租户ID';
 COMMENT ON COLUMN "blade_tenant"."tenant_name" IS '租户名称';
+COMMENT ON COLUMN "blade_tenant"."domain" IS '域名地址';
+COMMENT ON COLUMN "blade_tenant"."background_url" IS '系统背景';
 COMMENT ON COLUMN "blade_tenant"."linkman" IS '联系人';
 COMMENT ON COLUMN "blade_tenant"."contact_number" IS '联系电话';
 COMMENT ON COLUMN "blade_tenant"."address" IS '联系地址';
+COMMENT ON COLUMN "blade_tenant"."account_number" IS '账号额度';
+COMMENT ON COLUMN "blade_tenant"."expire_time" IS '过期时间';
 COMMENT ON COLUMN "blade_tenant"."create_user" IS '创建人';
 COMMENT ON COLUMN "blade_tenant"."create_dept" IS '创建部门';
 COMMENT ON COLUMN "blade_tenant"."create_time" IS '创建时间';
@@ -1203,7 +1213,7 @@ COMMENT ON TABLE "blade_tenant" IS '租户表';
 -- Records of blade_tenant
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_tenant" VALUES (1123598820738675201, '000000', '管理组', 'admin', '666666', '管理组', 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
+INSERT INTO "blade_tenant" VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
 COMMIT;
 
 -- ----------------------------

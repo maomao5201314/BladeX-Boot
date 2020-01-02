@@ -17,11 +17,16 @@
 package org.springblade.modules.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springblade.core.mp.base.BaseEntity;
+import org.springblade.core.tool.utils.DateUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 /**
  * 实体类
@@ -47,6 +52,16 @@ public class Tenant extends BaseEntity {
 	@ApiModelProperty(value = "租户名称")
 	private String tenantName;
 	/**
+	 * 域名地址
+	 */
+	@ApiModelProperty(value = "域名地址")
+	private String domain;
+	/**
+	 * 系统背景
+	 */
+	@ApiModelProperty(value = "系统背景")
+	private String backgroundUrl;
+	/**
 	 * 联系人
 	 */
 	@ApiModelProperty(value = "联系人")
@@ -61,6 +76,18 @@ public class Tenant extends BaseEntity {
 	 */
 	@ApiModelProperty(value = "联系地址")
 	private String address;
+	/**
+	 * 账号额度
+	 */
+	@ApiModelProperty(value = "账号额度")
+	private Integer accountNumber;
+	/**
+	 * 过期时间
+	 */
+	@DateTimeFormat(pattern = DateUtil.PATTERN_DATETIME)
+	@JsonFormat(pattern = DateUtil.PATTERN_DATETIME)
+	@ApiModelProperty(value = "过期时间")
+	private Date expireTime;
 
 
 }

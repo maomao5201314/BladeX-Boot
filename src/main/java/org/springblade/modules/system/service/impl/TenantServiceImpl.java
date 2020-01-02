@@ -22,12 +22,15 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.tenant.TenantId;
 import org.springblade.core.tool.constant.BladeConstant;
-import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.*;
-import org.springblade.modules.system.mapper.*;
+import org.springblade.modules.system.mapper.DeptMapper;
+import org.springblade.modules.system.mapper.MenuMapper;
+import org.springblade.modules.system.mapper.RoleMapper;
+import org.springblade.modules.system.mapper.TenantMapper;
 import org.springblade.modules.system.service.IRoleMenuService;
 import org.springblade.modules.system.service.ITenantService;
+import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,14 +50,14 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 	private final RoleMapper roleMapper;
 	private final MenuMapper menuMapper;
 	private final DeptMapper deptMapper;
-	private final UserMapper userMapper;
 	private final IRoleMenuService roleMenuService;
+	private final IUserService userService;
 
 	/**
 	 * 新建默认租户角色所分配的菜单主节点
 	 */
 	private final List<String> menuCodes = Arrays.asList(
-		"desk", "flow", "work", "monitor", "resource", "authority", "user", "dept", "dictbiz", "topmenu", "param"
+		"desk", "flow", "work", "monitor", "resource", "role", "user", "dept", "dictbiz", "topmenu", "param"
 	);
 
 	@Override
@@ -85,6 +88,17 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			role.setSort(2);
 			role.setIsDeleted(0);
 			roleMapper.insert(role);
+			// 新建租户对应的角色菜单权限
+			LinkedList<Menu> userMenus = new LinkedList<>();
+			List<Menu> menus = getMenus(menuCodes, userMenus);
+			List<RoleMenu> roleMenus = new ArrayList<>();
+			menus.forEach(menu -> {
+				RoleMenu roleMenu = new RoleMenu();
+				roleMenu.setMenuId(menu.getId());
+				roleMenu.setRoleId(role.getId());
+				roleMenus.add(roleMenu);
+			});
+			roleMenuService.saveBatch(roleMenus);
 			// 新建租户对应的默认部门
 			Dept dept = new Dept();
 			dept.setTenantId(tenantId);
@@ -102,24 +116,13 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			user.setName("admin");
 			user.setRealName("admin");
 			user.setAccount("admin");
-			user.setPassword(DigestUtil.encrypt("admin"));
+			user.setPassword("admin");
 			user.setRoleId(String.valueOf(role.getId()));
 			user.setDeptId(String.valueOf(dept.getId()));
 			user.setBirthday(new Date());
 			user.setSex(1);
 			user.setIsDeleted(0);
-			userMapper.insert(user);
-			// 新建租户对应的角色菜单权限
-			LinkedList<Menu> userMenus = new LinkedList<>();
-			List<Menu> menus = getMenus(menuCodes, userMenus);
-			List<RoleMenu> roleMenus = new ArrayList<>();
-			menus.forEach(menu -> {
-				RoleMenu roleMenu = new RoleMenu();
-				roleMenu.setMenuId(menu.getId());
-				roleMenu.setRoleId(role.getId());
-				roleMenus.add(roleMenu);
-			});
-			roleMenuService.saveBatch(roleMenus);
+			userService.submit(user);
 		}
 		return super.saveOrUpdate(tenant);
 	}

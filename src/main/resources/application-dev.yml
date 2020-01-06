@@ -27,6 +27,9 @@ spring:
 
 #blade配置
 blade:
+  lock:
+    enabled: false
+    address: redis://127.0.0.1:6379
   prop:
     upload-domain: http://localhost:8888
     remote-mode: true

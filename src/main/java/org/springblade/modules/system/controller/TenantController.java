@@ -65,7 +65,7 @@ public class TenantController extends BladeController {
 	@GetMapping("/detail")
 	@ApiOperationSupport(order = 1)
 	@ApiOperation(value = "详情", notes = "传入tenant")
-	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R<Tenant> detail(Tenant tenant) {
 		Tenant detail = tenantService.getOne(Condition.getQueryWrapper(tenant));
 		return R.data(detail);
@@ -82,7 +82,7 @@ public class TenantController extends BladeController {
 	})
 	@ApiOperationSupport(order = 2)
 	@ApiOperation(value = "分页", notes = "传入tenant")
-	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R<IPage<Tenant>> list(@ApiIgnore @RequestParam Map<String, Object> tenant, Query query, BladeUser bladeUser) {
 		QueryWrapper<Tenant> queryWrapper = Condition.getQueryWrapper(tenant, Tenant.class);
 		IPage<Tenant> pages = tenantService.page(Condition.getPage(query), (!bladeUser.getTenantId().equals(BladeConstant.ADMIN_TENANT_ID)) ? queryWrapper.lambda().eq(Tenant::getTenantId, bladeUser.getTenantId()) : queryWrapper);
@@ -108,7 +108,7 @@ public class TenantController extends BladeController {
 	@GetMapping("/page")
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "分页", notes = "传入tenant")
-	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R<IPage<Tenant>> page(Tenant tenant, Query query) {
 		IPage<Tenant> pages = tenantService.selectTenantPage(Condition.getPage(query), tenant);
 		return R.data(pages);

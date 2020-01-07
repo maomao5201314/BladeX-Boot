@@ -62,15 +62,17 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		}
 		String tenantId = user.getTenantId();
 		Tenant tenant = SysCache.getTenant(tenantId);
-		Integer accountNumber = tenant.getAccountNumber();
-		Integer tenantCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(tenantId, BladeConstant.ADMIN_TENANT_ID)));
-		if (accountNumber != null && accountNumber > 0 && accountNumber < tenantCount) {
-			throw new ServiceException("当前租户已到最大账号额度");
+		if (Func.isNotEmpty(tenant)) {
+			Integer accountNumber = tenant.getAccountNumber();
+			Integer tenantCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId));
+			if (accountNumber != null && accountNumber > 0 && accountNumber < tenantCount) {
+				throw new ServiceException("当前租户已到最大账号额度");
+			}
 		}
 		if (Func.isNotEmpty(user.getPassword())) {
 			user.setPassword(DigestUtil.encrypt(user.getPassword()));
 		}
-		Integer userCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(tenantId, BladeConstant.ADMIN_TENANT_ID)).eq(User::getAccount, user.getAccount()));
+		Integer userCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId).eq(User::getAccount, user.getAccount()));
 		if (userCount > 0 && Func.isEmpty(user.getId())) {
 			throw new ServiceException("当前用户已存在!");
 		}

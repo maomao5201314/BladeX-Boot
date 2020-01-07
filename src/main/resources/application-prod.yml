@@ -18,12 +18,12 @@ spring:
 
 #blade配置
 blade:
+  #分布式锁
   lock:
     enabled: false
     address: redis://127.0.0.1:6379
-  prop:
-    upload-domain: http://localhost:8888
+  #本地文件上传
+  file:
     remote-mode: true
+    upload-domain: http://localhost:8999
     remote-path: /usr/share/nginx/html
-    remote-path-iis: D://iis/html
-    log-mode: true

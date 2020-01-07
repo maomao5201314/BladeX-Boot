@@ -271,6 +271,7 @@ INSERT INTO "blade_dict" VALUES (1123598814738676224, 0, 'oss', '-1', '对象存
 INSERT INTO "blade_dict" VALUES (1123598814738676225, 1123598814738676224, 'oss', '1', 'minio', 1, NULL, 0, 0);
 INSERT INTO "blade_dict" VALUES (1123598814738676226, 1123598814738676224, 'oss', '2', 'qiniu', 2, NULL, 0, 0);
 INSERT INTO "blade_dict" VALUES (1123598814738676227, 1123598814738676224, 'oss', '3', 'ali', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738676228, 1123598814738676224, 'oss', '4', 'tencent', 4, NULL, 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -671,6 +672,8 @@ CREATE TABLE "blade_oss" (
   "access_key" varchar(255) COLLATE "pg_catalog"."default",
   "secret_key" varchar(255) COLLATE "pg_catalog"."default",
   "bucket_name" varchar(255) COLLATE "pg_catalog"."default",
+  "app_id" varchar(255) COLLATE "pg_catalog"."default",
+  "region" varchar(255) COLLATE "pg_catalog"."default",
   "remark" varchar(255) COLLATE "pg_catalog"."default",
   "create_user" int8,
   "create_dept" int8,
@@ -688,6 +691,8 @@ COMMENT ON COLUMN "blade_oss"."endpoint" IS '资源地址';
 COMMENT ON COLUMN "blade_oss"."access_key" IS 'accessKey';
 COMMENT ON COLUMN "blade_oss"."secret_key" IS 'secretKey';
 COMMENT ON COLUMN "blade_oss"."bucket_name" IS '空间名';
+COMMENT ON COLUMN "blade_oss"."app_id" IS '应用ID';
+COMMENT ON COLUMN "blade_oss"."region" IS '地域简称';
 COMMENT ON COLUMN "blade_oss"."remark" IS '备注';
 COMMENT ON COLUMN "blade_oss"."create_user" IS '创建人';
 COMMENT ON COLUMN "blade_oss"."create_dept" IS '创建部门';
@@ -702,8 +707,8 @@ COMMENT ON TABLE "blade_oss" IS '对象存储表';
 -- Records of blade_oss
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_oss" VALUES (1132486733992468482, '000000', 1, 'http://127.0.0.1:9000', 'D99KGE6ZTQXSATTJWU24', 'QyVqGnhIQQE734UYSUFlGOZViE6+ZlDEfUG3NjhJ', 'bladex', '', 1123598821738675201, 1123598813738675201, '2019-05-26 11:20:52', 1123598821738675201, '2019-05-27 08:34:55', 2, 0);
-INSERT INTO "blade_oss" VALUES (1132487155981393922, '000000', 2, 'http://ps458elcs.bkt.clouddn.com', 'N_Loh1ngBqcJovwiAJqR91Ifj2vgOWHOf8AwBA_h', 'AuzuA1KHAbkIndCU0dB3Zfii2O3crHNODDmpxHRS', 'bladex', '', 1123598821738675201, 1123598813738675201, '2019-05-26 11:22:33', 1123598821738675201, '2019-05-26 23:27:56', 1, 0);
+INSERT INTO "blade_oss" VALUES (1132486733992468482, '000000', 1, 'http://127.0.0.1:9000', 'D99KGE6ZTQXSATTJWU24', 'QyVqGnhIQQE734UYSUFlGOZViE6+ZlDEfUG3NjhJ', 'bladex', '', '', '', 1123598821738675201, 1123598813738675201, '2019-05-26 11:20:52', 1123598821738675201, '2019-05-27 08:34:55', 2, 0);
+INSERT INTO "blade_oss" VALUES (1132487155981393922, '000000', 2, 'http://ps458elcs.bkt.clouddn.com', 'N_Loh1ngBqcJovwiAJqR91Ifj2vgOWHOf8AwBA_h', 'AuzuA1KHAbkIndCU0dB3Zfii2O3crHNODDmpxHRS', 'bladex', '', '', '', 1123598821738675201, 1123598813738675201, '2019-05-26 11:22:33', 1123598821738675201, '2019-05-26 23:27:56', 1, 0);
 COMMIT;
 
 -- ----------------------------

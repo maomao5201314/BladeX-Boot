@@ -89,6 +89,8 @@ public class OssBuilder {
 						template = QiniuBuilder.template(oss, ossRule);
 					} else if (oss.getCategory() == OssEnum.ALI.getCategory()) {
 						template = AliBuilder.template(oss, ossRule);
+					} else if (oss.getCategory() == OssEnum.TENCENT.getCategory()) {
+						template = TencentBuilder.template(oss, ossRule);
 					}
 					templatePool.put(tenantId, template);
 					ossPool.put(tenantId, oss);

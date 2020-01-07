@@ -94,6 +94,10 @@
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
+            <artifactId>blade-starter-tencentcos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springblade</groupId>
             <artifactId>blade-starter-swagger</artifactId>
         </dependency>
         <dependency>

@@ -36,6 +36,12 @@ public class AliBuilder {
 
 	@SneakyThrows
 	public static OssTemplate template(Oss oss, OssRule ossRule) {
+		// 创建配置类
+		OssProperties ossProperties = new OssProperties();
+		ossProperties.setEndpoint(oss.getEndpoint());
+		ossProperties.setAccessKey(oss.getAccessKey());
+		ossProperties.setSecretKey(oss.getSecretKey());
+		ossProperties.setBucketName(oss.getBucketName());
 		// 创建ClientConfiguration。ClientConfiguration是OSSClient的配置类，可配置代理、连接超时、最大连接数等参数。
 		ClientConfiguration conf = new ClientConfiguration();
 		// 设置OSSClient允许打开的最大HTTP连接数，默认为1024个。
@@ -50,12 +56,8 @@ public class AliBuilder {
 		conf.setIdleConnectionTime(60000);
 		// 设置失败请求重试次数，默认为3次。
 		conf.setMaxErrorRetry(5);
-		OssProperties ossProperties = new OssProperties();
-		ossProperties.setEndpoint(oss.getEndpoint());
-		ossProperties.setAccessKey(oss.getAccessKey());
-		ossProperties.setSecretKey(oss.getSecretKey());
-		ossProperties.setBucketName(oss.getBucketName());
 		CredentialsProvider credentialsProvider = new DefaultCredentialProvider(ossProperties.getAccessKey(), ossProperties.getSecretKey());
+		// 创建客户端
 		OSSClient ossClient = new OSSClient(ossProperties.getEndpoint(), credentialsProvider, conf);
 		return new AliossTemplate(ossClient, ossProperties, ossRule);
 	}

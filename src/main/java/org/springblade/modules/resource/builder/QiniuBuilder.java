@@ -37,15 +37,15 @@ public class QiniuBuilder {
 
 	@SneakyThrows
 	public static OssTemplate template(Oss oss, OssRule ossRule) {
-		Configuration cfg = new Configuration(Zone.autoZone());
-		Auth auth = Auth.create(oss.getAccessKey(), oss.getSecretKey());
-		UploadManager uploadManager = new UploadManager(cfg);
-		BucketManager bucketManager = new BucketManager(auth, cfg);
 		OssProperties ossProperties = new OssProperties();
 		ossProperties.setEndpoint(oss.getEndpoint());
 		ossProperties.setAccessKey(oss.getAccessKey());
 		ossProperties.setSecretKey(oss.getSecretKey());
 		ossProperties.setBucketName(oss.getBucketName());
+		Configuration cfg = new Configuration(Zone.autoZone());
+		Auth auth = Auth.create(oss.getAccessKey(), oss.getSecretKey());
+		UploadManager uploadManager = new UploadManager(cfg);
+		BucketManager bucketManager = new BucketManager(auth, cfg);
 		return new QiniuTemplate(auth, uploadManager, bucketManager, ossProperties, ossRule);
 	}
 

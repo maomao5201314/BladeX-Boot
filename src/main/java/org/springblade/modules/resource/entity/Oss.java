@@ -64,6 +64,16 @@ public class Oss extends TenantEntity {
 	@ApiModelProperty(value = "空间名")
 	private String bucketName;
 	/**
+	 * 应用ID TencentCOS需要
+	 */
+	@ApiModelProperty(value = "应用ID")
+	private String appId;
+	/**
+	 * 地域简称 TencentCOS需要
+	 */
+	@ApiModelProperty(value = "地域简称")
+	private String region;
+	/**
 	 * 备注
 	 */
 	@ApiModelProperty(value = "备注")

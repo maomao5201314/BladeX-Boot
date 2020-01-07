@@ -43,6 +43,8 @@ public class TencentBuilder {
 		ossProperties.setAccessKey(oss.getAccessKey());
 		ossProperties.setSecretKey(oss.getSecretKey());
 		ossProperties.setBucketName(oss.getBucketName());
+		ossProperties.setAppId(oss.getAppId());
+		ossProperties.setRegion(oss.getRegion());
 		// 初始化用户身份信息（secretId, secretKey）
 		COSCredentials credentials = new BasicCOSCredentials(ossProperties.getAccessKey(), ossProperties.getSecretKey());
 		// 设置 bucket 的区域, COS 地域的简称请参照 https://cloud.tencent.com/document/product/436/6224

@@ -69,6 +69,7 @@
         <if test="param.fullName!=null and param.fullName!=''">
             and dept.full_name like concat('%', #{param.fullName},'%')
         </if>
+        ORDER BY dept.sort
     </select>
 
     <select id="tree" resultMap="treeNodeResultMap">
@@ -76,6 +77,7 @@
         <if test="_parameter!=null and _parameter!=''">
             and tenant_id = #{_parameter}
         </if>
+        ORDER BY sort
     </select>
 
     <select id="lazyTree" resultMap="treeNodeResultMap" >
@@ -100,6 +102,7 @@
         <if test="param1!=null and param1!=''">
             and dept.tenant_id = #{param1}
         </if>
+        ORDER BY dept.sort
     </select>
 
     <select id="getDeptNames" resultType="java.lang.String">

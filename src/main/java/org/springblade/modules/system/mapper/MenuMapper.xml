@@ -71,6 +71,7 @@
         <if test="param.alias!=null and param.alias!=''">
             and menu.alias like concat('%', #{param.alias},'%')
         </if>
+        ORDER BY menu.sort
     </select>
 
     <select id="lazyMenuList" resultMap="menuVOResultMap">
@@ -99,6 +100,7 @@
         <if test="param.alias!=null and param.alias!=''">
             and menu.alias like concat('%', #{param.alias},'%')
         </if>
+        ORDER BY menu.sort
     </select>
 
     <select id="tree" resultMap="treeNodeResultMap">

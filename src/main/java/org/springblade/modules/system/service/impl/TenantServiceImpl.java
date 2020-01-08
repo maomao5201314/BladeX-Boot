@@ -24,13 +24,8 @@ import org.springblade.core.tenant.TenantId;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.*;
-import org.springblade.modules.system.mapper.DeptMapper;
-import org.springblade.modules.system.mapper.MenuMapper;
-import org.springblade.modules.system.mapper.RoleMapper;
 import org.springblade.modules.system.mapper.TenantMapper;
-import org.springblade.modules.system.service.IRoleMenuService;
-import org.springblade.modules.system.service.ITenantService;
-import org.springblade.modules.system.service.IUserService;
+import org.springblade.modules.system.service.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,9 +42,9 @@ import java.util.stream.Collectors;
 public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> implements ITenantService {
 
 	private final TenantId tenantId;
-	private final RoleMapper roleMapper;
-	private final MenuMapper menuMapper;
-	private final DeptMapper deptMapper;
+	private final IRoleService roleService;
+	private final IMenuService menuService;
+	private final IDeptService deptService;
 	private final IRoleMenuService roleMenuService;
 	private final IUserService userService;
 
@@ -87,7 +82,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			role.setRoleAlias("admin");
 			role.setSort(2);
 			role.setIsDeleted(0);
-			roleMapper.insert(role);
+			roleService.save(role);
 			// 新建租户对应的角色菜单权限
 			LinkedList<Menu> userMenus = new LinkedList<>();
 			List<Menu> menus = getMenus(menuCodes, userMenus);
@@ -109,7 +104,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			dept.setDeptCategory(1);
 			dept.setSort(2);
 			dept.setIsDeleted(0);
-			deptMapper.insert(dept);
+			deptService.save(dept);
 			// 新建租户对应的默认管理用户
 			User user = new User();
 			user.setTenantId(tenantId);
@@ -137,7 +132,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 
 	private List<Menu> getMenus(List<String> codes, LinkedList<Menu> menus) {
 		codes.forEach(code -> {
-			Menu menu = menuMapper.selectOne(Wrappers.<Menu>query().lambda().eq(Menu::getCode, code).eq(Menu::getIsDeleted, BladeConstant.DB_NOT_DELETED));
+			Menu menu = menuService.getOne(Wrappers.<Menu>query().lambda().eq(Menu::getCode, code).eq(Menu::getIsDeleted, BladeConstant.DB_NOT_DELETED));
 			menus.add(menu);
 			recursion(menu.getId(), menus);
 		});
@@ -145,7 +140,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 	}
 
 	private void recursion(Long parentId, LinkedList<Menu> menus) {
-		List<Menu> menuList = menuMapper.selectList(Wrappers.<Menu>query().lambda().eq(Menu::getParentId, parentId).eq(Menu::getIsDeleted, BladeConstant.DB_NOT_DELETED));
+		List<Menu> menuList = menuService.list(Wrappers.<Menu>query().lambda().eq(Menu::getParentId, parentId).eq(Menu::getIsDeleted, BladeConstant.DB_NOT_DELETED));
 		menus.addAll(menuList);
 		menuList.forEach(menu -> recursion(menu.getId(), menus));
 	}

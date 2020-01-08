@@ -57,7 +57,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 	 * 新建默认租户角色所分配的菜单主节点
 	 */
 	private final List<String> menuCodes = Arrays.asList(
-		"desk", "flow", "work", "monitor", "resource", "role", "user", "dept", "dictbiz", "topmenu", "param"
+		"desk", "flow", "work", "monitor", "resource", "role", "user", "dept", "dictbiz", "topmenu"
 	);
 
 	@Override

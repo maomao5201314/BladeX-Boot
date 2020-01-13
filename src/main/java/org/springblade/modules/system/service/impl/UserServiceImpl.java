@@ -35,6 +35,7 @@ import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserDept;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springblade.modules.system.mapper.UserMapper;
+import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.service.IUserDeptService;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,7 @@ import java.util.List;
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
 
 	private IUserDeptService userDeptService;
+	private IRoleService roleService;
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -111,7 +113,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		User user = baseMapper.selectById(userId);
 		userInfo.setUser(user);
 		if (Func.isNotEmpty(user)) {
-			List<String> roleAlias = SysCache.getRoleAliases(user.getRoleId());
+			List<String> roleAlias = roleService.getRoleAliases(user.getRoleId());
 			userInfo.setRoles(roleAlias);
 		}
 		return userInfo;

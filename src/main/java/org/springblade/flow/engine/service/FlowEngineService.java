@@ -47,9 +47,10 @@ public interface FlowEngineService extends IService<FlowModel> {
 	 *
 	 * @param page     分页工具
 	 * @param category 分类
+	 * @param mode     形态
 	 * @return
 	 */
-	IPage<FlowProcess> selectProcessPage(IPage<FlowProcess> page, String category);
+	IPage<FlowProcess> selectProcessPage(IPage<FlowProcess> page, String category, Integer mode);
 
 	/**
 	 * 流程管理列表
@@ -91,20 +92,22 @@ public interface FlowEngineService extends IService<FlowModel> {
 	/**
 	 * 上传部署流程
 	 *
-	 * @param files    流程配置文件
-	 * @param category 流程分类
+	 * @param files        流程配置文件
+	 * @param category     流程分类
+	 * @param tenantIdList 租户id集合
 	 * @return
 	 */
-	boolean deployUpload(List<MultipartFile> files, String category);
+	boolean deployUpload(List<MultipartFile> files, String category, List<String> tenantIdList);
 
 	/**
 	 * 部署流程
 	 *
-	 * @param modelId  模型id
-	 * @param category 分类
+	 * @param modelId      模型id
+	 * @param category     分类
+	 * @param tenantIdList 租户id集合
 	 * @return
 	 */
-	boolean deployModel(String modelId, String category);
+	boolean deployModel(String modelId, String category, List<String> tenantIdList);
 
 	/**
 	 * 删除流程实例

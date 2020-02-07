@@ -26,6 +26,7 @@ import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.task.api.TaskQuery;
 import org.flowable.task.api.history.HistoricTaskInstance;
 import org.flowable.task.api.history.HistoricTaskInstanceQuery;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringPool;
@@ -60,19 +61,23 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 		String taskGroup = TaskUtil.getCandidateGroup();
 		List<BladeFlow> flowList = new LinkedList<>();
 
-		// 等待签收的任务
+		// 个人等待签收的任务
 		TaskQuery claimUserQuery = taskService.createTaskQuery().taskCandidateUser(taskUser)
 			.includeProcessVariables().active().orderByTaskCreateTime().desc();
-		// 等待签收的任务
-		TaskQuery claimRoleQuery = taskService.createTaskQuery().taskCandidateGroup(taskGroup)
+		// 定制流程等待签收的任务
+		TaskQuery claimRoleWithTenantIdQuery = taskService.createTaskQuery().taskTenantId(AuthUtil.getTenantId()).taskCandidateGroup(taskGroup)
+			.includeProcessVariables().active().orderByTaskCreateTime().desc();
+		// 通用流程等待签收的任务
+		TaskQuery claimRoleWithoutTenantIdQuery = taskService.createTaskQuery().taskWithoutTenantId().taskCandidateGroup(taskGroup)
 			.includeProcessVariables().active().orderByTaskCreateTime().desc();
 
 		// 构建列表数据
 		buildFlowTaskList(bladeFlow, flowList, claimUserQuery, FlowEngineConstant.STATUS_CLAIM);
-		buildFlowTaskList(bladeFlow, flowList, claimRoleQuery, FlowEngineConstant.STATUS_CLAIM);
+		buildFlowTaskList(bladeFlow, flowList, claimRoleWithTenantIdQuery, FlowEngineConstant.STATUS_CLAIM);
+		buildFlowTaskList(bladeFlow, flowList, claimRoleWithoutTenantIdQuery, FlowEngineConstant.STATUS_CLAIM);
 
 		// 计算总数
-		long count = claimUserQuery.count() + claimRoleQuery.count();
+		long count = claimUserQuery.count() + claimRoleWithTenantIdQuery.count() + claimRoleWithoutTenantIdQuery.count();
 		// 设置页数
 		page.setSize(count);
 		// 设置总数

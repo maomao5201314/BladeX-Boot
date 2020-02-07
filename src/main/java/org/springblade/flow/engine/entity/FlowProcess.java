@@ -32,6 +32,7 @@ import java.util.Date;
 public class FlowProcess implements Serializable {
 
 	private String id;
+	private String tenantId;
 	private String name;
 	private String key;
 	private String category;
@@ -45,6 +46,7 @@ public class FlowProcess implements Serializable {
 
 	public FlowProcess(ProcessDefinitionEntityImpl entity) {
 		this.id = entity.getId();
+		this.tenantId = entity.getTenantId();
 		this.name = entity.getName();
 		this.key = entity.getKey();
 		this.category = entity.getCategory();

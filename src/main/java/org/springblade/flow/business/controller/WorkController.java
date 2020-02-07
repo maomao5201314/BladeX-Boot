@@ -55,8 +55,8 @@ public class WorkController {
 	@GetMapping("start-list")
 	@ApiOperationSupport(order = 1)
 	@ApiOperation(value = "发起事务列表页", notes = "传入流程类型")
-	public R<IPage<FlowProcess>> startList(@ApiParam("流程类型") String category, Query query) {
-		IPage<FlowProcess> pages = flowEngineService.selectProcessPage(Condition.getPage(query), category);
+	public R<IPage<FlowProcess>> startList(@ApiParam("流程类型") String category, Query query, @RequestParam(required = false, defaultValue = "1") Integer mode) {
+		IPage<FlowProcess> pages = flowEngineService.selectProcessPage(Condition.getPage(query), category, mode);
 		return R.data(pages);
 	}
 

@@ -83,8 +83,10 @@ public class FlowModelController {
 	@PostMapping("/deploy")
 	@ApiOperationSupport(order = 3)
 	@ApiOperation(value = "部署", notes = "传入模型id和分类")
-	public R deploy(@ApiParam(value = "模型id") @RequestParam String modelId, @ApiParam(value = "工作流分类") @RequestParam String category) {
-		boolean temp = flowEngineService.deployModel(modelId, category);
+	public R deploy(@ApiParam(value = "模型id") @RequestParam String modelId,
+					@ApiParam(value = "工作流分类") @RequestParam String category,
+					@ApiParam(value = "租户ID") @RequestParam(required = false, defaultValue = "") String tenantIds) {
+		boolean temp = flowEngineService.deployModel(modelId, category, Func.toStrList(tenantIds));
 		return R.status(temp);
 	}
 

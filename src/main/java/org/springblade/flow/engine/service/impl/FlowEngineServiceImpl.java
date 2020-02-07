@@ -43,10 +43,13 @@ import org.flowable.engine.runtime.ProcessInstanceQuery;
 import org.flowable.engine.task.Comment;
 import org.springblade.common.cache.UserCache;
 import org.springblade.core.log.exception.ServiceException;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.utils.DateUtil;
+import org.springblade.core.tool.utils.FileUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.flow.core.entity.BladeFlow;
+import org.springblade.flow.core.enums.FlowModeEnum;
 import org.springblade.flow.core.utils.TaskUtil;
 import org.springblade.flow.engine.constant.FlowEngineConstant;
 import org.springblade.flow.engine.entity.FlowExecution;
@@ -88,8 +91,16 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 	}
 
 	@Override
-	public IPage<FlowProcess> selectProcessPage(IPage<FlowProcess> page, String category) {
+	public IPage<FlowProcess> selectProcessPage(IPage<FlowProcess> page, String category, Integer mode) {
 		ProcessDefinitionQuery processDefinitionQuery = repositoryService.createProcessDefinitionQuery().latestVersion().orderByProcessDefinitionKey().asc();
+		// 通用流程
+		if (mode == FlowModeEnum.COMMON.getMode()) {
+			processDefinitionQuery.processDefinitionWithoutTenantId();
+		}
+		// 定制流程
+		else if (!AuthUtil.isAdministrator()) {
+			processDefinitionQuery.processDefinitionTenantId(AuthUtil.getTenantId());
+		}
 		if (StringUtils.isNotEmpty(category)) {
 			processDefinitionQuery.processDefinitionCategory(category);
 		}
@@ -247,13 +258,21 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 	}
 
 	@Override
-	public boolean deployUpload(List<MultipartFile> files, String category) {
+	public boolean deployUpload(List<MultipartFile> files, String category, List<String> tenantIdList) {
 		files.forEach(file -> {
 			try {
 				String fileName = file.getOriginalFilename();
 				InputStream fileInputStream = file.getInputStream();
-				Deployment deployment = repositoryService.createDeployment().addInputStream(fileName, fileInputStream).deploy();
-				deploy(deployment, category);
+				byte[] bytes = FileUtil.copyToByteArray(fileInputStream);
+				if (Func.isNotEmpty(tenantIdList)) {
+					tenantIdList.forEach(tenantId -> {
+						Deployment deployment = repositoryService.createDeployment().addBytes(fileName, bytes).tenantId(tenantId).deploy();
+						deploy(deployment, category);
+					});
+				} else {
+					Deployment deployment = repositoryService.createDeployment().addBytes(fileName, bytes).deploy();
+					deploy(deployment, category);
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -262,7 +281,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 	}
 
 	@Override
-	public boolean deployModel(String modelId, String category) {
+	public boolean deployModel(String modelId, String category, List<String> tenantIdList) {
 		FlowModel model = this.getById(modelId);
 		if (model == null) {
 			throw new ServiceException("No model found with the given id: " + modelId);
@@ -272,8 +291,17 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 		if (!StringUtil.endsWithIgnoreCase(processName, FlowEngineConstant.SUFFIX)) {
 			processName += FlowEngineConstant.SUFFIX;
 		}
-		Deployment deployment = repositoryService.createDeployment().addBytes(processName, bytes).name(model.getName()).key(model.getModelKey()).deploy();
-		return deploy(deployment, category);
+		String finalProcessName = processName;
+		if (Func.isNotEmpty(tenantIdList)) {
+			tenantIdList.forEach(tenantId -> {
+				Deployment deployment = repositoryService.createDeployment().addBytes(finalProcessName, bytes).name(model.getName()).key(model.getModelKey()).tenantId(tenantId).deploy();
+				deploy(deployment, category);
+			});
+		} else {
+			Deployment deployment = repositoryService.createDeployment().addBytes(finalProcessName, bytes).name(model.getName()).key(model.getModelKey()).deploy();
+			deploy(deployment, category);
+		}
+		return true;
 	}
 
 	@Override

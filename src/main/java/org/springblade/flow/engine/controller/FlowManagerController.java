@@ -29,6 +29,7 @@ import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.support.Kv;
+import org.springblade.core.tool.utils.Func;
 import org.springblade.flow.engine.constant.FlowEngineConstant;
 import org.springblade.flow.engine.entity.FlowProcess;
 import org.springblade.flow.engine.service.FlowEngineService;
@@ -60,8 +61,8 @@ public class FlowManagerController {
 	@GetMapping("list")
 	@ApiOperationSupport(order = 1)
 	@ApiOperation(value = "分页", notes = "传入流程类型")
-	public R<IPage<FlowProcess>> list(@ApiParam("流程类型") String category, Query query) {
-		IPage<FlowProcess> pages = flowEngineService.selectProcessPage(Condition.getPage(query), category);
+	public R<IPage<FlowProcess>> list(@ApiParam("流程类型") String category, Query query, @RequestParam(required = false, defaultValue = "1") Integer mode) {
+		IPage<FlowProcess> pages = flowEngineService.selectProcessPage(Condition.getPage(query), category, mode);
 		return R.data(pages);
 	}
 
@@ -94,7 +95,7 @@ public class FlowManagerController {
 	/**
 	 * 检查流程文件格式
 	 *
-	 * @param file    流程文件
+	 * @param file 流程文件
 	 */
 	@PostMapping("check-upload")
 	@ApiOperationSupport(order = 4)
@@ -113,8 +114,10 @@ public class FlowManagerController {
 	@PostMapping("deploy-upload")
 	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "上传部署流程文件", notes = "传入文件")
-	public R deployUpload(@RequestParam List<MultipartFile> files, @RequestParam String category) {
-		return R.status(flowEngineService.deployUpload(files, category));
+	public R deployUpload(@RequestParam List<MultipartFile> files,
+						  @RequestParam String category,
+						  @RequestParam(required = false, defaultValue = "") String tenantIds) {
+		return R.status(flowEngineService.deployUpload(files, category, Func.toStrList(tenantIds)));
 	}
 
 }

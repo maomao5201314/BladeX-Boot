@@ -23,6 +23,6 @@ package org.springblade.common.cache;
  */
 public interface CacheNames {
 
-	String NOTICE_ONE = "notice:one";
+	String CAPTCHA_KEY = "blade:auth::blade:captcha:";
 
 }

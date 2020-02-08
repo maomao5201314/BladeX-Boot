@@ -114,6 +114,11 @@
             <artifactId>blade-core-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- 验证码 -->
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+        </dependency>
         <!-- 工作流 -->
         <dependency>
             <groupId>org.flowable</groupId>

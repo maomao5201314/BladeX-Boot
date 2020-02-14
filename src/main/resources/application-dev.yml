@@ -27,9 +27,11 @@ spring:
 
 #blade配置
 blade:
-  #分布式锁
+  #分布式锁配置
   lock:
+    ##是否启用分布式锁
     enabled: false
+    ##redis服务地址
     address: redis://127.0.0.1:6379
   #本地文件上传
   file:

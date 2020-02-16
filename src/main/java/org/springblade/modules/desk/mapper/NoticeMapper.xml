@@ -44,7 +44,7 @@
         WHERE
         n.is_deleted = 0 and n.tenant_id = #{notice.tenantId}
         <if test="notice.title!=null">
-            and n.title like concat('%', #{notice.title}, '%')
+            and n.title like concat(concat('%', #{notice.title}), '%')
         </if>
         <if test="notice.category!=null">
             and n.category = #{notice.category}

@@ -63,13 +63,13 @@
             and menu.parent_id = #{param1}
         </if>
         <if test="param2.name!=null and param2.name!=''">
-            and menu.name like concat('%', #{param2.name},'%')
+            and menu.name like concat(concat('%', #{param2.name}),'%')
         </if>
         <if test="param2.code!=null and param2.code!=''">
-            and menu.code like concat('%', #{param2.code},'%')
+            and menu.code like concat(concat('%', #{param2.code}),'%')
         </if>
         <if test="param2.alias!=null and param2.alias!=''">
-            and menu.alias like concat('%', #{param2.alias},'%')
+            and menu.alias like concat(concat('%', #{param2.alias}),'%')
         </if>
         ORDER BY menu.sort
     </select>
@@ -92,13 +92,13 @@
             and menu.parent_id = #{param1}
         </if>
         <if test="param2.name!=null and param2.name!=''">
-            and menu.name like concat('%', #{param2.name},'%')
+            and menu.name like concat(concat('%', #{param2.name}),'%')
         </if>
         <if test="param2.code!=null and param2.code!=''">
-            and menu.code like concat('%', #{param2.code},'%')
+            and menu.code like concat(concat('%', #{param2.code}),'%')
         </if>
         <if test="param2.alias!=null and param2.alias!=''">
-            and menu.alias like concat('%', #{param2.alias},'%')
+            and menu.alias like concat(concat('%', #{param2.alias}),'%')
         </if>
         ORDER BY menu.sort
     </select>

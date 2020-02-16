@@ -64,10 +64,10 @@
             and dept.parent_id = #{param2}
         </if>
         <if test="param3.deptName!=null and param3.deptName!=''">
-            and dept.dept_name like concat('%', #{param3.deptName},'%')
+            and dept.dept_name like concat(concat('%', #{param3.deptName}),'%')
         </if>
         <if test="param3.fullName!=null and param3.fullName!=''">
-            and dept.full_name like concat('%', #{param3.fullName},'%')
+            and dept.full_name like concat(concat('%', #{param3.fullName}),'%')
         </if>
         ORDER BY dept.sort
     </select>

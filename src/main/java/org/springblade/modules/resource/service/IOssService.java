@@ -39,6 +39,14 @@ public interface IOssService extends BaseService<Oss> {
 	IPage<OssVO> selectOssPage(IPage<OssVO> page, OssVO oss);
 
 	/**
+	 * 提交oss信息
+	 *
+	 * @param oss
+	 * @return
+	 */
+	boolean submit(Oss oss);
+
+	/**
 	 * 启动配置
 	 *
 	 * @param id

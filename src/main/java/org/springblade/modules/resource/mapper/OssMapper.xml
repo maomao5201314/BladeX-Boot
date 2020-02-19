@@ -11,10 +11,14 @@
         <result column="update_time" property="updateTime"/>
         <result column="status" property="status"/>
         <result column="is_deleted" property="isDeleted"/>
+        <result column="oss_code" property="ossCode"/>
+        <result column="category" property="category"/>
         <result column="endpoint" property="endpoint"/>
         <result column="access_key" property="accessKey"/>
         <result column="secret_key" property="secretKey"/>
         <result column="bucket_name" property="bucketName"/>
+        <result column="app_id" property="appId"/>
+        <result column="region" property="region"/>
         <result column="remark" property="remark"/>
     </resultMap>
 

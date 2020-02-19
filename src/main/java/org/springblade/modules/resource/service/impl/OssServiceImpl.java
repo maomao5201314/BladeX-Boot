@@ -16,9 +16,12 @@
  */
 package org.springblade.modules.resource.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
+import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.resource.entity.Oss;
 import org.springblade.modules.resource.entity.OssVO;
 import org.springblade.modules.resource.mapper.OssMapper;
@@ -38,6 +41,16 @@ public class OssServiceImpl extends BaseServiceImpl<OssMapper, Oss> implements I
 	@Override
 	public IPage<OssVO> selectOssPage(IPage<OssVO> page, OssVO oss) {
 		return page.setRecords(baseMapper.selectOssPage(page, oss));
+	}
+
+	@Override
+	public boolean submit(Oss oss) {
+		LambdaQueryWrapper<Oss> lqw = Wrappers.<Oss>query().lambda().eq(Oss::getOssCode, oss.getOssCode());
+		Integer cnt = baseMapper.selectCount(Func.isEmpty(oss.getId()) ? lqw : lqw.notIn(Oss::getId, oss.getId()));
+		if (cnt > 0) {
+			throw new ServiceException("当前资源编号已存在!");
+		}
+		return this.saveOrUpdate(oss);
 	}
 
 	@Override

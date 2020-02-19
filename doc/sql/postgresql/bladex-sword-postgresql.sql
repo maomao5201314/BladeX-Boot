@@ -666,6 +666,7 @@ CREATE TABLE "blade_oss" (
   "id" int8 NOT NULL,
   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
   "category" int4,
+  "oss_code" varchar(32) COLLATE "pg_catalog"."default",
   "endpoint" varchar(255) COLLATE "pg_catalog"."default",
   "access_key" varchar(255) COLLATE "pg_catalog"."default",
   "secret_key" varchar(255) COLLATE "pg_catalog"."default",
@@ -685,6 +686,7 @@ CREATE TABLE "blade_oss" (
 COMMENT ON COLUMN "blade_oss"."id" IS '主键';
 COMMENT ON COLUMN "blade_oss"."tenant_id" IS '租户ID';
 COMMENT ON COLUMN "blade_oss"."category" IS '分类';
+COMMENT ON COLUMN "blade_oss"."oss_code" IS '资源编号';
 COMMENT ON COLUMN "blade_oss"."endpoint" IS '资源地址';
 COMMENT ON COLUMN "blade_oss"."access_key" IS 'accessKey';
 COMMENT ON COLUMN "blade_oss"."secret_key" IS 'secretKey';
@@ -705,8 +707,8 @@ COMMENT ON TABLE "blade_oss" IS '对象存储表';
 -- Records of blade_oss
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_oss" VALUES (1132486733992468482, '000000', 1, 'http://127.0.0.1:9000', 'D99KGE6ZTQXSATTJWU24', 'QyVqGnhIQQE734UYSUFlGOZViE6+ZlDEfUG3NjhJ', 'bladex', '', '', '', 1123598821738675201, 1123598813738675201, '2019-05-26 11:20:52', 1123598821738675201, '2019-05-27 08:34:55', 2, 0);
-INSERT INTO "blade_oss" VALUES (1132487155981393922, '000000', 2, 'http://ps458elcs.bkt.clouddn.com', 'N_Loh1ngBqcJovwiAJqR91Ifj2vgOWHOf8AwBA_h', 'AuzuA1KHAbkIndCU0dB3Zfii2O3crHNODDmpxHRS', 'bladex', '', '', '', 1123598821738675201, 1123598813738675201, '2019-05-26 11:22:33', 1123598821738675201, '2019-05-26 23:27:56', 1, 0);
+INSERT INTO "blade_oss" VALUES (1132486733992468482, '000000', 1, 'minio', 'http://127.0.0.1:9000', 'D99KGE6ZTQXSATTJWU24', 'QyVqGnhIQQE734UYSUFlGOZViE6+ZlDEfUG3NjhJ', 'bladex', '', '', '', 1123598821738675201, 1123598813738675201, '2019-05-26 11:20:52', 1123598821738675201, '2019-05-27 08:34:55', 2, 0);
+INSERT INTO "blade_oss" VALUES (1132487155981393922, '000000', 2, 'qiniu', 'http://ps458elcs.bkt.clouddn.com', 'N_Loh1ngBqcJovwiAJqR91Ifj2vgOWHOf8AwBA_h', 'AuzuA1KHAbkIndCU0dB3Zfii2O3crHNODDmpxHRS', 'bladex', '', '', '', 1123598821738675201, 1123598813738675201, '2019-05-26 11:22:33', 1123598821738675201, '2019-05-26 23:27:56', 1, 0);
 COMMIT;
 
 -- ----------------------------

@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.resource.builder;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.oss.OssTemplate;
@@ -26,13 +27,16 @@ import org.springblade.core.oss.rule.BladeOssRule;
 import org.springblade.core.oss.rule.OssRule;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.core.tool.utils.StringPool;
+import org.springblade.core.tool.utils.StringUtil;
+import org.springblade.core.tool.utils.WebUtil;
 import org.springblade.modules.resource.entity.Oss;
 import org.springblade.modules.resource.mapper.OssMapper;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
+import static org.springblade.core.cache.constant.CacheConstant.RESOURCE_CACHE;
 
 /**
  * Oss云存储统一构建类
@@ -42,6 +46,7 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 public class OssBuilder {
 
 	public static final String OSS_CODE = "oss:code:";
+	public static final String OSS_PARAM_KEY = "code";
 
 	private final OssProperties ossProperties;
 	private final OssMapper ossMapper;
@@ -107,12 +112,18 @@ public class OssBuilder {
 	 * @return Role
 	 */
 	public Oss getOss(String tenantId) {
-		return CacheUtil.get(SYS_CACHE, OSS_CODE, tenantId, () -> {
-			Oss o = ossMapper.selectOne(
-				Wrappers.<Oss>query().lambda()
-					.eq(Oss::getStatus, OssStatusEnum.ENABLE.getNum())
-					.eq(Oss::getTenantId, tenantId)
-			);
+		String key = tenantId;
+		LambdaQueryWrapper<Oss> lqw = Wrappers.<Oss>query().lambda().eq(Oss::getTenantId, tenantId);
+		// 获取传参的资源编号并查询，若有则返回，若没有则调启用的配置
+		String ossCode = WebUtil.getParameter(OSS_PARAM_KEY);
+		if (StringUtil.isNotBlank(ossCode)) {
+			key = key.concat(StringPool.DASH).concat(ossCode);
+			lqw.eq(Oss::getOssCode, ossCode);
+		} else {
+			lqw.eq(Oss::getStatus, OssStatusEnum.ENABLE.getNum());
+		}
+		return CacheUtil.get(RESOURCE_CACHE, OSS_CODE, key, () -> {
+			Oss o = ossMapper.selectOne(lqw);
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(o))) {
 				Oss defaultOss = new Oss();

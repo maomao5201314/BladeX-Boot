@@ -18,8 +18,8 @@ package org.springblade.modules.resource.builder;
 
 import io.minio.MinioClient;
 import lombok.SneakyThrows;
-import org.springblade.core.minio.MinioTemplate;
 import org.springblade.core.oss.OssTemplate;
+import org.springblade.core.oss.minio.MinioTemplate;
 import org.springblade.core.oss.props.OssProperties;
 import org.springblade.core.oss.rule.OssRule;
 import org.springblade.modules.resource.entity.Oss;

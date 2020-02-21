@@ -14,7 +14,7 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.resource.builder;
+package org.springblade.modules.resource.builder.oss;
 
 import com.qiniu.common.Zone;
 import com.qiniu.storage.BucketManager;
@@ -33,7 +33,7 @@ import org.springblade.modules.resource.entity.Oss;
  *
  * @author Chill
  */
-public class QiniuBuilder {
+public class QiniuOssBuilder {
 
 	@SneakyThrows
 	public static OssTemplate template(Oss oss, OssRule ossRule) {

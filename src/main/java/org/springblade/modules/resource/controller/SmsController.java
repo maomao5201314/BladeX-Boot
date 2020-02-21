@@ -30,10 +30,10 @@ import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.modules.resource.entity.Oss;
-import org.springblade.modules.resource.vo.OssVO;
-import org.springblade.modules.resource.service.IOssService;
-import org.springblade.modules.resource.wrapper.OssWrapper;
+import org.springblade.modules.resource.entity.Sms;
+import org.springblade.modules.resource.service.ISmsService;
+import org.springblade.modules.resource.vo.SmsVO;
+import org.springblade.modules.resource.wrapper.SmsWrapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -43,99 +43,99 @@ import javax.validation.Valid;
 import static org.springblade.core.cache.constant.CacheConstant.RESOURCE_CACHE;
 
 /**
- * 控制器
+ * 短信配置表 控制器
  *
  * @author BladeX
- * @since 2019-05-26
+ * @since 2020-02-20
  */
 @ApiIgnore
 @RestController
 @AllArgsConstructor
-@RequestMapping(AppConstant.APPLICATION_RESOURCE_NAME + "/oss")
+@RequestMapping(AppConstant.APPLICATION_RESOURCE_NAME + "/sms")
 @PreAuth(RoleConstant.HAS_ROLE_ADMIN)
-@Api(value = "对象存储接口", tags = "对象存储接口")
-public class OssController extends BladeController {
+@Api(value = "短信配置表", tags = "短信配置表接口")
+public class SmsController extends BladeController {
 
-	private IOssService ossService;
+	private ISmsService smsService;
 
 	/**
 	 * 详情
 	 */
 	@GetMapping("/detail")
 	@ApiOperationSupport(order = 1)
-	@ApiOperation(value = "详情", notes = "传入oss")
-	public R<OssVO> detail(Oss oss) {
-		Oss detail = ossService.getOne(Condition.getQueryWrapper(oss));
-		return R.data(OssWrapper.build().entityVO(detail));
+	@ApiOperation(value = "详情", notes = "传入sms")
+	public R<SmsVO> detail(Sms sms) {
+		Sms detail = smsService.getOne(Condition.getQueryWrapper(sms));
+		return R.data(SmsWrapper.build().entityVO(detail));
 	}
 
 	/**
-	 * 分页
+	 * 分页 短信配置表
 	 */
 	@GetMapping("/list")
 	@ApiOperationSupport(order = 2)
-	@ApiOperation(value = "分页", notes = "传入oss")
-	public R<IPage<OssVO>> list(Oss oss, Query query) {
-		IPage<Oss> pages = ossService.page(Condition.getPage(query), Condition.getQueryWrapper(oss));
-		return R.data(OssWrapper.build().pageVO(pages));
+	@ApiOperation(value = "分页", notes = "传入sms")
+	public R<IPage<SmsVO>> list(Sms sms, Query query) {
+		IPage<Sms> pages = smsService.page(Condition.getPage(query), Condition.getQueryWrapper(sms));
+		return R.data(SmsWrapper.build().pageVO(pages));
 	}
 
+
 	/**
-	 * 自定义分页
+	 * 自定义分页 短信配置表
 	 */
 	@GetMapping("/page")
 	@ApiOperationSupport(order = 3)
-	@ApiOperation(value = "分页", notes = "传入oss")
-	public R<IPage<OssVO>> page(OssVO oss, Query query) {
-		IPage<OssVO> pages = ossService.selectOssPage(Condition.getPage(query), oss);
+	@ApiOperation(value = "分页", notes = "传入sms")
+	public R<IPage<SmsVO>> page(SmsVO sms, Query query) {
+		IPage<SmsVO> pages = smsService.selectSmsPage(Condition.getPage(query), sms);
 		return R.data(pages);
 	}
 
 	/**
-	 * 新增
+	 * 新增 短信配置表
 	 */
 	@PostMapping("/save")
 	@ApiOperationSupport(order = 4)
-	@ApiOperation(value = "新增", notes = "传入oss")
+	@ApiOperation(value = "新增", notes = "传入sms")
 	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
-	public R save(@Valid @RequestBody Oss oss) {
-		return R.status(ossService.save(oss));
+	public R save(@Valid @RequestBody Sms sms) {
+		return R.status(smsService.save(sms));
 	}
 
 	/**
-	 * 修改
+	 * 修改 短信配置表
 	 */
 	@PostMapping("/update")
 	@ApiOperationSupport(order = 5)
-	@ApiOperation(value = "修改", notes = "传入oss")
+	@ApiOperation(value = "修改", notes = "传入sms")
 	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
-	public R update(@Valid @RequestBody Oss oss) {
-		return R.status(ossService.updateById(oss));
+	public R update(@Valid @RequestBody Sms sms) {
+		return R.status(smsService.updateById(sms));
 	}
 
 	/**
-	 * 新增或修改
+	 * 新增或修改 短信配置表
 	 */
 	@PostMapping("/submit")
 	@ApiOperationSupport(order = 6)
-	@ApiOperation(value = "新增或修改", notes = "传入oss")
+	@ApiOperation(value = "新增或修改", notes = "传入sms")
 	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
-	public R submit(@Valid @RequestBody Oss oss) {
-		return R.status(ossService.submit(oss));
+	public R submit(@Valid @RequestBody Sms sms) {
+		return R.status(smsService.submit(sms));
 	}
 
 
 	/**
-	 * 删除
+	 * 删除 短信配置表
 	 */
 	@PostMapping("/remove")
 	@ApiOperationSupport(order = 7)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-		return R.status(ossService.deleteLogic(Func.toLongList(ids)));
+		return R.status(smsService.deleteLogic(Func.toLongList(ids)));
 	}
-
 
 	/**
 	 * 启用
@@ -145,7 +145,8 @@ public class OssController extends BladeController {
 	@ApiOperation(value = "配置启用", notes = "传入id")
 	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
 	public R enable(@ApiParam(value = "主键", required = true) @RequestParam Long id) {
-		return R.status(ossService.enable(id));
+		return R.status(smsService.enable(id));
 	}
+
 
 }

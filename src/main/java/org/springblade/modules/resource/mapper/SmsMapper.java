@@ -14,31 +14,30 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.resource.config;
+package org.springblade.modules.resource.mapper;
 
-import lombok.AllArgsConstructor;
-import org.springblade.core.oss.props.OssProperties;
-import org.springblade.modules.resource.builder.oss.OssBuilder;
-import org.springblade.modules.resource.mapper.OssMapper;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.springblade.modules.resource.entity.Sms;
+import org.springblade.modules.resource.vo.SmsVO;
+
+import java.util.List;
 
 /**
- * Oss配置类
+ * 短信配置表 Mapper 接口
  *
- * @author Chill
+ * @author BladeX
+ * @since 2020-02-20
  */
-@Configuration
-@AllArgsConstructor
-public class BladeOssConfiguration {
+public interface SmsMapper extends BaseMapper<Sms> {
 
-	private OssProperties ossProperties;
-
-	private OssMapper ossMapper;
-
-	@Bean
-	public OssBuilder ossBuilder() {
-		return new OssBuilder(ossProperties, ossMapper);
-	}
+	/**
+	 * 自定义分页
+	 *
+	 * @param page
+	 * @param sms
+	 * @return
+	 */
+	List<SmsVO> selectSmsPage(IPage page, SmsVO sms);
 
 }

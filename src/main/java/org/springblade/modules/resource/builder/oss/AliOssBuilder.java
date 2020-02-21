@@ -14,7 +14,7 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.resource.builder;
+package org.springblade.modules.resource.builder.oss;
 
 import com.aliyun.oss.ClientConfiguration;
 import com.aliyun.oss.OSSClient;
@@ -32,7 +32,7 @@ import org.springblade.modules.resource.entity.Oss;
  *
  * @author Chill
  */
-public class AliBuilder {
+public class AliOssBuilder {
 
 	@SneakyThrows
 	public static OssTemplate template(Oss oss, OssRule ossRule) {

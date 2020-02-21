@@ -14,7 +14,7 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.resource.builder;
+package org.springblade.modules.resource.builder.oss;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -89,13 +89,13 @@ public class OssBuilder {
 						ossRule = new BladeOssRule(Boolean.FALSE);
 					}
 					if (oss.getCategory() == OssEnum.MINIO.getCategory()) {
-						template = MinioBuilder.template(oss, ossRule);
+						template = MinioOssBuilder.template(oss, ossRule);
 					} else if (oss.getCategory() == OssEnum.QINIU.getCategory()) {
-						template = QiniuBuilder.template(oss, ossRule);
+						template = QiniuOssBuilder.template(oss, ossRule);
 					} else if (oss.getCategory() == OssEnum.ALI.getCategory()) {
-						template = AliBuilder.template(oss, ossRule);
+						template = AliOssBuilder.template(oss, ossRule);
 					} else if (oss.getCategory() == OssEnum.TENCENT.getCategory()) {
-						template = TencentBuilder.template(oss, ossRule);
+						template = TencentOssBuilder.template(oss, ossRule);
 					}
 					templatePool.put(tenantId, template);
 					ossPool.put(tenantId, oss);

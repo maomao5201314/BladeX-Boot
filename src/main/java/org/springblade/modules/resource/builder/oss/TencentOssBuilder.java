@@ -14,7 +14,7 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.resource.builder;
+package org.springblade.modules.resource.builder.oss;
 
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
@@ -33,7 +33,7 @@ import org.springblade.modules.resource.entity.Oss;
  *
  * @author Chill
  */
-public class TencentBuilder {
+public class TencentOssBuilder {
 
 	@SneakyThrows
 	public static OssTemplate template(Oss oss, OssRule ossRule) {

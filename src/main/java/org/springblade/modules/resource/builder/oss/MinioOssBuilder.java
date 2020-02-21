@@ -14,7 +14,7 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.resource.builder;
+package org.springblade.modules.resource.builder.oss;
 
 import io.minio.MinioClient;
 import lombok.SneakyThrows;
@@ -29,7 +29,7 @@ import org.springblade.modules.resource.entity.Oss;
  *
  * @author Chill
  */
-public class MinioBuilder {
+public class MinioOssBuilder {
 
 	@SneakyThrows
 	public static OssTemplate template(Oss oss, OssRule ossRule) {

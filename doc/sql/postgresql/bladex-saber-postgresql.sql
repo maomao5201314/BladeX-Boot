@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 02/01/2020 13:56:12
+ Date: 22/02/2020 00:47:58
 */
 
 
@@ -269,9 +269,14 @@ INSERT INTO "blade_dict" VALUES (1123598814738675241, 1123598814738675240, 'scop
 INSERT INTO "blade_dict" VALUES (1123598814738675242, 1123598814738675240, 'scope_category', '2', '接口权限', 2, NULL, 0, 0);
 INSERT INTO "blade_dict" VALUES (1123598814738676224, 0, 'oss', '-1', '对象存储类型', 6, NULL, 0, 0);
 INSERT INTO "blade_dict" VALUES (1123598814738676225, 1123598814738676224, 'oss', '1', 'minio', 1, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738676226, 1123598814738676224, 'oss', '2', 'qiniu', 2, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738676227, 1123598814738676224, 'oss', '3', 'ali', 3, NULL, 0, 0);
-INSERT INTO "blade_dict" VALUES (1123598814738676228, 1123598814738676224, 'oss', '4', 'tencent', 4, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738677220, 0, 'sms', '-1', '短信服务类型', 11, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738676226, 1123598814738676224, 'oss', '2', '七牛云', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738677222, 1123598814738677220, 'sms', '2', '七牛云', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738677221, 1123598814738677220, 'sms', '1', '云片', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738676227, 1123598814738676224, 'oss', '3', '阿里云', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738677223, 1123598814738677220, 'sms', '3', '阿里云', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738677224, 1123598814738677220, 'sms', '4', '腾讯云', 4, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738676228, 1123598814738676224, 'oss', '4', '腾讯云', 4, NULL, 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -613,7 +618,13 @@ INSERT INTO "blade_menu" VALUES (1164733379658963252, 1164733379658963251, 'dict
 INSERT INTO "blade_menu" VALUES (1164733379658963253, 1164733379658963251, 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', 2, 2, 2, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963254, 1164733379658963251, 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', 3, 2, 3, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963255, 1164733379658963251, 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', 4, 2, 2, 1, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733389658963251, 1123598815738675298, 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', 'iconfont iconicon_cspace', 2, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733389658962251, 1123598815738675298, 'sms', '短信配置', 'menu', '/resource/sms', 'iconfont iconicon_message', 2, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389658962252, 1164733389658962251, 'sms_add', '新增', 'add', '/resource/sms/add', 'plus', 1, 2, 1, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389658962253, 1164733389658962251, 'sms_edit', '修改', 'edit', '/resource/sms/edit', 'form', 2, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389658962254, 1164733389658962251, 'sms_delete', '删除', 'delete', '/api/blade-resource/sms/remove', 'delete', 3, 2, 3, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389658962255, 1164733389658962251, 'sms_view', '查看', 'view', '/resource/sms/view', 'file-text', 4, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389658962256, 1164733389658962251, 'sms_enable', '启用', 'enable', '/api/blade-resource/sms/enable', 'key', 5, 2, 2, 2, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389658963251, 1123598815738675298, 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', 'iconfont iconicon_cspace', 3, 1, 0, 2, '', 0);
 COMMIT;
 
 -- ----------------------------
@@ -1076,6 +1087,12 @@ INSERT INTO "blade_role_menu" VALUES (1161272793873322993, 1164733379658963253, 
 INSERT INTO "blade_role_menu" VALUES (1161272793873322994, 1164733379658963254, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272793873322995, 1164733379658963255, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893873322991, 1164733389658963251, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893873222991, 1164733389658962251, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893873222992, 1164733389658962252, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893873222993, 1164733389658962253, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893873222994, 1164733389658962254, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893873222995, 1164733389658962255, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893873222996, 1164733389658962256, 1123598816738675201);
 COMMIT;
 
 -- ----------------------------
@@ -1174,6 +1191,49 @@ COMMENT ON COLUMN "blade_scope_data"."update_time" IS '修改时间';
 COMMENT ON COLUMN "blade_scope_data"."status" IS '状态';
 COMMENT ON COLUMN "blade_scope_data"."is_deleted" IS '是否已删除';
 COMMENT ON TABLE "blade_scope_data" IS '数据权限表';
+
+-- ----------------------------
+-- Table structure for blade_sms
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_sms";
+CREATE TABLE "blade_sms" (
+  "id" int8 NOT NULL,
+  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+  "category" int4,
+  "sms_code" varchar(12) COLLATE "pg_catalog"."default",
+  "template_id" varchar(64) COLLATE "pg_catalog"."default",
+  "access_key" varchar(255) COLLATE "pg_catalog"."default",
+  "secret_key" varchar(255) COLLATE "pg_catalog"."default",
+  "region_id" varchar(255) COLLATE "pg_catalog"."default",
+  "sign_name" varchar(64) COLLATE "pg_catalog"."default",
+  "remark" varchar(255) COLLATE "pg_catalog"."default",
+  "create_user" int8,
+  "create_dept" int8,
+  "create_time" timestamp(6),
+  "update_user" int8,
+  "update_time" timestamp(6),
+  "status" int4,
+  "is_deleted" int4
+)
+;
+COMMENT ON COLUMN "blade_sms"."id" IS '主键';
+COMMENT ON COLUMN "blade_sms"."tenant_id" IS '租户ID';
+COMMENT ON COLUMN "blade_sms"."category" IS '分类';
+COMMENT ON COLUMN "blade_sms"."sms_code" IS '资源编号';
+COMMENT ON COLUMN "blade_sms"."template_id" IS '模板ID';
+COMMENT ON COLUMN "blade_sms"."access_key" IS 'accessKey';
+COMMENT ON COLUMN "blade_sms"."secret_key" IS 'secretKey';
+COMMENT ON COLUMN "blade_sms"."region_id" IS 'regionId';
+COMMENT ON COLUMN "blade_sms"."sign_name" IS '短信签名';
+COMMENT ON COLUMN "blade_sms"."remark" IS '备注';
+COMMENT ON COLUMN "blade_sms"."create_user" IS '创建人';
+COMMENT ON COLUMN "blade_sms"."create_dept" IS '创建部门';
+COMMENT ON COLUMN "blade_sms"."create_time" IS '创建时间';
+COMMENT ON COLUMN "blade_sms"."update_user" IS '修改人';
+COMMENT ON COLUMN "blade_sms"."update_time" IS '修改时间';
+COMMENT ON COLUMN "blade_sms"."status" IS '状态';
+COMMENT ON COLUMN "blade_sms"."is_deleted" IS '是否已删除';
+COMMENT ON TABLE "blade_sms" IS '短信配置表';
 
 -- ----------------------------
 -- Table structure for blade_tenant
@@ -1453,6 +1513,11 @@ ALTER TABLE "blade_scope_api" ADD CONSTRAINT "blade_scope_api_pkey" PRIMARY KEY 
 -- Primary Key structure for table blade_scope_data
 -- ----------------------------
 ALTER TABLE "blade_scope_data" ADD CONSTRAINT "blade_scope_data_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table blade_sms
+-- ----------------------------
+ALTER TABLE "blade_sms" ADD CONSTRAINT "blade_sms_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table blade_tenant

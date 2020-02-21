@@ -82,19 +82,11 @@
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
-            <artifactId>blade-starter-oss-aliyun</artifactId>
+            <artifactId>blade-starter-oss-all</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>
-            <artifactId>blade-starter-oss-minio</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springblade</groupId>
-            <artifactId>blade-starter-oss-qiniu</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springblade</groupId>
-            <artifactId>blade-starter-oss-tencent</artifactId>
+            <artifactId>blade-starter-sms-all</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springblade</groupId>

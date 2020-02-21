@@ -17,28 +17,31 @@
 package org.springblade.modules.resource.config;
 
 import lombok.AllArgsConstructor;
-import org.springblade.core.oss.props.OssProperties;
-import org.springblade.modules.resource.builder.oss.OssBuilder;
-import org.springblade.modules.resource.mapper.OssMapper;
+import org.springblade.core.redis.cache.BladeRedisCache;
+import org.springblade.core.sms.props.SmsProperties;
+import org.springblade.modules.resource.builder.sms.SmsBuilder;
+import org.springblade.modules.resource.mapper.SmsMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Oss配置类
+ * Sms配置类
  *
  * @author Chill
  */
 @Configuration
 @AllArgsConstructor
-public class BladeOssConfiguration {
+public class BladeSmsConfiguration {
 
-	private OssProperties ossProperties;
+	private SmsProperties smsProperties;
 
-	private OssMapper ossMapper;
+	private SmsMapper smsMapper;
+
+	private BladeRedisCache redisCache;
 
 	@Bean
-	public OssBuilder ossBuilder() {
-		return new OssBuilder(ossProperties, ossMapper);
+	public SmsBuilder smsBuilder() {
+		return new SmsBuilder(smsProperties, smsMapper, redisCache);
 	}
 
 }

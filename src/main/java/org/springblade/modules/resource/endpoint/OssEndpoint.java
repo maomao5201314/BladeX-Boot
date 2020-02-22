@@ -41,6 +41,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(AppConstant.APPLICATION_RESOURCE_NAME + "/oss/endpoint")
 public class OssEndpoint {
 
+	/**
+	 * 对象存储构建类
+	 */
 	private OssBuilder ossBuilder;
 
 	/**

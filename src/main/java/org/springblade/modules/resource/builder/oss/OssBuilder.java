@@ -19,6 +19,7 @@ package org.springblade.modules.resource.builder.oss;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springblade.core.cache.utils.CacheUtil;
+import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.oss.OssTemplate;
 import org.springblade.core.oss.enums.OssEnum;
 import org.springblade.core.oss.enums.OssStatusEnum;
@@ -72,15 +73,25 @@ public class OssBuilder {
 	 * @return OssTemplate
 	 */
 	public OssTemplate template() {
+		return template(StringPool.EMPTY);
+	}
+
+	/**
+	 * 获取template
+	 *
+	 * @param code 资源编号
+	 * @return OssTemplate
+	 */
+	public OssTemplate template(String code) {
 		String tenantId = SecureUtil.getTenantId();
-		Oss oss = getOss(tenantId);
+		Oss oss = getOss(tenantId, code);
 		Oss ossCached = ossPool.get(tenantId);
 		OssTemplate template = templatePool.get(tenantId);
 		// 若为空或者不一致，则重新加载
-		if (Func.hasEmpty(template, ossCached) || oss.getEndpoint().equals(ossCached.getEndpoint()) || !oss.getAccessKey().equals(ossCached.getAccessKey())) {
+		if (Func.hasEmpty(template, ossCached) || !oss.getEndpoint().equals(ossCached.getEndpoint()) || !oss.getAccessKey().equals(ossCached.getAccessKey())) {
 			synchronized (OssBuilder.class) {
 				template = templatePool.get(tenantId);
-				if (Func.hasEmpty(template, ossCached) || oss.getEndpoint().equals(ossCached.getEndpoint()) || !oss.getAccessKey().equals(ossCached.getAccessKey())) {
+				if (Func.hasEmpty(template, ossCached) || !oss.getEndpoint().equals(ossCached.getEndpoint()) || !oss.getAccessKey().equals(ossCached.getAccessKey())) {
 					OssRule ossRule;
 					// 若采用默认设置则开启多租户模式, 若是用户自定义oss则不开启
 					if (oss.getEndpoint().equals(ossProperties.getEndpoint()) && oss.getAccessKey().equals(ossProperties.getAccessKey()) && ossProperties.getTenantMode()) {
@@ -109,20 +120,20 @@ public class OssBuilder {
 	 * 获取对象存储实体
 	 *
 	 * @param tenantId 租户ID
-	 * @return Role
+	 * @return Oss
 	 */
-	public Oss getOss(String tenantId) {
+	public Oss getOss(String tenantId, String code) {
 		String key = tenantId;
 		LambdaQueryWrapper<Oss> lqw = Wrappers.<Oss>query().lambda().eq(Oss::getTenantId, tenantId);
 		// 获取传参的资源编号并查询，若有则返回，若没有则调启用的配置
-		String ossCode = WebUtil.getParameter(OSS_PARAM_KEY);
+		String ossCode = StringUtil.isBlank(code) ? WebUtil.getParameter(OSS_PARAM_KEY) : code;
 		if (StringUtil.isNotBlank(ossCode)) {
 			key = key.concat(StringPool.DASH).concat(ossCode);
 			lqw.eq(Oss::getOssCode, ossCode);
 		} else {
 			lqw.eq(Oss::getStatus, OssStatusEnum.ENABLE.getNum());
 		}
-		return CacheUtil.get(RESOURCE_CACHE, OSS_CODE, key, () -> {
+		Oss oss = CacheUtil.get(RESOURCE_CACHE, OSS_CODE, key, () -> {
 			Oss o = ossMapper.selectOne(lqw);
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(o))) {
@@ -137,7 +148,11 @@ public class OssBuilder {
 				return o;
 			}
 		});
+		if (oss == null || oss.getId() == null) {
+			throw new ServiceException("未获取到对应的对象存储配置");
+		} else {
+			return oss;
+		}
 	}
-
 
 }

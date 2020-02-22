@@ -19,6 +19,7 @@ package org.springblade.modules.resource.builder.sms;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springblade.core.cache.utils.CacheUtil;
+import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.redis.cache.BladeRedisCache;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.sms.SmsTemplate;
@@ -75,8 +76,18 @@ public class SmsBuilder {
 	 * @return SmsTemplate
 	 */
 	public SmsTemplate template() {
+		return template(StringPool.EMPTY);
+	}
+
+	/**
+	 * 获取template
+	 *
+	 * @param code 资源编号
+	 * @return SmsTemplate
+	 */
+	public SmsTemplate template(String code) {
 		String tenantId = SecureUtil.getTenantId();
-		Sms sms = getSms(tenantId);
+		Sms sms = getSms(tenantId, code);
 		Sms smsCached = smsPool.get(tenantId);
 		SmsTemplate template = templatePool.get(tenantId);
 		// 若为空或者不一致，则重新加载
@@ -108,18 +119,18 @@ public class SmsBuilder {
 	 * @param tenantId 租户ID
 	 * @return Sms
 	 */
-	public Sms getSms(String tenantId) {
+	public Sms getSms(String tenantId, String code) {
 		String key = tenantId;
 		LambdaQueryWrapper<Sms> lqw = Wrappers.<Sms>query().lambda().eq(Sms::getTenantId, tenantId);
 		// 获取传参的资源编号并查询，若有则返回，若没有则调启用的配置
-		String smsCode = WebUtil.getParameter(SMS_PARAM_KEY);
+		String smsCode = StringUtil.isBlank(code) ? WebUtil.getParameter(SMS_PARAM_KEY) : code;
 		if (StringUtil.isNotBlank(smsCode)) {
 			key = key.concat(StringPool.DASH).concat(smsCode);
 			lqw.eq(Sms::getSmsCode, smsCode);
 		} else {
 			lqw.eq(Sms::getStatus, SmsStatusEnum.ENABLE.getNum());
 		}
-		return CacheUtil.get(RESOURCE_CACHE, SMS_CODE, key, () -> {
+		Sms sms = CacheUtil.get(RESOURCE_CACHE, SMS_CODE, key, () -> {
 			Sms s = smsMapper.selectOne(lqw);
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(s))) {
@@ -133,6 +144,11 @@ public class SmsBuilder {
 				return s;
 			}
 		});
+		if (sms == null || sms.getId() == null) {
+			throw new ServiceException("未获取到对应的短信配置");
+		} else {
+			return sms;
+		}
 	}
 
 }

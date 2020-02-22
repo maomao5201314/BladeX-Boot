@@ -101,7 +101,7 @@ public class SmsUtil {
 	 */
 	public static boolean validateMessage(String code, String id, String value) {
 		SmsCode smsCode = new SmsCode().setId(id).setValue(value);
-		return smsBuilder.template(code).validateMessage(smsCode);
+		return getBuilder().template(code).validateMessage(smsCode);
 	}
 
 }

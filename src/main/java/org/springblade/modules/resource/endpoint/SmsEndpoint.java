@@ -50,8 +50,8 @@ public class SmsEndpoint {
 	private static final String PARAM_KEY = "code";
 	private static final String SEND_SUCCESS = "短信发送成功";
 	private static final String SEND_FAIL = "短信发送失败";
-	private static final String VALIDATE_SUCCESS = "验证码校验成功";
-	private static final String VALIDATE_FAIL = "验证码校验失败";
+	private static final String VALIDATE_SUCCESS = "短信校验成功";
+	private static final String VALIDATE_FAIL = "短信校验失败";
 
 	private SmsBuilder smsBuilder;
 
@@ -158,8 +158,8 @@ public class SmsEndpoint {
 	 * @return 是否发送成功
 	 */
 	private R send(SmsData smsData, String phones) {
-		SmsCode smsCode = smsBuilder.template().sendMulti(smsData, Func.toStrList(phones));
-		return smsCode.isSuccess() ? R.data(smsCode, SEND_SUCCESS) : R.fail(SEND_FAIL);
+		boolean temp = smsBuilder.template().sendMulti(smsData, Func.toStrList(phones));
+		return temp ? R.success(SEND_SUCCESS) : R.fail(SEND_FAIL);
 	}
 
 }

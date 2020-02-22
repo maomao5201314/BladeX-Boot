@@ -91,7 +91,7 @@ public class SmsBuilder {
 					} else if (sms.getCategory() == SmsEnum.ALI.getCategory()) {
 						template = AliSmsBuilder.template(sms, redisCache);
 					} else if (sms.getCategory() == SmsEnum.TENCENT.getCategory()) {
-						template = YunpianSmsBuilder.template(sms, redisCache);
+						template = TencentSmsBuilder.template(sms, redisCache);
 					}
 					templatePool.put(tenantId, template);
 					smsPool.put(tenantId, sms);

@@ -83,7 +83,7 @@ public class SmsBuilder {
 		if (Func.hasEmpty(template, smsCached) || !sms.getTemplateId().equals(smsCached.getTemplateId()) || !sms.getAccessKey().equals(smsCached.getAccessKey())) {
 			synchronized (SmsBuilder.class) {
 				template = templatePool.get(tenantId);
-				if (Func.hasEmpty(template, smsCached) || !sms.getAccessKey().equals(smsCached.getAccessKey())) {
+				if (Func.hasEmpty(template, smsCached) || !sms.getTemplateId().equals(smsCached.getTemplateId()) || !sms.getAccessKey().equals(smsCached.getAccessKey())) {
 					if (sms.getCategory() == SmsEnum.YUNPIAN.getCategory()) {
 						template = YunpianSmsBuilder.template(sms, redisCache);
 					} else if (sms.getCategory() == SmsEnum.QINIU.getCategory()) {

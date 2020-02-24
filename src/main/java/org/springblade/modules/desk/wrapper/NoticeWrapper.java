@@ -22,6 +22,8 @@ import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.modules.desk.entity.Notice;
 import org.springblade.modules.desk.vo.NoticeVO;
 
+import java.util.Objects;
+
 /**
  * Notice包装类,返回视图层所需的字段
  *
@@ -35,7 +37,7 @@ public class NoticeWrapper extends BaseEntityWrapper<Notice, NoticeVO> {
 
 	@Override
 	public NoticeVO entityVO(Notice notice) {
-		NoticeVO noticeVO = BeanUtil.copy(notice, NoticeVO.class);
+		NoticeVO noticeVO = Objects.requireNonNull(BeanUtil.copy(notice, NoticeVO.class));
 		String dictValue = DictCache.getValue("notice", noticeVO.getCategory());
 		noticeVO.setCategoryName(dictValue);
 		return noticeVO;

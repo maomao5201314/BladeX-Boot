@@ -19,11 +19,12 @@ package org.springblade.modules.auth.utils;
 import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.TokenInfo;
-import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.secure.utils.SecureUtil;
+import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
@@ -120,7 +121,7 @@ public class TokenUtil {
 		if (tenant == null) {
 			throw new ServiceException(TokenUtil.USER_HAS_NO_TENANT);
 		}
-		if (AuthUtil.isAdministrator()) {
+		if (StringUtil.equalsIgnoreCase(tenant.getTenantId(), BladeConstant.ADMIN_TENANT_ID)) {
 			return false;
 		}
 		Date expireTime = tenant.getExpireTime();

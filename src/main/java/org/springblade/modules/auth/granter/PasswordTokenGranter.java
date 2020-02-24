@@ -51,7 +51,7 @@ public class PasswordTokenGranter implements ITokenGranter {
 		if (Func.isNoneBlank(username, password)) {
 			// 获取租户信息
 			Tenant tenant = tenantService.getByTenantId(tenantId);
-			if (!TokenUtil.judgeTenant(tenant)) {
+			if (TokenUtil.judgeTenant(tenant)) {
 				throw new ServiceException(TokenUtil.USER_HAS_NO_TENANT_PERMISSION);
 			}
 			// 获取用户类型

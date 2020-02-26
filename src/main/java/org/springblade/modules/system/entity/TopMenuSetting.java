@@ -20,7 +20,7 @@ public class TopMenuSetting {
 	 * 主键id
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
-	@TableId(value = "id", type = IdType.ID_WORKER)
+	@TableId(value = "id", type = IdType.ASSIGN_ID)
 	private Long id;
 
 	/**

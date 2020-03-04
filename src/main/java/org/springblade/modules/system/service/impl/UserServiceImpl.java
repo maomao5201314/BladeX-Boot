@@ -125,7 +125,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		User user = baseMapper.getUser(tenantId, account, password);
 		userInfo.setUser(user);
 		if (Func.isNotEmpty(user)) {
-			List<String> roleAlias = SysCache.getRoleAliases(user.getRoleId());
+			List<String> roleAlias = roleService.getRoleAliases(user.getRoleId());
 			userInfo.setRoles(roleAlias);
 		}
 		return userInfo;

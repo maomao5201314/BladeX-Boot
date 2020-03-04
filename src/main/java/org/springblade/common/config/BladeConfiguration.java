@@ -17,7 +17,9 @@
 package org.springblade.common.config;
 
 
+import org.springblade.common.filter.PreviewFilter;
 import org.springblade.core.secure.registry.SecureRegistry;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -52,12 +54,18 @@ public class BladeConfiguration implements WebMvcConfigurer {
 		return secureRegistry;
 	}
 
+	@Bean
+	@ConditionalOnProperty(value = "blade.preview.enable", havingValue = "true")
+	public PreviewFilter previewFilter() {
+		return new PreviewFilter();
+	}
+
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/cors/**")
 			.allowedOrigins("*")
 			.allowedHeaders("*")
-			.allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
+			.allowedMethods("*")
 			.maxAge(3600)
 			.allowCredentials(true);
 	}

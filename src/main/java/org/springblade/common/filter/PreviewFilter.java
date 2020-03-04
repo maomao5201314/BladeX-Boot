@@ -27,7 +27,6 @@ import java.util.List;
  *
  * @author Chill
  */
-//@Component
 public class PreviewFilter implements Filter {
 
 	private static List<String> keys = new ArrayList<>();
@@ -41,8 +40,10 @@ public class PreviewFilter implements Filter {
 
 
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
+	public void init(FilterConfig filterConfig) {
 	}
+
+
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
@@ -58,6 +59,7 @@ public class PreviewFilter implements Filter {
 		}
 
 	}
+
 	@Override
 	public void destroy() {
 	}

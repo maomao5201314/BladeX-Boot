@@ -58,6 +58,8 @@ public interface IUserService extends BaseService<User> {
 	 *
 	 * @param page
 	 * @param user
+	 * @param deptId
+	 * @param tenantId
 	 * @return
 	 */
 	IPage<User> selectUserPage(IPage<User> page, User user, Long deptId, String tenantId);

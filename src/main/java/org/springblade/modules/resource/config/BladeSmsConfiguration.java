@@ -17,7 +17,7 @@
 package org.springblade.modules.resource.config;
 
 import lombok.AllArgsConstructor;
-import org.springblade.core.redis.cache.BladeRedisCache;
+import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.sms.props.SmsProperties;
 import org.springblade.modules.resource.builder.sms.SmsBuilder;
 import org.springblade.modules.resource.mapper.SmsMapper;
@@ -37,11 +37,11 @@ public class BladeSmsConfiguration {
 
 	private SmsMapper smsMapper;
 
-	private BladeRedisCache redisCache;
+	private BladeRedis bladeRedis;
 
 	@Bean
 	public SmsBuilder smsBuilder() {
-		return new SmsBuilder(smsProperties, smsMapper, redisCache);
+		return new SmsBuilder(smsProperties, smsMapper, bladeRedis);
 	}
 
 }

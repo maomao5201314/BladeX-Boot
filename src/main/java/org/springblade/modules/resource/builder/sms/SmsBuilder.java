@@ -20,7 +20,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.log.exception.ServiceException;
-import org.springblade.core.redis.cache.BladeRedisCache;
+import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.sms.SmsTemplate;
 import org.springblade.core.sms.enums.SmsEnum;
@@ -50,13 +50,13 @@ public class SmsBuilder {
 
 	private final SmsProperties smsProperties;
 	private final SmsMapper smsMapper;
-	private final BladeRedisCache redisCache;
+	private final BladeRedis bladeRedis;
 
 
-	public SmsBuilder(SmsProperties smsProperties, SmsMapper smsMapper, BladeRedisCache redisCache) {
+	public SmsBuilder(SmsProperties smsProperties, SmsMapper smsMapper, BladeRedis bladeRedis) {
 		this.smsProperties = smsProperties;
 		this.smsMapper = smsMapper;
-		this.redisCache = redisCache;
+		this.bladeRedis = bladeRedis;
 	}
 
 	/**
@@ -96,13 +96,13 @@ public class SmsBuilder {
 				template = templatePool.get(tenantId);
 				if (Func.hasEmpty(template, smsCached) || !sms.getTemplateId().equals(smsCached.getTemplateId()) || !sms.getAccessKey().equals(smsCached.getAccessKey())) {
 					if (sms.getCategory() == SmsEnum.YUNPIAN.getCategory()) {
-						template = YunpianSmsBuilder.template(sms, redisCache);
+						template = YunpianSmsBuilder.template(sms, bladeRedis);
 					} else if (sms.getCategory() == SmsEnum.QINIU.getCategory()) {
-						template = QiniuSmsBuilder.template(sms, redisCache);
+						template = QiniuSmsBuilder.template(sms, bladeRedis);
 					} else if (sms.getCategory() == SmsEnum.ALI.getCategory()) {
-						template = AliSmsBuilder.template(sms, redisCache);
+						template = AliSmsBuilder.template(sms, bladeRedis);
 					} else if (sms.getCategory() == SmsEnum.TENCENT.getCategory()) {
-						template = TencentSmsBuilder.template(sms, redisCache);
+						template = TencentSmsBuilder.template(sms, bladeRedis);
 					}
 					templatePool.put(tenantId, template);
 					smsPool.put(tenantId, sms);

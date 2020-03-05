@@ -25,7 +25,7 @@ import lombok.AllArgsConstructor;
 import org.springblade.common.cache.CacheNames;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.log.annotation.ApiLog;
-import org.springblade.core.redis.cache.BladeRedisCache;
+import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.support.Kv;
@@ -54,7 +54,7 @@ import java.util.UUID;
 @Api(value = "用户授权认证", tags = "授权接口")
 public class AuthController {
 
-	private BladeRedisCache redisCache;
+	private BladeRedis bladeRedis;
 
 	@ApiLog("登录用户验证")
 	@PostMapping("/oauth/token")
@@ -94,7 +94,7 @@ public class AuthController {
 		String verCode = specCaptcha.text().toLowerCase();
 		String key = UUID.randomUUID().toString();
 		// 存入redis并设置过期时间为30分钟
-		redisCache.setEx(CacheNames.CAPTCHA_KEY + key, verCode, Duration.ofMinutes(30));
+		bladeRedis.setEx(CacheNames.CAPTCHA_KEY + key, verCode, Duration.ofMinutes(30));
 		// 将key和base64返回给前端
 		return Kv.create().set("key", key).set("image", specCaptcha.toBase64());
 	}

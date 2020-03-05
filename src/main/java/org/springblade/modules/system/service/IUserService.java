@@ -46,6 +46,14 @@ public interface IUserService extends BaseService<User> {
 	boolean updateUser(User user);
 
 	/**
+	 * 修改用户基本信息
+	 *
+	 * @param user
+	 * @return
+	 */
+	boolean updateUserInfo(User user);
+
+	/**
 	 * 自定义分页
 	 *
 	 * @param page

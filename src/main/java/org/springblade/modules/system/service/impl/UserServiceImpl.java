@@ -88,6 +88,12 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		return updateById(user) && submitUserDept(user);
 	}
 
+	@Override
+	public boolean updateUserInfo(User user) {
+		user.setPassword(null);
+		return updateById(user);
+	}
+
 	private boolean submitUserDept(User user) {
 		List<Long> deptIdList = Func.toLongList(user.getDeptId());
 		List<UserDept> userDeptList = new ArrayList<>();

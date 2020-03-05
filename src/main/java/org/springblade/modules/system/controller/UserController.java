@@ -204,6 +204,17 @@ public class UserController {
 	}
 
 	/**
+	 * 修改基本信息
+	 */
+	@PostMapping("/update-info")
+	@ApiOperationSupport(order = 5)
+	@ApiOperation(value = "修改基本信息", notes = "传入User")
+	@CacheEvict(cacheNames = {USER_CACHE}, allEntries = true)
+	public R updateInfo(@Valid @RequestBody User user) {
+		return R.status(userService.updateUserInfo(user));
+	}
+
+	/**
 	 * 用户列表
 	 *
 	 * @param user

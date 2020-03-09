@@ -100,6 +100,7 @@ public class AuthController {
 	}
 
 	@GetMapping("/oauth/logout")
+	@ApiOperation(value = "退出登录")
 	public Kv logout() {
 		BladeUser user = AuthUtil.getUser();
 		return Kv.create().set("success", "true").set("account", user.getAccount()).set("msg", "success");

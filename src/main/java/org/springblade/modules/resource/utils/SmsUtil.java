@@ -18,6 +18,7 @@ package org.springblade.modules.resource.utils;
 
 import org.springblade.core.sms.model.SmsCode;
 import org.springblade.core.sms.model.SmsData;
+import org.springblade.core.sms.model.SmsResponse;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.RandomType;
 import org.springblade.core.tool.utils.SpringUtil;
@@ -74,9 +75,9 @@ public class SmsUtil {
 	 * @param phones 手机号集合
 	 * @return 发送结果
 	 */
-	public static boolean sendMessage(String code, Map<String, String> params, String phones) {
+	public static SmsResponse sendMessage(String code, Map<String, String> params, String phones) {
 		SmsData smsData = new SmsData(params);
-		return getBuilder().template(code).sendMulti(smsData, Func.toStrList(phones));
+		return getBuilder().template(code).sendMessage(smsData, Func.toStrList(phones));
 	}
 
 	/**

@@ -135,7 +135,8 @@ public class SmsBuilder {
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(s))) {
 				Sms defaultSms = new Sms();
-				defaultSms.setCategory(SmsEnum.QINIU.getCategory());
+				defaultSms.setId(0L);
+				defaultSms.setCategory(SmsEnum.of(smsProperties.getName()).getCategory());
 				defaultSms.setAccessKey(smsProperties.getAccessKey());
 				defaultSms.setSecretKey(smsProperties.getSecretKey());
 				defaultSms.setSignName(smsProperties.getSignName());

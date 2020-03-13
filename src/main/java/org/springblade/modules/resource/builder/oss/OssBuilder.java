@@ -138,7 +138,8 @@ public class OssBuilder {
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(o))) {
 				Oss defaultOss = new Oss();
-				defaultOss.setCategory(OssEnum.QINIU.getCategory());
+				defaultOss.setId(0L);
+				defaultOss.setCategory(OssEnum.of(ossProperties.getName()).getCategory());
 				defaultOss.setEndpoint(ossProperties.getEndpoint());
 				defaultOss.setBucketName(ossProperties.getBucketName());
 				defaultOss.setAccessKey(ossProperties.getAccessKey());

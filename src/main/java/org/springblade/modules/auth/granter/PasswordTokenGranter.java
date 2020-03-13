@@ -58,11 +58,11 @@ public class PasswordTokenGranter implements ITokenGranter {
 			String userType = tokenParameter.getArgs().getStr("userType");
 			// 根据不同用户类型调用对应的接口返回数据，用户可自行拓展
 			if (userType.equals(BladeUserEnum.WEB.getName())) {
-				userInfo = userService.userInfo(tenantId, username, DigestUtil.encrypt(password));
+				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password));
 			} else if (userType.equals(BladeUserEnum.APP.getName())) {
-				userInfo = userService.userInfo(tenantId, username, DigestUtil.encrypt(password));
+				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password));
 			} else {
-				userInfo = userService.userInfo(tenantId, username, DigestUtil.encrypt(password));
+				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password));
 			}
 		}
 		return userInfo;

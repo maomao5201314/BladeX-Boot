@@ -28,11 +28,14 @@ import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Param;
 import org.springblade.modules.system.service.IParamService;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.util.Map;
+
+import static org.springblade.core.cache.constant.CacheConstant.PARAM_CACHE;
 
 /**
  * 控制器
@@ -80,6 +83,7 @@ public class ParamController extends BladeController {
 	@PostMapping("/submit")
 	@ApiOperationSupport(order = 3)
 	@ApiOperation(value = "新增或修改", notes = "传入param")
+	@CacheEvict(cacheNames = {PARAM_CACHE}, allEntries = true)
 	public R submit(@Valid @RequestBody Param param) {
 		return R.status(paramService.saveOrUpdate(param));
 	}
@@ -91,6 +95,7 @@ public class ParamController extends BladeController {
 	@PostMapping("/remove")
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
+	@CacheEvict(cacheNames = {PARAM_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		return R.status(paramService.deleteLogic(Func.toLongList(ids)));
 	}

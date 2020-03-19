@@ -31,7 +31,7 @@ import org.springblade.core.tool.utils.StringPool;
 import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.core.tool.utils.WebUtil;
 import org.springblade.modules.resource.entity.Sms;
-import org.springblade.modules.resource.mapper.SmsMapper;
+import org.springblade.modules.resource.service.ISmsService;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -49,13 +49,13 @@ public class SmsBuilder {
 	public static final String SMS_PARAM_KEY = "code";
 
 	private final SmsProperties smsProperties;
-	private final SmsMapper smsMapper;
+	private final ISmsService smsService;
 	private final BladeRedis bladeRedis;
 
 
-	public SmsBuilder(SmsProperties smsProperties, SmsMapper smsMapper, BladeRedis bladeRedis) {
+	public SmsBuilder(SmsProperties smsProperties, ISmsService smsService, BladeRedis bladeRedis) {
 		this.smsProperties = smsProperties;
-		this.smsMapper = smsMapper;
+		this.smsService = smsService;
 		this.bladeRedis = bladeRedis;
 	}
 
@@ -131,7 +131,7 @@ public class SmsBuilder {
 			lqw.eq(Sms::getStatus, SmsStatusEnum.ENABLE.getNum());
 		}
 		Sms sms = CacheUtil.get(RESOURCE_CACHE, SMS_CODE, key, () -> {
-			Sms s = smsMapper.selectOne(lqw);
+			Sms s = smsService.getOne(lqw);
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(s))) {
 				Sms defaultSms = new Sms();

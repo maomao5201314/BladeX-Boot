@@ -20,7 +20,7 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.sms.props.SmsProperties;
 import org.springblade.modules.resource.builder.sms.SmsBuilder;
-import org.springblade.modules.resource.mapper.SmsMapper;
+import org.springblade.modules.resource.service.ISmsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -35,13 +35,13 @@ public class BladeSmsConfiguration {
 
 	private SmsProperties smsProperties;
 
-	private SmsMapper smsMapper;
+	private ISmsService smsService;
 
 	private BladeRedis bladeRedis;
 
 	@Bean
 	public SmsBuilder smsBuilder() {
-		return new SmsBuilder(smsProperties, smsMapper, bladeRedis);
+		return new SmsBuilder(smsProperties, smsService, bladeRedis);
 	}
 
 }

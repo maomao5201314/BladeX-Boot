@@ -32,7 +32,7 @@ import org.springblade.core.tool.utils.StringPool;
 import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.core.tool.utils.WebUtil;
 import org.springblade.modules.resource.entity.Oss;
-import org.springblade.modules.resource.mapper.OssMapper;
+import org.springblade.modules.resource.service.IOssService;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -50,11 +50,11 @@ public class OssBuilder {
 	public static final String OSS_PARAM_KEY = "code";
 
 	private final OssProperties ossProperties;
-	private final OssMapper ossMapper;
+	private final IOssService ossService;
 
-	public OssBuilder(OssProperties ossProperties, OssMapper ossMapper) {
+	public OssBuilder(OssProperties ossProperties, IOssService ossService) {
 		this.ossProperties = ossProperties;
-		this.ossMapper = ossMapper;
+		this.ossService = ossService;
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class OssBuilder {
 			lqw.eq(Oss::getStatus, OssStatusEnum.ENABLE.getNum());
 		}
 		Oss oss = CacheUtil.get(RESOURCE_CACHE, OSS_CODE, key, () -> {
-			Oss o = ossMapper.selectOne(lqw);
+			Oss o = ossService.getOne(lqw);
 			// 若为空则调用默认配置
 			if ((Func.isEmpty(o))) {
 				Oss defaultOss = new Oss();

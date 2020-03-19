@@ -65,10 +65,10 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 		TaskQuery claimUserQuery = taskService.createTaskQuery().taskCandidateUser(taskUser)
 			.includeProcessVariables().active().orderByTaskCreateTime().desc();
 		// 定制流程等待签收的任务
-		TaskQuery claimRoleWithTenantIdQuery = taskService.createTaskQuery().taskTenantId(AuthUtil.getTenantId()).taskCandidateGroup(taskGroup)
+		TaskQuery claimRoleWithTenantIdQuery = taskService.createTaskQuery().taskTenantId(AuthUtil.getTenantId()).taskCandidateGroupIn(Func.toStrList(taskGroup))
 			.includeProcessVariables().active().orderByTaskCreateTime().desc();
 		// 通用流程等待签收的任务
-		TaskQuery claimRoleWithoutTenantIdQuery = taskService.createTaskQuery().taskWithoutTenantId().taskCandidateGroup(taskGroup)
+		TaskQuery claimRoleWithoutTenantIdQuery = taskService.createTaskQuery().taskWithoutTenantId().taskCandidateGroupIn(Func.toStrList(taskGroup))
 			.includeProcessVariables().active().orderByTaskCreateTime().desc();
 
 		// 构建列表数据

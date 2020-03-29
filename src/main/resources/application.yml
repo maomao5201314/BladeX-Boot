@@ -91,7 +91,7 @@ flowable:
 
 #oss默认配置
 oss:
-  enable: true
+  enabled: true
   name: qiniu
   tenant-mode: true
   endpoint: http://prt1thnw3.bkt.clouddn.com
@@ -103,7 +103,7 @@ oss:
 #blade配置
 blade:
   xss:
-    enable: true
+    enabled: true
     skip-url:
       - /weixin
       - /notice/submit

@@ -21,6 +21,7 @@ import org.springblade.common.cache.SysCache;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.vo.UserVO;
 
@@ -41,8 +42,10 @@ public class UserWrapper extends BaseEntityWrapper<User, UserVO> {
 	@Override
 	public UserVO entityVO(User user) {
 		UserVO userVO = Objects.requireNonNull(BeanUtil.copy(user, UserVO.class));
+		Tenant tenant = SysCache.getTenant(user.getTenantId());
 		List<String> roleName = SysCache.getRoleNames(user.getRoleId());
 		List<String> deptName = SysCache.getDeptNames(user.getDeptId());
+		userVO.setTenantName(tenant.getTenantName());
 		userVO.setRoleName(Func.join(roleName));
 		userVO.setDeptName(Func.join(deptName));
 		userVO.setSexName(DictCache.getValue("sex", Func.toInt(user.getSex())));

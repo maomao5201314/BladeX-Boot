@@ -41,6 +41,11 @@ public class UserVO extends User {
 	private Long id;
 
 	/**
+	 * 租户名
+	 */
+	private String tenantName;
+
+	/**
 	 * 角色名
 	 */
 	private String roleName;

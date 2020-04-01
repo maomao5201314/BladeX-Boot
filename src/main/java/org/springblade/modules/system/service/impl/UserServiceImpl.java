@@ -68,7 +68,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			Integer accountNumber = tenant.getAccountNumber();
 			Integer tenantCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId));
 			if (accountNumber != null && accountNumber > 0 && accountNumber < tenantCount) {
-				throw new ServiceException("当前租户已到最大账号额度");
+				throw new ServiceException("当前租户已到最大账号额度!");
 			}
 		}
 		if (Func.isNotEmpty(user.getPassword())) {
@@ -84,11 +84,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public boolean updateUser(User user) {
-		return updateUserInfo(user) && submitUserDept(user);
-	}
-
-	@Override
-	public boolean updateUserInfo(User user) {
 		String tenantId = user.getTenantId();
 		Integer userCount = baseMapper.selectCount(
 			Wrappers.<User>query().lambda()
@@ -99,6 +94,11 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (userCount > 0) {
 			throw new ServiceException("当前用户已存在!");
 		}
+		return updateUserInfo(user) && submitUserDept(user);
+	}
+
+	@Override
+	public boolean updateUserInfo(User user) {
 		user.setPassword(null);
 		return updateById(user);
 	}

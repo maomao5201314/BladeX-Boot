@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 22/02/2020 00:49:07
+ Date: 02/04/2020 14:36:18
 */
 
 
@@ -277,6 +277,11 @@ INSERT INTO "blade_dict" VALUES (1123598814738677221, 1123598814738677220, 'sms'
 INSERT INTO "blade_dict" VALUES (1123598814738677222, 1123598814738677220, 'sms', '2', '七牛云', 2, NULL, 0, 0);
 INSERT INTO "blade_dict" VALUES (1123598814738677224, 1123598814738677220, 'sms', '4', '腾讯云', 4, NULL, 0, 0);
 INSERT INTO "blade_dict" VALUES (1123598814738676228, 1123598814738676224, 'oss', '4', '腾讯云', 4, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738777220, 0, 'post', '-1', '岗位类型', 12, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738777221, 1123598814738777220, 'post', '1', '高层', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738777222, 1123598814738777220, 'post', '2', '中层', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738777223, 1123598814738777220, 'post', '3', '基层', 3, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738777224, 1123598814738777220, 'post', '4', '其他', 4, NULL, 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -491,10 +496,6 @@ INSERT INTO "blade_menu" VALUES (1123598815738675202, 1123598815738675201, 'noti
 INSERT INTO "blade_menu" VALUES (1123598815738675203, 0, 'system', '系统管理', 'menu', '/system', 'setting', 99, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675204, 1123598815738675203, 'user', '用户管理', 'menu', '/system/user', NULL, 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675205, 1123598815738675203, 'dept', '机构管理', 'menu', '/system/dept', NULL, 2, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675206, 1123598815738675203, 'dict', '系统字典', 'menu', '/system/dict', NULL, 3, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675207, 1123598815738675203, 'menu', '菜单管理', 'menu', '/system/menu', NULL, 4, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675208, 1123598815738675203, 'topmenu', '顶部菜单', 'menu', '/system/topmenu', '', 5, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675209, 1123598815738675203, 'param', '参数管理', 'menu', '/system/param', NULL, 6, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675210, 0, 'monitor', '系统监控', 'menu', '/monitor', 'fund', 3, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675211, 1123598815738675210, 'doc', '接口文档', 'menu', 'http://localhost/doc.html', NULL, 1, 1, 0, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675212, 1123598815738675210, 'admin', '服务治理', 'menu', 'http://localhost:7002', NULL, 2, 1, 0, 2, NULL, 0);
@@ -541,17 +542,19 @@ INSERT INTO "blade_menu" VALUES (1123598815738675252, 1123598815738675218, 'code
 INSERT INTO "blade_menu" VALUES (1123598815738675253, 1123598815738675218, 'code_edit', '修改', 'edit', '/tool/code/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675254, 1123598815738675218, 'code_delete', '删除', 'delete', '/api/blade-develop/code/remove', 'delete', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675255, 1123598815738675218, 'code_view', '查看', 'view', '/tool/code/view', 'file-text', 4, 2, 2, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675256, 1123598815738675203, 'tenant', '租户管理', 'menu', '/system/tenant', NULL, 7, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675257, 1123598815738675256, 'tenant_add', '新增', 'add', '/system/tenant/add', 'plus', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675258, 1123598815738675256, 'tenant_edit', '修改', 'edit', '/system/tenant/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675259, 1123598815738675256, 'tenant_delete', '删除', 'delete', '/api/blade-system/tenant/remove', 'delete', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675260, 1123598815738675256, 'tenant_view', '查看', 'view', '/system/tenant/view', 'file-text', 4, 2, 2, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675261, 1123598815738675203, 'client', '应用管理', 'menu', '/system/client', NULL, 8, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675262, 1123598815738675261, 'client_add', '新增', 'add', '/system/client/add', 'plus', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675263, 1123598815738675261, 'client_edit', '修改', 'edit', '/system/client/edit', 'form', 2, 2, 2, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675264, 1123598815738675261, 'client_delete', '删除', 'delete', '/api/blade-system/client/remove', 'delete', 3, 2, 3, 3, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675265, 1123598815738675261, 'client_view', '查看', 'view', '/system/client/view', 'file-text', 4, 2, 2, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675266, 0, 'flow', '流程管理', 'menu', '/flow', 'stock', 5, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675207, 1123598815738675203, 'menu', '菜单管理', 'menu', '/system/menu', NULL, 6, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675208, 1123598815738675203, 'topmenu', '顶部菜单', 'menu', '/system/topmenu', '', 7, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675256, 1123598815738675203, 'tenant', '租户管理', 'menu', '/system/tenant', NULL, 9, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675261, 1123598815738675203, 'client', '应用管理', 'menu', '/system/client', NULL, 10, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675267, 1123598815738675266, 'flow_model', '模型管理', 'menu', '/flow/model', NULL, 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675268, 1123598815738675267, 'flow_model_create', '创建', 'create', '', 'plus', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675269, 1123598815738675267, 'flow_model_update', '编辑', 'update', '', 'form', 2, 2, 2, 1, NULL, 0);
@@ -611,7 +614,6 @@ INSERT INTO "blade_menu" VALUES (1164733369658963252, 1123598815738675210, 'zipk
 INSERT INTO "blade_menu" VALUES (1164733369658963253, 1123598815738675210, 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', '', 5, 1, 0, 2, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733369658963254, 1123598815738675210, 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', '', 6, 1, 0, 2, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733369658963255, 1123598815738675210, 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', '', 7, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733379658963251, 1123598815738675203, 'dictbiz', '业务字典', 'menu', '/system/dictbiz', '', 3, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963252, 1164733379658963251, 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', 1, 2, 1, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963253, 1164733379658963251, 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', 2, 2, 2, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963254, 1164733379658963251, 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', 3, 2, 3, 1, '', 0);
@@ -623,6 +625,14 @@ INSERT INTO "blade_menu" VALUES (1164733389658962254, 1164733389658962251, 'sms_
 INSERT INTO "blade_menu" VALUES (1164733389658962255, 1164733389658962251, 'sms_view', '查看', 'view', '/resource/sms/view', 'file-text', 4, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389658962256, 1164733389658962251, 'sms_enable', '启用', 'enable', '/api/blade-resource/sms/enable', 'key', 5, 2, 2, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389658963251, 1123598815738675298, 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', '', 3, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733389668962252, 1164733389668962251, 'post_add', '新增', 'add', '/system/post/add', 'plus', 1, 2, 1, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389668962253, 1164733389668962251, 'post_edit', '修改', 'edit', '/system/post/edit', 'form', 2, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389668962254, 1164733389668962251, 'post_delete', '删除', 'delete', '/api/blade-system/post/remove', 'delete', 3, 2, 3, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389668962255, 1164733389668962251, 'post_view', '查看', 'view', '/system/post/view', 'file-text', 4, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675206, 1123598815738675203, 'dict', '系统字典', 'menu', '/system/dict', NULL, 4, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675209, 1123598815738675203, 'param', '参数管理', 'menu', '/system/param', NULL, 8, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733379658963251, 1123598815738675203, 'dictbiz', '业务字典', 'menu', '/system/dictbiz', '', 5, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733389668962251, 1123598815738675203, 'post', '岗位管理', 'menu', '/system/post', '', 3, 1, 0, 1, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -761,6 +771,60 @@ COMMENT ON TABLE "blade_param" IS '参数表';
 BEGIN;
 INSERT INTO "blade_param" VALUES (1123598819738675201, '是否开启注册功能', 'account.registerUser', 'true', '开启注册', 1123598821738675201, 1123598813738675201, '2018-12-28 12:19:01', 1123598821738675201, '2018-12-28 12:19:01', 1, 0);
 INSERT INTO "blade_param" VALUES (1123598819738675202, '账号初始密码', 'account.initPassword', '123456', '初始密码', 1123598821738675201, 1123598813738675201, '2018-12-28 12:19:01', 1123598821738675201, '2018-12-28 12:19:01', 1, 0);
+INSERT INTO "blade_param" VALUES (1238706101399142402, '租户默认管理密码', 'tenant.default.password', 'admin', NULL, 1123598821738675201, 1123598813738675201, '2020-03-14 13:58:43', 1123598821738675201, '2020-03-14 13:58:43', 1, 0);
+INSERT INTO "blade_param" VALUES (1238706160295559170, '租户默认账号额度', 'tenant.default.accountNumber', '100', NULL, 1123598821738675201, 1123598813738675201, '2020-03-14 13:58:57', 1123598821738675201, '2020-03-14 13:58:57', 1, 0);
+INSERT INTO "blade_param" VALUES (1238706330076790786, '租户默认菜单集合', 'tenant.default.menuCode', 'desk,flow,work,monitor,resource,role,user,dept,post,dictbiz,topmenu', NULL, 1123598821738675201, 1123598813738675201, '2020-03-14 13:59:38', 1123598821738675201, '2020-03-14 13:59:38', 1, 0);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for blade_post
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_post";
+CREATE TABLE "blade_post" (
+  "id" int8 NOT NULL,
+  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+  "category" int4,
+  "post_code" varchar(12) COLLATE "pg_catalog"."default",
+  "post_name" varchar(64) COLLATE "pg_catalog"."default",
+  "sort" int4,
+  "remark" varchar(255) COLLATE "pg_catalog"."default",
+  "create_user" int8,
+  "create_dept" int8,
+  "create_time" timestamp(6),
+  "update_user" int8,
+  "update_time" timestamp(6),
+  "status" int4,
+  "is_deleted" int4
+)
+;
+COMMENT ON COLUMN "blade_post"."id" IS '主键';
+COMMENT ON COLUMN "blade_post"."tenant_id" IS '租户ID';
+COMMENT ON COLUMN "blade_post"."category" IS '岗位类型';
+COMMENT ON COLUMN "blade_post"."post_code" IS '岗位编号';
+COMMENT ON COLUMN "blade_post"."post_name" IS '岗位名称';
+COMMENT ON COLUMN "blade_post"."sort" IS '岗位排序';
+COMMENT ON COLUMN "blade_post"."remark" IS '岗位排序';
+COMMENT ON COLUMN "blade_post"."create_user" IS '创建人';
+COMMENT ON COLUMN "blade_post"."create_dept" IS '创建部门';
+COMMENT ON COLUMN "blade_post"."create_time" IS '创建时间';
+COMMENT ON COLUMN "blade_post"."update_user" IS '修改人';
+COMMENT ON COLUMN "blade_post"."update_time" IS '修改时间';
+COMMENT ON COLUMN "blade_post"."status" IS '状态';
+COMMENT ON COLUMN "blade_post"."is_deleted" IS '是否已删除';
+COMMENT ON TABLE "blade_post" IS '岗位表';
+
+-- ----------------------------
+-- Records of blade_post
+-- ----------------------------
+BEGIN;
+INSERT INTO "blade_post" VALUES (1123598817738675201, '000000', 1, 'ceo', '首席执行官', 1, '总经理', 1123598821738675201, 1123598813738675201, '2020-04-01 00:00:00', 1123598821738675201, '2020-04-01 00:00:00', 1, 0);
+INSERT INTO "blade_post" VALUES (1123598817738675202, '000000', 1, 'coo', '首席运营官', 2, '常务总经理', 1123598821738675201, 1123598813738675201, '2020-04-01 00:00:00', 1123598821738675201, '2020-04-01 00:00:00', 1, 0);
+INSERT INTO "blade_post" VALUES (1123598817738675203, '000000', 1, 'cfo', '首席财务官', 3, '财务总经理', 1123598821738675201, 1123598813738675201, '2020-04-01 00:00:00', 1123598821738675201, '2020-04-01 00:00:00', 1, 0);
+INSERT INTO "blade_post" VALUES (1123598817738675204, '000000', 1, 'cto', '首席技术官', 4, '技术总监', 1123598821738675201, 1123598813738675201, '2020-04-01 00:00:00', 1123598821738675201, '2020-04-01 00:00:00', 1, 0);
+INSERT INTO "blade_post" VALUES (1123598817738675205, '000000', 1, 'cio', '首席信息官', 5, '信息总监', 1123598821738675201, 1123598813738675201, '2020-04-01 00:00:00', 1123598821738675201, '2020-04-01 00:00:00', 1, 0);
+INSERT INTO "blade_post" VALUES (1123598817738675206, '000000', 2, 'pm', '技术经理', 6, '研发和产品是永远的朋友', 1123598821738675201, 1123598813738675201, '2020-04-01 00:00:00', 1123598821738675201, '2020-04-01 00:00:00', 1, 0);
+INSERT INTO "blade_post" VALUES (1123598817738675207, '000000', 2, 'hrm', '人力经理', 7, '人力资源部门工作管理者', 1123598821738675201, 1123598813738675201, '2020-04-01 00:00:00', 1123598821738675201, '2020-04-01 00:00:00', 1, 0);
+INSERT INTO "blade_post" VALUES (1123598817738675208, '000000', 3, 'staff', '普通员工', 8, '普通员工', 1123598821738675201, 1123598813738675201, '2020-04-01 00:00:00', 1123598821738675201, '2020-04-01 00:00:00', 1, 0);
 COMMIT;
 
 -- ----------------------------
@@ -1091,6 +1155,12 @@ INSERT INTO "blade_role_menu" VALUES (1161272893873222993, 1164733389658962253, 
 INSERT INTO "blade_role_menu" VALUES (1161272893873222994, 1164733389658962254, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893873222995, 1164733389658962255, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893873222996, 1164733389658962256, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875225001, 1164733389668962251, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875225002, 1164733389668962252, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875225003, 1164733389668962253, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875225004, 1164733389668962254, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875225005, 1164733389668962255, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875225006, 1164733389668962256, 1123598816738675201);
 COMMIT;
 
 -- ----------------------------
@@ -1340,6 +1410,7 @@ DROP TABLE IF EXISTS "blade_user";
 CREATE TABLE "blade_user" (
   "id" int8 NOT NULL,
   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+  "code" varchar(12) COLLATE "pg_catalog"."default",
   "account" varchar(45) COLLATE "pg_catalog"."default",
   "password" varchar(45) COLLATE "pg_catalog"."default",
   "name" varchar(20) COLLATE "pg_catalog"."default",
@@ -1351,6 +1422,7 @@ CREATE TABLE "blade_user" (
   "sex" int2,
   "role_id" varchar(1000) COLLATE "pg_catalog"."default",
   "dept_id" varchar(1000) COLLATE "pg_catalog"."default",
+  "post_id" varchar(1000) COLLATE "pg_catalog"."default",
   "create_user" int8,
   "create_dept" int8,
   "create_time" timestamp(6),
@@ -1362,6 +1434,7 @@ CREATE TABLE "blade_user" (
 ;
 COMMENT ON COLUMN "blade_user"."id" IS '主键';
 COMMENT ON COLUMN "blade_user"."tenant_id" IS '租户ID';
+COMMENT ON COLUMN "blade_user"."code" IS '用户编号';
 COMMENT ON COLUMN "blade_user"."account" IS '账号';
 COMMENT ON COLUMN "blade_user"."password" IS '密码';
 COMMENT ON COLUMN "blade_user"."name" IS '昵称';
@@ -1373,6 +1446,7 @@ COMMENT ON COLUMN "blade_user"."birthday" IS '生日';
 COMMENT ON COLUMN "blade_user"."sex" IS '性别';
 COMMENT ON COLUMN "blade_user"."role_id" IS '角色id';
 COMMENT ON COLUMN "blade_user"."dept_id" IS '部门id';
+COMMENT ON COLUMN "blade_user"."post_id" IS '岗位id';
 COMMENT ON COLUMN "blade_user"."create_user" IS '创建人';
 COMMENT ON COLUMN "blade_user"."create_dept" IS '创建部门';
 COMMENT ON COLUMN "blade_user"."create_time" IS '创建时间';
@@ -1386,11 +1460,12 @@ COMMENT ON TABLE "blade_user" IS '用户表';
 -- Records of blade_user
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_user" VALUES (1123598821738675201, '000000', 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员', '管理员', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'admin@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675201', '1123598813738675201', 1123598821738675201, 1123598813738675201, '2018-08-08 00:00:00', 1123598821738675201, '2018-08-08 00:00:00', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675202, '000000', 'hr', '5e79b90f7bba52d54115f086e48f539016a27ec6', '人事', '人事', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'hr@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675203', '1123598813738675202', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:10', 1123598821738675201, '2019-04-27 17:03:10', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675203, '000000', 'manager', 'dfbaa3b61caa3a319f463cc165085aa8c822d2ce', '经理', '经理', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'manager@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675204', '1123598813738675202', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:38', 1123598821738675201, '2019-04-27 17:03:38', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675204, '000000', 'boss', 'abe57d23e18f7ad8ea99c86e430c90a05119a9d3', '老板', '老板', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'boss@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675205', '1123598813738675202', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:55', 1123598821738675201, '2019-04-27 17:03:55', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675201, '000000', NULL, 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员', '管理员', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'admin@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675201', '1123598813738675201', '1123598817738675201', 1123598821738675201, 1123598813738675201, '2018-08-08 00:00:00', 1123598821738675201, '2018-08-08 00:00:00', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675202, '000000', NULL, 'hr', '5e79b90f7bba52d54115f086e48f539016a27ec6', '人事', '人事', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'hr@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675203', '1123598813738675202', '1123598817738675207', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:10', 1123598821738675201, '2019-04-27 17:03:10', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675203, '000000', NULL, 'manager', 'dfbaa3b61caa3a319f463cc165085aa8c822d2ce', '经理', '经理', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'manager@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675204', '1123598813738675202', '1123598817738675206', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:38', 1123598821738675201, '2019-04-27 17:03:38', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675204, '000000', NULL, 'boss', 'abe57d23e18f7ad8ea99c86e430c90a05119a9d3', '老板', '老板', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'boss@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675205', '1123598813738675202', '1123598817738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:55', 1123598821738675201, '2019-04-27 17:03:55', 1, 0);
 COMMIT;
+
 
 -- ----------------------------
 -- Table structure for blade_user_dept
@@ -1481,6 +1556,11 @@ ALTER TABLE "blade_oss" ADD CONSTRAINT "blade_oss_pkey" PRIMARY KEY ("id");
 -- Primary Key structure for table blade_param
 -- ----------------------------
 ALTER TABLE "blade_param" ADD CONSTRAINT "blade_param_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table blade_post
+-- ----------------------------
+ALTER TABLE "blade_post" ADD CONSTRAINT "blade_post_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table blade_process_leave

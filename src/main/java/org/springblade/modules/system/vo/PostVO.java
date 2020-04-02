@@ -14,79 +14,31 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.entity;
+package org.springblade.modules.system.vo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
+import org.springblade.modules.system.entity.Post;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springblade.core.tenant.mp.TenantEntity;
-
-import java.util.Date;
+import io.swagger.annotations.ApiModel;
 
 /**
- * 实体类
+ * 岗位表视图实体类
  *
  * @author Chill
  */
 @Data
-@TableName("blade_user")
 @EqualsAndHashCode(callSuper = true)
-public class User extends TenantEntity {
-
+@ApiModel(value = "PostVO对象", description = "岗位表")
+public class PostVO extends Post {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 用户编号
+	 * 租户名
 	 */
-	private String code;
+	private String tenantName;
 	/**
-	 * 账号
+	 * 岗位分类名
 	 */
-	private String account;
-	/**
-	 * 密码
-	 */
-	private String password;
-	/**
-	 * 昵称
-	 */
-	private String name;
-	/**
-	 * 真名
-	 */
-	private String realName;
-	/**
-	 * 头像
-	 */
-	private String avatar;
-	/**
-	 * 邮箱
-	 */
-	private String email;
-	/**
-	 * 手机
-	 */
-	private String phone;
-	/**
-	 * 生日
-	 */
-	private Date birthday;
-	/**
-	 * 性别
-	 */
-	private Integer sex;
-	/**
-	 * 角色id
-	 */
-	private String roleId;
-	/**
-	 * 部门id
-	 */
-	private String deptId;
-	/**
-	 * 岗位id
-	 */
-	private String postId;
-
+	private String categoryName;
 
 }

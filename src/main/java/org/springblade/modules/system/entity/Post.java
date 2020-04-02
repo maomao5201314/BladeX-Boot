@@ -17,76 +17,50 @@
 package org.springblade.modules.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springblade.core.tenant.mp.TenantEntity;
 
-import java.util.Date;
-
 /**
- * 实体类
+ * 岗位表实体类
  *
  * @author Chill
  */
 @Data
-@TableName("blade_user")
+@TableName("blade_post")
 @EqualsAndHashCode(callSuper = true)
-public class User extends TenantEntity {
+@ApiModel(value = "Post对象", description = "岗位表")
+public class Post extends TenantEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 用户编号
+	 * 类型
 	 */
-	private String code;
+	@ApiModelProperty(value = "类型")
+	private Integer category;
 	/**
-	 * 账号
+	 * 岗位编号
 	 */
-	private String account;
+	@ApiModelProperty(value = "岗位编号")
+	private String postCode;
 	/**
-	 * 密码
+	 * 岗位名称
 	 */
-	private String password;
+	@ApiModelProperty(value = "岗位名称")
+	private String postName;
 	/**
-	 * 昵称
+	 * 岗位排序
 	 */
-	private String name;
+	@ApiModelProperty(value = "岗位排序")
+	private Integer sort;
 	/**
-	 * 真名
+	 * 岗位描述
 	 */
-	private String realName;
-	/**
-	 * 头像
-	 */
-	private String avatar;
-	/**
-	 * 邮箱
-	 */
-	private String email;
-	/**
-	 * 手机
-	 */
-	private String phone;
-	/**
-	 * 生日
-	 */
-	private Date birthday;
-	/**
-	 * 性别
-	 */
-	private Integer sex;
-	/**
-	 * 角色id
-	 */
-	private String roleId;
-	/**
-	 * 部门id
-	 */
-	private String deptId;
-	/**
-	 * 岗位id
-	 */
-	private String postId;
+	@ApiModelProperty(value = "岗位描述")
+	private String remark;
 
 
 }

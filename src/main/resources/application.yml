@@ -118,7 +118,7 @@ blade:
         path-patterns:
           - /blade-saber/**
   tenant:
-    enhance: false
+    enhance: true
     column: tenant_id
     exclude-tables:
       - blade_user

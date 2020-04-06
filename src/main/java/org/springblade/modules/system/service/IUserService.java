@@ -34,15 +34,6 @@ import java.util.List;
 public interface IUserService extends BaseService<User> {
 
 	/**
-	 * 根据账号获取用户
-	 *
-	 * @param tenantId
-	 * @param account
-	 * @return
-	 */
-	User getByAccount(String tenantId, String account);
-
-	/**
 	 * 新增用户
 	 *
 	 * @param user
@@ -76,6 +67,15 @@ public interface IUserService extends BaseService<User> {
 	 * @return
 	 */
 	IPage<User> selectUserPage(IPage<User> page, User user, Long deptId, String tenantId);
+
+	/**
+	 * 根据账号获取用户
+	 *
+	 * @param tenantId
+	 * @param account
+	 * @return
+	 */
+	User userByAccount(String tenantId, String account);
 
 	/**
 	 * 用户信息

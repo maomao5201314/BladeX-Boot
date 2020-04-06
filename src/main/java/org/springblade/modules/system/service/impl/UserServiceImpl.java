@@ -61,11 +61,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	private IRoleService roleService;
 
 	@Override
-	public User getByAccount(String tenantId, String account) {
-		return baseMapper.selectOne(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId).eq(User::getAccount, account));
-	}
-
-	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public boolean submit(User user) {
 		if (StringUtil.isBlank(user.getTenantId())) {
@@ -129,6 +124,11 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	public IPage<User> selectUserPage(IPage<User> page, User user, Long deptId, String tenantId) {
 		List<Long> deptIdList = SysCache.getDeptChildIds(deptId);
 		return page.setRecords(baseMapper.selectUserPage(page, user, deptIdList, tenantId));
+	}
+
+	@Override
+	public User userByAccount(String tenantId, String account) {
+		return baseMapper.selectOne(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId).eq(User::getAccount, account));
 	}
 
 	@Override
@@ -205,7 +205,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			if (isCovered) {
 				// 查询用户是否存在
 				User oldUser = UserCache.getUser(userExcel.getTenantId(), userExcel.getAccount());
-				if (oldUser != null) {
+				if (oldUser != null && oldUser.getId() != null) {
 					user.setId(oldUser.getId());
 					this.updateUser(user);
 					return;

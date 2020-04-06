@@ -71,7 +71,15 @@ public class UserCache {
 	 * @return
 	 */
 	public static User getUser(String tenantId, String account) {
-		return CacheUtil.get(USER_CACHE, USER_CACHE_ACCOUNT, tenantId + StringPool.DASH + account, () -> userService.getByAccount(tenantId, account));
+		User userCache = CacheUtil.get(USER_CACHE, USER_CACHE_ACCOUNT, tenantId + StringPool.DASH + account, User.class);
+		if (userCache == null || userCache.getId() == null) {
+			User user = userService.userByAccount(tenantId, account);
+			if (user != null && user.getId() != null) {
+				CacheUtil.put(USER_CACHE, USER_CACHE_ACCOUNT, tenantId + StringPool.DASH + account, user);
+				return user;
+			}
+		}
+		return userCache;
 	}
 
 }

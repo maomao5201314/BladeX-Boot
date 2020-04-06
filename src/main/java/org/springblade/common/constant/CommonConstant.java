@@ -61,6 +61,11 @@ public interface CommonConstant {
 	String DEFAULT_PASSWORD = "123456";
 
 	/**
+	 * 默认密码参数值
+	 */
+	String DEFAULT_PARAM_PASSWORD = "account.initPassword";
+
+	/**
 	 * 默认排序字段
 	 */
 	String SORT_FIELD = "sort";

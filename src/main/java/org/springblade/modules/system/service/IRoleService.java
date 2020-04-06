@@ -60,6 +60,15 @@ public interface IRoleService extends IService<Role> {
 	boolean grant(@NotEmpty List<Long> roleIds, List<Long> menuIds, List<Long> dataScopeIds, List<Long> apiScopeIds);
 
 	/**
+	 * 获取角色ID
+	 *
+	 * @param tenantId
+	 * @param roleNames
+	 * @return
+	 */
+	String getRoleIds(String tenantId, String roleNames);
+
+	/**
 	 * 获取角色名
 	 *
 	 * @param roleIds

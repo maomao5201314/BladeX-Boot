@@ -18,14 +18,9 @@ package org.springblade.common.cache;
 
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.tool.utils.SpringUtil;
-import org.springblade.modules.system.entity.Dept;
-import org.springblade.modules.system.entity.Menu;
-import org.springblade.modules.system.entity.Role;
-import org.springblade.modules.system.entity.Tenant;
-import org.springblade.modules.system.service.IDeptService;
-import org.springblade.modules.system.service.IMenuService;
-import org.springblade.modules.system.service.IRoleService;
-import org.springblade.modules.system.service.ITenantService;
+import org.springblade.core.tool.utils.StringPool;
+import org.springblade.modules.system.entity.*;
+import org.springblade.modules.system.service.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,11 +36,17 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 public class SysCache {
 	private static final String MENU_ID = "menu:id:";
 	private static final String DEPT_ID = "dept:id:";
+	private static final String DEPT_NAME = "dept:name:";
 	private static final String DEPT_NAME_ID = "deptName:id:";
 	private static final String DEPT_NAMES_ID = "deptNames:id:";
 	private static final String DEPT_CHILD_ID = "deptChild:id:";
 	private static final String DEPT_CHILDIDS_ID = "deptChildIds:id:";
+	private static final String POST_ID = "post:id:";
+	private static final String POST_NAME = "post:name:";
+	private static final String POST_NAME_ID = "postName:id:";
+	private static final String POST_NAMES_ID = "postNames:id:";
 	private static final String ROLE_ID = "role:id:";
+	private static final String ROLE_NAME = "role:name:";
 	private static final String ROLE_NAME_ID = "roleName:id:";
 	private static final String ROLE_NAMES_ID = "roleNames:id:";
 	private static final String ROLE_ALIAS_ID = "roleAlias:id:";
@@ -55,12 +56,14 @@ public class SysCache {
 
 	private static IMenuService menuService;
 	private static IDeptService deptService;
+	private static IPostService postService;
 	private static IRoleService roleService;
 	private static ITenantService tenantService;
 
 	static {
 		menuService = SpringUtil.getBean(IMenuService.class);
 		deptService = SpringUtil.getBean(IDeptService.class);
+		postService = SpringUtil.getBean(IPostService.class);
 		roleService = SpringUtil.getBean(IRoleService.class);
 		tenantService = SpringUtil.getBean(ITenantService.class);
 	}
@@ -86,6 +89,17 @@ public class SysCache {
 	}
 
 	/**
+	 * 获取部门id
+	 *
+	 * @param tenantId  租户id
+	 * @param deptNames 部门名
+	 * @return
+	 */
+	public static String getDeptIds(String tenantId, String deptNames) {
+		return CacheUtil.get(SYS_CACHE, DEPT_NAME, tenantId + StringPool.DASH + deptNames, () -> deptService.getDeptIds(tenantId, deptNames));
+	}
+
+	/**
 	 * 获取部门名
 	 *
 	 * @param id 主键
@@ -93,36 +107,6 @@ public class SysCache {
 	 */
 	public static String getDeptName(Long id) {
 		return CacheUtil.get(SYS_CACHE, DEPT_NAME_ID, id, () -> deptService.getById(id).getDeptName());
-	}
-
-	/**
-	 * 获取角色
-	 *
-	 * @param id 主键
-	 * @return Role
-	 */
-	public static Role getRole(Long id) {
-		return CacheUtil.get(SYS_CACHE, ROLE_ID, id, () -> roleService.getById(id));
-	}
-
-	/**
-	 * 获取角色名
-	 *
-	 * @param id 主键
-	 * @return 角色名
-	 */
-	public static String getRoleName(Long id) {
-		return CacheUtil.get(SYS_CACHE, ROLE_NAME_ID, id, () -> roleService.getById(id).getRoleName());
-	}
-
-	/**
-	 * 获取角色别名
-	 *
-	 * @param id 主键
-	 * @return 角色别名
-	 */
-	public static String getRoleAlias(Long id) {
-		return CacheUtil.get(SYS_CACHE, ROLE_ALIAS_ID, id, () -> roleService.getById(id).getRoleAlias());
 	}
 
 
@@ -171,6 +155,78 @@ public class SysCache {
 	}
 
 	/**
+	 * 获取岗位
+	 *
+	 * @param id 主键
+	 * @return
+	 */
+	public static Post getPost(Long id) {
+		return CacheUtil.get(SYS_CACHE, POST_ID, id, () -> postService.getById(id));
+	}
+
+	/**
+	 * 获取岗位id
+	 *
+	 * @param tenantId  租户id
+	 * @param postNames 岗位名
+	 * @return
+	 */
+	public static String getPostIds(String tenantId, String postNames) {
+		return CacheUtil.get(SYS_CACHE, POST_NAME, tenantId + StringPool.DASH + postNames, () -> postService.getPostIds(tenantId, postNames));
+	}
+
+	/**
+	 * 获取岗位名
+	 *
+	 * @param id 主键
+	 * @return 岗位名
+	 */
+	public static String getPostName(Long id) {
+		return CacheUtil.get(SYS_CACHE, POST_NAME_ID, id, () -> postService.getById(id).getPostName());
+	}
+
+	/**
+	 * 获取岗位名集合
+	 *
+	 * @param postIds 主键集合
+	 * @return 岗位名
+	 */
+	public static List<String> getPostNames(String postIds) {
+		return CacheUtil.get(SYS_CACHE, POST_NAMES_ID, postIds, () -> postService.getPostNames(postIds));
+	}
+
+	/**
+	 * 获取角色
+	 *
+	 * @param id 主键
+	 * @return Role
+	 */
+	public static Role getRole(Long id) {
+		return CacheUtil.get(SYS_CACHE, ROLE_ID, id, () -> roleService.getById(id));
+	}
+
+	/**
+	 * 获取角色id
+	 *
+	 * @param tenantId  租户id
+	 * @param roleNames 角色名
+	 * @return
+	 */
+	public static String getRoleIds(String tenantId, String roleNames) {
+		return CacheUtil.get(SYS_CACHE, ROLE_NAME, tenantId + StringPool.DASH + roleNames, () -> roleService.getRoleIds(tenantId, roleNames));
+	}
+
+	/**
+	 * 获取角色名
+	 *
+	 * @param id 主键
+	 * @return 角色名
+	 */
+	public static String getRoleName(Long id) {
+		return CacheUtil.get(SYS_CACHE, ROLE_NAME_ID, id, () -> roleService.getById(id).getRoleName());
+	}
+
+	/**
 	 * 获取角色名集合
 	 *
 	 * @param roleIds 主键集合
@@ -178,6 +234,16 @@ public class SysCache {
 	 */
 	public static List<String> getRoleNames(String roleIds) {
 		return CacheUtil.get(SYS_CACHE, ROLE_NAMES_ID, roleIds, () -> roleService.getRoleNames(roleIds));
+	}
+
+	/**
+	 * 获取角色别名
+	 *
+	 * @param id 主键
+	 * @return 角色别名
+	 */
+	public static String getRoleAlias(Long id) {
+		return CacheUtil.get(SYS_CACHE, ROLE_ALIAS_ID, id, () -> roleService.getById(id).getRoleAlias());
 	}
 
 	/**

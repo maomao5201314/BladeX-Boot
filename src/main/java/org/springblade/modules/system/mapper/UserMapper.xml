@@ -75,4 +75,8 @@
             tenant_id = #{param1} and account = #{param2} and password = #{param3} and is_deleted = 0
     </select>
 
+    <select id="exportUser" resultType="org.springblade.modules.system.excel.UserExcel">
+        SELECT id, tenant_id, account, name, real_name, email, phone, birthday, role_id, dept_id, post_id FROM blade_user ${ew.customSqlSegment}
+    </select>
+
 </mapper>

@@ -17,19 +17,20 @@
 package org.springblade.modules.system.service.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.AllArgsConstructor;
+import org.springblade.common.cache.ParamCache;
 import org.springblade.common.cache.SysCache;
+import org.springblade.common.cache.UserCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.constant.BladeConstant;
-import org.springblade.core.tool.utils.DateUtil;
-import org.springblade.core.tool.utils.DigestUtil;
-import org.springblade.core.tool.utils.Func;
-import org.springblade.core.tool.utils.StringUtil;
+import org.springblade.core.tool.utils.*;
+import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserDept;
@@ -43,6 +44,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static org.springblade.common.constant.CommonConstant.DEFAULT_PARAM_PASSWORD;
 
 /**
  * 服务实现类
@@ -55,6 +59,11 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 
 	private IUserDeptService userDeptService;
 	private IRoleService roleService;
+
+	@Override
+	public User getByAccount(String tenantId, String account) {
+		return baseMapper.selectOne(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId).eq(User::getAccount, account));
+	}
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -179,6 +188,45 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			throw new ServiceException("不能删除本账号!");
 		}
 		return deleteLogic(Func.toLongList(userIds));
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void importUser(List<UserExcel> data, Boolean isCovered) {
+		data.forEach(userExcel -> {
+			User user = Objects.requireNonNull(BeanUtil.copy(userExcel, User.class));
+			// 设置部门ID
+			user.setDeptId(SysCache.getDeptIds(userExcel.getTenantId(), userExcel.getDeptName()));
+			// 设置岗位ID
+			user.setPostId(SysCache.getPostIds(userExcel.getTenantId(), userExcel.getPostName()));
+			// 设置角色ID
+			user.setRoleId(SysCache.getRoleIds(userExcel.getTenantId(), userExcel.getRoleName()));
+			// 覆盖数据
+			if (isCovered) {
+				// 查询用户是否存在
+				User oldUser = UserCache.getUser(userExcel.getTenantId(), userExcel.getAccount());
+				if (oldUser != null) {
+					user.setId(oldUser.getId());
+					this.updateUser(user);
+					return;
+				}
+			}
+			// 获取默认密码配置
+			String initPassword = ParamCache.getValue(DEFAULT_PARAM_PASSWORD);
+			user.setPassword(DigestUtil.encrypt(initPassword));
+			this.submit(user);
+		});
+	}
+
+	@Override
+	public List<UserExcel> exportUser(Wrapper<UserExcel> queryWrapper) {
+		List<UserExcel> userList = baseMapper.exportUser(queryWrapper);
+		userList.forEach(user -> {
+			user.setRoleName(StringUtil.join(SysCache.getRoleNames(user.getRoleId())));
+			user.setDeptName(StringUtil.join(SysCache.getDeptNames(user.getDeptId())));
+			user.setPostName(StringUtil.join(SysCache.getPostNames(user.getPostId())));
+		});
+		return userList;
 	}
 
 }

@@ -14,46 +14,27 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.service;
+package org.springblade.modules.system.excel;
 
-import org.springblade.modules.system.entity.Post;
-import org.springblade.modules.system.vo.PostVO;
-import org.springblade.core.mp.base.BaseService;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import lombok.RequiredArgsConstructor;
+import org.springblade.core.excel.support.ExcelImporter;
+import org.springblade.modules.system.service.IUserService;
 
 import java.util.List;
 
 /**
- * 岗位表 服务类
+ * 用户数据导入类
  *
  * @author Chill
  */
-public interface IPostService extends BaseService<Post> {
+@RequiredArgsConstructor
+public class UserImporter implements ExcelImporter<UserExcel> {
 
-	/**
-	 * 自定义分页
-	 *
-	 * @param page
-	 * @param post
-	 * @return
-	 */
-	IPage<PostVO> selectPostPage(IPage<PostVO> page, PostVO post);
+	private final IUserService service;
+	private final Boolean isCovered;
 
-	/**
-	 * 获取岗位ID
-	 *
-	 * @param tenantId
-	 * @param postNames
-	 * @return
-	 */
-	String getPostIds(String tenantId, String postNames);
-
-	/**
-	 * 获取岗位名
-	 *
-	 * @param postIds
-	 * @return
-	 */
-	List<String> getPostNames(String postIds);
-
+	@Override
+	public void save(List<UserExcel> data) {
+		service.importUser(data, isCovered);
+	}
 }

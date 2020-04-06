@@ -17,10 +17,14 @@
 package org.springblade.modules.system.service;
 
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springblade.core.mp.base.BaseService;
+import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
+
+import java.util.List;
 
 /**
  * 服务类
@@ -28,6 +32,15 @@ import org.springblade.modules.system.entity.UserInfo;
  * @author Chill
  */
 public interface IUserService extends BaseService<User> {
+
+	/**
+	 * 根据账号获取用户
+	 *
+	 * @param tenantId
+	 * @param account
+	 * @return
+	 */
+	User getByAccount(String tenantId, String account);
 
 	/**
 	 * 新增用户
@@ -117,4 +130,20 @@ public interface IUserService extends BaseService<User> {
 	 * @return
 	 */
 	boolean removeUser(String userIds);
+
+	/**
+	 * 导入用户数据
+	 *
+	 * @param data
+	 * @return
+	 */
+	void importUser(List<UserExcel> data, Boolean isCovered);
+
+	/**
+	 * 获取导出用户数据
+	 *
+	 * @param queryWrapper
+	 * @return
+	 */
+	List<UserExcel> exportUser(Wrapper<UserExcel> queryWrapper);
 }

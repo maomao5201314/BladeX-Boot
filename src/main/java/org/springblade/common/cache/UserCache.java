@@ -19,6 +19,7 @@ package org.springblade.common.cache;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.SpringUtil;
+import org.springblade.core.tool.utils.StringPool;
 import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.service.IUserService;
@@ -33,6 +34,7 @@ import static org.springblade.core.launch.constant.FlowConstant.TASK_USR_PREFIX;
  */
 public class UserCache {
 	private static final String USER_CACHE_ID = "user:id:";
+	private static final String USER_CACHE_ACCOUNT = "user:account:";
 
 	private static IUserService userService;
 
@@ -52,13 +54,24 @@ public class UserCache {
 	}
 
 	/**
-	 * 获取用户名
+	 * 获取用户
 	 *
 	 * @param userId 用户id
 	 * @return
 	 */
 	public static User getUser(Long userId) {
 		return CacheUtil.get(USER_CACHE, USER_CACHE_ID, userId, () -> userService.getById(userId));
+	}
+
+	/**
+	 * 获取用户
+	 *
+	 * @param tenantId 租户id
+	 * @param account  账号名
+	 * @return
+	 */
+	public static User getUser(String tenantId, String account) {
+		return CacheUtil.get(USER_CACHE, USER_CACHE_ACCOUNT, tenantId + StringPool.DASH + account, () -> userService.getByAccount(tenantId, account));
 	}
 
 }

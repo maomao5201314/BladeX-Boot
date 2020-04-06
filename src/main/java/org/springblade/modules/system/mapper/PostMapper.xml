@@ -24,4 +24,17 @@
         select * from blade_post where is_deleted = 0
     </select>
 
+    <select id="getPostNames" resultType="java.lang.String">
+        SELECT
+            post_name
+        FROM
+            blade_post
+        WHERE
+            id IN
+            <foreach collection="array" item="ids" index="index" open="(" close=")" separator=",">
+                #{ids}
+            </foreach>
+            and is_deleted = 0
+    </select>
+
 </mapper>

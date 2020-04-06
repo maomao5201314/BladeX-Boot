@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
+import org.springblade.core.excel.util.ExcelUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
@@ -34,16 +35,22 @@ import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
+import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.StringPool;
+import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.entity.User;
+import org.springblade.modules.system.excel.UserImporter;
 import org.springblade.modules.system.service.IUserService;
 import org.springblade.modules.system.vo.UserVO;
 import org.springblade.modules.system.wrapper.UserWrapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -214,5 +221,39 @@ public class UserController {
 		return R.data(list);
 	}
 
+	/**
+	 * 导入用户
+	 */
+	@PostMapping("import-user")
+	@ApiOperationSupport(order = 12)
+	@ApiOperation(value = "导入用户", notes = "传入excel")
+	public R importUser(MultipartFile file, Integer isCovered) {
+		UserImporter userImporter = new UserImporter(userService, isCovered == 1);
+		ExcelUtil.save(file, userImporter, UserExcel.class);
+		return R.success("操作成功");
+	}
+
+	/**
+	 * 导出用户
+	 */
+	@GetMapping("export-user")
+	@ApiOperationSupport(order = 13)
+	@ApiOperation(value = "导出用户", notes = "传入user")
+	public void exportUser(@ApiIgnore @RequestParam Map<String, Object> user, BladeUser bladeUser, HttpServletResponse response) {
+		QueryWrapper<UserExcel> queryWrapper = Condition.getQueryWrapper(user, UserExcel.class);
+		List<UserExcel> list = userService.exportUser((!AuthUtil.isAdministrator()) ? queryWrapper.lambda().eq(UserExcel::getTenantId, bladeUser.getTenantId()) : queryWrapper);
+		ExcelUtil.export(response, "用户数据" + DateUtil.time(), "用户数据表", list, UserExcel.class);
+	}
+
+	/**
+	 * 导出模板
+	 */
+	@GetMapping("export-template")
+	@ApiOperationSupport(order = 14)
+	@ApiOperation(value = "导出模板")
+	public void exportUser(HttpServletResponse response) {
+		List<UserExcel> list = new ArrayList<>();
+		ExcelUtil.export(response, "用户数据模板", "用户数据表", list, UserExcel.class);
+	}
 
 }

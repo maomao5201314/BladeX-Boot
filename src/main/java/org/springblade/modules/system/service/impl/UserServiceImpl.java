@@ -219,7 +219,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	}
 
 	@Override
-	public List<UserExcel> exportUser(Wrapper<UserExcel> queryWrapper) {
+	public List<UserExcel> exportUser(Wrapper<User> queryWrapper) {
 		List<UserExcel> userList = baseMapper.exportUser(queryWrapper);
 		userList.forEach(user -> {
 			user.setRoleName(StringUtil.join(SysCache.getRoleNames(user.getRoleId())));

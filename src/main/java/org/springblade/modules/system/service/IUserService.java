@@ -145,5 +145,5 @@ public interface IUserService extends BaseService<User> {
 	 * @param queryWrapper
 	 * @return
 	 */
-	List<UserExcel> exportUser(Wrapper<UserExcel> queryWrapper);
+	List<UserExcel> exportUser(Wrapper<User> queryWrapper);
 }

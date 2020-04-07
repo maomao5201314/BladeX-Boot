@@ -240,8 +240,12 @@ public class UserController {
 	@ApiOperationSupport(order = 13)
 	@ApiOperation(value = "导出用户", notes = "传入user")
 	public void exportUser(@ApiIgnore @RequestParam Map<String, Object> user, BladeUser bladeUser, HttpServletResponse response) {
-		QueryWrapper<UserExcel> queryWrapper = Condition.getQueryWrapper(user, UserExcel.class);
-		List<UserExcel> list = userService.exportUser((!AuthUtil.isAdministrator()) ? queryWrapper.lambda().eq(UserExcel::getTenantId, bladeUser.getTenantId()) : queryWrapper);
+		QueryWrapper<User> queryWrapper = Condition.getQueryWrapper(user, User.class);
+		if (!AuthUtil.isAdministrator()){
+			queryWrapper.lambda().eq(User::getTenantId, bladeUser.getTenantId());
+		}
+		queryWrapper.lambda().eq(User::getIsDeleted, BladeConstant.DB_NOT_DELETED);
+		List<UserExcel> list = userService.exportUser(queryWrapper);
 		ExcelUtil.export(response, "用户数据" + DateUtil.time(), "用户数据表", list, UserExcel.class);
 	}
 

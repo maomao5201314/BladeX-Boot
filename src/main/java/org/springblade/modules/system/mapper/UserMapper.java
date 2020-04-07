@@ -59,6 +59,6 @@ public interface UserMapper extends BaseMapper<User> {
 	 * @param queryWrapper
 	 * @return
 	 */
-	List<UserExcel> exportUser(@Param("ew") Wrapper<UserExcel> queryWrapper);
+	List<UserExcel> exportUser(@Param("ew") Wrapper<User> queryWrapper);
 
 }

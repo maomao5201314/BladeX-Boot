@@ -71,6 +71,7 @@ public class TokenUtil {
 		param.put(TokenConstant.TENANT_ID, user.getTenantId());
 		param.put(TokenConstant.USER_ID, Func.toStr(user.getId()));
 		param.put(TokenConstant.DEPT_ID, user.getDeptId());
+		param.put(TokenConstant.POST_ID, user.getPostId());
 		param.put(TokenConstant.ROLE_ID, user.getRoleId());
 		param.put(TokenConstant.ACCOUNT, user.getAccount());
 		param.put(TokenConstant.USER_NAME, user.getAccount());

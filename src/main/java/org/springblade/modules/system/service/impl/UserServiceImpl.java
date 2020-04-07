@@ -80,7 +80,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		}
 		Integer userCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId).eq(User::getAccount, user.getAccount()));
 		if (userCount > 0 && Func.isEmpty(user.getId())) {
-			throw new ServiceException("当前用户已存在!");
+			throw new ServiceException(StringUtil.format("当前用户 [{}] 已存在!", user.getAccount()));
 		}
 		return save(user) && submitUserDept(user);
 	}
@@ -96,7 +96,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 				.notIn(User::getId, user.getId())
 		);
 		if (userCount > 0) {
-			throw new ServiceException("当前用户已存在!");
+			throw new ServiceException(StringUtil.format("当前用户 [{}] 已存在!", user.getAccount()));
 		}
 		return updateUserInfo(user) && submitUserDept(user);
 	}

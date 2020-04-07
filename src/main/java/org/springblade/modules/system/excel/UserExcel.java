@@ -86,8 +86,4 @@ public class UserExcel implements Serializable {
 	@ExcelProperty("生日")
 	private Date birthday;
 
-	@ExcelIgnore
-	@ExcelProperty("是否删除")
-	private Integer isDeleted;
-
 }

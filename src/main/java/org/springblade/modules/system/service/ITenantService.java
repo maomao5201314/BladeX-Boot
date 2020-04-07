@@ -20,6 +20,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springblade.core.mp.base.BaseService;
 import org.springblade.modules.system.entity.Tenant;
 
+import java.util.List;
+
 /**
  * 服务类
  *
@@ -51,5 +53,13 @@ public interface ITenantService extends BaseService<Tenant> {
 	 * @return
 	 */
 	boolean saveTenant(Tenant tenant);
+
+	/**
+	 * 删除
+	 *
+	 * @param ids
+	 * @return
+	 */
+	boolean removeTenant(List<Long> ids);
 
 }

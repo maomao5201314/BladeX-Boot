@@ -136,7 +136,7 @@ public class TenantController extends BladeController {
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-		return R.status(tenantService.deleteLogic(Func.toLongList(ids)));
+		return R.status(tenantService.removeTenant(Func.toLongList(ids)));
 	}
 
 	/**

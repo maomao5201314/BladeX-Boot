@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.ParamCache;
+import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.tenant.TenantId;
 import org.springblade.core.tool.constant.BladeConstant;
@@ -30,7 +31,10 @@ import org.springblade.modules.system.service.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.springblade.common.constant.TenantConstant.*;
@@ -132,6 +136,19 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			userService.submit(user);
 		}
 		return super.saveOrUpdate(tenant);
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public boolean removeTenant(List<Long> ids) {
+		List<Tenant> tenantList = this.list(Wrappers.<Tenant>query().lambda().in(Tenant::getId, ids));
+		List<String> tenantIds = tenantList.stream().map(tenant -> Func.toStr(tenant.getTenantId())).distinct().collect(Collectors.toList());
+		if (tenantIds.contains(BladeConstant.ADMIN_TENANT_ID)) {
+			throw new ServiceException("不可删除管理租户!");
+		}
+		boolean tenantTemp = this.deleteLogic(ids);
+		boolean userTemp = userService.remove(Wrappers.<User>query().lambda().in(User::getTenantId, tenantIds));
+		return tenantTemp && userTemp;
 	}
 
 	private String getTenantId(List<String> codes) {

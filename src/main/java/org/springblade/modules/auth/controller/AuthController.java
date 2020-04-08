@@ -23,6 +23,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.CacheNames;
+import org.springblade.core.cache.constant.CacheConstant;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.log.annotation.ApiLog;
 import org.springblade.core.redis.cache.BladeRedis;
@@ -104,6 +106,20 @@ public class AuthController {
 	public Kv logout() {
 		BladeUser user = AuthUtil.getUser();
 		return Kv.create().set("success", "true").set("account", user.getAccount()).set("msg", "success");
+	}
+
+	@GetMapping("/oauth/clear-cache")
+	@ApiOperation(value = "清除缓存")
+	public Kv clearCache() {
+		CacheUtil.clear(CacheConstant.BIZ_CACHE);
+		CacheUtil.clear(CacheConstant.MENU_CACHE);
+		CacheUtil.clear(CacheConstant.USER_CACHE);
+		CacheUtil.clear(CacheConstant.DICT_CACHE);
+		CacheUtil.clear(CacheConstant.FLOW_CACHE);
+		CacheUtil.clear(CacheConstant.SYS_CACHE);
+		CacheUtil.clear(CacheConstant.RESOURCE_CACHE);
+		CacheUtil.clear(CacheConstant.PARAM_CACHE);
+		return Kv.create().set("success", "true").set("msg", "success");
 	}
 
 }

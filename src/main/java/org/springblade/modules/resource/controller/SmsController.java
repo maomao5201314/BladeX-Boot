@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
@@ -34,7 +35,6 @@ import org.springblade.modules.resource.entity.Sms;
 import org.springblade.modules.resource.service.ISmsService;
 import org.springblade.modules.resource.vo.SmsVO;
 import org.springblade.modules.resource.wrapper.SmsWrapper;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -98,8 +98,8 @@ public class SmsController extends BladeController {
 	@PostMapping("/save")
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "新增", notes = "传入sms")
-	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
 	public R save(@Valid @RequestBody Sms sms) {
+		CacheUtil.clear(RESOURCE_CACHE);
 		return R.status(smsService.save(sms));
 	}
 
@@ -109,8 +109,8 @@ public class SmsController extends BladeController {
 	@PostMapping("/update")
 	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "修改", notes = "传入sms")
-	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
 	public R update(@Valid @RequestBody Sms sms) {
+		CacheUtil.clear(RESOURCE_CACHE);
 		return R.status(smsService.updateById(sms));
 	}
 
@@ -120,8 +120,8 @@ public class SmsController extends BladeController {
 	@PostMapping("/submit")
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "新增或修改", notes = "传入sms")
-	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
 	public R submit(@Valid @RequestBody Sms sms) {
+		CacheUtil.clear(RESOURCE_CACHE);
 		return R.status(smsService.submit(sms));
 	}
 
@@ -132,8 +132,8 @@ public class SmsController extends BladeController {
 	@PostMapping("/remove")
 	@ApiOperationSupport(order = 7)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
-	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
+		CacheUtil.clear(RESOURCE_CACHE);
 		return R.status(smsService.deleteLogic(Func.toLongList(ids)));
 	}
 
@@ -143,8 +143,8 @@ public class SmsController extends BladeController {
 	@PostMapping("/enable")
 	@ApiOperationSupport(order = 8)
 	@ApiOperation(value = "配置启用", notes = "传入id")
-	@CacheEvict(cacheNames = {RESOURCE_CACHE}, allEntries = true)
 	public R enable(@ApiParam(value = "主键", required = true) @RequestParam Long id) {
+		CacheUtil.clear(RESOURCE_CACHE);
 		return R.status(smsService.enable(id));
 	}
 

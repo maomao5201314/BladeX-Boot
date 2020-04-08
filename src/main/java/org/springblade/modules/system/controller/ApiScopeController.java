@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
@@ -32,7 +33,6 @@ import org.springblade.modules.system.entity.ApiScope;
 import org.springblade.modules.system.service.IApiScopeService;
 import org.springblade.modules.system.vo.ApiScopeVO;
 import org.springblade.modules.system.wrapper.ApiScopeWrapper;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -79,9 +79,9 @@ public class ApiScopeController extends BladeController {
 	 */
 	@PostMapping("/save")
 	@ApiOperationSupport(order = 3)
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "新增", notes = "传入dataScope")
 	public R save(@Valid @RequestBody ApiScope dataScope) {
+		CacheUtil.clear(SYS_CACHE);
 		return R.status(apiScopeService.save(dataScope));
 	}
 
@@ -90,9 +90,9 @@ public class ApiScopeController extends BladeController {
 	 */
 	@PostMapping("/update")
 	@ApiOperationSupport(order = 4)
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "修改", notes = "传入dataScope")
 	public R update(@Valid @RequestBody ApiScope dataScope) {
+		CacheUtil.clear(SYS_CACHE);
 		return R.status(apiScopeService.updateById(dataScope));
 	}
 
@@ -101,9 +101,9 @@ public class ApiScopeController extends BladeController {
 	 */
 	@PostMapping("/submit")
 	@ApiOperationSupport(order = 5)
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "新增或修改", notes = "传入dataScope")
 	public R submit(@Valid @RequestBody ApiScope dataScope) {
+		CacheUtil.clear(SYS_CACHE);
 		return R.status(apiScopeService.saveOrUpdate(dataScope));
 	}
 
@@ -113,9 +113,9 @@ public class ApiScopeController extends BladeController {
 	 */
 	@PostMapping("/remove")
 	@ApiOperationSupport(order = 6)
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
+		CacheUtil.clear(SYS_CACHE);
 		return R.status(apiScopeService.deleteLogic(Func.toLongList(ids)));
 	}
 

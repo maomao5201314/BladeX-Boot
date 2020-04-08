@@ -21,6 +21,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springblade.common.constant.CommonConstant;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
@@ -33,7 +34,6 @@ import org.springblade.modules.system.mapper.DictBizMapper;
 import org.springblade.modules.system.service.IDictBizService;
 import org.springblade.modules.system.vo.DictBizVO;
 import org.springblade.modules.system.wrapper.DictBizWrapper;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -70,7 +70,6 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 	}
 
 	@Override
-	@CacheEvict(cacheNames = {DICT_CACHE}, allEntries = true)
 	public boolean submit(DictBiz dict) {
 		LambdaQueryWrapper<DictBiz> lqw = Wrappers.<DictBiz>query().lambda().eq(DictBiz::getCode, dict.getCode()).eq(DictBiz::getDictKey, dict.getDictKey());
 		Integer cnt = baseMapper.selectCount((Func.isEmpty(dict.getId())) ? lqw : lqw.notIn(DictBiz::getId, dict.getId()));
@@ -81,6 +80,7 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 			dict.setParentId(BladeConstant.TOP_PARENT_ID);
 		}
 		dict.setIsDeleted(BladeConstant.DB_NOT_DELETED);
+		CacheUtil.clear(DICT_CACHE);
 		return saveOrUpdate(dict);
 	}
 

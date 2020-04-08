@@ -23,6 +23,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
@@ -35,7 +36,6 @@ import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.service.ITenantService;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -121,8 +121,8 @@ public class TenantController extends BladeController {
 	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "新增或修改", notes = "传入tenant")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R submit(@Valid @RequestBody Tenant tenant) {
+		CacheUtil.clear(SYS_CACHE);
 		return R.status(tenantService.saveTenant(tenant));
 	}
 
@@ -134,8 +134,8 @@ public class TenantController extends BladeController {
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
+		CacheUtil.clear(SYS_CACHE);
 		return R.status(tenantService.removeTenant(Func.toLongList(ids)));
 	}
 
@@ -146,8 +146,8 @@ public class TenantController extends BladeController {
 	@ApiOperationSupport(order = 7)
 	@ApiOperation(value = "授权配置", notes = "传入ids,accountNumber,expireTime")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R setting(@ApiParam(value = "主键集合", required = true) @RequestParam String ids, @ApiParam(value = "账号额度") Integer accountNumber, @ApiParam(value = "过期时间") Date expireTime) {
+		CacheUtil.clear(SYS_CACHE);
 		boolean temp = tenantService.update(
 			Wrappers.<Tenant>update().lambda()
 				.set(Tenant::getAccountNumber, accountNumber)

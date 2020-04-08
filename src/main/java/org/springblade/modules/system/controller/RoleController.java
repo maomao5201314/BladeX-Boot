@@ -21,6 +21,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.secure.BladeUser;
@@ -35,7 +36,6 @@ import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.vo.GrantVO;
 import org.springblade.modules.system.vo.RoleVO;
 import org.springblade.modules.system.wrapper.RoleWrapper;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -103,8 +103,8 @@ public class RoleController extends BladeController {
 	@PostMapping("/submit")
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "新增或修改", notes = "传入role")
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R submit(@Valid @RequestBody Role role) {
+		CacheUtil.clear(SYS_CACHE);
 		return R.status(roleService.submit(role));
 	}
 
@@ -114,8 +114,8 @@ public class RoleController extends BladeController {
 	@PostMapping("/remove")
 	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "删除", notes = "传入ids")
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
+		CacheUtil.clear(SYS_CACHE);
 		return R.status(roleService.removeByIds(Func.toLongList(ids)));
 	}
 
@@ -125,8 +125,8 @@ public class RoleController extends BladeController {
 	@PostMapping("/grant")
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "权限设置", notes = "传入roleId集合以及menuId集合")
-	@CacheEvict(cacheNames = {SYS_CACHE}, allEntries = true)
 	public R grant(@RequestBody GrantVO grantVO) {
+		CacheUtil.clear(SYS_CACHE);
 		boolean temp = roleService.grant(grantVO.getRoleIds(), grantVO.getMenuIds(), grantVO.getDataScopeIds(), grantVO.getApiScopeIds());
 		return R.status(temp);
 	}

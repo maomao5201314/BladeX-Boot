@@ -33,10 +33,6 @@ public class PostVO extends Post {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 租户名
-	 */
-	private String tenantName;
-	/**
 	 * 岗位分类名
 	 */
 	private String categoryName;

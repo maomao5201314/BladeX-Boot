@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
+import org.springblade.common.cache.DictCache;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
@@ -30,6 +31,7 @@ import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.node.INode;
+import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.service.IDeptService;
@@ -129,8 +131,14 @@ public class DeptController extends BladeController {
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "新增或修改", notes = "传入dept")
 	public R submit(@Valid @RequestBody Dept dept) {
-		CacheUtil.clear(SYS_CACHE);
-		return R.status(deptService.submit(dept));
+		if (deptService.submit(dept)) {
+			CacheUtil.clear(SYS_CACHE);
+			// 返回懒加载树更新节点所需字段
+			Kv kv = Kv.create().set("id", String.valueOf(dept.getId())).set("tenantId", dept.getTenantId())
+				.set("deptCategoryName", DictCache.getValue("org_category", dept.getDeptCategory()));
+			return R.data(kv);
+		}
+		return R.fail("操作失败");
 	}
 
 	/**

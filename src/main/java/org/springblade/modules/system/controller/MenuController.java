@@ -144,8 +144,13 @@ public class MenuController extends BladeController {
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "新增或修改", notes = "传入menu")
 	public R submit(@Valid @RequestBody Menu menu) {
-		CacheUtil.clear(MENU_CACHE);
-		return R.status(menuService.submit(menu));
+		if (menuService.submit(menu)) {
+			CacheUtil.clear(MENU_CACHE);
+			// 返回懒加载树更新节点所需字段
+			Kv kv = Kv.create().set("id", String.valueOf(menu.getId()));
+			return R.data(kv);
+		}
+		return R.fail("操作失败");
 	}
 
 

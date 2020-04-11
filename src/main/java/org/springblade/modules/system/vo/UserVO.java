@@ -56,6 +56,11 @@ public class UserVO extends User {
 	private String deptName;
 
 	/**
+	 * 岗位名
+	 */
+	private String postName;
+
+	/**
 	 * 性别
 	 */
 	private String sexName;

@@ -45,9 +45,11 @@ public class UserWrapper extends BaseEntityWrapper<User, UserVO> {
 		Tenant tenant = SysCache.getTenant(user.getTenantId());
 		List<String> roleName = SysCache.getRoleNames(user.getRoleId());
 		List<String> deptName = SysCache.getDeptNames(user.getDeptId());
+		List<String> postName = SysCache.getPostNames(user.getPostId());
 		userVO.setTenantName(tenant.getTenantName());
 		userVO.setRoleName(Func.join(roleName));
 		userVO.setDeptName(Func.join(deptName));
+		userVO.setPostName(Func.join(postName));
 		userVO.setSexName(DictCache.getValue("sex", Func.toInt(user.getSex())));
 		return userVO;
 	}

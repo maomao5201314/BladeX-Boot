@@ -38,7 +38,7 @@ public class PostWrapper extends BaseEntityWrapper<Post, PostVO> {
 	@Override
 	public PostVO entityVO(Post post) {
 		PostVO postVO = Objects.requireNonNull(BeanUtil.copy(post, PostVO.class));
-		String categoryName = DictCache.getValue("post", post.getCategory());
+		String categoryName = DictCache.getValue("post_category", post.getCategory());
 		postVO.setCategoryName(categoryName);
 		return postVO;
 	}

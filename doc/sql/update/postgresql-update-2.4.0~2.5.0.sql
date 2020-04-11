@@ -108,12 +108,12 @@ VALUES ('1161272893875225006', '1164733389668962256', '1123598816738675201');
 -- 增加岗位类型字典数据
 -- ----------------------------
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_sealed", "is_deleted")
-VALUES (1123598814738777220, 0, 'post', '-1', '岗位类型', 12, NULL, 0, 0);
+VALUES (1123598814738777220, 0, 'post_category', '-1', '岗位类型', 12, NULL, 0, 0);
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_sealed", "is_deleted")
-VALUES (1123598814738777221, 1123598814738777220, 'post', '1', '高层', 1, NULL, 0, 0);
+VALUES (1123598814738777221, 1123598814738777220, 'post_category', '1', '高层', 1, NULL, 0, 0);
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_sealed", "is_deleted")
-VALUES (1123598814738777222, 1123598814738777220, 'post', '2', '中层', 2, NULL, 0, 0);
+VALUES (1123598814738777222, 1123598814738777220, 'post_category', '2', '中层', 2, NULL, 0, 0);
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_sealed", "is_deleted")
-VALUES (1123598814738777223, 1123598814738777220, 'post', '3', '基层', 3, NULL, 0, 0);
+VALUES (1123598814738777223, 1123598814738777220, 'post_category', '3', '基层', 3, NULL, 0, 0);
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_sealed", "is_deleted")
-VALUES (1123598814738777224, 1123598814738777220, 'post', '4', '其他', 4, NULL, 0, 0);
+VALUES (1123598814738777224, 1123598814738777220, 'post_category', '4', '其他', 4, NULL, 0, 0);

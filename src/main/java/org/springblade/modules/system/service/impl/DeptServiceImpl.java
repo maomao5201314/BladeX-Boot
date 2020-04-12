@@ -59,9 +59,6 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
 	@Override
 	public List<DeptVO> tree(String tenantId) {
-		if (AuthUtil.isAdministrator()) {
-			tenantId = StringPool.EMPTY;
-		}
 		return ForestNodeMerger.merge(baseMapper.tree(tenantId));
 	}
 

@@ -10,6 +10,7 @@
     <version>2.5.0.RELEASE</version>
 
     <properties>
+        <bladex.project.id>blade-api</bladex.project.id>
         <bladex.project.version>2.5.0.RELEASE</bladex.project.version>
 
         <java.version>1.8</java.version>
@@ -23,9 +24,12 @@
         <spring.platform.version>Cairo-SR8</spring.platform.version>
 
         <!-- 推荐使用Harbor -->
-        <docker.registry.url>10.211.55.5</docker.registry.url>
+        <docker.registry.url>192.168.0.157</docker.registry.url>
         <docker.registry.host>http://${docker.registry.url}:2375</docker.registry.host>
-        <docker.plugin.version>1.1.0</docker.plugin.version>
+        <docker.username>admin</docker.username>
+        <docker.password>Harbor12345</docker.password>
+        <docker.namespace>blade</docker.namespace>
+        <docker.plugin.version>1.4.13</docker.plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -149,7 +153,7 @@
     </dependencies>
 
     <build>
-        <finalName>BladeX</finalName>
+        <finalName>${bladex.project.id}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -180,23 +184,28 @@
                 </plugin>
                 <plugin>
                     <groupId>com.spotify</groupId>
-                    <artifactId>docker-maven-plugin</artifactId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
                     <version>${docker.plugin.version}</version>
                     <configuration>
-                        <imageName>${docker.registry.url}/blade/${project.artifactId}:${project.version}</imageName>
-                        <dockerDirectory>${project.basedir}</dockerDirectory>
-                        <dockerHost>${docker.registry.host}</dockerHost>
-                        <resources>
-                            <resource>
-                                <targetPath>/</targetPath>
-                                <directory>${project.build.directory}</directory>
-                                <include>${project.build.finalName}.jar</include>
-                            </resource>
-                        </resources>
-                        <registryUrl>${docker.registry.url}</registryUrl>
-                        <serverId>${docker.registry.url}</serverId>
-                        <pushImage>true</pushImage>
+                        <username>${docker.username}</username>
+                        <password>${docker.password}</password>
+                        <repository>${docker.registry.url}/${docker.namespace}/${bladex.project.id}</repository>
+                        <tag>${project.version}</tag>
+                        <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                        <buildArgs>
+                            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
                     </configuration>
+                    <!--添加如下配置，运行 mvn deploy 命令便会自动打包镜像-->
+                    <!--<executions>
+                        <execution>
+                            <id>default</id>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>-->
                 </plugin>
             </plugins>
         </pluginManagement>

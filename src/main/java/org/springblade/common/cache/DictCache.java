@@ -23,6 +23,7 @@ import org.springblade.modules.system.entity.Dict;
 import org.springblade.modules.system.service.IDictService;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springblade.core.cache.constant.CacheConstant.DICT_CACHE;
 
@@ -34,6 +35,7 @@ import static org.springblade.core.cache.constant.CacheConstant.DICT_CACHE;
 public class DictCache {
 
 	private static final String DICT_ID = "dict:id:";
+	private static final String DICT_KEY = "dict:key:";
 	private static final String DICT_VALUE = "dict:value:";
 	private static final String DICT_LIST = "dict:list:";
 
@@ -73,6 +75,23 @@ public class DictCache {
 	 */
 	public static String getValue(String code, String dictKey) {
 		return CacheUtil.get(DICT_CACHE, DICT_VALUE + code + StringPool.COLON, dictKey, () -> dictService.getValue(code, dictKey));
+	}
+
+	/**
+	 * 获取字典键值
+	 *
+	 * @param code      字典编号
+	 * @param dictValue 字典值
+	 * @return
+	 */
+	public static String getKey(String code, String dictValue) {
+		return CacheUtil.get(DICT_CACHE, DICT_KEY + code + StringPool.COLON, dictValue, () -> {
+			List<Dict> list = getList(code);
+			Optional<String> key = list.stream().filter(
+				dict -> dict.getDictValue().equalsIgnoreCase(dictValue)
+			).map(Dict::getDictKey).findFirst();
+			return key.orElse(StringPool.EMPTY);
+		});
 	}
 
 	/**

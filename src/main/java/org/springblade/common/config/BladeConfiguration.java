@@ -55,7 +55,7 @@ public class BladeConfiguration implements WebMvcConfigurer {
 	}
 
 	@Bean
-	@ConditionalOnProperty(value = "blade.preview.enable", havingValue = "true")
+	@ConditionalOnProperty(value = "blade.preview.enabled", havingValue = "true")
 	public PreviewFilter previewFilter() {
 		return new PreviewFilter();
 	}

@@ -189,7 +189,7 @@
                     <configuration>
                         <username>${docker.username}</username>
                         <password>${docker.password}</password>
-                        <repository>${docker.registry.url}/${docker.namespace}/${bladex.project.id}</repository>
+                        <repository>${docker.registry.url}/${docker.namespace}/${project.build.finalName}</repository>
                         <tag>${project.version}</tag>
                         <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                         <buildArgs>

@@ -105,8 +105,8 @@ blade:
   xss:
     enabled: true
     skip-url:
-      - /weixin
-      - /notice/submit
+      - /blade-chat/weixin
+      - /blade-desk/notice/submit
   secure:
     skip-url:
       - /blade-test/**

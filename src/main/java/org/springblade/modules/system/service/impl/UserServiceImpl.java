@@ -27,6 +27,7 @@ import org.springblade.common.cache.UserCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.utils.*;
@@ -201,6 +202,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			user.setPostId(SysCache.getPostIds(userExcel.getTenantId(), userExcel.getPostName()));
 			// 设置角色ID
 			user.setRoleId(SysCache.getRoleIds(userExcel.getTenantId(), userExcel.getRoleName()));
+			// 设置租户ID
+			if (!AuthUtil.isAdministrator() || StringUtil.isBlank(user.getTenantId())) {
+				user.setTenantId(AuthUtil.getTenantId());
+			}
 			// 覆盖数据
 			if (isCovered) {
 				// 查询用户是否存在

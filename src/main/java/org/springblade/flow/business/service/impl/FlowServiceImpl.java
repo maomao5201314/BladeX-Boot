@@ -41,9 +41,9 @@ import java.util.Map;
 @AllArgsConstructor
 public class FlowServiceImpl implements IFlowService {
 
-	private RuntimeService runtimeService;
-	private IdentityService identityService;
-	private TaskService taskService;
+	private final RuntimeService runtimeService;
+	private final IdentityService identityService;
+	private final TaskService taskService;
 
 	@Override
 	public BladeFlow startProcessInstanceById(String processDefinitionId, String businessKey, Map<String, Object> variables) {

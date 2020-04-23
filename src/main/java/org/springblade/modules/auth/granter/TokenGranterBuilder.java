@@ -35,7 +35,7 @@ public class TokenGranterBuilder {
 	/**
 	 * TokenGranter缓存池
 	 */
-	private static Map<String, ITokenGranter> granterPool = new ConcurrentHashMap<>();
+	private static final Map<String, ITokenGranter> granterPool = new ConcurrentHashMap<>();
 
 	static {
 		granterPool.put(PasswordTokenGranter.GRANT_TYPE, SpringUtil.getBean(PasswordTokenGranter.class));

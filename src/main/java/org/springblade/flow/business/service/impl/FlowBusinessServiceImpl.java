@@ -52,8 +52,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class FlowBusinessServiceImpl implements FlowBusinessService {
 
-	private TaskService taskService;
-	private HistoryService historyService;
+	private final TaskService taskService;
+	private final HistoryService historyService;
 
 	@Override
 	public IPage<BladeFlow> selectClaimPage(IPage<BladeFlow> page, BladeFlow bladeFlow) {

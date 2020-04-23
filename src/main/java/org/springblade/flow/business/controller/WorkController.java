@@ -45,9 +45,9 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "流程事务通用接口", tags = "流程事务通用接口")
 public class WorkController {
 
-	private TaskService taskService;
-	private FlowEngineService flowEngineService;
-	private FlowBusinessService flowBusinessService;
+	private final TaskService taskService;
+	private final FlowEngineService flowEngineService;
+	private final FlowBusinessService flowBusinessService;
 
 	/**
 	 * 发起事务列表页

@@ -36,7 +36,7 @@ public class UserCache {
 	private static final String USER_CACHE_ID = "user:id:";
 	private static final String USER_CACHE_ACCOUNT = "user:account:";
 
-	private static IUserService userService;
+	private static final IUserService userService;
 
 	static {
 		userService = SpringUtil.getBean(IUserService.class);

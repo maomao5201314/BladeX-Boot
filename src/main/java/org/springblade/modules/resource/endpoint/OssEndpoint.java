@@ -44,7 +44,7 @@ public class OssEndpoint {
 	/**
 	 * 对象存储构建类
 	 */
-	private OssBuilder ossBuilder;
+	private final OssBuilder ossBuilder;
 
 	/**
 	 * 创建存储桶

@@ -29,13 +29,13 @@ import java.util.List;
  */
 public class PreviewFilter implements Filter {
 
-	private static List<String> keys = new ArrayList<>();
+	private static final List<String> KEYS = new ArrayList<>();
 
 	static {
-		keys.add("notice");
-		keys.add("process");
-		keys.add("work");
-		keys.add("token");
+		KEYS.add("notice");
+		KEYS.add("process");
+		KEYS.add("work");
+		KEYS.add("token");
 	}
 
 
@@ -52,7 +52,7 @@ public class PreviewFilter implements Filter {
 		String method = httpServletRequest.getMethod();
 
 		String get = "GET";
-		if (method.equals(get) || keys.stream().anyMatch(path::contains)) {
+		if (method.equals(get) || KEYS.stream().anyMatch(path::contains)) {
 			filterChain.doFilter(servletRequest, servletResponse);
 		} else {
 			throw new RuntimeException("演示环境暂时无法操作！");

@@ -44,7 +44,6 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
  * 顶部菜单表 控制器
  *
  * @author BladeX
- * @since 2019-07-14
  */
 @RestController
 @AllArgsConstructor
@@ -53,7 +52,7 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 public class TopMenuController extends BladeController {
 
-	private ITopMenuService topMenuService;
+	private final ITopMenuService topMenuService;
 
 	/**
 	 * 详情

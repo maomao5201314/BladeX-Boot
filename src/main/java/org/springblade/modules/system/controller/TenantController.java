@@ -57,7 +57,7 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @Api(value = "租户管理", tags = "租户管理")
 public class TenantController extends BladeController {
 
-	private ITenantService tenantService;
+	private final ITenantService tenantService;
 
 	/**
 	 * 详情

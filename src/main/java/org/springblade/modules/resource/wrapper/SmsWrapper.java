@@ -28,7 +28,6 @@ import java.util.Objects;
  * 短信配置表包装类,返回视图层所需的字段
  *
  * @author BladeX
- * @since 2020-02-20
  */
 public class SmsWrapper extends BaseEntityWrapper<Sms, SmsVO> {
 

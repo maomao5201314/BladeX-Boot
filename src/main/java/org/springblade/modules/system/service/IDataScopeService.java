@@ -23,7 +23,6 @@ import org.springblade.modules.system.entity.DataScope;
  *  服务类
  *
  * @author BladeX
- * @since 2019-06-23
  */
 public interface IDataScopeService extends BaseService<DataScope> {
 

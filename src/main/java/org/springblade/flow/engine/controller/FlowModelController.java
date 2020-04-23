@@ -49,7 +49,7 @@ import java.util.Map;
 @ApiIgnore
 public class FlowModelController {
 
-	private FlowEngineService flowEngineService;
+	private final FlowEngineService flowEngineService;
 
 	/**
 	 * 分页

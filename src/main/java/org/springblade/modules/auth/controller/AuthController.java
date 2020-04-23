@@ -49,18 +49,18 @@ import java.util.UUID;
  *
  * @author Chill
  */
+@ApiSort(1)
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_AUTH_NAME)
-@ApiSort(1)
 @Api(value = "用户授权认证", tags = "授权接口")
 public class AuthController {
 
-	private BladeRedis bladeRedis;
+	private final BladeRedis bladeRedis;
 
 	@ApiLog("登录用户验证")
 	@PostMapping("/oauth/token")
-	@ApiOperation(value = "获取认证token", notes = "传入租户ID:tenantId,账号:account,密码:password")
+	@ApiOperation(value = "获取认证令牌", notes = "传入租户ID:tenantId,账号:account,密码:password")
 	public Kv token(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId,
 					@ApiParam(value = "账号", required = true) @RequestParam(required = false) String username,
 					@ApiParam(value = "密码", required = true) @RequestParam(required = false) String password) {

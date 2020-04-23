@@ -27,7 +27,6 @@ import org.springblade.core.tenant.mp.TenantEntity;
  * 顶部菜单表实体类
  *
  * @author BladeX
- * @since 2019-07-14
  */
 @Data
 @TableName("blade_top_menu")

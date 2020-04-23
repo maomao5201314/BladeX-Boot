@@ -57,7 +57,7 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 public class DeptController extends BladeController {
 
-	private IDeptService deptService;
+	private final IDeptService deptService;
 
 	/**
 	 * 详情

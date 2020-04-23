@@ -46,7 +46,6 @@ import static org.springblade.core.cache.constant.CacheConstant.RESOURCE_CACHE;
  * 控制器
  *
  * @author BladeX
- * @since 2019-05-26
  */
 @ApiIgnore
 @RestController
@@ -56,7 +55,7 @@ import static org.springblade.core.cache.constant.CacheConstant.RESOURCE_CACHE;
 @Api(value = "对象存储接口", tags = "对象存储接口")
 public class OssController extends BladeController {
 
-	private IOssService ossService;
+	private final IOssService ossService;
 
 	/**
 	 * 详情

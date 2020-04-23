@@ -36,7 +36,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @AllArgsConstructor
 public class LeaveController {
 
-	private ILeaveService leaveService;
+	private final ILeaveService leaveService;
 
 	/**
 	 * 详情

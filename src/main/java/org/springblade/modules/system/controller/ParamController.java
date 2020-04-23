@@ -48,7 +48,7 @@ import static org.springblade.core.cache.constant.CacheConstant.PARAM_CACHE;
 @Api(value = "参数管理", tags = "参数管理")
 public class ParamController extends BladeController {
 
-	private IParamService paramService;
+	private final IParamService paramService;
 
 	/**
 	 * 详情

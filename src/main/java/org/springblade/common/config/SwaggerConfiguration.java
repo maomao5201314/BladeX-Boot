@@ -46,7 +46,7 @@ import java.util.List;
 @AllArgsConstructor
 public class SwaggerConfiguration {
 
-	private SwaggerProperties swaggerProperties;
+	private final SwaggerProperties swaggerProperties;
 
 	@Bean
 	public Docket authDocket() {

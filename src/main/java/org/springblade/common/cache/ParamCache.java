@@ -33,7 +33,7 @@ public class ParamCache {
 	private static final String PARAM_ID = "param:id:";
 	private static final String PARAM_VALUE = "param:value:";
 
-	private static IParamService paramService;
+	private static final IParamService paramService;
 
 	static {
 		paramService = SpringUtil.getBean(IParamService.class);

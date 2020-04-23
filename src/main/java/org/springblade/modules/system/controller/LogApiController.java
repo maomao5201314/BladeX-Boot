@@ -44,7 +44,7 @@ import java.util.Map;
 @RequestMapping(AppConstant.APPLICATION_LOG_NAME + "/api")
 public class LogApiController {
 
-	private ILogApiService logService;
+	private final ILogApiService logService;
 
 	/**
 	 * 查询单条

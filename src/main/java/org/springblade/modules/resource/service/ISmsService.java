@@ -25,7 +25,6 @@ import org.springblade.modules.resource.vo.SmsVO;
  * 短信配置表 服务类
  *
  * @author BladeX
- * @since 2020-02-20
  */
 public interface ISmsService extends BaseService<Sms> {
 

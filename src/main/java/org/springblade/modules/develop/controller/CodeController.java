@@ -53,8 +53,8 @@ import java.util.Map;
 @PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 public class CodeController extends BladeController {
 
-	private ICodeService codeService;
-	private IDatasourceService datasourceService;
+	private final ICodeService codeService;
+	private final IDatasourceService datasourceService;
 
 	/**
 	 * 详情

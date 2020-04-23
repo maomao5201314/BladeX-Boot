@@ -22,7 +22,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.utils.AuthUtil;
-import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
@@ -58,8 +57,8 @@ import static org.springblade.common.constant.CommonConstant.DATA_SCOPE_CATEGORY
 @AllArgsConstructor
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 
-	private IRoleMenuService roleMenuService;
-	private IRoleScopeService roleScopeService;
+	private final IRoleMenuService roleMenuService;
+	private final IRoleScopeService roleScopeService;
 
 	@Override
 	public IPage<RoleVO> selectRolePage(IPage<RoleVO> page, RoleVO role) {

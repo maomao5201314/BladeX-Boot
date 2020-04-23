@@ -27,7 +27,6 @@ import java.util.List;
  *  Mapper 接口
  *
  * @author BladeX
- * @since 2019-05-24
  */
 public interface OssMapper extends BaseMapper<Oss> {
 

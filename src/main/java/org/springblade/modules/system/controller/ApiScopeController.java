@@ -50,7 +50,7 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @Api(value = "接口权限", tags = "接口权限")
 public class ApiScopeController extends BladeController {
 
-	private IApiScopeService apiScopeService;
+	private final IApiScopeService apiScopeService;
 
 	/**
 	 * 详情

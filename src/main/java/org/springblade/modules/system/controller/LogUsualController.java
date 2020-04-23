@@ -44,7 +44,7 @@ import java.util.Map;
 @RequestMapping(AppConstant.APPLICATION_LOG_NAME + "/usual")
 public class LogUsualController {
 
-	private ILogUsualService logService;
+	private final ILogUsualService logService;
 
 	/**
 	 * 查询单条

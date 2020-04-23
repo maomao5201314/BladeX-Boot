@@ -23,7 +23,6 @@ import org.springblade.modules.system.entity.DataScope;
  *  Mapper 接口
  *
  * @author BladeX
- * @since 2019-06-23
  */
 public interface DataScopeMapper extends BaseMapper<DataScope> {
 

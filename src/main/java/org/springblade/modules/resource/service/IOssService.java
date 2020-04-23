@@ -25,7 +25,6 @@ import org.springblade.modules.resource.vo.OssVO;
  * 服务类
  *
  * @author BladeX
- * @since 2019-05-24
  */
 public interface IOssService extends BaseService<Oss> {
 

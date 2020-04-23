@@ -57,8 +57,8 @@ import static org.springblade.core.cache.constant.CacheConstant.MENU_CACHE;
 @Api(value = "菜单", tags = "菜单")
 public class MenuController extends BladeController {
 
-	private IMenuService menuService;
-	private ITopMenuService topMenuService;
+	private final IMenuService menuService;
+	private final ITopMenuService topMenuService;
 
 	/**
 	 * 详情

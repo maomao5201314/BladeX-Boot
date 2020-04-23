@@ -67,7 +67,7 @@ import static org.springblade.core.cache.constant.CacheConstant.USER_CACHE;
 @AllArgsConstructor
 public class UserController {
 
-	private IUserService userService;
+	private final IUserService userService;
 
 	/**
 	 * 查询单条

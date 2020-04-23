@@ -39,7 +39,7 @@ public class DictCache {
 	private static final String DICT_VALUE = "dict:value:";
 	private static final String DICT_LIST = "dict:list:";
 
-	private static IDictService dictService;
+	private static final IDictService dictService;
 
 	static {
 		dictService = SpringUtil.getBean(IDictService.class);

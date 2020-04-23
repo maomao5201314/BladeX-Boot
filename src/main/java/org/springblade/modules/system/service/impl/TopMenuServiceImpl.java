@@ -35,13 +35,12 @@ import java.util.List;
  * 顶部菜单表 服务实现类
  *
  * @author BladeX
- * @since 2019-07-14
  */
 @Service
 @AllArgsConstructor
 public class TopMenuServiceImpl extends BaseServiceImpl<TopMenuMapper, TopMenu> implements ITopMenuService {
 
-	private ITopMenuSettingService topMenuSettingService;
+	private final ITopMenuSettingService topMenuSettingService;
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)

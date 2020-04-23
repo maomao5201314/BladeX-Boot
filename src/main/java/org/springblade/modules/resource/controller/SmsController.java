@@ -46,7 +46,6 @@ import static org.springblade.core.cache.constant.CacheConstant.RESOURCE_CACHE;
  * 短信配置表 控制器
  *
  * @author BladeX
- * @since 2020-02-20
  */
 @ApiIgnore
 @RestController
@@ -56,7 +55,7 @@ import static org.springblade.core.cache.constant.CacheConstant.RESOURCE_CACHE;
 @Api(value = "短信配置表", tags = "短信配置表接口")
 public class SmsController extends BladeController {
 
-	private ISmsService smsService;
+	private final ISmsService smsService;
 
 	/**
 	 * 详情

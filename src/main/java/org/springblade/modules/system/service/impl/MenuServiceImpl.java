@@ -58,9 +58,9 @@ import static org.springblade.core.cache.constant.CacheConstant.MENU_CACHE;
 @AllArgsConstructor
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IMenuService {
 
-	private IRoleMenuService roleMenuService;
-	private IRoleScopeService roleScopeService;
-	private ITopMenuSettingService topMenuSettingService;
+	private final IRoleMenuService roleMenuService;
+	private final IRoleScopeService roleScopeService;
+	private final ITopMenuSettingService topMenuSettingService;
 
 	@Override
 	public List<MenuVO> lazyList(Long parentId, Map<String, Object> param) {

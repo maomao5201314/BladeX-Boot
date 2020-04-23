@@ -77,13 +77,13 @@ import java.util.*;
 public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> implements FlowEngineService {
 	private static final String IMAGE_NAME = "image";
 	private static final String XML_NAME = "xml";
-	private static BpmnJsonConverter bpmnJsonConverter = new BpmnJsonConverter();
-	private static BpmnXMLConverter bpmnXMLConverter = new BpmnXMLConverter();
-	private ObjectMapper objectMapper;
-	private RepositoryService repositoryService;
-	private RuntimeService runtimeService;
-	private HistoryService historyService;
-	private TaskService taskService;
+	private static final BpmnJsonConverter BPMN_JSON_CONVERTER = new BpmnJsonConverter();
+	private static final BpmnXMLConverter BPMN_XML_CONVERTER = new BpmnXMLConverter();
+	private final ObjectMapper objectMapper;
+	private final RepositoryService repositoryService;
+	private final RuntimeService runtimeService;
+	private final HistoryService historyService;
+	private final TaskService taskService;
 
 	@Override
 	public IPage<FlowModel> selectFlowPage(IPage<FlowModel> page, FlowModel flowModel) {
@@ -345,7 +345,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 				}
 			}
 		}
-		return bpmnXMLConverter.convertToXML(bpmnModel);
+		return BPMN_XML_CONVERTER.convertToXML(bpmnModel);
 	}
 
 	private BpmnModel getBpmnModel(FlowModel model) {
@@ -382,7 +382,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 			for (FlowModel decisionTableModel : decisionTableMap.values()) {
 				decisionTableKeyMap.put(decisionTableModel.getId(), decisionTableModel.getModelKey());
 			}
-			return bpmnJsonConverter.convertToBpmnModel(editorJsonNode, formKeyMap, decisionTableKeyMap);
+			return BPMN_JSON_CONVERTER.convertToBpmnModel(editorJsonNode, formKeyMap, decisionTableKeyMap);
 		} catch (Exception e) {
 			log.error("Could not generate BPMN 2.0 model for {}", model.getId(), e);
 			throw new ServiceException("Could not generate BPMN 2.0 model");

@@ -57,8 +57,8 @@ import static org.springblade.common.constant.CommonConstant.DEFAULT_PARAM_PASSW
 @AllArgsConstructor
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
 
-	private IUserDeptService userDeptService;
-	private IRoleService roleService;
+	private final IUserDeptService userDeptService;
+	private final IRoleService roleService;
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)

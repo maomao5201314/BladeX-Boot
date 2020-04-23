@@ -35,8 +35,11 @@ public class FlowCache {
 	private static final String FLOW_DEFINITION_ID = "definition:id";
 	private static RepositoryService repositoryService;
 
-	static {
-		repositoryService = SpringUtil.getBean(RepositoryService.class);
+	private static RepositoryService getRepositoryService() {
+		if (repositoryService == null) {
+			repositoryService = SpringUtil.getBean(RepositoryService.class);
+		}
+		return repositoryService;
 	}
 
 	/**
@@ -46,7 +49,7 @@ public class FlowCache {
 	 * @return
 	 */
 	public static ProcessDefinition getProcessDefinition(String processDefinitionId) {
-		return CacheUtil.get(FLOW_CACHE, FLOW_DEFINITION_ID , processDefinitionId, () -> repositoryService.createProcessDefinitionQuery().processDefinitionId(processDefinitionId).singleResult());
+		return CacheUtil.get(FLOW_CACHE, FLOW_DEFINITION_ID, processDefinitionId, () -> getRepositoryService().createProcessDefinitionQuery().processDefinitionId(processDefinitionId).singleResult());
 	}
 
 	/**

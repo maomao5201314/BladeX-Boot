@@ -53,7 +53,7 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @Api(value = "岗位表", tags = "岗位表接口")
 public class PostController extends BladeController {
 
-	private IPostService postService;
+	private final IPostService postService;
 
 	/**
 	 * 详情

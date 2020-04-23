@@ -42,8 +42,8 @@ public class RefreshTokenGranter implements ITokenGranter {
 
 	public static final String GRANT_TYPE = "refresh_token";
 
-	private IUserService userService;
-	private ITenantService tenantService;
+	private final IUserService userService;
+	private final ITenantService tenantService;
 
 	@Override
 	public UserInfo grant(TokenParameter tokenParameter) {

@@ -23,7 +23,6 @@ import org.springblade.modules.system.entity.TopMenu;
  * 顶部菜单表 Mapper 接口
  *
  * @author BladeX
- * @since 2019-07-14
  */
 public interface TopMenuMapper extends BaseMapper<TopMenu> {
 

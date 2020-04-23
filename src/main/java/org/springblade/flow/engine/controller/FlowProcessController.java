@@ -60,11 +60,11 @@ public class FlowProcessController {
 	private static final String XML_NAME = "xml";
 	private static final Integer INT_1024 = 1024;
 
-	private RepositoryService repositoryService;
-	private RuntimeService runtimeService;
-	private HistoryService historyService;
-	private ProcessEngine processEngine;
-	private FlowEngineService flowEngineService;
+	private final RepositoryService repositoryService;
+	private final RuntimeService runtimeService;
+	private final HistoryService historyService;
+	private final ProcessEngine processEngine;
+	private final FlowEngineService flowEngineService;
 
 	/**
 	 * 获取流转历史列表

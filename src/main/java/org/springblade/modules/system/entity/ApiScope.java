@@ -27,7 +27,6 @@ import org.springblade.core.mp.base.BaseEntity;
  * 实体类
  *
  * @author BladeX
- * @since 2019-06-23
  */
 @Data
 @TableName("blade_scope_api")

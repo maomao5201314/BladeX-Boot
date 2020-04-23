@@ -46,7 +46,7 @@ import java.util.List;
 @Api(value = "数据源配置表", tags = "数据源配置表接口")
 public class DatasourceController extends BladeController {
 
-	private IDatasourceService datasourceService;
+	private final IDatasourceService datasourceService;
 
 	/**
 	 * 详情

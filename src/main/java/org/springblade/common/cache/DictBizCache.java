@@ -38,7 +38,7 @@ public class DictBizCache {
 	private static final String DICT_VALUE = "dictBiz:value";
 	private static final String DICT_LIST = "dictBiz:list";
 
-	private static IDictBizService dictService;
+	private static final IDictBizService dictService;
 
 	static {
 		dictService = SpringUtil.getBean(IDictBizService.class);

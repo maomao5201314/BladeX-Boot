@@ -34,7 +34,6 @@ import org.springframework.transaction.annotation.Transactional;
  * 服务实现类
  *
  * @author BladeX
- * @since 2019-05-24
  */
 @Service
 public class OssServiceImpl extends BaseServiceImpl<OssMapper, Oss> implements IOssService {

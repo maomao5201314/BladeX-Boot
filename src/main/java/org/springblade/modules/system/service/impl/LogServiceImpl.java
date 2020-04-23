@@ -19,9 +19,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class LogServiceImpl implements ILogService {
 
-	ILogUsualService usualService;
-	ILogApiService apiService;
-	ILogErrorService errorService;
+	private final ILogUsualService usualService;
+	private final ILogApiService apiService;
+	private final ILogErrorService errorService;
 
 	@Override
 	public Boolean saveUsualLog(LogUsual log) {

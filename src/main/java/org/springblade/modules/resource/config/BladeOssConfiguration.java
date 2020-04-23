@@ -32,9 +32,9 @@ import org.springframework.context.annotation.Configuration;
 @AllArgsConstructor
 public class BladeOssConfiguration {
 
-	private OssProperties ossProperties;
+	private final OssProperties ossProperties;
 
-	private IOssService ossService;
+	private final IOssService ossService;
 
 	@Bean
 	public OssBuilder ossBuilder() {

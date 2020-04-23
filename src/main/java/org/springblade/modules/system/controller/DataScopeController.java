@@ -50,7 +50,7 @@ import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 @Api(value = "数据权限", tags = "数据权限")
 public class DataScopeController extends BladeController {
 
-	private IDataScopeService dataScopeService;
+	private final IDataScopeService dataScopeService;
 
 	/**
 	 * 详情

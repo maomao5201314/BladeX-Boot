@@ -54,11 +54,11 @@ public class SysCache {
 	private static final String TENANT_ID = "tenant:id:";
 	private static final String TENANT_TENANT_ID = "tenant:tenantId:";
 
-	private static IMenuService menuService;
-	private static IDeptService deptService;
-	private static IPostService postService;
-	private static IRoleService roleService;
-	private static ITenantService tenantService;
+	private static final IMenuService menuService;
+	private static final IDeptService deptService;
+	private static final IPostService postService;
+	private static final IRoleService roleService;
+	private static final ITenantService tenantService;
 
 	static {
 		menuService = SpringUtil.getBean(IMenuService.class);

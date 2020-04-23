@@ -23,7 +23,6 @@ import org.springblade.modules.system.entity.ApiScope;
  *  Mapper 接口
  *
  * @author BladeX
- * @since 2019-06-23
  */
 public interface ApiScopeMapper extends BaseMapper<ApiScope> {
 

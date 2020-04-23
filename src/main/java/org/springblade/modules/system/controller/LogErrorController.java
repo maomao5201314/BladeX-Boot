@@ -44,7 +44,7 @@ import java.util.Map;
 @RequestMapping(AppConstant.APPLICATION_LOG_NAME + "/error")
 public class LogErrorController {
 
-	private ILogErrorService errorLogService;
+	private final ILogErrorService errorLogService;
 
 	/**
 	 * 查询单条

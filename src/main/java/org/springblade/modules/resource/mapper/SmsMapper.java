@@ -27,7 +27,6 @@ import java.util.List;
  * 短信配置表 Mapper 接口
  *
  * @author BladeX
- * @since 2020-02-20
  */
 public interface SmsMapper extends BaseMapper<Sms> {
 

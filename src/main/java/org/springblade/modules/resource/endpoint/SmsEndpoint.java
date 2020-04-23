@@ -52,7 +52,7 @@ public class SmsEndpoint {
 	/**
 	 * 短信服务构建类
 	 */
-	private SmsBuilder smsBuilder;
+	private final SmsBuilder smsBuilder;
 
 	//================================= 短信服务校验 =================================
 

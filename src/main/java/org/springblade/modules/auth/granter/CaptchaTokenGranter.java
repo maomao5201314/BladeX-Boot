@@ -45,9 +45,9 @@ public class CaptchaTokenGranter implements ITokenGranter {
 
 	public static final String GRANT_TYPE = "captcha";
 
-	private IUserService userService;
-	private ITenantService tenantService;
-	private BladeRedis bladeRedis;
+	private final IUserService userService;
+	private final ITenantService tenantService;
+	private final BladeRedis bladeRedis;
 
 	@Override
 	public UserInfo grant(TokenParameter tokenParameter) {

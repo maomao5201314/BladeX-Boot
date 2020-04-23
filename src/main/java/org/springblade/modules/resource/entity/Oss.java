@@ -27,7 +27,6 @@ import org.springblade.core.tenant.mp.TenantEntity;
  * 实体类
  *
  * @author BladeX
- * @since 2019-05-24
  */
 @Data
 @TableName("blade_oss")

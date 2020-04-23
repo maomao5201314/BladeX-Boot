@@ -32,7 +32,7 @@ import org.springframework.context.annotation.Configuration;
 @AllArgsConstructor
 @EnableConfigurationProperties(FlowableProperties.class)
 public class FlowableConfiguration implements EngineConfigurationConfigurer<SpringProcessEngineConfiguration> {
-	private FlowableProperties flowableProperties;
+	private final FlowableProperties flowableProperties;
 
 	@Override
 	public void configure(SpringProcessEngineConfiguration engineConfiguration) {

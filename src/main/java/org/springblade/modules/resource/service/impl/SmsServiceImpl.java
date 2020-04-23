@@ -34,7 +34,6 @@ import org.springframework.transaction.annotation.Transactional;
  * 短信配置表 服务实现类
  *
  * @author BladeX
- * @since 2020-02-20
  */
 @Service
 public class SmsServiceImpl extends BaseServiceImpl<SmsMapper, Sms> implements ISmsService {

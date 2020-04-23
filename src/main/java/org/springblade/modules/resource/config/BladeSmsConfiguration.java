@@ -33,11 +33,11 @@ import org.springframework.context.annotation.Configuration;
 @AllArgsConstructor
 public class BladeSmsConfiguration {
 
-	private SmsProperties smsProperties;
+	private final SmsProperties smsProperties;
 
-	private ISmsService smsService;
+	private final ISmsService smsService;
 
-	private BladeRedis bladeRedis;
+	private final BladeRedis bladeRedis;
 
 	@Bean
 	public SmsBuilder smsBuilder() {

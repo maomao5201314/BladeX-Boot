@@ -25,7 +25,6 @@ import org.springblade.modules.resource.entity.Sms;
  * 短信配置表视图实体类
  *
  * @author BladeX
- * @since 2020-02-20
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

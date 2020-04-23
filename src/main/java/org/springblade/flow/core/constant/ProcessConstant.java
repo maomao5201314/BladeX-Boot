@@ -31,7 +31,7 @@ public interface ProcessConstant {
 	/**
 	 * 报销流程标识
 	 */
-	String Expense_KEY = "Expense";
+	String EXPENSE_KEY = "Expense";
 
 	/**
 	 * 同意标识

@@ -50,7 +50,7 @@ import static org.springblade.core.cache.constant.CacheConstant.DICT_CACHE;
 @Api(value = "字典", tags = "字典")
 public class DictController extends BladeController {
 
-	private IDictService dictService;
+	private final IDictService dictService;
 
 	/**
 	 * 详情

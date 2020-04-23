@@ -28,7 +28,6 @@ import java.util.Objects;
  * 包装类,返回视图层所需的字段
  *
  * @author BladeX
- * @since 2019-05-26
  */
 public class OssWrapper extends BaseEntityWrapper<Oss, OssVO> {
 

@@ -27,7 +27,6 @@ import org.springblade.core.tenant.mp.TenantEntity;
  * 短信配置表实体类
  *
  * @author BladeX
- * @since 2020-02-20
  */
 @Data
 @TableName("blade_sms")

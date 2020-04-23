@@ -26,7 +26,6 @@ import org.springframework.stereotype.Service;
  *  服务实现类
  *
  * @author BladeX
- * @since 2019-06-23
  */
 @Service
 public class DataScopeServiceImpl extends BaseServiceImpl<DataScopeMapper, DataScope> implements IDataScopeService {

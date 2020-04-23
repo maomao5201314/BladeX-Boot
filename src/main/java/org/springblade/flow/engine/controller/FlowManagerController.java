@@ -53,7 +53,7 @@ import java.util.Objects;
 @ApiIgnore
 public class FlowManagerController {
 
-	private FlowEngineService flowEngineService;
+	private final FlowEngineService flowEngineService;
 
 	/**
 	 * 分页

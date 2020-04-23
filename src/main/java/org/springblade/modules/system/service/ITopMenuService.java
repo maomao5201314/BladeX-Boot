@@ -26,7 +26,6 @@ import java.util.List;
  * 顶部菜单表 服务类
  *
  * @author BladeX
- * @since 2019-07-14
  */
 public interface ITopMenuService extends BaseService<TopMenu> {
 

@@ -45,7 +45,7 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 public class LeaveServiceImpl extends BaseServiceImpl<LeaveMapper, ProcessLeave> implements ILeaveService {
 
-	private IFlowService flowService;
+	private final IFlowService flowService;
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)

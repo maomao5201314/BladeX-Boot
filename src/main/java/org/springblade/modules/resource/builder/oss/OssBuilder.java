@@ -26,7 +26,7 @@ import org.springblade.core.oss.enums.OssStatusEnum;
 import org.springblade.core.oss.props.OssProperties;
 import org.springblade.core.oss.rule.BladeOssRule;
 import org.springblade.core.oss.rule.OssRule;
-import org.springblade.core.secure.utils.SecureUtil;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringPool;
 import org.springblade.core.tool.utils.StringUtil;
@@ -83,7 +83,7 @@ public class OssBuilder {
 	 * @return OssTemplate
 	 */
 	public OssTemplate template(String code) {
-		String tenantId = SecureUtil.getTenantId();
+		String tenantId = AuthUtil.getTenantId();
 		Oss oss = getOss(tenantId, code);
 		Oss ossCached = ossPool.get(tenantId);
 		OssTemplate template = templatePool.get(tenantId);

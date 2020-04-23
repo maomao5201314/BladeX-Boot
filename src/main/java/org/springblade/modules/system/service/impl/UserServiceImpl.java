@@ -28,14 +28,13 @@ import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.secure.utils.AuthUtil;
-import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.utils.*;
-import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserDept;
 import org.springblade.modules.system.entity.UserInfo;
+import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.mapper.UserMapper;
 import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.service.IUserDeptService;
@@ -185,7 +184,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 
 	@Override
 	public boolean removeUser(String userIds) {
-		if (Func.contains(Func.toLongArray(userIds), SecureUtil.getUserId())) {
+		if (Func.contains(Func.toLongArray(userIds), AuthUtil.getUserId())) {
 			throw new ServiceException("不能删除本账号!");
 		}
 		return deleteLogic(Func.toLongList(userIds));

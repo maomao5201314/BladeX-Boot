@@ -20,7 +20,7 @@ import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.log.exception.ServiceException;
-import org.springblade.core.secure.utils.SecureUtil;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.auth.utils.TokenUtil;
 import org.springblade.modules.system.entity.Tenant;
@@ -52,7 +52,7 @@ public class RefreshTokenGranter implements ITokenGranter {
 		String refreshToken = tokenParameter.getArgs().getStr("refreshToken");
 		UserInfo userInfo = null;
 		if (Func.isNoneBlank(grantType, refreshToken) && grantType.equals(TokenConstant.REFRESH_TOKEN)) {
-			Claims claims = SecureUtil.parseJWT(refreshToken);
+			Claims claims = AuthUtil.parseJWT(refreshToken);
 			String tokenType = Func.toStr(Objects.requireNonNull(claims).get(TokenConstant.TOKEN_TYPE));
 			if (tokenType.equals(TokenConstant.REFRESH_TOKEN)) {
 				// 获取租户信息

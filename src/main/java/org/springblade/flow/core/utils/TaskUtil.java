@@ -16,7 +16,7 @@
  */
 package org.springblade.flow.core.utils;
 
-import org.springblade.core.secure.utils.SecureUtil;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringUtil;
 
@@ -35,7 +35,7 @@ public class TaskUtil {
 	 * @return taskUser
 	 */
 	public static String getTaskUser() {
-		return StringUtil.format("{}{}", TASK_USR_PREFIX, SecureUtil.getUserId());
+		return StringUtil.format("{}{}", TASK_USR_PREFIX, AuthUtil.getUserId());
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class TaskUtil {
 	 * @return candidateGroup
 	 */
 	public static String getCandidateGroup() {
-		return SecureUtil.getUserRole();
+		return AuthUtil.getUserRole();
 	}
 
 }

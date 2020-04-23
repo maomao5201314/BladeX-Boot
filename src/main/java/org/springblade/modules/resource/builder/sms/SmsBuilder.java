@@ -21,7 +21,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.redis.cache.BladeRedis;
-import org.springblade.core.secure.utils.SecureUtil;
+import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.sms.SmsTemplate;
 import org.springblade.core.sms.enums.SmsEnum;
 import org.springblade.core.sms.enums.SmsStatusEnum;
@@ -86,7 +86,7 @@ public class SmsBuilder {
 	 * @return SmsTemplate
 	 */
 	public SmsTemplate template(String code) {
-		String tenantId = SecureUtil.getTenantId();
+		String tenantId = AuthUtil.getTenantId();
 		Sms sms = getSms(tenantId, code);
 		Sms smsCached = smsPool.get(tenantId);
 		SmsTemplate template = templatePool.get(tenantId);

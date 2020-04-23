@@ -22,6 +22,7 @@
         <result column="sex" property="sex"/>
         <result column="role_id" property="roleId"/>
         <result column="dept_id" property="deptId"/>
+        <result column="post_id" property="postId"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

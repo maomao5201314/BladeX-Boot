@@ -20,7 +20,6 @@ import org.springblade.common.cache.DictBizCache;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
-import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.DictBiz;
@@ -54,8 +53,8 @@ public class DictBizWrapper extends BaseEntityWrapper<DictBiz, DictBizVO> {
 		return dictVO;
 	}
 
-	public List<INode> listNodeVO(List<DictBiz> list) {
-		List<INode> collect = list.stream().map(dict -> BeanUtil.copy(dict, DictBizVO.class)).collect(Collectors.toList());
+	public List<DictBizVO> listNodeVO(List<DictBiz> list) {
+		List<DictBizVO> collect = list.stream().map(dict -> BeanUtil.copy(dict, DictBizVO.class)).collect(Collectors.toList());
 		return ForestNodeMerger.merge(collect);
 	}
 

@@ -26,7 +26,6 @@ import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.tool.api.R;
-import org.springblade.core.tool.node.INode;
 import org.springblade.modules.system.entity.Dict;
 import org.springblade.modules.system.service.IDictService;
 import org.springblade.modules.system.vo.DictVO;
@@ -74,7 +73,7 @@ public class DictController extends BladeController {
 	})
 	@ApiOperationSupport(order = 2)
 	@ApiOperation(value = "列表", notes = "传入dict")
-	public R<List<INode>> list(@ApiIgnore @RequestParam Map<String, Object> dict) {
+	public R<List<DictVO>> list(@ApiIgnore @RequestParam Map<String, Object> dict) {
 		List<Dict> list = dictService.list(Condition.getQueryWrapper(dict, Dict.class).lambda().orderByAsc(Dict::getSort));
 		return R.data(DictWrapper.build().listNodeVO(list));
 	}

@@ -20,7 +20,6 @@ import org.springblade.common.cache.DictCache;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
-import org.springblade.core.tool.node.INode;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dict;
@@ -54,8 +53,8 @@ public class DictWrapper extends BaseEntityWrapper<Dict, DictVO> {
 		return dictVO;
 	}
 
-	public List<INode> listNodeVO(List<Dict> list) {
-		List<INode> collect = list.stream().map(dict -> BeanUtil.copy(dict, DictVO.class)).collect(Collectors.toList());
+	public List<DictVO> listNodeVO(List<Dict> list) {
+		List<DictVO> collect = list.stream().map(dict -> BeanUtil.copy(dict, DictVO.class)).collect(Collectors.toList());
 		return ForestNodeMerger.merge(collect);
 	}
 

@@ -36,7 +36,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "DictBizVO对象", description = "DictBizVO对象")
-public class DictBizVO extends DictBiz implements INode {
+public class DictBizVO extends DictBiz implements INode<DictBizVO> {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * 主键ID
@@ -54,10 +54,10 @@ public class DictBizVO extends DictBiz implements INode {
 	 * 子孙节点
 	 */
 	@JsonInclude(JsonInclude.Include.NON_EMPTY)
-	private List<INode> children;
+	private List<DictBizVO> children;
 
 	@Override
-	public List<INode> getChildren() {
+	public List<DictBizVO> getChildren() {
 		if (this.children == null) {
 			this.children = new ArrayList<>();
 		}

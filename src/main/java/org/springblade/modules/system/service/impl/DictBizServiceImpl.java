@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springblade.common.cache.DictBizCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.log.exception.ServiceException;
@@ -36,6 +37,7 @@ import org.springblade.modules.system.vo.DictBizVO;
 import org.springblade.modules.system.wrapper.DictBizWrapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -100,9 +102,13 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 	}
 
 	@Override
-	public IPage<DictBizVO> childList(Map<String, Object> dict, Long parentId, Query query) {
+	public List<DictBizVO> childList(Map<String, Object> dict, Long parentId) {
+		if (parentId < 0) {
+			return new ArrayList<>();
+		}
 		dict.remove("parentId");
-		IPage<DictBiz> page = this.page(Condition.getPage(query), Condition.getQueryWrapper(dict, DictBiz.class).lambda().eq(DictBiz::getParentId, parentId).orderByAsc(DictBiz::getSort));
-		return DictBizWrapper.build().pageVO(page);
+		DictBiz parentDict = DictBizCache.getById(parentId);
+		List<DictBiz> list = this.list(Condition.getQueryWrapper(dict, DictBiz.class).lambda().ne(DictBiz::getId, parentId).eq(DictBiz::getCode, parentDict.getCode()).orderByAsc(DictBiz::getSort));
+		return DictBizWrapper.build().listNodeVO(list);
 	}
 }

@@ -103,8 +103,8 @@ public class DictBizController extends BladeController {
 	})
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "列表", notes = "传入dict")
-	public R<IPage<DictBizVO>> childList(@ApiIgnore @RequestParam Map<String, Object> dict, @RequestParam(required = false, defaultValue = "-1") Long parentId, Query query) {
-		return R.data(dictService.childList(dict, parentId, query));
+	public R<List<DictBizVO>> childList(@ApiIgnore @RequestParam Map<String, Object> dict, @RequestParam(required = false, defaultValue = "-1") Long parentId) {
+		return R.data(dictService.childList(dict, parentId));
 	}
 
 	/**

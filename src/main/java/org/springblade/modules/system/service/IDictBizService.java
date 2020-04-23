@@ -81,6 +81,7 @@ public interface IDictBizService extends IService<DictBiz> {
 
 	/**
 	 * 顶级列表
+	 *
 	 * @param dict
 	 * @param query
 	 * @return
@@ -89,11 +90,11 @@ public interface IDictBizService extends IService<DictBiz> {
 
 	/**
 	 * 子列表
+	 *
 	 * @param dict
 	 * @param parentId
-	 * @param query
 	 * @return
 	 */
-	IPage<DictBizVO> childList(Map<String, Object> dict, Long parentId, Query query);
+	List<DictBizVO> childList(Map<String, Object> dict, Long parentId);
 
 }

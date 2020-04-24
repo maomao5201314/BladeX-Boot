@@ -116,7 +116,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			userDept.setDeptId(deptId);
 			userDeptList.add(userDept);
 		});
-		userDeptService.remove(Wrappers.<UserDept>query().lambda().eq(UserDept::getUserId, user.getId()));
+		userDeptService.remove(Wrappers.<UserDept>update().lambda().eq(UserDept::getUserId, user.getId()));
 		return userDeptService.saveBatch(userDeptList);
 	}
 

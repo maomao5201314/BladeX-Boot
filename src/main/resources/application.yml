@@ -88,6 +88,7 @@ flowable:
   label-font-name: \u5B8B\u4F53
   annotation-font-name: \u5B8B\u4F53
   check-process-definitions: false
+  database-schema-update: false
 
 #oss默认配置
 oss:

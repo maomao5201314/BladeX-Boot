@@ -123,7 +123,7 @@ public class TenantController extends BladeController {
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	public R submit(@Valid @RequestBody Tenant tenant) {
 		CacheUtil.clear(SYS_CACHE);
-		return R.status(tenantService.saveTenant(tenant));
+		return R.status(tenantService.submitTenant(tenant));
 	}
 
 

@@ -52,7 +52,7 @@ public interface ITenantService extends BaseService<Tenant> {
 	 * @param tenant
 	 * @return
 	 */
-	boolean saveTenant(Tenant tenant);
+	boolean submitTenant(Tenant tenant);
 
 	/**
 	 * 删除

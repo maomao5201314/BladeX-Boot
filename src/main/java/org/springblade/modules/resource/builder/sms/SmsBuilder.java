@@ -62,12 +62,12 @@ public class SmsBuilder {
 	/**
 	 * SmsTemplate配置缓存池
 	 */
-	private Map<String, SmsTemplate> templatePool = new ConcurrentHashMap<>();
+	private final Map<String, SmsTemplate> templatePool = new ConcurrentHashMap<>();
 
 	/**
 	 * Sms配置缓存池
 	 */
-	private Map<String, Sms> smsPool = new ConcurrentHashMap<>();
+	private final Map<String, Sms> smsPool = new ConcurrentHashMap<>();
 
 
 	/**

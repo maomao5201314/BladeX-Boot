@@ -60,12 +60,12 @@ public class OssBuilder {
 	/**
 	 * OssTemplate配置缓存池
 	 */
-	private Map<String, OssTemplate> templatePool = new ConcurrentHashMap<>();
+	private final Map<String, OssTemplate> templatePool = new ConcurrentHashMap<>();
 
 	/**
 	 * oss配置缓存池
 	 */
-	private Map<String, Oss> ossPool = new ConcurrentHashMap<>();
+	private final Map<String, Oss> ossPool = new ConcurrentHashMap<>();
 
 	/**
 	 * 获取template

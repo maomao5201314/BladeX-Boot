@@ -21,6 +21,8 @@ import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.auth.enums.BladeUserEnum;
+import org.springblade.modules.auth.provider.ITokenGranter;
+import org.springblade.modules.auth.provider.TokenParameter;
 import org.springblade.modules.auth.utils.TokenUtil;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.UserInfo;

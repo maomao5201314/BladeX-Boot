@@ -14,12 +14,16 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.auth.granter;
+package org.springblade.modules.auth.provider;
 
 import lombok.AllArgsConstructor;
 import org.springblade.core.secure.exception.SecureException;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.SpringUtil;
+import org.springblade.modules.auth.granter.CaptchaTokenGranter;
+import org.springblade.modules.auth.granter.PasswordTokenGranter;
+import org.springblade.modules.auth.granter.RefreshTokenGranter;
+import org.springblade.modules.auth.granter.SocialTokenGranter;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

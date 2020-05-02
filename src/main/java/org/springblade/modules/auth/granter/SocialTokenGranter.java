@@ -27,6 +27,8 @@ import org.springblade.core.social.utils.SocialUtil;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.WebUtil;
+import org.springblade.modules.auth.provider.ITokenGranter;
+import org.springblade.modules.auth.provider.TokenParameter;
 import org.springblade.modules.auth.utils.TokenUtil;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springblade.modules.system.entity.UserOauth;
@@ -46,6 +48,7 @@ import java.util.Objects;
 public class SocialTokenGranter implements ITokenGranter {
 
 	public static final String GRANT_TYPE = "social";
+
 	private static final Integer AUTH_SUCCESS_CODE = 2000;
 
 	private final IUserService userService;

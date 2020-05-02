@@ -17,12 +17,17 @@
 package org.springblade.modules.auth.endpoint;
 
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
+import com.wf.captcha.SpecCaptcha;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
+import org.springblade.common.cache.CacheNames;
+import org.springblade.core.cache.constant.CacheConstant;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.log.annotation.ApiLog;
+import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.support.Kv;
@@ -36,6 +41,8 @@ import org.springblade.modules.system.entity.UserInfo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.time.Duration;
+import java.util.UUID;
 
 /**
  * 令牌端点
@@ -48,6 +55,8 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(AppConstant.APPLICATION_AUTH_NAME)
 @Api(value = "用户授权认证", tags = "授权接口")
 public class BladeTokenEndPoint {
+
+	private final BladeRedis bladeRedis;
 
 	@ApiLog("登录用户验证")
 	@PostMapping("/oauth/token")
@@ -86,5 +95,31 @@ public class BladeTokenEndPoint {
 	public Kv logout() {
 		BladeUser user = AuthUtil.getUser();
 		return Kv.create().set("success", "true").set("account", user.getAccount()).set("msg", "success");
+	}
+
+	@GetMapping("/oauth/captcha")
+	@ApiOperation(value = "获取验证码")
+	public Kv captcha() {
+		SpecCaptcha specCaptcha = new SpecCaptcha(130, 48, 5);
+		String verCode = specCaptcha.text().toLowerCase();
+		String key = UUID.randomUUID().toString();
+		// 存入redis并设置过期时间为30分钟
+		bladeRedis.setEx(CacheNames.CAPTCHA_KEY + key, verCode, Duration.ofMinutes(30));
+		// 将key和base64返回给前端
+		return Kv.create().set("key", key).set("image", specCaptcha.toBase64());
+	}
+
+	@GetMapping("/oauth/clear-cache")
+	@ApiOperation(value = "清除缓存")
+	public Kv clearCache() {
+		CacheUtil.clear(CacheConstant.BIZ_CACHE);
+		CacheUtil.clear(CacheConstant.MENU_CACHE);
+		CacheUtil.clear(CacheConstant.USER_CACHE);
+		CacheUtil.clear(CacheConstant.DICT_CACHE);
+		CacheUtil.clear(CacheConstant.FLOW_CACHE);
+		CacheUtil.clear(CacheConstant.SYS_CACHE);
+		CacheUtil.clear(CacheConstant.RESOURCE_CACHE);
+		CacheUtil.clear(CacheConstant.PARAM_CACHE);
+		return Kv.create().set("success", "true").set("msg", "success");
 	}
 }

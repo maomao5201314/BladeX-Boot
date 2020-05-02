@@ -260,4 +260,15 @@ public class UserController {
 		ExcelUtil.export(response, "用户数据模板", "用户数据表", list, UserExcel.class);
 	}
 
+
+	/**
+	 * 第三方注册用户
+	 */
+	@PostMapping("/register-guest")
+	@ApiOperationSupport(order = 15)
+	@ApiOperation(value = "第三方注册用户", notes = "传入user")
+	public R registerGuest(User user, Long oauthId) {
+		return R.status(userService.registerGuest(user, oauthId));
+	}
+
 }

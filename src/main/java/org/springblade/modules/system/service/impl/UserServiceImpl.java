@@ -20,6 +20,7 @@ package org.springblade.modules.system.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.ParamCache;
 import org.springblade.common.cache.SysCache;
@@ -30,19 +31,15 @@ import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.utils.*;
-import org.springblade.modules.system.entity.Tenant;
-import org.springblade.modules.system.entity.User;
-import org.springblade.modules.system.entity.UserDept;
-import org.springblade.modules.system.entity.UserInfo;
+import org.springblade.modules.system.entity.*;
 import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.mapper.UserMapper;
-import org.springblade.modules.system.service.IRoleService;
-import org.springblade.modules.system.service.IUserDeptService;
-import org.springblade.modules.system.service.IUserService;
+import org.springblade.modules.system.service.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -56,8 +53,10 @@ import static org.springblade.common.constant.CommonConstant.DEFAULT_PARAM_PASSW
 @Service
 @AllArgsConstructor
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
+	private static final String GUEST_NAME = "guest";
 
 	private final IUserDeptService userDeptService;
+	private final IUserOauthService userOauthService;
 	private final IRoleService roleService;
 
 	@Override
@@ -156,6 +155,30 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public UserInfo userInfo(UserOauth userOauth) {
+		UserOauth uo = userOauthService.getOne(Wrappers.<UserOauth>query().lambda().eq(UserOauth::getSource, userOauth.getSource()).eq(UserOauth::getUsername, userOauth.getUsername()));
+		UserInfo userInfo;
+		if (Func.isNotEmpty(uo) && Func.isNotEmpty(uo.getUserId())) {
+			userInfo = this.userInfo(uo.getUserId());
+			userInfo.setOauthId(Func.toStr(uo.getId()));
+		} else {
+			userInfo = new UserInfo();
+			if (Func.isEmpty(uo)) {
+				userOauthService.save(userOauth);
+				userInfo.setOauthId(Func.toStr(userOauth.getId()));
+			} else {
+				userInfo.setOauthId(Func.toStr(uo.getId()));
+			}
+			User user = new User();
+			user.setAccount(userOauth.getUsername());
+			userInfo.setUser(user);
+			userInfo.setRoles(Collections.singletonList(GUEST_NAME));
+		}
+		return userInfo;
+	}
+
+	@Override
 	public boolean grant(String userIds, String roleIds) {
 		User user = new User();
 		user.setRoleId(roleIds);
@@ -231,6 +254,34 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			user.setPostName(StringUtil.join(SysCache.getPostNames(user.getPostId())));
 		});
 		return userList;
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public boolean registerGuest(User user, Long oauthId) {
+		Tenant tenant = SysCache.getTenant(user.getTenantId());
+		if (tenant == null || tenant.getId() == null) {
+			throw new ApiException("租户信息错误!");
+		}
+		int userCnt = this.count(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(user.getTenantId(), BladeConstant.ADMIN_TENANT_ID)).eq(User::getAccount, user.getAccount()));
+		if (userCnt > 0) {
+			throw new ApiException("当前系统用户名已存在!");
+		}
+		UserOauth userOauth = userOauthService.getById(oauthId);
+		if (userOauth == null || userOauth.getId() == null) {
+			throw new ApiException("第三方登陆信息错误!");
+		}
+		user.setRealName(user.getName());
+		user.setAvatar(userOauth.getAvatar());
+		user.setPassword(DigestUtil.encrypt(user.getPassword()));
+		user.setRoleId(StringPool.MINUS_ONE);
+		user.setDeptId(StringPool.MINUS_ONE);
+		user.setPostId(StringPool.MINUS_ONE);
+		boolean userTemp = this.save(user);
+		userOauth.setUserId(user.getId());
+		userOauth.setTenantId(user.getTenantId());
+		boolean oauthTemp = userOauthService.updateById(userOauth);
+		return (userTemp && oauthTemp);
 	}
 
 }

@@ -73,6 +73,7 @@ public class TokenUtil {
 		param.put(TokenConstant.DEPT_ID, user.getDeptId());
 		param.put(TokenConstant.POST_ID, user.getPostId());
 		param.put(TokenConstant.ROLE_ID, user.getRoleId());
+		param.put(TokenConstant.OAUTH_ID, userInfo.getOauthId());
 		param.put(TokenConstant.ACCOUNT, user.getAccount());
 		param.put(TokenConstant.USER_NAME, user.getAccount());
 		param.put(TokenConstant.NICK_NAME, user.getRealName());
@@ -83,6 +84,11 @@ public class TokenUtil {
 			TokenInfo accessToken = SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.ACCESS_TOKEN);
 			//返回accessToken
 			return authInfo.set(TokenConstant.TENANT_ID, user.getTenantId())
+				.set(TokenConstant.USER_ID, Func.toStr(user.getId()))
+				.set(TokenConstant.DEPT_ID, user.getDeptId())
+				.set(TokenConstant.POST_ID, user.getPostId())
+				.set(TokenConstant.ROLE_ID, user.getRoleId())
+				.set(TokenConstant.OAUTH_ID, userInfo.getOauthId())
 				.set(TokenConstant.ACCOUNT, user.getAccount())
 				.set(TokenConstant.USER_NAME, user.getAccount())
 				.set(TokenConstant.NICK_NAME, user.getRealName())

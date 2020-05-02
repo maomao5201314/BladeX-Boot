@@ -18,6 +18,11 @@ spring:
     username: root
     password: root
 
+#第三方登陆
+social:
+  enabled: true
+  domain: http://127.0.0.1:1888
+
 #blade配置
 blade:
   #分布式锁配置

@@ -14,48 +14,23 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.entity;
+package org.springblade.modules.system.service.impl;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
-import java.io.Serializable;
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.AllArgsConstructor;
+import org.springblade.modules.system.entity.UserOauth;
+import org.springblade.modules.system.mapper.UserOauthMapper;
+import org.springblade.modules.system.service.IUserOauthService;
+import org.springframework.stereotype.Service;
 
 /**
- * 用户信息
+ * 服务实现类
  *
  * @author Chill
  */
-@Data
-@ApiModel(description = "用户信息")
-public class UserInfo implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 用户基础信息
-	 */
-	@ApiModelProperty(value = "用户")
-	private User user;
-
-	/**
-	 * 权限标识集合
-	 */
-	@ApiModelProperty(value = "权限集合")
-	private List<String> permissions;
-
-	/**
-	 * 角色集合
-	 */
-	@ApiModelProperty(value = "角色集合")
-	private List<String> roles;
-
-	/**
-	 * 第三方授权id
-	 */
-	@ApiModelProperty(value = "第三方授权id")
-	private String oauthId;
+@Service
+@AllArgsConstructor
+public class UserOauthServiceImpl extends ServiceImpl<UserOauthMapper, UserOauth> implements IUserOauthService {
 
 }

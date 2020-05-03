@@ -70,7 +70,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (Func.isNotEmpty(tenant)) {
 			Integer accountNumber = tenant.getAccountNumber();
 			Integer tenantCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId));
-			if (accountNumber != null && accountNumber > 0 && accountNumber < tenantCount) {
+			if (accountNumber != null && accountNumber > 0 && accountNumber <= tenantCount) {
 				throw new ServiceException("当前租户已到最大账号额度!");
 			}
 		}
@@ -263,21 +263,16 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (tenant == null || tenant.getId() == null) {
 			throw new ApiException("租户信息错误!");
 		}
-		int userCnt = this.count(Wrappers.<User>query().lambda().eq(User::getTenantId, Func.toStr(user.getTenantId(), BladeConstant.ADMIN_TENANT_ID)).eq(User::getAccount, user.getAccount()));
-		if (userCnt > 0) {
-			throw new ApiException("当前系统用户名已存在!");
-		}
 		UserOauth userOauth = userOauthService.getById(oauthId);
 		if (userOauth == null || userOauth.getId() == null) {
 			throw new ApiException("第三方登陆信息错误!");
 		}
 		user.setRealName(user.getName());
 		user.setAvatar(userOauth.getAvatar());
-		user.setPassword(DigestUtil.encrypt(user.getPassword()));
 		user.setRoleId(StringPool.MINUS_ONE);
 		user.setDeptId(StringPool.MINUS_ONE);
 		user.setPostId(StringPool.MINUS_ONE);
-		boolean userTemp = this.save(user);
+		boolean userTemp = this.submit(user);
 		userOauth.setUserId(user.getId());
 		userOauth.setTenantId(user.getTenantId());
 		boolean oauthTemp = userOauthService.updateById(userOauth);

@@ -1,11 +1,10 @@
 -- ----------------------------
--- 增加第三方登陆配置
+-- 增加第三方认证配置
 -- ----------------------------
 UPDATE blade_client set authorized_grant_types = 'refresh_token,password,authorization_code,captcha,social';
 
-
 -- ----------------------------
--- 创建用户第三方登陆表
+-- 创建用户第三方认证表
 -- ----------------------------
 CREATE TABLE `blade_user_oauth`  (
  `id` bigint(64) NOT NULL COMMENT '主键',
@@ -23,5 +22,3 @@ CREATE TABLE `blade_user_oauth`  (
  `source` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '来源',
  PRIMARY KEY (`id`) USING BTREE
 ) COMMENT = '用户第三方认证表' ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
-
-SET FOREIGN_KEY_CHECKS = 1;

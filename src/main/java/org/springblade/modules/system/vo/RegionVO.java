@@ -53,6 +53,11 @@ public class RegionVO extends Region implements INode<RegionVO> {
 	private Long parentId;
 
 	/**
+	 * 父节点名称
+	 */
+	private String parentName;
+
+	/**
 	 * 是否有子孙节点
 	 */
 	@JsonInclude(JsonInclude.Include.NON_EMPTY)

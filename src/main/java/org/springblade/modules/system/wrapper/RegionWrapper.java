@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.system.wrapper;
 
+import org.springblade.common.cache.RegionCache;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.core.tool.utils.BeanUtil;
@@ -38,7 +39,10 @@ public class RegionWrapper extends BaseEntityWrapper<Region, RegionVO> {
 
 	@Override
 	public RegionVO entityVO(Region region) {
-		return Objects.requireNonNull(BeanUtil.copy(region, RegionVO.class));
+		RegionVO regionVO = Objects.requireNonNull(BeanUtil.copy(region, RegionVO.class));
+		Region parentRegion = RegionCache.getByCode(region.getParentCode());
+		regionVO.setParentName(parentRegion.getName());
+		return regionVO;
 	}
 
 	public List<RegionVO> listNodeLazyVO(List<RegionVO> list) {

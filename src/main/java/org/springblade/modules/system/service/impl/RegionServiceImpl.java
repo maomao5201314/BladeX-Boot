@@ -28,6 +28,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+import static org.springblade.common.cache.RegionCache.*;
+
 /**
  * 行政区划表 服务实现类
  *
@@ -42,12 +44,32 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
 		if (cnt > 0) {
 			return this.updateById(region);
 		}
+		// 增加省、市、区、镇、村的冗余字段
+		Integer level = region.getLevel();
+		String code = region.getCode();
+		String name = region.getName();
+		if (level == PROVINCE_LEVEL) {
+			region.setProvinceCode(code);
+			region.setProvinceName(name);
+		} else if (level == CITY_LEVEL) {
+			region.setCityCode(code);
+			region.setCityName(name);
+		} else if (level == DISTRICT_LEVEL) {
+			region.setDistrictCode(code);
+			region.setDistrictName(name);
+		} else if (level == TOWN_LEVEL) {
+			region.setTownCode(code);
+			region.setTownName(name);
+		} else if (level == VILLAGE_LEVEL) {
+			region.setVillageCode(code);
+			region.setVillageName(name);
+		}
 		return this.save(region);
 	}
 
 	@Override
 	public boolean removeRegion(String id) {
-		Integer cnt = baseMapper.selectCount(Wrappers.<Region>query().lambda().like(Region::getParentCode, id));
+		Integer cnt = baseMapper.selectCount(Wrappers.<Region>query().lambda().eq(Region::getParentCode, id));
 		if (cnt > 0) {
 			throw new ServiceException("请先删除子节点!");
 		}

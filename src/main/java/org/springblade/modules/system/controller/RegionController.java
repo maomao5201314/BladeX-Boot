@@ -55,9 +55,9 @@ public class RegionController extends BladeController {
 	@GetMapping("/detail")
 	@ApiOperationSupport(order = 1)
 	@ApiOperation(value = "详情", notes = "传入region")
-	public R<Region> detail(Region region) {
+	public R<RegionVO> detail(Region region) {
 		Region detail = regionService.getOne(Condition.getQueryWrapper(region));
-		return R.data(detail);
+		return R.data(RegionWrapper.build().entityVO(detail));
 	}
 
 	/**

@@ -62,7 +62,7 @@ public class $!{table.controllerName} extends $!{superControllerClass} {
 public class $!{table.controllerName} {
 #end
 
-	private $!{table.serviceName} $!{table.entityPath}Service;
+	private final $!{table.serviceName} $!{table.entityPath}Service;
 
 #if($!{cfg.hasWrapper})
 	/**

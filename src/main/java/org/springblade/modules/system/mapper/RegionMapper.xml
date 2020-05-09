@@ -97,4 +97,8 @@
         </where>
     </select>
 
+    <select id="exportRegion" resultType="org.springblade.modules.system.excel.RegionExcel">
+        SELECT * FROM blade_region ${ew.customSqlSegment}
+    </select>
+
 </mapper>

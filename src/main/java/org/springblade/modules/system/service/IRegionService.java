@@ -16,8 +16,10 @@
  */
 package org.springblade.modules.system.service;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springblade.modules.system.entity.Region;
+import org.springblade.modules.system.excel.RegionExcel;
 import org.springblade.modules.system.vo.RegionVO;
 
 import java.util.List;
@@ -63,5 +65,22 @@ public interface IRegionService extends IService<Region> {
 	 * @return
 	 */
 	List<RegionVO> lazyTree(String parentCode, Map<String, Object> param);
+
+	/**
+	 * 导入区划数据
+	 *
+	 * @param data
+	 * @param isCovered
+	 * @return
+	 */
+	void importRegion(List<RegionExcel> data, Boolean isCovered);
+
+	/**
+	 * 导出区划数据
+	 *
+	 * @param queryWrapper
+	 * @return
+	 */
+	List<RegionExcel> exportRegion(Wrapper<Region> queryWrapper);
 
 }

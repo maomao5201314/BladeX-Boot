@@ -16,7 +16,6 @@
  */
 package org.springblade.modules.system.excel;
 
-import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import com.alibaba.excel.annotation.write.style.ContentRowHeight;
@@ -24,66 +23,68 @@ import com.alibaba.excel.annotation.write.style.HeadRowHeight;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * UserExcel
+ * RegionExcel
  *
  * @author Chill
  */
 @Data
-@ColumnWidth(25)
+@ColumnWidth(16)
 @HeadRowHeight(20)
 @ContentRowHeight(18)
-public class UserExcel implements Serializable {
+public class RegionExcel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@ColumnWidth(15)
-	@ExcelProperty("租户编号")
-	private String tenantId;
+	@ExcelProperty("区划编号")
+	private String code;
 
-	@ColumnWidth(15)
-	@ExcelProperty("账户")
-	private String account;
+	@ExcelProperty("父区划编号")
+	private String parentCode;
 
-	@ColumnWidth(10)
-	@ExcelProperty("昵称")
+	@ExcelProperty("祖区划编号")
+	private String ancestors;
+
+	@ExcelProperty("区划名称")
 	private String name;
 
-	@ColumnWidth(10)
-	@ExcelProperty("姓名")
-	private String realName;
+	@ExcelProperty("省级区划编号")
+	private String provinceCode;
 
-	@ExcelProperty("邮箱")
-	private String email;
+	@ExcelProperty("省级名称")
+	private String provinceName;
 
-	@ColumnWidth(15)
-	@ExcelProperty("手机")
-	private String phone;
+	@ExcelProperty("市级区划编号")
+	private String cityCode;
 
-	@ExcelIgnore
-	@ExcelProperty("角色ID")
-	private String roleId;
+	@ExcelProperty("市级名称")
+	private String cityName;
 
-	@ExcelIgnore
-	@ExcelProperty("部门ID")
-	private String deptId;
+	@ExcelProperty("区级区划编号")
+	private String districtCode;
 
-	@ExcelIgnore
-	@ExcelProperty("岗位ID")
-	private String postId;
+	@ExcelProperty("区级名称")
+	private String districtName;
 
-	@ExcelProperty("角色名称")
-	private String roleName;
+	@ExcelProperty("镇级区划编号")
+	private String townCode;
 
-	@ExcelProperty("部门名称")
-	private String deptName;
+	@ExcelProperty("镇级名称")
+	private String townName;
 
-	@ExcelProperty("岗位名称")
-	private String postName;
+	@ExcelProperty("村级区划编号")
+	private String villageCode;
 
-	@ColumnWidth(20)
-	@ExcelProperty("生日")
-	private Date birthday;
+	@ExcelProperty("村级名称")
+	private String villageName;
+
+	@ExcelProperty("层级")
+	private Integer level;
+
+	@ExcelProperty("排序")
+	private Integer sort;
+
+	@ExcelProperty("备注")
+	private String remark;
 
 }

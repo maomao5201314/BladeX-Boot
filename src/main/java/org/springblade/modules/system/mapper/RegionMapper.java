@@ -16,8 +16,11 @@
  */
 package org.springblade.modules.system.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springblade.modules.system.entity.Region;
+import org.springblade.modules.system.excel.RegionExcel;
 import org.springblade.modules.system.vo.RegionVO;
 
 import java.util.List;
@@ -32,6 +35,7 @@ public interface RegionMapper extends BaseMapper<Region> {
 
 	/**
 	 * 懒加载列表
+	 *
 	 * @param parentCode
 	 * @param param
 	 * @return
@@ -40,10 +44,19 @@ public interface RegionMapper extends BaseMapper<Region> {
 
 	/**
 	 * 懒加载列表
+	 *
 	 * @param parentCode
 	 * @param param
 	 * @return
 	 */
 	List<RegionVO> lazyTree(String parentCode, Map<String, Object> param);
+
+	/**
+	 * 导出区划数据
+	 *
+	 * @param queryWrapper
+	 * @return
+	 */
+	List<RegionExcel> exportRegion(@Param("ew") Wrapper<Region> queryWrapper);
 
 }

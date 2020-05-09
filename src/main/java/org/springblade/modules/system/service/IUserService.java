@@ -144,12 +144,13 @@ public interface IUserService extends BaseService<User> {
 	 * 导入用户数据
 	 *
 	 * @param data
+	 * @param isCovered
 	 * @return
 	 */
 	void importUser(List<UserExcel> data, Boolean isCovered);
 
 	/**
-	 * 获取导出用户数据
+	 * 导出用户数据
 	 *
 	 * @param queryWrapper
 	 * @return

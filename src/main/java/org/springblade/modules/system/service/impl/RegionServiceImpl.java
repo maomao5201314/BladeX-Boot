@@ -16,15 +16,21 @@
  */
 package org.springblade.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springblade.core.log.exception.ServiceException;
+import org.springblade.core.tool.utils.BeanUtil;
+import org.springblade.core.tool.utils.Func;
+import org.springblade.core.tool.utils.StringPool;
 import org.springblade.modules.system.entity.Region;
+import org.springblade.modules.system.excel.RegionExcel;
 import org.springblade.modules.system.mapper.RegionMapper;
 import org.springblade.modules.system.service.IRegionService;
 import org.springblade.modules.system.vo.RegionVO;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +50,13 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
 		if (cnt > 0) {
 			return this.updateById(region);
 		}
-		// 增加省、市、区、镇、村的冗余字段
+		// 设置祖区划编号
+		Region parent = getByCode(region.getParentCode());
+		if (Func.isNotEmpty(parent) || Func.isNotEmpty(parent.getCode())) {
+			String ancestors = parent.getAncestors() + StringPool.COMMA + parent.getCode();
+			region.setAncestors(ancestors);
+		}
+		// 设置省、市、区、镇、村
 		Integer level = region.getLevel();
 		String code = region.getCode();
 		String name = region.getName();
@@ -84,5 +96,24 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
 	@Override
 	public List<RegionVO> lazyTree(String parentCode, Map<String, Object> param) {
 		return baseMapper.lazyTree(parentCode, param);
+	}
+
+	@Override
+	public void importRegion(List<RegionExcel> data, Boolean isCovered) {
+		List<Region> list = new ArrayList<>();
+		data.forEach(regionExcel -> {
+			Region region = BeanUtil.copy(regionExcel, Region.class);
+			list.add(region);
+		});
+		if (isCovered) {
+			this.saveOrUpdateBatch(list);
+		} else {
+			this.saveBatch(list);
+		}
+	}
+
+	@Override
+	public List<RegionExcel> exportRegion(Wrapper<Region> queryWrapper) {
+		return baseMapper.exportRegion(queryWrapper);
 	}
 }

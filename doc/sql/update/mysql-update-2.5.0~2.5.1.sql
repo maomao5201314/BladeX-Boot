@@ -4,6 +4,12 @@
 UPDATE blade_client set authorized_grant_types = 'refresh_token,password,authorization_code,captcha,social';
 
 -- ----------------------------
+-- 增加租户授权码字段
+-- ----------------------------
+ALTER TABLE `blade_tenant`
+    ADD COLUMN `license_key` varchar(1000) NULL COMMENT '授权码' AFTER `expire_time`;
+
+-- ----------------------------
 -- 创建用户第三方认证表
 -- ----------------------------
 CREATE TABLE `blade_user_oauth`  (

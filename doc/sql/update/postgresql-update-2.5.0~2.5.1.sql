@@ -97,7 +97,7 @@ VALUES ('1164733399668962201', '0', 'base', '基础配置', 'menu', '/base', 'ic
 INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
 VALUES ('1164733399668962202', '1164733399668962201', 'region', '行政区划', 'menu', '/base/region', 'iconfont icon-iframe', 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
-VALUES ('1164733399668962203', '1164733399668962202', 'region_add', '新增', 'add', '', '', 1, 2, 1, 1, NULL, 0);
+VALUES ('1164733399668962203', '1164733399668962202', 'region_add', '新增下级', 'add', '', '', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
 VALUES ('1164733399668962204', '1164733399668962202', 'region_delete', '删除', 'delete', '/api/blade-system/region/remove', '', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")

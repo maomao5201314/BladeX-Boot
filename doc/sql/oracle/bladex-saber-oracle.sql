@@ -681,7 +681,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1164733389668962254', '1164733389668962251', '
 INSERT INTO "BLADE_MENU" VALUES ('1164733389668962255', '1164733389668962251', 'post_view', '查看', 'view', '/system/post/view', 'file-text', '4', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399668962201', '0', 'base', '基础配置', 'menu', '/base', 'iconfont iconicon_affiliations_li', '97', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399668962202', '1164733399668962201', 'region', '行政区划', 'menu', '/base/region', 'iconfont icon-iframe', '1', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399668962203', '1164733399668962202', 'region_add', '新增', 'add', NULL, NULL, '1', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399668962203', '1164733399668962202', 'region_add', '新增下级', 'add', NULL, NULL, '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399668962204', '1164733399668962202', 'region_delete', '删除', 'delete', '/api/blade-system/region/remove', NULL, '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399668962205', '1164733399668962202', 'region_import', '导入', 'import', NULL, NULL, '3', '2', '3', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399668962206', '1164733399668962202', 'region_export', '导出', 'export', NULL, NULL, '4', '2', '2', '1', NULL, '0');

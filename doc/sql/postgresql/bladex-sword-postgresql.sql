@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 09/05/2020 13:59:17
+ Date: 12/05/2020 23:18:33
 */
 
 
@@ -640,12 +640,13 @@ INSERT INTO "blade_menu" VALUES (1123598815738675206, 1123598815738675203, 'dict
 INSERT INTO "blade_menu" VALUES (1123598815738675209, 1123598815738675203, 'param', '参数管理', 'menu', '/system/param', NULL, 8, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963251, 1123598815738675203, 'dictbiz', '业务字典', 'menu', '/system/dictbiz', '', 5, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733389668962251, 1123598815738675203, 'post', '岗位管理', 'menu', '/system/post', '', 3, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399668962203, 1164733399668962202, 'region_add', '新增', 'add', '/base/region/add', 'plus', 1, 2, 1, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399668962204, 1164733399668962202, 'region_edit', '修改', 'edit', '/base/region/edit', 'form', 2, 2, 2, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399668962205, 1164733399668962202, 'region_delete', '删除', 'delete', '/api/blade-system/region/remove', 'delete', 3, 2, 3, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399668962206, 1164733399668962202, 'region_view', '查看', 'view', '/base/region/view', 'file-text', 4, 2, 2, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399668962202, 1164733399668962201, 'region', '行政区划', 'menu', '/base/region', '', 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399668962201, 0, 'base', '基础配置', 'menu', '/base', 'sliders', 97, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399668962202, 1164733399668962201, 'region', '行政区划', 'menu', '/base/region', '', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399668962203, 1164733399668962202, 'region_add', '新增下级', 'add', '', '', 1, 2, 1, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399668962204, 1164733399668962202, 'region_delete', '删除', 'delete', '/api/blade-system/region/remove', '', 2, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399668962205, 1164733399668962202, 'region_import', '导入', 'import', '', '', 3, 2, 3, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399668962206, 1164733399668962202, 'region_export', '导出', 'export', '', '', 4, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399668962207, 1164733399668962202, 'region_debug', '调试', 'debug', '', '', 5, 2, 2, 1, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -4457,6 +4458,7 @@ INSERT INTO "blade_role_menu" VALUES (1161272893875226003, 1164733399668962203, 
 INSERT INTO "blade_role_menu" VALUES (1161272893875226004, 1164733399668962204, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893875226005, 1164733399668962205, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893875226006, 1164733399668962206, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875226007, 1164733399668962207, 1123598816738675201);
 COMMIT;
 
 -- ----------------------------

@@ -96,13 +96,15 @@ VALUES ('1164733399668962201', '0', 'base', '基础配置', 'menu', '/base', 'ic
 INSERT INTO "BLADE_MENU"("ID", "PARENT_ID", "CODE", "NAME", "ALIAS", "PATH", "SOURCE", "SORT", "CATEGORY", "ACTION", "IS_OPEN", "REMARK", "IS_DELETED")
 VALUES ('1164733399668962202', '1164733399668962201', 'region', '行政区划', 'menu', '/base/region', 'iconfont icon-iframe', 1, 1, 0, 1, NULL, 0);
 INSERT INTO "BLADE_MENU"("ID", "PARENT_ID", "CODE", "NAME", "ALIAS", "PATH", "SOURCE", "SORT", "CATEGORY", "ACTION", "IS_OPEN", "REMARK", "IS_DELETED")
-VALUES ('1164733399668962203', '1164733399668962202', 'region_add', '新增', 'add', '/base/region/add', 'plus', 1, 2, 1, 1, NULL, 0);
+VALUES ('1164733399668962203', '1164733399668962202', 'region_add', '新增', 'add', '', '', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "BLADE_MENU"("ID", "PARENT_ID", "CODE", "NAME", "ALIAS", "PATH", "SOURCE", "SORT", "CATEGORY", "ACTION", "IS_OPEN", "REMARK", "IS_DELETED")
-VALUES ('1164733399668962204', '1164733399668962202', 'region_edit', '修改', 'edit', '/base/region/edit', 'form', 2, 2, 2, 1, NULL, 0);
+VALUES ('1164733399668962204', '1164733399668962202', 'region_delete', '删除', 'delete', '/api/blade-system/region/remove', '', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "BLADE_MENU"("ID", "PARENT_ID", "CODE", "NAME", "ALIAS", "PATH", "SOURCE", "SORT", "CATEGORY", "ACTION", "IS_OPEN", "REMARK", "IS_DELETED")
-VALUES ('1164733399668962205', '1164733399668962202', 'region_delete', '删除', 'delete', '/api/blade-system/region/remove', 'delete', 3, 2, 3, 1, NULL, 0);
+VALUES ('1164733399668962205', '1164733399668962202', 'region_import', '导入', 'import', '', '', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "BLADE_MENU"("ID", "PARENT_ID", "CODE", "NAME", "ALIAS", "PATH", "SOURCE", "SORT", "CATEGORY", "ACTION", "IS_OPEN", "REMARK", "IS_DELETED")
-VALUES ('1164733399668962206', '1164733399668962202', 'region_view', '查看', 'view', '/base/region/view', 'file-text', 4, 2, 2, 1, NULL, 0);
+VALUES ('1164733399668962206', '1164733399668962202', 'region_export', '导出', 'export', '', '', 4, 2, 2, 1, NULL, 0);
+INSERT INTO "BLADE_MENU"("ID", "PARENT_ID", "CODE", "NAME", "ALIAS", "PATH", "SOURCE", "SORT", "CATEGORY", "ACTION", "IS_OPEN", "REMARK", "IS_DELETED")
+VALUES ('1164733399668962207', '1164733399668962202', 'region_debug', '调试', 'debug', '', '', 5, 2, 2, 1, NULL, 0);
 
 -- ----------------------------
 -- 增加行政区划菜单权限数据
@@ -119,6 +121,8 @@ INSERT INTO "BLADE_ROLE_MENU"("ID","MENU_ID","ROLE_ID")
 VALUES ('1161272893875226005', '1164733399668962205', '1123598816738675201');
 INSERT INTO "BLADE_ROLE_MENU"("ID","MENU_ID","ROLE_ID")
 VALUES ('1161272893875226006', '1164733399668962206', '1123598816738675201');
+INSERT INTO "BLADE_ROLE_MENU"("ID","MENU_ID","ROLE_ID")
+VALUES ('1161272893875226007', '1164733399668962207', '1123598816738675201');
 
 -- ----------------------------
 -- 增加行政区划字典数据

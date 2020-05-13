@@ -199,10 +199,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (!newPassword.equals(newPassword1)) {
 			throw new ServiceException("请输入正确的确认密码!");
 		}
-		if (!user.getPassword().equals(DigestUtil.encrypt(oldPassword))) {
+		if (!user.getPassword().equals(DigestUtil.hex(oldPassword))) {
 			throw new ServiceException("原密码不正确!");
 		}
-		return this.update(Wrappers.<User>update().lambda().set(User::getPassword, DigestUtil.encrypt(newPassword)).eq(User::getId, userId));
+		return this.update(Wrappers.<User>update().lambda().set(User::getPassword, DigestUtil.hex(newPassword)).eq(User::getId, userId));
 	}
 
 	@Override

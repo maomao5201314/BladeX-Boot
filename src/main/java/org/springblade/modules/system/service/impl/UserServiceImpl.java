@@ -240,7 +240,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			}
 			// 获取默认密码配置
 			String initPassword = ParamCache.getValue(DEFAULT_PARAM_PASSWORD);
-			user.setPassword(DigestUtil.encrypt(initPassword));
+			user.setPassword(initPassword);
 			this.submit(user);
 		});
 	}

@@ -5,4 +5,4 @@ ${AnsiColor.BLUE}                   | ___ \| | / _` | / _` | / _ \   > <
 ${AnsiColor.BLUE}                   | |_/ /| || (_| || (_| ||  __/ /  .  \
 ${AnsiColor.BLUE}                   \____/ |_| \__,_| \__,_| \___|/__/ \__\
 
-${AnsiColor.BLUE}:: BladeX ${info.version} :: ${spring.application.name}:${AnsiColor.RED}${blade.env}${AnsiColor.BLUE} :: Running SpringBoot ${spring-boot.version} :: ${AnsiColor.BRIGHT_BLACK}
+${AnsiColor.BLUE}:: BladeX ${blade.service.version} :: ${spring.application.name}:${AnsiColor.RED}${blade.env}${AnsiColor.BLUE} :: Running SpringBoot ${spring-boot.version} :: ${AnsiColor.BRIGHT_BLACK}

@@ -25,7 +25,10 @@ import lombok.AllArgsConstructor;
 import org.springblade.common.cache.CacheNames;
 import org.springblade.core.cache.constant.CacheConstant;
 import org.springblade.core.cache.utils.CacheUtil;
+import org.springblade.core.jwt.JwtUtil;
+import org.springblade.core.jwt.props.JwtProperties;
 import org.springblade.core.launch.constant.AppConstant;
+import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.log.annotation.ApiLog;
 import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.secure.BladeUser;
@@ -57,6 +60,7 @@ import java.util.UUID;
 public class BladeTokenEndPoint {
 
 	private final BladeRedis bladeRedis;
+	private final JwtProperties jwtProperties;
 
 	@ApiLog("登录用户验证")
 	@PostMapping("/oauth/token")
@@ -94,7 +98,11 @@ public class BladeTokenEndPoint {
 	@ApiOperation(value = "退出登录")
 	public Kv logout() {
 		BladeUser user = AuthUtil.getUser();
-		return Kv.create().set("success", "true").set("account", user.getAccount()).set("msg", "success");
+		if (user != null && jwtProperties.getState()) {
+			String token = JwtUtil.getToken(WebUtil.getRequest().getHeader(TokenConstant.HEADER));
+			JwtUtil.removeAccessToken(user.getTenantId(), String.valueOf(user.getUserId()), token);
+		}
+		return Kv.create().set("success", "true").set("msg", "success");
 	}
 
 	@GetMapping("/oauth/captcha")

@@ -126,6 +126,9 @@ social:
 
 #blade配置
 blade:
+  #token配置
+  token:
+    state: false
   #xss配置
   xss:
     enabled: true

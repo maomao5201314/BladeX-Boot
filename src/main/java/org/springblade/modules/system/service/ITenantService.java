@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springblade.core.mp.base.BaseService;
 import org.springblade.modules.system.entity.Tenant;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,5 +62,15 @@ public interface ITenantService extends BaseService<Tenant> {
 	 * @return
 	 */
 	boolean removeTenant(List<Long> ids);
+
+	/**
+	 * 配置租户授权
+	 *
+	 * @param accountNumber
+	 * @param expireTime
+	 * @param ids
+	 * @return
+	 */
+	boolean setting(Integer accountNumber, Date expireTime, String ids);
 
 }

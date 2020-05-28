@@ -146,6 +146,7 @@ blade:
   #多租户配置
   tenant:
     enhance: true
+    license: true
     column: tenant_id
     exclude-tables:
       - blade_user

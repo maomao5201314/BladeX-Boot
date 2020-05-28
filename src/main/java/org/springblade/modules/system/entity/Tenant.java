@@ -88,6 +88,11 @@ public class Tenant extends BaseEntity {
 	@JsonFormat(pattern = DateUtil.PATTERN_DATETIME)
 	@ApiModelProperty(value = "过期时间")
 	private Date expireTime;
+	/**
+	 * 授权码
+	 */
+	@ApiModelProperty(value = "授权码")
+	private String licenseKey;
 
 
 }

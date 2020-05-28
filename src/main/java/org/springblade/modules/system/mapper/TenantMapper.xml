@@ -20,6 +20,7 @@
         <result column="address" property="address"/>
         <result column="account_number" property="accountNumber"/>
         <result column="expire_time" property="expireTime"/>
+        <result column="license_key" property="licenseKey"/>
     </resultMap>
 
 

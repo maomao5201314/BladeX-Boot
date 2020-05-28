@@ -16,15 +16,16 @@
  */
 package org.springblade.modules.auth.utils;
 
+import org.springblade.common.constant.TenantConstant;
 import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.TokenInfo;
 import org.springblade.core.secure.utils.SecureUtil;
+import org.springblade.core.tenant.BladeTenantProperties;
 import org.springblade.core.tool.constant.BladeConstant;
+import org.springblade.core.tool.jackson.JsonUtil;
 import org.springblade.core.tool.support.Kv;
-import org.springblade.core.tool.utils.DateUtil;
-import org.springblade.core.tool.utils.Func;
-import org.springblade.core.tool.utils.StringUtil;
+import org.springblade.core.tool.utils.*;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
@@ -55,6 +56,20 @@ public class TokenUtil {
 	public final static String HEADER_KEY = "Authorization";
 	public final static String HEADER_PREFIX = "Basic ";
 	public final static String DEFAULT_AVATAR = "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png";
+
+	private static BladeTenantProperties tenantProperties;
+
+	/**
+	 * 获取租户配置
+	 *
+	 * @return tenantProperties
+	 */
+	private static BladeTenantProperties getTenantProperties() {
+		if (tenantProperties == null) {
+			tenantProperties = SpringUtil.getBean(BladeTenantProperties.class);
+		}
+		return tenantProperties;
+	}
 
 	/**
 	 * 创建认证token
@@ -132,6 +147,11 @@ public class TokenUtil {
 			return false;
 		}
 		Date expireTime = tenant.getExpireTime();
+		if (getTenantProperties().getLicense()) {
+			String licenseKey = tenant.getLicenseKey();
+			String decrypt = DesUtil.decryptFormHex(licenseKey, TenantConstant.DES_KEY);
+			expireTime = JsonUtil.parse(decrypt, Tenant.class).getExpireTime();
+		}
 		if (expireTime != null && expireTime.before(DateUtil.now())) {
 			throw new ServiceException(TokenUtil.USER_HAS_NO_TENANT_PERMISSION);
 		}

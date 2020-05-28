@@ -26,15 +26,21 @@ import org.springblade.common.cache.ParamCache;
 import org.springblade.common.cache.SysCache;
 import org.springblade.common.cache.UserCache;
 import org.springblade.common.constant.CommonConstant;
+import org.springblade.common.constant.TenantConstant;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.secure.utils.AuthUtil;
+import org.springblade.core.tenant.BladeTenantProperties;
 import org.springblade.core.tool.constant.BladeConstant;
+import org.springblade.core.tool.jackson.JsonUtil;
 import org.springblade.core.tool.utils.*;
 import org.springblade.modules.system.entity.*;
 import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.mapper.UserMapper;
-import org.springblade.modules.system.service.*;
+import org.springblade.modules.system.service.IRoleService;
+import org.springblade.modules.system.service.IUserDeptService;
+import org.springblade.modules.system.service.IUserOauthService;
+import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,6 +64,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	private final IUserDeptService userDeptService;
 	private final IUserOauthService userOauthService;
 	private final IRoleService roleService;
+	private final BladeTenantProperties tenantProperties;
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -69,6 +76,11 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		Tenant tenant = SysCache.getTenant(tenantId);
 		if (Func.isNotEmpty(tenant)) {
 			Integer accountNumber = tenant.getAccountNumber();
+			if (tenantProperties.getLicense()) {
+				String licenseKey = tenant.getLicenseKey();
+				String decrypt = DesUtil.decryptFormHex(licenseKey, TenantConstant.DES_KEY);
+				accountNumber = JsonUtil.parse(decrypt, Tenant.class).getAccountNumber();
+			}
 			Integer tenantCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId));
 			if (accountNumber != null && accountNumber > 0 && accountNumber <= tenantCount) {
 				throw new ServiceException("当前租户已到最大账号额度!");

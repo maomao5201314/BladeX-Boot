@@ -147,14 +147,7 @@ public class TenantController extends BladeController {
 	@ApiOperation(value = "授权配置", notes = "传入ids,accountNumber,expireTime")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	public R setting(@ApiParam(value = "主键集合", required = true) @RequestParam String ids, @ApiParam(value = "账号额度") Integer accountNumber, @ApiParam(value = "过期时间") Date expireTime) {
-		CacheUtil.clear(SYS_CACHE);
-		boolean temp = tenantService.update(
-			Wrappers.<Tenant>update().lambda()
-				.set(Tenant::getAccountNumber, accountNumber)
-				.set(Tenant::getExpireTime, expireTime)
-				.in(Tenant::getId, Func.toLongList(ids))
-		);
-		return R.status(temp);
+		return R.status(tenantService.setting(accountNumber, expireTime, ids));
 	}
 
 	/**

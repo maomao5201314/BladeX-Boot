@@ -51,7 +51,10 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 		if (Func.isNotEmpty(paramTenantId) && AuthUtil.isAdministrator()) {
 			tenantId = paramTenantId;
 		}
-		if (Func.isEmpty(param.get("parentId"))) {
+		if (Func.isEmpty(param.get("parentId")) && param.size() == 1) {
+			parentId = 0L;
+		}
+		if (Func.isEmpty(param.get("parentId")) && param.size() > 1) {
 			parentId = null;
 		}
 		return baseMapper.lazyList(tenantId, parentId, param);

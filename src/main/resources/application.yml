@@ -148,6 +148,13 @@ blade:
   secure:
     skip-url:
       - /blade-test/**
+    auth:
+      - method: ALL
+        pattern: /blade-chat/weixin/**
+        expression: "hasAuth()"
+      - method: POST
+        pattern: /blade-desk/dashboard/submit
+        expression: "hasAnyRole('administrator', 'admin', 'user')"
     client:
       - client-id: sword
         path-patterns:

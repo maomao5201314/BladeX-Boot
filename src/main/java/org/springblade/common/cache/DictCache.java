@@ -39,6 +39,8 @@ public class DictCache {
 	private static final String DICT_VALUE = "dict:value:";
 	private static final String DICT_LIST = "dict:list:";
 
+	private static final Boolean TENANT_MODE = Boolean.FALSE;
+
 	private static final IDictService dictService;
 
 	static {
@@ -52,7 +54,7 @@ public class DictCache {
 	 * @return Dict
 	 */
 	public static Dict getById(Long id) {
-		return CacheUtil.get(DICT_CACHE, DICT_ID, id, () -> dictService.getById(id));
+		return CacheUtil.get(DICT_CACHE, DICT_ID, id, () -> dictService.getById(id), TENANT_MODE);
 	}
 
 	/**
@@ -69,7 +71,7 @@ public class DictCache {
 				dict -> dict.getDictValue().equalsIgnoreCase(dictValue)
 			).map(Dict::getDictKey).findFirst();
 			return key.orElse(StringPool.EMPTY);
-		});
+		}, TENANT_MODE);
 	}
 
 	/**
@@ -80,7 +82,7 @@ public class DictCache {
 	 * @return String
 	 */
 	public static String getValue(String code, Integer dictKey) {
-		return CacheUtil.get(DICT_CACHE, DICT_VALUE + code + StringPool.COLON, String.valueOf(dictKey), () -> dictService.getValue(code, String.valueOf(dictKey)));
+		return CacheUtil.get(DICT_CACHE, DICT_VALUE + code + StringPool.COLON, String.valueOf(dictKey), () -> dictService.getValue(code, String.valueOf(dictKey)), TENANT_MODE);
 	}
 
 	/**
@@ -91,7 +93,7 @@ public class DictCache {
 	 * @return String
 	 */
 	public static String getValue(String code, String dictKey) {
-		return CacheUtil.get(DICT_CACHE, DICT_VALUE + code + StringPool.COLON, dictKey, () -> dictService.getValue(code, dictKey));
+		return CacheUtil.get(DICT_CACHE, DICT_VALUE + code + StringPool.COLON, dictKey, () -> dictService.getValue(code, dictKey), TENANT_MODE);
 	}
 
 	/**
@@ -101,7 +103,7 @@ public class DictCache {
 	 * @return List<Dict>
 	 */
 	public static List<Dict> getList(String code) {
-		return CacheUtil.get(DICT_CACHE, DICT_LIST, code, () -> dictService.getList(code));
+		return CacheUtil.get(DICT_CACHE, DICT_LIST, code, () -> dictService.getList(code), TENANT_MODE);
 	}
 
 }

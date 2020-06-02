@@ -176,8 +176,8 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 				Wrappers.<Tenant>update().lambda()
 					.set(Tenant::getAccountNumber, accountNumber)
 					.set(Tenant::getExpireTime, expireTime)
-					.eq(Tenant::getId, id)
 					.set(Tenant::getLicenseKey, licenseKey)
+					.eq(Tenant::getId, id)
 			);
 		});
 		return true;

@@ -23,7 +23,6 @@ import org.springblade.common.cache.ParamCache;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
-import org.springblade.core.tenant.BladeTenantProperties;
 import org.springblade.core.tenant.TenantId;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.jackson.JsonUtil;
@@ -62,7 +61,6 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 	private final IRoleMenuService roleMenuService;
 	private final IDictBizService dictBizService;
 	private final IUserService userService;
-	private final BladeTenantProperties tenantProperties;
 
 	@Override
 	public IPage<Tenant> selectTenantPage(IPage<Tenant> page, Tenant tenant) {

@@ -16,7 +16,6 @@
  */
 package org.springblade.modules.system.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.AllArgsConstructor;
@@ -171,16 +170,15 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 	public boolean setting(Integer accountNumber, Date expireTime, String ids) {
 		CacheUtil.clear(SYS_CACHE);
 		Func.toLongList(ids).forEach(id -> {
-			LambdaUpdateWrapper<Tenant> luw = Wrappers.<Tenant>update().lambda()
-				.set(Tenant::getAccountNumber, accountNumber)
-				.set(Tenant::getExpireTime, expireTime)
-				.eq(Tenant::getId, id);
-			if (tenantProperties.getLicense()) {
-				Kv kv = Kv.create().set("accountNumber", accountNumber).set("expireTime", expireTime).set("id", id);
-				String licenseKey = DesUtil.encryptToHex(JsonUtil.toJson(kv), DES_KEY);
-				luw.set(Tenant::getLicenseKey, licenseKey);
-			}
-			update(luw);
+			Kv kv = Kv.create().set("accountNumber", accountNumber).set("expireTime", expireTime).set("id", id);
+			String licenseKey = DesUtil.encryptToHex(JsonUtil.toJson(kv), DES_KEY);
+			update(
+				Wrappers.<Tenant>update().lambda()
+					.set(Tenant::getAccountNumber, accountNumber)
+					.set(Tenant::getExpireTime, expireTime)
+					.eq(Tenant::getId, id)
+					.set(Tenant::getLicenseKey, licenseKey)
+			);
 		});
 		return true;
 	}

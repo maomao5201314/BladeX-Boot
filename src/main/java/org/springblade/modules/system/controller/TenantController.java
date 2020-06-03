@@ -23,7 +23,6 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
-import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
@@ -43,8 +42,6 @@ import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
  * 控制器
@@ -122,7 +119,6 @@ public class TenantController extends BladeController {
 	@ApiOperation(value = "新增或修改", notes = "传入tenant")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	public R submit(@Valid @RequestBody Tenant tenant) {
-		CacheUtil.clear(SYS_CACHE);
 		return R.status(tenantService.submitTenant(tenant));
 	}
 
@@ -135,7 +131,6 @@ public class TenantController extends BladeController {
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-		CacheUtil.clear(SYS_CACHE);
 		return R.status(tenantService.removeTenant(Func.toLongList(ids)));
 	}
 

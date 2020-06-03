@@ -75,6 +75,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public boolean submitTenant(Tenant tenant) {
+		CacheUtil.clear(SYS_CACHE);
 		if (Func.isEmpty(tenant.getId())) {
 			List<Tenant> tenants = baseMapper.selectList(Wrappers.<Tenant>query().lambda().eq(Tenant::getIsDeleted, BladeConstant.DB_NOT_DELETED));
 			List<String> codes = tenants.stream().map(Tenant::getTenantId).collect(Collectors.toList());
@@ -154,6 +155,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public boolean removeTenant(List<Long> ids) {
+		CacheUtil.clear(SYS_CACHE);
 		List<Tenant> tenantList = this.list(Wrappers.<Tenant>query().lambda().in(Tenant::getId, ids));
 		List<String> tenantIds = tenantList.stream().map(tenant -> Func.toStr(tenant.getTenantId())).distinct().collect(Collectors.toList());
 		if (tenantIds.contains(BladeConstant.ADMIN_TENANT_ID)) {

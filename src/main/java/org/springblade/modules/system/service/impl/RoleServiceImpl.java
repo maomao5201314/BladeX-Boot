@@ -41,6 +41,7 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -78,6 +79,10 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public boolean grant(@NotEmpty List<Long> roleIds, List<Long> menuIds, List<Long> dataScopeIds, List<Long> apiScopeIds) {
+		return grantRoleMenu(roleIds, menuIds) && grantDataScope(roleIds, dataScopeIds) && grantApiScope(roleIds, apiScopeIds);
+	}
+
+	private boolean grantRoleMenu(List<Long> roleIds, List<Long> menuIds) {
 		// 删除角色配置的菜单集合
 		roleMenuService.remove(Wrappers.<RoleMenu>update().lambda().in(RoleMenu::getRoleId, roleIds));
 		// 组装配置
@@ -90,7 +95,26 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		}));
 		// 新增配置
 		roleMenuService.saveBatch(roleMenus);
+		// 递归设置下属角色菜单集合
+		recursionRoleMenu(roleIds, menuIds);
+		return true;
+	}
 
+	private void recursionRoleMenu(List<Long> roleIds, List<Long> menuIds) {
+		roleIds.forEach(roleId -> baseMapper.selectList(Wrappers.<Role>query().lambda().eq(Role::getParentId, roleId)).forEach(role -> {
+			List<RoleMenu> roleMenuList = roleMenuService.list(Wrappers.<RoleMenu>query().lambda().eq(RoleMenu::getRoleId, role.getId()));
+			// 子节点过滤出父节点删除的菜单集合
+			List<Long> collectRoleMenuIds = roleMenuList.stream().map(RoleMenu::getMenuId).filter(menuId -> !menuIds.contains(menuId)).collect(Collectors.toList());
+			if (collectRoleMenuIds.size() > 0) {
+				// 删除子节点权限外的菜单集合
+				roleMenuService.remove(Wrappers.<RoleMenu>update().lambda().eq(RoleMenu::getRoleId, role.getId()).in(RoleMenu::getMenuId, collectRoleMenuIds));
+				// 递归设置下属角色菜单集合
+				recursionRoleMenu(Collections.singletonList(role.getId()), menuIds);
+			}
+		}));
+	}
+
+	private boolean grantDataScope(List<Long> roleIds, List<Long> dataScopeIds) {
 		// 删除角色配置的数据权限集合
 		roleScopeService.remove(Wrappers.<RoleScope>update().lambda().eq(RoleScope::getScopeCategory, DATA_SCOPE_CATEGORY).in(RoleScope::getRoleId, roleIds));
 		// 组装配置
@@ -104,7 +128,10 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		}));
 		// 新增配置
 		roleScopeService.saveBatch(roleDataScopes);
+		return true;
+	}
 
+	private boolean grantApiScope(List<Long> roleIds, List<Long> apiScopeIds) {
 		// 删除角色配置的接口权限集合
 		roleScopeService.remove(Wrappers.<RoleScope>update().lambda().eq(RoleScope::getScopeCategory, API_SCOPE_CATEGORY).in(RoleScope::getRoleId, roleIds));
 		// 组装配置
@@ -118,7 +145,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		}));
 		// 新增配置
 		roleScopeService.saveBatch(roleApiScopes);
-
 		return true;
 	}
 

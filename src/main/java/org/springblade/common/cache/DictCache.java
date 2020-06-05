@@ -16,6 +16,7 @@
  */
 package org.springblade.common.cache;
 
+import org.springblade.common.enums.DictEnum;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.tool.utils.SpringUtil;
 import org.springblade.core.tool.utils.StringPool;
@@ -77,12 +78,34 @@ public class DictCache {
 	/**
 	 * 获取字典值
 	 *
+	 * @param code    字典编号枚举
+	 * @param dictKey Integer型字典键
+	 * @return String
+	 */
+	public static String getValue(DictEnum code, Integer dictKey) {
+		return getValue(code.getName(), dictKey);
+	}
+
+	/**
+	 * 获取字典值
+	 *
 	 * @param code    字典编号
 	 * @param dictKey Integer型字典键
 	 * @return String
 	 */
 	public static String getValue(String code, Integer dictKey) {
 		return CacheUtil.get(DICT_CACHE, DICT_VALUE + code + StringPool.COLON, String.valueOf(dictKey), () -> dictService.getValue(code, String.valueOf(dictKey)), TENANT_MODE);
+	}
+
+	/**
+	 * 获取字典值
+	 *
+	 * @param code    字典编号枚举
+	 * @param dictKey String型字典键
+	 * @return String
+	 */
+	public static String getValue(DictEnum code, String dictKey) {
+		return getValue(code.getName(), dictKey);
 	}
 
 	/**

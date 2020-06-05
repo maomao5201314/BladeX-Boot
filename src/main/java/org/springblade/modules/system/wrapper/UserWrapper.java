@@ -18,6 +18,7 @@ package org.springblade.modules.system.wrapper;
 
 import org.springblade.common.cache.DictCache;
 import org.springblade.common.cache.SysCache;
+import org.springblade.common.enums.DictEnum;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
@@ -50,7 +51,7 @@ public class UserWrapper extends BaseEntityWrapper<User, UserVO> {
 		userVO.setRoleName(Func.join(roleName));
 		userVO.setDeptName(Func.join(deptName));
 		userVO.setPostName(Func.join(postName));
-		userVO.setSexName(DictCache.getValue("sex", Func.toInt(user.getSex())));
+		userVO.setSexName(DictCache.getValue(DictEnum.SEX, Func.toInt(user.getSex())));
 		return userVO;
 	}
 

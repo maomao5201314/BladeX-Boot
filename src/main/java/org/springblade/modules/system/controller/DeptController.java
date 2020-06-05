@@ -21,6 +21,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.DictCache;
+import org.springblade.common.enums.DictEnum;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
@@ -134,7 +135,7 @@ public class DeptController extends BladeController {
 			CacheUtil.clear(SYS_CACHE);
 			// 返回懒加载树更新节点所需字段
 			Kv kv = Kv.create().set("id", String.valueOf(dept.getId())).set("tenantId", dept.getTenantId())
-				.set("deptCategoryName", DictCache.getValue("org_category", dept.getDeptCategory()));
+				.set("deptCategoryName", DictCache.getValue(DictEnum.ORG_CATEGORY, dept.getDeptCategory()));
 			return R.data(kv);
 		}
 		return R.fail("操作失败");

@@ -17,6 +17,7 @@
 package org.springblade.modules.resource.wrapper;
 
 import org.springblade.common.cache.DictCache;
+import org.springblade.common.enums.DictEnum;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.modules.resource.entity.Oss;
@@ -38,8 +39,8 @@ public class OssWrapper extends BaseEntityWrapper<Oss, OssVO> {
 	@Override
 	public OssVO entityVO(Oss oss) {
 		OssVO ossVO = Objects.requireNonNull(BeanUtil.copy(oss, OssVO.class));
-		String categoryName = DictCache.getValue("oss", oss.getCategory());
-		String statusName = DictCache.getValue("yes_no", oss.getStatus());
+		String categoryName = DictCache.getValue(DictEnum.OSS, oss.getCategory());
+		String statusName = DictCache.getValue(DictEnum.YES_NO, oss.getStatus());
 		ossVO.setCategoryName(categoryName);
 		ossVO.setStatusName(statusName);
 		return ossVO;

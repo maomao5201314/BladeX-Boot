@@ -18,6 +18,7 @@ package org.springblade.modules.system.wrapper;
 
 import org.springblade.common.cache.DictCache;
 import org.springblade.common.cache.SysCache;
+import org.springblade.common.enums.DictEnum;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.node.ForestNodeMerger;
@@ -50,7 +51,7 @@ public class DeptWrapper extends BaseEntityWrapper<Dept, DeptVO> {
 			Dept parent = SysCache.getDept(dept.getParentId());
 			deptVO.setParentName(parent.getDeptName());
 		}
-		String category = DictCache.getValue("org_category", dept.getDeptCategory());
+		String category = DictCache.getValue(DictEnum.ORG_CATEGORY, dept.getDeptCategory());
 		deptVO.setDeptCategoryName(category);
 		return deptVO;
 	}
@@ -58,7 +59,7 @@ public class DeptWrapper extends BaseEntityWrapper<Dept, DeptVO> {
 	public List<DeptVO> listNodeVO(List<Dept> list) {
 		List<DeptVO> collect = list.stream().map(dept -> {
 			DeptVO deptVO = BeanUtil.copy(dept, DeptVO.class);
-			String category = DictCache.getValue("org_category", dept.getDeptCategory());
+			String category = DictCache.getValue(DictEnum.ORG_CATEGORY, dept.getDeptCategory());
 			Objects.requireNonNull(deptVO).setDeptCategoryName(category);
 			return deptVO;
 		}).collect(Collectors.toList());
@@ -67,7 +68,7 @@ public class DeptWrapper extends BaseEntityWrapper<Dept, DeptVO> {
 
 	public List<DeptVO> listNodeLazyVO(List<DeptVO> list) {
 		List<DeptVO> collect = list.stream().peek(dept -> {
-			String category = DictCache.getValue("org_category", dept.getDeptCategory());
+			String category = DictCache.getValue(DictEnum.ORG_CATEGORY, dept.getDeptCategory());
 			Objects.requireNonNull(dept).setDeptCategoryName(category);
 		}).collect(Collectors.toList());
 		return ForestNodeMerger.merge(collect);

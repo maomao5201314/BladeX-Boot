@@ -14,34 +14,26 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.wrapper;
+package org.springblade.common.enums;
 
-import org.springblade.common.cache.DictCache;
-import org.springblade.common.enums.DictEnum;
-import org.springblade.core.mp.support.BaseEntityWrapper;
-import org.springblade.core.tool.utils.BeanUtil;
-import org.springblade.modules.system.entity.Post;
-import org.springblade.modules.system.vo.PostVO;
-
-import java.util.Objects;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
- * 岗位表包装类,返回视图层所需的字段
+ * 业务字典枚举类
  *
  * @author Chill
  */
-public class PostWrapper extends BaseEntityWrapper<Post, PostVO> {
+@Getter
+@AllArgsConstructor
+public enum DictBizEnum {
 
-	public static PostWrapper build() {
-		return new PostWrapper();
-	}
+	/**
+	 * 测试
+	 */
+	TEST("test"),
+	;
 
-	@Override
-	public PostVO entityVO(Post post) {
-		PostVO postVO = Objects.requireNonNull(BeanUtil.copy(post, PostVO.class));
-		String categoryName = DictCache.getValue(DictEnum.POST_CATEGORY, post.getCategory());
-		postVO.setCategoryName(categoryName);
-		return postVO;
-	}
+	final String name;
 
 }

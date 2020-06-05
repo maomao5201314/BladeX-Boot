@@ -19,7 +19,6 @@ package org.springblade.modules.system.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springblade.modules.system.entity.Dept;
 import org.springblade.modules.system.vo.DeptVO;
-import org.springblade.modules.system.vo.DeptVO;
 
 import java.util.List;
 import java.util.Map;

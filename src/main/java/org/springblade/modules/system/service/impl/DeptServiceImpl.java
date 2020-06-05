@@ -18,6 +18,7 @@ package org.springblade.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springblade.common.cache.SysCache;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.constant.BladeConstant;
@@ -41,20 +42,33 @@ import java.util.stream.Collectors;
  */
 @Service
 public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements IDeptService {
+	private static final String TENANT_ID = "tenantId";
+	private static final String PARENT_ID = "parentId";
 
 	@Override
 	public List<DeptVO> lazyList(String tenantId, Long parentId, Map<String, Object> param) {
+		// 设置租户ID
 		if (AuthUtil.isAdministrator()) {
 			tenantId = StringPool.EMPTY;
 		}
-		String paramTenantId = Func.toStr(param.get("tenantId"));
+		String paramTenantId = Func.toStr(param.get(TENANT_ID));
 		if (Func.isNotEmpty(paramTenantId) && AuthUtil.isAdministrator()) {
 			tenantId = paramTenantId;
 		}
-		if (Func.isEmpty(param.get("parentId")) && param.size() == 1) {
+		// 判断点击搜索但是没有查询条件的情况
+		if (Func.isEmpty(param.get(PARENT_ID)) && param.size() == 1) {
 			parentId = 0L;
 		}
-		if (Func.isEmpty(param.get("parentId")) && param.size() > 1) {
+		// 判断数据权限控制,非超管角色只可看到本级及以下数据
+		if (Func.toLong(parentId) == 0L && !AuthUtil.isAdministrator()) {
+			Long deptId = Func.firstLong(AuthUtil.getDeptId());
+			Dept dept = SysCache.getDept(deptId);
+			if (dept.getParentId() != 0) {
+				parentId = dept.getParentId();
+			}
+		}
+		// 判断点击搜索带有查询条件的情况
+		if (Func.isEmpty(param.get(PARENT_ID)) && param.size() > 1 && Func.toLong(parentId) == 0L) {
 			parentId = null;
 		}
 		return baseMapper.lazyList(tenantId, parentId, param);

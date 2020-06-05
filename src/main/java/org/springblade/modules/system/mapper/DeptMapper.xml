@@ -61,7 +61,7 @@
             and dept.tenant_id = #{param1}
         </if>
         <if test="param2!=null">
-            and dept.parent_id = #{param2}
+            and (dept.parent_id = #{param2} or dept.ancestors like concat(concat('%', #{param2}),'%'))
         </if>
         <if test="param3.deptName!=null and param3.deptName!=''">
             and dept.dept_name like concat(concat('%', #{param3.deptName}),'%')

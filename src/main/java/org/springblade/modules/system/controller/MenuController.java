@@ -146,6 +146,7 @@ public class MenuController extends BladeController {
 	public R submit(@Valid @RequestBody Menu menu) {
 		if (menuService.submit(menu)) {
 			CacheUtil.clear(MENU_CACHE);
+			CacheUtil.clear(MENU_CACHE, Boolean.FALSE);
 			// 返回懒加载树更新节点所需字段
 			Kv kv = Kv.create().set("id", String.valueOf(menu.getId()));
 			return R.data(kv);
@@ -163,6 +164,7 @@ public class MenuController extends BladeController {
 	@ApiOperation(value = "删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		CacheUtil.clear(MENU_CACHE);
+		CacheUtil.clear(MENU_CACHE, Boolean.FALSE);
 		return R.status(menuService.removeMenu(ids));
 	}
 

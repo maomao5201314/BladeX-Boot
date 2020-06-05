@@ -127,6 +127,7 @@ public class TopMenuController extends BladeController {
 				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds) {
 		CacheUtil.clear(SYS_CACHE);
 		CacheUtil.clear(MENU_CACHE);
+		CacheUtil.clear(MENU_CACHE, Boolean.FALSE);
 		boolean temp = topMenuService.grant(Func.toLongList(topMenuIds), Func.toLongList(menuIds));
 		return R.status(temp);
 	}

@@ -121,13 +121,14 @@ public class BladeTokenEndPoint {
 	@ApiOperation(value = "清除缓存")
 	public Kv clearCache() {
 		CacheUtil.clear(CacheConstant.BIZ_CACHE);
-		CacheUtil.clear(CacheConstant.MENU_CACHE);
 		CacheUtil.clear(CacheConstant.USER_CACHE);
 		CacheUtil.clear(CacheConstant.DICT_CACHE);
 		CacheUtil.clear(CacheConstant.FLOW_CACHE);
 		CacheUtil.clear(CacheConstant.SYS_CACHE);
-		CacheUtil.clear(CacheConstant.RESOURCE_CACHE);
 		CacheUtil.clear(CacheConstant.PARAM_CACHE);
+		CacheUtil.clear(CacheConstant.RESOURCE_CACHE);
+		CacheUtil.clear(CacheConstant.MENU_CACHE);
+		CacheUtil.clear(CacheConstant.MENU_CACHE, Boolean.FALSE);
 		return Kv.create().set("success", "true").set("msg", "success");
 	}
 }

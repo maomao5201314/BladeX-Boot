@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.system.controller;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
@@ -274,7 +275,7 @@ public class MenuController extends BladeController {
 		if (Func.isEmpty(user)) {
 			return null;
 		}
-		List<TopMenu> list = topMenuService.list();
+		List<TopMenu> list = topMenuService.list(Wrappers.<TopMenu>query().lambda().orderByAsc(TopMenu::getSort));
 		return R.data(list);
 	}
 

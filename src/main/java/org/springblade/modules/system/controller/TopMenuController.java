@@ -72,7 +72,7 @@ public class TopMenuController extends BladeController {
 	@ApiOperationSupport(order = 2)
 	@ApiOperation(value = "分页", notes = "传入topMenu")
 	public R<IPage<TopMenu>> list(TopMenu topMenu, Query query) {
-		IPage<TopMenu> pages = topMenuService.page(Condition.getPage(query), Condition.getQueryWrapper(topMenu));
+		IPage<TopMenu> pages = topMenuService.page(Condition.getPage(query), Condition.getQueryWrapper(topMenu).lambda().orderByAsc(TopMenu::getSort));
 		return R.data(pages);
 	}
 

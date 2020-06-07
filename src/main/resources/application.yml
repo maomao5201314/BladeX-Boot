@@ -146,15 +146,21 @@ blade:
       - /blade-desk/notice/submit
   #安全框架配置
   secure:
+    #接口放行
     skip-url:
       - /blade-test/**
+    #授权认证配置
     auth:
       - method: ALL
         pattern: /blade-chat/weixin/**
         expression: "hasAuth()"
       - method: POST
+        pattern: /blade-desk/dashboard/upload
+        expression: "hasTimeAuth(9, 17)"
+      - method: POST
         pattern: /blade-desk/dashboard/submit
         expression: "hasAnyRole('administrator', 'admin', 'user')"
+    #多终端认证配置
     client:
       - client-id: sword
         path-patterns:
@@ -164,9 +170,13 @@ blade:
           - /blade-saber/**
   #多租户配置
   tenant:
+    #多租户增强
     enhance: true
+    #多租户授权保护
     license: false
+    #多租户字段名
     column: tenant_id
+    #排除多租户逻辑
     exclude-tables:
       - blade_user
 

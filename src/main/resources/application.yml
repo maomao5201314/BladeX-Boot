@@ -130,13 +130,23 @@ blade:
   token:
     #是否有状态
     state: false
+  #接口配置
+  api:
+    #报文加密配置
+    crypto:
+      #启用报文加密配置
+      enabled: false
+      #使用AesUtil.genAesKey()生成
+      aes-key: O2BEeIv399qHQNhD6aGW8R8DEj4bqHXm
+      #使用DesUtil.genDesKey()生成
+      des-key: jMVCBsFGDQr1USHo
   #jackson配置
   jackson:
     #null自动转空值
     null-to-empty: true
     #大数字自动转字符串
     big-num-to-string: true
-    #支持text文本
+    #支持text文本请求,与报文加密同时开启
     support-text-plain: false
   #xss配置
   xss:

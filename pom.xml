@@ -20,7 +20,7 @@
 
         <flowable.version>6.4.2</flowable.version>
 
-        <spring.boot.version>2.1.14.RELEASE</spring.boot.version>
+        <spring.boot.version>2.1.15.RELEASE</spring.boot.version>
         <spring.platform.version>Cairo-SR8</spring.platform.version>
 
         <!-- 推荐使用Harbor -->

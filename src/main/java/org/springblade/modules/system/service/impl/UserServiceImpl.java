@@ -167,7 +167,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public UserInfo userInfo(UserOauth userOauth) {
-		UserOauth uo = userOauthService.getOne(Wrappers.<UserOauth>query().lambda().eq(UserOauth::getSource, userOauth.getSource()).eq(UserOauth::getUsername, userOauth.getUsername()));
+		UserOauth uo = userOauthService.getOne(Wrappers.<UserOauth>query().lambda().eq(UserOauth::getUuid, userOauth.getUuid()).eq(UserOauth::getSource, userOauth.getSource()));
 		UserInfo userInfo;
 		if (Func.isNotEmpty(uo) && Func.isNotEmpty(uo.getUserId())) {
 			userInfo = this.userInfo(uo.getUserId());

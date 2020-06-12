@@ -52,7 +52,12 @@ public class UserOauth implements Serializable {
 	private String tenantId;
 
 	/**
-	 * 用户名
+	 * 第三方系统用户ID
+	 */
+	private String uuid;
+
+	/**
+	 * 用户ID
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
 	@ApiModelProperty(value = "用户主键")

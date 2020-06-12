@@ -712,7 +712,8 @@ DROP TABLE IF EXISTS `blade_user_oauth`;
 CREATE TABLE `blade_user_oauth`  (
   `id` bigint(64) NOT NULL COMMENT '主键',
   `tenant_id` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '租户ID',
-  `user_id` bigint(64) NULL DEFAULT NULL COMMENT '用户主键',
+  `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第三方系统用户ID',
+  `user_id` bigint(64) NULL DEFAULT NULL COMMENT '用户ID',
   `username` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '账号',
   `nickname` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户名',
   `avatar` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像',

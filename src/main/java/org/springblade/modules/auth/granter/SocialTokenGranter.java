@@ -83,6 +83,7 @@ public class SocialTokenGranter implements ITokenGranter {
 		UserOauth userOauth = Objects.requireNonNull(BeanUtil.copy(authUser, UserOauth.class));
 		userOauth.setSource(authUser.getSource());
 		userOauth.setTenantId(tenantId);
+		userOauth.setUuid(authUser.getUuid());
 		// 返回UserInfo
 		return userService.userInfo(userOauth);
 	}

@@ -4800,6 +4800,7 @@ DROP TABLE IF EXISTS "blade_user_oauth";
 CREATE TABLE "blade_user_oauth" (
   "id" int8 NOT NULL,
   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+  "uuid" varchar(64) COLLATE "pg_catalog"."default",
   "user_id" int8,
   "username" varchar(32) COLLATE "pg_catalog"."default",
   "nickname" varchar(64) COLLATE "pg_catalog"."default",
@@ -4815,7 +4816,8 @@ CREATE TABLE "blade_user_oauth" (
 ;
 COMMENT ON COLUMN "blade_user_oauth"."id" IS '主键';
 COMMENT ON COLUMN "blade_user_oauth"."tenant_id" IS '租户ID';
-COMMENT ON COLUMN "blade_user_oauth"."user_id" IS '用户主键';
+COMMENT ON COLUMN "blade_user_oauth"."uuid" IS '第三方系统用户ID';
+COMMENT ON COLUMN "blade_user_oauth"."user_id" IS '用户ID';
 COMMENT ON COLUMN "blade_user_oauth"."username" IS '账号';
 COMMENT ON COLUMN "blade_user_oauth"."nickname" IS '用户名';
 COMMENT ON COLUMN "blade_user_oauth"."avatar" IS '头像';

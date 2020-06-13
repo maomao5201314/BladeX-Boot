@@ -58,9 +58,10 @@ public class SocialTokenGranter implements ITokenGranter {
 	public UserInfo grant(TokenParameter tokenParameter) {
 		HttpServletRequest request = WebUtil.getRequest();
 		String tenantId = Func.toStr(request.getHeader(TokenUtil.TENANT_HEADER_KEY), TokenUtil.DEFAULT_TENANT_ID);
-
 		// 开放平台来源
-		String source = request.getParameter("source");
+		String sourceParameter = request.getParameter("source");
+		// 匹配是否有别名定义
+		String source = socialProperties.getAlias().getOrDefault(sourceParameter, sourceParameter);
 		// 开放平台授权码
 		String code = request.getParameter("code");
 		// 开放平台状态吗

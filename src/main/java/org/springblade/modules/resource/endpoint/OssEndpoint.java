@@ -25,8 +25,11 @@ import org.springblade.core.oss.model.OssFile;
 import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.RoleConstant;
+import org.springblade.core.tool.utils.FileUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.resource.builder.oss.OssBuilder;
+import org.springblade.modules.resource.entity.Attach;
+import org.springblade.modules.resource.service.IAttachService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,6 +48,11 @@ public class OssEndpoint {
 	 * 对象存储构建类
 	 */
 	private final OssBuilder ossBuilder;
+
+	/**
+	 * 附件表服务
+	 */
+	private final IAttachService attachService;
 
 	/**
 	 * 创建存储桶
@@ -151,6 +159,59 @@ public class OssEndpoint {
 	public R<BladeFile> putFile(@RequestParam String fileName, @RequestParam MultipartFile file) {
 		BladeFile bladeFile = ossBuilder.template().putFile(fileName, file.getInputStream());
 		return R.data(bladeFile);
+	}
+
+	/**
+	 * 上传文件并保存至附件表
+	 *
+	 * @param file 文件
+	 * @return ObjectStat
+	 */
+	@SneakyThrows
+	@PostMapping("/put-file-attach")
+	public R<BladeFile> putFileAttach(@RequestParam MultipartFile file) {
+		String fileName = file.getOriginalFilename();
+		BladeFile bladeFile = ossBuilder.template().putFile(fileName, file.getInputStream());
+		Long attachId = buildAttach(fileName, file.getSize(), bladeFile);
+		bladeFile.setAttachId(attachId);
+		return R.data(bladeFile);
+	}
+
+	/**
+	 * 上传文件并保存至附件表
+	 *
+	 * @param fileName 存储桶对象名称
+	 * @param file     文件
+	 * @return ObjectStat
+	 */
+	@SneakyThrows
+	@PostMapping("/put-file-attach-by-name")
+	public R<BladeFile> putFileAttach(@RequestParam String fileName, @RequestParam MultipartFile file) {
+		BladeFile bladeFile = ossBuilder.template().putFile(fileName, file.getInputStream());
+		Long attachId = buildAttach(fileName, file.getSize(), bladeFile);
+		bladeFile.setAttachId(attachId);
+		return R.data(bladeFile);
+	}
+
+	/**
+	 * 构建附件表
+	 *
+	 * @param fileName  文件名
+	 * @param fileSize  文件大小
+	 * @param bladeFile 对象存储文件
+	 * @return attachId
+	 */
+	private Long buildAttach(String fileName, Long fileSize, BladeFile bladeFile) {
+		String fileExtension = FileUtil.getFileExtension(fileName);
+		Attach attach = new Attach();
+		attach.setDomain(bladeFile.getDomain());
+		attach.setLink(bladeFile.getLink());
+		attach.setName(bladeFile.getName());
+		attach.setOriginalName(bladeFile.getOriginalName());
+		attach.setAttachSize(fileSize);
+		attach.setExtension(fileExtension);
+		attachService.save(attach);
+		return attach.getId();
 	}
 
 	/**

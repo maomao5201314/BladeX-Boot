@@ -12,9 +12,47 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 12/05/2020 23:13:57
+ Date: 16/07/2020 09:51:00
 */
 
+
+-- ----------------------------
+-- Table structure for blade_attach
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_attach";
+CREATE TABLE "blade_attach" (
+  "id" int8 NOT NULL,
+  "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
+  "link" varchar(1000) COLLATE "pg_catalog"."default",
+  "domain" varchar(500) COLLATE "pg_catalog"."default",
+  "name" varchar(500) COLLATE "pg_catalog"."default",
+  "original_name" varchar(500) COLLATE "pg_catalog"."default",
+  "extension" varchar(12) COLLATE "pg_catalog"."default",
+  "attach_size" int8,
+  "create_user" int8,
+  "create_dept" int8,
+  "create_time" timestamp(6),
+  "update_user" int8,
+  "update_time" timestamp(6),
+  "status" int4,
+  "is_deleted" int4
+)
+;
+COMMENT ON COLUMN "blade_attach"."id" IS '主键';
+COMMENT ON COLUMN "blade_attach"."tenant_id" IS '租户ID';
+COMMENT ON COLUMN "blade_attach"."link" IS '附件地址';
+COMMENT ON COLUMN "blade_attach"."domain" IS '附件域名';
+COMMENT ON COLUMN "blade_attach"."name" IS '附件名称';
+COMMENT ON COLUMN "blade_attach"."original_name" IS '附件原名';
+COMMENT ON COLUMN "blade_attach"."extension" IS '附件拓展名';
+COMMENT ON COLUMN "blade_attach"."attach_size" IS '附件大小';
+COMMENT ON COLUMN "blade_attach"."create_user" IS '创建人';
+COMMENT ON COLUMN "blade_attach"."create_dept" IS '创建部门';
+COMMENT ON COLUMN "blade_attach"."create_time" IS '创建时间';
+COMMENT ON COLUMN "blade_attach"."update_user" IS '修改人';
+COMMENT ON COLUMN "blade_attach"."update_time" IS '修改时间';
+COMMENT ON COLUMN "blade_attach"."status" IS '状态';
+COMMENT ON COLUMN "blade_attach"."is_deleted" IS '是否已删除';
 
 -- ----------------------------
 -- Table structure for blade_client
@@ -649,6 +687,10 @@ INSERT INTO "blade_menu" VALUES (1164733399668962204, 1164733399668962202, 'regi
 INSERT INTO "blade_menu" VALUES (1164733399668962205, 1164733399668962202, 'region_import', '导入', 'import', '', '', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399668962206, 1164733399668962202, 'region_export', '导出', 'export', '', '', 4, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399668962207, 1164733399668962202, 'region_debug', '调试', 'debug', '', '', 5, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962201, 1123598815738675298, 'attach', '附件管理', 'menu', '/resource/attach', 'iconfont iconicon_ding', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962202, 1164733399669962201, 'attach_upload', '上传', 'add', '/resource/attach/upload', '', 1, 2, 1, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962203, 1164733399669962201, 'attach_download', '下载', 'download', '/resource/attach/download', '', 2, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962204, 1164733399669962201, 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', '', 3, 2, 3, 1, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -4461,6 +4503,10 @@ INSERT INTO "blade_role_menu" VALUES (1161272893875226004, 1164733399668962204, 
 INSERT INTO "blade_role_menu" VALUES (1161272893875226005, 1164733399668962205, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893875226006, 1164733399668962206, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893875226007, 1164733399668962207, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875227001, 1164733399669962201, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875227002, 1164733399669962202, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875227003, 1164733399669962203, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875227004, 1164733399669962204, 1123598816738675201);
 COMMIT;
 
 -- ----------------------------
@@ -4829,6 +4875,11 @@ COMMENT ON COLUMN "blade_user_oauth"."remark" IS '备注';
 COMMENT ON COLUMN "blade_user_oauth"."gender" IS '性别';
 COMMENT ON COLUMN "blade_user_oauth"."source" IS '来源';
 COMMENT ON TABLE "blade_user_oauth" IS '用户第三方认证表';
+
+-- ----------------------------
+-- Primary Key structure for table blade_attach
+-- ----------------------------
+ALTER TABLE "blade_attach" ADD CONSTRAINT "blade_attach_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table blade_client

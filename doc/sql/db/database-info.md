@@ -1,3 +1,23 @@
+Table: blade_attach（附件表）
+
+| Field         | Type          | Null | Key | Default | Remarks |
+| ------------- | ------------- | ---- | --- | ------- | ------- |
+| id            | BIGINT(19)    | NO   | PRI |         | 主键      |
+| tenant_id     | VARCHAR(12)   | YES  |     | 000000  | 租户ID    |
+| link          | VARCHAR(1000) | YES  |     |         | 附件地址    |
+| domain        | VARCHAR(500)  | YES  |     |         | 附件域名    |
+| name          | VARCHAR(500)  | YES  |     |         | 附件名称    |
+| original_name | VARCHAR(500)  | YES  |     |         | 附件原名    |
+| extension     | VARCHAR(12)   | YES  |     |         | 附件拓展名   |
+| attach_size   | BIGINT(19)    | YES  |     |         | 附件大小    |
+| create_user   | BIGINT(19)    | YES  |     |         | 创建人     |
+| create_dept   | BIGINT(19)    | YES  |     |         | 创建部门    |
+| create_time   | DATETIME(19)  | YES  |     |         | 创建时间    |
+| update_user   | BIGINT(19)    | YES  |     |         | 修改人     |
+| update_time   | DATETIME(19)  | YES  |     |         | 修改时间    |
+| status        | INT(10)       | YES  |     |         | 状态      |
+| is_deleted    | INT(10)       | YES  |     |         | 是否已删除   |
+
 Table: blade_client（客户端表）
 
 | Field                   | Type          | Null | Key | Default | Remarks |
@@ -493,7 +513,8 @@ Table: blade_user_oauth（用户第三方认证表）
 | --------- | ------------- | ---- | --- | ------- | ------- |
 | id        | BIGINT(19)    | NO   | PRI |         | 主键      |
 | tenant_id | VARCHAR(12)   | YES  |     |         | 租户ID    |
-| user_id   | BIGINT(19)    | YES  |     |         | 用户主键    |
+| uuid      | VARCHAR(64)   | YES  |     |         | 第三方系统用户ID|
+| user_id   | BIGINT(19)    | YES  |     |         | 用户ID    |
 | username  | VARCHAR(32)   | YES  |     |         | 账号      |
 | nickname  | VARCHAR(64)   | YES  |     |         | 用户名     |
 | avatar    | VARCHAR(1000) | YES  |     |         | 头像      |

@@ -664,12 +664,12 @@ INSERT INTO "blade_menu" VALUES (1164733379658963253, 1164733379658963251, 'dict
 INSERT INTO "blade_menu" VALUES (1164733379658963254, 1164733379658963251, 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', 3, 2, 3, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963255, 1164733379658963251, 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', 4, 2, 2, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733389658962252, 1164733389658962251, 'sms_add', '新增', 'add', '/resource/sms/add', 'plus', 1, 2, 1, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733389658962251, 1123598815738675298, 'sms', '短信配置', 'menu', '/resource/sms', '', 2, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389658962251, 1123598815738675298, 'sms', '短信配置', 'menu', '/resource/sms', '', 3, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389658962253, 1164733389658962251, 'sms_edit', '修改', 'edit', '/resource/sms/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389658962254, 1164733389658962251, 'sms_delete', '删除', 'delete', '/api/blade-resource/sms/remove', 'delete', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389658962255, 1164733389658962251, 'sms_view', '查看', 'view', '/resource/sms/view', 'file-text', 4, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389658962256, 1164733389658962251, 'sms_enable', '启用', 'enable', '/api/blade-resource/sms/enable', 'key', 5, 2, 2, 2, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733389658963251, 1123598815738675298, 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', '', 3, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733389658963251, 1123598815738675298, 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', '', 5, 1, 0, 2, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733389668962252, 1164733389668962251, 'post_add', '新增', 'add', '/system/post/add', 'plus', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389668962253, 1164733389668962251, 'post_edit', '修改', 'edit', '/system/post/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389668962254, 1164733389668962251, 'post_delete', '删除', 'delete', '/api/blade-system/post/remove', 'delete', 3, 2, 3, 1, NULL, 0);
@@ -685,7 +685,7 @@ INSERT INTO "blade_menu" VALUES (1164733399668962204, 1164733399668962202, 'regi
 INSERT INTO "blade_menu" VALUES (1164733399668962205, 1164733399668962202, 'region_import', '导入', 'import', '', '', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399668962206, 1164733399668962202, 'region_export', '导出', 'export', '', '', 4, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399668962207, 1164733399668962202, 'region_debug', '调试', 'debug', '', '', 5, 2, 2, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399669962201, 1123598815738675298, 'attach', '附件管理', 'menu', '/resource/attach', '', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962201, 1123598815738675298, 'attach', '附件管理', 'menu', '/resource/attach', '', 2, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962202, 1164733399669962201, 'attach_upload', '上传', 'upload', '/resource/attach/upload', '', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962203, 1164733399669962201, 'attach_download', '下载', 'download', '/resource/attach/download', '', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962204, 1164733399669962201, 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', '', 3, 2, 3, 1, NULL, 0);
@@ -4477,7 +4477,7 @@ INSERT INTO "blade_role_menu" VALUES (1161272693873322993, 1164733369658963253, 
 INSERT INTO "blade_role_menu" VALUES (1161272693873322994, 1164733369658963254, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272693873322995, 1164733369658963255, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272793873322991, 1164733379658963251, 1123598816738675201);
-INSERT INTO "blade_role_menu" VALUES (1161272793873322992, 116473337658963252, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272793873322992, 1164733379658963252, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272793873322993, 1164733379658963253, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272793873322994, 1164733379658963254, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272793873322995, 1164733379658963255, 1123598816738675201);

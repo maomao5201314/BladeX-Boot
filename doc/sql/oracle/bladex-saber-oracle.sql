@@ -715,7 +715,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675305', '1123598815738675299', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675307', '0', 'authority', '权限管理', 'menu', '/authority', 'iconfont icon-bofangqi-suoping', '98', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675308', '1123598815738675307', 'role', '角色管理', 'menu', '/authority/role', 'iconfont iconicon_boss', '1', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675309', '1123598815738675307', 'data_scope', '数据权限', 'menu', '/authority/datascope', 'iconfont icon-shujuzhanshi2', '2', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658962251', '1123598815738675298', 'sms', '短信配置', 'menu', '/resource/sms', 'iconfont iconicon_message', '2', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658962251', '1123598815738675298', 'sms', '短信配置', 'menu', '/resource/sms', 'iconfont iconicon_message', '3', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733389658962252', '1164733389658962251', 'sms_add', '新增', 'add', '/resource/sms/add', 'plus', '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733389658962253', '1164733389658962251', 'sms_edit', '修改', 'edit', '/resource/sms/edit', 'form', '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733389658962254', '1164733389658962251', 'sms_delete', '删除', 'delete', '/api/blade-resource/sms/remove', 'delete', '3', '2', '3', '1', NULL, '0');
@@ -737,7 +737,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1161272593873321995', '1161272593873321991', '
 INSERT INTO "BLADE_MENU" VALUES ('1164733121140551682', '1123598815738675217', 'form', '表单设计', 'form', 'https://form.avuejs.com/', 'iconfont iconicon_compile', '3', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733349637844993', '1123598815738675217', 'crud', '表格设计', 'crud', 'https://crud.avuejs.com/', 'iconfont iconicon_work', '4', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', 'iconfont iconicon_cspace', '3', '1', '0', '2', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962201', '1123598815738675298', 'attach', '附件管理', 'menu', '/resource/attach', 'iconfont iconicon_ding', '1', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962201', '1123598815738675298', 'attach', '附件管理', 'menu', '/resource/attach', 'iconfont iconicon_ding', '2', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962202', '1164733399669962201', 'attach_upload', '上传', 'upload', '/resource/attach/upload', NULL, '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962203', '1164733399669962201', 'attach_download', '下载', 'download', '/resource/attach/download', NULL, '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962204', '1164733399669962201', 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', NULL, '3', '2', '3', '1', NULL, '0');
@@ -750,7 +750,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1164733379658963252', '1164733379658963251', '
 INSERT INTO "BLADE_MENU" VALUES ('1164733379658963253', '1164733379658963251', 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733379658963254', '1164733379658963251', 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', '3', '2', '3', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733379658963255', '1164733379658963251', 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', '4', '2', '2', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658963251', '1123598815738675298', 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', 'iconfont iconicon_cspace', '3', '1', '0', '2', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658963251', '1123598815738675298', 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', 'iconfont iconicon_cspace', '5', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675201', '0', 'desk', '工作台', 'menu', '/desk', 'iconfont iconicon_airplay', '1', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675202', '1123598815738675201', 'notice', '通知公告', 'menu', '/desk/notice', 'iconfont iconicon_sms', '1', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675203', '0', 'system', '系统管理', 'menu', '/system', 'iconfont iconicon_setting', '99', '1', '0', '1', NULL, '0');
@@ -4570,7 +4570,7 @@ INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272693873322993', '116473336965896325
 INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272693873322994', '1164733369658963254', '1123598816738675201');
 INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272693873322995', '1164733369658963255', '1123598816738675201');
 INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272793873322991', '1164733379658963251', '1123598816738675201');
-INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272793873322992', '116473337658963252', '1123598816738675201');
+INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272793873322992', '1164733379658963252', '1123598816738675201');
 INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272793873322993', '1164733379658963253', '1123598816738675201');
 INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272793873322994', '1164733379658963254', '1123598816738675201');
 INSERT INTO "BLADE_ROLE_MENU" VALUES ('1161272793873322995', '1164733379658963255', '1123598816738675201');

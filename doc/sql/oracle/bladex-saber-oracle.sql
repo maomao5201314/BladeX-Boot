@@ -738,7 +738,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1164733121140551682', '1123598815738675217', '
 INSERT INTO "BLADE_MENU" VALUES ('1164733349637844993', '1123598815738675217', 'crud', '表格设计', 'crud', 'https://crud.avuejs.com/', 'iconfont iconicon_work', '4', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', 'iconfont iconicon_cspace', '3', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962201', '1123598815738675298', 'attach', '附件管理', 'menu', '/resource/attach', 'iconfont iconicon_ding', '1', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962202', '1164733399669962201', 'attach_upload', '上传', 'add', '/resource/attach/upload', NULL, '1', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962202', '1164733399669962201', 'attach_upload', '上传', 'upload', '/resource/attach/upload', NULL, '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962203', '1164733399669962201', 'attach_download', '下载', 'download', '/resource/attach/download', NULL, '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962204', '1164733399669962201', 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', NULL, '3', '2', '3', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963252', '1123598815738675210', 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', 'iconfont iconicon_task', '4', '1', '0', '2', NULL, '0');

@@ -722,7 +722,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675277', '1123598815738675274', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675278', '1123598815738675266', 'flow_follow', '流程跟踪', 'menu', '/flow/follow', NULL, '4', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675279', '1123598815738675278', 'flow_follow_delete', '删除', 'remove', NULL, 'remove', '1', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962201', '1123598815738675298', 'attach', '附件管理', 'menu', '/resource/attach', NULL, '1', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962202', '1164733399669962201', 'attach_upload', '上传', 'add', '/resource/attach/upload', NULL, '1', '2', '1', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962202', '1164733399669962201', 'attach_upload', '上传', 'upload', '/resource/attach/upload', NULL, '1', '2', '1', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962203', '1164733399669962201', 'attach_download', '下载', 'download', '/resource/attach/download', NULL, '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962204', '1164733399669962201', 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', NULL, '3', '2', '3', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675280', '0', 'work', '我的事务', 'menu', '/work', 'bell', '2', '1', '0', '1', NULL, '0');

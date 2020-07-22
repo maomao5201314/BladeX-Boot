@@ -16,8 +16,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     #driver-class-name: org.postgresql.Driver
     #driver-class-name: oracle.jdbc.OracleDriver
+    #driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     druid:
-      # MySql、PostgreSQL校验
+      # MySql、PostgreSQL、SqlServer校验
       validation-query: select 1
       # Oracle校验
       #validation-query: select 1 from dual

@@ -279,8 +279,6 @@
                     category = 1
                   AND is_deleted = 0
                   AND id IN ( SELECT menu_id FROM blade_scope_data WHERE is_deleted = 0 AND menu_id IS NOT NULL )
-                ORDER BY
-                    sort
             ) menu
 
         UNION ALL
@@ -315,8 +313,6 @@
                     category = 1
                   AND is_deleted = 0
                   AND id IN ( SELECT menu_id FROM blade_scope_api WHERE is_deleted = 0 AND menu_id IS NOT NULL )
-                ORDER BY
-                    sort
             ) menu
 
         UNION ALL

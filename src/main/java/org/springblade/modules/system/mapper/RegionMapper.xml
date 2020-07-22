@@ -95,6 +95,7 @@
                 and region.name like concat(concat('%', #{param2.name}),'%')
             </if>
         </where>
+        ORDER BY region.code
     </select>
 
     <select id="exportRegion" resultType="org.springblade.modules.system.excel.RegionExcel">

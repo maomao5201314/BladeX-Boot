@@ -24,6 +24,10 @@ spring:
     #url: jdbc:oracle:thin:@127.0.0.1:49161:orcl
     #username: BLADEX_BOOT
     #password: oracle
+    # SqlServer
+    #url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=bladex
+    #username: bladex
+    #password: bladex
 
 #第三方登陆
 social:

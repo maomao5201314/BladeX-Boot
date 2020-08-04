@@ -121,6 +121,10 @@ public class BladeFlow implements Serializable {
 	 */
 	private String processIsFinished;
 	/**
+	 * 历史活动ID
+	 */
+	private String historyActivityId;
+	/**
 	 * 历史活动流程
 	 */
 	private String historyActivityName;

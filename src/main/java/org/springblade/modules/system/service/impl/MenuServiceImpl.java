@@ -61,10 +61,11 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	private final IRoleMenuService roleMenuService;
 	private final IRoleScopeService roleScopeService;
 	private final ITopMenuSettingService topMenuSettingService;
+	private final static String PARENT_ID = "parentId";
 
 	@Override
 	public List<MenuVO> lazyList(Long parentId, Map<String, Object> param) {
-		if (Func.isEmpty(Func.toStr(param.get("parentId")))) {
+		if (Func.isEmpty(Func.toStr(param.get(PARENT_ID)))) {
 			parentId = null;
 		}
 		return baseMapper.lazyList(parentId, param);
@@ -72,7 +73,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	@Override
 	public List<MenuVO> lazyMenuList(Long parentId, Map<String, Object> param) {
-		if (Func.isEmpty(Func.toStr(param.get("parentId")))) {
+		if (Func.isEmpty(Func.toStr(param.get(PARENT_ID)))) {
 			parentId = null;
 		}
 		return baseMapper.lazyMenuList(parentId, param);

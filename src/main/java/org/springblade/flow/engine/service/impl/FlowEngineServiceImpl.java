@@ -180,6 +180,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 					activityMap.put(historicActivityInstance.getActivityId(), activityMap.size());
 				}
 				BladeFlow flow = new BladeFlow();
+				flow.setHistoryActivityId(historicActivityInstance.getActivityId());
 				flow.setHistoryActivityName(historicActivityInstance.getActivityName());
 				flow.setCreateTime(historicActivityInstance.getStartTime());
 				flow.setEndTime(historicActivityInstance.getEndTime());

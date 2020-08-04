@@ -437,6 +437,7 @@ Table: blade_tenant（租户表）
 | address        | VARCHAR(255)  | YES  |     |         | 联系地址    |
 | account_number | INT(10)       | YES  |     | -1      | 账号额度    |
 | expire_time    | DATETIME(19)  | YES  |     |         | 过期时间    |
+| datasource     | BIGINT(19)    | YES  |     |         | 数据源ID   |
 | license_key    | VARCHAR(1000) | YES  |     |         | 授权码     |
 | create_user    | BIGINT(19)    | YES  |     |         | 创建人     |
 | create_dept    | BIGINT(19)    | YES  |     |         | 创建部门    |

@@ -4664,6 +4664,7 @@ CREATE TABLE "blade_tenant" (
   "address" varchar(255) COLLATE "pg_catalog"."default",
   "account_number" int2 DEFAULT '-1'::integer,
   "expire_time" timestamp(6),
+  "datasource_id" int8,
   "license_key" varchar(1000) COLLATE "pg_catalog"."default",
   "create_user" int8,
   "create_dept" int8,
@@ -4684,6 +4685,7 @@ COMMENT ON COLUMN "blade_tenant"."contact_number" IS '联系电话';
 COMMENT ON COLUMN "blade_tenant"."address" IS '联系地址';
 COMMENT ON COLUMN "blade_tenant"."account_number" IS '账号额度';
 COMMENT ON COLUMN "blade_tenant"."expire_time" IS '过期时间';
+COMMENT ON COLUMN "blade_tenant"."datasource_id" IS '数据源ID';
 COMMENT ON COLUMN "blade_tenant"."license_key" IS '授权码';
 COMMENT ON COLUMN "blade_tenant"."create_user" IS '创建人';
 COMMENT ON COLUMN "blade_tenant"."create_dept" IS '创建部门';
@@ -4698,7 +4700,7 @@ COMMENT ON TABLE "blade_tenant" IS '租户表';
 -- Records of blade_tenant
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_tenant" VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
+INSERT INTO "blade_tenant" VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, NULL, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
 COMMIT;
 
 -- ----------------------------

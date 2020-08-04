@@ -23,6 +23,7 @@ import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.oss.model.BladeFile;
 import org.springblade.core.oss.model.OssFile;
 import org.springblade.core.secure.annotation.PreAuth;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.FileUtil;
@@ -38,6 +39,7 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author Chill
  */
+@NonDS
 @RestController
 @AllArgsConstructor
 @Api(value = "对象存储端点", tags = "对象存储端点")

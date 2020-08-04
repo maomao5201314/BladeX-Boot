@@ -23,6 +23,7 @@ import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.sms.model.SmsCode;
 import org.springblade.core.sms.model.SmsData;
 import org.springblade.core.sms.model.SmsResponse;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.jackson.JsonUtil;
 import org.springblade.core.tool.utils.Func;
@@ -43,6 +44,7 @@ import static org.springblade.modules.resource.utils.SmsUtil.*;
  *
  * @author Chill
  */
+@NonDS
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_RESOURCE_NAME + "/sms/endpoint")

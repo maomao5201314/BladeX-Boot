@@ -19,6 +19,7 @@ package org.springblade.flow.demo.leave.controller;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.UserCache;
 import org.springblade.core.launch.constant.AppConstant;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.flow.demo.leave.entity.ProcessLeave;
 import org.springblade.flow.demo.leave.service.ILeaveService;
@@ -30,6 +31,7 @@ import springfox.documentation.annotations.ApiIgnore;
  *
  * @author Chill
  */
+@NonDS
 @ApiIgnore
 @RestController
 @RequestMapping(AppConstant.APPLICATION_DESK_NAME + "/process/leave")

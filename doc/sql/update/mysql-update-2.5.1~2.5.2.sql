@@ -5,6 +5,12 @@ ALTER TABLE `blade_user_oauth`
     ADD COLUMN `uuid` varchar(64) NULL COMMENT '第三方系统用户ID' AFTER `tenant_id`;
 
 -- ----------------------------
+-- 租户数据源ID
+-- ----------------------------
+ALTER TABLE `blade_tenant`
+    ADD COLUMN `datasource_id` bigint(64) NULL COMMENT '数据源' AFTER `expire_time`;
+
+-- ----------------------------
 -- 附件表
 -- ----------------------------
 CREATE TABLE `blade_attach`  (

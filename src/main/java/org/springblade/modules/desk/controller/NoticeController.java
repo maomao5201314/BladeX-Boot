@@ -25,6 +25,7 @@ import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
+import org.springblade.core.tenant.annotation.TenantDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.desk.entity.Notice;
@@ -41,6 +42,7 @@ import java.util.Map;
  *
  * @author Chill
  */
+@TenantDS
 @RestController
 @RequestMapping(AppConstant.APPLICATION_DESK_NAME + "/notice")
 @AllArgsConstructor

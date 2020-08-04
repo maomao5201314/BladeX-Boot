@@ -6,6 +6,13 @@ ALTER TABLE "blade_user_oauth"
 COMMENT ON COLUMN "blade_user_oauth"."uuid" IS '第三方系统用户ID';
 
 -- ----------------------------
+-- 租户数据源ID
+-- ----------------------------
+ALTER TABLE "blade_tenant"
+    ADD COLUMN "datasource_id" int8;
+COMMENT ON COLUMN "blade_tenant"."datasource_id" IS '数据源ID';
+
+-- ----------------------------
 -- 附件表
 -- ----------------------------
 CREATE TABLE "blade_attach" (

@@ -3187,6 +3187,7 @@ CREATE TABLE [dbo].[blade_tenant] (
   [address] nvarchar(255) COLLATE Chinese_PRC_CI_AS  NULL,
   [account_number] int  NULL,
   [expire_time] datetime2(0)  NULL,
+  [datasource_id] bigint  NULL,
   [license_key] nvarchar(1000) COLLATE Chinese_PRC_CI_AS  NULL,
   [create_user] bigint  NULL,
   [create_dept] bigint  NULL,
@@ -3272,6 +3273,13 @@ EXEC sp_addextendedproperty
 GO
 
 EXEC sp_addextendedproperty
+'MS_Description', N'数据源ID',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant',
+'COLUMN', N'datasource_id'
+GO
+
+EXEC sp_addextendedproperty
 'MS_Description', N'授权码',
 'SCHEMA', N'dbo',
 'TABLE', N'blade_tenant',
@@ -3340,7 +3348,7 @@ GO
 BEGIN TRANSACTION
 GO
 
-INSERT INTO [dbo].[blade_tenant] VALUES (N'1123598820738675201', N'000000', N'管理组', NULL, NULL, N'admin', N'666666', N'管理组', N'-1', NULL, NULL, N'1123598821738675201', N'1123598813738675201', N'2019-01-01 00:00:39', N'1123598821738675201', N'2019-01-01 00:00:39', N'1', N'0')
+INSERT INTO [dbo].[blade_tenant] VALUES (N'1123598820738675201', N'000000', N'管理组', NULL, NULL, N'admin', N'666666', N'管理组', N'-1', NULL, NULL, NULL, N'1123598821738675201', N'1123598813738675201', N'2019-01-01 00:00:39', N'1123598821738675201', N'2019-01-01 00:00:39', N'1', N'0')
 GO
 
 COMMIT

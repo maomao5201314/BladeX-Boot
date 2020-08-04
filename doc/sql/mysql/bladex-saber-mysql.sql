@@ -623,6 +623,7 @@ CREATE TABLE `blade_tenant`  (
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '联系地址',
   `account_number` int(11) NULL DEFAULT -1 COMMENT '账号额度',
   `expire_time` datetime(0) NULL DEFAULT NULL COMMENT '过期时间',
+  `datasource_id` bigint(64) NULL DEFAULT NULL COMMENT '数据源ID',
   `license_key` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '授权码',
   `create_user` bigint(64) NULL DEFAULT NULL COMMENT '创建人',
   `create_dept` bigint(64) NULL DEFAULT NULL COMMENT '创建部门',
@@ -638,7 +639,7 @@ CREATE TABLE `blade_tenant`  (
 -- Records of blade_tenant
 -- ----------------------------
 BEGIN;
-INSERT INTO `blade_tenant` VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
+INSERT INTO `blade_tenant` VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, NULL, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
 COMMIT;
 
 -- ----------------------------

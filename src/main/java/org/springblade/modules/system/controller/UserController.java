@@ -33,6 +33,7 @@ import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.secure.utils.AuthUtil;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
@@ -61,6 +62,7 @@ import static org.springblade.core.cache.constant.CacheConstant.USER_CACHE;
  *
  * @author Chill
  */
+@NonDS
 @ApiIgnore
 @RestController
 @RequestMapping(AppConstant.APPLICATION_USER_NAME)

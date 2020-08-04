@@ -25,6 +25,7 @@ import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.modules.system.entity.Dict;
 import org.springblade.modules.system.service.IDictService;
@@ -44,6 +45,7 @@ import static org.springblade.core.cache.constant.CacheConstant.DICT_CACHE;
  *
  * @author Chill
  */
+@NonDS
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/dict")

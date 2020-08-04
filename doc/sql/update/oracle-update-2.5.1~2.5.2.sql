@@ -6,6 +6,13 @@ ALTER TABLE "BLADE_USER_OAUTH"
 COMMENT ON COLUMN "BLADE_USER_OAUTH"."UUID" IS '第三方系统用户ID';
 
 -- ----------------------------
+-- 租户数据源ID
+-- ----------------------------
+ALTER TABLE "BLADE_TENANT"
+    ADD ("DATASOURCE_ID" NUMBER(20) );
+COMMENT ON COLUMN "BLADE_TENANT"."DATASOURCE_ID" IS '数据源ID'
+
+-- ----------------------------
 -- 附件表
 -- ----------------------------
 CREATE TABLE "BLADEX"."BLADE_ATTACH" (

@@ -28,6 +28,7 @@ import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.annotation.PreAuth;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
@@ -47,6 +48,7 @@ import static org.springblade.core.cache.constant.CacheConstant.RESOURCE_CACHE;
  *
  * @author BladeX
  */
+@NonDS
 @ApiIgnore
 @RestController
 @AllArgsConstructor

@@ -33,6 +33,7 @@ import org.springblade.core.log.annotation.ApiLog;
 import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.secure.utils.AuthUtil;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.WebUtil;
@@ -52,6 +53,7 @@ import java.util.UUID;
  *
  * @author Chill
  */
+@NonDS
 @ApiSort(1)
 @RestController
 @AllArgsConstructor

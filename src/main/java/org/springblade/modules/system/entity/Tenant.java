@@ -89,6 +89,11 @@ public class Tenant extends BaseEntity {
 	@ApiModelProperty(value = "过期时间")
 	private Date expireTime;
 	/**
+	 * 数据源ID
+	 */
+	@ApiModelProperty(value = "数据源ID")
+	private Long datasourceId;
+	/**
 	 * 授权码
 	 */
 	@ApiModelProperty(value = "授权码")

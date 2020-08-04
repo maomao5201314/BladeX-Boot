@@ -23,6 +23,7 @@ import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.log.model.LogApi;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.modules.system.service.ILogApiService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,7 @@ import java.util.Map;
  *
  * @author Chill
  */
+@NonDS
 @ApiIgnore
 @RestController
 @AllArgsConstructor

@@ -23,11 +23,13 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.secure.annotation.PreAuth;
+import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
@@ -43,11 +45,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import static org.springblade.core.tenant.constant.TenantConstant.TENANT_DATASOURCE_CACHE;
+import static org.springblade.core.tenant.constant.TenantConstant.TENANT_DATASOURCE_EXIST_KEY;
+
 /**
  * 控制器
  *
  * @author Chill
  */
+@NonDS
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/tenant")
@@ -146,12 +152,24 @@ public class TenantController extends BladeController {
 	}
 
 	/**
+	 * 数据源配置
+	 */
+	@PostMapping("datasource")
+	@ApiOperationSupport(order = 8)
+	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@ApiOperation(value = "数据源配置", notes = "传入datasource_id")
+	public R datasource(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId, @ApiParam(value = "数据源ID", required = true) @RequestParam Long datasourceId){
+		CacheUtil.evict(TENANT_DATASOURCE_CACHE, TENANT_DATASOURCE_EXIST_KEY, tenantId, Boolean.FALSE);
+		return R.status(tenantService.update(Wrappers.<Tenant>update().lambda().set(Tenant::getDatasourceId, datasourceId).eq(Tenant::getTenantId, tenantId)));
+	}
+
+	/**
 	 * 根据名称查询列表
 	 *
 	 * @param name 租户名称
 	 */
 	@GetMapping("/find-by-name")
-	@ApiOperationSupport(order = 8)
+	@ApiOperationSupport(order = 9)
 	@ApiOperation(value = "详情", notes = "传入tenant")
 	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
 	public R<List<Tenant>> findByName(String name) {
@@ -165,7 +183,7 @@ public class TenantController extends BladeController {
 	 * @param domain 域名
 	 */
 	@GetMapping("/info")
-	@ApiOperationSupport(order = 9)
+	@ApiOperationSupport(order = 10)
 	@ApiOperation(value = "配置信息", notes = "传入domain")
 	public R<Kv> info(String domain) {
 		Tenant tenant = tenantService.getOne(Wrappers.<Tenant>query().lambda().eq(Tenant::getDomain, domain));

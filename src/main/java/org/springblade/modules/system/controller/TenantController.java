@@ -45,8 +45,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static org.springblade.core.tenant.constant.TenantConstant.TENANT_DATASOURCE_CACHE;
-import static org.springblade.core.tenant.constant.TenantConstant.TENANT_DATASOURCE_EXIST_KEY;
+import static org.springblade.core.tenant.constant.TenantBaseConstant.TENANT_DATASOURCE_CACHE;
+import static org.springblade.core.tenant.constant.TenantBaseConstant.TENANT_DATASOURCE_EXIST_KEY;
 
 /**
  * 控制器

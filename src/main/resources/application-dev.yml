@@ -21,13 +21,13 @@ spring:
     #username: postgres
     #password: 123456
     # Oracle
-    #url: jdbc:oracle:thin:@127.0.0.1:49161:orcl
+    #url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
     #username: BLADEX_BOOT
-    #password: oracle
+    #password: BLADEX_BOOT
     # SqlServer
-    #url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=bladex
-    #username: bladex
-    #password: bladex
+    #url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=bladex_boot
+    #username: bladex_boot
+    #password: bladex_boot
 
 #第三方登陆
 social:

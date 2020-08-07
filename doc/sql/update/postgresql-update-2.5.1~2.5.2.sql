@@ -74,3 +74,47 @@ INSERT INTO "blade_role_menu"("id","menu_id","role_id")
 VALUES ('1161272893875227003', '1164733399669962203', '1123598816738675201');
 INSERT INTO "blade_role_menu"("id","menu_id","role_id")
 VALUES ('1161272893875227004', '1164733399669962204', '1123598816738675201');
+
+-- ----------------------------
+-- 报表文件表
+-- ----------------------------
+CREATE TABLE "blade_report_file" (
+    "id" int8 NOT NULL,
+    "name" varchar(100) COLLATE "pg_catalog"."default" NOT NULL,
+    "content" bytea,
+    "create_time" timestamp(6) NOT NULL,
+    "update_time" timestamp(6) NOT NULL,
+    "is_deleted" int4,
+    PRIMARY KEY ("id")
+);
+COMMENT ON COLUMN "blade_report_file"."id" IS '主键';
+COMMENT ON COLUMN "blade_report_file"."name" IS '文件名';
+COMMENT ON COLUMN "blade_report_file"."content" IS '文件内容';
+COMMENT ON COLUMN "blade_report_file"."create_time" IS '创建时间';
+COMMENT ON COLUMN "blade_report_file"."update_time" IS '更新时间';
+COMMENT ON COLUMN "blade_report_file"."is_deleted" IS '是否已删除';
+COMMENT ON TABLE "blade_report_file" IS '报表文件表';
+
+-- ----------------------------
+-- 插入报表文件表菜单数据
+-- ----------------------------
+INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
+VALUES ('1164733399669962301', '0', 'report', '报表管理', 'menu', '/report', 'iconfont icon-shujuzhanshi2', 5, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
+VALUES ('1164733399669962302', '1164733399669962301', 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', 'iconfont icon-rizhi', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
+VALUES ('1164733399669962303', '1164733399669962301', 'report_list', '报表列表', 'menu', '/report/reportlist', 'iconfont icon-biaodan', 2, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu"("id", "parent_id", "code", "name", "alias", "path", "source", "sort", "category", "action", "is_open", "remark", "is_deleted")
+VALUES ('1164733399669962304', '1164733399669962301', 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', 'iconfont iconicon_sms', 3, 1, 0, 1, NULL, 0);
+
+-- ----------------------------
+-- 增加报表文件表菜单权限数据
+-- ----------------------------
+INSERT INTO "blade_role_menu"("id","menu_id","role_id")
+VALUES ('1161272893875228001', '1164733399669962301', '1123598816738675201');
+INSERT INTO "blade_role_menu"("id","menu_id","role_id")
+VALUES ('1161272893875228002', '1164733399669962302', '1123598816738675201');
+INSERT INTO "blade_role_menu"("id","menu_id","role_id")
+VALUES ('1161272893875228003', '1164733399669962303', '1123598816738675201');
+INSERT INTO "blade_role_menu"("id","menu_id","role_id")
+VALUES ('1161272893875228004', '1164733399669962304', '1123598816738675201');

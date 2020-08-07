@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 16/07/2020 09:51:00
+ Date: 06/08/2020 23:35:37
 */
 
 
@@ -691,6 +691,10 @@ INSERT INTO "blade_menu" VALUES (1164733399669962201, 1123598815738675298, 'atta
 INSERT INTO "blade_menu" VALUES (1164733399669962202, 1164733399669962201, 'attach_upload', '上传', 'upload', '/resource/attach/upload', '', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962203, 1164733399669962201, 'attach_download', '下载', 'download', '/resource/attach/download', '', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962204, 1164733399669962201, 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', '', 3, 2, 3, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962301, 0, 'report', '报表管理', 'menu', '/report', 'iconfont icon-shujuzhanshi2', 5, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962302, 1164733399669962301, 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', 'iconfont icon-rizhi', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962303, 1164733399669962301, 'report_list', '报表列表', 'menu', '/report/reportlist', 'iconfont icon-biaodan', 2, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962304, 1164733399669962301, 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', 'iconfont iconicon_sms', 3, 1, 0, 1, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -4202,6 +4206,27 @@ INSERT INTO "blade_region" VALUES ('82', '00', '00', '澳门特别行政区', '8
 COMMIT;
 
 -- ----------------------------
+-- Table structure for blade_report_file
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_report_file";
+CREATE TABLE "blade_report_file" (
+  "id" int8 NOT NULL,
+  "name" varchar(100) COLLATE "pg_catalog"."default" NOT NULL,
+  "content" bytea,
+  "create_time" timestamp(6) NOT NULL,
+  "update_time" timestamp(6) NOT NULL,
+  "is_deleted" int4
+)
+;
+COMMENT ON COLUMN "blade_report_file"."id" IS '主键';
+COMMENT ON COLUMN "blade_report_file"."name" IS '文件名';
+COMMENT ON COLUMN "blade_report_file"."content" IS '文件内容';
+COMMENT ON COLUMN "blade_report_file"."create_time" IS '创建时间';
+COMMENT ON COLUMN "blade_report_file"."update_time" IS '更新时间';
+COMMENT ON COLUMN "blade_report_file"."is_deleted" IS '是否已删除';
+COMMENT ON TABLE "blade_report_file" IS '报表文件表';
+
+-- ----------------------------
 -- Table structure for blade_role
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_role";
@@ -4507,6 +4532,10 @@ INSERT INTO "blade_role_menu" VALUES (1161272893875227001, 1164733399669962201, 
 INSERT INTO "blade_role_menu" VALUES (1161272893875227002, 1164733399669962202, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893875227003, 1164733399669962203, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272893875227004, 1164733399669962204, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875228001, 1164733399669962301, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875228002, 1164733399669962302, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875228003, 1164733399669962303, 1123598816738675201);
+INSERT INTO "blade_role_menu" VALUES (1161272893875228004, 1164733399669962304, 1123598816738675201);
 COMMIT;
 
 -- ----------------------------
@@ -4962,6 +4991,11 @@ ALTER TABLE "blade_process_leave" ADD CONSTRAINT "blade_process_leave_pkey" PRIM
 -- Primary Key structure for table blade_region
 -- ----------------------------
 ALTER TABLE "blade_region" ADD CONSTRAINT "blade_region_pkey" PRIMARY KEY ("code");
+
+-- ----------------------------
+-- Primary Key structure for table blade_report_file
+-- ----------------------------
+ALTER TABLE "blade_report_file" ADD CONSTRAINT "blade_report_file_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table blade_role

@@ -74,7 +74,7 @@ mybatis-plus:
 swagger:
   title: BladeX 接口文档系统
   description: BladeX 接口文档系统
-  version: 2.5.2.SNAPSHOT
+  version: 2.6.0.RELEASE
   license: Powered By BladeX
   license-url: https://bladex.vip
   terms-of-service-url: https://bladex.vip

@@ -37,6 +37,9 @@ public class GrantVO implements Serializable {
 	@ApiModelProperty(value = "menuIds集合")
 	private List<Long> menuIds;
 
+	@ApiModelProperty(value = "topMenuIds集合")
+	private List<Long> topMenuIds;
+
 	@ApiModelProperty(value = "dataScopeIds集合")
 	private List<Long> dataScopeIds;
 

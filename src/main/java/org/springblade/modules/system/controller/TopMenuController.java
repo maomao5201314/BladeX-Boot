@@ -34,6 +34,7 @@ import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.TopMenu;
 import org.springblade.modules.system.service.ITopMenuService;
+import org.springblade.modules.system.vo.GrantVO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -125,12 +126,11 @@ public class TopMenuController extends BladeController {
 	@PostMapping("/grant")
 	@ApiOperationSupport(order = 8)
 	@ApiOperation(value = "顶部菜单配置", notes = "传入topMenuId集合以及menuId集合")
-	public R grant(@ApiParam(value = "topMenuId集合", required = true) @RequestParam String topMenuIds,
-				   @ApiParam(value = "menuId集合", required = true) @RequestParam String menuIds) {
+	public R grant(@RequestBody GrantVO grantVO) {
 		CacheUtil.clear(SYS_CACHE);
 		CacheUtil.clear(MENU_CACHE);
 		CacheUtil.clear(MENU_CACHE, Boolean.FALSE);
-		boolean temp = topMenuService.grant(Func.toLongList(topMenuIds), Func.toLongList(menuIds));
+		boolean temp = topMenuService.grant(grantVO.getTopMenuIds(), grantVO.getMenuIds());
 		return R.status(temp);
 	}
 

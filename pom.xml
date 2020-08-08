@@ -125,10 +125,10 @@
             <scope>test</scope>
         </dependency>
         <!-- 报表 -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springblade</groupId>
             <artifactId>blade-starter-report</artifactId>
-        </dependency>-->
+        </dependency>
         <!-- 验证码 -->
         <dependency>
             <groupId>com.github.whvcse</groupId>

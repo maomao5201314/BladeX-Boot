@@ -331,6 +331,17 @@ Table: blade_region（行政区划表）
 | sort          | INT(10)      | YES  |     |         | 排序      |
 | remark        | VARCHAR(255) | YES  |     |         | 备注      |
 
+Table: blade_report_file（报表文件表）
+
+| Field       | Type                 | Null | Key | Default | Remarks |
+| ----------- | -------------------- | ---- | --- | ------- | ------- |
+| id          | BIGINT(19)           | NO   | PRI |         | 主键      |
+| name        | VARCHAR(100)         | NO   |     |         | 文件名     |
+| content     | MEDIUMBLOB(16777215) | YES  |     |         | 文件内容    |
+| create_time | DATETIME(19)         | YES  |     |         | 创建时间    |
+| update_time | DATETIME(19)         | YES  |     |         | 更新时间    |
+| is_deleted  | INT(10)              | YES  |     | 0       | 是否已删除   |
+
 Table: blade_role（角色表）
 
 | Field      | Type         | Null | Key | Default | Remarks |

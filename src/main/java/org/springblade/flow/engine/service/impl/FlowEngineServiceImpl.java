@@ -75,8 +75,7 @@ import java.util.*;
 @Service
 @AllArgsConstructor
 public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> implements FlowEngineService {
-	private static final String IMAGE_NAME = "image";
-	private static final String XML_NAME = "xml";
+	private static final String ALREADY_IN_STATE = "already in state";
 	private static final BpmnJsonConverter BPMN_JSON_CONVERTER = new BpmnJsonConverter();
 	private static final BpmnXMLConverter BPMN_XML_CONVERTER = new BpmnXMLConverter();
 	private final ObjectMapper objectMapper;
@@ -241,14 +240,21 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 
 	@Override
 	public String changeState(String state, String processId) {
-		if (state.equals(FlowEngineConstant.ACTIVE)) {
-			repositoryService.activateProcessDefinitionById(processId, true, null);
-			return StringUtil.format("激活ID为 [{}] 的流程成功", processId);
-		} else if (state.equals(FlowEngineConstant.SUSPEND)) {
-			repositoryService.suspendProcessDefinitionById(processId, true, null);
-			return StringUtil.format("挂起ID为 [{}] 的流程成功", processId);
-		} else {
-			return "暂无流程变更";
+		try {
+			if (state.equals(FlowEngineConstant.ACTIVE)) {
+				repositoryService.activateProcessDefinitionById(processId, true, null);
+				return StringUtil.format("激活ID为 [{}] 的流程成功", processId);
+			} else if (state.equals(FlowEngineConstant.SUSPEND)) {
+				repositoryService.suspendProcessDefinitionById(processId, true, null);
+				return StringUtil.format("挂起ID为 [{}] 的流程成功", processId);
+			} else {
+				return "暂无流程变更";
+			}
+		} catch (Exception e) {
+			if (e.getMessage().contains(ALREADY_IN_STATE)) {
+				return StringUtil.format("ID为 [{}] 的流程已是此状态，无需操作", processId);
+			}
+			return e.getMessage();
 		}
 	}
 

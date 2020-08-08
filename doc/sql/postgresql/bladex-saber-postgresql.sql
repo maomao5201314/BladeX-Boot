@@ -693,9 +693,9 @@ INSERT INTO "blade_menu" VALUES (1164733399669962202, 1164733399669962201, 'atta
 INSERT INTO "blade_menu" VALUES (1164733399669962203, 1164733399669962201, 'attach_download', '下载', 'download', '/resource/attach/download', '', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962204, 1164733399669962201, 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', '', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962301, 0, 'report', '报表管理', 'menu', '/report', 'iconfont icon-shujuzhanshi2', 5, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399669962302, 1164733399669962301, 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', 'iconfont icon-rizhi', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962302, 1164733399669962301, 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', 'iconfont icon-rizhi', 1, 1, 0, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962303, 1164733399669962301, 'report_list', '报表列表', 'menu', '/report/reportlist', 'iconfont icon-biaodan', 2, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399669962304, 1164733399669962301, 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', 'iconfont iconicon_sms', 3, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962304, 1164733399669962301, 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', 'iconfont iconicon_sms', 3, 1, 0, 2, NULL, 0);
 COMMIT;
 
 -- ----------------------------

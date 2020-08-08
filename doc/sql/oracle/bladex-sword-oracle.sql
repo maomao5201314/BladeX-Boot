@@ -722,9 +722,9 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675259', '1123598815738675256', '
 INSERT INTO "BLADE_MENU" VALUES ('1161272593873321995', '1161272593873321991', 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', '4', '2', '2', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', NULL, '3', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962301', '0', 'report', '报表管理', 'menu', '/report', 'bar-chart', '5', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962302', '1164733399669962301', 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', NULL, '1', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962302', '1164733399669962301', 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', NULL, '1', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962303', '1164733399669962301', 'report_list', '报表列表', 'menu', '/report/reportlist', NULL, '2', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962304', '1164733399669962301', 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', NULL, '3', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962304', '1164733399669962301', 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', NULL, '3', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963252', '1123598815738675210', 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', NULL, '4', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963253', '1123598815738675210', 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', NULL, '5', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733369658963254', '1123598815738675210', 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', NULL, '6', '1', '0', '2', NULL, '0');

@@ -797,9 +797,9 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675281', '1123598815738675280', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675282', '1123598815738675281', 'work_start_flow', '发起', 'flow', NULL, 'flow', '1', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675283', '1123598815738675281', 'work_start_image', '流程图', 'image', NULL, 'image', '2', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962301', '0', 'report', '报表管理', 'menu', '/report', 'iconfont icon-shujuzhanshi2', '5', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962302', '1164733399669962301', 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', 'iconfont icon-rizhi', '1', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962302', '1164733399669962301', 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', 'iconfont icon-rizhi', '1', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1164733399669962303', '1164733399669962301', 'report_list', '报表列表', 'menu', '/report/reportlist', 'iconfont icon-biaodan', '2', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962304', '1164733399669962301', 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', 'iconfont iconicon_sms', '3', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962304', '1164733399669962301', 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', 'iconfont iconicon_sms', '3', '1', '0', '2', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675284', '1123598815738675280', 'work_claim', '待签事务', 'menu', '/work/claim', 'iconfont iconicon_ding', '2', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675285', '1123598815738675284', 'work_claim_sign', '签收', 'sign', NULL, 'sign', '1', '2', '2', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675286', '1123598815738675284', 'work_claim_detail', '详情', 'detail', NULL, 'detail', '2', '2', '2', '1', NULL, '0');

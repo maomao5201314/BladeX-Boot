@@ -91,6 +91,13 @@ flowable:
   check-process-definitions: false
   database-schema-update: false
 
+#报表配置
+report:
+  enabled: false
+  database:
+    provider:
+      prefix: blade-
+
 #oss默认配置
 oss:
   enabled: true
@@ -194,5 +201,3 @@ blade:
     #排除多租户逻辑
     exclude-tables:
       - blade_user
-
-

@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.system.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
@@ -39,6 +40,12 @@ public class UserVO extends User {
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
 	private Long id;
+
+	/**
+	 * 密码
+	 */
+	@JsonIgnore
+	private String password;
 
 	/**
 	 * 租户名

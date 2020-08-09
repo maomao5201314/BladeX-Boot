@@ -17,6 +17,7 @@
 package org.springblade.modules.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springblade.core.tenant.mp.TenantEntity;
@@ -46,6 +47,7 @@ public class User extends TenantEntity {
 	/**
 	 * 密码
 	 */
+	@JsonIgnore
 	private String password;
 	/**
 	 * 昵称

@@ -45,6 +45,8 @@
                                 }
                             </pattern>
                         </pattern>
+                        <mdc/>
+                        <stackTrace/>
                     </providers>
                 </encoder>
             </appender>

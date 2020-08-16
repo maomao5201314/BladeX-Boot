@@ -30,7 +30,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @ConditionalOnProperty(value = "report.enabled", havingValue = "true", matchIfMissing = true)
-public class ReportConfiguration {
+public class ReportDatasourceConfiguration {
 
 	/**
 	 * 自定义报表可选数据源

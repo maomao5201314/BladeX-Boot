@@ -18,6 +18,8 @@ package org.springblade.modules.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.NullSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -91,6 +93,7 @@ public class Tenant extends BaseEntity {
 	/**
 	 * 数据源ID
 	 */
+	@JsonSerialize(nullsUsing = NullSerializer.class)
 	@ApiModelProperty(value = "数据源ID")
 	private Long datasourceId;
 	/**

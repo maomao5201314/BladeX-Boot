@@ -36,6 +36,7 @@ public class LauncherServiceImpl implements LauncherService {
 	public void launcher(SpringApplicationBuilder builder, String appName, String profile, boolean isLocalDev) {
 		Properties props = System.getProperties();
 		PropsUtil.setProperty(props, "spring.cloud.sentinel.transport.dashboard", LauncherConstant.sentinelAddr(profile));
+		PropsUtil.setProperty(props, "spring.datasource.dynamic.enabled", "false");
 		// 开启elk日志
 		//PropsUtil.setProperty(props, "blade.log.elk.destination", LauncherConstant.elkAddr(profile));
 	}

@@ -182,6 +182,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			}
 			User user = new User();
 			user.setAccount(userOauth.getUsername());
+			user.setTenantId(userOauth.getTenantId());
 			userInfo.setUser(user);
 			userInfo.setRoles(Collections.singletonList(GUEST_NAME));
 		}

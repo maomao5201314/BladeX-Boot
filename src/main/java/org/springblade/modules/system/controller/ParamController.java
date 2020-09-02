@@ -87,6 +87,7 @@ public class ParamController extends BladeController {
 	@ApiOperation(value = "新增或修改", notes = "传入param")
 	public R submit(@Valid @RequestBody Param param) {
 		CacheUtil.clear(PARAM_CACHE);
+		CacheUtil.clear(PARAM_CACHE, Boolean.FALSE);
 		return R.status(paramService.saveOrUpdate(param));
 	}
 
@@ -99,6 +100,7 @@ public class ParamController extends BladeController {
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		CacheUtil.clear(PARAM_CACHE);
+		CacheUtil.clear(PARAM_CACHE, Boolean.FALSE);
 		return R.status(paramService.deleteLogic(Func.toLongList(ids)));
 	}
 

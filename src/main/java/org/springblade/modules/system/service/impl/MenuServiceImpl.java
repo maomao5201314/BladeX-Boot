@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
@@ -62,6 +63,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	private final IRoleScopeService roleScopeService;
 	private final ITopMenuSettingService topMenuSettingService;
 	private final static String PARENT_ID = "parentId";
+	private final static Integer MENU_CATEGORY = 1;
 
 	@Override
 	public List<MenuVO> lazyList(Long parentId, Map<String, Object> param) {
@@ -192,6 +194,22 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	@Override
 	public boolean submit(Menu menu) {
+		LambdaQueryWrapper<Menu> menuQueryWrapper = Wrappers.lambdaQuery();
+		if (menu.getId() == null) {
+			menuQueryWrapper.eq(Menu::getCode, menu.getCode()).or(
+				wrapper -> wrapper.eq(Menu::getName, menu.getName()).eq(Menu::getCategory, MENU_CATEGORY)
+			);
+		} else {
+			menuQueryWrapper.ne(Menu::getId, menu.getId()).and(
+				wrapper -> wrapper.eq(Menu::getCode, menu.getCode()).or(
+					o -> o.eq(Menu::getName, menu.getName()).eq(Menu::getCategory, MENU_CATEGORY)
+				)
+			);
+		}
+		Integer cnt = baseMapper.selectCount(menuQueryWrapper);
+		if (cnt > 0) {
+			throw new ServiceException("菜单名或编号已存在!");
+		}
 		if (menu.getParentId() == null && menu.getId() == null) {
 			menu.setParentId(BladeConstant.TOP_PARENT_ID);
 		}

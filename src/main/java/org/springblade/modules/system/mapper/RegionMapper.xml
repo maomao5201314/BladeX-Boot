@@ -18,7 +18,7 @@
         <result column="town_name" property="townName"/>
         <result column="village_code" property="villageCode"/>
         <result column="village_name" property="villageName"/>
-        <result column="level" property="level"/>
+        <result column="regionLevel" property="regionLevel"/>
         <result column="sort" property="sort"/>
         <result column="remark" property="remark"/>
     </resultMap>
@@ -38,7 +38,7 @@
         <result column="town_name" property="townName"/>
         <result column="village_code" property="villageCode"/>
         <result column="village_name" property="villageName"/>
-        <result column="level" property="level"/>
+        <result column="regionLevel" property="regionLevel"/>
         <result column="sort" property="sort"/>
         <result column="remark" property="remark"/>
         <result column="id" property="id"/>

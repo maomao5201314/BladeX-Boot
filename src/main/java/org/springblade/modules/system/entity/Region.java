@@ -112,7 +112,7 @@ public class Region implements Serializable {
 	 * 层级
 	 */
 	@ApiModelProperty(value = "层级")
-	private Integer level;
+	private Integer regionLevel;
 	/**
 	 * 排序
 	 */

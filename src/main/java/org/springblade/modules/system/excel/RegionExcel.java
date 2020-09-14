@@ -79,7 +79,7 @@ public class RegionExcel implements Serializable {
 	private String villageName;
 
 	@ExcelProperty("层级")
-	private Integer level;
+	private Integer regionLevel;
 
 	@ExcelProperty("排序")
 	private Integer sort;

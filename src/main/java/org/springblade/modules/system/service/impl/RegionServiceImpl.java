@@ -57,7 +57,7 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
 			region.setAncestors(ancestors);
 		}
 		// 设置省、市、区、镇、村
-		Integer level = region.getLevel();
+		Integer level = region.getRegionLevel();
 		String code = region.getCode();
 		String name = region.getName();
 		if (level == PROVINCE_LEVEL) {

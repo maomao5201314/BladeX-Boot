@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 06/08/2020 23:35:37
+ Date: 14/09/2020 18:15:52
 */
 
 
@@ -328,6 +328,10 @@ INSERT INTO "blade_dict" VALUES (1123598814738777233, 1123598814738777230, 'regi
 INSERT INTO "blade_dict" VALUES (1123598814738777234, 1123598814738777230, 'region', '3', '区县', 3, NULL, 0, 0);
 INSERT INTO "blade_dict" VALUES (1123598814738777235, 1123598814738777230, 'region', '4', '乡镇', 4, NULL, 0, 0);
 INSERT INTO "blade_dict" VALUES (1123598814738777236, 1123598814738777230, 'region', '5', '村委', 5, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738778200, 0, 'user_type', '-1', '用户平台', 14, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738778201, 1123598814738778200, 'user_type', '1', 'WEB', 1, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738778202, 1123598814738778200, 'user_type', '2', 'APP', 2, NULL, 0, 0);
+INSERT INTO "blade_dict" VALUES (1123598814738778203, 1123598814738778200, 'user_type', '3', 'OTHER', 3, NULL, 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -948,7 +952,7 @@ CREATE TABLE "blade_region" (
   "town_name" varchar(32) COLLATE "pg_catalog"."default",
   "village_code" varchar(12) COLLATE "pg_catalog"."default",
   "village_name" varchar(32) COLLATE "pg_catalog"."default",
-  "level" int4,
+  "region_level" int4,
   "sort" int4,
   "remark" varchar(255) COLLATE "pg_catalog"."default"
 )
@@ -967,7 +971,7 @@ COMMENT ON COLUMN "blade_region"."town_code" IS '镇级区划编号';
 COMMENT ON COLUMN "blade_region"."town_name" IS '镇级名称';
 COMMENT ON COLUMN "blade_region"."village_code" IS '村级区划编号';
 COMMENT ON COLUMN "blade_region"."village_name" IS '村级名称';
-COMMENT ON COLUMN "blade_region"."level" IS '层级';
+COMMENT ON COLUMN "blade_region"."region_level" IS '层级';
 COMMENT ON COLUMN "blade_region"."sort" IS '排序';
 COMMENT ON COLUMN "blade_region"."remark" IS '备注';
 COMMENT ON TABLE "blade_region" IS '行政区划表';
@@ -4798,6 +4802,7 @@ CREATE TABLE "blade_user" (
   "id" int8 NOT NULL,
   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
   "code" varchar(12) COLLATE "pg_catalog"."default",
+  "user_type" int2,
   "account" varchar(45) COLLATE "pg_catalog"."default",
   "password" varchar(45) COLLATE "pg_catalog"."default",
   "name" varchar(20) COLLATE "pg_catalog"."default",
@@ -4822,6 +4827,7 @@ CREATE TABLE "blade_user" (
 COMMENT ON COLUMN "blade_user"."id" IS '主键';
 COMMENT ON COLUMN "blade_user"."tenant_id" IS '租户ID';
 COMMENT ON COLUMN "blade_user"."code" IS '用户编号';
+COMMENT ON COLUMN "blade_user"."user_type" IS '用户平台';
 COMMENT ON COLUMN "blade_user"."account" IS '账号';
 COMMENT ON COLUMN "blade_user"."password" IS '密码';
 COMMENT ON COLUMN "blade_user"."name" IS '昵称';
@@ -4847,10 +4853,10 @@ COMMENT ON TABLE "blade_user" IS '用户表';
 -- Records of blade_user
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_user" VALUES (1123598821738675201, '000000', NULL, 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员', '管理员', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'admin@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675201', '1123598813738675201', '1123598817738675201', 1123598821738675201, 1123598813738675201, '2018-08-08 00:00:00', 1123598821738675201, '2018-08-08 00:00:00', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675202, '000000', NULL, 'hr', '5e79b90f7bba52d54115f086e48f539016a27ec6', '人事', '人事', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'hr@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675203', '1123598813738675202', '1123598817738675207', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:10', 1123598821738675201, '2019-04-27 17:03:10', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675203, '000000', NULL, 'manager', 'dfbaa3b61caa3a319f463cc165085aa8c822d2ce', '经理', '经理', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'manager@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675204', '1123598813738675202', '1123598817738675206', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:38', 1123598821738675201, '2019-04-27 17:03:38', 1, 0);
-INSERT INTO "blade_user" VALUES (1123598821738675204, '000000', NULL, 'boss', 'abe57d23e18f7ad8ea99c86e430c90a05119a9d3', '老板', '老板', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'boss@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675205', '1123598813738675202', '1123598817738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:55', 1123598821738675201, '2019-04-27 17:03:55', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675201, '000000', NULL, 1, 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员', '管理员', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'admin@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675201', '1123598813738675201', '1123598817738675201', 1123598821738675201, 1123598813738675201, '2018-08-08 00:00:00', 1123598821738675201, '2018-08-08 00:00:00', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675202, '000000', NULL, 1, 'hr', '5e79b90f7bba52d54115f086e48f539016a27ec6', '人事', '人事', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'hr@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675203', '1123598813738675202', '1123598817738675207', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:10', 1123598821738675201, '2019-04-27 17:03:10', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675203, '000000', NULL, 1, 'manager', 'dfbaa3b61caa3a319f463cc165085aa8c822d2ce', '经理', '经理', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'manager@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675204', '1123598813738675202', '1123598817738675206', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:38', 1123598821738675201, '2019-04-27 17:03:38', 1, 0);
+INSERT INTO "blade_user" VALUES (1123598821738675204, '000000', NULL, 1, 'boss', 'abe57d23e18f7ad8ea99c86e430c90a05119a9d3', '老板', '老板', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'boss@bladex.vip', '123333333333', '2018-08-08 00:00:00', 1, '1123598816738675205', '1123598813738675202', '1123598817738675201', 1123598821738675201, 1123598813738675201, '2019-04-27 17:03:55', 1123598821738675201, '2019-04-27 17:03:55', 1, 0);
 COMMIT;
 
 -- ----------------------------

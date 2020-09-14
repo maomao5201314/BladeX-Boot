@@ -136,6 +136,8 @@ public class SmsBuilder {
 			if ((Func.isEmpty(s))) {
 				Sms defaultSms = new Sms();
 				defaultSms.setId(0L);
+				defaultSms.setTemplateId(smsProperties.getTemplateId());
+				defaultSms.setRegionId(smsProperties.getRegionId());
 				defaultSms.setCategory(SmsEnum.of(smsProperties.getName()).getCategory());
 				defaultSms.setAccessKey(smsProperties.getAccessKey());
 				defaultSms.setSecretKey(smsProperties.getSecretKey());

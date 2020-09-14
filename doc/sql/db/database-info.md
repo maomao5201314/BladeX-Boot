@@ -327,7 +327,7 @@ Table: blade_region（行政区划表）
 | town_name     | VARCHAR(32)  | YES  |     |         | 镇级名称    |
 | village_code  | VARCHAR(12)  | YES  |     |         | 村级区划编号  |
 | village_name  | VARCHAR(32)  | YES  |     |         | 村级名称    |
-| level         | INT(10)      | YES  |     |         | 层级      |
+| region_level  | INT(10)      | YES  |     |         | 层级      |
 | sort          | INT(10)      | YES  |     |         | 排序      |
 | remark        | VARCHAR(255) | YES  |     |         | 备注      |
 
@@ -491,6 +491,7 @@ Table: blade_user（用户表）
 | id          | BIGINT(19)    | NO   | PRI |         | 主键      |
 | tenant_id   | VARCHAR(12)   | YES  |     | 000000  | 租户ID    |
 | code        | VARCHAR(12)   | YES  |     |         | 用户编号    |
+| user_type   | SMALLINT(5)   | YES  |     |         | 用户平台    |
 | account     | VARCHAR(45)   | YES  |     |         | 账号      |
 | password    | VARCHAR(45)   | YES  |     |         | 密码      |
 | name        | VARCHAR(20)   | YES  |     |         | 昵称      |

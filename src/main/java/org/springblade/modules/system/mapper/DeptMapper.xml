@@ -37,12 +37,6 @@
         <result column="has_children" property="hasChildren"/>
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="baseColumnList">
-        select
-        id, parent_id, dept_name, full_name, sort, remark, is_deleted
-    </sql>
-
     <select id="lazyList" resultMap="deptVOResultMap">
         SELECT
             dept.* ,

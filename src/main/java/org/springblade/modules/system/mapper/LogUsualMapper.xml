@@ -19,11 +19,4 @@
         <result column="create_by" property="createBy"/>
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="baseColumnList">
-        select id,
-        create_time AS createTime,
-        service_id, server_host, server_ip, env, log_level, log_data, method, request_uri, user_agent, params, create_by
-    </sql>
-
 </mapper>

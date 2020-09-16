@@ -20,12 +20,6 @@
         <result column="key" property="key"/>
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="baseColumnList">
-        select
-        id, parent_id, role_name, sort, role_alias, is_deleted
-    </sql>
-
     <select id="selectRolePage" resultMap="roleResultMap">
         select * from blade_role where is_deleted = 0
     </select>

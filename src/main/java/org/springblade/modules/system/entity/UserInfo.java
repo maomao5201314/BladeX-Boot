@@ -19,6 +19,7 @@ package org.springblade.modules.system.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springblade.core.tool.support.Kv;
 
 import java.io.Serializable;
 import java.util.List;
@@ -39,6 +40,12 @@ public class UserInfo implements Serializable {
 	 */
 	@ApiModelProperty(value = "用户")
 	private User user;
+
+	/**
+	 * 拓展信息
+	 */
+	@ApiModelProperty(value = "拓展信息")
+	private Kv detail;
 
 	/**
 	 * 权限标识集合

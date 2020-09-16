@@ -20,7 +20,7 @@ import lombok.AllArgsConstructor;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.modules.auth.enums.BladeUserEnum;
+import org.springblade.modules.auth.enums.UserEnum;
 import org.springblade.modules.auth.provider.ITokenGranter;
 import org.springblade.modules.auth.provider.TokenParameter;
 import org.springblade.modules.auth.utils.TokenUtil;
@@ -59,12 +59,12 @@ public class PasswordTokenGranter implements ITokenGranter {
 			// 获取用户类型
 			String userType = tokenParameter.getArgs().getStr("userType");
 			// 根据不同用户类型调用对应的接口返回数据，用户可自行拓展
-			if (userType.equals(BladeUserEnum.WEB.getName())) {
-				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password));
-			} else if (userType.equals(BladeUserEnum.APP.getName())) {
-				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password));
+			if (userType.equals(UserEnum.WEB.getName())) {
+				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password), UserEnum.WEB);
+			} else if (userType.equals(UserEnum.APP.getName())) {
+				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password), UserEnum.APP);
 			} else {
-				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password));
+				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password), UserEnum.OTHER);
 			}
 		}
 		return userInfo;

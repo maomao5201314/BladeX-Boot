@@ -26,7 +26,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum BladeUserEnum {
+public enum UserEnum {
 
 	/**
 	 * web
@@ -37,6 +37,11 @@ public enum BladeUserEnum {
 	 * app
 	 */
 	APP("app", 2),
+
+	/**
+	 * other
+	 */
+	OTHER("other", 3),
 	;
 
 	final String name;

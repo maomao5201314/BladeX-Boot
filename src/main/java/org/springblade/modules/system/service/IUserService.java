@@ -20,6 +20,7 @@ package org.springblade.modules.system.service;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springblade.core.mp.base.BaseService;
+import org.springblade.modules.auth.enums.UserEnum;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springblade.modules.system.entity.UserOauth;
@@ -95,6 +96,17 @@ public interface IUserService extends BaseService<User> {
 	 * @return
 	 */
 	UserInfo userInfo(String tenantId, String account, String password);
+
+	/**
+	 * 用户信息
+	 *
+	 * @param tenantId
+	 * @param account
+	 * @param password
+	 * @param userEnum
+	 * @return
+	 */
+	UserInfo userInfo(String tenantId, String account, String password, UserEnum userEnum);
 
 	/**
 	 * 用户信息

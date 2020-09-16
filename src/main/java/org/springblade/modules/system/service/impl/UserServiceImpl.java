@@ -33,7 +33,9 @@ import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tenant.BladeTenantProperties;
 import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.jackson.JsonUtil;
+import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.*;
+import org.springblade.modules.auth.enums.UserEnum;
 import org.springblade.modules.system.entity.*;
 import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.mapper.UserMapper;
@@ -154,12 +156,30 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		return buildUserInfo(user);
 	}
 
+	@Override
+	public UserInfo userInfo(String tenantId, String account, String password, UserEnum userEnum) {
+		User user = baseMapper.getUser(tenantId, account, password);
+		return buildUserInfo(user, userEnum);
+	}
+
 	private UserInfo buildUserInfo(User user) {
+		return buildUserInfo(user, UserEnum.WEB);
+	}
+
+	private UserInfo buildUserInfo(User user, UserEnum userEnum) {
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUser(user);
 		if (Func.isNotEmpty(user)) {
 			List<String> roleAlias = roleService.getRoleAliases(user.getRoleId());
 			userInfo.setRoles(roleAlias);
+		}
+		// 根据每个用户平台，建立对应的detail表，通过查询将结果集写入到detail字段
+		if (userEnum == UserEnum.WEB) {
+			userInfo.setDetail(Kv.create().set("type", userEnum.getName()));
+		} else if (userEnum == UserEnum.APP) {
+			userInfo.setDetail(Kv.create().set("type", userEnum.getName()));
+		} else {
+			userInfo.setDetail(Kv.create().set("type", userEnum.getName()));
 		}
 		return userInfo;
 	}

@@ -81,7 +81,7 @@ public class TokenUtil {
 		Kv authInfo = Kv.create();
 		User user = userInfo.getUser();
 		//设置jwt参数
-		Map<String, String> param = new HashMap<>(16);
+		Map<String, Object> param = new HashMap<>(16);
 		param.put(TokenConstant.TOKEN_TYPE, TokenConstant.ACCESS_TOKEN);
 		param.put(TokenConstant.TENANT_ID, user.getTenantId());
 		param.put(TokenConstant.USER_ID, Func.toStr(user.getId()));
@@ -93,6 +93,7 @@ public class TokenUtil {
 		param.put(TokenConstant.USER_NAME, user.getAccount());
 		param.put(TokenConstant.NICK_NAME, user.getRealName());
 		param.put(TokenConstant.ROLE_NAME, Func.join(userInfo.getRoles()));
+		param.put(TokenConstant.DETAIL, userInfo.getDetail());
 
 		//拼装accessToken
 		try {
@@ -113,6 +114,7 @@ public class TokenUtil {
 				.set(TokenConstant.REFRESH_TOKEN, createRefreshToken(userInfo).getToken())
 				.set(TokenConstant.TOKEN_TYPE, TokenConstant.BEARER)
 				.set(TokenConstant.EXPIRES_IN, accessToken.getExpire())
+				.set(TokenConstant.DETAIL, userInfo.getDetail())
 				.set(TokenConstant.LICENSE, TokenConstant.LICENSE_NAME);
 		} catch (Exception ex) {
 			return authInfo.set("error_code", HttpServletResponse.SC_UNAUTHORIZED).set("error_description", ex.getMessage());
@@ -127,7 +129,7 @@ public class TokenUtil {
 	 */
 	private static TokenInfo createRefreshToken(UserInfo userInfo) {
 		User user = userInfo.getUser();
-		Map<String, String> param = new HashMap<>(16);
+		Map<String, Object> param = new HashMap<>(16);
 		param.put(TokenConstant.TOKEN_TYPE, TokenConstant.REFRESH_TOKEN);
 		param.put(TokenConstant.USER_ID, Func.toStr(user.getId()));
 		return SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.REFRESH_TOKEN);

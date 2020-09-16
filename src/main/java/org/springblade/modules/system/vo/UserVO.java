@@ -53,6 +53,11 @@ public class UserVO extends User {
 	private String tenantName;
 
 	/**
+	 * 用户平台名
+	 */
+	private String userTypeName;
+
+	/**
 	 * 角色名
 	 */
 	private String roleName;

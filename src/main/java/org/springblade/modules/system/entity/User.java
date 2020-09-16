@@ -40,6 +40,10 @@ public class User extends TenantEntity {
 	 */
 	private String code;
 	/**
+	 * 用户平台
+	 */
+	private Integer userType;
+	/**
 	 * 账号
 	 */
 	private String account;

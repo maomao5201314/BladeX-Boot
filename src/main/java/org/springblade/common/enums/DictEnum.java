@@ -84,6 +84,10 @@ public enum DictEnum {
 	 * 行政区划
 	 */
 	REGION("region"),
+	/**
+	 * 用户平台
+	 */
+	USER_TYPE("user_type"),
 	;
 
 	final String name;

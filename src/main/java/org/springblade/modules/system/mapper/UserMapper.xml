@@ -12,6 +12,8 @@
         <result column="update_time" property="updateTime"/>
         <result column="status" property="status"/>
         <result column="is_deleted" property="isDeleted"/>
+        <result column="code" property="code"/>
+        <result column="user_type" property="userType"/>
         <result column="account" property="account"/>
         <result column="password" property="password"/>
         <result column="name" property="name"/>
@@ -24,18 +26,6 @@
         <result column="dept_id" property="deptId"/>
         <result column="post_id" property="postId"/>
     </resultMap>
-
-    <!-- 通用查询结果列 -->
-    <sql id="baseColumnList">
-        select id,
-        create_user AS createUser,
-        create_time AS createTime,
-        update_user AS updateUser,
-        update_time AS updateTime,
-        status,
-        is_deleted AS isDeleted,
-        account, password, name, real_name, email, phone, birthday, sex, role_id, dept_id
-    </sql>
 
     <select id="selectUserPage" resultMap="userResultMap">
         select * from blade_user where is_deleted = 0

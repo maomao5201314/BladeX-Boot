@@ -41,6 +41,9 @@
         <if test="user.realName!=null and user.realName != ''">
             and real_name = #{user.realName}
         </if>
+        <if test="user.userType!=null and user.userType != ''">
+            and user_type = #{user.userType}
+        </if>
         <if test="deptIdList!=null and deptIdList.size>0">
             and id in (
                 SELECT

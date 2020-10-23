@@ -25,6 +25,7 @@ import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springblade.modules.system.entity.UserOauth;
 import org.springblade.modules.system.excel.UserExcel;
+import org.springblade.modules.system.vo.UserVO;
 
 import java.util.List;
 
@@ -177,4 +178,22 @@ public interface IUserService extends BaseService<User> {
 	 * @return
 	 */
 	boolean registerGuest(User user, Long oauthId);
+
+	/**
+	 * 配置用户平台
+	 *
+	 * @param userId
+	 * @param userType
+	 * @param userExt
+	 * @return
+	 */
+	boolean updatePlatform(Long userId, Integer userType, String userExt);
+
+	/**
+	 * 用户详细信息
+	 *
+	 * @param user
+	 * @return
+	 */
+	UserVO platformDetail(User user);
 }

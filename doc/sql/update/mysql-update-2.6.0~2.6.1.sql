@@ -16,6 +16,30 @@ ALTER TABLE `blade_user`
 UPDATE `blade_user` set user_type = 1 WHERE is_deleted = 0;
 
 -- ----------------------------
+-- 创建用户拓展表
+-- ----------------------------
+CREATE TABLE `blade_user_web`  (
+`id` bigint(64) NOT NULL COMMENT '主键',
+`user_id` bigint(64) NULL DEFAULT 0 COMMENT '用户ID',
+`user_ext` varchar(255) NULL COMMENT '用户拓展信息',
+PRIMARY KEY (`id`)
+) COMMENT = '用户平台拓展表';
+
+CREATE TABLE `blade_user_app`  (
+`id` bigint(64) NOT NULL COMMENT '主键',
+`user_id` bigint(64) NULL DEFAULT 0 COMMENT '用户ID',
+`user_ext` varchar(255) NULL COMMENT '用户拓展信息',
+PRIMARY KEY (`id`)
+) COMMENT = '用户平台拓展表';
+
+CREATE TABLE `blade_user_other`  (
+`id` bigint(64) NOT NULL COMMENT '主键',
+`user_id` bigint(64) NULL DEFAULT 0 COMMENT '用户ID',
+`user_ext` varchar(255) NULL COMMENT '用户拓展信息',
+PRIMARY KEY (`id`)
+) COMMENT = '用户平台拓展表';
+
+-- ----------------------------
 -- 增加用户平台字典数据
 -- ----------------------------
 INSERT INTO `blade_dict`(`id`, `parent_id`, `code`, `dict_key`, `dict_value`, `sort`, `remark`, `is_sealed`, `is_deleted`)

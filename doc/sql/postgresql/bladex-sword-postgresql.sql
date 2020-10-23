@@ -1,10 +1,10 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : postgres_localhost
+ Source Server         : postgres_jd
  Source Server Type    : PostgreSQL
  Source Server Version : 110001
- Source Host           : localhost:5432
+ Source Host           : 127.0.0.1:5432
  Source Catalog        : bladex
  Source Schema         : public
 
@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 14/09/2020 18:14:59
+ Date: 22/10/2020 22:52:16
 */
 
 
@@ -4858,6 +4858,21 @@ INSERT INTO "blade_user" VALUES (1123598821738675204, '000000', NULL, 1, 'boss',
 COMMIT;
 
 -- ----------------------------
+-- Table structure for blade_user_app
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_user_app";
+CREATE TABLE "blade_user_app" (
+  "id" int8 NOT NULL,
+  "user_id" int8,
+  "user_ext" varchar(255) COLLATE "pg_catalog"."default"
+)
+;
+COMMENT ON COLUMN "blade_user_app"."id" IS '主键';
+COMMENT ON COLUMN "blade_user_app"."user_id" IS '用户ID';
+COMMENT ON COLUMN "blade_user_app"."user_ext" IS '用户拓展信息';
+COMMENT ON TABLE "blade_user_app" IS '用户平台拓展表';
+
+-- ----------------------------
 -- Table structure for blade_user_dept
 -- ----------------------------
 DROP TABLE IF EXISTS "blade_user_dept";
@@ -4918,6 +4933,36 @@ COMMENT ON COLUMN "blade_user_oauth"."remark" IS '备注';
 COMMENT ON COLUMN "blade_user_oauth"."gender" IS '性别';
 COMMENT ON COLUMN "blade_user_oauth"."source" IS '来源';
 COMMENT ON TABLE "blade_user_oauth" IS '用户第三方认证表';
+
+-- ----------------------------
+-- Table structure for blade_user_other
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_user_other";
+CREATE TABLE "blade_user_other" (
+  "id" int8 NOT NULL,
+  "user_id" int8,
+  "user_ext" varchar(255) COLLATE "pg_catalog"."default"
+)
+;
+COMMENT ON COLUMN "blade_user_other"."id" IS '主键';
+COMMENT ON COLUMN "blade_user_other"."user_id" IS '用户ID';
+COMMENT ON COLUMN "blade_user_other"."user_ext" IS '用户拓展信息';
+COMMENT ON TABLE "blade_user_other" IS '用户平台拓展表';
+
+-- ----------------------------
+-- Table structure for blade_user_web
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_user_web";
+CREATE TABLE "blade_user_web" (
+  "id" int8 NOT NULL,
+  "user_id" int8,
+  "user_ext" varchar(255) COLLATE "pg_catalog"."default"
+)
+;
+COMMENT ON COLUMN "blade_user_web"."id" IS '主键';
+COMMENT ON COLUMN "blade_user_web"."user_id" IS '用户ID';
+COMMENT ON COLUMN "blade_user_web"."user_ext" IS '用户拓展信息';
+COMMENT ON TABLE "blade_user_web" IS '用户平台拓展表';
 
 -- ----------------------------
 -- Primary Key structure for table blade_attach
@@ -5060,6 +5105,11 @@ ALTER TABLE "blade_top_menu_setting" ADD CONSTRAINT "blade_top_menu_setting_pkey
 ALTER TABLE "blade_user" ADD CONSTRAINT "blade_user_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
+-- Primary Key structure for table blade_user_app
+-- ----------------------------
+ALTER TABLE "blade_user_app" ADD CONSTRAINT "blade_user_app_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
 -- Primary Key structure for table blade_user_dept
 -- ----------------------------
 ALTER TABLE "blade_user_dept" ADD CONSTRAINT "blade_user_dept_pkey" PRIMARY KEY ("id");
@@ -5068,3 +5118,13 @@ ALTER TABLE "blade_user_dept" ADD CONSTRAINT "blade_user_dept_pkey" PRIMARY KEY 
 -- Primary Key structure for table blade_user_oauth
 -- ----------------------------
 ALTER TABLE "blade_user_oauth" ADD CONSTRAINT "blade_user_oauth_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table blade_user_other
+-- ----------------------------
+ALTER TABLE "blade_user_other" ADD CONSTRAINT "blade_user_other_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table blade_user_web
+-- ----------------------------
+ALTER TABLE "blade_user_web" ADD CONSTRAINT "blade_user_web_pkey" PRIMARY KEY ("id");

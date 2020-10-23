@@ -14,71 +14,51 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.springblade.modules.system.vo;
+package org.springblade.modules.system.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springblade.modules.system.entity.User;
 
 /**
- * 视图实体类
+ * 实体类
  *
  * @author Chill
  */
 @Data
+@TableName("blade_user_other")
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value = "UserVO对象", description = "UserVO对象")
-public class UserVO extends User {
+@ApiModel(value = "UserOther对象", description = "UserOther对象")
+public class UserOther extends Model<UserOther> {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 主键ID
+	 * 主键
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
+	@ApiModelProperty(value = "主键")
+	@TableId(value = "id", type = IdType.ASSIGN_ID)
 	private Long id;
 
 	/**
-	 * 密码
+	 * 用户ID
 	 */
-	@JsonIgnore
-	private String password;
+	@JsonSerialize(using = ToStringSerializer.class)
+	@ApiModelProperty(value = "用户ID")
+	private Long userId;
 
 	/**
-	 * 租户名
+	 * 用户拓展信息
 	 */
-	private String tenantName;
-
-	/**
-	 * 用户平台名
-	 */
-	private String userTypeName;
-
-	/**
-	 * 角色名
-	 */
-	private String roleName;
-
-	/**
-	 * 部门名
-	 */
-	private String deptName;
-
-	/**
-	 * 岗位名
-	 */
-	private String postName;
-
-	/**
-	 * 性别
-	 */
-	private String sexName;
-
-	/**
-	 * 拓展信息
-	 */
+	@ApiModelProperty(value = "用户拓展信息")
 	private String userExt;
+
 }

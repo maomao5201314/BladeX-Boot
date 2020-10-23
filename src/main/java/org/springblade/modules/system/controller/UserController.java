@@ -243,7 +243,7 @@ public class UserController {
 	@ApiOperation(value = "导出用户", notes = "传入user")
 	public void exportUser(@ApiIgnore @RequestParam Map<String, Object> user, BladeUser bladeUser, HttpServletResponse response) {
 		QueryWrapper<User> queryWrapper = Condition.getQueryWrapper(user, User.class);
-		if (!AuthUtil.isAdministrator()){
+		if (!AuthUtil.isAdministrator()) {
 			queryWrapper.lambda().eq(User::getTenantId, bladeUser.getTenantId());
 		}
 		queryWrapper.lambda().eq(User::getIsDeleted, BladeConstant.DB_NOT_DELETED);
@@ -271,6 +271,27 @@ public class UserController {
 	@ApiOperation(value = "第三方注册用户", notes = "传入user")
 	public R registerGuest(User user, Long oauthId) {
 		return R.status(userService.registerGuest(user, oauthId));
+	}
+
+	/**
+	 * 配置用户平台信息
+	 */
+	@PostMapping("/update-platform")
+	@ApiOperationSupport(order = 16)
+	@ApiOperation(value = "配置用户平台信息", notes = "传入user")
+	public R updatePlatform(Long userId, Integer userType, String userExt) {
+		return R.status(userService.updatePlatform(userId, userType, userExt));
+	}
+
+	/**
+	 * 查看平台详情
+	 */
+	@ApiOperationSupport(order = 17)
+	@ApiOperation(value = "查看平台详情", notes = "传入id")
+	@GetMapping("/platform-detail")
+	@PreAuth(RoleConstant.HAS_ROLE_ADMIN)
+	public R<UserVO> platformDetail(User user) {
+		return R.data(userService.platformDetail(user));
 	}
 
 }

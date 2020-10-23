@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql_localhost
+ Source Server         : mysql_jd
  Source Server Type    : MySQL
- Source Server Version : 50729
- Source Host           : localhost:3306
+ Source Server Version : 50723
+ Source Host           : 127.0.0.1:3306
  Source Schema         : bladex
 
  Target Server Type    : MySQL
- Target Server Version : 50729
+ Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 14/09/2020 18:33:23
+ Date: 22/10/2020 23:12:09
 */
 
 SET NAMES utf8mb4;
@@ -734,6 +734,17 @@ INSERT INTO `blade_user` VALUES (1123598821738675201, '000000', NULL, 1, 'admin'
 COMMIT;
 
 -- ----------------------------
+-- Table structure for blade_user_app
+-- ----------------------------
+DROP TABLE IF EXISTS `blade_user_app`;
+CREATE TABLE `blade_user_app`  (
+  `id` bigint(64) NOT NULL COMMENT '主键',
+  `user_id` bigint(64) NULL DEFAULT 0 COMMENT '用户ID',
+  `user_ext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户拓展信息',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户平台拓展表';
+
+-- ----------------------------
 -- Table structure for blade_user_dept
 -- ----------------------------
 DROP TABLE IF EXISTS `blade_user_dept`;
@@ -772,5 +783,27 @@ CREATE TABLE `blade_user_oauth`  (
   `source` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '来源',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户第三方认证表';
+
+-- ----------------------------
+-- Table structure for blade_user_other
+-- ----------------------------
+DROP TABLE IF EXISTS `blade_user_other`;
+CREATE TABLE `blade_user_other`  (
+  `id` bigint(64) NOT NULL COMMENT '主键',
+  `user_id` bigint(64) NULL DEFAULT 0 COMMENT '用户ID',
+  `user_ext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户拓展信息',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户平台拓展表';
+
+-- ----------------------------
+-- Table structure for blade_user_web
+-- ----------------------------
+DROP TABLE IF EXISTS `blade_user_web`;
+CREATE TABLE `blade_user_web`  (
+  `id` bigint(64) NOT NULL COMMENT '主键',
+  `user_id` bigint(64) NULL DEFAULT 0 COMMENT '用户ID',
+  `user_ext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户拓展信息',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户平台拓展表';
 
 SET FOREIGN_KEY_CHECKS = 1;

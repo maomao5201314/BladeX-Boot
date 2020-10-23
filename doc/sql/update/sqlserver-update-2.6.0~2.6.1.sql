@@ -21,6 +21,114 @@ ALTER TABLE [dbo].[blade_user] ADD [user_type] int
 UPDATE [dbo].[blade_user] set user_type = 1 WHERE is_deleted = 0;
 
 -- ----------------------------
+-- 创建用户拓展表
+-- ----------------------------
+CREATE TABLE [dbo].[blade_user_web] (
+    [id] bigint NOT NULL,
+    [user_id] bigint NULL,
+    [user_ext] varchar(255),
+    PRIMARY KEY CLUSTERED ([id])
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    )
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'主键',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_web',
+    'COLUMN', N'id'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户ID',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_web',
+    'COLUMN', N'user_id'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户拓展信息',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_web',
+    'COLUMN', N'user_ext'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户平台拓展表',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_web';
+
+CREATE TABLE [dbo].[blade_user_app] (
+    [id] bigint NOT NULL,
+    [user_id] bigint NULL,
+    [user_ext] varchar(255),
+    PRIMARY KEY CLUSTERED ([id])
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    )
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'主键',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_app',
+    'COLUMN', N'id'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户ID',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_app',
+    'COLUMN', N'user_id'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户拓展信息',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_app',
+    'COLUMN', N'user_ext'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户平台拓展表',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_app';
+
+CREATE TABLE [dbo].[blade_user_other] (
+    [id] bigint NOT NULL,
+    [user_id] bigint NULL,
+    [user_ext] varchar(255),
+    PRIMARY KEY CLUSTERED ([id])
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    )
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'主键',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_other',
+    'COLUMN', N'id'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户ID',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_other',
+    'COLUMN', N'user_id'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户拓展信息',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_other',
+    'COLUMN', N'user_ext'
+    GO
+
+    EXEC sp_addextendedproperty
+    'MS_Description', N'用户平台拓展表',
+    'SCHEMA', N'dbo',
+    'TABLE', N'blade_user_other';
+
+-- ----------------------------
 -- 增加用户平台字典数据
 -- ----------------------------
 INSERT INTO [dbo].[blade_dict]([id], [parent_id], [code], [dict_key], [dict_value], [sort], [remark], [is_sealed], [is_deleted])

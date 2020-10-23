@@ -16,6 +16,45 @@ COMMENT ON COLUMN "public"."blade_user"."user_type" IS '用户平台';
 UPDATE "blade_user" set user_type = 1 WHERE is_deleted = 0;
 
 -- ----------------------------
+-- 创建用户拓展表
+-- ----------------------------
+CREATE TABLE "blade_user_web" (
+"id" int8 NOT NULL,
+"user_id" int8,
+"user_ext" varchar(255),
+PRIMARY KEY ("id")
+)
+;
+COMMENT ON COLUMN "blade_user_web"."id" IS '主键';
+COMMENT ON COLUMN "blade_user_web"."user_id" IS '用户ID';
+COMMENT ON COLUMN "blade_user_web"."user_ext" IS '用户拓展信息';
+COMMENT ON TABLE "blade_user_web" IS '用户平台拓展表';
+
+CREATE TABLE "blade_user_app" (
+"id" int8 NOT NULL,
+"user_id" int8,
+"user_ext" varchar(255),
+PRIMARY KEY ("id")
+)
+;
+COMMENT ON COLUMN "blade_user_app"."id" IS '主键';
+COMMENT ON COLUMN "blade_user_app"."user_id" IS '用户ID';
+COMMENT ON COLUMN "blade_user_app"."user_ext" IS '用户拓展信息';
+COMMENT ON TABLE "blade_user_app" IS '用户平台拓展表';
+
+CREATE TABLE "blade_user_other" (
+"id" int8 NOT NULL,
+"user_id" int8,
+"user_ext" varchar(255),
+PRIMARY KEY ("id")
+)
+;
+COMMENT ON COLUMN "blade_user_other"."id" IS '主键';
+COMMENT ON COLUMN "blade_user_other"."user_id" IS '用户ID';
+COMMENT ON COLUMN "blade_user_other"."user_ext" IS '用户拓展信息';
+COMMENT ON TABLE "blade_user_other" IS '用户平台拓展表';
+
+-- ----------------------------
 -- 增加用户平台字典数据
 -- ----------------------------
 INSERT INTO "blade_dict"("id", "parent_id", "code", "dict_key", "dict_value", "sort", "remark", "is_sealed", "is_deleted")

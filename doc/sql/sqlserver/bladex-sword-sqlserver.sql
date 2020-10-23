@@ -4,7 +4,7 @@
  Source Server         : sqlserver_remote
  Source Server Type    : SQL Server
  Source Server Version : 10501600
- Source Host           : localhost:1433
+ Source Host           : 127.0.0.1:1433
  Source Catalog        : bladex
  Source Schema         : dbo
 
@@ -12,7 +12,7 @@
  Target Server Version : 10501600
  File Encoding         : 65001
 
- Date: 14/09/2020 23:24:49
+ Date: 22/10/2020 23:09:19
 */
 
 
@@ -3826,6 +3826,51 @@ GO
 
 
 -- ----------------------------
+-- Table structure for blade_user_app
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[blade_user_app]') AND type IN ('U'))
+	DROP TABLE [dbo].[blade_user_app]
+GO
+
+CREATE TABLE [dbo].[blade_user_app] (
+  [id] bigint  NOT NULL,
+  [user_id] bigint  NULL,
+  [user_ext] varchar(255) COLLATE Chinese_PRC_CI_AS  NULL
+)
+GO
+
+ALTER TABLE [dbo].[blade_user_app] SET (LOCK_ESCALATION = TABLE)
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'主键',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_app',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户ID',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_app',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户拓展信息',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_app',
+'COLUMN', N'user_ext'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户平台拓展表',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_app'
+GO
+
+
+-- ----------------------------
 -- Table structure for blade_user_dept
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[blade_user_dept]') AND type IN ('U'))
@@ -4013,6 +4058,96 @@ EXEC sp_addextendedproperty
 'MS_Description', N'用户第三方认证表',
 'SCHEMA', N'dbo',
 'TABLE', N'blade_user_oauth'
+GO
+
+
+-- ----------------------------
+-- Table structure for blade_user_other
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[blade_user_other]') AND type IN ('U'))
+	DROP TABLE [dbo].[blade_user_other]
+GO
+
+CREATE TABLE [dbo].[blade_user_other] (
+  [id] bigint  NOT NULL,
+  [user_id] bigint  NULL,
+  [user_ext] varchar(255) COLLATE Chinese_PRC_CI_AS  NULL
+)
+GO
+
+ALTER TABLE [dbo].[blade_user_other] SET (LOCK_ESCALATION = TABLE)
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'主键',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_other',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户ID',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_other',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户拓展信息',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_other',
+'COLUMN', N'user_ext'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户平台拓展表',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_other'
+GO
+
+
+-- ----------------------------
+-- Table structure for blade_user_web
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[blade_user_web]') AND type IN ('U'))
+	DROP TABLE [dbo].[blade_user_web]
+GO
+
+CREATE TABLE [dbo].[blade_user_web] (
+  [id] bigint  NOT NULL,
+  [user_id] bigint  NULL,
+  [user_ext] varchar(255) COLLATE Chinese_PRC_CI_AS  NULL
+)
+GO
+
+ALTER TABLE [dbo].[blade_user_web] SET (LOCK_ESCALATION = TABLE)
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'主键',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_web',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户ID',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_web',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户拓展信息',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_web',
+'COLUMN', N'user_ext'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户平台拓展表',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_user_web'
 GO
 
 
@@ -4269,6 +4404,15 @@ GO
 
 
 -- ----------------------------
+-- Primary Key structure for table blade_user_app
+-- ----------------------------
+ALTER TABLE [dbo].[blade_user_app] ADD CONSTRAINT [PK__blade_us__3213E83F318258D2] PRIMARY KEY CLUSTERED ([id])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Primary Key structure for table blade_user_dept
 -- ----------------------------
 ALTER TABLE [dbo].[blade_user_dept] ADD CONSTRAINT [PK__blade_us__3213E83F062DE679] PRIMARY KEY CLUSTERED ([id])
@@ -4281,6 +4425,24 @@ GO
 -- Primary Key structure for table blade_user_oauth
 -- ----------------------------
 ALTER TABLE [dbo].[blade_user_oauth] ADD CONSTRAINT [PK__blade_us__3213E83F090A5324] PRIMARY KEY CLUSTERED ([id])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
+-- Primary Key structure for table blade_user_other
+-- ----------------------------
+ALTER TABLE [dbo].[blade_user_other] ADD CONSTRAINT [PK__blade_us__3213E83F3552E9B6] PRIMARY KEY CLUSTERED ([id])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
+-- Primary Key structure for table blade_user_web
+-- ----------------------------
+ALTER TABLE [dbo].[blade_user_web] ADD CONSTRAINT [PK__blade_us__3213E83F2DB1C7EE] PRIMARY KEY CLUSTERED ([id])
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 ON [PRIMARY]
 GO

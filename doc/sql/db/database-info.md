@@ -539,3 +539,26 @@ Table: blade_user_oauth（用户第三方认证表）
 | gender    | VARCHAR(16)   | YES  |     |         | 性别      |
 | source    | VARCHAR(16)   | YES  |     |         | 来源      |
 
+Table: blade_user_web（用户平台拓展表）
+
+| Field     | Type          | Null | Key | Default | Remarks |
+| -------   | ----------    | ---- | --- | ------- | ------- |
+| id        | BIGINT(19)    | NO   | PRI |         | 主键      |
+| user_id   | BIGINT(19)    | YES  |     | 0       | 用户ID    |
+| user_ext  | VARCHAR(255)  | YES  |     |         | 用户拓展信息   |
+
+Table: blade_user_app（用户平台拓展表）
+
+| Field     | Type          | Null | Key | Default | Remarks |
+| -------   | ----------    | ---- | --- | ------- | ------- |
+| id        | BIGINT(19)    | NO   | PRI |         | 主键      |
+| user_id   | BIGINT(19)    | YES  |     | 0       | 用户ID    |
+| user_ext  | VARCHAR(255)  | YES  |     |         | 用户拓展信息   |
+
+Table: blade_user_other（用户平台拓展表）
+
+| Field     | Type          | Null | Key | Default | Remarks |
+| -------   | ----------    | ---- | --- | ------- | ------- |
+| id        | BIGINT(19)    | NO   | PRI |         | 主键      |
+| user_id   | BIGINT(19)    | YES  |     | 0       | 用户ID    |
+| user_ext  | VARCHAR(255)  | YES  |     |         | 用户拓展信息   |

@@ -16,9 +16,11 @@
  */
 package org.springblade.common.config;
 
+import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
+import org.springblade.core.swagger.EnableSwagger;
 import org.springblade.core.swagger.SwaggerProperties;
 import org.springblade.core.swagger.SwaggerUtil;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +32,6 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.service.SecurityScheme;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -42,11 +43,19 @@ import java.util.List;
  * @author Chill
  */
 @Configuration
-@EnableSwagger2
+@EnableSwagger
 @AllArgsConstructor
 public class SwaggerConfiguration {
 
+	/**
+	 * 引入swagger配置类
+	 */
 	private final SwaggerProperties swaggerProperties;
+
+	/**
+	 * 引入Knife4j扩展类
+	 */
+	private final OpenApiExtensionResolver openApiExtensionResolver;
 
 	@Bean
 	public Docket authDocket() {
@@ -71,7 +80,8 @@ public class SwaggerConfiguration {
 			.select()
 			.apis(SwaggerUtil.basePackages(basePackages))
 			.paths(PathSelectors.any())
-			.build().securitySchemes(Lists.<SecurityScheme>newArrayList(SwaggerUtil.clientInfo(), SwaggerUtil.bladeAuth(), SwaggerUtil.bladeTenant()));
+			.build().securitySchemes(Lists.<SecurityScheme>newArrayList(SwaggerUtil.clientInfo(), SwaggerUtil.bladeAuth(), SwaggerUtil.bladeTenant()))
+			.extensions(openApiExtensionResolver.buildExtensions(groupName));
 	}
 
 	private ApiInfo apiInfo() {

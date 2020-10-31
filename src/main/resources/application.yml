@@ -70,11 +70,31 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
 
+#knife4j配置
+knife4j:
+  #启用
+  enable: true
+  #基础认证
+  basic:
+    enable: true
+    username: bladex
+    password: bladex
+  #增强配置
+  setting:
+    enableSwaggerModels: true
+    enableDocumentManage: true
+    enableHost: false
+    enableHostText: http://localhost
+    enableRequestCache: true
+    enableFilterMultipartApis: false
+    enableFilterMultipartApiMethodType: POST
+    language: zh-CN
+
 #swagger公共信息
 swagger:
   title: BladeX 接口文档系统
   description: BladeX 接口文档系统
-  version: 2.6.1.RELEASE
+  version: 2.7.0.RELEASE
   license: Powered By BladeX
   license-url: https://bladex.vip
   terms-of-service-url: https://bladex.vip

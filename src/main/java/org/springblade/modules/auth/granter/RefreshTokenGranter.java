@@ -31,8 +31,6 @@ import org.springblade.modules.system.service.ITenantService;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Component;
 
-import java.util.Objects;
-
 /**
  * RefreshTokenGranter
  *
@@ -55,15 +53,17 @@ public class RefreshTokenGranter implements ITokenGranter {
 		UserInfo userInfo = null;
 		if (Func.isNoneBlank(grantType, refreshToken) && grantType.equals(TokenConstant.REFRESH_TOKEN)) {
 			Claims claims = AuthUtil.parseJWT(refreshToken);
-			String tokenType = Func.toStr(Objects.requireNonNull(claims).get(TokenConstant.TOKEN_TYPE));
-			if (tokenType.equals(TokenConstant.REFRESH_TOKEN)) {
-				// 获取租户信息
-				Tenant tenant = tenantService.getByTenantId(tenantId);
-				if (TokenUtil.judgeTenant(tenant)) {
-					throw new ServiceException(TokenUtil.USER_HAS_NO_TENANT_PERMISSION);
+			if (claims != null) {
+				String tokenType = Func.toStr(claims.get(TokenConstant.TOKEN_TYPE));
+				if (tokenType.equals(TokenConstant.REFRESH_TOKEN)) {
+					// 获取租户信息
+					Tenant tenant = tenantService.getByTenantId(tenantId);
+					if (TokenUtil.judgeTenant(tenant)) {
+						throw new ServiceException(TokenUtil.USER_HAS_NO_TENANT_PERMISSION);
+					}
+					// 获取用户信息
+					userInfo = userService.userInfo(Func.toLong(claims.get(TokenConstant.USER_ID)));
 				}
-				// 获取用户信息
-				userInfo = userService.userInfo(Func.toLong(claims.get(TokenConstant.USER_ID)));
 			}
 		}
 		return userInfo;

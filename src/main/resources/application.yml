@@ -201,7 +201,7 @@ blade:
     #基础认证配置
     basic:
       - method: ALL
-        pattern: /blade-desk/dashboard/activities
+        pattern: /blade-desk/dashboard/info
         username: "blade"
         password: "blade"
     #多终端认证配置

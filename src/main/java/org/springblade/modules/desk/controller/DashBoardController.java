@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * 首页
  *
- * @author zhuangqian
+ * @author Chill
  */
 @NonDS
 @ApiIgnore
@@ -33,15 +33,13 @@ public class DashBoardController {
 
 	/**
 	 * 活跃用户
-	 *
-	 * @return
 	 */
 	@GetMapping("/dashboard/activities")
 	@ApiOperationSupport(order = 1)
 	@ApiOperation(value = "活跃用户", notes = "活跃用户")
 	public R activities() {
-
 		List<Map<String, Object>> list = new ArrayList<>();
+
 		Map<String, Object> map1 = new HashMap<>(16);
 		map1.put("id", "trend-1");
 		map1.put("updatedAt", "2019-01-01");
@@ -64,12 +62,28 @@ public class DashBoardController {
 	}
 
 	/**
+	 * 用户信息
+	 */
+	@GetMapping("/dashboard/info")
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "用户信息", notes = "用户信息")
+	public R info() {
+		Map<String, Object> map = new HashMap<>(16);
+		map.put("id", "trend-1");
+		map.put("updatedAt", "2019-01-01");
+		map.put("user", Kv.create().set("name", "曲丽丽").set("avatar", "https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"));
+		map.put("group", Kv.create().set("name", "高逼格设计天团").set("link", "http://github.com/"));
+		map.put("project", Kv.create().set("name", "六月迭代").set("link", "http://github.com/"));
+		map.put("template", "在 @{group} 新建项目 @{project}");
+		return R.data(map);
+	}
+
+
+	/**
 	 * 获取消息
-	 *
-	 * @return
 	 */
 	@GetMapping("/notice/notices")
-	@ApiOperationSupport(order = 2)
+	@ApiOperationSupport(order = 3)
 	@ApiOperation(value = "消息", notes = "消息")
 	public R notices() {
 		List<Map<String, String>> list = new ArrayList<>();
@@ -126,11 +140,9 @@ public class DashBoardController {
 
 	/**
 	 * 获取我的消息
-	 *
-	 * @return
 	 */
 	@GetMapping("/notice/my-notices")
-	@ApiOperationSupport(order = 3)
+	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "消息", notes = "消息")
 	public R myNotices() {
 		List<Map<String, String>> list = new ArrayList<>();

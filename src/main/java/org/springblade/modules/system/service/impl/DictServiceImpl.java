@@ -87,7 +87,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 			dict.setParentId(BladeConstant.TOP_PARENT_ID);
 		}
 		dict.setIsDeleted(BladeConstant.DB_NOT_DELETED);
-		CacheUtil.clear(DICT_CACHE);
+		CacheUtil.clear(DICT_CACHE, Boolean.FALSE);
 		return saveOrUpdate(dict);
 	}
 

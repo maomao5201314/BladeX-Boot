@@ -17,6 +17,7 @@
 package org.springblade.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.ParamCache;
@@ -29,6 +30,7 @@ import org.springblade.core.tool.jackson.JsonUtil;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.DesUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.modules.auth.enums.UserEnum;
 import org.springblade.modules.system.entity.*;
 import org.springblade.modules.system.mapper.TenantMapper;
 import org.springblade.modules.system.service.*;
@@ -126,11 +128,8 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			post.setSort(1);
 			postService.save(post);
 			// 新建租户对应的默认业务字典
-			List<DictBiz> dictBizList = dictBizService.list();
-			dictBizList.forEach(dictBiz -> {
-				dictBiz.setId(null);
-				dictBiz.setTenantId(tenantId);
-			});
+			LinkedList<DictBiz> dictBizs = new LinkedList<>();
+			List<DictBiz> dictBizList = getDictBizs(tenantId, dictBizs);
 			dictBizService.saveBatch(dictBizList);
 			// 新建租户对应的默认管理用户
 			User user = new User();
@@ -146,6 +145,7 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			user.setPostId(String.valueOf(post.getId()));
 			user.setBirthday(new Date());
 			user.setSex(1);
+			user.setUserType(UserEnum.WEB.getCategory());
 			user.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 			userService.submit(user);
 		}
@@ -196,16 +196,42 @@ public class TenantServiceImpl extends BaseServiceImpl<TenantMapper, Tenant> imp
 			Menu menu = menuService.getOne(Wrappers.<Menu>query().lambda().eq(Menu::getCode, code).eq(Menu::getIsDeleted, BladeConstant.DB_NOT_DELETED));
 			if (menu != null) {
 				menus.add(menu);
-				recursion(menu.getId(), menus);
+				recursionMenu(menu.getId(), menus);
 			}
 		});
 		return menus;
 	}
 
-	private void recursion(Long parentId, LinkedList<Menu> menus) {
+	private void recursionMenu(Long parentId, LinkedList<Menu> menus) {
 		List<Menu> menuList = menuService.list(Wrappers.<Menu>query().lambda().eq(Menu::getParentId, parentId).eq(Menu::getIsDeleted, BladeConstant.DB_NOT_DELETED));
 		menus.addAll(menuList);
-		menuList.forEach(menu -> recursion(menu.getId(), menus));
+		menuList.forEach(menu -> recursionMenu(menu.getId(), menus));
+	}
+
+	private List<DictBiz> getDictBizs(String tenantId, LinkedList<DictBiz> dictBizs) {
+		List<DictBiz> dictBizList = dictBizService.list(Wrappers.<DictBiz>query().lambda().eq(DictBiz::getParentId, BladeConstant.TOP_PARENT_ID).eq(DictBiz::getIsDeleted, BladeConstant.DB_NOT_DELETED));
+		dictBizList.forEach(dictBiz -> {
+			Long oldParentId = dictBiz.getId();
+			Long newParentId = IdWorker.getId();
+			dictBiz.setId(newParentId);
+			dictBiz.setTenantId(tenantId);
+			dictBizs.add(dictBiz);
+			recursionDictBiz(tenantId, oldParentId, newParentId, dictBizs);
+		});
+		return dictBizs;
+	}
+
+	private void recursionDictBiz(String tenantId, Long oldParentId, Long newParentId, LinkedList<DictBiz> dictBizs) {
+		List<DictBiz> dictBizList = dictBizService.list(Wrappers.<DictBiz>query().lambda().eq(DictBiz::getParentId, oldParentId).eq(DictBiz::getIsDeleted, BladeConstant.DB_NOT_DELETED));
+		dictBizList.forEach(dictBiz -> {
+			Long oldSubParentId = dictBiz.getId();
+			Long newSubParentId = IdWorker.getId();
+			dictBiz.setId(newSubParentId);
+			dictBiz.setTenantId(tenantId);
+			dictBiz.setParentId(newParentId);
+			dictBizs.add(dictBiz);
+			recursionDictBiz(tenantId, oldSubParentId, newSubParentId, dictBizs);
+		});
 	}
 
 }

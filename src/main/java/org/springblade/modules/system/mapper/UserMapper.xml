@@ -70,7 +70,7 @@
     </select>
 
     <select id="exportUser" resultType="org.springblade.modules.system.excel.UserExcel">
-        SELECT id, tenant_id, account, name, real_name, email, phone, birthday, role_id, dept_id, post_id FROM blade_user ${ew.customSqlSegment}
+        SELECT id, tenant_id, user_type, account, name, real_name, email, phone, birthday, role_id, dept_id, post_id FROM blade_user ${ew.customSqlSegment}
     </select>
 
 </mapper>

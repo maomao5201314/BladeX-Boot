@@ -42,6 +42,14 @@ public class UserExcel implements Serializable {
 	@ExcelProperty("租户编号")
 	private String tenantId;
 
+	@ExcelIgnore
+	@ExcelProperty("用户平台")
+	private String userType;
+
+	@ColumnWidth(20)
+	@ExcelProperty("用户平台名称")
+	private String userTypeName;
+
 	@ColumnWidth(15)
 	@ExcelProperty("账户")
 	private String account;

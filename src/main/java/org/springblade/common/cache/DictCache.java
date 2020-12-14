@@ -59,6 +59,17 @@ public class DictCache {
 	}
 
 	/**
+	 * 获取字典值
+	 *
+	 * @param code      字典编号枚举
+	 * @param dictValue 字典值
+	 * @return String
+	 */
+	public static String getKey(DictEnum code, String dictValue) {
+		return getKey(code.getName(), dictValue);
+	}
+
+	/**
 	 * 获取字典键
 	 *
 	 * @param code      字典编号

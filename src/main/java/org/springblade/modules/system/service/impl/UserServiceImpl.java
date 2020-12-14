@@ -20,13 +20,14 @@ package org.springblade.modules.system.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import lombok.AllArgsConstructor;
+import org.springblade.common.cache.DictCache;
 import org.springblade.common.cache.ParamCache;
 import org.springblade.common.cache.SysCache;
 import org.springblade.common.cache.UserCache;
 import org.springblade.common.constant.CommonConstant;
 import org.springblade.common.constant.TenantConstant;
+import org.springblade.common.enums.DictEnum;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.mp.support.Condition;
@@ -266,6 +267,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	public void importUser(List<UserExcel> data, Boolean isCovered) {
 		data.forEach(userExcel -> {
 			User user = Objects.requireNonNull(BeanUtil.copy(userExcel, User.class));
+			// 设置用户平台
+			user.setUserType(Func.toInt(DictCache.getKey(DictEnum.USER_TYPE, userExcel.getUserTypeName()), 1));
 			// 设置部门ID
 			user.setDeptId(SysCache.getDeptIds(userExcel.getTenantId(), userExcel.getDeptName()));
 			// 设置岗位ID
@@ -297,6 +300,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	public List<UserExcel> exportUser(Wrapper<User> queryWrapper) {
 		List<UserExcel> userList = baseMapper.exportUser(queryWrapper);
 		userList.forEach(user -> {
+			user.setUserTypeName(DictCache.getValue(DictEnum.USER_TYPE, user.getUserType()));
 			user.setRoleName(StringUtil.join(SysCache.getRoleNames(user.getRoleId())));
 			user.setDeptName(StringUtil.join(SysCache.getDeptNames(user.getDeptId())));
 			user.setPostName(StringUtil.join(SysCache.getPostNames(user.getPostId())));
@@ -309,11 +313,11 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	public boolean registerGuest(User user, Long oauthId) {
 		Tenant tenant = SysCache.getTenant(user.getTenantId());
 		if (tenant == null || tenant.getId() == null) {
-			throw new ApiException("租户信息错误!");
+			throw new ServiceException("租户信息错误!");
 		}
 		UserOauth userOauth = userOauthService.getById(oauthId);
 		if (userOauth == null || userOauth.getId() == null) {
-			throw new ApiException("第三方登陆信息错误!");
+			throw new ServiceException("第三方登陆信息错误!");
 		}
 		user.setRealName(user.getName());
 		user.setAvatar(userOauth.getAvatar());

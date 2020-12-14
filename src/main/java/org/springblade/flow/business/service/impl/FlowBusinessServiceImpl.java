@@ -274,6 +274,9 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 		if (bladeFlow.getCategory() != null) {
 			taskQuery.processCategoryIn(Func.toStrList(bladeFlow.getCategory()));
 		}
+		if (bladeFlow.getProcessDefinitionName() != null) {
+			taskQuery.processDefinitionName(bladeFlow.getProcessDefinitionName());
+		}
 		if (bladeFlow.getBeginDate() != null) {
 			taskQuery.taskCreatedAfter(bladeFlow.getBeginDate());
 		}

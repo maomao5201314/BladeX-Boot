@@ -9,6 +9,7 @@ import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.support.Kv;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
@@ -78,12 +79,23 @@ public class DashBoardController {
 		return R.data(map);
 	}
 
+	/**
+	 * 签名信息
+	 */
+	@PostMapping("/dashboard/sign")
+	@ApiOperationSupport(order = 3)
+	@ApiOperation(value = "签名信息", notes = "签名信息")
+	public R sign() {
+		Map<String, Object> map = new HashMap<>(16);
+		map.put("user", Kv.create().set("name", "曲丽丽").set("avatar", "https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"));
+		return R.data(map);
+	}
 
 	/**
 	 * 获取消息
 	 */
 	@GetMapping("/notice/notices")
-	@ApiOperationSupport(order = 3)
+	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "消息", notes = "消息")
 	public R notices() {
 		List<Map<String, String>> list = new ArrayList<>();
@@ -142,7 +154,7 @@ public class DashBoardController {
 	 * 获取我的消息
 	 */
 	@GetMapping("/notice/my-notices")
-	@ApiOperationSupport(order = 4)
+	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "消息", notes = "消息")
 	public R myNotices() {
 		List<Map<String, String>> list = new ArrayList<>();

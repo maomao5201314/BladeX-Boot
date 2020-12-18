@@ -161,6 +161,9 @@ blade:
   token:
     #是否有状态
     state: false
+  #redis序列化方式
+  redis:
+    serializer-type: protostuff
   #接口配置
   api:
     #报文加密配置

@@ -20,6 +20,7 @@ import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import org.springblade.core.launch.constant.AppConstant;
+import org.springblade.core.secure.BladeUser;
 import org.springblade.core.swagger.EnableSwagger;
 import org.springblade.core.swagger.SwaggerProperties;
 import org.springblade.core.swagger.SwaggerUtil;
@@ -77,6 +78,7 @@ public class SwaggerConfiguration {
 		return new Docket(DocumentationType.SWAGGER_2)
 			.groupName(groupName)
 			.apiInfo(apiInfo())
+			.ignoredParameterTypes(BladeUser.class)
 			.select()
 			.apis(SwaggerUtil.basePackages(basePackages))
 			.paths(PathSelectors.any())

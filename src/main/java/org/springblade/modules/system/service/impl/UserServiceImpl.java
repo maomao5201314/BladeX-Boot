@@ -171,6 +171,9 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	}
 
 	private UserInfo buildUserInfo(User user, UserEnum userEnum) {
+		if (ObjectUtil.isEmpty(user)) {
+			return null;
+		}
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUser(user);
 		if (Func.isNotEmpty(user)) {

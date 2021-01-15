@@ -28,10 +28,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
-import springfox.documentation.service.SecurityScheme;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.Arrays;
@@ -82,8 +81,28 @@ public class SwaggerConfiguration {
 			.select()
 			.apis(SwaggerUtil.basePackages(basePackages))
 			.paths(PathSelectors.any())
-			.build().securitySchemes(Lists.<SecurityScheme>newArrayList(SwaggerUtil.clientInfo(), SwaggerUtil.bladeAuth(), SwaggerUtil.bladeTenant()))
+			.build().securityContexts(securityContexts()).securitySchemes(securitySchemas())
 			.extensions(openApiExtensionResolver.buildExtensions(groupName));
+	}
+
+	private List<SecurityContext> securityContexts() {
+		return Collections.singletonList(SecurityContext.builder()
+			.securityReferences(defaultAuth())
+			.forPaths(PathSelectors.regex("^.*$"))
+			.build());
+	}
+
+	List<SecurityReference> defaultAuth() {
+		AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverywhere");
+		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+		authorizationScopes[0] = authorizationScope;
+		return Lists.newArrayList(new SecurityReference(SwaggerUtil.clientInfo().getName(), authorizationScopes),
+			new SecurityReference(SwaggerUtil.bladeAuth().getName(), authorizationScopes),
+			new SecurityReference(SwaggerUtil.bladeTenant().getName(), authorizationScopes));
+	}
+
+	private List<SecurityScheme> securitySchemas() {
+		return Lists.newArrayList(SwaggerUtil.clientInfo(), SwaggerUtil.bladeAuth(), SwaggerUtil.bladeTenant());
 	}
 
 	private ApiInfo apiInfo() {

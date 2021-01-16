@@ -91,7 +91,7 @@ knife4j:
     language: zh-CN
     enableFooter: false
     enableFooterCustom: true
-    footerCustomContent: Copyright © 2020 BladeX All Rights Reserved
+    footerCustomContent: Copyright © 2021 BladeX All Rights Reserved
 
 #swagger公共信息
 swagger:

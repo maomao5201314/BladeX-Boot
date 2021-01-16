@@ -55,7 +55,7 @@ import java.util.Map;
 @RestController
 @AllArgsConstructor
 @RequestMapping(AppConstant.APPLICATION_SYSTEM_NAME + "/region")
-@Api(value = "行政区划表", tags = "行政区划表接口")
+@Api(value = "行政区划", tags = "行政区划")
 public class RegionController extends BladeController {
 
 	private final IRegionService regionService;

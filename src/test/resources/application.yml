@@ -16,8 +16,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     #driver-class-name: org.postgresql.Driver
     #driver-class-name: oracle.jdbc.OracleDriver
+    #driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     druid:
-      # MySql、PostgreSQL校验
+      # MySql、PostgreSQL、SqlServer校验
       validation-query: select 1
       # Oracle校验
       #validation-query: select 1 from dual
@@ -53,7 +54,7 @@ mybatis-plus:
     banner: false
     db-config:
       #主键类型  0:"数据库ID自增", 1:"不操作", 2:"用户输入ID",3:"数字型snowflake", 4:"全局唯一ID UUID", 5:"字符串型snowflake";
-      id-type: id_worker
+      id-type: assign_id
       #字段策略
       insert-strategy: not_null
       update-strategy: not_null
@@ -68,6 +69,29 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+
+#knife4j配置
+knife4j:
+  #启用
+  enable: true
+  #基础认证
+  basic:
+    enable: false
+    username: blade
+    password: blade
+  #增强配置
+  setting:
+    enableSwaggerModels: true
+    enableDocumentManage: true
+    enableHost: false
+    enableHostText: http://localhost
+    enableRequestCache: true
+    enableFilterMultipartApis: false
+    enableFilterMultipartApiMethodType: POST
+    language: zh-CN
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: Copyright © 2021 BladeX All Rights Reserved
 
 #swagger公共信息
 swagger:
@@ -88,10 +112,18 @@ flowable:
   label-font-name: \u5B8B\u4F53
   annotation-font-name: \u5B8B\u4F53
   check-process-definitions: false
+  database-schema-update: false
+
+#报表配置
+report:
+  enabled: false
+  database:
+    provider:
+      prefix: blade-
 
 #oss默认配置
 oss:
-  enable: true
+  enabled: true
   name: qiniu
   tenant-mode: true
   endpoint: http://prt1thnw3.bkt.clouddn.com
@@ -99,16 +131,91 @@ oss:
   secret-key: AuzuA1KHAbkIndCU0dB3Zfii2O3crHNODDmpxHRS
   bucket-name: bladex
 
+#第三方登陆配置
+social:
+  oauth:
+    GITHUB:
+      client-id: 233************
+      client-secret: 233************************************
+      redirect-uri: ${social.domain}/oauth/redirect/github
+    GITEE:
+      client-id: 233************
+      client-secret: 233************************************
+      redirect-uri: ${social.domain}/oauth/redirect/gitee
+    WECHAT_OPEN:
+      client-id: 233************
+      client-secret: 233************************************
+      redirect-uri: ${social.domain}/oauth/redirect/wechat
+    QQ:
+      client-id: 233************
+      client-secret: 233************************************
+      redirect-uri: ${social.domain}/oauth/redirect/qq
+    DINGTALK:
+      client-id: 233************
+      client-secret: 233************************************
+      redirect-uri: ${social.domain}/oauth/redirect/dingtalk
 
 #blade配置
 blade:
+  #token配置
+  token:
+    #是否有状态
+    state: false
+  #redis序列化方式
+  redis:
+    serializer-type: protostuff
+  #接口配置
+  api:
+    #报文加密配置
+    crypto:
+      #启用报文加密配置
+      enabled: false
+      #使用AesUtil.genAesKey()生成
+      aes-key: O2BEeIv399qHQNhD6aGW8R8DEj4bqHXm
+      #使用DesUtil.genDesKey()生成
+      des-key: jMVCBsFGDQr1USHo
+  #jackson配置
+  jackson:
+    #null自动转空值
+    null-to-empty: true
+    #大数字自动转字符串
+    big-num-to-string: true
+    #支持text文本请求,与报文加密同时开启
+    support-text-plain: false
+  #xss配置
   xss:
+    enabled: true
     skip-url:
-      - /weixin
-      - /notice/submit
+      - /blade-chat/weixin
+      - /blade-desk/notice/submit
+  #安全框架配置
   secure:
+    #接口放行
     skip-url:
       - /blade-test/**
+    #授权认证配置
+    auth:
+      - method: ALL
+        pattern: /blade-chat/weixin/**
+        expression: "hasAuth()"
+      - method: POST
+        pattern: /blade-desk/dashboard/upload
+        expression: "hasTimeAuth(9, 17)"
+      - method: POST
+        pattern: /blade-desk/dashboard/submit
+        expression: "hasAnyRole('administrator', 'admin', 'user')"
+    #基础认证配置
+    basic:
+      - method: ALL
+        pattern: /blade-desk/dashboard/info
+        username: "blade"
+        password: "blade"
+    #动态签名认证配置
+    sign:
+      - method: ALL
+        pattern: /blade-desk/dashboard/sign
+        crypto: "sha1"
+    #多终端认证配置
     client:
       - client-id: sword
         path-patterns:
@@ -116,10 +223,18 @@ blade:
       - client-id: saber
         path-patterns:
           - /blade-saber/**
+  #多租户配置
   tenant:
-    enhance: false
+    #多租户增强
+    enhance: true
+    #多租户授权保护
+    license: false
+    #动态数据源功能
+    dynamic-datasource: false
+    #动态数据源全局扫描
+    dynamic-global: false
+    #多租户字段名
     column: tenant_id
+    #排除多租户逻辑
     exclude-tables:
       - blade_user
-
-

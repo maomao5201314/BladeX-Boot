@@ -2,6 +2,8 @@
 spring:
   redis:
     ##redis 单机环境配置
+    ##将docker脚本部署的redis服务映射为宿主机ip
+    ##生产环境推荐使用阿里云高可用redis服务并设置密码
     host: 127.0.0.1
     port: 6379
     password:
@@ -16,12 +18,21 @@ spring:
     username: root
     password: root
 
+#第三方登陆
+social:
+  enabled: true
+  domain: http://127.0.0.1:1888
+
 #blade配置
 blade:
-  #分布式锁
+  #分布式锁配置
   lock:
+    ##是否启用分布式锁
     enabled: false
+    ##将docker脚本部署的redis服务映射为宿主机ip
+    ##生产环境推荐使用阿里云高可用redis服务并设置密码
     address: redis://127.0.0.1:6379
+    password: 123456
   #本地文件上传
   file:
     remote-mode: true

@@ -21,18 +21,30 @@ spring:
     #username: postgres
     #password: 123456
     # Oracle
-    #url: jdbc:oracle:thin:@127.0.0.1:49161:orcl
+    #url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
     #username: BLADEX_BOOT
-    #password: oracle
+    #password: BLADEX_BOOT
+    # SqlServer
+    #url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=bladex_boot
+    #username: bladex_boot
+    #password: bladex_boot
+
+#第三方登陆
+social:
+  enabled: true
+  domain: http://127.0.0.1:1888
 
 #blade配置
 blade:
-  #分布式锁
+  #分布式锁配置
   lock:
+    ##是否启用分布式锁
     enabled: false
+    ##redis服务地址
     address: redis://127.0.0.1:6379
   #本地文件上传
   file:
     remote-mode: true
     upload-domain: http://localhost:8999
     remote-path: /usr/share/nginx/html
+

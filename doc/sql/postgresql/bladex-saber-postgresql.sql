@@ -1,10 +1,10 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : postgres_jd
+ Source Server         : postgres_localhost
  Source Server Type    : PostgreSQL
  Source Server Version : 110001
- Source Host           : 127.0.0.1:5432
+ Source Host           : localhost:5432
  Source Catalog        : bladex
  Source Schema         : public
 
@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 22/10/2020 22:50:40
+ Date: 25/01/2021 12:00:00
 */
 
 
@@ -547,8 +547,6 @@ INSERT INTO "blade_menu" VALUES (1123598815738675203, 0, 'system', '系统管理
 INSERT INTO "blade_menu" VALUES (1123598815738675204, 1123598815738675203, 'user', '用户管理', 'menu', '/system/user', 'iconfont iconicon_principal', 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675205, 1123598815738675203, 'dept', '机构管理', 'menu', '/system/dept', 'iconfont iconicon_group', 2, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675210, 0, 'monitor', '系统监控', 'menu', '/monitor', 'iconfont icon-yanzhengma', 3, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675211, 1123598815738675210, 'doc', '接口文档', 'menu', 'http://localhost/doc.html', 'iconfont iconicon_study', 1, 1, 0, 2, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675212, 1123598815738675210, 'admin', '服务治理', 'menu', 'http://localhost:7002', 'iconfont icon-canshu', 2, 1, 0, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675213, 1123598815738675210, 'log', '日志管理', 'menu', '/monitor/log', 'iconfont iconicon_doc', 8, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675214, 1123598815738675213, 'log_usual', '通用日志', 'menu', '/monitor/log/usual', NULL, 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675215, 1123598815738675213, 'log_api', '接口日志', 'menu', '/monitor/log/api', NULL, 2, 1, 0, 1, NULL, 0);
@@ -602,9 +600,8 @@ INSERT INTO "blade_menu" VALUES (1123598815738675209, 1123598815738675203, 'para
 INSERT INTO "blade_menu" VALUES (1123598815738675207, 1123598815738675203, 'menu', '菜单管理', 'menu', '/system/menu', 'iconfont iconicon_subordinate', 6, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675256, 1123598815738675203, 'tenant', '租户管理', 'menu', '/system/tenant', 'iconfont icon-quanxian', 9, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675261, 1123598815738675203, 'client', '应用管理', 'menu', '/system/client', 'iconfont iconicon_mobilephone', 10, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675263, 1123598815738675261, 'client_edit', '修改', 'edit', '/system/client/edit', 'form', 2, 2, 2, 2, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675264, 1123598815738675261, 'client_delete', '删除', 'delete', '/api/blade-system/client/remove', 'delete', 3, 2, 3, 3, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675265, 1123598815738675261, 'client_view', '查看', 'view', '/system/client/view', 'file-text', 4, 2, 2, 2, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675212, 1123598815738675210, 'admin', '服务治理', 'menu', 'http://localhost:7002', 'iconfont icon-canshu', 2, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675263, 1123598815738675261, 'client_edit', '修改', 'edit', '/system/client/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675266, 0, 'flow', '流程管理', 'menu', '/flow', 'iconfont iconicon_send', 5, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675267, 1123598815738675266, 'flow_model', '模型管理', 'menu', '/flow/model', 'iconfont iconicon_discovery', 1, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675268, 1123598815738675267, 'flow_model_create', '创建', 'create', '', 'plus', 1, 2, 1, 1, NULL, 0);
@@ -640,10 +637,6 @@ INSERT INTO "blade_menu" VALUES (1123598815738675297, 1123598815738675295, 'work
 INSERT INTO "blade_menu" VALUES (1123598815738675298, 0, 'resource', '资源管理', 'menu', '/resource', 'iconfont iconicon_coinpurse_line', 6, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675299, 1123598815738675298, 'oss', '对象存储', 'menu', '/resource/oss', 'iconfont iconicon_subordinate', 1, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675301, 1123598815738675299, 'oss_add', '新增', 'add', '/resource/oss/add', 'plus', 1, 2, 1, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675302, 1123598815738675299, 'oss_edit', '修改', 'edit', '/resource/oss/edit', 'form', 2, 2, 2, 2, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675303, 1123598815738675299, 'oss_delete', '删除', 'delete', '/api/blade-resource/oss/remove', 'delete', 3, 2, 3, 3, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675304, 1123598815738675299, 'oss_view', '查看', 'view', '/resource/oss/view', 'file-text', 4, 2, 2, 2, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675305, 1123598815738675299, 'oss_enable', '启用', 'enable', '/api/blade-resource/oss/enable', 'key', 5, 2, 2, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675307, 0, 'authority', '权限管理', 'menu', '/authority', 'iconfont icon-bofangqi-suoping', 98, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675308, 1123598815738675307, 'role', '角色管理', 'menu', '/authority/role', 'iconfont iconicon_boss', 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675309, 1123598815738675307, 'data_scope', '数据权限', 'menu', '/authority/datascope', 'iconfont icon-shujuzhanshi2', 2, 1, 0, 1, '', 0);
@@ -657,16 +650,19 @@ INSERT INTO "blade_menu" VALUES (1123598815738675316, 1123598815738675208, 'topm
 INSERT INTO "blade_menu" VALUES (1123598815738675317, 1123598815738675208, 'topmenu_setting', '菜单配置', 'setting', NULL, 'setting', 5, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1161272593873321991, 1123598815738675217, 'datasource', '数据源管理', 'menu', '/tool/datasource', 'iconfont icon-caidanguanli', 2, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1161272593873321992, 1161272593873321991, 'datasource_add', '新增', 'add', '/tool/datasource/add', 'plus', 1, 2, 1, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1161272593873321993, 1161272593873321991, 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', 2, 2, 2, 2, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1161272593873321994, 1161272593873321991, 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', 3, 2, 3, 3, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1161272593873321995, 1161272593873321991, 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', 4, 2, 2, 2, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733121140551682, 1123598815738675217, 'form', '表单设计', 'form', 'https://form.avuejs.com/', 'iconfont iconicon_compile', 3, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733349637844993, 1123598815738675217, 'crud', '表格设计', 'crud', 'https://crud.avuejs.com/', 'iconfont iconicon_work', 4, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733369658963251, 1123598815738675210, 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', 'iconfont iconicon_cspace', 3, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733369658963252, 1123598815738675210, 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', 'iconfont iconicon_task', 4, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733369658963253, 1123598815738675210, 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', 'iconfont iconicon_subordinate', 5, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733369658963254, 1123598815738675210, 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', 'iconfont iconicon_safety', 6, 1, 0, 2, '', 0);
-INSERT INTO "blade_menu" VALUES (1164733369658963255, 1123598815738675210, 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', 'iconfont iconfont iconicon_search', 7, 1, 0, 2, '', 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675265, 1123598815738675261, 'client_view', '查看', 'view', '/system/client/view', 'file-text', 4, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675302, 1123598815738675299, 'oss_edit', '修改', 'edit', '/resource/oss/edit', 'form', 2, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675303, 1123598815738675299, 'oss_delete', '删除', 'delete', '/api/blade-resource/oss/remove', 'delete', 3, 2, 3, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675304, 1123598815738675299, 'oss_view', '查看', 'view', '/resource/oss/view', 'file-text', 4, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675305, 1123598815738675299, 'oss_enable', '启用', 'enable', '/api/blade-resource/oss/enable', 'key', 5, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1161272593873321993, 1161272593873321991, 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', 2, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1161272593873321994, 1161272593873321991, 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', 3, 2, 3, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1161272593873321995, 1161272593873321991, 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', 4, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733121140551682, 1123598815738675217, 'form', '表单设计', 'form', 'https://form.avuejs.com/', 'iconfont iconicon_compile', 3, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733349637844993, 1123598815738675217, 'crud', '表格设计', 'crud', 'https://crud.avuejs.com/', 'iconfont iconicon_work', 4, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963251, 1123598815738675210, 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', 'iconfont iconicon_cspace', 3, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963252, 1123598815738675210, 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', 'iconfont iconicon_task', 4, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963253, 1123598815738675210, 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', 'iconfont iconicon_subordinate', 5, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963252, 1164733379658963251, 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', 1, 2, 1, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963253, 1164733379658963251, 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', 2, 2, 2, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733379658963254, 1164733379658963251, 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', 3, 2, 3, 1, '', 0);
@@ -676,8 +672,6 @@ INSERT INTO "blade_menu" VALUES (1164733389658962252, 1164733389658962251, 'sms_
 INSERT INTO "blade_menu" VALUES (1164733389658962253, 1164733389658962251, 'sms_edit', '修改', 'edit', '/resource/sms/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389658962254, 1164733389658962251, 'sms_delete', '删除', 'delete', '/api/blade-resource/sms/remove', 'delete', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389658962255, 1164733389658962251, 'sms_view', '查看', 'view', '/resource/sms/view', 'file-text', 4, 2, 2, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733389658962256, 1164733389658962251, 'sms_enable', '启用', 'enable', '/api/blade-resource/sms/enable', 'key', 5, 2, 2, 2, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733389658963251, 1123598815738675298, 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', 'iconfont iconicon_cspace', 5, 1, 0, 2, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733389668962252, 1164733389668962251, 'post_add', '新增', 'add', '/system/post/add', 'plus', 1, 2, 1, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389668962253, 1164733389668962251, 'post_edit', '修改', 'edit', '/system/post/edit', 'form', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733389668962254, 1164733389668962251, 'post_delete', '删除', 'delete', '/api/blade-system/post/remove', 'delete', 3, 2, 3, 1, NULL, 0);
@@ -697,9 +691,15 @@ INSERT INTO "blade_menu" VALUES (1164733399669962202, 1164733399669962201, 'atta
 INSERT INTO "blade_menu" VALUES (1164733399669962203, 1164733399669962201, 'attach_download', '下载', 'download', '/resource/attach/download', '', 2, 2, 2, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962204, 1164733399669962201, 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', '', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962301, 0, 'report', '报表管理', 'menu', '/report', 'iconfont icon-shujuzhanshi2', 5, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399669962302, 1164733399669962301, 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', 'iconfont icon-rizhi', 1, 1, 0, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962303, 1164733399669962301, 'report_list', '报表列表', 'menu', '/report/reportlist', 'iconfont icon-biaodan', 2, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1164733399669962304, 1164733399669962301, 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', 'iconfont iconicon_sms', 3, 1, 0, 2, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675211, 1123598815738675210, 'doc', '接口文档', 'menu', 'http://localhost/doc.html', 'iconfont iconicon_study', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675264, 1123598815738675261, 'client_delete', '删除', 'delete', '/api/blade-system/client/remove', 'delete', 3, 2, 3, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963254, 1123598815738675210, 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', 'iconfont iconicon_safety', 6, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733369658963255, 1123598815738675210, 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', 'iconfont iconfont iconicon_search', 7, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733389658962256, 1164733389658962251, 'sms_enable', '启用', 'enable', '/api/blade-resource/sms/enable', 'key', 5, 2, 2, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733389658963251, 1123598815738675298, 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', 'iconfont iconicon_cspace', 5, 1, 0, 1, '', 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962302, 1164733399669962301, 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', 'iconfont icon-rizhi', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1164733399669962304, 1164733399669962301, 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', 'iconfont iconicon_sms', 3, 1, 0, 1, NULL, 0);
 COMMIT;
 
 -- ----------------------------

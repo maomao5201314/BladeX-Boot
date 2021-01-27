@@ -83,6 +83,11 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 		if (cnt > 0) {
 			throw new ServiceException("当前字典键值已存在!");
 		}
+		// 修改顶级字典后同步更新下属字典的编号
+		if (Func.isNotEmpty(dict.getId()) && dict.getParentId().longValue() == BladeConstant.TOP_PARENT_ID) {
+			Dict parent = DictCache.getById(dict.getId());
+			this.update(Wrappers.<Dict>update().lambda().set(Dict::getCode, dict.getCode()).eq(Dict::getCode, parent.getCode()).ne(Dict::getParentId, BladeConstant.TOP_PARENT_ID));
+		}
 		if (Func.isEmpty(dict.getParentId())) {
 			dict.setParentId(BladeConstant.TOP_PARENT_ID);
 		}

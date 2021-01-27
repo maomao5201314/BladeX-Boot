@@ -78,6 +78,11 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 		if (cnt > 0) {
 			throw new ServiceException("当前字典键值已存在!");
 		}
+		// 修改顶级字典后同步更新下属字典的编号
+		if (Func.isNotEmpty(dict.getId()) && dict.getParentId().longValue() == BladeConstant.TOP_PARENT_ID) {
+			DictBiz parent = DictBizCache.getById(dict.getId());
+			this.update(Wrappers.<DictBiz>update().lambda().set(DictBiz::getCode, dict.getCode()).eq(DictBiz::getCode, parent.getCode()).ne(DictBiz::getParentId, BladeConstant.TOP_PARENT_ID));
+		}
 		if (Func.isEmpty(dict.getParentId())) {
 			dict.setParentId(BladeConstant.TOP_PARENT_ID);
 		}

@@ -174,11 +174,16 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 				throw new ServiceException("无权限创建超管角色！");
 			}
 		}
-		if (Func.isEmpty(role.getId())) {
-			role.setTenantId(AuthUtil.getTenantId());
-		}
 		if (Func.isEmpty(role.getParentId())) {
+			role.setTenantId(AuthUtil.getTenantId());
 			role.setParentId(BladeConstant.TOP_PARENT_ID);
+		}
+		if (role.getParentId() > 0) {
+			Role parent = getById(role.getParentId());
+			if (Func.toLong(role.getParentId()) == Func.toLong(role.getId())) {
+				throw new ServiceException("父节点不可选择自身!");
+			}
+			role.setTenantId(parent.getTenantId());
 		}
 		role.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		return saveOrUpdate(role);

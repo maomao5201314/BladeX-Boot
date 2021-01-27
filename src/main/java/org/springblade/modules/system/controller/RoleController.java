@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
+import org.springblade.common.cache.SysCache;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
@@ -99,10 +100,22 @@ public class RoleController extends BladeController {
 	}
 
 	/**
+	 * 获取指定角色树形结构
+	 */
+	@GetMapping("/tree-by-id")
+	@ApiOperationSupport(order = 4)
+	@ApiOperation(value = "树形结构", notes = "树形结构")
+	public R<List<RoleVO>> treeById(Long roleId, BladeUser bladeUser) {
+		Role role = SysCache.getRole(roleId);
+		List<RoleVO> tree = roleService.tree(Func.notNull(role) ? role.getTenantId() : bladeUser.getTenantId());
+		return R.data(tree);
+	}
+
+	/**
 	 * 新增或修改
 	 */
 	@PostMapping("/submit")
-	@ApiOperationSupport(order = 4)
+	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "新增或修改", notes = "传入role")
 	public R submit(@Valid @RequestBody Role role) {
 		CacheUtil.clear(SYS_CACHE);
@@ -113,7 +126,7 @@ public class RoleController extends BladeController {
 	 * 删除
 	 */
 	@PostMapping("/remove")
-	@ApiOperationSupport(order = 5)
+	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		CacheUtil.clear(SYS_CACHE);
@@ -124,7 +137,7 @@ public class RoleController extends BladeController {
 	 * 设置角色权限
 	 */
 	@PostMapping("/grant")
-	@ApiOperationSupport(order = 6)
+	@ApiOperationSupport(order = 7)
 	@ApiOperation(value = "权限设置", notes = "传入roleId集合以及menuId集合")
 	public R grant(@RequestBody GrantVO grantVO) {
 		CacheUtil.clear(SYS_CACHE);

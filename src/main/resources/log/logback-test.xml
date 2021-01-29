@@ -70,6 +70,9 @@
                             <pattern>
                                 {
                                 "traceId": "%X{traceId}",
+                                "requestId": "%X{requestId}",
+                                "accountId": "%X{accountId}",
+                                "tenantId": "%X{tenantId}",
                                 "logLevel": "%level",
                                 "serviceName": "${springAppName:-SpringApp}",
                                 "pid": "${PID:-}",
@@ -105,6 +108,9 @@
                             <pattern>
                                 {
                                 "traceId": "%X{traceId}",
+                                "requestId": "%X{requestId}",
+                                "accountId": "%X{accountId}",
+                                "tenantId": "%X{tenantId}",
                                 "logLevel": "%level",
                                 "serviceName": "${springAppName:-SpringApp}",
                                 "pid": "${PID:-}",

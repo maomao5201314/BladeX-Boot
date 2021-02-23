@@ -22,7 +22,7 @@ import com.aliyun.oss.common.auth.CredentialsProvider;
 import com.aliyun.oss.common.auth.DefaultCredentialProvider;
 import lombok.SneakyThrows;
 import org.springblade.core.oss.OssTemplate;
-import org.springblade.core.oss.aliyun.AliossTemplate;
+import org.springblade.core.oss.AliossTemplate;
 import org.springblade.core.oss.props.OssProperties;
 import org.springblade.core.oss.rule.OssRule;
 import org.springblade.modules.resource.entity.Oss;

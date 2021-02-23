@@ -25,7 +25,7 @@ import lombok.SneakyThrows;
 import org.springblade.core.oss.OssTemplate;
 import org.springblade.core.oss.props.OssProperties;
 import org.springblade.core.oss.rule.OssRule;
-import org.springblade.core.oss.tencent.TencentCosTemplate;
+import org.springblade.core.oss.TencentCosTemplate;
 import org.springblade.modules.resource.entity.Oss;
 
 /**

@@ -21,7 +21,7 @@ import lombok.SneakyThrows;
 import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.sms.SmsTemplate;
 import org.springblade.core.sms.props.SmsProperties;
-import org.springblade.core.sms.tencent.TencentSmsTemplate;
+import org.springblade.core.sms.TencentSmsTemplate;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.resource.entity.Sms;
 

@@ -40,7 +40,10 @@ public class MinioOssBuilder {
 		ossProperties.setSecretKey(oss.getSecretKey());
 		ossProperties.setBucketName(oss.getBucketName());
 		// 创建客户端
-		MinioClient minioClient = new MinioClient(oss.getEndpoint(), oss.getAccessKey(), oss.getSecretKey());
+		MinioClient minioClient = MinioClient.builder()
+			.endpoint(oss.getEndpoint())
+			.credentials(oss.getAccessKey(), oss.getSecretKey())
+			.build();
 		return new MinioTemplate(minioClient, ossRule, ossProperties);
 	}
 

@@ -773,7 +773,7 @@ INSERT INTO "BLADE_MENU" VALUES ('1123598815738675207', '1123598815738675203', '
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675208', '1123598815738675203', 'topmenu', '顶部菜单', 'menu', '/system/topmenu', 'iconfont icon-canshu', '7', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675209', '1123598815738675203', 'param', '参数管理', 'menu', '/system/param', 'iconfont iconicon_community_line', '8', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675210', '0', 'monitor', '系统监控', 'menu', '/monitor', 'iconfont icon-yanzhengma', '3', '1', '0', '1', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675211', '1123598815738675210', 'doc', '接口文档', 'menu', 'http://localhost/doc.html', 'iconfont iconicon_study', '1', '1', '0', '1', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675211', '1123598815738675210', 'doc', '接口文档', 'menu', 'http://localhost:18000/doc.html', 'iconfont iconicon_study', '1', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675212', '1123598815738675210', 'admin', '服务治理', 'menu', 'http://localhost:7002', 'iconfont icon-canshu', '2', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675213', '1123598815738675210', 'log', '日志管理', 'menu', '/monitor/log', 'iconfont iconicon_doc', '8', '1', '0', '1', NULL, '0');
 INSERT INTO "BLADE_MENU" VALUES ('1123598815738675214', '1123598815738675213', 'log_usual', '通用日志', 'menu', '/monitor/log/usual', NULL, '1', '1', '0', '1', NULL, '0');

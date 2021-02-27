@@ -692,7 +692,7 @@ INSERT INTO "blade_menu" VALUES (1164733399669962203, 1164733399669962201, 'atta
 INSERT INTO "blade_menu" VALUES (1164733399669962204, 1164733399669962201, 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', '', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962301, 0, 'report', '报表管理', 'menu', '/report', 'iconfont icon-shujuzhanshi2', 5, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733399669962303, 1164733399669962301, 'report_list', '报表列表', 'menu', '/report/reportlist', 'iconfont icon-biaodan', 2, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675211, 1123598815738675210, 'doc', '接口文档', 'menu', 'http://localhost/doc.html', 'iconfont iconicon_study', 1, 1, 0, 1, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675211, 1123598815738675210, 'doc', '接口文档', 'menu', 'http://localhost:18000/doc.html', 'iconfont iconicon_study', 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675264, 1123598815738675261, 'client_delete', '删除', 'delete', '/api/blade-system/client/remove', 'delete', 3, 2, 3, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1164733369658963254, 1123598815738675210, 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', 'iconfont iconicon_safety', 6, 1, 0, 1, '', 0);
 INSERT INTO "blade_menu" VALUES (1164733369658963255, 1123598815738675210, 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', 'iconfont iconfont iconicon_search', 7, 1, 0, 1, '', 0);

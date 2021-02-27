@@ -547,7 +547,7 @@ INSERT INTO "blade_menu" VALUES (1123598815738675203, 0, 'system', '系统管理
 INSERT INTO "blade_menu" VALUES (1123598815738675204, 1123598815738675203, 'user', '用户管理', 'menu', '/system/user', NULL, 1, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675205, 1123598815738675203, 'dept', '机构管理', 'menu', '/system/dept', NULL, 2, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675210, 0, 'monitor', '系统监控', 'menu', '/monitor', 'fund', 3, 1, 0, 1, NULL, 0);
-INSERT INTO "blade_menu" VALUES (1123598815738675211, 1123598815738675210, 'doc', '接口文档', 'menu', 'http://localhost/doc.html', NULL, 1, 1, 0, 2, NULL, 0);
+INSERT INTO "blade_menu" VALUES (1123598815738675211, 1123598815738675210, 'doc', '接口文档', 'menu', 'http://localhost:18000/doc.html', NULL, 1, 1, 0, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675212, 1123598815738675210, 'admin', '服务治理', 'menu', 'http://localhost:7002', NULL, 2, 1, 0, 2, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675213, 1123598815738675210, 'log', '日志管理', 'menu', '/monitor/log', NULL, 8, 1, 0, 1, NULL, 0);
 INSERT INTO "blade_menu" VALUES (1123598815738675214, 1123598815738675213, 'log_usual', '通用日志', 'menu', '/monitor/log/usual', NULL, 1, 1, 0, 1, NULL, 0);

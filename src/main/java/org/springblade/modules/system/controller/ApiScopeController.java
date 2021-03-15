@@ -83,7 +83,7 @@ public class ApiScopeController extends BladeController {
 	@ApiOperationSupport(order = 3)
 	@ApiOperation(value = "新增", notes = "传入dataScope")
 	public R save(@Valid @RequestBody ApiScope dataScope) {
-		CacheUtil.clear(SYS_CACHE);
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		return R.status(apiScopeService.save(dataScope));
 	}
 
@@ -94,7 +94,7 @@ public class ApiScopeController extends BladeController {
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "修改", notes = "传入dataScope")
 	public R update(@Valid @RequestBody ApiScope dataScope) {
-		CacheUtil.clear(SYS_CACHE);
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		return R.status(apiScopeService.updateById(dataScope));
 	}
 
@@ -105,7 +105,7 @@ public class ApiScopeController extends BladeController {
 	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "新增或修改", notes = "传入dataScope")
 	public R submit(@Valid @RequestBody ApiScope dataScope) {
-		CacheUtil.clear(SYS_CACHE);
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		return R.status(apiScopeService.saveOrUpdate(dataScope));
 	}
 
@@ -117,7 +117,7 @@ public class ApiScopeController extends BladeController {
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-		CacheUtil.clear(SYS_CACHE);
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		return R.status(apiScopeService.deleteLogic(Func.toLongList(ids)));
 	}
 

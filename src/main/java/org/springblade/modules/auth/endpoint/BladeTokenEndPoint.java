@@ -133,6 +133,7 @@ public class BladeTokenEndPoint {
 		CacheUtil.clear(MENU_CACHE);
 		CacheUtil.clear(DICT_CACHE, Boolean.FALSE);
 		CacheUtil.clear(MENU_CACHE, Boolean.FALSE);
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		CacheUtil.clear(PARAM_CACHE, Boolean.FALSE);
 		return Kv.create().set("success", "true").set("msg", "success");
 	}

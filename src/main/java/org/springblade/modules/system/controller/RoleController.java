@@ -119,6 +119,7 @@ public class RoleController extends BladeController {
 	@ApiOperation(value = "新增或修改", notes = "传入role")
 	public R submit(@Valid @RequestBody Role role) {
 		CacheUtil.clear(SYS_CACHE);
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		return R.status(roleService.submit(role));
 	}
 
@@ -130,6 +131,7 @@ public class RoleController extends BladeController {
 	@ApiOperation(value = "删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		CacheUtil.clear(SYS_CACHE);
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		return R.status(roleService.removeByIds(Func.toLongList(ids)));
 	}
 
@@ -141,6 +143,7 @@ public class RoleController extends BladeController {
 	@ApiOperation(value = "权限设置", notes = "传入roleId集合以及menuId集合")
 	public R grant(@RequestBody GrantVO grantVO) {
 		CacheUtil.clear(SYS_CACHE);
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		boolean temp = roleService.grant(grantVO.getRoleIds(), grantVO.getMenuIds(), grantVO.getDataScopeIds(), grantVO.getApiScopeIds());
 		return R.status(temp);
 	}

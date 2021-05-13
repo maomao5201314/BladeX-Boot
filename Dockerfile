@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk8-openj9:alpine-slim
+FROM bladex/alpine-java:openjdk8-openj9_cn_slim
 
 MAINTAINER smallchill@163.com
 
@@ -9,8 +9,6 @@ WORKDIR /blade
 EXPOSE 8800
 
 ADD ./target/blade-api.jar ./app.jar
-
-RUN apk add --update font-adobe-100dpi ttf-dejavu fontconfig
 
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]
 

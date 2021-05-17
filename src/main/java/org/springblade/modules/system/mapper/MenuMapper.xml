@@ -126,6 +126,22 @@
         </if>
     </select>
 
+    <select id="roleMenuByRoleId" resultMap="menuResultMap">
+        select * from blade_menu where is_deleted = 0 and id IN
+            ( SELECT menu_id FROM blade_role_menu WHERE role_id IN
+                <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            )
+    </select>
+
+    <select id="roleMenuByTopMenuId" resultMap="menuResultMap">
+        select * from blade_menu where is_deleted = 0 and id IN
+          (
+              SELECT menu_id FROM blade_top_menu_setting WHERE top_menu_id = #{param1}
+          )
+    </select>
+
     <select id="allMenuExt" resultMap="menuResultMap">
         select * from blade_menu_ext where is_deleted = 0 and category = 1
     </select>

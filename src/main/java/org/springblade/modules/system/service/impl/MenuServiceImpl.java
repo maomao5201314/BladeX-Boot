@@ -87,7 +87,29 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 			return null;
 		}
 		List<Menu> allMenus = baseMapper.allMenu();
-		List<Menu> roleMenus = (AuthUtil.isAdministrator() && Func.isEmpty(topMenuId)) ? allMenus : baseMapper.roleMenu(Func.toLongList(roleId), topMenuId);
+		List<Menu> roleMenus;
+		// 超级管理员并且不是顶部菜单请求则返回全部菜单
+		if (AuthUtil.isAdministrator() && Func.isEmpty(topMenuId)) {
+			roleMenus = allMenus;
+		}
+		// 非超级管理员并且不是顶部菜单请求则返回对应角色权限菜单
+		else if (!AuthUtil.isAdministrator() && Func.isEmpty(topMenuId)) {
+			roleMenus = baseMapper.roleMenuByRoleId(Func.toLongList(roleId));
+		}
+		// 顶部菜单请求返回对应角色权限菜单
+		else {
+			// 角色配置对应菜单
+			List<Menu> roleIdMenus = baseMapper.roleMenuByRoleId(Func.toLongList(roleId));
+			// 反向递归角色菜单所有父级
+			List<Menu> routes = new LinkedList<>(roleIdMenus);
+			roleIdMenus.forEach(roleMenu -> recursion(allMenus, routes, roleMenu));
+			// 顶部配置对应菜单
+			List<Menu> topIdMenus = baseMapper.roleMenuByTopMenuId(topMenuId);
+			// 筛选匹配角色对应的权限菜单
+			roleMenus = topIdMenus.stream().filter(x ->
+				routes.stream().anyMatch(route -> route.getId().longValue() == x.getId().longValue())
+			).collect(Collectors.toList());
+		}
 		return buildRoutes(allMenus, roleMenus);
 	}
 

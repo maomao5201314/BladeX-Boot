@@ -18,6 +18,7 @@ package org.springblade.modules.system.service.impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,7 @@ import org.springblade.common.enums.DictEnum;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.mp.base.BaseServiceImpl;
 import org.springblade.core.mp.support.Condition;
+import org.springblade.core.mp.support.Query;
 import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tenant.BladeTenantProperties;
 import org.springblade.core.tool.constant.BladeConstant;
@@ -141,6 +143,34 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	public IPage<User> selectUserPage(IPage<User> page, User user, Long deptId, String tenantId) {
 		List<Long> deptIdList = SysCache.getDeptChildIds(deptId);
 		return page.setRecords(baseMapper.selectUserPage(page, user, deptIdList, tenantId));
+	}
+
+	@Override
+	public IPage<UserVO> selectUserSearch(UserVO user, Query query) {
+		LambdaQueryWrapper<User> queryWrapper = Wrappers.<User>query().lambda();
+		if (StringUtil.isNotBlank(user.getName())) {
+			queryWrapper.like(User::getName, user.getName());
+		}
+		if (StringUtil.isNotBlank(user.getDeptName())) {
+			String deptIds = SysCache.getDeptIdsByFuzzy(AuthUtil.getTenantId(), user.getDeptName());
+			if (StringUtil.isNotBlank(deptIds)) {
+				queryWrapper.and(wrapper -> {
+					List<String> ids = Func.toStrList(deptIds);
+					ids.forEach(id -> wrapper.like(User::getDeptId, id).or());
+				});
+			}
+		}
+		if (StringUtil.isNotBlank(user.getPostName())) {
+			String postIds = SysCache.getPostIdsByFuzzy(AuthUtil.getTenantId(), user.getPostName());
+			if (StringUtil.isNotBlank(postIds)) {
+				queryWrapper.and(wrapper -> {
+					List<String> ids = Func.toStrList(postIds);
+					ids.forEach(id -> wrapper.like(User::getPostId, id).or());
+				});
+			}
+		}
+		IPage<User> pages = this.page(Condition.getPage(query), queryWrapper);
+		return UserWrapper.build().pageVO(pages);
 	}
 
 	@Override

@@ -37,12 +37,14 @@ public class SysCache {
 	private static final String MENU_ID = "menu:id:";
 	private static final String DEPT_ID = "dept:id:";
 	private static final String DEPT_NAME = "dept:name:";
+	private static final String DEPT_NAME_FUZZY = "dept:nameFuzzy:";
 	private static final String DEPT_NAME_ID = "deptName:id:";
 	private static final String DEPT_NAMES_ID = "deptNames:id:";
 	private static final String DEPT_CHILD_ID = "deptChild:id:";
 	private static final String DEPT_CHILDIDS_ID = "deptChildIds:id:";
 	private static final String POST_ID = "post:id:";
 	private static final String POST_NAME = "post:name:";
+	private static final String POST_NAME_FUZZY = "post:nameFuzzy:";
 	private static final String POST_NAME_ID = "postName:id:";
 	private static final String POST_NAMES_ID = "postNames:id:";
 	private static final String ROLE_ID = "role:id:";
@@ -72,7 +74,7 @@ public class SysCache {
 	 * 获取菜单
 	 *
 	 * @param id 主键
-	 * @return
+	 * @return 菜单
 	 */
 	public static Menu getMenu(Long id) {
 		return CacheUtil.get(SYS_CACHE, MENU_ID, id, () -> menuService.getById(id));
@@ -82,7 +84,7 @@ public class SysCache {
 	 * 获取部门
 	 *
 	 * @param id 主键
-	 * @return
+	 * @return 部门
 	 */
 	public static Dept getDept(Long id) {
 		return CacheUtil.get(SYS_CACHE, DEPT_ID, id, () -> deptService.getById(id));
@@ -93,10 +95,21 @@ public class SysCache {
 	 *
 	 * @param tenantId  租户id
 	 * @param deptNames 部门名
-	 * @return
+	 * @return 部门id
 	 */
 	public static String getDeptIds(String tenantId, String deptNames) {
 		return CacheUtil.get(SYS_CACHE, DEPT_NAME, tenantId + StringPool.DASH + deptNames, () -> deptService.getDeptIds(tenantId, deptNames));
+	}
+
+	/**
+	 * 获取部门id
+	 *
+	 * @param tenantId  租户id
+	 * @param deptNames 部门名模糊查询
+	 * @return 部门id
+	 */
+	public static String getDeptIdsByFuzzy(String tenantId, String deptNames) {
+		return CacheUtil.get(SYS_CACHE, DEPT_NAME_FUZZY, tenantId + StringPool.DASH + deptNames, () -> deptService.getDeptIdsByFuzzy(tenantId, deptNames));
 	}
 
 	/**
@@ -173,6 +186,17 @@ public class SysCache {
 	 */
 	public static String getPostIds(String tenantId, String postNames) {
 		return CacheUtil.get(SYS_CACHE, POST_NAME, tenantId + StringPool.DASH + postNames, () -> postService.getPostIds(tenantId, postNames));
+	}
+
+	/**
+	 * 获取岗位id
+	 *
+	 * @param tenantId  租户id
+	 * @param postNames 岗位名模糊查询
+	 * @return
+	 */
+	public static String getPostIdsByFuzzy(String tenantId, String postNames) {
+		return CacheUtil.get(SYS_CACHE, POST_NAME_FUZZY, tenantId + StringPool.DASH + postNames, () -> postService.getPostIdsByFuzzy(tenantId, postNames));
 	}
 
 	/**

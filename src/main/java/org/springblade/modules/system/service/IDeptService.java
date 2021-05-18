@@ -67,6 +67,15 @@ public interface IDeptService extends IService<Dept> {
 	String getDeptIds(String tenantId, String deptNames);
 
 	/**
+	 * 获取部门ID
+	 *
+	 * @param tenantId
+	 * @param deptNames
+	 * @return
+	 */
+	String getDeptIdsByFuzzy(String tenantId, String deptNames);
+
+	/**
 	 * 获取部门名
 	 *
 	 * @param deptIds

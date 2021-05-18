@@ -20,6 +20,7 @@ package org.springblade.modules.system.service;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springblade.core.mp.base.BaseService;
+import org.springblade.core.mp.support.Query;
 import org.springblade.modules.auth.enums.UserEnum;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.entity.UserInfo;
@@ -70,6 +71,15 @@ public interface IUserService extends BaseService<User> {
 	 * @return
 	 */
 	IPage<User> selectUserPage(IPage<User> page, User user, Long deptId, String tenantId);
+
+	/**
+	 * 自定义分页
+	 *
+	 * @param user
+	 * @param query
+	 * @return
+	 */
+	IPage<UserVO> selectUserSearch(UserVO user, Query query);
 
 	/**
 	 * 根据账号获取用户

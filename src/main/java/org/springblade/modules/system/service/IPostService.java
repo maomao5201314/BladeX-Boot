@@ -49,6 +49,15 @@ public interface IPostService extends BaseService<Post> {
 	String getPostIds(String tenantId, String postNames);
 
 	/**
+	 * 获取岗位ID
+	 *
+	 * @param tenantId
+	 * @param postNames
+	 * @return
+	 */
+	String getPostIdsByFuzzy(String tenantId, String postNames);
+
+	/**
 	 * 获取岗位名
 	 *
 	 * @param postIds

@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springblade.common.cache.SysCache;
@@ -90,6 +91,20 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 	@Override
 	public String getDeptIds(String tenantId, String deptNames) {
 		List<Dept> deptList = baseMapper.selectList(Wrappers.<Dept>query().lambda().eq(Dept::getTenantId, tenantId).in(Dept::getDeptName, Func.toStrList(deptNames)));
+		if (deptList != null && deptList.size() > 0) {
+			return deptList.stream().map(dept -> Func.toStr(dept.getId())).distinct().collect(Collectors.joining(","));
+		}
+		return null;
+	}
+
+	@Override
+	public String getDeptIdsByFuzzy(String tenantId, String deptNames) {
+		LambdaQueryWrapper<Dept> queryWrapper = Wrappers.<Dept>query().lambda().eq(Dept::getTenantId, tenantId);
+		queryWrapper.and(wrapper -> {
+			List<String> names = Func.toStrList(deptNames);
+			names.forEach(name -> wrapper.like(Dept::getDeptName, name).or());
+		});
+		List<Dept> deptList = baseMapper.selectList(queryWrapper);
 		if (deptList != null && deptList.size() > 0) {
 			return deptList.stream().map(dept -> Func.toStr(dept.getId())).distinct().collect(Collectors.joining(","));
 		}

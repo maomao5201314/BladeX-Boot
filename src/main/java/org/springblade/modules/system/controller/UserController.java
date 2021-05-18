@@ -294,4 +294,22 @@ public class UserController {
 		return R.data(userService.platformDetail(user));
 	}
 
+
+	/**
+	 * 用户列表查询
+	 */
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "name", value = "人员姓名", paramType = "query", dataType = "string"),
+		@ApiImplicitParam(name = "deptName", value = "部门名称", paramType = "query", dataType = "string"),
+		@ApiImplicitParam(name = "postName", value = "职位名称", paramType = "query", dataType = "string"),
+		@ApiImplicitParam(name = "current", value = "当前页数", paramType = "query", dataType = "int"),
+		@ApiImplicitParam(name = "size", value = "每页数量", paramType = "query", dataType = "int")
+	})
+	@ApiOperationSupport(order = 18)
+	@ApiOperation(value = "用户列表查询", notes = "用户列表查询")
+	@GetMapping("/user-search")
+	public R<IPage<UserVO>> userSearch(@ApiIgnore UserVO user, @ApiIgnore Query query) {
+		return R.data(userService.selectUserSearch(user, query));
+	}
+
 }

@@ -235,6 +235,12 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 		if (menu.getParentId() == null && menu.getId() == null) {
 			menu.setParentId(BladeConstant.TOP_PARENT_ID);
 		}
+		if (menu.getParentId() != null && menu.getId() == null) {
+			Menu parentMenu = baseMapper.selectById(menu.getParentId());
+			if (parentMenu.getCategory() != 1) {
+				throw new ServiceException("父节点只可选择菜单类型!");
+			}
+		}
 		menu.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		return saveOrUpdate(menu);
 	}

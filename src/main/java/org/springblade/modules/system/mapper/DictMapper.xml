@@ -40,7 +40,7 @@
     </select>-->
 
     <select id="getList" resultMap="dictResultMap">
-        select code, dict_key, dict_value, sort, remark from blade_dict where code = #{param1} and parent_id > 0 and is_sealed = 0 and is_deleted = 0
+        select id, parent_id, code, dict_key, dict_value, sort, remark from blade_dict where code = #{param1} and parent_id > 0 and is_sealed = 0 and is_deleted = 0
     </select>
 
     <select id="tree" resultMap="treeNodeResultMap">

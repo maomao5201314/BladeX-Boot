@@ -97,7 +97,7 @@ knife4j:
 swagger:
   title: BladeX 接口文档系统
   description: BladeX 接口文档系统
-  version: 2.8.0.RELEASE
+  version: 2.8.1.RELEASE
   license: Powered By BladeX
   license-url: https://bladex.vip
   terms-of-service-url: https://bladex.vip

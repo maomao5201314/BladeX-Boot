@@ -92,5 +92,14 @@ public interface IRoleService extends IService<Role> {
 	 */
 	boolean submit(Role role);
 
+	/**
+	 * 角色信息查询
+	 *
+	 * @param roleName
+	 * @param parentId
+	 * @return
+	 */
+	List<RoleVO> search(String roleName, Long parentId);
+
 
 }

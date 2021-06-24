@@ -107,4 +107,13 @@ public interface IDeptService extends IService<Dept> {
 	 */
 	boolean submit(Dept dept);
 
+	/**
+	 * 部门信息查询
+	 *
+	 * @param deptName
+	 * @param parentId
+	 * @return
+	 */
+	List<DeptVO> search(String deptName, Long parentId);
+
 }

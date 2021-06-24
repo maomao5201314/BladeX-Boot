@@ -307,7 +307,7 @@ public class UserController {
 	})
 	@ApiOperationSupport(order = 18)
 	@ApiOperation(value = "用户列表查询", notes = "用户列表查询")
-	@GetMapping("/user-search")
+	@GetMapping("/search/user")
 	public R<IPage<UserVO>> userSearch(@ApiIgnore UserVO user, @ApiIgnore Query query) {
 		return R.data(userService.selectUserSearch(user, query));
 	}

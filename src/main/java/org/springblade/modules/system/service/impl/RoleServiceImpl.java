@@ -16,6 +16,7 @@
  */
 package org.springblade.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -35,6 +36,7 @@ import org.springblade.modules.system.service.IRoleMenuService;
 import org.springblade.modules.system.service.IRoleScopeService;
 import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.vo.RoleVO;
+import org.springblade.modules.system.wrapper.RoleWrapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -197,6 +199,19 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		}
 		role.setIsDeleted(BladeConstant.DB_NOT_DELETED);
 		return saveOrUpdate(role);
+	}
+
+	@Override
+	public List<RoleVO> search(String roleName, Long parentId) {
+		LambdaQueryWrapper<Role> queryWrapper = Wrappers.<Role>query().lambda();
+		if (Func.isNotEmpty(roleName)) {
+			queryWrapper.like(Role::getRoleName, roleName);
+		}
+		if (Func.isNotEmpty(parentId) && parentId > 0L) {
+			queryWrapper.eq(Role::getParentId, parentId);
+		}
+		List<Role> roleList = baseMapper.selectList(queryWrapper);
+		return RoleWrapper.build().listNodeVO(roleList);
 	}
 
 }

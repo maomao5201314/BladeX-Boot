@@ -98,10 +98,11 @@ public class SmsUtil {
 	 * @param code  资源编号
 	 * @param id    校验id
 	 * @param value 校验值
+	 * @param phone 手机号
 	 * @return 发送结果
 	 */
-	public static boolean validateMessage(String code, String id, String value) {
-		SmsCode smsCode = new SmsCode().setId(id).setValue(value);
+	public static boolean validateMessage(String code, String id, String value, String phone) {
+		SmsCode smsCode = new SmsCode().setId(id).setValue(value).setPhone(phone);
 		return getBuilder().template(code).validateMessage(smsCode);
 	}
 

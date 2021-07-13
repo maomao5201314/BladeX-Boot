@@ -58,7 +58,7 @@ mybatis-plus:
       #字段策略
       insert-strategy: not_null
       update-strategy: not_null
-      select-strategy: not_empty
+      where-strategy: not_null
       #驼峰下划线转换
       table-underline: true
       # 逻辑删除配置
@@ -97,7 +97,7 @@ knife4j:
 swagger:
   title: BladeX 接口文档系统
   description: BladeX 接口文档系统
-  version: 2.8.1.RELEASE
+  version: 2.8.2.SNAPSHOT
   license: Powered By BladeX
   license-url: https://bladex.vip
   terms-of-service-url: https://bladex.vip

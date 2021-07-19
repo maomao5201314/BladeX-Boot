@@ -28,6 +28,7 @@ import lombok.Data;
 import org.springblade.core.tool.utils.Func;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * 实体类
@@ -138,5 +139,11 @@ public class Menu implements Serializable {
 		}
 		return false;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, parentId, code);
+	}
+
 
 }

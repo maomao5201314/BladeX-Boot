@@ -17,7 +17,9 @@
 package org.springblade.modules.auth.granter;
 
 import lombok.AllArgsConstructor;
+import org.springblade.common.cache.CacheNames;
 import org.springblade.core.log.exception.ServiceException;
+import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.auth.enums.UserEnum;
@@ -30,6 +32,8 @@ import org.springblade.modules.system.service.ITenantService;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+
 /**
  * PasswordTokenGranter
  *
@@ -40,15 +44,25 @@ import org.springframework.stereotype.Component;
 public class PasswordTokenGranter implements ITokenGranter {
 
 	public static final String GRANT_TYPE = "password";
+	public static final Integer FAIL_COUNT = 5;
 
 	private final IUserService userService;
 	private final ITenantService tenantService;
+	private final BladeRedis bladeRedis;
 
 	@Override
 	public UserInfo grant(TokenParameter tokenParameter) {
 		String tenantId = tokenParameter.getArgs().getStr("tenantId");
 		String username = tokenParameter.getArgs().getStr("username");
 		String password = tokenParameter.getArgs().getStr("password");
+
+		// 判断登录是否锁定
+		// TODO 2.8.3版本将增加：1.参数管理读取配置 2.用户管理增加解封按钮
+		int cnt = Func.toInt(bladeRedis.get(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username)), 0);
+		if (cnt >= FAIL_COUNT) {
+			throw new ServiceException(TokenUtil.USER_HAS_TOO_MANY_FAILS);
+		}
+
 		UserInfo userInfo = null;
 		if (Func.isNoneBlank(username, password)) {
 			// 获取租户信息
@@ -66,6 +80,10 @@ public class PasswordTokenGranter implements ITokenGranter {
 			} else {
 				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password), UserEnum.OTHER);
 			}
+		}
+		if (userInfo == null || userInfo.getUser() == null) {
+			// 错误次数锁定
+			bladeRedis.setEx(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username), cnt + 1, Duration.ofMinutes(30));
 		}
 		return userInfo;
 	}

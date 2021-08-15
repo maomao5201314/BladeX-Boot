@@ -35,6 +35,7 @@ import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.Duration;
 
 /**
  * 验证码TokenGranter
@@ -46,6 +47,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CaptchaTokenGranter implements ITokenGranter {
 
 	public static final String GRANT_TYPE = "captcha";
+	public static final Integer FAIL_COUNT = 5;
 
 	private final IUserService userService;
 	private final ITenantService tenantService;
@@ -67,6 +69,14 @@ public class CaptchaTokenGranter implements ITokenGranter {
 		String tenantId = tokenParameter.getArgs().getStr("tenantId");
 		String username = tokenParameter.getArgs().getStr("username");
 		String password = tokenParameter.getArgs().getStr("password");
+
+		// 判断登录是否锁定
+		// TODO 2.8.3版本将增加：1.参数管理读取配置 2.用户管理增加解封按钮
+		int cnt = Func.toInt(bladeRedis.get(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username)), 0);
+		if (cnt >= FAIL_COUNT) {
+			throw new ServiceException(TokenUtil.USER_HAS_TOO_MANY_FAILS);
+		}
+
 		UserInfo userInfo = null;
 		if (Func.isNoneBlank(username, password)) {
 			// 获取租户信息
@@ -84,6 +94,10 @@ public class CaptchaTokenGranter implements ITokenGranter {
 			} else {
 				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password), UserEnum.OTHER);
 			}
+		}
+		if (userInfo == null || userInfo.getUser() == null) {
+			// 错误次数锁定
+			bladeRedis.setEx(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username), cnt + 1, Duration.ofMinutes(30));
 		}
 		return userInfo;
 	}

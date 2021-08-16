@@ -42,6 +42,8 @@ import java.util.Map;
  */
 public class TokenUtil {
 
+	public final static String DEPT_HEADER_KEY = "Dept-Id";
+	public final static String ROLE_HEADER_KEY = "Role-Id";
 	public final static String CAPTCHA_HEADER_KEY = "Captcha-Key";
 	public final static String CAPTCHA_HEADER_CODE = "Captcha-Code";
 	public final static String CAPTCHA_NOT_CORRECT = "验证码不正确";
@@ -133,6 +135,8 @@ public class TokenUtil {
 		Map<String, Object> param = new HashMap<>(16);
 		param.put(TokenConstant.TOKEN_TYPE, TokenConstant.REFRESH_TOKEN);
 		param.put(TokenConstant.USER_ID, Func.toStr(user.getId()));
+		param.put(TokenConstant.DEPT_ID, Func.toStr(user.getDeptId()));
+		param.put(TokenConstant.ROLE_ID, Func.toStr(user.getRoleId()));
 		return SecureUtil.createJWT(param, "audience", "issuser", TokenConstant.REFRESH_TOKEN);
 	}
 

@@ -27,9 +27,12 @@ import org.springblade.modules.auth.provider.TokenParameter;
 import org.springblade.modules.auth.utils.TokenUtil;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.UserInfo;
+import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.service.ITenantService;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * RefreshTokenGranter
@@ -43,6 +46,7 @@ public class RefreshTokenGranter implements ITokenGranter {
 	public static final String GRANT_TYPE = "refresh_token";
 
 	private final IUserService userService;
+	private final IRoleService roleService;
 	private final ITenantService tenantService;
 
 	@Override
@@ -63,6 +67,12 @@ public class RefreshTokenGranter implements ITokenGranter {
 					}
 					// 获取用户信息
 					userInfo = userService.userInfo(Func.toLong(claims.get(TokenConstant.USER_ID)));
+					// 设置部门信息
+					userInfo.getUser().setDeptId(Func.toStr(claims.get(TokenConstant.DEPT_ID)));
+					// 设置角色信息
+					userInfo.getUser().setRoleId(Func.toStr(claims.get(TokenConstant.ROLE_ID)));
+					List<String> roleAliases = roleService.getRoleAliases(Func.toStr(claims.get(TokenConstant.ROLE_ID)));
+					userInfo.setRoles(roleAliases);
 				}
 			}
 		}

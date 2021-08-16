@@ -17,6 +17,7 @@
 package org.springblade.modules.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
@@ -146,6 +147,17 @@ public class RoleController extends BladeController {
 		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		boolean temp = roleService.grant(grantVO.getRoleIds(), grantVO.getMenuIds(), grantVO.getDataScopeIds(), grantVO.getApiScopeIds());
 		return R.status(temp);
+	}
+
+	/**
+	 * 下拉数据源
+	 */
+	@GetMapping("/select")
+	@ApiOperationSupport(order = 8)
+	@ApiOperation(value = "下拉数据源", notes = "传入id集合")
+	public R<List<Role>> select(String roleId) {
+		List<Role> list = roleService.list(Wrappers.<Role>lambdaQuery().in(Role::getId, Func.toLongList(roleId)));
+		return R.data(list);
 	}
 
 }

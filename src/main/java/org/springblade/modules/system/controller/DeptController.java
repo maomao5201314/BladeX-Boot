@@ -17,6 +17,7 @@
 package org.springblade.modules.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
@@ -152,6 +153,17 @@ public class DeptController extends BladeController {
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		CacheUtil.clear(SYS_CACHE);
 		return R.status(deptService.removeDept(ids));
+	}
+
+	/**
+	 * 下拉数据源
+	 */
+	@GetMapping("/select")
+	@ApiOperationSupport(order = 8)
+	@ApiOperation(value = "下拉数据源", notes = "传入id集合")
+	public R<List<Dept>> select(String deptId) {
+		List<Dept> list = deptService.list(Wrappers.<Dept>lambdaQuery().in(Dept::getId, Func.toLongList(deptId)));
+		return R.data(list);
 	}
 
 

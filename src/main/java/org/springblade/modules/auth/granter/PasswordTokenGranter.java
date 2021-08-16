@@ -22,17 +22,21 @@ import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.core.tool.utils.WebUtil;
 import org.springblade.modules.auth.enums.UserEnum;
 import org.springblade.modules.auth.provider.ITokenGranter;
 import org.springblade.modules.auth.provider.TokenParameter;
 import org.springblade.modules.auth.utils.TokenUtil;
 import org.springblade.modules.system.entity.Tenant;
 import org.springblade.modules.system.entity.UserInfo;
+import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.service.ITenantService;
 import org.springblade.modules.system.service.IUserService;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
+import java.util.List;
 
 /**
  * PasswordTokenGranter
@@ -47,11 +51,18 @@ public class PasswordTokenGranter implements ITokenGranter {
 	public static final Integer FAIL_COUNT = 5;
 
 	private final IUserService userService;
+	private final IRoleService roleService;
 	private final ITenantService tenantService;
 	private final BladeRedis bladeRedis;
 
 	@Override
 	public UserInfo grant(TokenParameter tokenParameter) {
+		HttpServletRequest request = WebUtil.getRequest();
+		// 获取用户绑定ID
+		String headerDept = request.getHeader(TokenUtil.DEPT_HEADER_KEY);
+		String headerRole = request.getHeader(TokenUtil.ROLE_HEADER_KEY);
+
+		// 获取用户信息
 		String tenantId = tokenParameter.getArgs().getStr("tenantId");
 		String username = tokenParameter.getArgs().getStr("username");
 		String password = tokenParameter.getArgs().getStr("password");
@@ -81,9 +92,19 @@ public class PasswordTokenGranter implements ITokenGranter {
 				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password), UserEnum.OTHER);
 			}
 		}
+		// 错误次数锁定
 		if (userInfo == null || userInfo.getUser() == null) {
-			// 错误次数锁定
 			bladeRedis.setEx(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username), cnt + 1, Duration.ofMinutes(30));
+		}
+		// 多部门情况下指定单部门
+		if (Func.isNotEmpty(headerDept) && userInfo != null && userInfo.getUser().getDeptId().contains(headerDept)) {
+			userInfo.getUser().setDeptId(headerDept);
+		}
+		// 多角色情况下指定单角色
+		if (Func.isNotEmpty(headerRole) && userInfo != null && userInfo.getUser().getRoleId().contains(headerRole)) {
+			List<String> roleAliases = roleService.getRoleAliases(headerRole);
+			userInfo.setRoles(roleAliases);
+			userInfo.getUser().setRoleId(headerRole);
 		}
 		return userInfo;
 	}

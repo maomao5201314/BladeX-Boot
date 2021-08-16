@@ -88,14 +88,15 @@ public class SmsEndpoint {
 	/**
 	 * 发送信息
 	 *
+	 * @param code   资源编号
 	 * @param params 自定义短信参数
 	 * @param phones 手机号集合
 	 */
 	@SneakyThrows
 	@PostMapping("/send-message")
-	public R sendMessage(@RequestParam String params, @RequestParam String phones) {
+	public R sendMessage(@RequestParam String code, @RequestParam String params, @RequestParam String phones) {
 		SmsData smsData = new SmsData(JsonUtil.readMap(params, String.class, String.class));
-		return send(smsData, phones);
+		return send(code, smsData, phones);
 	}
 
 	//========== 指定短信服务发送(可根据各种场景自定拓展定制, 损失灵活性增加安全性, 推荐用于生产环境) ==========
@@ -159,6 +160,19 @@ public class SmsEndpoint {
 	 */
 	private R send(SmsData smsData, String phones) {
 		SmsResponse response = smsBuilder.template().sendMessage(smsData, Func.toStrList(phones));
+		return response.isSuccess() ? R.success(SEND_SUCCESS) : R.fail(SEND_FAIL);
+	}
+
+	/**
+	 * 通用短信发送接口
+	 *
+	 * @param code    资源编号
+	 * @param smsData 短信内容
+	 * @param phones  手机号列表
+	 * @return 是否发送成功
+	 */
+	private R send(String code, SmsData smsData, String phones) {
+		SmsResponse response = smsBuilder.template(code).sendMessage(smsData, Func.toStrList(phones));
 		return response.isSuccess() ? R.success(SEND_SUCCESS) : R.fail(SEND_FAIL);
 	}
 

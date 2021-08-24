@@ -29,6 +29,7 @@ import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.secure.BladeUser;
 import org.springblade.core.secure.annotation.PreAuth;
+import org.springblade.core.secure.constant.AuthConstant;
 import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.BladeConstant;
@@ -158,6 +159,7 @@ public class DeptController extends BladeController {
 	/**
 	 * 下拉数据源
 	 */
+	@PreAuth(AuthConstant.PERMIT_ALL)
 	@GetMapping("/select")
 	@ApiOperationSupport(order = 8)
 	@ApiOperation(value = "下拉数据源", notes = "传入id集合")

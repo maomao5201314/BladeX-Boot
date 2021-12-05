@@ -303,11 +303,11 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 			// 设置用户平台
 			user.setUserType(Func.toInt(DictCache.getKey(DictEnum.USER_TYPE, userExcel.getUserTypeName()), 1));
 			// 设置部门ID
-			user.setDeptId(SysCache.getDeptIds(userExcel.getTenantId(), userExcel.getDeptName()));
+			user.setDeptId(Func.toStrWithEmpty(SysCache.getDeptIds(userExcel.getTenantId(), userExcel.getDeptName()), StringPool.EMPTY));
 			// 设置岗位ID
-			user.setPostId(SysCache.getPostIds(userExcel.getTenantId(), userExcel.getPostName()));
+			user.setPostId(Func.toStrWithEmpty(SysCache.getPostIds(userExcel.getTenantId(), userExcel.getPostName()), StringPool.EMPTY));
 			// 设置角色ID
-			user.setRoleId(SysCache.getRoleIds(userExcel.getTenantId(), userExcel.getRoleName()));
+			user.setRoleId(Func.toStrWithEmpty(SysCache.getRoleIds(userExcel.getTenantId(), userExcel.getRoleName()), StringPool.EMPTY));
 			// 设置租户ID
 			if (!AuthUtil.isAdministrator() || StringUtil.isBlank(user.getTenantId())) {
 				user.setTenantId(AuthUtil.getTenantId());

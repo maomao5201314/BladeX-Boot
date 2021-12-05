@@ -214,4 +214,13 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 		return RoleWrapper.build().listNodeVO(roleList);
 	}
 
+	@Override
+	public boolean removeRole(String ids) {
+		Integer cnt = baseMapper.selectCount(Wrappers.<Role>query().lambda().in(Role::getParentId, Func.toLongList(ids)));
+		if (cnt > 0) {
+			throw new ServiceException("请先删除子节点!");
+		}
+		return removeByIds(Func.toLongList(ids));
+	}
+
 }

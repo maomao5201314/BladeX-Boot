@@ -134,7 +134,7 @@ public class RoleController extends BladeController {
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		CacheUtil.clear(SYS_CACHE);
 		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
-		return R.status(roleService.removeByIds(Func.toLongList(ids)));
+		return R.status(roleService.removeRole(ids));
 	}
 
 	/**

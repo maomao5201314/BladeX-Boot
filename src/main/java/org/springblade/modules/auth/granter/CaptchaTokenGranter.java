@@ -18,6 +18,7 @@ package org.springblade.modules.auth.granter;
 
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.CacheNames;
+import org.springblade.common.cache.ParamCache;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.redis.cache.BladeRedis;
 import org.springblade.core.tool.utils.DigestUtil;
@@ -50,6 +51,7 @@ public class CaptchaTokenGranter implements ITokenGranter {
 
 	public static final String GRANT_TYPE = "captcha";
 	public static final Integer FAIL_COUNT = 5;
+	public static final String FAIL_COUNT_VALUE = "account.failCount";
 
 	private final IUserService userService;
 	private final IRoleService roleService;
@@ -78,9 +80,9 @@ public class CaptchaTokenGranter implements ITokenGranter {
 		String password = tokenParameter.getArgs().getStr("password");
 
 		// 判断登录是否锁定
-		// TODO 2.8.3版本将增加：1.参数管理读取配置 2.用户管理增加解封按钮
 		int cnt = Func.toInt(bladeRedis.get(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username)), 0);
-		if (cnt >= FAIL_COUNT) {
+		int failCount = Func.toInt(ParamCache.getValue(FAIL_COUNT_VALUE), FAIL_COUNT);
+		if (cnt >= failCount) {
 			throw new ServiceException(TokenUtil.USER_HAS_TOO_MANY_FAILS);
 		}
 

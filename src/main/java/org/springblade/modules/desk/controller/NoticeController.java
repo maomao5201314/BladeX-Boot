@@ -74,6 +74,7 @@ public class NoticeController extends BladeController {
 	@ApiOperationSupport(order = 2)
 	@ApiOperation(value = "分页", notes = "传入notice")
 	public R<IPage<NoticeVO>> list(@ApiIgnore @RequestParam Map<String, Object> notice, Query query) {
+		NoticeWrapper.build().noticeQuery(notice);
 		IPage<Notice> pages = noticeService.page(Condition.getPage(query), Condition.getQueryWrapper(notice, Notice.class));
 		return R.data(NoticeWrapper.build().pageVO(pages));
 	}

@@ -20,9 +20,11 @@ import org.springblade.common.cache.DictCache;
 import org.springblade.common.enums.DictEnum;
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.utils.BeanUtil;
+import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.desk.entity.Notice;
 import org.springblade.modules.desk.vo.NoticeVO;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -42,6 +44,21 @@ public class NoticeWrapper extends BaseEntityWrapper<Notice, NoticeVO> {
 		String dictValue = DictCache.getValue(DictEnum.NOTICE, noticeVO.getCategory());
 		noticeVO.setCategoryName(dictValue);
 		return noticeVO;
+	}
+
+	/**
+	 * 查询条件处理
+	 */
+	public void noticeQuery(Map<String, Object> notice) {
+		// 此场景仅在 pg数据库 map类型传参的情况下需要处理，entity传参已经包含数据类型，则无需关心
+		// 针对 pg数据库 int类型字段查询需要强转的处理示例
+		String searchKey = "category";
+		if (Func.isNotEmpty(notice.get(searchKey))) {
+			// 数据库字段为int类型，设置"="查询，具体查询参数请见 @org.springblade.core.mp.support.SqlKeyword
+			notice.put(searchKey.concat("_equal"), Func.toInt(notice.get(searchKey)));
+			// 默认"like"查询，pg数据库 场景会报错，所以将其删除
+			notice.remove(searchKey);
+		}
 	}
 
 }

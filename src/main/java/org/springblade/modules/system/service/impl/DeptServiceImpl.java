@@ -153,7 +153,11 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
 	@Override
 	public List<DeptVO> search(String deptName, Long parentId) {
+		String tenantId = AuthUtil.getTenantId();
 		LambdaQueryWrapper<Dept> queryWrapper = Wrappers.<Dept>query().lambda();
+		if (Func.isNotEmpty(tenantId)) {
+			queryWrapper.eq(Dept::getTenantId, tenantId);
+		}
 		if (Func.isNotEmpty(deptName)) {
 			queryWrapper.like(Dept::getDeptName, deptName);
 		}

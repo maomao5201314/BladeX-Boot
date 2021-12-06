@@ -203,12 +203,16 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	@Override
 	public List<RoleVO> search(String roleName, Long parentId) {
+		String tenantId = AuthUtil.getTenantId();
 		LambdaQueryWrapper<Role> queryWrapper = Wrappers.<Role>query().lambda();
 		if (Func.isNotEmpty(roleName)) {
 			queryWrapper.like(Role::getRoleName, roleName);
 		}
 		if (Func.isNotEmpty(parentId) && parentId > 0L) {
 			queryWrapper.eq(Role::getParentId, parentId);
+		}
+		if (Func.isNotEmpty(tenantId)) {
+			queryWrapper.eq(Role::getTenantId, tenantId);
 		}
 		List<Role> roleList = baseMapper.selectList(queryWrapper);
 		return RoleWrapper.build().listNodeVO(roleList);

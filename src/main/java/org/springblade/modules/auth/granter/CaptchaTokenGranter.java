@@ -118,6 +118,8 @@ public class CaptchaTokenGranter implements ITokenGranter {
 			userInfo.setRoles(roleResult);
 			userInfo.getUser().setRoleId(headerRole);
 		}
+		// 成功则清除登录错误次数
+		bladeRedis.del(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username));
 		return userInfo;
 	}
 

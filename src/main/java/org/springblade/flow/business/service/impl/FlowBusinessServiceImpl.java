@@ -120,6 +120,9 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 		if (bladeFlow.getCategory() != null) {
 			historyQuery.processDefinitionCategory(bladeFlow.getCategory());
 		}
+		if (bladeFlow.getProcessDefinitionName() != null) {
+			historyQuery.processDefinitionName(bladeFlow.getProcessDefinitionName());
+		}
 		if (bladeFlow.getBeginDate() != null) {
 			historyQuery.startedAfter(bladeFlow.getBeginDate());
 		}
@@ -189,6 +192,9 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 
 		if (bladeFlow.getCategory() != null) {
 			doneQuery.processCategoryIn(Func.toStrList(bladeFlow.getCategory()));
+		}
+		if (bladeFlow.getProcessDefinitionName() != null) {
+			doneQuery.processDefinitionName(bladeFlow.getProcessDefinitionName());
 		}
 		if (bladeFlow.getBeginDate() != null) {
 			doneQuery.taskCompletedAfter(bladeFlow.getBeginDate());

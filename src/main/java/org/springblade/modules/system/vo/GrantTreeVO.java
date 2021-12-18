@@ -17,6 +17,7 @@
 package org.springblade.modules.system.vo;
 
 import lombok.Data;
+import org.springblade.core.tool.node.TreeNode;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,10 +31,10 @@ import java.util.List;
 public class GrantTreeVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private List<MenuVO> menu;
+	private List<TreeNode> menu;
 
-	private List<MenuVO> dataScope;
+	private List<TreeNode> dataScope;
 
-	private List<MenuVO> apiScope;
+	private List<TreeNode> apiScope;
 
 }

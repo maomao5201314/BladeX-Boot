@@ -55,12 +55,14 @@ public class SysCache {
 	private static final String ROLE_ALIASES_ID = "roleAliases:id:";
 	private static final String TENANT_ID = "tenant:id:";
 	private static final String TENANT_TENANT_ID = "tenant:tenantId:";
+	private static final String TENANT_PACKAGE_ID = "tenant:packageId:";
 
 	private static final IMenuService menuService;
 	private static final IDeptService deptService;
 	private static final IPostService postService;
 	private static final IRoleService roleService;
 	private static final ITenantService tenantService;
+	private static final ITenantPackageService tenantPackageService;
 
 	static {
 		menuService = SpringUtil.getBean(IMenuService.class);
@@ -68,6 +70,7 @@ public class SysCache {
 		postService = SpringUtil.getBean(IPostService.class);
 		roleService = SpringUtil.getBean(IRoleService.class);
 		tenantService = SpringUtil.getBean(ITenantService.class);
+		tenantPackageService = SpringUtil.getBean(ITenantPackageService.class);
 	}
 
 	/**
@@ -298,6 +301,17 @@ public class SysCache {
 	 */
 	public static Tenant getTenant(String tenantId) {
 		return CacheUtil.get(SYS_CACHE, TENANT_TENANT_ID, tenantId, () -> tenantService.getByTenantId(tenantId));
+	}
+
+	/**
+	 * 获取租户产品包
+	 *
+	 * @param tenantId 租户id
+	 * @return Tenant
+	 */
+	public static TenantPackage getTenantPackage(String tenantId) {
+		Tenant tenant = getTenant(tenantId);
+		return CacheUtil.get(SYS_CACHE, TENANT_PACKAGE_ID, tenantId, () -> tenantPackageService.getById(tenant.getPackageId()), Boolean.FALSE);
 	}
 
 }

@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
 import org.springblade.core.mp.support.Condition;
 import org.springblade.core.mp.support.Query;
@@ -36,6 +37,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
+import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 
 /**
  * 租户产品表 控制器
@@ -99,6 +102,7 @@ public class TenantPackageController extends BladeController {
 	@ApiOperationSupport(order = 5)
 	@ApiOperation(value = "新增或修改", notes = "传入tenantPackage")
 	public R submit(@Valid @RequestBody TenantPackage tenantPackage) {
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		return R.status(tenantPackageService.saveOrUpdate(tenantPackage));
 	}
 
@@ -110,6 +114,7 @@ public class TenantPackageController extends BladeController {
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "逻辑删除", notes = "传入ids")
 	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
+		CacheUtil.clear(SYS_CACHE, Boolean.FALSE);
 		return R.status(tenantPackageService.deleteLogic(Func.toLongList(ids)));
 	}
 

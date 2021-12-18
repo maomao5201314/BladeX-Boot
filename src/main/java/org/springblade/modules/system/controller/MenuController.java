@@ -29,6 +29,7 @@ import org.springblade.core.secure.annotation.PreAuth;
 import org.springblade.core.tenant.annotation.NonDS;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.constant.RoleConstant;
+import org.springblade.core.tool.node.TreeNode;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Menu;
@@ -210,8 +211,8 @@ public class MenuController extends BladeController {
 	@GetMapping("/tree")
 	@ApiOperationSupport(order = 11)
 	@ApiOperation(value = "树形结构", notes = "树形结构")
-	public R<List<MenuVO>> tree() {
-		List<MenuVO> tree = menuService.tree();
+	public R<List<TreeNode>> tree() {
+		List<TreeNode> tree = menuService.tree();
 		return R.data(tree);
 	}
 

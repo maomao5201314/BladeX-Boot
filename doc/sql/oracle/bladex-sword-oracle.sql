@@ -4,21 +4,21 @@
  Source Server         : oracle_localhost
  Source Server Type    : Oracle
  Source Server Version : 110200
- Source Host           : 127.0.0.1:1521
+ Source Host           : localhost:1521
  Source Schema         : BLADEX
 
  Target Server Type    : Oracle
  Target Server Version : 110200
  File Encoding         : 65001
 
- Date: 05/12/2021 23:23:10
+ Date: 18/12/2021 22:42:06
 */
 
 
 -- ----------------------------
 -- Table structure for BLADE_ATTACH
 -- ----------------------------
--- DROP TABLE "BLADE_ATTACH";
+DROP TABLE "BLADE_ATTACH";
 CREATE TABLE "BLADE_ATTACH" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -68,7 +68,7 @@ COMMENT ON TABLE "BLADE_ATTACH" IS '附件表';
 -- ----------------------------
 -- Table structure for BLADE_CLIENT
 -- ----------------------------
--- DROP TABLE "BLADE_CLIENT";
+DROP TABLE "BLADE_CLIENT";
 CREATE TABLE "BLADE_CLIENT" (
   "ID" NUMBER(20) NOT NULL ,
   "CLIENT_ID" NVARCHAR2(48) NOT NULL ,
@@ -137,7 +137,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_CODE
 -- ----------------------------
--- DROP TABLE "BLADE_CODE";
+DROP TABLE "BLADE_CODE";
 CREATE TABLE "BLADE_CODE" (
   "ID" NUMBER(20) NOT NULL ,
   "DATASOURCE_ID" NUMBER(20) ,
@@ -193,7 +193,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_DATASOURCE
 -- ----------------------------
--- DROP TABLE "BLADE_DATASOURCE";
+DROP TABLE "BLADE_DATASOURCE";
 CREATE TABLE "BLADE_DATASOURCE" (
   "ID" NUMBER(20) NOT NULL ,
   "NAME" NVARCHAR2(100) ,
@@ -254,7 +254,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_DEPT
 -- ----------------------------
--- DROP TABLE "BLADE_DEPT";
+DROP TABLE "BLADE_DEPT";
 CREATE TABLE "BLADE_DEPT" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -306,7 +306,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_DICT
 -- ----------------------------
--- DROP TABLE "BLADE_DICT";
+DROP TABLE "BLADE_DICT";
 CREATE TABLE "BLADE_DICT" (
   "ID" NUMBER(20) NOT NULL ,
   "PARENT_ID" NUMBER(20) ,
@@ -418,7 +418,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_DICT_BIZ
 -- ----------------------------
--- DROP TABLE "BLADE_DICT_BIZ";
+DROP TABLE "BLADE_DICT_BIZ";
 CREATE TABLE "BLADE_DICT_BIZ" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -462,7 +462,7 @@ COMMENT ON TABLE "BLADE_DICT_BIZ" IS '数据源配置表';
 -- ----------------------------
 -- Table structure for BLADE_LOG_API
 -- ----------------------------
--- DROP TABLE "BLADE_LOG_API";
+DROP TABLE "BLADE_LOG_API";
 CREATE TABLE "BLADE_LOG_API" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -522,7 +522,7 @@ COMMENT ON TABLE "BLADE_LOG_API" IS '接口日志表';
 -- ----------------------------
 -- Table structure for BLADE_LOG_ERROR
 -- ----------------------------
--- DROP TABLE "BLADE_LOG_ERROR";
+DROP TABLE "BLADE_LOG_ERROR";
 CREATE TABLE "BLADE_LOG_ERROR" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -586,7 +586,7 @@ COMMENT ON TABLE "BLADE_LOG_ERROR" IS '错误日志表';
 -- ----------------------------
 -- Table structure for BLADE_LOG_USUAL
 -- ----------------------------
--- DROP TABLE "BLADE_LOG_USUAL";
+DROP TABLE "BLADE_LOG_USUAL";
 CREATE TABLE "BLADE_LOG_USUAL" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -646,7 +646,7 @@ COMMENT ON TABLE "BLADE_LOG_USUAL" IS '通用日志表';
 -- ----------------------------
 -- Table structure for BLADE_MENU
 -- ----------------------------
--- DROP TABLE "BLADE_MENU";
+DROP TABLE "BLADE_MENU";
 CREATE TABLE "BLADE_MENU" (
   "ID" NUMBER(20) NOT NULL ,
   "PARENT_ID" NUMBER(20) ,
@@ -698,169 +698,169 @@ COMMENT ON TABLE "BLADE_MENU" IS '菜单表';
 -- ----------------------------
 -- Records of BLADE_MENU
 -- ----------------------------
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321994', '1161272593873321991', 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', '3', '2', '3', '3', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658962253', '1164733389658962251', 'sms_edit', '修改', 'edit', '/resource/sms/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658962254', '1164733389658962251', 'sms_delete', '删除', 'delete', '/api/blade-resource/sms/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658962255', '1164733389658962251', 'sms_view', '查看', 'view', '/resource/sms/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658962256', '1164733389658962251', 'sms_enable', '启用', 'enable', '/api/blade-resource/sms/enable', 'key', '5', '2', '2', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658962251', '1123598815738675298', 'sms', '短信配置', 'menu', '/resource/sms', NULL, '3', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389668962251', '1123598815738675203', 'post', '岗位管理', 'menu', '/system/post', NULL, '3', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389668962252', '1164733389668962251', 'post_add', '新增', 'add', '/system/post/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389668962253', '1164733389668962251', 'post_edit', '修改', 'edit', '/system/post/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389668962254', '1164733389668962251', 'post_delete', '删除', 'delete', '/api/blade-system/post/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389668962255', '1164733389668962251', 'post_view', '查看', 'view', '/system/post/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658962252', '1164733389658962251', 'sms_add', '新增', 'add', '/resource/sms/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675201', '0', 'desk', '工作台', 'menu', '/desk', 'desktop', '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675202', '1123598815738675201', 'notice', '通知公告', 'menu', '/desk/notice', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675203', '0', 'system', '系统管理', 'menu', '/system', 'setting', '99', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675204', '1123598815738675203', 'user', '用户管理', 'menu', '/system/user', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675205', '1123598815738675203', 'dept', '机构管理', 'menu', '/system/dept', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675206', '1123598815738675203', 'dict', '系统字典', 'menu', '/system/dict', NULL, '4', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675207', '1123598815738675203', 'menu', '菜单管理', 'menu', '/system/menu', NULL, '6', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675208', '1123598815738675203', 'topmenu', '顶部菜单', 'menu', '/system/topmenu', NULL, '7', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675209', '1123598815738675203', 'param', '参数管理', 'menu', '/system/param', NULL, '8', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675210', '0', 'monitor', '系统监控', 'menu', '/monitor', 'fund', '3', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675211', '1123598815738675210', 'doc', '接口文档', 'menu', 'http://localhost:18000/doc.html', NULL, '1', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675212', '1123598815738675210', 'admin', '服务治理', 'menu', 'http://localhost:7002', NULL, '2', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675213', '1123598815738675210', 'log', '日志管理', 'menu', '/monitor/log', NULL, '8', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675214', '1123598815738675213', 'log_usual', '通用日志', 'menu', '/monitor/log/usual', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675215', '1123598815738675213', 'log_api', '接口日志', 'menu', '/monitor/log/api', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675216', '1123598815738675213', 'log_error', '错误日志', 'menu', '/monitor/log/error', NULL, '3', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675217', '0', 'tool', '研发工具', 'menu', '/tool', 'tool', '4', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675218', '1123598815738675217', 'code', '代码生成', 'menu', '/tool/code', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675219', '1123598815738675202', 'notice_add', '新增', 'add', '/desk/notice/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675220', '1123598815738675202', 'notice_edit', '修改', 'edit', '/desk/notice/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675221', '1123598815738675202', 'notice_delete', '删除', 'delete', '/api/blade-desk/notice/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675222', '1123598815738675202', 'notice_view', '查看', 'view', '/desk/notice/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675223', '1123598815738675204', 'user_add', '新增', 'add', '/system/user/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675224', '1123598815738675204', 'user_edit', '修改', 'edit', '/system/user/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675225', '1123598815738675204', 'user_delete', '删除', 'delete', '/api/blade-user/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675226', '1123598815738675204', 'user_role', '角色配置', 'role', NULL, 'user-add', '4', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675227', '1123598815738675204', 'user_reset', '密码重置', 'reset-password', '/api/blade-user/reset-password', 'retweet', '5', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675228', '1123598815738675204', 'user_view', '查看', 'view', '/system/user/view', 'file-text', '6', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675229', '1123598815738675205', 'dept_add', '新增', 'add', '/system/dept/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675230', '1123598815738675205', 'dept_edit', '修改', 'edit', '/system/dept/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675231', '1123598815738675205', 'dept_delete', '删除', 'delete', '/api/blade-system/dept/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675232', '1123598815738675205', 'dept_view', '查看', 'view', '/system/dept/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675233', '1123598815738675206', 'dict_add', '新增', 'add', '/system/dict/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675234', '1123598815738675206', 'dict_edit', '修改', 'edit', '/system/dict/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675235', '1123598815738675206', 'dict_delete', '删除', 'delete', '/api/blade-system/dict/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675236', '1123598815738675206', 'dict_view', '查看', 'view', '/system/dict/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675237', '1123598815738675207', 'menu_add', '新增', 'add', '/system/menu/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675238', '1123598815738675207', 'menu_edit', '修改', 'edit', '/system/menu/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675239', '1123598815738675207', 'menu_delete', '删除', 'delete', '/api/blade-system/menu/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675240', '1123598815738675207', 'menu_view', '查看', 'view', '/system/menu/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675241', '1123598815738675308', 'role_add', '新增', 'add', '/authority/role/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675242', '1123598815738675308', 'role_edit', '修改', 'edit', '/authority/role/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675243', '1123598815738675308', 'role_delete', '删除', 'delete', '/api/blade-system/role/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675244', '1123598815738675308', 'role_view', '查看', 'view', '/authority/role/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675245', '1123598815738675209', 'param_add', '新增', 'add', '/system/param/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675246', '1123598815738675209', 'param_edit', '修改', 'edit', '/system/param/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675247', '1123598815738675209', 'param_delete', '删除', 'delete', '/api/blade-system/param/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675248', '1123598815738675209', 'param_view', '查看', 'view', '/system/param/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675249', '1123598815738675214', 'log_usual_view', '查看', 'view', '/monitor/log/usual/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675250', '1123598815738675215', 'log_api_view', '查看', 'view', '/monitor/log/api/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675251', '1123598815738675216', 'log_error_view', '查看', 'view', '/monitor/log/error/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675252', '1123598815738675218', 'code_add', '新增', 'add', '/tool/code/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675253', '1123598815738675218', 'code_edit', '修改', 'edit', '/tool/code/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675254', '1123598815738675218', 'code_delete', '删除', 'delete', '/api/blade-develop/code/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675255', '1123598815738675218', 'code_view', '查看', 'view', '/tool/code/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675256', '1123598815738675203', 'tenant', '租户管理', 'menu', '/system/tenant', NULL, '9', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675257', '1123598815738675256', 'tenant_add', '新增', 'add', '/system/tenant/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675258', '1123598815738675256', 'tenant_edit', '修改', 'edit', '/system/tenant/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675259', '1123598815738675256', 'tenant_delete', '删除', 'delete', '/api/blade-system/tenant/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321995', '1161272593873321991', 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', '4', '2', '2', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', NULL, '3', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962301', '0', 'report', '报表管理', 'menu', '/report', 'bar-chart', '5', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962302', '1164733399669962301', 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', NULL, '1', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962303', '1164733399669962301', 'report_list', '报表列表', 'menu', '/report/reportlist', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962304', '1164733399669962301', 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', NULL, '3', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963252', '1123598815738675210', 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', NULL, '4', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963253', '1123598815738675210', 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', NULL, '5', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963254', '1123598815738675210', 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', NULL, '6', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733369658963255', '1123598815738675210', 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', NULL, '7', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963251', '1123598815738675203', 'dictbiz', '业务字典', 'menu', '/system/dictbiz', NULL, '5', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963252', '1164733379658963251', 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963253', '1164733379658963251', 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963254', '1164733379658963251', 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733379658963255', '1164733379658963251', 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733389658963251', '1123598815738675298', 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', NULL, '5', '1', '0', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675260', '1123598815738675256', 'tenant_view', '查看', 'view', '/system/tenant/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675261', '1123598815738675203', 'client', '应用管理', 'menu', '/system/client', NULL, '10', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675262', '1123598815738675261', 'client_add', '新增', 'add', '/system/client/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675263', '1123598815738675261', 'client_edit', '修改', 'edit', '/system/client/edit', 'form', '2', '2', '2', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675264', '1123598815738675261', 'client_delete', '删除', 'delete', '/api/blade-system/client/remove', 'delete', '3', '2', '3', '3', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675265', '1123598815738675261', 'client_view', '查看', 'view', '/system/client/view', 'file-text', '4', '2', '2', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675266', '0', 'flow', '流程管理', 'menu', '/flow', 'stock', '5', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675267', '1123598815738675266', 'flow_model', '模型管理', 'menu', '/flow/model', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675268', '1123598815738675267', 'flow_model_create', '创建', 'create', NULL, 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675269', '1123598815738675267', 'flow_model_update', '编辑', 'update', NULL, 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675270', '1123598815738675267', 'flow_model_deploy', '部署', 'deploy', NULL, 'cloud-upload', '3', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675271', '1123598815738675267', 'flow_model_download', '下载', 'download', NULL, 'download', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675272', '1123598815738675267', 'flow_model_delete', '删除', 'delete', '/api/blade-flow/model/remove', 'delete', '5', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675273', '1123598815738675266', 'flow_deploy', '流程部署', 'menu', '/flow/deploy', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675274', '1123598815738675266', 'flow_manager', '流程管理', 'menu', '/flow/manager', NULL, '3', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675275', '1123598815738675274', 'flow_manager_state', '变更状态', 'state', NULL, 'plus', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675276', '1123598815738675274', 'flow_manager_image', '流程图', 'image', NULL, 'image', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675277', '1123598815738675274', 'flow_manager_remove', '删除', 'remove', NULL, 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675278', '1123598815738675266', 'flow_follow', '流程跟踪', 'menu', '/flow/follow', NULL, '4', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675279', '1123598815738675278', 'flow_follow_delete', '删除', 'remove', NULL, 'remove', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962201', '1123598815738675298', 'attach', '附件管理', 'menu', '/resource/attach', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962202', '1164733399669962201', 'attach_upload', '上传', 'upload', '/resource/attach/upload', NULL, '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962203', '1164733399669962201', 'attach_download', '下载', 'download', '/resource/attach/download', NULL, '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399669962204', '1164733399669962201', 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', NULL, '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675280', '0', 'work', '我的事务', 'menu', '/work', 'bell', '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675281', '1123598815738675280', 'work_start', '发起事务', 'menu', '/work/start', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675282', '1123598815738675281', 'work_start_flow', '发起', 'flow', NULL, 'flow', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675283', '1123598815738675281', 'work_start_image', '流程图', 'image', NULL, 'image', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675284', '1123598815738675280', 'work_claim', '待签事务', 'menu', '/work/claim', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675285', '1123598815738675284', 'work_claim_sign', '签收', 'sign', NULL, 'sign', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675286', '1123598815738675284', 'work_claim_detail', '详情', 'detail', NULL, 'detail', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675287', '1123598815738675284', 'work_claim_follow', '跟踪', 'follow', NULL, 'follow', '3', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675288', '1123598815738675280', 'work_todo', '待办事务', 'menu', '/work/todo', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675289', '1123598815738675288', 'work_todo_handle', '办理', 'handle', NULL, 'handle', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675290', '1123598815738675288', 'work_todo_detail', '详情', 'detail', NULL, 'detail', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675291', '1123598815738675288', 'work_todo_follow', '跟踪', 'follow', NULL, 'follow', '3', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675292', '1123598815738675280', 'work_send', '已发事务', 'menu', '/work/send', NULL, '3', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675293', '1123598815738675292', 'work_send_detail', '详情', 'detail', NULL, 'detail', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675294', '1123598815738675292', 'work_send_follow', '跟踪', 'follow', NULL, 'follow', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675295', '1123598815738675280', 'work_done', '办结事务', 'menu', '/work/done', NULL, '4', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675296', '1123598815738675295', 'work_done_detail', '详情', 'detail', NULL, 'detail', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675297', '1123598815738675295', 'work_done_follow', '跟踪', 'follow', NULL, 'follow', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675298', '0', 'resource', '资源管理', 'menu', '/resource', 'bg-colors', '6', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675299', '1123598815738675298', 'oss', '对象存储', 'menu', '/resource/oss', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675301', '1123598815738675299', 'oss_add', '新增', 'add', '/resource/oss/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675302', '1123598815738675299', 'oss_edit', '修改', 'edit', '/resource/oss/edit', 'form', '2', '2', '2', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675303', '1123598815738675299', 'oss_delete', '删除', 'delete', '/api/blade-resource/oss/remove', 'delete', '3', '2', '3', '3', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675304', '1123598815738675299', 'oss_view', '查看', 'view', '/resource/oss/view', 'file-text', '4', '2', '2', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675305', '1123598815738675299', 'oss_enable', '启用', 'enable', '/api/blade-resource/oss/enable', 'key', '5', '2', '2', '2', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675307', '0', 'authority', '权限管理', 'menu', '/authority', 'safety-certificate', '98', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675308', '1123598815738675307', 'role', '角色管理', 'menu', '/authority/role', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399668962201', '0', 'base', '基础配置', 'menu', '/base', 'sliders', '97', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399668962202', '1164733399668962201', 'region', '行政区划', 'menu', '/base/region', NULL, '1', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399668962203', '1164733399668962202', 'region_add', '新增下级', 'add', NULL, NULL, '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399668962204', '1164733399668962202', 'region_delete', '删除', 'delete', '/api/blade-system/region/remove', NULL, '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399668962205', '1164733399668962202', 'region_import', '导入', 'import', NULL, NULL, '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399668962206', '1164733399668962202', 'region_export', '导出', 'export', NULL, NULL, '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1164733399668962207', '1164733399668962202', 'region_debug', '调试', 'debug', NULL, NULL, '5', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675309', '1123598815738675307', 'data_scope', '数据权限', 'menu', '/authority/datascope', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675310', '1123598815738675309', 'data_scope_setting', '权限配置', 'setting', NULL, 'setting', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675311', '1123598815738675307', 'api_scope', '接口权限', 'menu', '/authority/apiscope', NULL, '3', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675312', '1123598815738675311', 'api_scope_setting', '权限配置', 'setting', NULL, 'setting', '1', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675313', '1123598815738675208', 'topmenu_add', '新增', 'add', '/system/topmenu/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675314', '1123598815738675208', 'topmenu_edit', '修改', 'edit', '/system/topmenu/edit', 'form', '2', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675315', '1123598815738675208', 'topmenu_delete', '删除', 'delete', '/api/blade-system/topmenu/remove', 'delete', '3', '2', '3', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675316', '1123598815738675208', 'topmenu_view', '查看', 'view', '/system/topmenu/view', 'file-text', '4', '2', '2', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1123598815738675317', '1123598815738675208', 'topmenu_setting', '菜单配置', 'setting', NULL, 'setting', '5', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321991', '1123598815738675217', 'datasource', '数据源管理', 'menu', '/tool/datasource', NULL, '2', '1', '0', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321992', '1161272593873321991', 'datasource_add', '新增', 'add', '/tool/datasource/add', 'plus', '1', '2', '1', '1', '', NULL, '0');
-INSERT INTO "BLADE_MENU" VALUES ('1161272593873321993', '1161272593873321991', 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', '2', '2', '2', '2', '', NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321994', '1161272593873321991', 'datasource_delete', '删除', 'delete', '/api/blade-develop/datasource/remove', 'delete', '3', '2', '3', '3', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658962253', '1164733389658962251', 'sms_edit', '修改', 'edit', '/resource/sms/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658962254', '1164733389658962251', 'sms_delete', '删除', 'delete', '/api/blade-resource/sms/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658962255', '1164733389658962251', 'sms_view', '查看', 'view', '/resource/sms/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658962256', '1164733389658962251', 'sms_enable', '启用', 'enable', '/api/blade-resource/sms/enable', 'key', '5', '2', '2', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658962251', '1123598815738675298', 'sms', '短信配置', 'menu', '/resource/sms', NULL, '3', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389668962251', '1123598815738675203', 'post', '岗位管理', 'menu', '/system/post', NULL, '3', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389668962252', '1164733389668962251', 'post_add', '新增', 'add', '/system/post/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389668962253', '1164733389668962251', 'post_edit', '修改', 'edit', '/system/post/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389668962254', '1164733389668962251', 'post_delete', '删除', 'delete', '/api/blade-system/post/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389668962255', '1164733389668962251', 'post_view', '查看', 'view', '/system/post/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658962252', '1164733389658962251', 'sms_add', '新增', 'add', '/resource/sms/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675201', '0', 'desk', '工作台', 'menu', '/desk', 'desktop', '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675202', '1123598815738675201', 'notice', '通知公告', 'menu', '/desk/notice', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675203', '0', 'system', '系统管理', 'menu', '/system', 'setting', '99', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675204', '1123598815738675203', 'user', '用户管理', 'menu', '/system/user', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675205', '1123598815738675203', 'dept', '机构管理', 'menu', '/system/dept', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675206', '1123598815738675203', 'dict', '系统字典', 'menu', '/system/dict', NULL, '4', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675207', '1123598815738675203', 'menu', '菜单管理', 'menu', '/system/menu', NULL, '6', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675208', '1123598815738675203', 'topmenu', '顶部菜单', 'menu', '/system/topmenu', NULL, '7', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675209', '1123598815738675203', 'param', '参数管理', 'menu', '/system/param', NULL, '8', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675210', '0', 'monitor', '系统监控', 'menu', '/monitor', 'fund', '3', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675211', '1123598815738675210', 'doc', '接口文档', 'menu', 'http://localhost:18000/doc.html', NULL, '1', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675212', '1123598815738675210', 'admin', '服务治理', 'menu', 'http://localhost:7002', NULL, '2', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675213', '1123598815738675210', 'log', '日志管理', 'menu', '/monitor/log', NULL, '8', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675214', '1123598815738675213', 'log_usual', '通用日志', 'menu', '/monitor/log/usual', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675215', '1123598815738675213', 'log_api', '接口日志', 'menu', '/monitor/log/api', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675216', '1123598815738675213', 'log_error', '错误日志', 'menu', '/monitor/log/error', NULL, '3', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675217', '0', 'tool', '研发工具', 'menu', '/tool', 'tool', '4', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675218', '1123598815738675217', 'code', '代码生成', 'menu', '/tool/code', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675219', '1123598815738675202', 'notice_add', '新增', 'add', '/desk/notice/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675220', '1123598815738675202', 'notice_edit', '修改', 'edit', '/desk/notice/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675221', '1123598815738675202', 'notice_delete', '删除', 'delete', '/api/blade-desk/notice/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675222', '1123598815738675202', 'notice_view', '查看', 'view', '/desk/notice/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675223', '1123598815738675204', 'user_add', '新增', 'add', '/system/user/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675224', '1123598815738675204', 'user_edit', '修改', 'edit', '/system/user/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675225', '1123598815738675204', 'user_delete', '删除', 'delete', '/api/blade-user/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675226', '1123598815738675204', 'user_role', '角色配置', 'role', NULL, 'user-add', '4', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675227', '1123598815738675204', 'user_reset', '密码重置', 'reset-password', '/api/blade-user/reset-password', 'retweet', '5', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675228', '1123598815738675204', 'user_view', '查看', 'view', '/system/user/view', 'file-text', '6', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675229', '1123598815738675205', 'dept_add', '新增', 'add', '/system/dept/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675230', '1123598815738675205', 'dept_edit', '修改', 'edit', '/system/dept/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675231', '1123598815738675205', 'dept_delete', '删除', 'delete', '/api/blade-system/dept/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675232', '1123598815738675205', 'dept_view', '查看', 'view', '/system/dept/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675233', '1123598815738675206', 'dict_add', '新增', 'add', '/system/dict/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675234', '1123598815738675206', 'dict_edit', '修改', 'edit', '/system/dict/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675235', '1123598815738675206', 'dict_delete', '删除', 'delete', '/api/blade-system/dict/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675236', '1123598815738675206', 'dict_view', '查看', 'view', '/system/dict/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675237', '1123598815738675207', 'menu_add', '新增', 'add', '/system/menu/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675238', '1123598815738675207', 'menu_edit', '修改', 'edit', '/system/menu/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675239', '1123598815738675207', 'menu_delete', '删除', 'delete', '/api/blade-system/menu/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675240', '1123598815738675207', 'menu_view', '查看', 'view', '/system/menu/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675241', '1123598815738675308', 'role_add', '新增', 'add', '/authority/role/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675242', '1123598815738675308', 'role_edit', '修改', 'edit', '/authority/role/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675243', '1123598815738675308', 'role_delete', '删除', 'delete', '/api/blade-system/role/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675244', '1123598815738675308', 'role_view', '查看', 'view', '/authority/role/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675245', '1123598815738675209', 'param_add', '新增', 'add', '/system/param/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675246', '1123598815738675209', 'param_edit', '修改', 'edit', '/system/param/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675247', '1123598815738675209', 'param_delete', '删除', 'delete', '/api/blade-system/param/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675248', '1123598815738675209', 'param_view', '查看', 'view', '/system/param/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675249', '1123598815738675214', 'log_usual_view', '查看', 'view', '/monitor/log/usual/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675250', '1123598815738675215', 'log_api_view', '查看', 'view', '/monitor/log/api/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675251', '1123598815738675216', 'log_error_view', '查看', 'view', '/monitor/log/error/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675252', '1123598815738675218', 'code_add', '新增', 'add', '/tool/code/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675253', '1123598815738675218', 'code_edit', '修改', 'edit', '/tool/code/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675254', '1123598815738675218', 'code_delete', '删除', 'delete', '/api/blade-develop/code/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675255', '1123598815738675218', 'code_view', '查看', 'view', '/tool/code/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675256', '1123598815738675203', 'tenant', '租户管理', 'menu', '/system/tenant', NULL, '9', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675257', '1123598815738675256', 'tenant_add', '新增', 'add', '/system/tenant/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675258', '1123598815738675256', 'tenant_edit', '修改', 'edit', '/system/tenant/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675259', '1123598815738675256', 'tenant_delete', '删除', 'delete', '/api/blade-system/tenant/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321995', '1161272593873321991', 'datasource_view', '查看', 'view', '/tool/datasource/view', 'file-text', '4', '2', '2', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963251', '1123598815738675210', 'elk', 'ELK监控', 'menu', 'http://localhost:5601/', NULL, '3', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962301', '0', 'report', '报表管理', 'menu', '/report', 'bar-chart', '5', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962302', '1164733399669962301', 'report_setting', '报表配置', 'menu', 'http://localhost:8108/ureport/designer', NULL, '1', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962303', '1164733399669962301', 'report_list', '报表列表', 'menu', '/report/reportlist', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962304', '1164733399669962301', 'report_notice', '公告报表', 'menu', 'http://localhost:8108/ureport/preview?_u=blade-notice.ureport.xml', NULL, '3', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963252', '1123598815738675210', 'zipkin', 'Zipkin监控', 'menu', 'http://localhost:9411/', NULL, '4', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963253', '1123598815738675210', 'turbine', 'Turbine监控', 'menu', 'http://localhost:7003/hystrix', NULL, '5', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963254', '1123598815738675210', 'sentinel', 'Sentinel管理', 'menu', 'http://localhost:8858', NULL, '6', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733369658963255', '1123598815738675210', 'es', 'Elasticsearch管理', 'menu', 'http://localhost:9100/', NULL, '7', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963251', '1123598815738675203', 'dictbiz', '业务字典', 'menu', '/system/dictbiz', NULL, '5', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963252', '1164733379658963251', 'dictbiz_add', '新增', 'add', '/system/dictbiz/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963253', '1164733379658963251', 'dictbiz_edit', '修改', 'edit', '/system/dictbiz/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963254', '1164733379658963251', 'dictbiz_delete', '删除', 'delete', '/api/blade-system/dict-biz/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733379658963255', '1164733379658963251', 'dictbiz_view', '查看', 'view', '/system/dictbiz/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733389658963251', '1123598815738675298', 'xxljob', '任务调度', 'menu', 'http://localhost:7009/xxl-job-admin', NULL, '5', '1', '0', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675260', '1123598815738675256', 'tenant_view', '查看', 'view', '/system/tenant/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675261', '1123598815738675203', 'client', '应用管理', 'menu', '/system/client', NULL, '10', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675262', '1123598815738675261', 'client_add', '新增', 'add', '/system/client/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675263', '1123598815738675261', 'client_edit', '修改', 'edit', '/system/client/edit', 'form', '2', '2', '2', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675264', '1123598815738675261', 'client_delete', '删除', 'delete', '/api/blade-system/client/remove', 'delete', '3', '2', '3', '3', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675265', '1123598815738675261', 'client_view', '查看', 'view', '/system/client/view', 'file-text', '4', '2', '2', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675266', '0', 'flow', '流程管理', 'menu', '/flow', 'stock', '5', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675267', '1123598815738675266', 'flow_model', '模型管理', 'menu', '/flow/model', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675268', '1123598815738675267', 'flow_model_create', '创建', 'create', NULL, 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675269', '1123598815738675267', 'flow_model_update', '编辑', 'update', NULL, 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675270', '1123598815738675267', 'flow_model_deploy', '部署', 'deploy', NULL, 'cloud-upload', '3', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675271', '1123598815738675267', 'flow_model_download', '下载', 'download', NULL, 'download', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675272', '1123598815738675267', 'flow_model_delete', '删除', 'delete', '/api/blade-flow/model/remove', 'delete', '5', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675273', '1123598815738675266', 'flow_deploy', '流程部署', 'menu', '/flow/deploy', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675274', '1123598815738675266', 'flow_manager', '流程管理', 'menu', '/flow/manager', NULL, '3', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675275', '1123598815738675274', 'flow_manager_state', '变更状态', 'state', NULL, 'plus', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675276', '1123598815738675274', 'flow_manager_image', '流程图', 'image', NULL, 'image', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675277', '1123598815738675274', 'flow_manager_remove', '删除', 'remove', NULL, 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675278', '1123598815738675266', 'flow_follow', '流程跟踪', 'menu', '/flow/follow', NULL, '4', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675279', '1123598815738675278', 'flow_follow_delete', '删除', 'remove', NULL, 'remove', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962201', '1123598815738675298', 'attach', '附件管理', 'menu', '/resource/attach', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962202', '1164733399669962201', 'attach_upload', '上传', 'upload', '/resource/attach/upload', NULL, '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962203', '1164733399669962201', 'attach_download', '下载', 'download', '/resource/attach/download', NULL, '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399669962204', '1164733399669962201', 'attach_delete', '删除', 'delete', '/api/blade-resource/attach/remove', NULL, '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675280', '0', 'work', '我的事务', 'menu', '/work', 'bell', '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675281', '1123598815738675280', 'work_start', '发起事务', 'menu', '/work/start', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675282', '1123598815738675281', 'work_start_flow', '发起', 'flow', NULL, 'flow', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675283', '1123598815738675281', 'work_start_image', '流程图', 'image', NULL, 'image', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675284', '1123598815738675280', 'work_claim', '待签事务', 'menu', '/work/claim', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675285', '1123598815738675284', 'work_claim_sign', '签收', 'sign', NULL, 'sign', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675286', '1123598815738675284', 'work_claim_detail', '详情', 'detail', NULL, 'detail', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675287', '1123598815738675284', 'work_claim_follow', '跟踪', 'follow', NULL, 'follow', '3', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675288', '1123598815738675280', 'work_todo', '待办事务', 'menu', '/work/todo', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675289', '1123598815738675288', 'work_todo_handle', '办理', 'handle', NULL, 'handle', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675290', '1123598815738675288', 'work_todo_detail', '详情', 'detail', NULL, 'detail', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675291', '1123598815738675288', 'work_todo_follow', '跟踪', 'follow', NULL, 'follow', '3', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675292', '1123598815738675280', 'work_send', '已发事务', 'menu', '/work/send', NULL, '3', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675293', '1123598815738675292', 'work_send_detail', '详情', 'detail', NULL, 'detail', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675294', '1123598815738675292', 'work_send_follow', '跟踪', 'follow', NULL, 'follow', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675295', '1123598815738675280', 'work_done', '办结事务', 'menu', '/work/done', NULL, '4', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675296', '1123598815738675295', 'work_done_detail', '详情', 'detail', NULL, 'detail', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675297', '1123598815738675295', 'work_done_follow', '跟踪', 'follow', NULL, 'follow', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675298', '0', 'resource', '资源管理', 'menu', '/resource', 'bg-colors', '6', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675299', '1123598815738675298', 'oss', '对象存储', 'menu', '/resource/oss', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675301', '1123598815738675299', 'oss_add', '新增', 'add', '/resource/oss/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675302', '1123598815738675299', 'oss_edit', '修改', 'edit', '/resource/oss/edit', 'form', '2', '2', '2', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675303', '1123598815738675299', 'oss_delete', '删除', 'delete', '/api/blade-resource/oss/remove', 'delete', '3', '2', '3', '3', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675304', '1123598815738675299', 'oss_view', '查看', 'view', '/resource/oss/view', 'file-text', '4', '2', '2', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675305', '1123598815738675299', 'oss_enable', '启用', 'enable', '/api/blade-resource/oss/enable', 'key', '5', '2', '2', '2', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675307', '0', 'authority', '权限管理', 'menu', '/authority', 'safety-certificate', '98', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675308', '1123598815738675307', 'role', '角色管理', 'menu', '/authority/role', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399668962201', '0', 'base', '基础配置', 'menu', '/base', 'sliders', '97', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399668962202', '1164733399668962201', 'region', '行政区划', 'menu', '/base/region', NULL, '1', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399668962203', '1164733399668962202', 'region_add', '新增下级', 'add', NULL, NULL, '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399668962204', '1164733399668962202', 'region_delete', '删除', 'delete', '/api/blade-system/region/remove', NULL, '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399668962205', '1164733399668962202', 'region_import', '导入', 'import', NULL, NULL, '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399668962206', '1164733399668962202', 'region_export', '导出', 'export', NULL, NULL, '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1164733399668962207', '1164733399668962202', 'region_debug', '调试', 'debug', NULL, NULL, '5', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675309', '1123598815738675307', 'data_scope', '数据权限', 'menu', '/authority/datascope', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675310', '1123598815738675309', 'data_scope_setting', '权限配置', 'setting', NULL, 'setting', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675311', '1123598815738675307', 'api_scope', '接口权限', 'menu', '/authority/apiscope', NULL, '3', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675312', '1123598815738675311', 'api_scope_setting', '权限配置', 'setting', NULL, 'setting', '1', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675313', '1123598815738675208', 'topmenu_add', '新增', 'add', '/system/topmenu/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675314', '1123598815738675208', 'topmenu_edit', '修改', 'edit', '/system/topmenu/edit', 'form', '2', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675315', '1123598815738675208', 'topmenu_delete', '删除', 'delete', '/api/blade-system/topmenu/remove', 'delete', '3', '2', '3', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675316', '1123598815738675208', 'topmenu_view', '查看', 'view', '/system/topmenu/view', 'file-text', '4', '2', '2', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1123598815738675317', '1123598815738675208', 'topmenu_setting', '菜单配置', 'setting', NULL, 'setting', '5', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321991', '1123598815738675217', 'datasource', '数据源管理', 'menu', '/tool/datasource', NULL, '2', '1', '0', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321992', '1161272593873321991', 'datasource_add', '新增', 'add', '/tool/datasource/add', 'plus', '1', '2', '1', '1', NULL, NULL, '0');
+INSERT INTO "BLADE_MENU" VALUES ('1161272593873321993', '1161272593873321991', 'datasource_edit', '修改', 'edit', '/tool/datasource/edit', 'form', '2', '2', '2', '2', NULL, NULL, '0');
 COMMIT;
 
 -- ----------------------------
 -- Table structure for BLADE_NOTICE
 -- ----------------------------
--- DROP TABLE "BLADE_NOTICE";
+DROP TABLE "BLADE_NOTICE";
 CREATE TABLE "BLADE_NOTICE" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -918,7 +918,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_OSS
 -- ----------------------------
--- DROP TABLE "BLADE_OSS";
+DROP TABLE "BLADE_OSS";
 CREATE TABLE "BLADE_OSS" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -985,7 +985,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_PARAM
 -- ----------------------------
--- DROP TABLE "BLADE_PARAM";
+DROP TABLE "BLADE_PARAM";
 CREATE TABLE "BLADE_PARAM" (
   "ID" NUMBER(20) NOT NULL ,
   "PARAM_NAME" NVARCHAR2(255) ,
@@ -1044,7 +1044,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_POST
 -- ----------------------------
--- DROP TABLE "BLADE_POST";
+DROP TABLE "BLADE_POST";
 CREATE TABLE "BLADE_POST" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -1109,7 +1109,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_PROCESS_LEAVE
 -- ----------------------------
--- DROP TABLE "BLADE_PROCESS_LEAVE";
+DROP TABLE "BLADE_PROCESS_LEAVE";
 CREATE TABLE "BLADE_PROCESS_LEAVE" (
   "ID" NUMBER(20) NOT NULL ,
   "PROCESS_DEFINITION_ID" NVARCHAR2(64) ,
@@ -1163,7 +1163,7 @@ COMMENT ON TABLE "BLADE_PROCESS_LEAVE" IS '流程请假业务表';
 -- ----------------------------
 -- Table structure for BLADE_REGION
 -- ----------------------------
--- DROP TABLE "BLADE_REGION";
+DROP TABLE "BLADE_REGION";
 CREATE TABLE "BLADE_REGION" (
   "CODE" VARCHAR2(12 BYTE) NOT NULL ,
   "PARENT_CODE" VARCHAR2(12 BYTE) ,
@@ -1300,6 +1300,83 @@ INSERT INTO "BLADE_REGION" VALUES ('140213', '1402', '00,14,1402', '平城区', 
 INSERT INTO "BLADE_REGION" VALUES ('140214', '1402', '00,14,1402', '云冈区', '14', '山西省', '1402', '大同市', '140214', '云冈区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('140215', '1402', '00,14,1402', '云州区', '14', '山西省', '1402', '大同市', '140215', '云州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('140221', '1402', '00,14,1402', '阳高县', '14', '山西省', '1402', '大同市', '140221', '阳高县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130306', '1303', '00,13,1303', '抚宁区', '13', '河北省', '1303', '秦皇岛市', '130306', '抚宁区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130321', '1303', '00,13,1303', '青龙满族自治县', '13', '河北省', '1303', '秦皇岛市', '130321', '青龙满族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130322', '1303', '00,13,1303', '昌黎县', '13', '河北省', '1303', '秦皇岛市', '130322', '昌黎县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130324', '1303', '00,13,1303', '卢龙县', '13', '河北省', '1303', '秦皇岛市', '130324', '卢龙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('1304', '13', '00,13', '邯郸市', '13', '河北省', '1304', '邯郸市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130402', '1304', '00,13,1304', '邯山区', '13', '河北省', '1304', '邯郸市', '130402', '邯山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130403', '1304', '00,13,1304', '丛台区', '13', '河北省', '1304', '邯郸市', '130403', '丛台区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130404', '1304', '00,13,1304', '复兴区', '13', '河北省', '1304', '邯郸市', '130404', '复兴区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130406', '1304', '00,13,1304', '峰峰矿区', '13', '河北省', '1304', '邯郸市', '130406', '峰峰矿区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130407', '1304', '00,13,1304', '肥乡区', '13', '河北省', '1304', '邯郸市', '130407', '肥乡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130408', '1304', '00,13,1304', '永年区', '13', '河北省', '1304', '邯郸市', '130408', '永年区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130423', '1304', '00,13,1304', '临漳县', '13', '河北省', '1304', '邯郸市', '130423', '临漳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130424', '1304', '00,13,1304', '成安县', '13', '河北省', '1304', '邯郸市', '130424', '成安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130425', '1304', '00,13,1304', '大名县', '13', '河北省', '1304', '邯郸市', '130425', '大名县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130426', '1304', '00,13,1304', '涉县', '13', '河北省', '1304', '邯郸市', '130426', '涉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130427', '1304', '00,13,1304', '磁县', '13', '河北省', '1304', '邯郸市', '130427', '磁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130430', '1304', '00,13,1304', '邱县', '13', '河北省', '1304', '邯郸市', '130430', '邱县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130431', '1304', '00,13,1304', '鸡泽县', '13', '河北省', '1304', '邯郸市', '130431', '鸡泽县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130432', '1304', '00,13,1304', '广平县', '13', '河北省', '1304', '邯郸市', '130432', '广平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130433', '1304', '00,13,1304', '馆陶县', '13', '河北省', '1304', '邯郸市', '130433', '馆陶县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130434', '1304', '00,13,1304', '魏县', '13', '河北省', '1304', '邯郸市', '130434', '魏县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130435', '1304', '00,13,1304', '曲周县', '13', '河北省', '1304', '邯郸市', '130435', '曲周县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130481', '1304', '00,13,1304', '武安市', '13', '河北省', '1304', '邯郸市', '130481', '武安市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('1305', '13', '00,13', '邢台市', '13', '河北省', '1305', '邢台市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130502', '1305', '00,13,1305', '桥东区', '13', '河北省', '1305', '邢台市', '130502', '桥东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130503', '1305', '00,13,1305', '桥西区', '13', '河北省', '1305', '邢台市', '130503', '桥西区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130521', '1305', '00,13,1305', '邢台县', '13', '河北省', '1305', '邢台市', '130521', '邢台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130522', '1305', '00,13,1305', '临城县', '13', '河北省', '1305', '邢台市', '130522', '临城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130523', '1305', '00,13,1305', '内丘县', '13', '河北省', '1305', '邢台市', '130523', '内丘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130524', '1305', '00,13,1305', '柏乡县', '13', '河北省', '1305', '邢台市', '130524', '柏乡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130525', '1305', '00,13,1305', '隆尧县', '13', '河北省', '1305', '邢台市', '130525', '隆尧县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130526', '1305', '00,13,1305', '任县', '13', '河北省', '1305', '邢台市', '130526', '任县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130527', '1305', '00,13,1305', '南和县', '13', '河北省', '1305', '邢台市', '130527', '南和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130528', '1305', '00,13,1305', '宁晋县', '13', '河北省', '1305', '邢台市', '130528', '宁晋县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130529', '1305', '00,13,1305', '巨鹿县', '13', '河北省', '1305', '邢台市', '130529', '巨鹿县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130530', '1305', '00,13,1305', '新河县', '13', '河北省', '1305', '邢台市', '130530', '新河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130531', '1305', '00,13,1305', '广宗县', '13', '河北省', '1305', '邢台市', '130531', '广宗县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130532', '1305', '00,13,1305', '平乡县', '13', '河北省', '1305', '邢台市', '130532', '平乡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130533', '1305', '00,13,1305', '威县', '13', '河北省', '1305', '邢台市', '130533', '威县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130534', '1305', '00,13,1305', '清河县', '13', '河北省', '1305', '邢台市', '130534', '清河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130535', '1305', '00,13,1305', '临西县', '13', '河北省', '1305', '邢台市', '130535', '临西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130581', '1305', '00,13,1305', '南宫市', '13', '河北省', '1305', '邢台市', '130581', '南宫市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130582', '1305', '00,13,1305', '沙河市', '13', '河北省', '1305', '邢台市', '130582', '沙河市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('1306', '13', '00,13', '保定市', '13', '河北省', '1306', '保定市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130602', '1306', '00,13,1306', '竞秀区', '13', '河北省', '1306', '保定市', '130602', '竞秀区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130606', '1306', '00,13,1306', '莲池区', '13', '河北省', '1306', '保定市', '130606', '莲池区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130607', '1306', '00,13,1306', '满城区', '13', '河北省', '1306', '保定市', '130607', '满城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130608', '1306', '00,13,1306', '清苑区', '13', '河北省', '1306', '保定市', '130608', '清苑区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130609', '1306', '00,13,1306', '徐水区', '13', '河北省', '1306', '保定市', '130609', '徐水区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130623', '1306', '00,13,1306', '涞水县', '13', '河北省', '1306', '保定市', '130623', '涞水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130624', '1306', '00,13,1306', '阜平县', '13', '河北省', '1306', '保定市', '130624', '阜平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130626', '1306', '00,13,1306', '定兴县', '13', '河北省', '1306', '保定市', '130626', '定兴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130627', '1306', '00,13,1306', '唐县', '13', '河北省', '1306', '保定市', '130627', '唐县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130628', '1306', '00,13,1306', '高阳县', '13', '河北省', '1306', '保定市', '130628', '高阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130629', '1306', '00,13,1306', '容城县', '13', '河北省', '1306', '保定市', '130629', '容城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130630', '1306', '00,13,1306', '涞源县', '13', '河北省', '1306', '保定市', '130630', '涞源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130631', '1306', '00,13,1306', '望都县', '13', '河北省', '1306', '保定市', '130631', '望都县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130632', '1306', '00,13,1306', '安新县', '13', '河北省', '1306', '保定市', '130632', '安新县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130633', '1306', '00,13,1306', '易县', '13', '河北省', '1306', '保定市', '130633', '易县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130634', '1306', '00,13,1306', '曲阳县', '13', '河北省', '1306', '保定市', '130634', '曲阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130635', '1306', '00,13,1306', '蠡县', '13', '河北省', '1306', '保定市', '130635', '蠡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130636', '1306', '00,13,1306', '顺平县', '13', '河北省', '1306', '保定市', '130636', '顺平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130637', '1306', '00,13,1306', '博野县', '13', '河北省', '1306', '保定市', '130637', '博野县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130638', '1306', '00,13,1306', '雄县', '13', '河北省', '1306', '保定市', '130638', '雄县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130681', '1306', '00,13,1306', '涿州市', '13', '河北省', '1306', '保定市', '130681', '涿州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130682', '1306', '00,13,1306', '定州市', '13', '河北省', '1306', '保定市', '130682', '定州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130683', '1306', '00,13,1306', '安国市', '13', '河北省', '1306', '保定市', '130683', '安国市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130684', '1306', '00,13,1306', '高碑店市', '13', '河北省', '1306', '保定市', '130684', '高碑店市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('1307', '13', '00,13', '张家口市', '13', '河北省', '1307', '张家口市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130702', '1307', '00,13,1307', '桥东区', '13', '河北省', '1307', '张家口市', '130702', '桥东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130703', '1307', '00,13,1307', '桥西区', '13', '河北省', '1307', '张家口市', '130703', '桥西区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130705', '1307', '00,13,1307', '宣化区', '13', '河北省', '1307', '张家口市', '130705', '宣化区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130706', '1307', '00,13,1307', '下花园区', '13', '河北省', '1307', '张家口市', '130706', '下花园区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130708', '1307', '00,13,1307', '万全区', '13', '河北省', '1307', '张家口市', '130708', '万全区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130709', '1307', '00,13,1307', '崇礼区', '13', '河北省', '1307', '张家口市', '130709', '崇礼区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130722', '1307', '00,13,1307', '张北县', '13', '河北省', '1307', '张家口市', '130722', '张北县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('130723', '1307', '00,13,1307', '康保县', '13', '河北省', '1307', '张家口市', '130723', '康保县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('140222', '1402', '00,14,1402', '天镇县', '14', '山西省', '1402', '大同市', '140222', '天镇县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('140223', '1402', '00,14,1402', '广灵县', '14', '山西省', '1402', '大同市', '140223', '广灵县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('140224', '1402', '00,14,1402', '灵丘县', '14', '山西省', '1402', '大同市', '140224', '灵丘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
@@ -1532,83 +1609,85 @@ INSERT INTO "BLADE_REGION" VALUES ('1303', '13', '00,13', '秦皇岛市', '13', 
 INSERT INTO "BLADE_REGION" VALUES ('130302', '1303', '00,13,1303', '海港区', '13', '河北省', '1303', '秦皇岛市', '130302', '海港区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('130303', '1303', '00,13,1303', '山海关区', '13', '河北省', '1303', '秦皇岛市', '130303', '山海关区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('130304', '1303', '00,13,1303', '北戴河区', '13', '河北省', '1303', '秦皇岛市', '130304', '北戴河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130306', '1303', '00,13,1303', '抚宁区', '13', '河北省', '1303', '秦皇岛市', '130306', '抚宁区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130321', '1303', '00,13,1303', '青龙满族自治县', '13', '河北省', '1303', '秦皇岛市', '130321', '青龙满族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130322', '1303', '00,13,1303', '昌黎县', '13', '河北省', '1303', '秦皇岛市', '130322', '昌黎县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130324', '1303', '00,13,1303', '卢龙县', '13', '河北省', '1303', '秦皇岛市', '130324', '卢龙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('1304', '13', '00,13', '邯郸市', '13', '河北省', '1304', '邯郸市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130402', '1304', '00,13,1304', '邯山区', '13', '河北省', '1304', '邯郸市', '130402', '邯山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130403', '1304', '00,13,1304', '丛台区', '13', '河北省', '1304', '邯郸市', '130403', '丛台区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130404', '1304', '00,13,1304', '复兴区', '13', '河北省', '1304', '邯郸市', '130404', '复兴区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130406', '1304', '00,13,1304', '峰峰矿区', '13', '河北省', '1304', '邯郸市', '130406', '峰峰矿区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130407', '1304', '00,13,1304', '肥乡区', '13', '河北省', '1304', '邯郸市', '130407', '肥乡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130408', '1304', '00,13,1304', '永年区', '13', '河北省', '1304', '邯郸市', '130408', '永年区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130423', '1304', '00,13,1304', '临漳县', '13', '河北省', '1304', '邯郸市', '130423', '临漳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130424', '1304', '00,13,1304', '成安县', '13', '河北省', '1304', '邯郸市', '130424', '成安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130425', '1304', '00,13,1304', '大名县', '13', '河北省', '1304', '邯郸市', '130425', '大名县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130426', '1304', '00,13,1304', '涉县', '13', '河北省', '1304', '邯郸市', '130426', '涉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130427', '1304', '00,13,1304', '磁县', '13', '河北省', '1304', '邯郸市', '130427', '磁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130430', '1304', '00,13,1304', '邱县', '13', '河北省', '1304', '邯郸市', '130430', '邱县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130431', '1304', '00,13,1304', '鸡泽县', '13', '河北省', '1304', '邯郸市', '130431', '鸡泽县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130432', '1304', '00,13,1304', '广平县', '13', '河北省', '1304', '邯郸市', '130432', '广平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130433', '1304', '00,13,1304', '馆陶县', '13', '河北省', '1304', '邯郸市', '130433', '馆陶县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130434', '1304', '00,13,1304', '魏县', '13', '河北省', '1304', '邯郸市', '130434', '魏县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130435', '1304', '00,13,1304', '曲周县', '13', '河北省', '1304', '邯郸市', '130435', '曲周县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130481', '1304', '00,13,1304', '武安市', '13', '河北省', '1304', '邯郸市', '130481', '武安市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('1305', '13', '00,13', '邢台市', '13', '河北省', '1305', '邢台市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130502', '1305', '00,13,1305', '桥东区', '13', '河北省', '1305', '邢台市', '130502', '桥东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130503', '1305', '00,13,1305', '桥西区', '13', '河北省', '1305', '邢台市', '130503', '桥西区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130521', '1305', '00,13,1305', '邢台县', '13', '河北省', '1305', '邢台市', '130521', '邢台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130522', '1305', '00,13,1305', '临城县', '13', '河北省', '1305', '邢台市', '130522', '临城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130523', '1305', '00,13,1305', '内丘县', '13', '河北省', '1305', '邢台市', '130523', '内丘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130524', '1305', '00,13,1305', '柏乡县', '13', '河北省', '1305', '邢台市', '130524', '柏乡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130525', '1305', '00,13,1305', '隆尧县', '13', '河北省', '1305', '邢台市', '130525', '隆尧县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130526', '1305', '00,13,1305', '任县', '13', '河北省', '1305', '邢台市', '130526', '任县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130527', '1305', '00,13,1305', '南和县', '13', '河北省', '1305', '邢台市', '130527', '南和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130528', '1305', '00,13,1305', '宁晋县', '13', '河北省', '1305', '邢台市', '130528', '宁晋县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130529', '1305', '00,13,1305', '巨鹿县', '13', '河北省', '1305', '邢台市', '130529', '巨鹿县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130530', '1305', '00,13,1305', '新河县', '13', '河北省', '1305', '邢台市', '130530', '新河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130531', '1305', '00,13,1305', '广宗县', '13', '河北省', '1305', '邢台市', '130531', '广宗县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130532', '1305', '00,13,1305', '平乡县', '13', '河北省', '1305', '邢台市', '130532', '平乡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130533', '1305', '00,13,1305', '威县', '13', '河北省', '1305', '邢台市', '130533', '威县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130534', '1305', '00,13,1305', '清河县', '13', '河北省', '1305', '邢台市', '130534', '清河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130535', '1305', '00,13,1305', '临西县', '13', '河北省', '1305', '邢台市', '130535', '临西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130581', '1305', '00,13,1305', '南宫市', '13', '河北省', '1305', '邢台市', '130581', '南宫市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130582', '1305', '00,13,1305', '沙河市', '13', '河北省', '1305', '邢台市', '130582', '沙河市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('1306', '13', '00,13', '保定市', '13', '河北省', '1306', '保定市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130602', '1306', '00,13,1306', '竞秀区', '13', '河北省', '1306', '保定市', '130602', '竞秀区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130606', '1306', '00,13,1306', '莲池区', '13', '河北省', '1306', '保定市', '130606', '莲池区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130607', '1306', '00,13,1306', '满城区', '13', '河北省', '1306', '保定市', '130607', '满城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130608', '1306', '00,13,1306', '清苑区', '13', '河北省', '1306', '保定市', '130608', '清苑区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130609', '1306', '00,13,1306', '徐水区', '13', '河北省', '1306', '保定市', '130609', '徐水区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130623', '1306', '00,13,1306', '涞水县', '13', '河北省', '1306', '保定市', '130623', '涞水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130624', '1306', '00,13,1306', '阜平县', '13', '河北省', '1306', '保定市', '130624', '阜平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130626', '1306', '00,13,1306', '定兴县', '13', '河北省', '1306', '保定市', '130626', '定兴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130627', '1306', '00,13,1306', '唐县', '13', '河北省', '1306', '保定市', '130627', '唐县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130628', '1306', '00,13,1306', '高阳县', '13', '河北省', '1306', '保定市', '130628', '高阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130629', '1306', '00,13,1306', '容城县', '13', '河北省', '1306', '保定市', '130629', '容城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130630', '1306', '00,13,1306', '涞源县', '13', '河北省', '1306', '保定市', '130630', '涞源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130631', '1306', '00,13,1306', '望都县', '13', '河北省', '1306', '保定市', '130631', '望都县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130632', '1306', '00,13,1306', '安新县', '13', '河北省', '1306', '保定市', '130632', '安新县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130633', '1306', '00,13,1306', '易县', '13', '河北省', '1306', '保定市', '130633', '易县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130634', '1306', '00,13,1306', '曲阳县', '13', '河北省', '1306', '保定市', '130634', '曲阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130635', '1306', '00,13,1306', '蠡县', '13', '河北省', '1306', '保定市', '130635', '蠡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130636', '1306', '00,13,1306', '顺平县', '13', '河北省', '1306', '保定市', '130636', '顺平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130637', '1306', '00,13,1306', '博野县', '13', '河北省', '1306', '保定市', '130637', '博野县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130638', '1306', '00,13,1306', '雄县', '13', '河北省', '1306', '保定市', '130638', '雄县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130681', '1306', '00,13,1306', '涿州市', '13', '河北省', '1306', '保定市', '130681', '涿州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130682', '1306', '00,13,1306', '定州市', '13', '河北省', '1306', '保定市', '130682', '定州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130683', '1306', '00,13,1306', '安国市', '13', '河北省', '1306', '保定市', '130683', '安国市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130684', '1306', '00,13,1306', '高碑店市', '13', '河北省', '1306', '保定市', '130684', '高碑店市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('1307', '13', '00,13', '张家口市', '13', '河北省', '1307', '张家口市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130702', '1307', '00,13,1307', '桥东区', '13', '河北省', '1307', '张家口市', '130702', '桥东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130703', '1307', '00,13,1307', '桥西区', '13', '河北省', '1307', '张家口市', '130703', '桥西区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130705', '1307', '00,13,1307', '宣化区', '13', '河北省', '1307', '张家口市', '130705', '宣化区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130706', '1307', '00,13,1307', '下花园区', '13', '河北省', '1307', '张家口市', '130706', '下花园区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130708', '1307', '00,13,1307', '万全区', '13', '河北省', '1307', '张家口市', '130708', '万全区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130709', '1307', '00,13,1307', '崇礼区', '13', '河北省', '1307', '张家口市', '130709', '崇礼区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130722', '1307', '00,13,1307', '张北县', '13', '河北省', '1307', '张家口市', '130722', '张北县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('130723', '1307', '00,13,1307', '康保县', '13', '河北省', '1307', '张家口市', '130723', '康保县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('330104', '3301', '00,33,3301', '江干区', '33', '浙江省', '3301', '杭州市', '330104', '江干区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210881', '2108', '00,21,2108', '盖州市', '21', '辽宁省', '2108', '营口市', '210881', '盖州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210882', '2108', '00,21,2108', '大石桥市', '21', '辽宁省', '2108', '营口市', '210882', '大石桥市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2109', '21', '00,21', '阜新市', '21', '辽宁省', '2109', '阜新市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210902', '2109', '00,21,2109', '海州区', '21', '辽宁省', '2109', '阜新市', '210902', '海州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210903', '2109', '00,21,2109', '新邱区', '21', '辽宁省', '2109', '阜新市', '210903', '新邱区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210904', '2109', '00,21,2109', '太平区', '21', '辽宁省', '2109', '阜新市', '210904', '太平区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210905', '2109', '00,21,2109', '清河门区', '21', '辽宁省', '2109', '阜新市', '210905', '清河门区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210911', '2109', '00,21,2109', '细河区', '21', '辽宁省', '2109', '阜新市', '210911', '细河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210921', '2109', '00,21,2109', '阜新蒙古族自治县', '21', '辽宁省', '2109', '阜新市', '210921', '阜新蒙古族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('210922', '2109', '00,21,2109', '彰武县', '21', '辽宁省', '2109', '阜新市', '210922', '彰武县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2110', '21', '00,21', '辽阳市', '21', '辽宁省', '2110', '辽阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211002', '2110', '00,21,2110', '白塔区', '21', '辽宁省', '2110', '辽阳市', '211002', '白塔区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211003', '2110', '00,21,2110', '文圣区', '21', '辽宁省', '2110', '辽阳市', '211003', '文圣区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211004', '2110', '00,21,2110', '宏伟区', '21', '辽宁省', '2110', '辽阳市', '211004', '宏伟区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211005', '2110', '00,21,2110', '弓长岭区', '21', '辽宁省', '2110', '辽阳市', '211005', '弓长岭区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211011', '2110', '00,21,2110', '太子河区', '21', '辽宁省', '2110', '辽阳市', '211011', '太子河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211021', '2110', '00,21,2110', '辽阳县', '21', '辽宁省', '2110', '辽阳市', '211021', '辽阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211081', '2110', '00,21,2110', '灯塔市', '21', '辽宁省', '2110', '辽阳市', '211081', '灯塔市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2111', '21', '00,21', '盘锦市', '21', '辽宁省', '2111', '盘锦市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211102', '2111', '00,21,2111', '双台子区', '21', '辽宁省', '2111', '盘锦市', '211102', '双台子区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211103', '2111', '00,21,2111', '兴隆台区', '21', '辽宁省', '2111', '盘锦市', '211103', '兴隆台区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211104', '2111', '00,21,2111', '大洼区', '21', '辽宁省', '2111', '盘锦市', '211104', '大洼区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211122', '2111', '00,21,2111', '盘山县', '21', '辽宁省', '2111', '盘锦市', '211122', '盘山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2112', '21', '00,21', '铁岭市', '21', '辽宁省', '2112', '铁岭市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211202', '2112', '00,21,2112', '银州区', '21', '辽宁省', '2112', '铁岭市', '211202', '银州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211204', '2112', '00,21,2112', '清河区', '21', '辽宁省', '2112', '铁岭市', '211204', '清河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211221', '2112', '00,21,2112', '铁岭县', '21', '辽宁省', '2112', '铁岭市', '211221', '铁岭县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211223', '2112', '00,21,2112', '西丰县', '21', '辽宁省', '2112', '铁岭市', '211223', '西丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211224', '2112', '00,21,2112', '昌图县', '21', '辽宁省', '2112', '铁岭市', '211224', '昌图县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211281', '2112', '00,21,2112', '调兵山市', '21', '辽宁省', '2112', '铁岭市', '211281', '调兵山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211282', '2112', '00,21,2112', '开原市', '21', '辽宁省', '2112', '铁岭市', '211282', '开原市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2113', '21', '00,21', '朝阳市', '21', '辽宁省', '2113', '朝阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211302', '2113', '00,21,2113', '双塔区', '21', '辽宁省', '2113', '朝阳市', '211302', '双塔区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211303', '2113', '00,21,2113', '龙城区', '21', '辽宁省', '2113', '朝阳市', '211303', '龙城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211321', '2113', '00,21,2113', '朝阳县', '21', '辽宁省', '2113', '朝阳市', '211321', '朝阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211322', '2113', '00,21,2113', '建平县', '21', '辽宁省', '2113', '朝阳市', '211322', '建平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211324', '2113', '00,21,2113', '喀喇沁左翼蒙古族自治县', '21', '辽宁省', '2113', '朝阳市', '211324', '喀喇沁左翼蒙古族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211381', '2113', '00,21,2113', '北票市', '21', '辽宁省', '2113', '朝阳市', '211381', '北票市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211382', '2113', '00,21,2113', '凌源市', '21', '辽宁省', '2113', '朝阳市', '211382', '凌源市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2114', '21', '00,21', '葫芦岛市', '21', '辽宁省', '2114', '葫芦岛市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211402', '2114', '00,21,2114', '连山区', '21', '辽宁省', '2114', '葫芦岛市', '211402', '连山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211403', '2114', '00,21,2114', '龙港区', '21', '辽宁省', '2114', '葫芦岛市', '211403', '龙港区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211404', '2114', '00,21,2114', '南票区', '21', '辽宁省', '2114', '葫芦岛市', '211404', '南票区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211422', '2114', '00,21,2114', '建昌县', '21', '辽宁省', '2114', '葫芦岛市', '211422', '建昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('211481', '2114', '00,21,2114', '兴城市', '21', '辽宁省', '2114', '葫芦岛市', '211481', '兴城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('22', '00', '00', '吉林省', '22', '吉林省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2201', '22', '00,22', '长春市', '22', '吉林省', '2201', '长春市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220102', '2201', '00,22,2201', '南关区', '22', '吉林省', '2201', '长春市', '220102', '南关区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220103', '2201', '00,22,2201', '宽城区', '22', '吉林省', '2201', '长春市', '220103', '宽城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220104', '2201', '00,22,2201', '朝阳区', '22', '吉林省', '2201', '长春市', '220104', '朝阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220105', '2201', '00,22,2201', '二道区', '22', '吉林省', '2201', '长春市', '220105', '二道区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220106', '2201', '00,22,2201', '绿园区', '22', '吉林省', '2201', '长春市', '220106', '绿园区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220112', '2201', '00,22,2201', '双阳区', '22', '吉林省', '2201', '长春市', '220112', '双阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220113', '2201', '00,22,2201', '九台区', '22', '吉林省', '2201', '长春市', '220113', '九台区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220122', '2201', '00,22,2201', '农安县', '22', '吉林省', '2201', '长春市', '220122', '农安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220182', '2201', '00,22,2201', '榆树市', '22', '吉林省', '2201', '长春市', '220182', '榆树市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220183', '2201', '00,22,2201', '德惠市', '22', '吉林省', '2201', '长春市', '220183', '德惠市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2202', '22', '00,22', '吉林市', '22', '吉林省', '2202', '吉林市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220202', '2202', '00,22,2202', '昌邑区', '22', '吉林省', '2202', '吉林市', '220202', '昌邑区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220203', '2202', '00,22,2202', '龙潭区', '22', '吉林省', '2202', '吉林市', '220203', '龙潭区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220204', '2202', '00,22,2202', '船营区', '22', '吉林省', '2202', '吉林市', '220204', '船营区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220211', '2202', '00,22,2202', '丰满区', '22', '吉林省', '2202', '吉林市', '220211', '丰满区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220221', '2202', '00,22,2202', '永吉县', '22', '吉林省', '2202', '吉林市', '220221', '永吉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220281', '2202', '00,22,2202', '蛟河市', '22', '吉林省', '2202', '吉林市', '220281', '蛟河市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220282', '2202', '00,22,2202', '桦甸市', '22', '吉林省', '2202', '吉林市', '220282', '桦甸市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220283', '2202', '00,22,2202', '舒兰市', '22', '吉林省', '2202', '吉林市', '220283', '舒兰市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220284', '2202', '00,22,2202', '磐石市', '22', '吉林省', '2202', '吉林市', '220284', '磐石市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2203', '22', '00,22', '四平市', '22', '吉林省', '2203', '四平市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220302', '2203', '00,22,2203', '铁西区', '22', '吉林省', '2203', '四平市', '220302', '铁西区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220303', '2203', '00,22,2203', '铁东区', '22', '吉林省', '2203', '四平市', '220303', '铁东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220322', '2203', '00,22,2203', '梨树县', '22', '吉林省', '2203', '四平市', '220322', '梨树县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220323', '2203', '00,22,2203', '伊通满族自治县', '22', '吉林省', '2203', '四平市', '220323', '伊通满族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220381', '2203', '00,22,2203', '公主岭市', '22', '吉林省', '2203', '四平市', '220381', '公主岭市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220382', '2203', '00,22,2203', '双辽市', '22', '吉林省', '2203', '四平市', '220382', '双辽市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('2204', '22', '00,22', '辽源市', '22', '吉林省', '2204', '辽源市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220402', '2204', '00,22,2204', '龙山区', '22', '吉林省', '2204', '辽源市', '220402', '龙山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220403', '2204', '00,22,2204', '西安区', '22', '吉林省', '2204', '辽源市', '220403', '西安区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('220421', '2204', '00,22,2204', '东丰县', '22', '吉林省', '2204', '辽源市', '220421', '东丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('152524', '1525', '00,15,1525', '苏尼特右旗', '15', '内蒙古自治区', '1525', '锡林郭勒盟', '152524', '苏尼特右旗', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('2303', '23', '00,23', '鸡西市', '23', '黑龙江省', '2303', '鸡西市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('330109', '3301', '00,33,3301', '萧山区', '33', '浙江省', '3301', '杭州市', '330109', '萧山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
@@ -2136,85 +2215,326 @@ INSERT INTO "BLADE_REGION" VALUES ('33', '00', '00', '浙江省', '33', '浙江�
 INSERT INTO "BLADE_REGION" VALUES ('3301', '33', '00,33', '杭州市', '33', '浙江省', '3301', '杭州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('330102', '3301', '00,33,3301', '上城区', '33', '浙江省', '3301', '杭州市', '330102', '上城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('330103', '3301', '00,33,3301', '下城区', '33', '浙江省', '3301', '杭州市', '330103', '下城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('330104', '3301', '00,33,3301', '江干区', '33', '浙江省', '3301', '杭州市', '330104', '江干区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210881', '2108', '00,21,2108', '盖州市', '21', '辽宁省', '2108', '营口市', '210881', '盖州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210882', '2108', '00,21,2108', '大石桥市', '21', '辽宁省', '2108', '营口市', '210882', '大石桥市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2109', '21', '00,21', '阜新市', '21', '辽宁省', '2109', '阜新市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210902', '2109', '00,21,2109', '海州区', '21', '辽宁省', '2109', '阜新市', '210902', '海州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210903', '2109', '00,21,2109', '新邱区', '21', '辽宁省', '2109', '阜新市', '210903', '新邱区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210904', '2109', '00,21,2109', '太平区', '21', '辽宁省', '2109', '阜新市', '210904', '太平区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210905', '2109', '00,21,2109', '清河门区', '21', '辽宁省', '2109', '阜新市', '210905', '清河门区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210911', '2109', '00,21,2109', '细河区', '21', '辽宁省', '2109', '阜新市', '210911', '细河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210921', '2109', '00,21,2109', '阜新蒙古族自治县', '21', '辽宁省', '2109', '阜新市', '210921', '阜新蒙古族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('210922', '2109', '00,21,2109', '彰武县', '21', '辽宁省', '2109', '阜新市', '210922', '彰武县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2110', '21', '00,21', '辽阳市', '21', '辽宁省', '2110', '辽阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211002', '2110', '00,21,2110', '白塔区', '21', '辽宁省', '2110', '辽阳市', '211002', '白塔区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211003', '2110', '00,21,2110', '文圣区', '21', '辽宁省', '2110', '辽阳市', '211003', '文圣区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211004', '2110', '00,21,2110', '宏伟区', '21', '辽宁省', '2110', '辽阳市', '211004', '宏伟区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211005', '2110', '00,21,2110', '弓长岭区', '21', '辽宁省', '2110', '辽阳市', '211005', '弓长岭区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211011', '2110', '00,21,2110', '太子河区', '21', '辽宁省', '2110', '辽阳市', '211011', '太子河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211021', '2110', '00,21,2110', '辽阳县', '21', '辽宁省', '2110', '辽阳市', '211021', '辽阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211081', '2110', '00,21,2110', '灯塔市', '21', '辽宁省', '2110', '辽阳市', '211081', '灯塔市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2111', '21', '00,21', '盘锦市', '21', '辽宁省', '2111', '盘锦市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211102', '2111', '00,21,2111', '双台子区', '21', '辽宁省', '2111', '盘锦市', '211102', '双台子区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211103', '2111', '00,21,2111', '兴隆台区', '21', '辽宁省', '2111', '盘锦市', '211103', '兴隆台区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211104', '2111', '00,21,2111', '大洼区', '21', '辽宁省', '2111', '盘锦市', '211104', '大洼区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211122', '2111', '00,21,2111', '盘山县', '21', '辽宁省', '2111', '盘锦市', '211122', '盘山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2112', '21', '00,21', '铁岭市', '21', '辽宁省', '2112', '铁岭市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211202', '2112', '00,21,2112', '银州区', '21', '辽宁省', '2112', '铁岭市', '211202', '银州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211204', '2112', '00,21,2112', '清河区', '21', '辽宁省', '2112', '铁岭市', '211204', '清河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211221', '2112', '00,21,2112', '铁岭县', '21', '辽宁省', '2112', '铁岭市', '211221', '铁岭县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211223', '2112', '00,21,2112', '西丰县', '21', '辽宁省', '2112', '铁岭市', '211223', '西丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211224', '2112', '00,21,2112', '昌图县', '21', '辽宁省', '2112', '铁岭市', '211224', '昌图县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211281', '2112', '00,21,2112', '调兵山市', '21', '辽宁省', '2112', '铁岭市', '211281', '调兵山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211282', '2112', '00,21,2112', '开原市', '21', '辽宁省', '2112', '铁岭市', '211282', '开原市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2113', '21', '00,21', '朝阳市', '21', '辽宁省', '2113', '朝阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211302', '2113', '00,21,2113', '双塔区', '21', '辽宁省', '2113', '朝阳市', '211302', '双塔区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211303', '2113', '00,21,2113', '龙城区', '21', '辽宁省', '2113', '朝阳市', '211303', '龙城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211321', '2113', '00,21,2113', '朝阳县', '21', '辽宁省', '2113', '朝阳市', '211321', '朝阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211322', '2113', '00,21,2113', '建平县', '21', '辽宁省', '2113', '朝阳市', '211322', '建平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211324', '2113', '00,21,2113', '喀喇沁左翼蒙古族自治县', '21', '辽宁省', '2113', '朝阳市', '211324', '喀喇沁左翼蒙古族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211381', '2113', '00,21,2113', '北票市', '21', '辽宁省', '2113', '朝阳市', '211381', '北票市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211382', '2113', '00,21,2113', '凌源市', '21', '辽宁省', '2113', '朝阳市', '211382', '凌源市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2114', '21', '00,21', '葫芦岛市', '21', '辽宁省', '2114', '葫芦岛市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211402', '2114', '00,21,2114', '连山区', '21', '辽宁省', '2114', '葫芦岛市', '211402', '连山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211403', '2114', '00,21,2114', '龙港区', '21', '辽宁省', '2114', '葫芦岛市', '211403', '龙港区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211404', '2114', '00,21,2114', '南票区', '21', '辽宁省', '2114', '葫芦岛市', '211404', '南票区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211422', '2114', '00,21,2114', '建昌县', '21', '辽宁省', '2114', '葫芦岛市', '211422', '建昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('211481', '2114', '00,21,2114', '兴城市', '21', '辽宁省', '2114', '葫芦岛市', '211481', '兴城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('22', '00', '00', '吉林省', '22', '吉林省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2201', '22', '00,22', '长春市', '22', '吉林省', '2201', '长春市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220102', '2201', '00,22,2201', '南关区', '22', '吉林省', '2201', '长春市', '220102', '南关区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220103', '2201', '00,22,2201', '宽城区', '22', '吉林省', '2201', '长春市', '220103', '宽城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220104', '2201', '00,22,2201', '朝阳区', '22', '吉林省', '2201', '长春市', '220104', '朝阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220105', '2201', '00,22,2201', '二道区', '22', '吉林省', '2201', '长春市', '220105', '二道区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220106', '2201', '00,22,2201', '绿园区', '22', '吉林省', '2201', '长春市', '220106', '绿园区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220112', '2201', '00,22,2201', '双阳区', '22', '吉林省', '2201', '长春市', '220112', '双阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220113', '2201', '00,22,2201', '九台区', '22', '吉林省', '2201', '长春市', '220113', '九台区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220122', '2201', '00,22,2201', '农安县', '22', '吉林省', '2201', '长春市', '220122', '农安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220182', '2201', '00,22,2201', '榆树市', '22', '吉林省', '2201', '长春市', '220182', '榆树市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220183', '2201', '00,22,2201', '德惠市', '22', '吉林省', '2201', '长春市', '220183', '德惠市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2202', '22', '00,22', '吉林市', '22', '吉林省', '2202', '吉林市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220202', '2202', '00,22,2202', '昌邑区', '22', '吉林省', '2202', '吉林市', '220202', '昌邑区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220203', '2202', '00,22,2202', '龙潭区', '22', '吉林省', '2202', '吉林市', '220203', '龙潭区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220204', '2202', '00,22,2202', '船营区', '22', '吉林省', '2202', '吉林市', '220204', '船营区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220211', '2202', '00,22,2202', '丰满区', '22', '吉林省', '2202', '吉林市', '220211', '丰满区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220221', '2202', '00,22,2202', '永吉县', '22', '吉林省', '2202', '吉林市', '220221', '永吉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220281', '2202', '00,22,2202', '蛟河市', '22', '吉林省', '2202', '吉林市', '220281', '蛟河市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220282', '2202', '00,22,2202', '桦甸市', '22', '吉林省', '2202', '吉林市', '220282', '桦甸市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220283', '2202', '00,22,2202', '舒兰市', '22', '吉林省', '2202', '吉林市', '220283', '舒兰市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220284', '2202', '00,22,2202', '磐石市', '22', '吉林省', '2202', '吉林市', '220284', '磐石市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2203', '22', '00,22', '四平市', '22', '吉林省', '2203', '四平市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220302', '2203', '00,22,2203', '铁西区', '22', '吉林省', '2203', '四平市', '220302', '铁西区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220303', '2203', '00,22,2203', '铁东区', '22', '吉林省', '2203', '四平市', '220303', '铁东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220322', '2203', '00,22,2203', '梨树县', '22', '吉林省', '2203', '四平市', '220322', '梨树县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220323', '2203', '00,22,2203', '伊通满族自治县', '22', '吉林省', '2203', '四平市', '220323', '伊通满族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220381', '2203', '00,22,2203', '公主岭市', '22', '吉林省', '2203', '四平市', '220381', '公主岭市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220382', '2203', '00,22,2203', '双辽市', '22', '吉林省', '2203', '四平市', '220382', '双辽市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('2204', '22', '00,22', '辽源市', '22', '吉林省', '2204', '辽源市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220402', '2204', '00,22,2204', '龙山区', '22', '吉林省', '2204', '辽源市', '220402', '龙山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220403', '2204', '00,22,2204', '西安区', '22', '吉林省', '2204', '辽源市', '220403', '西安区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('220421', '2204', '00,22,2204', '东丰县', '22', '吉林省', '2204', '辽源市', '220421', '东丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360112', '3601', '00,36,3601', '新建区', '36', '江西省', '3601', '南昌市', '360112', '新建区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('441426', '4414', '00,44,4414', '平远县', '44', '广东省', '4414', '梅州市', '441426', '平远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331022', '3310', '00,33,3310', '三门县', '33', '浙江省', '3310', '台州市', '331022', '三门县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331023', '3310', '00,33,3310', '天台县', '33', '浙江省', '3310', '台州市', '331023', '天台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331024', '3310', '00,33,3310', '仙居县', '33', '浙江省', '3310', '台州市', '331024', '仙居县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331081', '3310', '00,33,3310', '温岭市', '33', '浙江省', '3310', '台州市', '331081', '温岭市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331082', '3310', '00,33,3310', '临海市', '33', '浙江省', '3310', '台州市', '331082', '临海市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331083', '3310', '00,33,3310', '玉环市', '33', '浙江省', '3310', '台州市', '331083', '玉环市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3311', '33', '00,33', '丽水市', '33', '浙江省', '3311', '丽水市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331102', '3311', '00,33,3311', '莲都区', '33', '浙江省', '3311', '丽水市', '331102', '莲都区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331121', '3311', '00,33,3311', '青田县', '33', '浙江省', '3311', '丽水市', '331121', '青田县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331122', '3311', '00,33,3311', '缙云县', '33', '浙江省', '3311', '丽水市', '331122', '缙云县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331123', '3311', '00,33,3311', '遂昌县', '33', '浙江省', '3311', '丽水市', '331123', '遂昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331124', '3311', '00,33,3311', '松阳县', '33', '浙江省', '3311', '丽水市', '331124', '松阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331125', '3311', '00,33,3311', '云和县', '33', '浙江省', '3311', '丽水市', '331125', '云和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331126', '3311', '00,33,3311', '庆元县', '33', '浙江省', '3311', '丽水市', '331126', '庆元县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331127', '3311', '00,33,3311', '景宁畲族自治县', '33', '浙江省', '3311', '丽水市', '331127', '景宁畲族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('331181', '3311', '00,33,3311', '龙泉市', '33', '浙江省', '3311', '丽水市', '331181', '龙泉市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('34', '00', '00', '安徽省', '34', '安徽省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3401', '34', '00,34', '合肥市', '34', '安徽省', '3401', '合肥市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340102', '3401', '00,34,3401', '瑶海区', '34', '安徽省', '3401', '合肥市', '340102', '瑶海区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340103', '3401', '00,34,3401', '庐阳区', '34', '安徽省', '3401', '合肥市', '340103', '庐阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340104', '3401', '00,34,3401', '蜀山区', '34', '安徽省', '3401', '合肥市', '340104', '蜀山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340111', '3401', '00,34,3401', '包河区', '34', '安徽省', '3401', '合肥市', '340111', '包河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340121', '3401', '00,34,3401', '长丰县', '34', '安徽省', '3401', '合肥市', '340121', '长丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340122', '3401', '00,34,3401', '肥东县', '34', '安徽省', '3401', '合肥市', '340122', '肥东县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340123', '3401', '00,34,3401', '肥西县', '34', '安徽省', '3401', '合肥市', '340123', '肥西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340124', '3401', '00,34,3401', '庐江县', '34', '安徽省', '3401', '合肥市', '340124', '庐江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340181', '3401', '00,34,3401', '巢湖市', '34', '安徽省', '3401', '合肥市', '340181', '巢湖市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3402', '34', '00,34', '芜湖市', '34', '安徽省', '3402', '芜湖市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340202', '3402', '00,34,3402', '镜湖区', '34', '安徽省', '3402', '芜湖市', '340202', '镜湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340203', '3402', '00,34,3402', '弋江区', '34', '安徽省', '3402', '芜湖市', '340203', '弋江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340207', '3402', '00,34,3402', '鸠江区', '34', '安徽省', '3402', '芜湖市', '340207', '鸠江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340208', '3402', '00,34,3402', '三山区', '34', '安徽省', '3402', '芜湖市', '340208', '三山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340221', '3402', '00,34,3402', '芜湖县', '34', '安徽省', '3402', '芜湖市', '340221', '芜湖县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340222', '3402', '00,34,3402', '繁昌县', '34', '安徽省', '3402', '芜湖市', '340222', '繁昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340223', '3402', '00,34,3402', '南陵县', '34', '安徽省', '3402', '芜湖市', '340223', '南陵县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340281', '3402', '00,34,3402', '无为市', '34', '安徽省', '3402', '芜湖市', '340281', '无为市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340302', '3403', '00,34,3403', '龙子湖区', '34', '安徽省', '3403', '蚌埠市', '340302', '龙子湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340303', '3403', '00,34,3403', '蚌山区', '34', '安徽省', '3403', '蚌埠市', '340303', '蚌山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340304', '3403', '00,34,3403', '禹会区', '34', '安徽省', '3403', '蚌埠市', '340304', '禹会区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340311', '3403', '00,34,3403', '淮上区', '34', '安徽省', '3403', '蚌埠市', '340311', '淮上区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340321', '3403', '00,34,3403', '怀远县', '34', '安徽省', '3403', '蚌埠市', '340321', '怀远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340322', '3403', '00,34,3403', '五河县', '34', '安徽省', '3403', '蚌埠市', '340322', '五河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340323', '3403', '00,34,3403', '固镇县', '34', '安徽省', '3403', '蚌埠市', '340323', '固镇县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3404', '34', '00,34', '淮南市', '34', '安徽省', '3404', '淮南市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340402', '3404', '00,34,3404', '大通区', '34', '安徽省', '3404', '淮南市', '340402', '大通区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340403', '3404', '00,34,3404', '田家庵区', '34', '安徽省', '3404', '淮南市', '340403', '田家庵区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340404', '3404', '00,34,3404', '谢家集区', '34', '安徽省', '3404', '淮南市', '340404', '谢家集区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340405', '3404', '00,34,3404', '八公山区', '34', '安徽省', '3404', '淮南市', '340405', '八公山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340406', '3404', '00,34,3404', '潘集区', '34', '安徽省', '3404', '淮南市', '340406', '潘集区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340421', '3404', '00,34,3404', '凤台县', '34', '安徽省', '3404', '淮南市', '340421', '凤台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340422', '3404', '00,34,3404', '寿县', '34', '安徽省', '3404', '淮南市', '340422', '寿县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3405', '34', '00,34', '马鞍山市', '34', '安徽省', '3405', '马鞍山市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340503', '3405', '00,34,3405', '花山区', '34', '安徽省', '3405', '马鞍山市', '340503', '花山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340504', '3405', '00,34,3405', '雨山区', '34', '安徽省', '3405', '马鞍山市', '340504', '雨山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340506', '3405', '00,34,3405', '博望区', '34', '安徽省', '3405', '马鞍山市', '340506', '博望区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340521', '3405', '00,34,3405', '当涂县', '34', '安徽省', '3405', '马鞍山市', '340521', '当涂县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340522', '3405', '00,34,3405', '含山县', '34', '安徽省', '3405', '马鞍山市', '340522', '含山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340523', '3405', '00,34,3405', '和县', '34', '安徽省', '3405', '马鞍山市', '340523', '和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3406', '34', '00,34', '淮北市', '34', '安徽省', '3406', '淮北市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340602', '3406', '00,34,3406', '杜集区', '34', '安徽省', '3406', '淮北市', '340602', '杜集区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340603', '3406', '00,34,3406', '相山区', '34', '安徽省', '3406', '淮北市', '340603', '相山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340604', '3406', '00,34,3406', '烈山区', '34', '安徽省', '3406', '淮北市', '340604', '烈山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340621', '3406', '00,34,3406', '濉溪县', '34', '安徽省', '3406', '淮北市', '340621', '濉溪县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3407', '34', '00,34', '铜陵市', '34', '安徽省', '3407', '铜陵市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340705', '3407', '00,34,3407', '铜官区', '34', '安徽省', '3407', '铜陵市', '340705', '铜官区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340706', '3407', '00,34,3407', '义安区', '34', '安徽省', '3407', '铜陵市', '340706', '义安区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340711', '3407', '00,34,3407', '郊区', '34', '安徽省', '3407', '铜陵市', '340711', '郊区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340722', '3407', '00,34,3407', '枞阳县', '34', '安徽省', '3407', '铜陵市', '340722', '枞阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3408', '34', '00,34', '安庆市', '34', '安徽省', '3408', '安庆市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340802', '3408', '00,34,3408', '迎江区', '34', '安徽省', '3408', '安庆市', '340802', '迎江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340803', '3408', '00,34,3408', '大观区', '34', '安徽省', '3408', '安庆市', '340803', '大观区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340811', '3408', '00,34,3408', '宜秀区', '34', '安徽省', '3408', '安庆市', '340811', '宜秀区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340822', '3408', '00,34,3408', '怀宁县', '34', '安徽省', '3408', '安庆市', '340822', '怀宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340825', '3408', '00,34,3408', '太湖县', '34', '安徽省', '3408', '安庆市', '340825', '太湖县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340826', '3408', '00,34,3408', '宿松县', '34', '安徽省', '3408', '安庆市', '340826', '宿松县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340827', '3408', '00,34,3408', '望江县', '34', '安徽省', '3408', '安庆市', '340827', '望江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340828', '3408', '00,34,3408', '岳西县', '34', '安徽省', '3408', '安庆市', '340828', '岳西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340881', '3408', '00,34,3408', '桐城市', '34', '安徽省', '3408', '安庆市', '340881', '桐城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('340882', '3408', '00,34,3408', '潜山市', '34', '安徽省', '3408', '安庆市', '340882', '潜山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370683', '3706', '00,37,3706', '莱州市', '37', '山东省', '3706', '烟台市', '370683', '莱州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370684', '3706', '00,37,3706', '蓬莱市', '37', '山东省', '3706', '烟台市', '370684', '蓬莱市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370685', '3706', '00,37,3706', '招远市', '37', '山东省', '3706', '烟台市', '370685', '招远市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370686', '3706', '00,37,3706', '栖霞市', '37', '山东省', '3706', '烟台市', '370686', '栖霞市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370687', '3706', '00,37,3706', '海阳市', '37', '山东省', '3706', '烟台市', '370687', '海阳市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3707', '37', '00,37', '潍坊市', '37', '山东省', '3707', '潍坊市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370702', '3707', '00,37,3707', '潍城区', '37', '山东省', '3707', '潍坊市', '370702', '潍城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370703', '3707', '00,37,3707', '寒亭区', '37', '山东省', '3707', '潍坊市', '370703', '寒亭区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370704', '3707', '00,37,3707', '坊子区', '37', '山东省', '3707', '潍坊市', '370704', '坊子区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370705', '3707', '00,37,3707', '奎文区', '37', '山东省', '3707', '潍坊市', '370705', '奎文区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370724', '3707', '00,37,3707', '临朐县', '37', '山东省', '3707', '潍坊市', '370724', '临朐县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370725', '3707', '00,37,3707', '昌乐县', '37', '山东省', '3707', '潍坊市', '370725', '昌乐县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370781', '3707', '00,37,3707', '青州市', '37', '山东省', '3707', '潍坊市', '370781', '青州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370782', '3707', '00,37,3707', '诸城市', '37', '山东省', '3707', '潍坊市', '370782', '诸城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370783', '3707', '00,37,3707', '寿光市', '37', '山东省', '3707', '潍坊市', '370783', '寿光市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370784', '3707', '00,37,3707', '安丘市', '37', '山东省', '3707', '潍坊市', '370784', '安丘市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370785', '3707', '00,37,3707', '高密市', '37', '山东省', '3707', '潍坊市', '370785', '高密市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370786', '3707', '00,37,3707', '昌邑市', '37', '山东省', '3707', '潍坊市', '370786', '昌邑市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3708', '37', '00,37', '济宁市', '37', '山东省', '3708', '济宁市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370811', '3708', '00,37,3708', '任城区', '37', '山东省', '3708', '济宁市', '370811', '任城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370812', '3708', '00,37,3708', '兖州区', '37', '山东省', '3708', '济宁市', '370812', '兖州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370826', '3708', '00,37,3708', '微山县', '37', '山东省', '3708', '济宁市', '370826', '微山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370827', '3708', '00,37,3708', '鱼台县', '37', '山东省', '3708', '济宁市', '370827', '鱼台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370828', '3708', '00,37,3708', '金乡县', '37', '山东省', '3708', '济宁市', '370828', '金乡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370829', '3708', '00,37,3708', '嘉祥县', '37', '山东省', '3708', '济宁市', '370829', '嘉祥县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370830', '3708', '00,37,3708', '汶上县', '37', '山东省', '3708', '济宁市', '370830', '汶上县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370831', '3708', '00,37,3708', '泗水县', '37', '山东省', '3708', '济宁市', '370831', '泗水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370832', '3708', '00,37,3708', '梁山县', '37', '山东省', '3708', '济宁市', '370832', '梁山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370881', '3708', '00,37,3708', '曲阜市', '37', '山东省', '3708', '济宁市', '370881', '曲阜市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370883', '3708', '00,37,3708', '邹城市', '37', '山东省', '3708', '济宁市', '370883', '邹城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3709', '37', '00,37', '泰安市', '37', '山东省', '3709', '泰安市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370902', '3709', '00,37,3709', '泰山区', '37', '山东省', '3709', '泰安市', '370902', '泰山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370911', '3709', '00,37,3709', '岱岳区', '37', '山东省', '3709', '泰安市', '370911', '岱岳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370921', '3709', '00,37,3709', '宁阳县', '37', '山东省', '3709', '泰安市', '370921', '宁阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370923', '3709', '00,37,3709', '东平县', '37', '山东省', '3709', '泰安市', '370923', '东平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370982', '3709', '00,37,3709', '新泰市', '37', '山东省', '3709', '泰安市', '370982', '新泰市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370983', '3709', '00,37,3709', '肥城市', '37', '山东省', '3709', '泰安市', '370983', '肥城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3710', '37', '00,37', '威海市', '37', '山东省', '3710', '威海市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371002', '3710', '00,37,3710', '环翠区', '37', '山东省', '3710', '威海市', '371002', '环翠区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371003', '3710', '00,37,3710', '文登区', '37', '山东省', '3710', '威海市', '371003', '文登区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371082', '3710', '00,37,3710', '荣成市', '37', '山东省', '3710', '威海市', '371082', '荣成市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371083', '3710', '00,37,3710', '乳山市', '37', '山东省', '3710', '威海市', '371083', '乳山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3711', '37', '00,37', '日照市', '37', '山东省', '3711', '日照市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371102', '3711', '00,37,3711', '东港区', '37', '山东省', '3711', '日照市', '371102', '东港区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371103', '3711', '00,37,3711', '岚山区', '37', '山东省', '3711', '日照市', '371103', '岚山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371121', '3711', '00,37,3711', '五莲县', '37', '山东省', '3711', '日照市', '371121', '五莲县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371122', '3711', '00,37,3711', '莒县', '37', '山东省', '3711', '日照市', '371122', '莒县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3713', '37', '00,37', '临沂市', '37', '山东省', '3713', '临沂市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371302', '3713', '00,37,3713', '兰山区', '37', '山东省', '3713', '临沂市', '371302', '兰山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371311', '3713', '00,37,3713', '罗庄区', '37', '山东省', '3713', '临沂市', '371311', '罗庄区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371312', '3713', '00,37,3713', '河东区', '37', '山东省', '3713', '临沂市', '371312', '河东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371321', '3713', '00,37,3713', '沂南县', '37', '山东省', '3713', '临沂市', '371321', '沂南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371322', '3713', '00,37,3713', '郯城县', '37', '山东省', '3713', '临沂市', '371322', '郯城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371323', '3713', '00,37,3713', '沂水县', '37', '山东省', '3713', '临沂市', '371323', '沂水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371324', '3713', '00,37,3713', '兰陵县', '37', '山东省', '3713', '临沂市', '371324', '兰陵县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371325', '3713', '00,37,3713', '费县', '37', '山东省', '3713', '临沂市', '371325', '费县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371326', '3713', '00,37,3713', '平邑县', '37', '山东省', '3713', '临沂市', '371326', '平邑县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371327', '3713', '00,37,3713', '莒南县', '37', '山东省', '3713', '临沂市', '371327', '莒南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371328', '3713', '00,37,3713', '蒙阴县', '37', '山东省', '3713', '临沂市', '371328', '蒙阴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371329', '3713', '00,37,3713', '临沭县', '37', '山东省', '3713', '临沂市', '371329', '临沭县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3714', '37', '00,37', '德州市', '37', '山东省', '3714', '德州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371402', '3714', '00,37,3714', '德城区', '37', '山东省', '3714', '德州市', '371402', '德城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371403', '3714', '00,37,3714', '陵城区', '37', '山东省', '3714', '德州市', '371403', '陵城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371422', '3714', '00,37,3714', '宁津县', '37', '山东省', '3714', '德州市', '371422', '宁津县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371423', '3714', '00,37,3714', '庆云县', '37', '山东省', '3714', '德州市', '371423', '庆云县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371424', '3714', '00,37,3714', '临邑县', '37', '山东省', '3714', '德州市', '371424', '临邑县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371425', '3714', '00,37,3714', '齐河县', '37', '山东省', '3714', '德州市', '371425', '齐河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371426', '3714', '00,37,3714', '平原县', '37', '山东省', '3714', '德州市', '371426', '平原县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371427', '3714', '00,37,3714', '夏津县', '37', '山东省', '3714', '德州市', '371427', '夏津县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371428', '3714', '00,37,3714', '武城县', '37', '山东省', '3714', '德州市', '371428', '武城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371481', '3714', '00,37,3714', '乐陵市', '37', '山东省', '3714', '德州市', '371481', '乐陵市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371482', '3714', '00,37,3714', '禹城市', '37', '山东省', '3714', '德州市', '371482', '禹城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3715', '37', '00,37', '聊城市', '37', '山东省', '3715', '聊城市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371502', '3715', '00,37,3715', '东昌府区', '37', '山东省', '3715', '聊城市', '371502', '东昌府区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371503', '3715', '00,37,3715', '茌平区', '37', '山东省', '3715', '聊城市', '371503', '茌平区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371521', '3715', '00,37,3715', '阳谷县', '37', '山东省', '3715', '聊城市', '371521', '阳谷县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371522', '3715', '00,37,3715', '莘县', '37', '山东省', '3715', '聊城市', '371522', '莘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371524', '3715', '00,37,3715', '东阿县', '37', '山东省', '3715', '聊城市', '371524', '东阿县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('371525', '3715', '00,37,3715', '冠县', '37', '山东省', '3715', '聊城市', '371525', '冠县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3410', '34', '00,34', '黄山市', '34', '安徽省', '3410', '黄山市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('441427', '4414', '00,44,4414', '蕉岭县', '44', '广东省', '4414', '梅州市', '441427', '蕉岭县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360121', '3601', '00,36,3601', '南昌县', '36', '江西省', '3601', '南昌市', '360121', '南昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360123', '3601', '00,36,3601', '安义县', '36', '江西省', '3601', '南昌市', '360123', '安义县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360124', '3601', '00,36,3601', '进贤县', '36', '江西省', '3601', '南昌市', '360124', '进贤县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3602', '36', '00,36', '景德镇市', '36', '江西省', '3602', '景德镇市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360202', '3602', '00,36,3602', '昌江区', '36', '江西省', '3602', '景德镇市', '360202', '昌江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360203', '3602', '00,36,3602', '珠山区', '36', '江西省', '3602', '景德镇市', '360203', '珠山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360222', '3602', '00,36,3602', '浮梁县', '36', '江西省', '3602', '景德镇市', '360222', '浮梁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360281', '3602', '00,36,3602', '乐平市', '36', '江西省', '3602', '景德镇市', '360281', '乐平市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3603', '36', '00,36', '萍乡市', '36', '江西省', '3603', '萍乡市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360302', '3603', '00,36,3603', '安源区', '36', '江西省', '3603', '萍乡市', '360302', '安源区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360313', '3603', '00,36,3603', '湘东区', '36', '江西省', '3603', '萍乡市', '360313', '湘东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360321', '3603', '00,36,3603', '莲花县', '36', '江西省', '3603', '萍乡市', '360321', '莲花县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360322', '3603', '00,36,3603', '上栗县', '36', '江西省', '3603', '萍乡市', '360322', '上栗县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360323', '3603', '00,36,3603', '芦溪县', '36', '江西省', '3603', '萍乡市', '360323', '芦溪县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3604', '36', '00,36', '九江市', '36', '江西省', '3604', '九江市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360402', '3604', '00,36,3604', '濂溪区', '36', '江西省', '3604', '九江市', '360402', '濂溪区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360403', '3604', '00,36,3604', '浔阳区', '36', '江西省', '3604', '九江市', '360403', '浔阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360404', '3604', '00,36,3604', '柴桑区', '36', '江西省', '3604', '九江市', '360404', '柴桑区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360423', '3604', '00,36,3604', '武宁县', '36', '江西省', '3604', '九江市', '360423', '武宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360424', '3604', '00,36,3604', '修水县', '36', '江西省', '3604', '九江市', '360424', '修水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360425', '3604', '00,36,3604', '永修县', '36', '江西省', '3604', '九江市', '360425', '永修县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360426', '3604', '00,36,3604', '德安县', '36', '江西省', '3604', '九江市', '360426', '德安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360428', '3604', '00,36,3604', '都昌县', '36', '江西省', '3604', '九江市', '360428', '都昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360429', '3604', '00,36,3604', '湖口县', '36', '江西省', '3604', '九江市', '360429', '湖口县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360430', '3604', '00,36,3604', '彭泽县', '36', '江西省', '3604', '九江市', '360430', '彭泽县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360481', '3604', '00,36,3604', '瑞昌市', '36', '江西省', '3604', '九江市', '360481', '瑞昌市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360482', '3604', '00,36,3604', '共青城市', '36', '江西省', '3604', '九江市', '360482', '共青城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360483', '3604', '00,36,3604', '庐山市', '36', '江西省', '3604', '九江市', '360483', '庐山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3605', '36', '00,36', '新余市', '36', '江西省', '3605', '新余市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360502', '3605', '00,36,3605', '渝水区', '36', '江西省', '3605', '新余市', '360502', '渝水区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360521', '3605', '00,36,3605', '分宜县', '36', '江西省', '3605', '新余市', '360521', '分宜县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3606', '36', '00,36', '鹰潭市', '36', '江西省', '3606', '鹰潭市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360602', '3606', '00,36,3606', '月湖区', '36', '江西省', '3606', '鹰潭市', '360602', '月湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360603', '3606', '00,36,3606', '余江区', '36', '江西省', '3606', '鹰潭市', '360603', '余江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360681', '3606', '00,36,3606', '贵溪市', '36', '江西省', '3606', '鹰潭市', '360681', '贵溪市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3607', '36', '00,36', '赣州市', '36', '江西省', '3607', '赣州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360702', '3607', '00,36,3607', '章贡区', '36', '江西省', '3607', '赣州市', '360702', '章贡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360703', '3607', '00,36,3607', '南康区', '36', '江西省', '3607', '赣州市', '360703', '南康区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360704', '3607', '00,36,3607', '赣县区', '36', '江西省', '3607', '赣州市', '360704', '赣县区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360722', '3607', '00,36,3607', '信丰县', '36', '江西省', '3607', '赣州市', '360722', '信丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360723', '3607', '00,36,3607', '大余县', '36', '江西省', '3607', '赣州市', '360723', '大余县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360724', '3607', '00,36,3607', '上犹县', '36', '江西省', '3607', '赣州市', '360724', '上犹县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360725', '3607', '00,36,3607', '崇义县', '36', '江西省', '3607', '赣州市', '360725', '崇义县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360726', '3607', '00,36,3607', '安远县', '36', '江西省', '3607', '赣州市', '360726', '安远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360727', '3607', '00,36,3607', '龙南县', '36', '江西省', '3607', '赣州市', '360727', '龙南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360728', '3607', '00,36,3607', '定南县', '36', '江西省', '3607', '赣州市', '360728', '定南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360729', '3607', '00,36,3607', '全南县', '36', '江西省', '3607', '赣州市', '360729', '全南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360730', '3607', '00,36,3607', '宁都县', '36', '江西省', '3607', '赣州市', '360730', '宁都县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360731', '3607', '00,36,3607', '于都县', '36', '江西省', '3607', '赣州市', '360731', '于都县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360732', '3607', '00,36,3607', '兴国县', '36', '江西省', '3607', '赣州市', '360732', '兴国县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360733', '3607', '00,36,3607', '会昌县', '36', '江西省', '3607', '赣州市', '360733', '会昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360734', '3607', '00,36,3607', '寻乌县', '36', '江西省', '3607', '赣州市', '360734', '寻乌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360735', '3607', '00,36,3607', '石城县', '36', '江西省', '3607', '赣州市', '360735', '石城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360781', '3607', '00,36,3607', '瑞金市', '36', '江西省', '3607', '赣州市', '360781', '瑞金市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3608', '36', '00,36', '吉安市', '36', '江西省', '3608', '吉安市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360802', '3608', '00,36,3608', '吉州区', '36', '江西省', '3608', '吉安市', '360802', '吉州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360803', '3608', '00,36,3608', '青原区', '36', '江西省', '3608', '吉安市', '360803', '青原区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360821', '3608', '00,36,3608', '吉安县', '36', '江西省', '3608', '吉安市', '360821', '吉安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360822', '3608', '00,36,3608', '吉水县', '36', '江西省', '3608', '吉安市', '360822', '吉水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360823', '3608', '00,36,3608', '峡江县', '36', '江西省', '3608', '吉安市', '360823', '峡江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360824', '3608', '00,36,3608', '新干县', '36', '江西省', '3608', '吉安市', '360824', '新干县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360825', '3608', '00,36,3608', '永丰县', '36', '江西省', '3608', '吉安市', '360825', '永丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360826', '3608', '00,36,3608', '泰和县', '36', '江西省', '3608', '吉安市', '360826', '泰和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360827', '3608', '00,36,3608', '遂川县', '36', '江西省', '3608', '吉安市', '360827', '遂川县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360828', '3608', '00,36,3608', '万安县', '36', '江西省', '3608', '吉安市', '360828', '万安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360829', '3608', '00,36,3608', '安福县', '36', '江西省', '3608', '吉安市', '360829', '安福县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360830', '3608', '00,36,3608', '永新县', '36', '江西省', '3608', '吉安市', '360830', '永新县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360881', '3608', '00,36,3608', '井冈山市', '36', '江西省', '3608', '吉安市', '360881', '井冈山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3609', '36', '00,36', '宜春市', '36', '江西省', '3609', '宜春市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360902', '3609', '00,36,3609', '袁州区', '36', '江西省', '3609', '宜春市', '360902', '袁州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360921', '3609', '00,36,3609', '奉新县', '36', '江西省', '3609', '宜春市', '360921', '奉新县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360922', '3609', '00,36,3609', '万载县', '36', '江西省', '3609', '宜春市', '360922', '万载县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360923', '3609', '00,36,3609', '上高县', '36', '江西省', '3609', '宜春市', '360923', '上高县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360924', '3609', '00,36,3609', '宜丰县', '36', '江西省', '3609', '宜春市', '360924', '宜丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360925', '3609', '00,36,3609', '靖安县', '36', '江西省', '3609', '宜春市', '360925', '靖安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360926', '3609', '00,36,3609', '铜鼓县', '36', '江西省', '3609', '宜春市', '360926', '铜鼓县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360981', '3609', '00,36,3609', '丰城市', '36', '江西省', '3609', '宜春市', '360981', '丰城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360982', '3609', '00,36,3609', '樟树市', '36', '江西省', '3609', '宜春市', '360982', '樟树市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('360983', '3609', '00,36,3609', '高安市', '36', '江西省', '3609', '宜春市', '360983', '高安市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3610', '36', '00,36', '抚州市', '36', '江西省', '3610', '抚州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361002', '3610', '00,36,3610', '临川区', '36', '江西省', '3610', '抚州市', '361002', '临川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361003', '3610', '00,36,3610', '东乡区', '36', '江西省', '3610', '抚州市', '361003', '东乡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361021', '3610', '00,36,3610', '南城县', '36', '江西省', '3610', '抚州市', '361021', '南城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361022', '3610', '00,36,3610', '黎川县', '36', '江西省', '3610', '抚州市', '361022', '黎川县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361023', '3610', '00,36,3610', '南丰县', '36', '江西省', '3610', '抚州市', '361023', '南丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361024', '3610', '00,36,3610', '崇仁县', '36', '江西省', '3610', '抚州市', '361024', '崇仁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361025', '3610', '00,36,3610', '乐安县', '36', '江西省', '3610', '抚州市', '361025', '乐安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361026', '3610', '00,36,3610', '宜黄县', '36', '江西省', '3610', '抚州市', '361026', '宜黄县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361027', '3610', '00,36,3610', '金溪县', '36', '江西省', '3610', '抚州市', '361027', '金溪县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361028', '3610', '00,36,3610', '资溪县', '36', '江西省', '3610', '抚州市', '361028', '资溪县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361030', '3610', '00,36,3610', '广昌县', '36', '江西省', '3610', '抚州市', '361030', '广昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3611', '36', '00,36', '上饶市', '36', '江西省', '3611', '上饶市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361102', '3611', '00,36,3611', '信州区', '36', '江西省', '3611', '上饶市', '361102', '信州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361103', '3611', '00,36,3611', '广丰区', '36', '江西省', '3611', '上饶市', '361103', '广丰区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361104', '3611', '00,36,3611', '广信区', '36', '江西省', '3611', '上饶市', '361104', '广信区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361123', '3611', '00,36,3611', '玉山县', '36', '江西省', '3611', '上饶市', '361123', '玉山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361124', '3611', '00,36,3611', '铅山县', '36', '江西省', '3611', '上饶市', '361124', '铅山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361125', '3611', '00,36,3611', '横峰县', '36', '江西省', '3611', '上饶市', '361125', '横峰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361126', '3611', '00,36,3611', '弋阳县', '36', '江西省', '3611', '上饶市', '361126', '弋阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361127', '3611', '00,36,3611', '余干县', '36', '江西省', '3611', '上饶市', '361127', '余干县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361128', '3611', '00,36,3611', '鄱阳县', '36', '江西省', '3611', '上饶市', '361128', '鄱阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361129', '3611', '00,36,3611', '万年县', '36', '江西省', '3611', '上饶市', '361129', '万年县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361130', '3611', '00,36,3611', '婺源县', '36', '江西省', '3611', '上饶市', '361130', '婺源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('361181', '3611', '00,36,3611', '德兴市', '36', '江西省', '3611', '上饶市', '361181', '德兴市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('37', '00', '00', '山东省', '37', '山东省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3701', '37', '00,37', '济南市', '37', '山东省', '3701', '济南市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370102', '3701', '00,37,3701', '历下区', '37', '山东省', '3701', '济南市', '370102', '历下区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370103', '3701', '00,37,3701', '市中区', '37', '山东省', '3701', '济南市', '370103', '市中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370104', '3701', '00,37,3701', '槐荫区', '37', '山东省', '3701', '济南市', '370104', '槐荫区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370105', '3701', '00,37,3701', '天桥区', '37', '山东省', '3701', '济南市', '370105', '天桥区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370112', '3701', '00,37,3701', '历城区', '37', '山东省', '3701', '济南市', '370112', '历城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370113', '3701', '00,37,3701', '长清区', '37', '山东省', '3701', '济南市', '370113', '长清区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370114', '3701', '00,37,3701', '章丘区', '37', '山东省', '3701', '济南市', '370114', '章丘区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370115', '3701', '00,37,3701', '济阳区', '37', '山东省', '3701', '济南市', '370115', '济阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370116', '3701', '00,37,3701', '莱芜区', '37', '山东省', '3701', '济南市', '370116', '莱芜区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370117', '3701', '00,37,3701', '钢城区', '37', '山东省', '3701', '济南市', '370117', '钢城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370124', '3701', '00,37,3701', '平阴县', '37', '山东省', '3701', '济南市', '370124', '平阴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370126', '3701', '00,37,3701', '商河县', '37', '山东省', '3701', '济南市', '370126', '商河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3702', '37', '00,37', '青岛市', '37', '山东省', '3702', '青岛市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370202', '3702', '00,37,3702', '市南区', '37', '山东省', '3702', '青岛市', '370202', '市南区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370203', '3702', '00,37,3702', '市北区', '37', '山东省', '3702', '青岛市', '370203', '市北区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370211', '3702', '00,37,3702', '黄岛区', '37', '山东省', '3702', '青岛市', '370211', '黄岛区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370212', '3702', '00,37,3702', '崂山区', '37', '山东省', '3702', '青岛市', '370212', '崂山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370213', '3702', '00,37,3702', '李沧区', '37', '山东省', '3702', '青岛市', '370213', '李沧区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370214', '3702', '00,37,3702', '城阳区', '37', '山东省', '3702', '青岛市', '370214', '城阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370215', '3702', '00,37,3702', '即墨区', '37', '山东省', '3702', '青岛市', '370215', '即墨区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370281', '3702', '00,37,3702', '胶州市', '37', '山东省', '3702', '青岛市', '370281', '胶州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370283', '3702', '00,37,3702', '平度市', '37', '山东省', '3702', '青岛市', '370283', '平度市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370285', '3702', '00,37,3702', '莱西市', '37', '山东省', '3702', '青岛市', '370285', '莱西市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3703', '37', '00,37', '淄博市', '37', '山东省', '3703', '淄博市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370302', '3703', '00,37,3703', '淄川区', '37', '山东省', '3703', '淄博市', '370302', '淄川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370303', '3703', '00,37,3703', '张店区', '37', '山东省', '3703', '淄博市', '370303', '张店区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370304', '3703', '00,37,3703', '博山区', '37', '山东省', '3703', '淄博市', '370304', '博山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370305', '3703', '00,37,3703', '临淄区', '37', '山东省', '3703', '淄博市', '370305', '临淄区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370306', '3703', '00,37,3703', '周村区', '37', '山东省', '3703', '淄博市', '370306', '周村区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370321', '3703', '00,37,3703', '桓台县', '37', '山东省', '3703', '淄博市', '370321', '桓台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370322', '3703', '00,37,3703', '高青县', '37', '山东省', '3703', '淄博市', '370322', '高青县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370323', '3703', '00,37,3703', '沂源县', '37', '山东省', '3703', '淄博市', '370323', '沂源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3704', '37', '00,37', '枣庄市', '37', '山东省', '3704', '枣庄市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370402', '3704', '00,37,3704', '市中区', '37', '山东省', '3704', '枣庄市', '370402', '市中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370403', '3704', '00,37,3704', '薛城区', '37', '山东省', '3704', '枣庄市', '370403', '薛城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370404', '3704', '00,37,3704', '峄城区', '37', '山东省', '3704', '枣庄市', '370404', '峄城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370405', '3704', '00,37,3704', '台儿庄区', '37', '山东省', '3704', '枣庄市', '370405', '台儿庄区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370406', '3704', '00,37,3704', '山亭区', '37', '山东省', '3704', '枣庄市', '370406', '山亭区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370481', '3704', '00,37,3704', '滕州市', '37', '山东省', '3704', '枣庄市', '370481', '滕州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3705', '37', '00,37', '东营市', '37', '山东省', '3705', '东营市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370502', '3705', '00,37,3705', '东营区', '37', '山东省', '3705', '东营市', '370502', '东营区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370503', '3705', '00,37,3705', '河口区', '37', '山东省', '3705', '东营市', '370503', '河口区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370505', '3705', '00,37,3705', '垦利区', '37', '山东省', '3705', '东营市', '370505', '垦利区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370522', '3705', '00,37,3705', '利津县', '37', '山东省', '3705', '东营市', '370522', '利津县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370523', '3705', '00,37,3705', '广饶县', '37', '山东省', '3705', '东营市', '370523', '广饶县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('3706', '37', '00,37', '烟台市', '37', '山东省', '3706', '烟台市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370602', '3706', '00,37,3706', '芝罘区', '37', '山东省', '3706', '烟台市', '370602', '芝罘区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370611', '3706', '00,37,3706', '福山区', '37', '山东省', '3706', '烟台市', '370611', '福山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370612', '3706', '00,37,3706', '牟平区', '37', '山东省', '3706', '烟台市', '370612', '牟平区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370613', '3706', '00,37,3706', '莱山区', '37', '山东省', '3706', '烟台市', '370613', '莱山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('370634', '3706', '00,37,3706', '长岛县', '37', '山东省', '3706', '烟台市', '370634', '长岛县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4415', '44', '00,44', '汕尾市', '44', '广东省', '4415', '汕尾市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('230302', '2303', '00,23,2303', '鸡冠区', '23', '黑龙江省', '2303', '鸡西市', '230302', '鸡冠区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('230303', '2303', '00,23,2303', '恒山区', '23', '黑龙江省', '2303', '鸡西市', '230303', '恒山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('371581', '3715', '00,37,3715', '临清市', '37', '山东省', '3715', '聊城市', '371581', '临清市', NULL, NULL, NULL, NULL, '3', '1', NULL);
@@ -2455,326 +2775,83 @@ INSERT INTO "BLADE_REGION" VALUES ('360102', '3601', '00,36,3601', '东湖区', 
 INSERT INTO "BLADE_REGION" VALUES ('360103', '3601', '00,36,3601', '西湖区', '36', '江西省', '3601', '南昌市', '360103', '西湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('360104', '3601', '00,36,3601', '青云谱区', '36', '江西省', '3601', '南昌市', '360104', '青云谱区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('360111', '3601', '00,36,3601', '青山湖区', '36', '江西省', '3601', '南昌市', '360111', '青山湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360112', '3601', '00,36,3601', '新建区', '36', '江西省', '3601', '南昌市', '360112', '新建区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('441426', '4414', '00,44,4414', '平远县', '44', '广东省', '4414', '梅州市', '441426', '平远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331022', '3310', '00,33,3310', '三门县', '33', '浙江省', '3310', '台州市', '331022', '三门县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331023', '3310', '00,33,3310', '天台县', '33', '浙江省', '3310', '台州市', '331023', '天台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331024', '3310', '00,33,3310', '仙居县', '33', '浙江省', '3310', '台州市', '331024', '仙居县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331081', '3310', '00,33,3310', '温岭市', '33', '浙江省', '3310', '台州市', '331081', '温岭市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331082', '3310', '00,33,3310', '临海市', '33', '浙江省', '3310', '台州市', '331082', '临海市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331083', '3310', '00,33,3310', '玉环市', '33', '浙江省', '3310', '台州市', '331083', '玉环市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3311', '33', '00,33', '丽水市', '33', '浙江省', '3311', '丽水市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331102', '3311', '00,33,3311', '莲都区', '33', '浙江省', '3311', '丽水市', '331102', '莲都区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331121', '3311', '00,33,3311', '青田县', '33', '浙江省', '3311', '丽水市', '331121', '青田县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331122', '3311', '00,33,3311', '缙云县', '33', '浙江省', '3311', '丽水市', '331122', '缙云县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331123', '3311', '00,33,3311', '遂昌县', '33', '浙江省', '3311', '丽水市', '331123', '遂昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331124', '3311', '00,33,3311', '松阳县', '33', '浙江省', '3311', '丽水市', '331124', '松阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331125', '3311', '00,33,3311', '云和县', '33', '浙江省', '3311', '丽水市', '331125', '云和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331126', '3311', '00,33,3311', '庆元县', '33', '浙江省', '3311', '丽水市', '331126', '庆元县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331127', '3311', '00,33,3311', '景宁畲族自治县', '33', '浙江省', '3311', '丽水市', '331127', '景宁畲族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('331181', '3311', '00,33,3311', '龙泉市', '33', '浙江省', '3311', '丽水市', '331181', '龙泉市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('34', '00', '00', '安徽省', '34', '安徽省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3401', '34', '00,34', '合肥市', '34', '安徽省', '3401', '合肥市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340102', '3401', '00,34,3401', '瑶海区', '34', '安徽省', '3401', '合肥市', '340102', '瑶海区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340103', '3401', '00,34,3401', '庐阳区', '34', '安徽省', '3401', '合肥市', '340103', '庐阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340104', '3401', '00,34,3401', '蜀山区', '34', '安徽省', '3401', '合肥市', '340104', '蜀山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340111', '3401', '00,34,3401', '包河区', '34', '安徽省', '3401', '合肥市', '340111', '包河区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340121', '3401', '00,34,3401', '长丰县', '34', '安徽省', '3401', '合肥市', '340121', '长丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340122', '3401', '00,34,3401', '肥东县', '34', '安徽省', '3401', '合肥市', '340122', '肥东县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340123', '3401', '00,34,3401', '肥西县', '34', '安徽省', '3401', '合肥市', '340123', '肥西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340124', '3401', '00,34,3401', '庐江县', '34', '安徽省', '3401', '合肥市', '340124', '庐江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340181', '3401', '00,34,3401', '巢湖市', '34', '安徽省', '3401', '合肥市', '340181', '巢湖市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3402', '34', '00,34', '芜湖市', '34', '安徽省', '3402', '芜湖市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340202', '3402', '00,34,3402', '镜湖区', '34', '安徽省', '3402', '芜湖市', '340202', '镜湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340203', '3402', '00,34,3402', '弋江区', '34', '安徽省', '3402', '芜湖市', '340203', '弋江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340207', '3402', '00,34,3402', '鸠江区', '34', '安徽省', '3402', '芜湖市', '340207', '鸠江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340208', '3402', '00,34,3402', '三山区', '34', '安徽省', '3402', '芜湖市', '340208', '三山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340221', '3402', '00,34,3402', '芜湖县', '34', '安徽省', '3402', '芜湖市', '340221', '芜湖县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340222', '3402', '00,34,3402', '繁昌县', '34', '安徽省', '3402', '芜湖市', '340222', '繁昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340223', '3402', '00,34,3402', '南陵县', '34', '安徽省', '3402', '芜湖市', '340223', '南陵县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340281', '3402', '00,34,3402', '无为市', '34', '安徽省', '3402', '芜湖市', '340281', '无为市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340302', '3403', '00,34,3403', '龙子湖区', '34', '安徽省', '3403', '蚌埠市', '340302', '龙子湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340303', '3403', '00,34,3403', '蚌山区', '34', '安徽省', '3403', '蚌埠市', '340303', '蚌山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340304', '3403', '00,34,3403', '禹会区', '34', '安徽省', '3403', '蚌埠市', '340304', '禹会区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340311', '3403', '00,34,3403', '淮上区', '34', '安徽省', '3403', '蚌埠市', '340311', '淮上区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340321', '3403', '00,34,3403', '怀远县', '34', '安徽省', '3403', '蚌埠市', '340321', '怀远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340322', '3403', '00,34,3403', '五河县', '34', '安徽省', '3403', '蚌埠市', '340322', '五河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340323', '3403', '00,34,3403', '固镇县', '34', '安徽省', '3403', '蚌埠市', '340323', '固镇县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3404', '34', '00,34', '淮南市', '34', '安徽省', '3404', '淮南市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340402', '3404', '00,34,3404', '大通区', '34', '安徽省', '3404', '淮南市', '340402', '大通区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340403', '3404', '00,34,3404', '田家庵区', '34', '安徽省', '3404', '淮南市', '340403', '田家庵区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340404', '3404', '00,34,3404', '谢家集区', '34', '安徽省', '3404', '淮南市', '340404', '谢家集区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340405', '3404', '00,34,3404', '八公山区', '34', '安徽省', '3404', '淮南市', '340405', '八公山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340406', '3404', '00,34,3404', '潘集区', '34', '安徽省', '3404', '淮南市', '340406', '潘集区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340421', '3404', '00,34,3404', '凤台县', '34', '安徽省', '3404', '淮南市', '340421', '凤台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340422', '3404', '00,34,3404', '寿县', '34', '安徽省', '3404', '淮南市', '340422', '寿县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3405', '34', '00,34', '马鞍山市', '34', '安徽省', '3405', '马鞍山市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340503', '3405', '00,34,3405', '花山区', '34', '安徽省', '3405', '马鞍山市', '340503', '花山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340504', '3405', '00,34,3405', '雨山区', '34', '安徽省', '3405', '马鞍山市', '340504', '雨山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340506', '3405', '00,34,3405', '博望区', '34', '安徽省', '3405', '马鞍山市', '340506', '博望区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340521', '3405', '00,34,3405', '当涂县', '34', '安徽省', '3405', '马鞍山市', '340521', '当涂县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340522', '3405', '00,34,3405', '含山县', '34', '安徽省', '3405', '马鞍山市', '340522', '含山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340523', '3405', '00,34,3405', '和县', '34', '安徽省', '3405', '马鞍山市', '340523', '和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3406', '34', '00,34', '淮北市', '34', '安徽省', '3406', '淮北市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340602', '3406', '00,34,3406', '杜集区', '34', '安徽省', '3406', '淮北市', '340602', '杜集区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340603', '3406', '00,34,3406', '相山区', '34', '安徽省', '3406', '淮北市', '340603', '相山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340604', '3406', '00,34,3406', '烈山区', '34', '安徽省', '3406', '淮北市', '340604', '烈山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340621', '3406', '00,34,3406', '濉溪县', '34', '安徽省', '3406', '淮北市', '340621', '濉溪县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3407', '34', '00,34', '铜陵市', '34', '安徽省', '3407', '铜陵市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340705', '3407', '00,34,3407', '铜官区', '34', '安徽省', '3407', '铜陵市', '340705', '铜官区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340706', '3407', '00,34,3407', '义安区', '34', '安徽省', '3407', '铜陵市', '340706', '义安区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340711', '3407', '00,34,3407', '郊区', '34', '安徽省', '3407', '铜陵市', '340711', '郊区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340722', '3407', '00,34,3407', '枞阳县', '34', '安徽省', '3407', '铜陵市', '340722', '枞阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3408', '34', '00,34', '安庆市', '34', '安徽省', '3408', '安庆市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340802', '3408', '00,34,3408', '迎江区', '34', '安徽省', '3408', '安庆市', '340802', '迎江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340803', '3408', '00,34,3408', '大观区', '34', '安徽省', '3408', '安庆市', '340803', '大观区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340811', '3408', '00,34,3408', '宜秀区', '34', '安徽省', '3408', '安庆市', '340811', '宜秀区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340822', '3408', '00,34,3408', '怀宁县', '34', '安徽省', '3408', '安庆市', '340822', '怀宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340825', '3408', '00,34,3408', '太湖县', '34', '安徽省', '3408', '安庆市', '340825', '太湖县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340826', '3408', '00,34,3408', '宿松县', '34', '安徽省', '3408', '安庆市', '340826', '宿松县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340827', '3408', '00,34,3408', '望江县', '34', '安徽省', '3408', '安庆市', '340827', '望江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340828', '3408', '00,34,3408', '岳西县', '34', '安徽省', '3408', '安庆市', '340828', '岳西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340881', '3408', '00,34,3408', '桐城市', '34', '安徽省', '3408', '安庆市', '340881', '桐城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('340882', '3408', '00,34,3408', '潜山市', '34', '安徽省', '3408', '安庆市', '340882', '潜山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3410', '34', '00,34', '黄山市', '34', '安徽省', '3410', '黄山市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('441427', '4414', '00,44,4414', '蕉岭县', '44', '广东省', '4414', '梅州市', '441427', '蕉岭县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360121', '3601', '00,36,3601', '南昌县', '36', '江西省', '3601', '南昌市', '360121', '南昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360123', '3601', '00,36,3601', '安义县', '36', '江西省', '3601', '南昌市', '360123', '安义县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360124', '3601', '00,36,3601', '进贤县', '36', '江西省', '3601', '南昌市', '360124', '进贤县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3602', '36', '00,36', '景德镇市', '36', '江西省', '3602', '景德镇市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360202', '3602', '00,36,3602', '昌江区', '36', '江西省', '3602', '景德镇市', '360202', '昌江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360203', '3602', '00,36,3602', '珠山区', '36', '江西省', '3602', '景德镇市', '360203', '珠山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360222', '3602', '00,36,3602', '浮梁县', '36', '江西省', '3602', '景德镇市', '360222', '浮梁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360281', '3602', '00,36,3602', '乐平市', '36', '江西省', '3602', '景德镇市', '360281', '乐平市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3603', '36', '00,36', '萍乡市', '36', '江西省', '3603', '萍乡市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360302', '3603', '00,36,3603', '安源区', '36', '江西省', '3603', '萍乡市', '360302', '安源区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360313', '3603', '00,36,3603', '湘东区', '36', '江西省', '3603', '萍乡市', '360313', '湘东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360321', '3603', '00,36,3603', '莲花县', '36', '江西省', '3603', '萍乡市', '360321', '莲花县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360322', '3603', '00,36,3603', '上栗县', '36', '江西省', '3603', '萍乡市', '360322', '上栗县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360323', '3603', '00,36,3603', '芦溪县', '36', '江西省', '3603', '萍乡市', '360323', '芦溪县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3604', '36', '00,36', '九江市', '36', '江西省', '3604', '九江市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360402', '3604', '00,36,3604', '濂溪区', '36', '江西省', '3604', '九江市', '360402', '濂溪区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360403', '3604', '00,36,3604', '浔阳区', '36', '江西省', '3604', '九江市', '360403', '浔阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360404', '3604', '00,36,3604', '柴桑区', '36', '江西省', '3604', '九江市', '360404', '柴桑区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360423', '3604', '00,36,3604', '武宁县', '36', '江西省', '3604', '九江市', '360423', '武宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360424', '3604', '00,36,3604', '修水县', '36', '江西省', '3604', '九江市', '360424', '修水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360425', '3604', '00,36,3604', '永修县', '36', '江西省', '3604', '九江市', '360425', '永修县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360426', '3604', '00,36,3604', '德安县', '36', '江西省', '3604', '九江市', '360426', '德安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360428', '3604', '00,36,3604', '都昌县', '36', '江西省', '3604', '九江市', '360428', '都昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360429', '3604', '00,36,3604', '湖口县', '36', '江西省', '3604', '九江市', '360429', '湖口县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360430', '3604', '00,36,3604', '彭泽县', '36', '江西省', '3604', '九江市', '360430', '彭泽县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360481', '3604', '00,36,3604', '瑞昌市', '36', '江西省', '3604', '九江市', '360481', '瑞昌市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360482', '3604', '00,36,3604', '共青城市', '36', '江西省', '3604', '九江市', '360482', '共青城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360483', '3604', '00,36,3604', '庐山市', '36', '江西省', '3604', '九江市', '360483', '庐山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3605', '36', '00,36', '新余市', '36', '江西省', '3605', '新余市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360502', '3605', '00,36,3605', '渝水区', '36', '江西省', '3605', '新余市', '360502', '渝水区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360521', '3605', '00,36,3605', '分宜县', '36', '江西省', '3605', '新余市', '360521', '分宜县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3606', '36', '00,36', '鹰潭市', '36', '江西省', '3606', '鹰潭市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360602', '3606', '00,36,3606', '月湖区', '36', '江西省', '3606', '鹰潭市', '360602', '月湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360603', '3606', '00,36,3606', '余江区', '36', '江西省', '3606', '鹰潭市', '360603', '余江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360681', '3606', '00,36,3606', '贵溪市', '36', '江西省', '3606', '鹰潭市', '360681', '贵溪市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3607', '36', '00,36', '赣州市', '36', '江西省', '3607', '赣州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360702', '3607', '00,36,3607', '章贡区', '36', '江西省', '3607', '赣州市', '360702', '章贡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360703', '3607', '00,36,3607', '南康区', '36', '江西省', '3607', '赣州市', '360703', '南康区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360704', '3607', '00,36,3607', '赣县区', '36', '江西省', '3607', '赣州市', '360704', '赣县区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360722', '3607', '00,36,3607', '信丰县', '36', '江西省', '3607', '赣州市', '360722', '信丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360723', '3607', '00,36,3607', '大余县', '36', '江西省', '3607', '赣州市', '360723', '大余县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360724', '3607', '00,36,3607', '上犹县', '36', '江西省', '3607', '赣州市', '360724', '上犹县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360725', '3607', '00,36,3607', '崇义县', '36', '江西省', '3607', '赣州市', '360725', '崇义县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360726', '3607', '00,36,3607', '安远县', '36', '江西省', '3607', '赣州市', '360726', '安远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360727', '3607', '00,36,3607', '龙南县', '36', '江西省', '3607', '赣州市', '360727', '龙南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360728', '3607', '00,36,3607', '定南县', '36', '江西省', '3607', '赣州市', '360728', '定南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360729', '3607', '00,36,3607', '全南县', '36', '江西省', '3607', '赣州市', '360729', '全南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360730', '3607', '00,36,3607', '宁都县', '36', '江西省', '3607', '赣州市', '360730', '宁都县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360731', '3607', '00,36,3607', '于都县', '36', '江西省', '3607', '赣州市', '360731', '于都县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360732', '3607', '00,36,3607', '兴国县', '36', '江西省', '3607', '赣州市', '360732', '兴国县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360733', '3607', '00,36,3607', '会昌县', '36', '江西省', '3607', '赣州市', '360733', '会昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360734', '3607', '00,36,3607', '寻乌县', '36', '江西省', '3607', '赣州市', '360734', '寻乌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360735', '3607', '00,36,3607', '石城县', '36', '江西省', '3607', '赣州市', '360735', '石城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360781', '3607', '00,36,3607', '瑞金市', '36', '江西省', '3607', '赣州市', '360781', '瑞金市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3608', '36', '00,36', '吉安市', '36', '江西省', '3608', '吉安市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360802', '3608', '00,36,3608', '吉州区', '36', '江西省', '3608', '吉安市', '360802', '吉州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360803', '3608', '00,36,3608', '青原区', '36', '江西省', '3608', '吉安市', '360803', '青原区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360821', '3608', '00,36,3608', '吉安县', '36', '江西省', '3608', '吉安市', '360821', '吉安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360822', '3608', '00,36,3608', '吉水县', '36', '江西省', '3608', '吉安市', '360822', '吉水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360823', '3608', '00,36,3608', '峡江县', '36', '江西省', '3608', '吉安市', '360823', '峡江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360824', '3608', '00,36,3608', '新干县', '36', '江西省', '3608', '吉安市', '360824', '新干县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360825', '3608', '00,36,3608', '永丰县', '36', '江西省', '3608', '吉安市', '360825', '永丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360826', '3608', '00,36,3608', '泰和县', '36', '江西省', '3608', '吉安市', '360826', '泰和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360827', '3608', '00,36,3608', '遂川县', '36', '江西省', '3608', '吉安市', '360827', '遂川县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360828', '3608', '00,36,3608', '万安县', '36', '江西省', '3608', '吉安市', '360828', '万安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360829', '3608', '00,36,3608', '安福县', '36', '江西省', '3608', '吉安市', '360829', '安福县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360830', '3608', '00,36,3608', '永新县', '36', '江西省', '3608', '吉安市', '360830', '永新县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360881', '3608', '00,36,3608', '井冈山市', '36', '江西省', '3608', '吉安市', '360881', '井冈山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3609', '36', '00,36', '宜春市', '36', '江西省', '3609', '宜春市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360902', '3609', '00,36,3609', '袁州区', '36', '江西省', '3609', '宜春市', '360902', '袁州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360921', '3609', '00,36,3609', '奉新县', '36', '江西省', '3609', '宜春市', '360921', '奉新县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360922', '3609', '00,36,3609', '万载县', '36', '江西省', '3609', '宜春市', '360922', '万载县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360923', '3609', '00,36,3609', '上高县', '36', '江西省', '3609', '宜春市', '360923', '上高县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360924', '3609', '00,36,3609', '宜丰县', '36', '江西省', '3609', '宜春市', '360924', '宜丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360925', '3609', '00,36,3609', '靖安县', '36', '江西省', '3609', '宜春市', '360925', '靖安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360926', '3609', '00,36,3609', '铜鼓县', '36', '江西省', '3609', '宜春市', '360926', '铜鼓县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360981', '3609', '00,36,3609', '丰城市', '36', '江西省', '3609', '宜春市', '360981', '丰城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360982', '3609', '00,36,3609', '樟树市', '36', '江西省', '3609', '宜春市', '360982', '樟树市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('360983', '3609', '00,36,3609', '高安市', '36', '江西省', '3609', '宜春市', '360983', '高安市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3610', '36', '00,36', '抚州市', '36', '江西省', '3610', '抚州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361002', '3610', '00,36,3610', '临川区', '36', '江西省', '3610', '抚州市', '361002', '临川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361003', '3610', '00,36,3610', '东乡区', '36', '江西省', '3610', '抚州市', '361003', '东乡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361021', '3610', '00,36,3610', '南城县', '36', '江西省', '3610', '抚州市', '361021', '南城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361022', '3610', '00,36,3610', '黎川县', '36', '江西省', '3610', '抚州市', '361022', '黎川县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361023', '3610', '00,36,3610', '南丰县', '36', '江西省', '3610', '抚州市', '361023', '南丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361024', '3610', '00,36,3610', '崇仁县', '36', '江西省', '3610', '抚州市', '361024', '崇仁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361025', '3610', '00,36,3610', '乐安县', '36', '江西省', '3610', '抚州市', '361025', '乐安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361026', '3610', '00,36,3610', '宜黄县', '36', '江西省', '3610', '抚州市', '361026', '宜黄县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361027', '3610', '00,36,3610', '金溪县', '36', '江西省', '3610', '抚州市', '361027', '金溪县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361028', '3610', '00,36,3610', '资溪县', '36', '江西省', '3610', '抚州市', '361028', '资溪县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361030', '3610', '00,36,3610', '广昌县', '36', '江西省', '3610', '抚州市', '361030', '广昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3611', '36', '00,36', '上饶市', '36', '江西省', '3611', '上饶市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361102', '3611', '00,36,3611', '信州区', '36', '江西省', '3611', '上饶市', '361102', '信州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361103', '3611', '00,36,3611', '广丰区', '36', '江西省', '3611', '上饶市', '361103', '广丰区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361104', '3611', '00,36,3611', '广信区', '36', '江西省', '3611', '上饶市', '361104', '广信区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361123', '3611', '00,36,3611', '玉山县', '36', '江西省', '3611', '上饶市', '361123', '玉山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361124', '3611', '00,36,3611', '铅山县', '36', '江西省', '3611', '上饶市', '361124', '铅山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361125', '3611', '00,36,3611', '横峰县', '36', '江西省', '3611', '上饶市', '361125', '横峰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361126', '3611', '00,36,3611', '弋阳县', '36', '江西省', '3611', '上饶市', '361126', '弋阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361127', '3611', '00,36,3611', '余干县', '36', '江西省', '3611', '上饶市', '361127', '余干县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361128', '3611', '00,36,3611', '鄱阳县', '36', '江西省', '3611', '上饶市', '361128', '鄱阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361129', '3611', '00,36,3611', '万年县', '36', '江西省', '3611', '上饶市', '361129', '万年县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361130', '3611', '00,36,3611', '婺源县', '36', '江西省', '3611', '上饶市', '361130', '婺源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('361181', '3611', '00,36,3611', '德兴市', '36', '江西省', '3611', '上饶市', '361181', '德兴市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('37', '00', '00', '山东省', '37', '山东省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3701', '37', '00,37', '济南市', '37', '山东省', '3701', '济南市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370102', '3701', '00,37,3701', '历下区', '37', '山东省', '3701', '济南市', '370102', '历下区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370103', '3701', '00,37,3701', '市中区', '37', '山东省', '3701', '济南市', '370103', '市中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370104', '3701', '00,37,3701', '槐荫区', '37', '山东省', '3701', '济南市', '370104', '槐荫区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370105', '3701', '00,37,3701', '天桥区', '37', '山东省', '3701', '济南市', '370105', '天桥区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370112', '3701', '00,37,3701', '历城区', '37', '山东省', '3701', '济南市', '370112', '历城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370113', '3701', '00,37,3701', '长清区', '37', '山东省', '3701', '济南市', '370113', '长清区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370114', '3701', '00,37,3701', '章丘区', '37', '山东省', '3701', '济南市', '370114', '章丘区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370115', '3701', '00,37,3701', '济阳区', '37', '山东省', '3701', '济南市', '370115', '济阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370116', '3701', '00,37,3701', '莱芜区', '37', '山东省', '3701', '济南市', '370116', '莱芜区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370117', '3701', '00,37,3701', '钢城区', '37', '山东省', '3701', '济南市', '370117', '钢城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370124', '3701', '00,37,3701', '平阴县', '37', '山东省', '3701', '济南市', '370124', '平阴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370126', '3701', '00,37,3701', '商河县', '37', '山东省', '3701', '济南市', '370126', '商河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3702', '37', '00,37', '青岛市', '37', '山东省', '3702', '青岛市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370202', '3702', '00,37,3702', '市南区', '37', '山东省', '3702', '青岛市', '370202', '市南区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370203', '3702', '00,37,3702', '市北区', '37', '山东省', '3702', '青岛市', '370203', '市北区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370211', '3702', '00,37,3702', '黄岛区', '37', '山东省', '3702', '青岛市', '370211', '黄岛区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370212', '3702', '00,37,3702', '崂山区', '37', '山东省', '3702', '青岛市', '370212', '崂山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370213', '3702', '00,37,3702', '李沧区', '37', '山东省', '3702', '青岛市', '370213', '李沧区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370214', '3702', '00,37,3702', '城阳区', '37', '山东省', '3702', '青岛市', '370214', '城阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370215', '3702', '00,37,3702', '即墨区', '37', '山东省', '3702', '青岛市', '370215', '即墨区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370281', '3702', '00,37,3702', '胶州市', '37', '山东省', '3702', '青岛市', '370281', '胶州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370283', '3702', '00,37,3702', '平度市', '37', '山东省', '3702', '青岛市', '370283', '平度市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370285', '3702', '00,37,3702', '莱西市', '37', '山东省', '3702', '青岛市', '370285', '莱西市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3703', '37', '00,37', '淄博市', '37', '山东省', '3703', '淄博市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370302', '3703', '00,37,3703', '淄川区', '37', '山东省', '3703', '淄博市', '370302', '淄川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370303', '3703', '00,37,3703', '张店区', '37', '山东省', '3703', '淄博市', '370303', '张店区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370304', '3703', '00,37,3703', '博山区', '37', '山东省', '3703', '淄博市', '370304', '博山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370305', '3703', '00,37,3703', '临淄区', '37', '山东省', '3703', '淄博市', '370305', '临淄区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370306', '3703', '00,37,3703', '周村区', '37', '山东省', '3703', '淄博市', '370306', '周村区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370321', '3703', '00,37,3703', '桓台县', '37', '山东省', '3703', '淄博市', '370321', '桓台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370322', '3703', '00,37,3703', '高青县', '37', '山东省', '3703', '淄博市', '370322', '高青县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370323', '3703', '00,37,3703', '沂源县', '37', '山东省', '3703', '淄博市', '370323', '沂源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3704', '37', '00,37', '枣庄市', '37', '山东省', '3704', '枣庄市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370402', '3704', '00,37,3704', '市中区', '37', '山东省', '3704', '枣庄市', '370402', '市中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370403', '3704', '00,37,3704', '薛城区', '37', '山东省', '3704', '枣庄市', '370403', '薛城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370404', '3704', '00,37,3704', '峄城区', '37', '山东省', '3704', '枣庄市', '370404', '峄城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370405', '3704', '00,37,3704', '台儿庄区', '37', '山东省', '3704', '枣庄市', '370405', '台儿庄区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370406', '3704', '00,37,3704', '山亭区', '37', '山东省', '3704', '枣庄市', '370406', '山亭区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370481', '3704', '00,37,3704', '滕州市', '37', '山东省', '3704', '枣庄市', '370481', '滕州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3705', '37', '00,37', '东营市', '37', '山东省', '3705', '东营市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370502', '3705', '00,37,3705', '东营区', '37', '山东省', '3705', '东营市', '370502', '东营区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370503', '3705', '00,37,3705', '河口区', '37', '山东省', '3705', '东营市', '370503', '河口区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370505', '3705', '00,37,3705', '垦利区', '37', '山东省', '3705', '东营市', '370505', '垦利区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370522', '3705', '00,37,3705', '利津县', '37', '山东省', '3705', '东营市', '370522', '利津县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370523', '3705', '00,37,3705', '广饶县', '37', '山东省', '3705', '东营市', '370523', '广饶县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3706', '37', '00,37', '烟台市', '37', '山东省', '3706', '烟台市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370602', '3706', '00,37,3706', '芝罘区', '37', '山东省', '3706', '烟台市', '370602', '芝罘区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370611', '3706', '00,37,3706', '福山区', '37', '山东省', '3706', '烟台市', '370611', '福山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370612', '3706', '00,37,3706', '牟平区', '37', '山东省', '3706', '烟台市', '370612', '牟平区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370613', '3706', '00,37,3706', '莱山区', '37', '山东省', '3706', '烟台市', '370613', '莱山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370634', '3706', '00,37,3706', '长岛县', '37', '山东省', '3706', '烟台市', '370634', '长岛县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4415', '44', '00,44', '汕尾市', '44', '广东省', '4415', '汕尾市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370683', '3706', '00,37,3706', '莱州市', '37', '山东省', '3706', '烟台市', '370683', '莱州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370684', '3706', '00,37,3706', '蓬莱市', '37', '山东省', '3706', '烟台市', '370684', '蓬莱市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370685', '3706', '00,37,3706', '招远市', '37', '山东省', '3706', '烟台市', '370685', '招远市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370686', '3706', '00,37,3706', '栖霞市', '37', '山东省', '3706', '烟台市', '370686', '栖霞市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370687', '3706', '00,37,3706', '海阳市', '37', '山东省', '3706', '烟台市', '370687', '海阳市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3707', '37', '00,37', '潍坊市', '37', '山东省', '3707', '潍坊市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370702', '3707', '00,37,3707', '潍城区', '37', '山东省', '3707', '潍坊市', '370702', '潍城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370703', '3707', '00,37,3707', '寒亭区', '37', '山东省', '3707', '潍坊市', '370703', '寒亭区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370704', '3707', '00,37,3707', '坊子区', '37', '山东省', '3707', '潍坊市', '370704', '坊子区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370705', '3707', '00,37,3707', '奎文区', '37', '山东省', '3707', '潍坊市', '370705', '奎文区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370724', '3707', '00,37,3707', '临朐县', '37', '山东省', '3707', '潍坊市', '370724', '临朐县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370725', '3707', '00,37,3707', '昌乐县', '37', '山东省', '3707', '潍坊市', '370725', '昌乐县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370781', '3707', '00,37,3707', '青州市', '37', '山东省', '3707', '潍坊市', '370781', '青州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370782', '3707', '00,37,3707', '诸城市', '37', '山东省', '3707', '潍坊市', '370782', '诸城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370783', '3707', '00,37,3707', '寿光市', '37', '山东省', '3707', '潍坊市', '370783', '寿光市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370784', '3707', '00,37,3707', '安丘市', '37', '山东省', '3707', '潍坊市', '370784', '安丘市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370785', '3707', '00,37,3707', '高密市', '37', '山东省', '3707', '潍坊市', '370785', '高密市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370786', '3707', '00,37,3707', '昌邑市', '37', '山东省', '3707', '潍坊市', '370786', '昌邑市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3708', '37', '00,37', '济宁市', '37', '山东省', '3708', '济宁市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370811', '3708', '00,37,3708', '任城区', '37', '山东省', '3708', '济宁市', '370811', '任城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370812', '3708', '00,37,3708', '兖州区', '37', '山东省', '3708', '济宁市', '370812', '兖州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370826', '3708', '00,37,3708', '微山县', '37', '山东省', '3708', '济宁市', '370826', '微山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370827', '3708', '00,37,3708', '鱼台县', '37', '山东省', '3708', '济宁市', '370827', '鱼台县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370828', '3708', '00,37,3708', '金乡县', '37', '山东省', '3708', '济宁市', '370828', '金乡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370829', '3708', '00,37,3708', '嘉祥县', '37', '山东省', '3708', '济宁市', '370829', '嘉祥县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370830', '3708', '00,37,3708', '汶上县', '37', '山东省', '3708', '济宁市', '370830', '汶上县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370831', '3708', '00,37,3708', '泗水县', '37', '山东省', '3708', '济宁市', '370831', '泗水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370832', '3708', '00,37,3708', '梁山县', '37', '山东省', '3708', '济宁市', '370832', '梁山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370881', '3708', '00,37,3708', '曲阜市', '37', '山东省', '3708', '济宁市', '370881', '曲阜市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370883', '3708', '00,37,3708', '邹城市', '37', '山东省', '3708', '济宁市', '370883', '邹城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3709', '37', '00,37', '泰安市', '37', '山东省', '3709', '泰安市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370902', '3709', '00,37,3709', '泰山区', '37', '山东省', '3709', '泰安市', '370902', '泰山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370911', '3709', '00,37,3709', '岱岳区', '37', '山东省', '3709', '泰安市', '370911', '岱岳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370921', '3709', '00,37,3709', '宁阳县', '37', '山东省', '3709', '泰安市', '370921', '宁阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370923', '3709', '00,37,3709', '东平县', '37', '山东省', '3709', '泰安市', '370923', '东平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370982', '3709', '00,37,3709', '新泰市', '37', '山东省', '3709', '泰安市', '370982', '新泰市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('370983', '3709', '00,37,3709', '肥城市', '37', '山东省', '3709', '泰安市', '370983', '肥城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3710', '37', '00,37', '威海市', '37', '山东省', '3710', '威海市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371002', '3710', '00,37,3710', '环翠区', '37', '山东省', '3710', '威海市', '371002', '环翠区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371003', '3710', '00,37,3710', '文登区', '37', '山东省', '3710', '威海市', '371003', '文登区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371082', '3710', '00,37,3710', '荣成市', '37', '山东省', '3710', '威海市', '371082', '荣成市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371083', '3710', '00,37,3710', '乳山市', '37', '山东省', '3710', '威海市', '371083', '乳山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3711', '37', '00,37', '日照市', '37', '山东省', '3711', '日照市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371102', '3711', '00,37,3711', '东港区', '37', '山东省', '3711', '日照市', '371102', '东港区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371103', '3711', '00,37,3711', '岚山区', '37', '山东省', '3711', '日照市', '371103', '岚山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371121', '3711', '00,37,3711', '五莲县', '37', '山东省', '3711', '日照市', '371121', '五莲县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371122', '3711', '00,37,3711', '莒县', '37', '山东省', '3711', '日照市', '371122', '莒县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3713', '37', '00,37', '临沂市', '37', '山东省', '3713', '临沂市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371302', '3713', '00,37,3713', '兰山区', '37', '山东省', '3713', '临沂市', '371302', '兰山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371311', '3713', '00,37,3713', '罗庄区', '37', '山东省', '3713', '临沂市', '371311', '罗庄区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371312', '3713', '00,37,3713', '河东区', '37', '山东省', '3713', '临沂市', '371312', '河东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371321', '3713', '00,37,3713', '沂南县', '37', '山东省', '3713', '临沂市', '371321', '沂南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371322', '3713', '00,37,3713', '郯城县', '37', '山东省', '3713', '临沂市', '371322', '郯城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371323', '3713', '00,37,3713', '沂水县', '37', '山东省', '3713', '临沂市', '371323', '沂水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371324', '3713', '00,37,3713', '兰陵县', '37', '山东省', '3713', '临沂市', '371324', '兰陵县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371325', '3713', '00,37,3713', '费县', '37', '山东省', '3713', '临沂市', '371325', '费县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371326', '3713', '00,37,3713', '平邑县', '37', '山东省', '3713', '临沂市', '371326', '平邑县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371327', '3713', '00,37,3713', '莒南县', '37', '山东省', '3713', '临沂市', '371327', '莒南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371328', '3713', '00,37,3713', '蒙阴县', '37', '山东省', '3713', '临沂市', '371328', '蒙阴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371329', '3713', '00,37,3713', '临沭县', '37', '山东省', '3713', '临沂市', '371329', '临沭县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3714', '37', '00,37', '德州市', '37', '山东省', '3714', '德州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371402', '3714', '00,37,3714', '德城区', '37', '山东省', '3714', '德州市', '371402', '德城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371403', '3714', '00,37,3714', '陵城区', '37', '山东省', '3714', '德州市', '371403', '陵城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371422', '3714', '00,37,3714', '宁津县', '37', '山东省', '3714', '德州市', '371422', '宁津县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371423', '3714', '00,37,3714', '庆云县', '37', '山东省', '3714', '德州市', '371423', '庆云县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371424', '3714', '00,37,3714', '临邑县', '37', '山东省', '3714', '德州市', '371424', '临邑县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371425', '3714', '00,37,3714', '齐河县', '37', '山东省', '3714', '德州市', '371425', '齐河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371426', '3714', '00,37,3714', '平原县', '37', '山东省', '3714', '德州市', '371426', '平原县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371427', '3714', '00,37,3714', '夏津县', '37', '山东省', '3714', '德州市', '371427', '夏津县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371428', '3714', '00,37,3714', '武城县', '37', '山东省', '3714', '德州市', '371428', '武城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371481', '3714', '00,37,3714', '乐陵市', '37', '山东省', '3714', '德州市', '371481', '乐陵市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371482', '3714', '00,37,3714', '禹城市', '37', '山东省', '3714', '德州市', '371482', '禹城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('3715', '37', '00,37', '聊城市', '37', '山东省', '3715', '聊城市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371502', '3715', '00,37,3715', '东昌府区', '37', '山东省', '3715', '聊城市', '371502', '东昌府区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371503', '3715', '00,37,3715', '茌平区', '37', '山东省', '3715', '聊城市', '371503', '茌平区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371521', '3715', '00,37,3715', '阳谷县', '37', '山东省', '3715', '聊城市', '371521', '阳谷县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371522', '3715', '00,37,3715', '莘县', '37', '山东省', '3715', '聊城市', '371522', '莘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371524', '3715', '00,37,3715', '东阿县', '37', '山东省', '3715', '聊城市', '371524', '东阿县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('371525', '3715', '00,37,3715', '冠县', '37', '山东省', '3715', '聊城市', '371525', '冠县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4206', '42', '00,42', '襄阳市', '42', '湖北省', '4206', '襄阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420602', '4206', '00,42,4206', '襄城区', '42', '湖北省', '4206', '襄阳市', '420602', '襄城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420606', '4206', '00,42,4206', '樊城区', '42', '湖北省', '4206', '襄阳市', '420606', '樊城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420607', '4206', '00,42,4206', '襄州区', '42', '湖北省', '4206', '襄阳市', '420607', '襄州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420624', '4206', '00,42,4206', '南漳县', '42', '湖北省', '4206', '襄阳市', '420624', '南漳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420625', '4206', '00,42,4206', '谷城县', '42', '湖北省', '4206', '襄阳市', '420625', '谷城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420626', '4206', '00,42,4206', '保康县', '42', '湖北省', '4206', '襄阳市', '420626', '保康县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420682', '4206', '00,42,4206', '老河口市', '42', '湖北省', '4206', '襄阳市', '420682', '老河口市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420683', '4206', '00,42,4206', '枣阳市', '42', '湖北省', '4206', '襄阳市', '420683', '枣阳市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420684', '4206', '00,42,4206', '宜城市', '42', '湖北省', '4206', '襄阳市', '420684', '宜城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4207', '42', '00,42', '鄂州市', '42', '湖北省', '4207', '鄂州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420702', '4207', '00,42,4207', '梁子湖区', '42', '湖北省', '4207', '鄂州市', '420702', '梁子湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420703', '4207', '00,42,4207', '华容区', '42', '湖北省', '4207', '鄂州市', '420703', '华容区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420704', '4207', '00,42,4207', '鄂城区', '42', '湖北省', '4207', '鄂州市', '420704', '鄂城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4208', '42', '00,42', '荆门市', '42', '湖北省', '4208', '荆门市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420802', '4208', '00,42,4208', '东宝区', '42', '湖北省', '4208', '荆门市', '420802', '东宝区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420804', '4208', '00,42,4208', '掇刀区', '42', '湖北省', '4208', '荆门市', '420804', '掇刀区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420822', '4208', '00,42,4208', '沙洋县', '42', '湖北省', '4208', '荆门市', '420822', '沙洋县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420881', '4208', '00,42,4208', '钟祥市', '42', '湖北省', '4208', '荆门市', '420881', '钟祥市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420882', '4208', '00,42,4208', '京山市', '42', '湖北省', '4208', '荆门市', '420882', '京山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4209', '42', '00,42', '孝感市', '42', '湖北省', '4209', '孝感市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420902', '4209', '00,42,4209', '孝南区', '42', '湖北省', '4209', '孝感市', '420902', '孝南区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420921', '4209', '00,42,4209', '孝昌县', '42', '湖北省', '4209', '孝感市', '420921', '孝昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420922', '4209', '00,42,4209', '大悟县', '42', '湖北省', '4209', '孝感市', '420922', '大悟县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420923', '4209', '00,42,4209', '云梦县', '42', '湖北省', '4209', '孝感市', '420923', '云梦县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420981', '4209', '00,42,4209', '应城市', '42', '湖北省', '4209', '孝感市', '420981', '应城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420982', '4209', '00,42,4209', '安陆市', '42', '湖北省', '4209', '孝感市', '420982', '安陆市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('420984', '4209', '00,42,4209', '汉川市', '42', '湖北省', '4209', '孝感市', '420984', '汉川市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4210', '42', '00,42', '荆州市', '42', '湖北省', '4210', '荆州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421002', '4210', '00,42,4210', '沙市区', '42', '湖北省', '4210', '荆州市', '421002', '沙市区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421003', '4210', '00,42,4210', '荆州区', '42', '湖北省', '4210', '荆州市', '421003', '荆州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421022', '4210', '00,42,4210', '公安县', '42', '湖北省', '4210', '荆州市', '421022', '公安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421023', '4210', '00,42,4210', '监利县', '42', '湖北省', '4210', '荆州市', '421023', '监利县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421024', '4210', '00,42,4210', '江陵县', '42', '湖北省', '4210', '荆州市', '421024', '江陵县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421081', '4210', '00,42,4210', '石首市', '42', '湖北省', '4210', '荆州市', '421081', '石首市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421083', '4210', '00,42,4210', '洪湖市', '42', '湖北省', '4210', '荆州市', '421083', '洪湖市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421087', '4210', '00,42,4210', '松滋市', '42', '湖北省', '4210', '荆州市', '421087', '松滋市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4211', '42', '00,42', '黄冈市', '42', '湖北省', '4211', '黄冈市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421102', '4211', '00,42,4211', '黄州区', '42', '湖北省', '4211', '黄冈市', '421102', '黄州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421121', '4211', '00,42,4211', '团风县', '42', '湖北省', '4211', '黄冈市', '421121', '团风县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421122', '4211', '00,42,4211', '红安县', '42', '湖北省', '4211', '黄冈市', '421122', '红安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421123', '4211', '00,42,4211', '罗田县', '42', '湖北省', '4211', '黄冈市', '421123', '罗田县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421124', '4211', '00,42,4211', '英山县', '42', '湖北省', '4211', '黄冈市', '421124', '英山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421125', '4211', '00,42,4211', '浠水县', '42', '湖北省', '4211', '黄冈市', '421125', '浠水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421126', '4211', '00,42,4211', '蕲春县', '42', '湖北省', '4211', '黄冈市', '421126', '蕲春县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421127', '4211', '00,42,4211', '黄梅县', '42', '湖北省', '4211', '黄冈市', '421127', '黄梅县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421181', '4211', '00,42,4211', '麻城市', '42', '湖北省', '4211', '黄冈市', '421181', '麻城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421182', '4211', '00,42,4211', '武穴市', '42', '湖北省', '4211', '黄冈市', '421182', '武穴市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4212', '42', '00,42', '咸宁市', '42', '湖北省', '4212', '咸宁市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421202', '4212', '00,42,4212', '咸安区', '42', '湖北省', '4212', '咸宁市', '421202', '咸安区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421221', '4212', '00,42,4212', '嘉鱼县', '42', '湖北省', '4212', '咸宁市', '421221', '嘉鱼县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421222', '4212', '00,42,4212', '通城县', '42', '湖北省', '4212', '咸宁市', '421222', '通城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421223', '4212', '00,42,4212', '崇阳县', '42', '湖北省', '4212', '咸宁市', '421223', '崇阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421224', '4212', '00,42,4212', '通山县', '42', '湖北省', '4212', '咸宁市', '421224', '通山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421281', '4212', '00,42,4212', '赤壁市', '42', '湖北省', '4212', '咸宁市', '421281', '赤壁市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4213', '42', '00,42', '随州市', '42', '湖北省', '4213', '随州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421303', '4213', '00,42,4213', '曾都区', '42', '湖北省', '4213', '随州市', '421303', '曾都区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421321', '4213', '00,42,4213', '随县', '42', '湖北省', '4213', '随州市', '421321', '随县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('421381', '4213', '00,42,4213', '广水市', '42', '湖北省', '4213', '随州市', '421381', '广水市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4228', '42', '00,42', '恩施土家族苗族自治州', '42', '湖北省', '4228', '恩施土家族苗族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('422801', '4228', '00,42,4228', '恩施市', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422801', '恩施市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('422802', '4228', '00,42,4228', '利川市', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422802', '利川市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('422822', '4228', '00,42,4228', '建始县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422822', '建始县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('422823', '4228', '00,42,4228', '巴东县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422823', '巴东县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('422825', '4228', '00,42,4228', '宣恩县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422825', '宣恩县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('422826', '4228', '00,42,4228', '咸丰县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422826', '咸丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('422827', '4228', '00,42,4228', '来凤县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422827', '来凤县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('422828', '4228', '00,42,4228', '鹤峰县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422828', '鹤峰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4290', '42', '00,42', '省直辖县级行政区', '42', '湖北省', '4290', '省直辖县级行政区', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('429004', '4290', '00,42,4290', '仙桃市', '42', '湖北省', '4290', '省直辖县级行政区', '429004', '仙桃市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('429005', '4290', '00,42,4290', '潜江市', '42', '湖北省', '4290', '省直辖县级行政区', '429005', '潜江市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('429006', '4290', '00,42,4290', '天门市', '42', '湖北省', '4290', '省直辖县级行政区', '429006', '天门市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('429021', '4290', '00,42,4290', '神农架林区', '42', '湖北省', '4290', '省直辖县级行政区', '429021', '神农架林区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('43', '00', '00', '湖南省', '43', '湖南省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4301', '43', '00,43', '长沙市', '43', '湖南省', '4301', '长沙市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('430102', '4301', '00,43,4301', '芙蓉区', '43', '湖南省', '4301', '长沙市', '430102', '芙蓉区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('430922', '4309', '00,43,4309', '桃江县', '43', '湖南省', '4309', '益阳市', '430922', '桃江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('371526', '3715', '00,37,3715', '高唐县', '37', '山东省', '3715', '聊城市', '371526', '高唐县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('430921', '4309', '00,43,4309', '南县', '43', '湖南省', '4309', '益阳市', '430921', '南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('450312', '4503', '00,45,4503', '临桂区', '45', '广西壮族自治区', '4503', '桂林市', '450312', '临桂区', NULL, NULL, NULL, NULL, '3', '1', NULL);
@@ -3315,83 +3392,290 @@ INSERT INTO "BLADE_REGION" VALUES ('450226', '4502', '00,45,4502', '三江侗族
 INSERT INTO "BLADE_REGION" VALUES ('4503', '45', '00,45', '桂林市', '45', '广西壮族自治区', '4503', '桂林市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('450302', '4503', '00,45,4503', '秀峰区', '45', '广西壮族自治区', '4503', '桂林市', '450302', '秀峰区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('450303', '4503', '00,45,4503', '叠彩区', '45', '广西壮族自治区', '4503', '桂林市', '450303', '叠彩区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4206', '42', '00,42', '襄阳市', '42', '湖北省', '4206', '襄阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420602', '4206', '00,42,4206', '襄城区', '42', '湖北省', '4206', '襄阳市', '420602', '襄城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420606', '4206', '00,42,4206', '樊城区', '42', '湖北省', '4206', '襄阳市', '420606', '樊城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420607', '4206', '00,42,4206', '襄州区', '42', '湖北省', '4206', '襄阳市', '420607', '襄州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420624', '4206', '00,42,4206', '南漳县', '42', '湖北省', '4206', '襄阳市', '420624', '南漳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420625', '4206', '00,42,4206', '谷城县', '42', '湖北省', '4206', '襄阳市', '420625', '谷城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420626', '4206', '00,42,4206', '保康县', '42', '湖北省', '4206', '襄阳市', '420626', '保康县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420682', '4206', '00,42,4206', '老河口市', '42', '湖北省', '4206', '襄阳市', '420682', '老河口市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420683', '4206', '00,42,4206', '枣阳市', '42', '湖北省', '4206', '襄阳市', '420683', '枣阳市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420684', '4206', '00,42,4206', '宜城市', '42', '湖北省', '4206', '襄阳市', '420684', '宜城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4207', '42', '00,42', '鄂州市', '42', '湖北省', '4207', '鄂州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420702', '4207', '00,42,4207', '梁子湖区', '42', '湖北省', '4207', '鄂州市', '420702', '梁子湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420703', '4207', '00,42,4207', '华容区', '42', '湖北省', '4207', '鄂州市', '420703', '华容区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420704', '4207', '00,42,4207', '鄂城区', '42', '湖北省', '4207', '鄂州市', '420704', '鄂城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4208', '42', '00,42', '荆门市', '42', '湖北省', '4208', '荆门市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420802', '4208', '00,42,4208', '东宝区', '42', '湖北省', '4208', '荆门市', '420802', '东宝区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420804', '4208', '00,42,4208', '掇刀区', '42', '湖北省', '4208', '荆门市', '420804', '掇刀区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420822', '4208', '00,42,4208', '沙洋县', '42', '湖北省', '4208', '荆门市', '420822', '沙洋县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420881', '4208', '00,42,4208', '钟祥市', '42', '湖北省', '4208', '荆门市', '420881', '钟祥市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420882', '4208', '00,42,4208', '京山市', '42', '湖北省', '4208', '荆门市', '420882', '京山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4209', '42', '00,42', '孝感市', '42', '湖北省', '4209', '孝感市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420902', '4209', '00,42,4209', '孝南区', '42', '湖北省', '4209', '孝感市', '420902', '孝南区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420921', '4209', '00,42,4209', '孝昌县', '42', '湖北省', '4209', '孝感市', '420921', '孝昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420922', '4209', '00,42,4209', '大悟县', '42', '湖北省', '4209', '孝感市', '420922', '大悟县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420923', '4209', '00,42,4209', '云梦县', '42', '湖北省', '4209', '孝感市', '420923', '云梦县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420981', '4209', '00,42,4209', '应城市', '42', '湖北省', '4209', '孝感市', '420981', '应城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420982', '4209', '00,42,4209', '安陆市', '42', '湖北省', '4209', '孝感市', '420982', '安陆市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('420984', '4209', '00,42,4209', '汉川市', '42', '湖北省', '4209', '孝感市', '420984', '汉川市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4210', '42', '00,42', '荆州市', '42', '湖北省', '4210', '荆州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421002', '4210', '00,42,4210', '沙市区', '42', '湖北省', '4210', '荆州市', '421002', '沙市区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421003', '4210', '00,42,4210', '荆州区', '42', '湖北省', '4210', '荆州市', '421003', '荆州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421022', '4210', '00,42,4210', '公安县', '42', '湖北省', '4210', '荆州市', '421022', '公安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421023', '4210', '00,42,4210', '监利县', '42', '湖北省', '4210', '荆州市', '421023', '监利县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421024', '4210', '00,42,4210', '江陵县', '42', '湖北省', '4210', '荆州市', '421024', '江陵县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421081', '4210', '00,42,4210', '石首市', '42', '湖北省', '4210', '荆州市', '421081', '石首市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421083', '4210', '00,42,4210', '洪湖市', '42', '湖北省', '4210', '荆州市', '421083', '洪湖市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421087', '4210', '00,42,4210', '松滋市', '42', '湖北省', '4210', '荆州市', '421087', '松滋市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4211', '42', '00,42', '黄冈市', '42', '湖北省', '4211', '黄冈市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421102', '4211', '00,42,4211', '黄州区', '42', '湖北省', '4211', '黄冈市', '421102', '黄州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421121', '4211', '00,42,4211', '团风县', '42', '湖北省', '4211', '黄冈市', '421121', '团风县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421122', '4211', '00,42,4211', '红安县', '42', '湖北省', '4211', '黄冈市', '421122', '红安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421123', '4211', '00,42,4211', '罗田县', '42', '湖北省', '4211', '黄冈市', '421123', '罗田县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421124', '4211', '00,42,4211', '英山县', '42', '湖北省', '4211', '黄冈市', '421124', '英山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421125', '4211', '00,42,4211', '浠水县', '42', '湖北省', '4211', '黄冈市', '421125', '浠水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421126', '4211', '00,42,4211', '蕲春县', '42', '湖北省', '4211', '黄冈市', '421126', '蕲春县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421127', '4211', '00,42,4211', '黄梅县', '42', '湖北省', '4211', '黄冈市', '421127', '黄梅县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421181', '4211', '00,42,4211', '麻城市', '42', '湖北省', '4211', '黄冈市', '421181', '麻城市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421182', '4211', '00,42,4211', '武穴市', '42', '湖北省', '4211', '黄冈市', '421182', '武穴市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4212', '42', '00,42', '咸宁市', '42', '湖北省', '4212', '咸宁市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421202', '4212', '00,42,4212', '咸安区', '42', '湖北省', '4212', '咸宁市', '421202', '咸安区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421221', '4212', '00,42,4212', '嘉鱼县', '42', '湖北省', '4212', '咸宁市', '421221', '嘉鱼县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421222', '4212', '00,42,4212', '通城县', '42', '湖北省', '4212', '咸宁市', '421222', '通城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421223', '4212', '00,42,4212', '崇阳县', '42', '湖北省', '4212', '咸宁市', '421223', '崇阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421224', '4212', '00,42,4212', '通山县', '42', '湖北省', '4212', '咸宁市', '421224', '通山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421281', '4212', '00,42,4212', '赤壁市', '42', '湖北省', '4212', '咸宁市', '421281', '赤壁市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4213', '42', '00,42', '随州市', '42', '湖北省', '4213', '随州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421303', '4213', '00,42,4213', '曾都区', '42', '湖北省', '4213', '随州市', '421303', '曾都区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421321', '4213', '00,42,4213', '随县', '42', '湖北省', '4213', '随州市', '421321', '随县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('421381', '4213', '00,42,4213', '广水市', '42', '湖北省', '4213', '随州市', '421381', '广水市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4228', '42', '00,42', '恩施土家族苗族自治州', '42', '湖北省', '4228', '恩施土家族苗族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('422801', '4228', '00,42,4228', '恩施市', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422801', '恩施市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('422802', '4228', '00,42,4228', '利川市', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422802', '利川市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('422822', '4228', '00,42,4228', '建始县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422822', '建始县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('422823', '4228', '00,42,4228', '巴东县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422823', '巴东县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('422825', '4228', '00,42,4228', '宣恩县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422825', '宣恩县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('422826', '4228', '00,42,4228', '咸丰县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422826', '咸丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('422827', '4228', '00,42,4228', '来凤县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422827', '来凤县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('422828', '4228', '00,42,4228', '鹤峰县', '42', '湖北省', '4228', '恩施土家族苗族自治州', '422828', '鹤峰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4290', '42', '00,42', '省直辖县级行政区', '42', '湖北省', '4290', '省直辖县级行政区', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('429004', '4290', '00,42,4290', '仙桃市', '42', '湖北省', '4290', '省直辖县级行政区', '429004', '仙桃市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('429005', '4290', '00,42,4290', '潜江市', '42', '湖北省', '4290', '省直辖县级行政区', '429005', '潜江市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('429006', '4290', '00,42,4290', '天门市', '42', '湖北省', '4290', '省直辖县级行政区', '429006', '天门市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('429021', '4290', '00,42,4290', '神农架林区', '42', '湖北省', '4290', '省直辖县级行政区', '429021', '神农架林区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('43', '00', '00', '湖南省', '43', '湖南省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4301', '43', '00,43', '长沙市', '43', '湖南省', '4301', '长沙市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('430102', '4301', '00,43,4301', '芙蓉区', '43', '湖南省', '4301', '长沙市', '430102', '芙蓉区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('430922', '4309', '00,43,4309', '桃江县', '43', '湖南省', '4309', '益阳市', '430922', '桃江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511681', '5116', '00,51,5116', '华蓥市', '51', '四川省', '5116', '广安市', '511681', '华蓥市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('430104', '4301', '00,43,4301', '岳麓区', '43', '湖南省', '4301', '长沙市', '430104', '岳麓区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451123', '4511', '00,45,4511', '富川瑶族自治县', '45', '广西壮族自治区', '4511', '贺州市', '451123', '富川瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4512', '45', '00,45', '河池市', '45', '广西壮族自治区', '4512', '河池市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451202', '4512', '00,45,4512', '金城江区', '45', '广西壮族自治区', '4512', '河池市', '451202', '金城江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451203', '4512', '00,45,4512', '宜州区', '45', '广西壮族自治区', '4512', '河池市', '451203', '宜州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451221', '4512', '00,45,4512', '南丹县', '45', '广西壮族自治区', '4512', '河池市', '451221', '南丹县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451222', '4512', '00,45,4512', '天峨县', '45', '广西壮族自治区', '4512', '河池市', '451222', '天峨县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451223', '4512', '00,45,4512', '凤山县', '45', '广西壮族自治区', '4512', '河池市', '451223', '凤山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451224', '4512', '00,45,4512', '东兰县', '45', '广西壮族自治区', '4512', '河池市', '451224', '东兰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451225', '4512', '00,45,4512', '罗城仫佬族自治县', '45', '广西壮族自治区', '4512', '河池市', '451225', '罗城仫佬族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451226', '4512', '00,45,4512', '环江毛南族自治县', '45', '广西壮族自治区', '4512', '河池市', '451226', '环江毛南族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451227', '4512', '00,45,4512', '巴马瑶族自治县', '45', '广西壮族自治区', '4512', '河池市', '451227', '巴马瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451228', '4512', '00,45,4512', '都安瑶族自治县', '45', '广西壮族自治区', '4512', '河池市', '451228', '都安瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451229', '4512', '00,45,4512', '大化瑶族自治县', '45', '广西壮族自治区', '4512', '河池市', '451229', '大化瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4513', '45', '00,45', '来宾市', '45', '广西壮族自治区', '4513', '来宾市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451302', '4513', '00,45,4513', '兴宾区', '45', '广西壮族自治区', '4513', '来宾市', '451302', '兴宾区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451321', '4513', '00,45,4513', '忻城县', '45', '广西壮族自治区', '4513', '来宾市', '451321', '忻城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451322', '4513', '00,45,4513', '象州县', '45', '广西壮族自治区', '4513', '来宾市', '451322', '象州县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451323', '4513', '00,45,4513', '武宣县', '45', '广西壮族自治区', '4513', '来宾市', '451323', '武宣县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451324', '4513', '00,45,4513', '金秀瑶族自治县', '45', '广西壮族自治区', '4513', '来宾市', '451324', '金秀瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451381', '4513', '00,45,4513', '合山市', '45', '广西壮族自治区', '4513', '来宾市', '451381', '合山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4514', '45', '00,45', '崇左市', '45', '广西壮族自治区', '4514', '崇左市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451402', '4514', '00,45,4514', '江州区', '45', '广西壮族自治区', '4514', '崇左市', '451402', '江州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451421', '4514', '00,45,4514', '扶绥县', '45', '广西壮族自治区', '4514', '崇左市', '451421', '扶绥县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451422', '4514', '00,45,4514', '宁明县', '45', '广西壮族自治区', '4514', '崇左市', '451422', '宁明县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451423', '4514', '00,45,4514', '龙州县', '45', '广西壮族自治区', '4514', '崇左市', '451423', '龙州县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451424', '4514', '00,45,4514', '大新县', '45', '广西壮族自治区', '4514', '崇左市', '451424', '大新县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451425', '4514', '00,45,4514', '天等县', '45', '广西壮族自治区', '4514', '崇左市', '451425', '天等县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('451481', '4514', '00,45,4514', '凭祥市', '45', '广西壮族自治区', '4514', '崇左市', '451481', '凭祥市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('46', '00', '00', '海南省', '46', '海南省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4601', '46', '00,46', '海口市', '46', '海南省', '4601', '海口市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460105', '4601', '00,46,4601', '秀英区', '46', '海南省', '4601', '海口市', '460105', '秀英区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460106', '4601', '00,46,4601', '龙华区', '46', '海南省', '4601', '海口市', '460106', '龙华区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460107', '4601', '00,46,4601', '琼山区', '46', '海南省', '4601', '海口市', '460107', '琼山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460108', '4601', '00,46,4601', '美兰区', '46', '海南省', '4601', '海口市', '460108', '美兰区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4602', '46', '00,46', '三亚市', '46', '海南省', '4602', '三亚市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460202', '4602', '00,46,4602', '海棠区', '46', '海南省', '4602', '三亚市', '460202', '海棠区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460203', '4602', '00,46,4602', '吉阳区', '46', '海南省', '4602', '三亚市', '460203', '吉阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460204', '4602', '00,46,4602', '天涯区', '46', '海南省', '4602', '三亚市', '460204', '天涯区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460205', '4602', '00,46,4602', '崖州区', '46', '海南省', '4602', '三亚市', '460205', '崖州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4603', '46', '00,46', '三沙市', '46', '海南省', '4603', '三沙市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('460400', '4604', '00,46,4604', '儋州市', '46', '海南省', '4604', '儋州市', '460400', '儋州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('4690', '46', '00,46', '省直辖县级行政区', '46', '海南省', '4690', '省直辖县级行政区', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469001', '4690', '00,46,4690', '五指山市', '46', '海南省', '4690', '省直辖县级行政区', '469001', '五指山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469002', '4690', '00,46,4690', '琼海市', '46', '海南省', '4690', '省直辖县级行政区', '469002', '琼海市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469005', '4690', '00,46,4690', '文昌市', '46', '海南省', '4690', '省直辖县级行政区', '469005', '文昌市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469006', '4690', '00,46,4690', '万宁市', '46', '海南省', '4690', '省直辖县级行政区', '469006', '万宁市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469007', '4690', '00,46,4690', '东方市', '46', '海南省', '4690', '省直辖县级行政区', '469007', '东方市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469021', '4690', '00,46,4690', '定安县', '46', '海南省', '4690', '省直辖县级行政区', '469021', '定安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469022', '4690', '00,46,4690', '屯昌县', '46', '海南省', '4690', '省直辖县级行政区', '469022', '屯昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469023', '4690', '00,46,4690', '澄迈县', '46', '海南省', '4690', '省直辖县级行政区', '469023', '澄迈县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469024', '4690', '00,46,4690', '临高县', '46', '海南省', '4690', '省直辖县级行政区', '469024', '临高县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469025', '4690', '00,46,4690', '白沙黎族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469025', '白沙黎族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469026', '4690', '00,46,4690', '昌江黎族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469026', '昌江黎族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469027', '4690', '00,46,4690', '乐东黎族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469027', '乐东黎族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469028', '4690', '00,46,4690', '陵水黎族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469028', '陵水黎族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469029', '4690', '00,46,4690', '保亭黎族苗族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469029', '保亭黎族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('469030', '4690', '00,46,4690', '琼中黎族苗族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469030', '琼中黎族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('50', '00', '00', '重庆市', '50', '重庆市', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5001', '50', '00,50', '重庆市', '50', '重庆市', '5001', '重庆市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500101', '5001', '00,50,5001', '万州区', '50', '重庆市', '5001', '重庆市', '500101', '万州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500102', '5001', '00,50,5001', '涪陵区', '50', '重庆市', '5001', '重庆市', '500102', '涪陵区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500103', '5001', '00,50,5001', '渝中区', '50', '重庆市', '5001', '重庆市', '500103', '渝中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500104', '5001', '00,50,5001', '大渡口区', '50', '重庆市', '5001', '重庆市', '500104', '大渡口区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500105', '5001', '00,50,5001', '江北区', '50', '重庆市', '5001', '重庆市', '500105', '江北区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500106', '5001', '00,50,5001', '沙坪坝区', '50', '重庆市', '5001', '重庆市', '500106', '沙坪坝区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500107', '5001', '00,50,5001', '九龙坡区', '50', '重庆市', '5001', '重庆市', '500107', '九龙坡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500108', '5001', '00,50,5001', '南岸区', '50', '重庆市', '5001', '重庆市', '500108', '南岸区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500109', '5001', '00,50,5001', '北碚区', '50', '重庆市', '5001', '重庆市', '500109', '北碚区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('500110', '5001', '00,50,5001', '綦江区', '50', '重庆市', '5001', '重庆市', '500110', '綦江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522328', '5223', '00,52,5223', '安龙县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522328', '安龙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5226', '52', '00,52', '黔东南苗族侗族自治州', '52', '贵州省', '5226', '黔东南苗族侗族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522601', '5226', '00,52,5226', '凯里市', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522601', '凯里市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522622', '5226', '00,52,5226', '黄平县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522622', '黄平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522623', '5226', '00,52,5226', '施秉县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522623', '施秉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522624', '5226', '00,52,5226', '三穗县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522624', '三穗县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522625', '5226', '00,52,5226', '镇远县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522625', '镇远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522626', '5226', '00,52,5226', '岑巩县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522626', '岑巩县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522627', '5226', '00,52,5226', '天柱县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522627', '天柱县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522628', '5226', '00,52,5226', '锦屏县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522628', '锦屏县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522629', '5226', '00,52,5226', '剑河县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522629', '剑河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522630', '5226', '00,52,5226', '台江县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522630', '台江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522631', '5226', '00,52,5226', '黎平县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522631', '黎平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522632', '5226', '00,52,5226', '榕江县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522632', '榕江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522633', '5226', '00,52,5226', '从江县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522633', '从江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522634', '5226', '00,52,5226', '雷山县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522634', '雷山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522635', '5226', '00,52,5226', '麻江县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522635', '麻江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522636', '5226', '00,52,5226', '丹寨县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522636', '丹寨县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5227', '52', '00,52', '黔南布依族苗族自治州', '52', '贵州省', '5227', '黔南布依族苗族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522701', '5227', '00,52,5227', '都匀市', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522701', '都匀市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522702', '5227', '00,52,5227', '福泉市', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522702', '福泉市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522722', '5227', '00,52,5227', '荔波县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522722', '荔波县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522723', '5227', '00,52,5227', '贵定县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522723', '贵定县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522725', '5227', '00,52,5227', '瓮安县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522725', '瓮安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522726', '5227', '00,52,5227', '独山县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522726', '独山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522727', '5227', '00,52,5227', '平塘县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522727', '平塘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522728', '5227', '00,52,5227', '罗甸县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522728', '罗甸县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522729', '5227', '00,52,5227', '长顺县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522729', '长顺县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522730', '5227', '00,52,5227', '龙里县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522730', '龙里县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522731', '5227', '00,52,5227', '惠水县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522731', '惠水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522732', '5227', '00,52,5227', '三都水族自治县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522732', '三都水族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('53', '00', '00', '云南省', '53', '云南省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5301', '53', '00,53', '昆明市', '53', '云南省', '5301', '昆明市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530102', '5301', '00,53,5301', '五华区', '53', '云南省', '5301', '昆明市', '530102', '五华区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530103', '5301', '00,53,5301', '盘龙区', '53', '云南省', '5301', '昆明市', '530103', '盘龙区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530111', '5301', '00,53,5301', '官渡区', '53', '云南省', '5301', '昆明市', '530111', '官渡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530112', '5301', '00,53,5301', '西山区', '53', '云南省', '5301', '昆明市', '530112', '西山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530113', '5301', '00,53,5301', '东川区', '53', '云南省', '5301', '昆明市', '530113', '东川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530114', '5301', '00,53,5301', '呈贡区', '53', '云南省', '5301', '昆明市', '530114', '呈贡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530115', '5301', '00,53,5301', '晋宁区', '53', '云南省', '5301', '昆明市', '530115', '晋宁区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530124', '5301', '00,53,5301', '富民县', '53', '云南省', '5301', '昆明市', '530124', '富民县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530125', '5301', '00,53,5301', '宜良县', '53', '云南省', '5301', '昆明市', '530125', '宜良县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530126', '5301', '00,53,5301', '石林彝族自治县', '53', '云南省', '5301', '昆明市', '530126', '石林彝族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530127', '5301', '00,53,5301', '嵩明县', '53', '云南省', '5301', '昆明市', '530127', '嵩明县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530128', '5301', '00,53,5301', '禄劝彝族苗族自治县', '53', '云南省', '5301', '昆明市', '530128', '禄劝彝族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530129', '5301', '00,53,5301', '寻甸回族彝族自治县', '53', '云南省', '5301', '昆明市', '530129', '寻甸回族彝族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530181', '5301', '00,53,5301', '安宁市', '53', '云南省', '5301', '昆明市', '530181', '安宁市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5303', '53', '00,53', '曲靖市', '53', '云南省', '5303', '曲靖市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530302', '5303', '00,53,5303', '麒麟区', '53', '云南省', '5303', '曲靖市', '530302', '麒麟区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530303', '5303', '00,53,5303', '沾益区', '53', '云南省', '5303', '曲靖市', '530303', '沾益区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530304', '5303', '00,53,5303', '马龙区', '53', '云南省', '5303', '曲靖市', '530304', '马龙区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530322', '5303', '00,53,5303', '陆良县', '53', '云南省', '5303', '曲靖市', '530322', '陆良县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530323', '5303', '00,53,5303', '师宗县', '53', '云南省', '5303', '曲靖市', '530323', '师宗县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530324', '5303', '00,53,5303', '罗平县', '53', '云南省', '5303', '曲靖市', '530324', '罗平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530325', '5303', '00,53,5303', '富源县', '53', '云南省', '5303', '曲靖市', '530325', '富源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530326', '5303', '00,53,5303', '会泽县', '53', '云南省', '5303', '曲靖市', '530326', '会泽县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530381', '5303', '00,53,5303', '宣威市', '53', '云南省', '5303', '曲靖市', '530381', '宣威市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5304', '53', '00,53', '玉溪市', '53', '云南省', '5304', '玉溪市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530402', '5304', '00,53,5304', '红塔区', '53', '云南省', '5304', '玉溪市', '530402', '红塔区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530403', '5304', '00,53,5304', '江川区', '53', '云南省', '5304', '玉溪市', '530403', '江川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530423', '5304', '00,53,5304', '通海县', '53', '云南省', '5304', '玉溪市', '530423', '通海县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530424', '5304', '00,53,5304', '华宁县', '53', '云南省', '5304', '玉溪市', '530424', '华宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530425', '5304', '00,53,5304', '易门县', '53', '云南省', '5304', '玉溪市', '530425', '易门县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530426', '5304', '00,53,5304', '峨山彝族自治县', '53', '云南省', '5304', '玉溪市', '530426', '峨山彝族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530427', '5304', '00,53,5304', '新平彝族傣族自治县', '53', '云南省', '5304', '玉溪市', '530427', '新平彝族傣族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530428', '5304', '00,53,5304', '元江哈尼族彝族傣族自治县', '53', '云南省', '5304', '玉溪市', '530428', '元江哈尼族彝族傣族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530481', '5304', '00,53,5304', '澄江市', '53', '云南省', '5304', '玉溪市', '530481', '澄江市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5305', '53', '00,53', '保山市', '53', '云南省', '5305', '保山市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('530502', '5305', '00,53,5305', '隆阳区', '53', '云南省', '5305', '保山市', '530502', '隆阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5117', '51', '00,51', '达州市', '51', '四川省', '5117', '达州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('650502', '6505', '00,65,6505', '伊州区', '65', '新疆维吾尔自治区', '6505', '哈密市', '650502', '伊州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511722', '5117', '00,51,5117', '宣汉县', '51', '四川省', '5117', '达州市', '511722', '宣汉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511723', '5117', '00,51,5117', '开江县', '51', '四川省', '5117', '达州市', '511723', '开江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511724', '5117', '00,51,5117', '大竹县', '51', '四川省', '5117', '达州市', '511724', '大竹县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511725', '5117', '00,51,5117', '渠县', '51', '四川省', '5117', '达州市', '511725', '渠县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511781', '5117', '00,51,5117', '万源市', '51', '四川省', '5117', '达州市', '511781', '万源市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5118', '51', '00,51', '雅安市', '51', '四川省', '5118', '雅安市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511802', '5118', '00,51,5118', '雨城区', '51', '四川省', '5118', '雅安市', '511802', '雨城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511803', '5118', '00,51,5118', '名山区', '51', '四川省', '5118', '雅安市', '511803', '名山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511822', '5118', '00,51,5118', '荥经县', '51', '四川省', '5118', '雅安市', '511822', '荥经县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511823', '5118', '00,51,5118', '汉源县', '51', '四川省', '5118', '雅安市', '511823', '汉源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511824', '5118', '00,51,5118', '石棉县', '51', '四川省', '5118', '雅安市', '511824', '石棉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511825', '5118', '00,51,5118', '天全县', '51', '四川省', '5118', '雅安市', '511825', '天全县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511826', '5118', '00,51,5118', '芦山县', '51', '四川省', '5118', '雅安市', '511826', '芦山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511827', '5118', '00,51,5118', '宝兴县', '51', '四川省', '5118', '雅安市', '511827', '宝兴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5119', '51', '00,51', '巴中市', '51', '四川省', '5119', '巴中市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511902', '5119', '00,51,5119', '巴州区', '51', '四川省', '5119', '巴中市', '511902', '巴州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511903', '5119', '00,51,5119', '恩阳区', '51', '四川省', '5119', '巴中市', '511903', '恩阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511921', '5119', '00,51,5119', '通江县', '51', '四川省', '5119', '巴中市', '511921', '通江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511922', '5119', '00,51,5119', '南江县', '51', '四川省', '5119', '巴中市', '511922', '南江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('511923', '5119', '00,51,5119', '平昌县', '51', '四川省', '5119', '巴中市', '511923', '平昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5120', '51', '00,51', '资阳市', '51', '四川省', '5120', '资阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('512002', '5120', '00,51,5120', '雁江区', '51', '四川省', '5120', '资阳市', '512002', '雁江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('512021', '5120', '00,51,5120', '安岳县', '51', '四川省', '5120', '资阳市', '512021', '安岳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('512022', '5120', '00,51,5120', '乐至县', '51', '四川省', '5120', '资阳市', '512022', '乐至县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5132', '51', '00,51', '阿坝藏族羌族自治州', '51', '四川省', '5132', '阿坝藏族羌族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513201', '5132', '00,51,5132', '马尔康市', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513201', '马尔康市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513221', '5132', '00,51,5132', '汶川县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513221', '汶川县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513222', '5132', '00,51,5132', '理县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513222', '理县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513223', '5132', '00,51,5132', '茂县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513223', '茂县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513224', '5132', '00,51,5132', '松潘县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513224', '松潘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513225', '5132', '00,51,5132', '九寨沟县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513225', '九寨沟县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513226', '5132', '00,51,5132', '金川县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513226', '金川县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513227', '5132', '00,51,5132', '小金县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513227', '小金县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513228', '5132', '00,51,5132', '黑水县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513228', '黑水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513230', '5132', '00,51,5132', '壤塘县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513230', '壤塘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513231', '5132', '00,51,5132', '阿坝县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513231', '阿坝县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513232', '5132', '00,51,5132', '若尔盖县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513232', '若尔盖县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513233', '5132', '00,51,5132', '红原县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513233', '红原县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5133', '51', '00,51', '甘孜藏族自治州', '51', '四川省', '5133', '甘孜藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513301', '5133', '00,51,5133', '康定市', '51', '四川省', '5133', '甘孜藏族自治州', '513301', '康定市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513322', '5133', '00,51,5133', '泸定县', '51', '四川省', '5133', '甘孜藏族自治州', '513322', '泸定县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513323', '5133', '00,51,5133', '丹巴县', '51', '四川省', '5133', '甘孜藏族自治州', '513323', '丹巴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513324', '5133', '00,51,5133', '九龙县', '51', '四川省', '5133', '甘孜藏族自治州', '513324', '九龙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513325', '5133', '00,51,5133', '雅江县', '51', '四川省', '5133', '甘孜藏族自治州', '513325', '雅江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513326', '5133', '00,51,5133', '道孚县', '51', '四川省', '5133', '甘孜藏族自治州', '513326', '道孚县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513327', '5133', '00,51,5133', '炉霍县', '51', '四川省', '5133', '甘孜藏族自治州', '513327', '炉霍县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513328', '5133', '00,51,5133', '甘孜县', '51', '四川省', '5133', '甘孜藏族自治州', '513328', '甘孜县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513329', '5133', '00,51,5133', '新龙县', '51', '四川省', '5133', '甘孜藏族自治州', '513329', '新龙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513330', '5133', '00,51,5133', '德格县', '51', '四川省', '5133', '甘孜藏族自治州', '513330', '德格县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513331', '5133', '00,51,5133', '白玉县', '51', '四川省', '5133', '甘孜藏族自治州', '513331', '白玉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513332', '5133', '00,51,5133', '石渠县', '51', '四川省', '5133', '甘孜藏族自治州', '513332', '石渠县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513333', '5133', '00,51,5133', '色达县', '51', '四川省', '5133', '甘孜藏族自治州', '513333', '色达县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513334', '5133', '00,51,5133', '理塘县', '51', '四川省', '5133', '甘孜藏族自治州', '513334', '理塘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513335', '5133', '00,51,5133', '巴塘县', '51', '四川省', '5133', '甘孜藏族自治州', '513335', '巴塘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513336', '5133', '00,51,5133', '乡城县', '51', '四川省', '5133', '甘孜藏族自治州', '513336', '乡城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513337', '5133', '00,51,5133', '稻城县', '51', '四川省', '5133', '甘孜藏族自治州', '513337', '稻城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513338', '5133', '00,51,5133', '得荣县', '51', '四川省', '5133', '甘孜藏族自治州', '513338', '得荣县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5134', '51', '00,51', '凉山彝族自治州', '51', '四川省', '5134', '凉山彝族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513401', '5134', '00,51,5134', '西昌市', '51', '四川省', '5134', '凉山彝族自治州', '513401', '西昌市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513422', '5134', '00,51,5134', '木里藏族自治县', '51', '四川省', '5134', '凉山彝族自治州', '513422', '木里藏族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513423', '5134', '00,51,5134', '盐源县', '51', '四川省', '5134', '凉山彝族自治州', '513423', '盐源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513424', '5134', '00,51,5134', '德昌县', '51', '四川省', '5134', '凉山彝族自治州', '513424', '德昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513425', '5134', '00,51,5134', '会理县', '51', '四川省', '5134', '凉山彝族自治州', '513425', '会理县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513426', '5134', '00,51,5134', '会东县', '51', '四川省', '5134', '凉山彝族自治州', '513426', '会东县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513427', '5134', '00,51,5134', '宁南县', '51', '四川省', '5134', '凉山彝族自治州', '513427', '宁南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513428', '5134', '00,51,5134', '普格县', '51', '四川省', '5134', '凉山彝族自治州', '513428', '普格县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513429', '5134', '00,51,5134', '布拖县', '51', '四川省', '5134', '凉山彝族自治州', '513429', '布拖县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513430', '5134', '00,51,5134', '金阳县', '51', '四川省', '5134', '凉山彝族自治州', '513430', '金阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513431', '5134', '00,51,5134', '昭觉县', '51', '四川省', '5134', '凉山彝族自治州', '513431', '昭觉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513432', '5134', '00,51,5134', '喜德县', '51', '四川省', '5134', '凉山彝族自治州', '513432', '喜德县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513433', '5134', '00,51,5134', '冕宁县', '51', '四川省', '5134', '凉山彝族自治州', '513433', '冕宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513434', '5134', '00,51,5134', '越西县', '51', '四川省', '5134', '凉山彝族自治州', '513434', '越西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513435', '5134', '00,51,5134', '甘洛县', '51', '四川省', '5134', '凉山彝族自治州', '513435', '甘洛县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513436', '5134', '00,51,5134', '美姑县', '51', '四川省', '5134', '凉山彝族自治州', '513436', '美姑县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('513437', '5134', '00,51,5134', '雷波县', '51', '四川省', '5134', '凉山彝族自治州', '513437', '雷波县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('52', '00', '00', '贵州省', '52', '贵州省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5201', '52', '00,52', '贵阳市', '52', '贵州省', '5201', '贵阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520102', '5201', '00,52,5201', '南明区', '52', '贵州省', '5201', '贵阳市', '520102', '南明区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520103', '5201', '00,52,5201', '云岩区', '52', '贵州省', '5201', '贵阳市', '520103', '云岩区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520111', '5201', '00,52,5201', '花溪区', '52', '贵州省', '5201', '贵阳市', '520111', '花溪区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520112', '5201', '00,52,5201', '乌当区', '52', '贵州省', '5201', '贵阳市', '520112', '乌当区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520113', '5201', '00,52,5201', '白云区', '52', '贵州省', '5201', '贵阳市', '520113', '白云区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520115', '5201', '00,52,5201', '观山湖区', '52', '贵州省', '5201', '贵阳市', '520115', '观山湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520121', '5201', '00,52,5201', '开阳县', '52', '贵州省', '5201', '贵阳市', '520121', '开阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520122', '5201', '00,52,5201', '息烽县', '52', '贵州省', '5201', '贵阳市', '520122', '息烽县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520123', '5201', '00,52,5201', '修文县', '52', '贵州省', '5201', '贵阳市', '520123', '修文县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520181', '5201', '00,52,5201', '清镇市', '52', '贵州省', '5201', '贵阳市', '520181', '清镇市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5202', '52', '00,52', '六盘水市', '52', '贵州省', '5202', '六盘水市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520201', '5202', '00,52,5202', '钟山区', '52', '贵州省', '5202', '六盘水市', '520201', '钟山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520203', '5202', '00,52,5202', '六枝特区', '52', '贵州省', '5202', '六盘水市', '520203', '六枝特区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520221', '5202', '00,52,5202', '水城县', '52', '贵州省', '5202', '六盘水市', '520221', '水城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520281', '5202', '00,52,5202', '盘州市', '52', '贵州省', '5202', '六盘水市', '520281', '盘州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5203', '52', '00,52', '遵义市', '52', '贵州省', '5203', '遵义市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520302', '5203', '00,52,5203', '红花岗区', '52', '贵州省', '5203', '遵义市', '520302', '红花岗区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520303', '5203', '00,52,5203', '汇川区', '52', '贵州省', '5203', '遵义市', '520303', '汇川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520304', '5203', '00,52,5203', '播州区', '52', '贵州省', '5203', '遵义市', '520304', '播州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520322', '5203', '00,52,5203', '桐梓县', '52', '贵州省', '5203', '遵义市', '520322', '桐梓县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520323', '5203', '00,52,5203', '绥阳县', '52', '贵州省', '5203', '遵义市', '520323', '绥阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520324', '5203', '00,52,5203', '正安县', '52', '贵州省', '5203', '遵义市', '520324', '正安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520325', '5203', '00,52,5203', '道真仡佬族苗族自治县', '52', '贵州省', '5203', '遵义市', '520325', '道真仡佬族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520326', '5203', '00,52,5203', '务川仡佬族苗族自治县', '52', '贵州省', '5203', '遵义市', '520326', '务川仡佬族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520327', '5203', '00,52,5203', '凤冈县', '52', '贵州省', '5203', '遵义市', '520327', '凤冈县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520328', '5203', '00,52,5203', '湄潭县', '52', '贵州省', '5203', '遵义市', '520328', '湄潭县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520329', '5203', '00,52,5203', '余庆县', '52', '贵州省', '5203', '遵义市', '520329', '余庆县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520330', '5203', '00,52,5203', '习水县', '52', '贵州省', '5203', '遵义市', '520330', '习水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520381', '5203', '00,52,5203', '赤水市', '52', '贵州省', '5203', '遵义市', '520381', '赤水市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520382', '5203', '00,52,5203', '仁怀市', '52', '贵州省', '5203', '遵义市', '520382', '仁怀市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5204', '52', '00,52', '安顺市', '52', '贵州省', '5204', '安顺市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520402', '5204', '00,52,5204', '西秀区', '52', '贵州省', '5204', '安顺市', '520402', '西秀区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520403', '5204', '00,52,5204', '平坝区', '52', '贵州省', '5204', '安顺市', '520403', '平坝区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520422', '5204', '00,52,5204', '普定县', '52', '贵州省', '5204', '安顺市', '520422', '普定县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520423', '5204', '00,52,5204', '镇宁布依族苗族自治县', '52', '贵州省', '5204', '安顺市', '520423', '镇宁布依族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520424', '5204', '00,52,5204', '关岭布依族苗族自治县', '52', '贵州省', '5204', '安顺市', '520424', '关岭布依族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520425', '5204', '00,52,5204', '紫云苗族布依族自治县', '52', '贵州省', '5204', '安顺市', '520425', '紫云苗族布依族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5205', '52', '00,52', '毕节市', '52', '贵州省', '5205', '毕节市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520502', '5205', '00,52,5205', '七星关区', '52', '贵州省', '5205', '毕节市', '520502', '七星关区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520521', '5205', '00,52,5205', '大方县', '52', '贵州省', '5205', '毕节市', '520521', '大方县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520522', '5205', '00,52,5205', '黔西县', '52', '贵州省', '5205', '毕节市', '520522', '黔西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520523', '5205', '00,52,5205', '金沙县', '52', '贵州省', '5205', '毕节市', '520523', '金沙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520524', '5205', '00,52,5205', '织金县', '52', '贵州省', '5205', '毕节市', '520524', '织金县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520525', '5205', '00,52,5205', '纳雍县', '52', '贵州省', '5205', '毕节市', '520525', '纳雍县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520526', '5205', '00,52,5205', '威宁彝族回族苗族自治县', '52', '贵州省', '5205', '毕节市', '520526', '威宁彝族回族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520527', '5205', '00,52,5205', '赫章县', '52', '贵州省', '5205', '毕节市', '520527', '赫章县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5206', '52', '00,52', '铜仁市', '52', '贵州省', '5206', '铜仁市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520602', '5206', '00,52,5206', '碧江区', '52', '贵州省', '5206', '铜仁市', '520602', '碧江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520603', '5206', '00,52,5206', '万山区', '52', '贵州省', '5206', '铜仁市', '520603', '万山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520621', '5206', '00,52,5206', '江口县', '52', '贵州省', '5206', '铜仁市', '520621', '江口县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520622', '5206', '00,52,5206', '玉屏侗族自治县', '52', '贵州省', '5206', '铜仁市', '520622', '玉屏侗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520623', '5206', '00,52,5206', '石阡县', '52', '贵州省', '5206', '铜仁市', '520623', '石阡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520624', '5206', '00,52,5206', '思南县', '52', '贵州省', '5206', '铜仁市', '520624', '思南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520625', '5206', '00,52,5206', '印江土家族苗族自治县', '52', '贵州省', '5206', '铜仁市', '520625', '印江土家族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520626', '5206', '00,52,5206', '德江县', '52', '贵州省', '5206', '铜仁市', '520626', '德江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520627', '5206', '00,52,5206', '沿河土家族自治县', '52', '贵州省', '5206', '铜仁市', '520627', '沿河土家族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('520628', '5206', '00,52,5206', '松桃苗族自治县', '52', '贵州省', '5206', '铜仁市', '520628', '松桃苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('5223', '52', '00,52', '黔西南布依族苗族自治州', '52', '贵州省', '5223', '黔西南布依族苗族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522301', '5223', '00,52,5223', '兴义市', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522301', '兴义市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522302', '5223', '00,52,5223', '兴仁市', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522302', '兴仁市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522323', '5223', '00,52,5223', '普安县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522323', '普安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522324', '5223', '00,52,5223', '晴隆县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522324', '晴隆县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522325', '5223', '00,52,5223', '贞丰县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522325', '贞丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('522326', '5223', '00,52,5223', '望谟县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522326', '望谟县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('540235', '5402', '00,54,5402', '聂拉木县', '54', '西藏自治区', '5402', '日喀则市', '540235', '聂拉木县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('430923', '4309', '00,43,4309', '安化县', '43', '湖南省', '4309', '益阳市', '430923', '安化县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('530523', '5305', '00,53,5305', '龙陵县', '53', '云南省', '5305', '保山市', '530523', '龙陵县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('530524', '5305', '00,53,5305', '昌宁县', '53', '云南省', '5305', '保山市', '530524', '昌宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
@@ -3616,290 +3900,63 @@ INSERT INTO "BLADE_REGION" VALUES ('511603', '5116', '00,51,5116', '前锋区', 
 INSERT INTO "BLADE_REGION" VALUES ('511621', '5116', '00,51,5116', '岳池县', '51', '四川省', '5116', '广安市', '511621', '岳池县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('511622', '5116', '00,51,5116', '武胜县', '51', '四川省', '5116', '广安市', '511622', '武胜县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('511623', '5116', '00,51,5116', '邻水县', '51', '四川省', '5116', '广安市', '511623', '邻水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511681', '5116', '00,51,5116', '华蓥市', '51', '四川省', '5116', '广安市', '511681', '华蓥市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('430104', '4301', '00,43,4301', '岳麓区', '43', '湖南省', '4301', '长沙市', '430104', '岳麓区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451123', '4511', '00,45,4511', '富川瑶族自治县', '45', '广西壮族自治区', '4511', '贺州市', '451123', '富川瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4512', '45', '00,45', '河池市', '45', '广西壮族自治区', '4512', '河池市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451202', '4512', '00,45,4512', '金城江区', '45', '广西壮族自治区', '4512', '河池市', '451202', '金城江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451203', '4512', '00,45,4512', '宜州区', '45', '广西壮族自治区', '4512', '河池市', '451203', '宜州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451221', '4512', '00,45,4512', '南丹县', '45', '广西壮族自治区', '4512', '河池市', '451221', '南丹县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451222', '4512', '00,45,4512', '天峨县', '45', '广西壮族自治区', '4512', '河池市', '451222', '天峨县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451223', '4512', '00,45,4512', '凤山县', '45', '广西壮族自治区', '4512', '河池市', '451223', '凤山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451224', '4512', '00,45,4512', '东兰县', '45', '广西壮族自治区', '4512', '河池市', '451224', '东兰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451225', '4512', '00,45,4512', '罗城仫佬族自治县', '45', '广西壮族自治区', '4512', '河池市', '451225', '罗城仫佬族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451226', '4512', '00,45,4512', '环江毛南族自治县', '45', '广西壮族自治区', '4512', '河池市', '451226', '环江毛南族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451227', '4512', '00,45,4512', '巴马瑶族自治县', '45', '广西壮族自治区', '4512', '河池市', '451227', '巴马瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451228', '4512', '00,45,4512', '都安瑶族自治县', '45', '广西壮族自治区', '4512', '河池市', '451228', '都安瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451229', '4512', '00,45,4512', '大化瑶族自治县', '45', '广西壮族自治区', '4512', '河池市', '451229', '大化瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4513', '45', '00,45', '来宾市', '45', '广西壮族自治区', '4513', '来宾市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451302', '4513', '00,45,4513', '兴宾区', '45', '广西壮族自治区', '4513', '来宾市', '451302', '兴宾区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451321', '4513', '00,45,4513', '忻城县', '45', '广西壮族自治区', '4513', '来宾市', '451321', '忻城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451322', '4513', '00,45,4513', '象州县', '45', '广西壮族自治区', '4513', '来宾市', '451322', '象州县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451323', '4513', '00,45,4513', '武宣县', '45', '广西壮族自治区', '4513', '来宾市', '451323', '武宣县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451324', '4513', '00,45,4513', '金秀瑶族自治县', '45', '广西壮族自治区', '4513', '来宾市', '451324', '金秀瑶族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451381', '4513', '00,45,4513', '合山市', '45', '广西壮族自治区', '4513', '来宾市', '451381', '合山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4514', '45', '00,45', '崇左市', '45', '广西壮族自治区', '4514', '崇左市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451402', '4514', '00,45,4514', '江州区', '45', '广西壮族自治区', '4514', '崇左市', '451402', '江州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451421', '4514', '00,45,4514', '扶绥县', '45', '广西壮族自治区', '4514', '崇左市', '451421', '扶绥县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451422', '4514', '00,45,4514', '宁明县', '45', '广西壮族自治区', '4514', '崇左市', '451422', '宁明县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451423', '4514', '00,45,4514', '龙州县', '45', '广西壮族自治区', '4514', '崇左市', '451423', '龙州县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451424', '4514', '00,45,4514', '大新县', '45', '广西壮族自治区', '4514', '崇左市', '451424', '大新县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451425', '4514', '00,45,4514', '天等县', '45', '广西壮族自治区', '4514', '崇左市', '451425', '天等县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('451481', '4514', '00,45,4514', '凭祥市', '45', '广西壮族自治区', '4514', '崇左市', '451481', '凭祥市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('46', '00', '00', '海南省', '46', '海南省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4601', '46', '00,46', '海口市', '46', '海南省', '4601', '海口市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460105', '4601', '00,46,4601', '秀英区', '46', '海南省', '4601', '海口市', '460105', '秀英区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460106', '4601', '00,46,4601', '龙华区', '46', '海南省', '4601', '海口市', '460106', '龙华区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460107', '4601', '00,46,4601', '琼山区', '46', '海南省', '4601', '海口市', '460107', '琼山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460108', '4601', '00,46,4601', '美兰区', '46', '海南省', '4601', '海口市', '460108', '美兰区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4602', '46', '00,46', '三亚市', '46', '海南省', '4602', '三亚市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460202', '4602', '00,46,4602', '海棠区', '46', '海南省', '4602', '三亚市', '460202', '海棠区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460203', '4602', '00,46,4602', '吉阳区', '46', '海南省', '4602', '三亚市', '460203', '吉阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460204', '4602', '00,46,4602', '天涯区', '46', '海南省', '4602', '三亚市', '460204', '天涯区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460205', '4602', '00,46,4602', '崖州区', '46', '海南省', '4602', '三亚市', '460205', '崖州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4603', '46', '00,46', '三沙市', '46', '海南省', '4603', '三沙市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('460400', '4604', '00,46,4604', '儋州市', '46', '海南省', '4604', '儋州市', '460400', '儋州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('4690', '46', '00,46', '省直辖县级行政区', '46', '海南省', '4690', '省直辖县级行政区', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469001', '4690', '00,46,4690', '五指山市', '46', '海南省', '4690', '省直辖县级行政区', '469001', '五指山市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469002', '4690', '00,46,4690', '琼海市', '46', '海南省', '4690', '省直辖县级行政区', '469002', '琼海市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469005', '4690', '00,46,4690', '文昌市', '46', '海南省', '4690', '省直辖县级行政区', '469005', '文昌市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469006', '4690', '00,46,4690', '万宁市', '46', '海南省', '4690', '省直辖县级行政区', '469006', '万宁市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469007', '4690', '00,46,4690', '东方市', '46', '海南省', '4690', '省直辖县级行政区', '469007', '东方市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469021', '4690', '00,46,4690', '定安县', '46', '海南省', '4690', '省直辖县级行政区', '469021', '定安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469022', '4690', '00,46,4690', '屯昌县', '46', '海南省', '4690', '省直辖县级行政区', '469022', '屯昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469023', '4690', '00,46,4690', '澄迈县', '46', '海南省', '4690', '省直辖县级行政区', '469023', '澄迈县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469024', '4690', '00,46,4690', '临高县', '46', '海南省', '4690', '省直辖县级行政区', '469024', '临高县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469025', '4690', '00,46,4690', '白沙黎族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469025', '白沙黎族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469026', '4690', '00,46,4690', '昌江黎族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469026', '昌江黎族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469027', '4690', '00,46,4690', '乐东黎族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469027', '乐东黎族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469028', '4690', '00,46,4690', '陵水黎族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469028', '陵水黎族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469029', '4690', '00,46,4690', '保亭黎族苗族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469029', '保亭黎族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('469030', '4690', '00,46,4690', '琼中黎族苗族自治县', '46', '海南省', '4690', '省直辖县级行政区', '469030', '琼中黎族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('50', '00', '00', '重庆市', '50', '重庆市', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5001', '50', '00,50', '重庆市', '50', '重庆市', '5001', '重庆市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500101', '5001', '00,50,5001', '万州区', '50', '重庆市', '5001', '重庆市', '500101', '万州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500102', '5001', '00,50,5001', '涪陵区', '50', '重庆市', '5001', '重庆市', '500102', '涪陵区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500103', '5001', '00,50,5001', '渝中区', '50', '重庆市', '5001', '重庆市', '500103', '渝中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500104', '5001', '00,50,5001', '大渡口区', '50', '重庆市', '5001', '重庆市', '500104', '大渡口区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500105', '5001', '00,50,5001', '江北区', '50', '重庆市', '5001', '重庆市', '500105', '江北区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500106', '5001', '00,50,5001', '沙坪坝区', '50', '重庆市', '5001', '重庆市', '500106', '沙坪坝区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500107', '5001', '00,50,5001', '九龙坡区', '50', '重庆市', '5001', '重庆市', '500107', '九龙坡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500108', '5001', '00,50,5001', '南岸区', '50', '重庆市', '5001', '重庆市', '500108', '南岸区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500109', '5001', '00,50,5001', '北碚区', '50', '重庆市', '5001', '重庆市', '500109', '北碚区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('500110', '5001', '00,50,5001', '綦江区', '50', '重庆市', '5001', '重庆市', '500110', '綦江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5117', '51', '00,51', '达州市', '51', '四川省', '5117', '达州市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('650502', '6505', '00,65,6505', '伊州区', '65', '新疆维吾尔自治区', '6505', '哈密市', '650502', '伊州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511722', '5117', '00,51,5117', '宣汉县', '51', '四川省', '5117', '达州市', '511722', '宣汉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511723', '5117', '00,51,5117', '开江县', '51', '四川省', '5117', '达州市', '511723', '开江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511724', '5117', '00,51,5117', '大竹县', '51', '四川省', '5117', '达州市', '511724', '大竹县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511725', '5117', '00,51,5117', '渠县', '51', '四川省', '5117', '达州市', '511725', '渠县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511781', '5117', '00,51,5117', '万源市', '51', '四川省', '5117', '达州市', '511781', '万源市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5118', '51', '00,51', '雅安市', '51', '四川省', '5118', '雅安市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511802', '5118', '00,51,5118', '雨城区', '51', '四川省', '5118', '雅安市', '511802', '雨城区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511803', '5118', '00,51,5118', '名山区', '51', '四川省', '5118', '雅安市', '511803', '名山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511822', '5118', '00,51,5118', '荥经县', '51', '四川省', '5118', '雅安市', '511822', '荥经县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511823', '5118', '00,51,5118', '汉源县', '51', '四川省', '5118', '雅安市', '511823', '汉源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511824', '5118', '00,51,5118', '石棉县', '51', '四川省', '5118', '雅安市', '511824', '石棉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511825', '5118', '00,51,5118', '天全县', '51', '四川省', '5118', '雅安市', '511825', '天全县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511826', '5118', '00,51,5118', '芦山县', '51', '四川省', '5118', '雅安市', '511826', '芦山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511827', '5118', '00,51,5118', '宝兴县', '51', '四川省', '5118', '雅安市', '511827', '宝兴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5119', '51', '00,51', '巴中市', '51', '四川省', '5119', '巴中市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511902', '5119', '00,51,5119', '巴州区', '51', '四川省', '5119', '巴中市', '511902', '巴州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511903', '5119', '00,51,5119', '恩阳区', '51', '四川省', '5119', '巴中市', '511903', '恩阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511921', '5119', '00,51,5119', '通江县', '51', '四川省', '5119', '巴中市', '511921', '通江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511922', '5119', '00,51,5119', '南江县', '51', '四川省', '5119', '巴中市', '511922', '南江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('511923', '5119', '00,51,5119', '平昌县', '51', '四川省', '5119', '巴中市', '511923', '平昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5120', '51', '00,51', '资阳市', '51', '四川省', '5120', '资阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('512002', '5120', '00,51,5120', '雁江区', '51', '四川省', '5120', '资阳市', '512002', '雁江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('512021', '5120', '00,51,5120', '安岳县', '51', '四川省', '5120', '资阳市', '512021', '安岳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('512022', '5120', '00,51,5120', '乐至县', '51', '四川省', '5120', '资阳市', '512022', '乐至县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5132', '51', '00,51', '阿坝藏族羌族自治州', '51', '四川省', '5132', '阿坝藏族羌族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513201', '5132', '00,51,5132', '马尔康市', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513201', '马尔康市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513221', '5132', '00,51,5132', '汶川县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513221', '汶川县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513222', '5132', '00,51,5132', '理县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513222', '理县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513223', '5132', '00,51,5132', '茂县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513223', '茂县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513224', '5132', '00,51,5132', '松潘县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513224', '松潘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513225', '5132', '00,51,5132', '九寨沟县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513225', '九寨沟县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513226', '5132', '00,51,5132', '金川县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513226', '金川县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513227', '5132', '00,51,5132', '小金县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513227', '小金县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513228', '5132', '00,51,5132', '黑水县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513228', '黑水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513230', '5132', '00,51,5132', '壤塘县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513230', '壤塘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513231', '5132', '00,51,5132', '阿坝县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513231', '阿坝县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513232', '5132', '00,51,5132', '若尔盖县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513232', '若尔盖县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513233', '5132', '00,51,5132', '红原县', '51', '四川省', '5132', '阿坝藏族羌族自治州', '513233', '红原县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5133', '51', '00,51', '甘孜藏族自治州', '51', '四川省', '5133', '甘孜藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513301', '5133', '00,51,5133', '康定市', '51', '四川省', '5133', '甘孜藏族自治州', '513301', '康定市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513322', '5133', '00,51,5133', '泸定县', '51', '四川省', '5133', '甘孜藏族自治州', '513322', '泸定县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513323', '5133', '00,51,5133', '丹巴县', '51', '四川省', '5133', '甘孜藏族自治州', '513323', '丹巴县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513324', '5133', '00,51,5133', '九龙县', '51', '四川省', '5133', '甘孜藏族自治州', '513324', '九龙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513325', '5133', '00,51,5133', '雅江县', '51', '四川省', '5133', '甘孜藏族自治州', '513325', '雅江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513326', '5133', '00,51,5133', '道孚县', '51', '四川省', '5133', '甘孜藏族自治州', '513326', '道孚县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513327', '5133', '00,51,5133', '炉霍县', '51', '四川省', '5133', '甘孜藏族自治州', '513327', '炉霍县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513328', '5133', '00,51,5133', '甘孜县', '51', '四川省', '5133', '甘孜藏族自治州', '513328', '甘孜县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513329', '5133', '00,51,5133', '新龙县', '51', '四川省', '5133', '甘孜藏族自治州', '513329', '新龙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513330', '5133', '00,51,5133', '德格县', '51', '四川省', '5133', '甘孜藏族自治州', '513330', '德格县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513331', '5133', '00,51,5133', '白玉县', '51', '四川省', '5133', '甘孜藏族自治州', '513331', '白玉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513332', '5133', '00,51,5133', '石渠县', '51', '四川省', '5133', '甘孜藏族自治州', '513332', '石渠县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513333', '5133', '00,51,5133', '色达县', '51', '四川省', '5133', '甘孜藏族自治州', '513333', '色达县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513334', '5133', '00,51,5133', '理塘县', '51', '四川省', '5133', '甘孜藏族自治州', '513334', '理塘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513335', '5133', '00,51,5133', '巴塘县', '51', '四川省', '5133', '甘孜藏族自治州', '513335', '巴塘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513336', '5133', '00,51,5133', '乡城县', '51', '四川省', '5133', '甘孜藏族自治州', '513336', '乡城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513337', '5133', '00,51,5133', '稻城县', '51', '四川省', '5133', '甘孜藏族自治州', '513337', '稻城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513338', '5133', '00,51,5133', '得荣县', '51', '四川省', '5133', '甘孜藏族自治州', '513338', '得荣县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5134', '51', '00,51', '凉山彝族自治州', '51', '四川省', '5134', '凉山彝族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513401', '5134', '00,51,5134', '西昌市', '51', '四川省', '5134', '凉山彝族自治州', '513401', '西昌市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513422', '5134', '00,51,5134', '木里藏族自治县', '51', '四川省', '5134', '凉山彝族自治州', '513422', '木里藏族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513423', '5134', '00,51,5134', '盐源县', '51', '四川省', '5134', '凉山彝族自治州', '513423', '盐源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513424', '5134', '00,51,5134', '德昌县', '51', '四川省', '5134', '凉山彝族自治州', '513424', '德昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513425', '5134', '00,51,5134', '会理县', '51', '四川省', '5134', '凉山彝族自治州', '513425', '会理县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513426', '5134', '00,51,5134', '会东县', '51', '四川省', '5134', '凉山彝族自治州', '513426', '会东县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513427', '5134', '00,51,5134', '宁南县', '51', '四川省', '5134', '凉山彝族自治州', '513427', '宁南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513428', '5134', '00,51,5134', '普格县', '51', '四川省', '5134', '凉山彝族自治州', '513428', '普格县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513429', '5134', '00,51,5134', '布拖县', '51', '四川省', '5134', '凉山彝族自治州', '513429', '布拖县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513430', '5134', '00,51,5134', '金阳县', '51', '四川省', '5134', '凉山彝族自治州', '513430', '金阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513431', '5134', '00,51,5134', '昭觉县', '51', '四川省', '5134', '凉山彝族自治州', '513431', '昭觉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513432', '5134', '00,51,5134', '喜德县', '51', '四川省', '5134', '凉山彝族自治州', '513432', '喜德县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513433', '5134', '00,51,5134', '冕宁县', '51', '四川省', '5134', '凉山彝族自治州', '513433', '冕宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513434', '5134', '00,51,5134', '越西县', '51', '四川省', '5134', '凉山彝族自治州', '513434', '越西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513435', '5134', '00,51,5134', '甘洛县', '51', '四川省', '5134', '凉山彝族自治州', '513435', '甘洛县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513436', '5134', '00,51,5134', '美姑县', '51', '四川省', '5134', '凉山彝族自治州', '513436', '美姑县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('513437', '5134', '00,51,5134', '雷波县', '51', '四川省', '5134', '凉山彝族自治州', '513437', '雷波县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('52', '00', '00', '贵州省', '52', '贵州省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5201', '52', '00,52', '贵阳市', '52', '贵州省', '5201', '贵阳市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520102', '5201', '00,52,5201', '南明区', '52', '贵州省', '5201', '贵阳市', '520102', '南明区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520103', '5201', '00,52,5201', '云岩区', '52', '贵州省', '5201', '贵阳市', '520103', '云岩区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520111', '5201', '00,52,5201', '花溪区', '52', '贵州省', '5201', '贵阳市', '520111', '花溪区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520112', '5201', '00,52,5201', '乌当区', '52', '贵州省', '5201', '贵阳市', '520112', '乌当区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520113', '5201', '00,52,5201', '白云区', '52', '贵州省', '5201', '贵阳市', '520113', '白云区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520115', '5201', '00,52,5201', '观山湖区', '52', '贵州省', '5201', '贵阳市', '520115', '观山湖区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520121', '5201', '00,52,5201', '开阳县', '52', '贵州省', '5201', '贵阳市', '520121', '开阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520122', '5201', '00,52,5201', '息烽县', '52', '贵州省', '5201', '贵阳市', '520122', '息烽县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520123', '5201', '00,52,5201', '修文县', '52', '贵州省', '5201', '贵阳市', '520123', '修文县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520181', '5201', '00,52,5201', '清镇市', '52', '贵州省', '5201', '贵阳市', '520181', '清镇市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5202', '52', '00,52', '六盘水市', '52', '贵州省', '5202', '六盘水市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520201', '5202', '00,52,5202', '钟山区', '52', '贵州省', '5202', '六盘水市', '520201', '钟山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520203', '5202', '00,52,5202', '六枝特区', '52', '贵州省', '5202', '六盘水市', '520203', '六枝特区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520221', '5202', '00,52,5202', '水城县', '52', '贵州省', '5202', '六盘水市', '520221', '水城县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520281', '5202', '00,52,5202', '盘州市', '52', '贵州省', '5202', '六盘水市', '520281', '盘州市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5203', '52', '00,52', '遵义市', '52', '贵州省', '5203', '遵义市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520302', '5203', '00,52,5203', '红花岗区', '52', '贵州省', '5203', '遵义市', '520302', '红花岗区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520303', '5203', '00,52,5203', '汇川区', '52', '贵州省', '5203', '遵义市', '520303', '汇川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520304', '5203', '00,52,5203', '播州区', '52', '贵州省', '5203', '遵义市', '520304', '播州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520322', '5203', '00,52,5203', '桐梓县', '52', '贵州省', '5203', '遵义市', '520322', '桐梓县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520323', '5203', '00,52,5203', '绥阳县', '52', '贵州省', '5203', '遵义市', '520323', '绥阳县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520324', '5203', '00,52,5203', '正安县', '52', '贵州省', '5203', '遵义市', '520324', '正安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520325', '5203', '00,52,5203', '道真仡佬族苗族自治县', '52', '贵州省', '5203', '遵义市', '520325', '道真仡佬族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520326', '5203', '00,52,5203', '务川仡佬族苗族自治县', '52', '贵州省', '5203', '遵义市', '520326', '务川仡佬族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520327', '5203', '00,52,5203', '凤冈县', '52', '贵州省', '5203', '遵义市', '520327', '凤冈县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520328', '5203', '00,52,5203', '湄潭县', '52', '贵州省', '5203', '遵义市', '520328', '湄潭县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520329', '5203', '00,52,5203', '余庆县', '52', '贵州省', '5203', '遵义市', '520329', '余庆县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520330', '5203', '00,52,5203', '习水县', '52', '贵州省', '5203', '遵义市', '520330', '习水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520381', '5203', '00,52,5203', '赤水市', '52', '贵州省', '5203', '遵义市', '520381', '赤水市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520382', '5203', '00,52,5203', '仁怀市', '52', '贵州省', '5203', '遵义市', '520382', '仁怀市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5204', '52', '00,52', '安顺市', '52', '贵州省', '5204', '安顺市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520402', '5204', '00,52,5204', '西秀区', '52', '贵州省', '5204', '安顺市', '520402', '西秀区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520403', '5204', '00,52,5204', '平坝区', '52', '贵州省', '5204', '安顺市', '520403', '平坝区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520422', '5204', '00,52,5204', '普定县', '52', '贵州省', '5204', '安顺市', '520422', '普定县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520423', '5204', '00,52,5204', '镇宁布依族苗族自治县', '52', '贵州省', '5204', '安顺市', '520423', '镇宁布依族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520424', '5204', '00,52,5204', '关岭布依族苗族自治县', '52', '贵州省', '5204', '安顺市', '520424', '关岭布依族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520425', '5204', '00,52,5204', '紫云苗族布依族自治县', '52', '贵州省', '5204', '安顺市', '520425', '紫云苗族布依族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5205', '52', '00,52', '毕节市', '52', '贵州省', '5205', '毕节市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520502', '5205', '00,52,5205', '七星关区', '52', '贵州省', '5205', '毕节市', '520502', '七星关区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520521', '5205', '00,52,5205', '大方县', '52', '贵州省', '5205', '毕节市', '520521', '大方县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520522', '5205', '00,52,5205', '黔西县', '52', '贵州省', '5205', '毕节市', '520522', '黔西县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520523', '5205', '00,52,5205', '金沙县', '52', '贵州省', '5205', '毕节市', '520523', '金沙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520524', '5205', '00,52,5205', '织金县', '52', '贵州省', '5205', '毕节市', '520524', '织金县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520525', '5205', '00,52,5205', '纳雍县', '52', '贵州省', '5205', '毕节市', '520525', '纳雍县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520526', '5205', '00,52,5205', '威宁彝族回族苗族自治县', '52', '贵州省', '5205', '毕节市', '520526', '威宁彝族回族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520527', '5205', '00,52,5205', '赫章县', '52', '贵州省', '5205', '毕节市', '520527', '赫章县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5206', '52', '00,52', '铜仁市', '52', '贵州省', '5206', '铜仁市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520602', '5206', '00,52,5206', '碧江区', '52', '贵州省', '5206', '铜仁市', '520602', '碧江区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520603', '5206', '00,52,5206', '万山区', '52', '贵州省', '5206', '铜仁市', '520603', '万山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520621', '5206', '00,52,5206', '江口县', '52', '贵州省', '5206', '铜仁市', '520621', '江口县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520622', '5206', '00,52,5206', '玉屏侗族自治县', '52', '贵州省', '5206', '铜仁市', '520622', '玉屏侗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520623', '5206', '00,52,5206', '石阡县', '52', '贵州省', '5206', '铜仁市', '520623', '石阡县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520624', '5206', '00,52,5206', '思南县', '52', '贵州省', '5206', '铜仁市', '520624', '思南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520625', '5206', '00,52,5206', '印江土家族苗族自治县', '52', '贵州省', '5206', '铜仁市', '520625', '印江土家族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520626', '5206', '00,52,5206', '德江县', '52', '贵州省', '5206', '铜仁市', '520626', '德江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520627', '5206', '00,52,5206', '沿河土家族自治县', '52', '贵州省', '5206', '铜仁市', '520627', '沿河土家族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('520628', '5206', '00,52,5206', '松桃苗族自治县', '52', '贵州省', '5206', '铜仁市', '520628', '松桃苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5223', '52', '00,52', '黔西南布依族苗族自治州', '52', '贵州省', '5223', '黔西南布依族苗族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522301', '5223', '00,52,5223', '兴义市', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522301', '兴义市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522302', '5223', '00,52,5223', '兴仁市', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522302', '兴仁市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522323', '5223', '00,52,5223', '普安县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522323', '普安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522324', '5223', '00,52,5223', '晴隆县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522324', '晴隆县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522325', '5223', '00,52,5223', '贞丰县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522325', '贞丰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522326', '5223', '00,52,5223', '望谟县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522326', '望谟县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('540235', '5402', '00,54,5402', '聂拉木县', '54', '西藏自治区', '5402', '日喀则市', '540235', '聂拉木县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522328', '5223', '00,52,5223', '安龙县', '52', '贵州省', '5223', '黔西南布依族苗族自治州', '522328', '安龙县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5226', '52', '00,52', '黔东南苗族侗族自治州', '52', '贵州省', '5226', '黔东南苗族侗族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522601', '5226', '00,52,5226', '凯里市', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522601', '凯里市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522622', '5226', '00,52,5226', '黄平县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522622', '黄平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522623', '5226', '00,52,5226', '施秉县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522623', '施秉县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522624', '5226', '00,52,5226', '三穗县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522624', '三穗县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522625', '5226', '00,52,5226', '镇远县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522625', '镇远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522626', '5226', '00,52,5226', '岑巩县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522626', '岑巩县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522627', '5226', '00,52,5226', '天柱县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522627', '天柱县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522628', '5226', '00,52,5226', '锦屏县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522628', '锦屏县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522629', '5226', '00,52,5226', '剑河县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522629', '剑河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522630', '5226', '00,52,5226', '台江县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522630', '台江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522631', '5226', '00,52,5226', '黎平县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522631', '黎平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522632', '5226', '00,52,5226', '榕江县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522632', '榕江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522633', '5226', '00,52,5226', '从江县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522633', '从江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522634', '5226', '00,52,5226', '雷山县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522634', '雷山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522635', '5226', '00,52,5226', '麻江县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522635', '麻江县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522636', '5226', '00,52,5226', '丹寨县', '52', '贵州省', '5226', '黔东南苗族侗族自治州', '522636', '丹寨县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5227', '52', '00,52', '黔南布依族苗族自治州', '52', '贵州省', '5227', '黔南布依族苗族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522701', '5227', '00,52,5227', '都匀市', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522701', '都匀市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522702', '5227', '00,52,5227', '福泉市', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522702', '福泉市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522722', '5227', '00,52,5227', '荔波县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522722', '荔波县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522723', '5227', '00,52,5227', '贵定县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522723', '贵定县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522725', '5227', '00,52,5227', '瓮安县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522725', '瓮安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522726', '5227', '00,52,5227', '独山县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522726', '独山县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522727', '5227', '00,52,5227', '平塘县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522727', '平塘县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522728', '5227', '00,52,5227', '罗甸县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522728', '罗甸县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522729', '5227', '00,52,5227', '长顺县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522729', '长顺县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522730', '5227', '00,52,5227', '龙里县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522730', '龙里县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522731', '5227', '00,52,5227', '惠水县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522731', '惠水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('522732', '5227', '00,52,5227', '三都水族自治县', '52', '贵州省', '5227', '黔南布依族苗族自治州', '522732', '三都水族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('53', '00', '00', '云南省', '53', '云南省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5301', '53', '00,53', '昆明市', '53', '云南省', '5301', '昆明市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530102', '5301', '00,53,5301', '五华区', '53', '云南省', '5301', '昆明市', '530102', '五华区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530103', '5301', '00,53,5301', '盘龙区', '53', '云南省', '5301', '昆明市', '530103', '盘龙区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530111', '5301', '00,53,5301', '官渡区', '53', '云南省', '5301', '昆明市', '530111', '官渡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530112', '5301', '00,53,5301', '西山区', '53', '云南省', '5301', '昆明市', '530112', '西山区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530113', '5301', '00,53,5301', '东川区', '53', '云南省', '5301', '昆明市', '530113', '东川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530114', '5301', '00,53,5301', '呈贡区', '53', '云南省', '5301', '昆明市', '530114', '呈贡区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530115', '5301', '00,53,5301', '晋宁区', '53', '云南省', '5301', '昆明市', '530115', '晋宁区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530124', '5301', '00,53,5301', '富民县', '53', '云南省', '5301', '昆明市', '530124', '富民县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530125', '5301', '00,53,5301', '宜良县', '53', '云南省', '5301', '昆明市', '530125', '宜良县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530126', '5301', '00,53,5301', '石林彝族自治县', '53', '云南省', '5301', '昆明市', '530126', '石林彝族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530127', '5301', '00,53,5301', '嵩明县', '53', '云南省', '5301', '昆明市', '530127', '嵩明县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530128', '5301', '00,53,5301', '禄劝彝族苗族自治县', '53', '云南省', '5301', '昆明市', '530128', '禄劝彝族苗族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530129', '5301', '00,53,5301', '寻甸回族彝族自治县', '53', '云南省', '5301', '昆明市', '530129', '寻甸回族彝族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530181', '5301', '00,53,5301', '安宁市', '53', '云南省', '5301', '昆明市', '530181', '安宁市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5303', '53', '00,53', '曲靖市', '53', '云南省', '5303', '曲靖市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530302', '5303', '00,53,5303', '麒麟区', '53', '云南省', '5303', '曲靖市', '530302', '麒麟区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530303', '5303', '00,53,5303', '沾益区', '53', '云南省', '5303', '曲靖市', '530303', '沾益区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530304', '5303', '00,53,5303', '马龙区', '53', '云南省', '5303', '曲靖市', '530304', '马龙区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530322', '5303', '00,53,5303', '陆良县', '53', '云南省', '5303', '曲靖市', '530322', '陆良县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530323', '5303', '00,53,5303', '师宗县', '53', '云南省', '5303', '曲靖市', '530323', '师宗县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530324', '5303', '00,53,5303', '罗平县', '53', '云南省', '5303', '曲靖市', '530324', '罗平县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530325', '5303', '00,53,5303', '富源县', '53', '云南省', '5303', '曲靖市', '530325', '富源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530326', '5303', '00,53,5303', '会泽县', '53', '云南省', '5303', '曲靖市', '530326', '会泽县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530381', '5303', '00,53,5303', '宣威市', '53', '云南省', '5303', '曲靖市', '530381', '宣威市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5304', '53', '00,53', '玉溪市', '53', '云南省', '5304', '玉溪市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530402', '5304', '00,53,5304', '红塔区', '53', '云南省', '5304', '玉溪市', '530402', '红塔区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530403', '5304', '00,53,5304', '江川区', '53', '云南省', '5304', '玉溪市', '530403', '江川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530423', '5304', '00,53,5304', '通海县', '53', '云南省', '5304', '玉溪市', '530423', '通海县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530424', '5304', '00,53,5304', '华宁县', '53', '云南省', '5304', '玉溪市', '530424', '华宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530425', '5304', '00,53,5304', '易门县', '53', '云南省', '5304', '玉溪市', '530425', '易门县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530426', '5304', '00,53,5304', '峨山彝族自治县', '53', '云南省', '5304', '玉溪市', '530426', '峨山彝族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530427', '5304', '00,53,5304', '新平彝族傣族自治县', '53', '云南省', '5304', '玉溪市', '530427', '新平彝族傣族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530428', '5304', '00,53,5304', '元江哈尼族彝族傣族自治县', '53', '云南省', '5304', '玉溪市', '530428', '元江哈尼族彝族傣族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530481', '5304', '00,53,5304', '澄江市', '53', '云南省', '5304', '玉溪市', '530481', '澄江市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('5305', '53', '00,53', '保山市', '53', '云南省', '5305', '保山市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('530502', '5305', '00,53,5305', '隆阳区', '53', '云南省', '5305', '保山市', '530502', '隆阳区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620121', '6201', '00,62,6201', '永登县', '62', '甘肃省', '6201', '兰州市', '620121', '永登县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620122', '6201', '00,62,6201', '皋兰县', '62', '甘肃省', '6201', '兰州市', '620122', '皋兰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620123', '6201', '00,62,6201', '榆中县', '62', '甘肃省', '6201', '兰州市', '620123', '榆中县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6202', '62', '00,62', '嘉峪关市', '62', '甘肃省', '6202', '嘉峪关市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620200', '6202', '00,62,6202', '嘉峪关市', '62', '甘肃省', '6202', '嘉峪关市', '620200', '嘉峪关市', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6203', '62', '00,62', '金昌市', '62', '甘肃省', '6203', '金昌市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620302', '6203', '00,62,6203', '金川区', '62', '甘肃省', '6203', '金昌市', '620302', '金川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620321', '6203', '00,62,6203', '永昌县', '62', '甘肃省', '6203', '金昌市', '620321', '永昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6204', '62', '00,62', '白银市', '62', '甘肃省', '6204', '白银市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620402', '6204', '00,62,6204', '白银区', '62', '甘肃省', '6204', '白银市', '620402', '白银区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620403', '6204', '00,62,6204', '平川区', '62', '甘肃省', '6204', '白银市', '620403', '平川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620421', '6204', '00,62,6204', '靖远县', '62', '甘肃省', '6204', '白银市', '620421', '靖远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620422', '6204', '00,62,6204', '会宁县', '62', '甘肃省', '6204', '白银市', '620422', '会宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620423', '6204', '00,62,6204', '景泰县', '62', '甘肃省', '6204', '白银市', '620423', '景泰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6205', '62', '00,62', '天水市', '62', '甘肃省', '6205', '天水市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620502', '6205', '00,62,6205', '秦州区', '62', '甘肃省', '6205', '天水市', '620502', '秦州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620503', '6205', '00,62,6205', '麦积区', '62', '甘肃省', '6205', '天水市', '620503', '麦积区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620521', '6205', '00,62,6205', '清水县', '62', '甘肃省', '6205', '天水市', '620521', '清水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620522', '6205', '00,62,6205', '秦安县', '62', '甘肃省', '6205', '天水市', '620522', '秦安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('620523', '6205', '00,62,6205', '甘谷县', '62', '甘肃省', '6205', '天水市', '620523', '甘谷县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('623027', '6230', '00,62,6230', '夏河县', '62', '甘肃省', '6230', '甘南藏族自治州', '623027', '夏河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('63', '00', '00', '青海省', '63', '青海省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6301', '63', '00,63', '西宁市', '63', '青海省', '6301', '西宁市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630102', '6301', '00,63,6301', '城东区', '63', '青海省', '6301', '西宁市', '630102', '城东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630103', '6301', '00,63,6301', '城中区', '63', '青海省', '6301', '西宁市', '630103', '城中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630104', '6301', '00,63,6301', '城西区', '63', '青海省', '6301', '西宁市', '630104', '城西区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630105', '6301', '00,63,6301', '城北区', '63', '青海省', '6301', '西宁市', '630105', '城北区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630106', '6301', '00,63,6301', '湟中区', '63', '青海省', '6301', '西宁市', '630106', '湟中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630121', '6301', '00,63,6301', '大通回族土族自治县', '63', '青海省', '6301', '西宁市', '630121', '大通回族土族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630123', '6301', '00,63,6301', '湟源县', '63', '青海省', '6301', '西宁市', '630123', '湟源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6302', '63', '00,63', '海东市', '63', '青海省', '6302', '海东市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630202', '6302', '00,63,6302', '乐都区', '63', '青海省', '6302', '海东市', '630202', '乐都区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630203', '6302', '00,63,6302', '平安区', '63', '青海省', '6302', '海东市', '630203', '平安区', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630222', '6302', '00,63,6302', '民和回族土族自治县', '63', '青海省', '6302', '海东市', '630222', '民和回族土族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630223', '6302', '00,63,6302', '互助土族自治县', '63', '青海省', '6302', '海东市', '630223', '互助土族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630224', '6302', '00,63,6302', '化隆回族自治县', '63', '青海省', '6302', '海东市', '630224', '化隆回族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('630225', '6302', '00,63,6302', '循化撒拉族自治县', '63', '青海省', '6302', '海东市', '630225', '循化撒拉族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6322', '63', '00,63', '海北藏族自治州', '63', '青海省', '6322', '海北藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632221', '6322', '00,63,6322', '门源回族自治县', '63', '青海省', '6322', '海北藏族自治州', '632221', '门源回族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632222', '6322', '00,63,6322', '祁连县', '63', '青海省', '6322', '海北藏族自治州', '632222', '祁连县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632223', '6322', '00,63,6322', '海晏县', '63', '青海省', '6322', '海北藏族自治州', '632223', '海晏县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632224', '6322', '00,63,6322', '刚察县', '63', '青海省', '6322', '海北藏族自治州', '632224', '刚察县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6323', '63', '00,63', '黄南藏族自治州', '63', '青海省', '6323', '黄南藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632321', '6323', '00,63,6323', '同仁县', '63', '青海省', '6323', '黄南藏族自治州', '632321', '同仁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632322', '6323', '00,63,6323', '尖扎县', '63', '青海省', '6323', '黄南藏族自治州', '632322', '尖扎县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632323', '6323', '00,63,6323', '泽库县', '63', '青海省', '6323', '黄南藏族自治州', '632323', '泽库县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632324', '6323', '00,63,6323', '河南蒙古族自治县', '63', '青海省', '6323', '黄南藏族自治州', '632324', '河南蒙古族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6325', '63', '00,63', '海南藏族自治州', '63', '青海省', '6325', '海南藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632521', '6325', '00,63,6325', '共和县', '63', '青海省', '6325', '海南藏族自治州', '632521', '共和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632522', '6325', '00,63,6325', '同德县', '63', '青海省', '6325', '海南藏族自治州', '632522', '同德县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632523', '6325', '00,63,6325', '贵德县', '63', '青海省', '6325', '海南藏族自治州', '632523', '贵德县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632524', '6325', '00,63,6325', '兴海县', '63', '青海省', '6325', '海南藏族自治州', '632524', '兴海县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632525', '6325', '00,63,6325', '贵南县', '63', '青海省', '6325', '海南藏族自治州', '632525', '贵南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('6326', '63', '00,63', '果洛藏族自治州', '63', '青海省', '6326', '果洛藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632621', '6326', '00,63,6326', '玛沁县', '63', '青海省', '6326', '果洛藏族自治州', '632621', '玛沁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632622', '6326', '00,63,6326', '班玛县', '63', '青海省', '6326', '果洛藏族自治州', '632622', '班玛县', NULL, NULL, NULL, NULL, '3', '1', NULL);
+INSERT INTO "BLADE_REGION" VALUES ('632623', '6326', '00,63,6326', '甘德县', '63', '青海省', '6326', '果洛藏族自治州', '632623', '甘德县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('530521', '5305', '00,53,5305', '施甸县', '53', '云南省', '5305', '保山市', '530521', '施甸县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('623026', '6230', '00,62,6230', '碌曲县', '62', '甘肃省', '6230', '甘南藏族自治州', '623026', '碌曲县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('659002', '6590', '00,65,6590', '阿拉尔市', '65', '新疆维吾尔自治区', '6590', '自治区直辖县级行政区', '659002', '阿拉尔市', NULL, NULL, NULL, NULL, '3', '1', NULL);
@@ -4392,69 +4449,12 @@ INSERT INTO "BLADE_REGION" VALUES ('620103', '6201', '00,62,6201', '七里河区
 INSERT INTO "BLADE_REGION" VALUES ('620104', '6201', '00,62,6201', '西固区', '62', '甘肃省', '6201', '兰州市', '620104', '西固区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('620105', '6201', '00,62,6201', '安宁区', '62', '甘肃省', '6201', '兰州市', '620105', '安宁区', NULL, NULL, NULL, NULL, '3', '1', NULL);
 INSERT INTO "BLADE_REGION" VALUES ('620111', '6201', '00,62,6201', '红古区', '62', '甘肃省', '6201', '兰州市', '620111', '红古区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620121', '6201', '00,62,6201', '永登县', '62', '甘肃省', '6201', '兰州市', '620121', '永登县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620122', '6201', '00,62,6201', '皋兰县', '62', '甘肃省', '6201', '兰州市', '620122', '皋兰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620123', '6201', '00,62,6201', '榆中县', '62', '甘肃省', '6201', '兰州市', '620123', '榆中县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6202', '62', '00,62', '嘉峪关市', '62', '甘肃省', '6202', '嘉峪关市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620200', '6202', '00,62,6202', '嘉峪关市', '62', '甘肃省', '6202', '嘉峪关市', '620200', '嘉峪关市', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6203', '62', '00,62', '金昌市', '62', '甘肃省', '6203', '金昌市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620302', '6203', '00,62,6203', '金川区', '62', '甘肃省', '6203', '金昌市', '620302', '金川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620321', '6203', '00,62,6203', '永昌县', '62', '甘肃省', '6203', '金昌市', '620321', '永昌县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6204', '62', '00,62', '白银市', '62', '甘肃省', '6204', '白银市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620402', '6204', '00,62,6204', '白银区', '62', '甘肃省', '6204', '白银市', '620402', '白银区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620403', '6204', '00,62,6204', '平川区', '62', '甘肃省', '6204', '白银市', '620403', '平川区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620421', '6204', '00,62,6204', '靖远县', '62', '甘肃省', '6204', '白银市', '620421', '靖远县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620422', '6204', '00,62,6204', '会宁县', '62', '甘肃省', '6204', '白银市', '620422', '会宁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620423', '6204', '00,62,6204', '景泰县', '62', '甘肃省', '6204', '白银市', '620423', '景泰县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6205', '62', '00,62', '天水市', '62', '甘肃省', '6205', '天水市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620502', '6205', '00,62,6205', '秦州区', '62', '甘肃省', '6205', '天水市', '620502', '秦州区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620503', '6205', '00,62,6205', '麦积区', '62', '甘肃省', '6205', '天水市', '620503', '麦积区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620521', '6205', '00,62,6205', '清水县', '62', '甘肃省', '6205', '天水市', '620521', '清水县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620522', '6205', '00,62,6205', '秦安县', '62', '甘肃省', '6205', '天水市', '620522', '秦安县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('620523', '6205', '00,62,6205', '甘谷县', '62', '甘肃省', '6205', '天水市', '620523', '甘谷县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('623027', '6230', '00,62,6230', '夏河县', '62', '甘肃省', '6230', '甘南藏族自治州', '623027', '夏河县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('63', '00', '00', '青海省', '63', '青海省', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6301', '63', '00,63', '西宁市', '63', '青海省', '6301', '西宁市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630102', '6301', '00,63,6301', '城东区', '63', '青海省', '6301', '西宁市', '630102', '城东区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630103', '6301', '00,63,6301', '城中区', '63', '青海省', '6301', '西宁市', '630103', '城中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630104', '6301', '00,63,6301', '城西区', '63', '青海省', '6301', '西宁市', '630104', '城西区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630105', '6301', '00,63,6301', '城北区', '63', '青海省', '6301', '西宁市', '630105', '城北区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630106', '6301', '00,63,6301', '湟中区', '63', '青海省', '6301', '西宁市', '630106', '湟中区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630121', '6301', '00,63,6301', '大通回族土族自治县', '63', '青海省', '6301', '西宁市', '630121', '大通回族土族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630123', '6301', '00,63,6301', '湟源县', '63', '青海省', '6301', '西宁市', '630123', '湟源县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6302', '63', '00,63', '海东市', '63', '青海省', '6302', '海东市', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630202', '6302', '00,63,6302', '乐都区', '63', '青海省', '6302', '海东市', '630202', '乐都区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630203', '6302', '00,63,6302', '平安区', '63', '青海省', '6302', '海东市', '630203', '平安区', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630222', '6302', '00,63,6302', '民和回族土族自治县', '63', '青海省', '6302', '海东市', '630222', '民和回族土族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630223', '6302', '00,63,6302', '互助土族自治县', '63', '青海省', '6302', '海东市', '630223', '互助土族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630224', '6302', '00,63,6302', '化隆回族自治县', '63', '青海省', '6302', '海东市', '630224', '化隆回族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('630225', '6302', '00,63,6302', '循化撒拉族自治县', '63', '青海省', '6302', '海东市', '630225', '循化撒拉族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6322', '63', '00,63', '海北藏族自治州', '63', '青海省', '6322', '海北藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632221', '6322', '00,63,6322', '门源回族自治县', '63', '青海省', '6322', '海北藏族自治州', '632221', '门源回族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632222', '6322', '00,63,6322', '祁连县', '63', '青海省', '6322', '海北藏族自治州', '632222', '祁连县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632223', '6322', '00,63,6322', '海晏县', '63', '青海省', '6322', '海北藏族自治州', '632223', '海晏县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632224', '6322', '00,63,6322', '刚察县', '63', '青海省', '6322', '海北藏族自治州', '632224', '刚察县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6323', '63', '00,63', '黄南藏族自治州', '63', '青海省', '6323', '黄南藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632321', '6323', '00,63,6323', '同仁县', '63', '青海省', '6323', '黄南藏族自治州', '632321', '同仁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632322', '6323', '00,63,6323', '尖扎县', '63', '青海省', '6323', '黄南藏族自治州', '632322', '尖扎县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632323', '6323', '00,63,6323', '泽库县', '63', '青海省', '6323', '黄南藏族自治州', '632323', '泽库县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632324', '6323', '00,63,6323', '河南蒙古族自治县', '63', '青海省', '6323', '黄南藏族自治州', '632324', '河南蒙古族自治县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6325', '63', '00,63', '海南藏族自治州', '63', '青海省', '6325', '海南藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632521', '6325', '00,63,6325', '共和县', '63', '青海省', '6325', '海南藏族自治州', '632521', '共和县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632522', '6325', '00,63,6325', '同德县', '63', '青海省', '6325', '海南藏族自治州', '632522', '同德县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632523', '6325', '00,63,6325', '贵德县', '63', '青海省', '6325', '海南藏族自治州', '632523', '贵德县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632524', '6325', '00,63,6325', '兴海县', '63', '青海省', '6325', '海南藏族自治州', '632524', '兴海县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632525', '6325', '00,63,6325', '贵南县', '63', '青海省', '6325', '海南藏族自治州', '632525', '贵南县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('6326', '63', '00,63', '果洛藏族自治州', '63', '青海省', '6326', '果洛藏族自治州', NULL, NULL, NULL, NULL, NULL, NULL, '2', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632621', '6326', '00,63,6326', '玛沁县', '63', '青海省', '6326', '果洛藏族自治州', '632621', '玛沁县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632622', '6326', '00,63,6326', '班玛县', '63', '青海省', '6326', '果洛藏族自治州', '632622', '班玛县', NULL, NULL, NULL, NULL, '3', '1', NULL);
-INSERT INTO "BLADE_REGION" VALUES ('632623', '6326', '00,63,6326', '甘德县', '63', '青海省', '6326', '果洛藏族自治州', '632623', '甘德县', NULL, NULL, NULL, NULL, '3', '1', NULL);
 COMMIT;
 
 -- ----------------------------
 -- Table structure for BLADE_REPORT_FILE
 -- ----------------------------
--- DROP TABLE "BLADE_REPORT_FILE";
+DROP TABLE "BLADE_REPORT_FILE";
 CREATE TABLE "BLADE_REPORT_FILE" (
   "ID" NUMBER(20) NOT NULL ,
   "NAME" NVARCHAR2(100) NOT NULL ,
@@ -4462,6 +4462,7 @@ CREATE TABLE "BLADE_REPORT_FILE" (
   "CREATE_TIME" DATE NOT NULL ,
   "UPDATE_TIME" DATE NOT NULL ,
   "IS_DELETED" NUMBER(11) DEFAULT 0
+
 
 
 
@@ -4489,7 +4490,7 @@ COMMENT ON TABLE "BLADE_REPORT_FILE" IS '报表文件表';
 -- ----------------------------
 -- Table structure for BLADE_ROLE
 -- ----------------------------
--- DROP TABLE "BLADE_ROLE";
+DROP TABLE "BLADE_ROLE";
 CREATE TABLE "BLADE_ROLE" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -4537,7 +4538,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_ROLE_MENU
 -- ----------------------------
--- DROP TABLE "BLADE_ROLE_MENU";
+DROP TABLE "BLADE_ROLE_MENU";
 CREATE TABLE "BLADE_ROLE_MENU" (
   "ID" NUMBER(20) NOT NULL ,
   "MENU_ID" NUMBER(20) ,
@@ -4829,7 +4830,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_ROLE_SCOPE
 -- ----------------------------
--- DROP TABLE "BLADE_ROLE_SCOPE";
+DROP TABLE "BLADE_ROLE_SCOPE";
 CREATE TABLE "BLADE_ROLE_SCOPE" (
   "ID" NUMBER(20) NOT NULL ,
   "SCOPE_CATEGORY" NUMBER(11) ,
@@ -4861,7 +4862,7 @@ COMMENT ON TABLE "BLADE_ROLE_SCOPE" IS '角色数据权限关联表';
 -- ----------------------------
 -- Table structure for BLADE_SCOPE_API
 -- ----------------------------
--- DROP TABLE "BLADE_SCOPE_API";
+DROP TABLE "BLADE_SCOPE_API";
 CREATE TABLE "BLADE_SCOPE_API" (
   "ID" NUMBER(20) NOT NULL ,
   "MENU_ID" NUMBER(20) ,
@@ -4913,7 +4914,7 @@ COMMENT ON TABLE "BLADE_SCOPE_API" IS '接口权限表';
 -- ----------------------------
 -- Table structure for BLADE_SCOPE_DATA
 -- ----------------------------
--- DROP TABLE "BLADE_SCOPE_DATA";
+DROP TABLE "BLADE_SCOPE_DATA";
 CREATE TABLE "BLADE_SCOPE_DATA" (
   "ID" NUMBER(20) NOT NULL ,
   "MENU_ID" NUMBER(20) ,
@@ -4971,7 +4972,7 @@ COMMENT ON TABLE "BLADE_SCOPE_DATA" IS '数据权限表';
 -- ----------------------------
 -- Table structure for BLADE_SMS
 -- ----------------------------
--- DROP TABLE "BLADE_SMS";
+DROP TABLE "BLADE_SMS";
 CREATE TABLE "BLADE_SMS" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -5029,7 +5030,7 @@ COMMENT ON TABLE "BLADE_SMS" IS '短信配置表';
 -- ----------------------------
 -- Table structure for BLADE_TENANT
 -- ----------------------------
--- DROP TABLE "BLADE_TENANT";
+DROP TABLE "BLADE_TENANT";
 CREATE TABLE "BLADE_TENANT" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -5039,8 +5040,9 @@ CREATE TABLE "BLADE_TENANT" (
   "LINKMAN" NVARCHAR2(20) ,
   "CONTACT_NUMBER" NVARCHAR2(20) ,
   "ADDRESS" NVARCHAR2(255) ,
-  "ACCOUNT_NUMBER" NUMBER DEFAULT -1          ,
+  "ACCOUNT_NUMBER" NUMBER DEFAULT -1           ,
   "EXPIRE_TIME" DATE ,
+  "PACKAGE_ID" NUMBER(20)  ,
   "DATASOURCE_ID" NUMBER(20) ,
   "LICENSE_KEY" VARCHAR2(1000 BYTE) ,
   "CREATE_USER" NUMBER(20) ,
@@ -5077,6 +5079,7 @@ COMMENT ON COLUMN "BLADE_TENANT"."CONTACT_NUMBER" IS '联系电话';
 COMMENT ON COLUMN "BLADE_TENANT"."ADDRESS" IS '联系地址';
 COMMENT ON COLUMN "BLADE_TENANT"."ACCOUNT_NUMBER" IS '账号额度';
 COMMENT ON COLUMN "BLADE_TENANT"."EXPIRE_TIME" IS '过期时间';
+COMMENT ON COLUMN "BLADE_TENANT"."PACKAGE_ID" IS '产品包ID';
 COMMENT ON COLUMN "BLADE_TENANT"."DATASOURCE_ID" IS '数据源ID';
 COMMENT ON COLUMN "BLADE_TENANT"."LICENSE_KEY" IS '授权码';
 COMMENT ON COLUMN "BLADE_TENANT"."CREATE_USER" IS '创建人';
@@ -5091,13 +5094,55 @@ COMMENT ON TABLE "BLADE_TENANT" IS '租户表';
 -- ----------------------------
 -- Records of BLADE_TENANT
 -- ----------------------------
-INSERT INTO "BLADE_TENANT" VALUES ('1123598820738675201', '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', '-1', NULL, NULL, NULL, '1123598821738675201', '1123598813738675201', TO_DATE('2019-01-01 00:00:39', 'SYYYY-MM-DD HH24:MI:SS'), '1123598821738675201', TO_DATE('2019-01-01 00:00:39', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "BLADE_TENANT" VALUES ('1123598820738675201', '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', '-1', NULL, NULL, NULL, NULL, '1123598821738675201', '1123598813738675201', TO_DATE('2019-01-01 00:00:39', 'SYYYY-MM-DD HH24:MI:SS'), '1123598821738675201', TO_DATE('2019-01-01 00:00:39', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
 COMMIT;
+
+-- ----------------------------
+-- Table structure for BLADE_TENANT_PACKAGE
+-- ----------------------------
+DROP TABLE "BLADE_TENANT_PACKAGE";
+CREATE TABLE "BLADE_TENANT_PACKAGE" (
+  "ID" NUMBER(20) NOT NULL ,
+  "PACKAGE_NAME" NVARCHAR2(50) ,
+  "MENU_ID" NVARCHAR2(2000) ,
+  "REMARK" NVARCHAR2(255) ,
+  "CREATE_USER" NUMBER(20) ,
+  "CREATE_DEPT" NUMBER(20) ,
+  "CREATE_TIME" DATE ,
+  "UPDATE_USER" NUMBER(20) ,
+  "UPDATE_TIME" DATE ,
+  "STATUS" NUMBER(11) ,
+  "IS_DELETED" NUMBER(11)
+)
+TABLESPACE "USERS"
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."ID" IS '主键';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."PACKAGE_NAME" IS '产品包名';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."MENU_ID" IS '菜单ID';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."REMARK" IS '备注';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."CREATE_USER" IS '创建人';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."CREATE_DEPT" IS '创建部门';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."CREATE_TIME" IS '创建时间';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."UPDATE_USER" IS '修改人';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."UPDATE_TIME" IS '修改时间';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."STATUS" IS '状态';
+COMMENT ON COLUMN "BLADE_TENANT_PACKAGE"."IS_DELETED" IS '是否已删除';
+COMMENT ON TABLE "BLADE_TENANT_PACKAGE" IS '租户产品表';
 
 -- ----------------------------
 -- Table structure for BLADE_TOP_MENU
 -- ----------------------------
--- DROP TABLE "BLADE_TOP_MENU";
+DROP TABLE "BLADE_TOP_MENU";
 CREATE TABLE "BLADE_TOP_MENU" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -5147,7 +5192,7 @@ COMMENT ON TABLE "BLADE_TOP_MENU" IS '顶部菜单表';
 -- ----------------------------
 -- Table structure for BLADE_TOP_MENU_SETTING
 -- ----------------------------
--- DROP TABLE "BLADE_TOP_MENU_SETTING";
+DROP TABLE "BLADE_TOP_MENU_SETTING";
 CREATE TABLE "BLADE_TOP_MENU_SETTING" (
   "ID" NUMBER(20) NOT NULL ,
   "TOP_MENU_ID" NUMBER(20) ,
@@ -5177,7 +5222,7 @@ COMMENT ON TABLE "BLADE_TOP_MENU_SETTING" IS '顶部菜单配置表';
 -- ----------------------------
 -- Table structure for BLADE_USER
 -- ----------------------------
--- DROP TABLE "BLADE_USER";
+DROP TABLE "BLADE_USER";
 CREATE TABLE "BLADE_USER" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -5255,7 +5300,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_USER_APP
 -- ----------------------------
--- DROP TABLE "BLADE_USER_APP";
+DROP TABLE "BLADE_USER_APP";
 CREATE TABLE "BLADE_USER_APP" (
   "ID" NUMBER(20) NOT NULL ,
   "USER_ID" NUMBER(20) ,
@@ -5281,7 +5326,7 @@ COMMENT ON TABLE "BLADE_USER_APP" IS '用户平台拓展表';
 -- ----------------------------
 -- Table structure for BLADE_USER_DEPT
 -- ----------------------------
--- DROP TABLE "BLADE_USER_DEPT";
+DROP TABLE "BLADE_USER_DEPT";
 CREATE TABLE "BLADE_USER_DEPT" (
   "ID" NUMBER(20) NOT NULL ,
   "USER_ID" NUMBER(20) ,
@@ -5320,7 +5365,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_USER_OAUTH
 -- ----------------------------
--- DROP TABLE "BLADE_USER_OAUTH";
+DROP TABLE "BLADE_USER_OAUTH";
 CREATE TABLE "BLADE_USER_OAUTH" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" VARCHAR2(12 BYTE) ,
@@ -5368,7 +5413,7 @@ COMMENT ON TABLE "BLADE_USER_OAUTH" IS '用户第三方认证表';
 -- ----------------------------
 -- Table structure for BLADE_USER_OTHER
 -- ----------------------------
--- DROP TABLE "BLADE_USER_OTHER";
+DROP TABLE "BLADE_USER_OTHER";
 CREATE TABLE "BLADE_USER_OTHER" (
   "ID" NUMBER(20) NOT NULL ,
   "USER_ID" NUMBER(20) ,
@@ -5394,7 +5439,7 @@ COMMENT ON TABLE "BLADE_USER_OTHER" IS '用户平台拓展表';
 -- ----------------------------
 -- Table structure for BLADE_USER_WEB
 -- ----------------------------
--- DROP TABLE "BLADE_USER_WEB";
+DROP TABLE "BLADE_USER_WEB";
 CREATE TABLE "BLADE_USER_WEB" (
   "ID" NUMBER(20) NOT NULL ,
   "USER_ID" NUMBER(20) ,
@@ -5427,6 +5472,7 @@ ALTER TABLE "BLADE_ATTACH" ADD CONSTRAINT "SYS_C0017502" PRIMARY KEY ("ID");
 -- ----------------------------
 ALTER TABLE "BLADE_ATTACH" ADD CONSTRAINT "SYS_C0011850" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ATTACH" ADD CONSTRAINT "SYS_C0013589" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_ATTACH" ADD CONSTRAINT "SYS_C0014006" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ATTACH" ADD CONSTRAINT "SYS_C0017501" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ATTACH" ADD CONSTRAINT "SYS_C0022775" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ATTACH" ADD CONSTRAINT "SYS_C0027612" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5475,6 +5521,15 @@ ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0013595" CHECK ("ACCESS_TOKEN_VA
 ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0013596" CHECK ("REFRESH_TOKEN_VALIDITY" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0013597" CHECK ("STATUS" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0013598" CHECK ("IS_DELETED" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014007" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014008" CHECK ("CLIENT_ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014009" CHECK ("CLIENT_SECRET" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014010" CHECK ("SCOPE" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014011" CHECK ("AUTHORIZED_GRANT_TYPES" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014012" CHECK ("ACCESS_TOKEN_VALIDITY" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014013" CHECK ("REFRESH_TOKEN_VALIDITY" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014014" CHECK ("STATUS" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0014015" CHECK ("IS_DELETED" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0017039" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0017040" CHECK ("CLIENT_ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CLIENT" ADD CONSTRAINT "SYS_C0017041" CHECK ("CLIENT_SECRET" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5569,6 +5624,7 @@ ALTER TABLE "BLADE_CODE" ADD CONSTRAINT "SYS_C0011860" CHECK ("ID" IS NOT NULL) 
 ALTER TABLE "BLADE_CODE" ADD CONSTRAINT "SYS_C0012736" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CODE" ADD CONSTRAINT "SYS_C0013287" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CODE" ADD CONSTRAINT "SYS_C0013599" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_CODE" ADD CONSTRAINT "SYS_C0014016" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CODE" ADD CONSTRAINT "SYS_C0017048" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CODE" ADD CONSTRAINT "SYS_C0017176" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_CODE" ADD CONSTRAINT "SYS_C0019190" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5590,6 +5646,7 @@ ALTER TABLE "BLADE_DATASOURCE" ADD CONSTRAINT "SYS_C0017121" PRIMARY KEY ("ID");
 ALTER TABLE "BLADE_DATASOURCE" ADD CONSTRAINT "SYS_C0011861" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DATASOURCE" ADD CONSTRAINT "SYS_C0013288" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DATASOURCE" ADD CONSTRAINT "SYS_C0013600" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_DATASOURCE" ADD CONSTRAINT "SYS_C0014017" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DATASOURCE" ADD CONSTRAINT "SYS_C0017120" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DATASOURCE" ADD CONSTRAINT "SYS_C0017177" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DATASOURCE" ADD CONSTRAINT "SYS_C0019191" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5612,6 +5669,7 @@ ALTER TABLE "BLADE_DEPT" ADD CONSTRAINT "SYS_C0011862" CHECK ("ID" IS NOT NULL) 
 ALTER TABLE "BLADE_DEPT" ADD CONSTRAINT "SYS_C0012737" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DEPT" ADD CONSTRAINT "SYS_C0013289" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DEPT" ADD CONSTRAINT "SYS_C0013601" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_DEPT" ADD CONSTRAINT "SYS_C0014018" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DEPT" ADD CONSTRAINT "SYS_C0017049" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DEPT" ADD CONSTRAINT "SYS_C0017178" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DEPT" ADD CONSTRAINT "SYS_C0019192" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5634,6 +5692,7 @@ ALTER TABLE "BLADE_DICT" ADD CONSTRAINT "SYS_C0011863" CHECK ("ID" IS NOT NULL) 
 ALTER TABLE "BLADE_DICT" ADD CONSTRAINT "SYS_C0012738" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT" ADD CONSTRAINT "SYS_C0013290" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT" ADD CONSTRAINT "SYS_C0013602" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_DICT" ADD CONSTRAINT "SYS_C0014019" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT" ADD CONSTRAINT "SYS_C0017050" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT" ADD CONSTRAINT "SYS_C0017179" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT" ADD CONSTRAINT "SYS_C0019193" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5655,6 +5714,7 @@ ALTER TABLE "BLADE_DICT_BIZ" ADD CONSTRAINT "SYS_C0019296" PRIMARY KEY ("ID");
 ALTER TABLE "BLADE_DICT_BIZ" ADD CONSTRAINT "SYS_C0011864" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT_BIZ" ADD CONSTRAINT "SYS_C0013291" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT_BIZ" ADD CONSTRAINT "SYS_C0013603" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_DICT_BIZ" ADD CONSTRAINT "SYS_C0014020" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT_BIZ" ADD CONSTRAINT "SYS_C0017180" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT_BIZ" ADD CONSTRAINT "SYS_C0019295" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_DICT_BIZ" ADD CONSTRAINT "SYS_C0019485" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5676,6 +5736,7 @@ ALTER TABLE "BLADE_LOG_API" ADD CONSTRAINT "SYS_C0011865" CHECK ("ID" IS NOT NUL
 ALTER TABLE "BLADE_LOG_API" ADD CONSTRAINT "SYS_C0012739" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_API" ADD CONSTRAINT "SYS_C0013292" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_API" ADD CONSTRAINT "SYS_C0013604" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_LOG_API" ADD CONSTRAINT "SYS_C0014021" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_API" ADD CONSTRAINT "SYS_C0017051" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_API" ADD CONSTRAINT "SYS_C0017181" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_API" ADD CONSTRAINT "SYS_C0019194" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5698,6 +5759,7 @@ ALTER TABLE "BLADE_LOG_ERROR" ADD CONSTRAINT "SYS_C0011866" CHECK ("ID" IS NOT N
 ALTER TABLE "BLADE_LOG_ERROR" ADD CONSTRAINT "SYS_C0012740" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_ERROR" ADD CONSTRAINT "SYS_C0013293" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_ERROR" ADD CONSTRAINT "SYS_C0013605" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_LOG_ERROR" ADD CONSTRAINT "SYS_C0014022" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_ERROR" ADD CONSTRAINT "SYS_C0017052" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_ERROR" ADD CONSTRAINT "SYS_C0017182" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_ERROR" ADD CONSTRAINT "SYS_C0019195" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5720,6 +5782,7 @@ ALTER TABLE "BLADE_LOG_USUAL" ADD CONSTRAINT "SYS_C0011867" CHECK ("ID" IS NOT N
 ALTER TABLE "BLADE_LOG_USUAL" ADD CONSTRAINT "SYS_C0012741" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_USUAL" ADD CONSTRAINT "SYS_C0013294" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_USUAL" ADD CONSTRAINT "SYS_C0013606" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_LOG_USUAL" ADD CONSTRAINT "SYS_C0014023" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_USUAL" ADD CONSTRAINT "SYS_C0017053" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_USUAL" ADD CONSTRAINT "SYS_C0017183" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_LOG_USUAL" ADD CONSTRAINT "SYS_C0019196" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5742,6 +5805,7 @@ ALTER TABLE "BLADE_MENU" ADD CONSTRAINT "SYS_C0011868" CHECK ("ID" IS NOT NULL) 
 ALTER TABLE "BLADE_MENU" ADD CONSTRAINT "SYS_C0012742" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_MENU" ADD CONSTRAINT "SYS_C0013295" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_MENU" ADD CONSTRAINT "SYS_C0013607" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_MENU" ADD CONSTRAINT "SYS_C0014024" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_MENU" ADD CONSTRAINT "SYS_C0017054" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_MENU" ADD CONSTRAINT "SYS_C0017184" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_MENU" ADD CONSTRAINT "SYS_C0019197" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5764,6 +5828,7 @@ ALTER TABLE "BLADE_NOTICE" ADD CONSTRAINT "SYS_C0011869" CHECK ("ID" IS NOT NULL
 ALTER TABLE "BLADE_NOTICE" ADD CONSTRAINT "SYS_C0012743" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_NOTICE" ADD CONSTRAINT "SYS_C0013296" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_NOTICE" ADD CONSTRAINT "SYS_C0013608" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_NOTICE" ADD CONSTRAINT "SYS_C0014025" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_NOTICE" ADD CONSTRAINT "SYS_C0017055" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_NOTICE" ADD CONSTRAINT "SYS_C0017185" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_NOTICE" ADD CONSTRAINT "SYS_C0019198" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5786,6 +5851,7 @@ ALTER TABLE "BLADE_OSS" ADD CONSTRAINT "SYS_C0011870" CHECK ("ID" IS NOT NULL) N
 ALTER TABLE "BLADE_OSS" ADD CONSTRAINT "SYS_C0012744" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_OSS" ADD CONSTRAINT "SYS_C0013297" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_OSS" ADD CONSTRAINT "SYS_C0013609" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_OSS" ADD CONSTRAINT "SYS_C0014026" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_OSS" ADD CONSTRAINT "SYS_C0017056" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_OSS" ADD CONSTRAINT "SYS_C0017186" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_OSS" ADD CONSTRAINT "SYS_C0019199" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5808,6 +5874,7 @@ ALTER TABLE "BLADE_PARAM" ADD CONSTRAINT "SYS_C0011871" CHECK ("ID" IS NOT NULL)
 ALTER TABLE "BLADE_PARAM" ADD CONSTRAINT "SYS_C0012745" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PARAM" ADD CONSTRAINT "SYS_C0013298" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PARAM" ADD CONSTRAINT "SYS_C0013610" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_PARAM" ADD CONSTRAINT "SYS_C0014027" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PARAM" ADD CONSTRAINT "SYS_C0017057" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PARAM" ADD CONSTRAINT "SYS_C0017187" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PARAM" ADD CONSTRAINT "SYS_C0019200" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5829,6 +5896,7 @@ ALTER TABLE "BLADE_POST" ADD CONSTRAINT "SYS_C0023620" PRIMARY KEY ("ID");
 ALTER TABLE "BLADE_POST" ADD CONSTRAINT "SYS_C0011872" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_POST" ADD CONSTRAINT "SYS_C0013299" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_POST" ADD CONSTRAINT "SYS_C0013611" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_POST" ADD CONSTRAINT "SYS_C0014028" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_POST" ADD CONSTRAINT "SYS_C0017188" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_POST" ADD CONSTRAINT "SYS_C0022797" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_POST" ADD CONSTRAINT "SYS_C0023619" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5846,6 +5914,7 @@ ALTER TABLE "BLADE_PROCESS_LEAVE" ADD CONSTRAINT "SYS_C0011873" CHECK ("ID" IS N
 ALTER TABLE "BLADE_PROCESS_LEAVE" ADD CONSTRAINT "SYS_C0012746" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PROCESS_LEAVE" ADD CONSTRAINT "SYS_C0013300" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PROCESS_LEAVE" ADD CONSTRAINT "SYS_C0013612" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_PROCESS_LEAVE" ADD CONSTRAINT "SYS_C0014029" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PROCESS_LEAVE" ADD CONSTRAINT "SYS_C0017058" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PROCESS_LEAVE" ADD CONSTRAINT "SYS_C0017189" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_PROCESS_LEAVE" ADD CONSTRAINT "SYS_C0019201" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5873,6 +5942,9 @@ ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0013571" CHECK ("SORT" IS NOT NU
 ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0013613" CHECK ("CODE" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0013614" CHECK ("REGION_LEVEL" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0013615" CHECK ("SORT" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0014030" CHECK ("CODE" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0014031" CHECK ("REGION_LEVEL" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0014032" CHECK ("SORT" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0017190" CHECK ("CODE" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0017191" CHECK ("REGION_LEVEL" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REGION" ADD CONSTRAINT "SYS_C0017192" CHECK ("SORT" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5899,6 +5971,10 @@ ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0013616" CHECK ("ID" IS NOT
 ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0013617" CHECK ("NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0013618" CHECK ("CREATE_TIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0013619" CHECK ("UPDATE_TIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0014033" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0014034" CHECK ("NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0014035" CHECK ("CREATE_TIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0014036" CHECK ("UPDATE_TIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0022802" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0022803" CHECK ("NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_REPORT_FILE" ADD CONSTRAINT "SYS_C0022804" CHECK ("CREATE_TIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5920,6 +5996,7 @@ ALTER TABLE "BLADE_ROLE" ADD CONSTRAINT "SYS_C0011877" CHECK ("ID" IS NOT NULL) 
 ALTER TABLE "BLADE_ROLE" ADD CONSTRAINT "SYS_C0012747" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE" ADD CONSTRAINT "SYS_C0013301" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE" ADD CONSTRAINT "SYS_C0013620" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_ROLE" ADD CONSTRAINT "SYS_C0014037" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE" ADD CONSTRAINT "SYS_C0017059" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE" ADD CONSTRAINT "SYS_C0017193" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE" ADD CONSTRAINT "SYS_C0019202" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5942,6 +6019,7 @@ ALTER TABLE "BLADE_ROLE_MENU" ADD CONSTRAINT "SYS_C0011878" CHECK ("ID" IS NOT N
 ALTER TABLE "BLADE_ROLE_MENU" ADD CONSTRAINT "SYS_C0012748" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_MENU" ADD CONSTRAINT "SYS_C0013302" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_MENU" ADD CONSTRAINT "SYS_C0013621" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_ROLE_MENU" ADD CONSTRAINT "SYS_C0014038" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_MENU" ADD CONSTRAINT "SYS_C0017060" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_MENU" ADD CONSTRAINT "SYS_C0017194" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_MENU" ADD CONSTRAINT "SYS_C0019203" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5964,6 +6042,7 @@ ALTER TABLE "BLADE_ROLE_SCOPE" ADD CONSTRAINT "SYS_C0011879" CHECK ("ID" IS NOT 
 ALTER TABLE "BLADE_ROLE_SCOPE" ADD CONSTRAINT "SYS_C0012749" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_SCOPE" ADD CONSTRAINT "SYS_C0013303" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_SCOPE" ADD CONSTRAINT "SYS_C0013622" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_ROLE_SCOPE" ADD CONSTRAINT "SYS_C0014039" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_SCOPE" ADD CONSTRAINT "SYS_C0017061" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_SCOPE" ADD CONSTRAINT "SYS_C0017195" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_ROLE_SCOPE" ADD CONSTRAINT "SYS_C0019204" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -5986,6 +6065,7 @@ ALTER TABLE "BLADE_SCOPE_API" ADD CONSTRAINT "SYS_C0011880" CHECK ("ID" IS NOT N
 ALTER TABLE "BLADE_SCOPE_API" ADD CONSTRAINT "SYS_C0012750" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_API" ADD CONSTRAINT "SYS_C0013304" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_API" ADD CONSTRAINT "SYS_C0013623" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_SCOPE_API" ADD CONSTRAINT "SYS_C0014040" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_API" ADD CONSTRAINT "SYS_C0017062" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_API" ADD CONSTRAINT "SYS_C0017196" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_API" ADD CONSTRAINT "SYS_C0019205" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6008,6 +6088,7 @@ ALTER TABLE "BLADE_SCOPE_DATA" ADD CONSTRAINT "SYS_C0011881" CHECK ("ID" IS NOT 
 ALTER TABLE "BLADE_SCOPE_DATA" ADD CONSTRAINT "SYS_C0012751" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_DATA" ADD CONSTRAINT "SYS_C0013305" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_DATA" ADD CONSTRAINT "SYS_C0013624" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_SCOPE_DATA" ADD CONSTRAINT "SYS_C0014041" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_DATA" ADD CONSTRAINT "SYS_C0017063" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_DATA" ADD CONSTRAINT "SYS_C0017197" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SCOPE_DATA" ADD CONSTRAINT "SYS_C0019206" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6029,6 +6110,7 @@ ALTER TABLE "BLADE_SMS" ADD CONSTRAINT "SYS_C0022202" PRIMARY KEY ("ID");
 ALTER TABLE "BLADE_SMS" ADD CONSTRAINT "SYS_C0011882" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SMS" ADD CONSTRAINT "SYS_C0013306" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SMS" ADD CONSTRAINT "SYS_C0013625" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_SMS" ADD CONSTRAINT "SYS_C0014042" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SMS" ADD CONSTRAINT "SYS_C0017198" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SMS" ADD CONSTRAINT "SYS_C0022201" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_SMS" ADD CONSTRAINT "SYS_C0022811" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6051,6 +6133,8 @@ ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0013307" CHECK ("ID" IS NOT NULL
 ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0013308" CHECK ("TENANT_NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0013626" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0013627" CHECK ("TENANT_NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0014043" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0014044" CHECK ("TENANT_NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0017064" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0017065" CHECK ("TENANT_NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0017199" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6071,6 +6155,16 @@ ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0027649" CHECK ("ID" IS NOT NULL
 ALTER TABLE "BLADE_TENANT" ADD CONSTRAINT "SYS_C0027650" CHECK ("TENANT_NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 
 -- ----------------------------
+-- Primary Key structure for table BLADE_TENANT_PACKAGE
+-- ----------------------------
+ALTER TABLE "BLADE_TENANT_PACKAGE" ADD CONSTRAINT "SYS_C0014573" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table BLADE_TENANT_PACKAGE
+-- ----------------------------
+ALTER TABLE "BLADE_TENANT_PACKAGE" ADD CONSTRAINT "SYS_C0014572" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
 -- Primary Key structure for table BLADE_TOP_MENU
 -- ----------------------------
 ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0012775" PRIMARY KEY ("ID");
@@ -6082,6 +6176,7 @@ ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0011885" CHECK ("ID" IS NOT NU
 ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0012754" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0013309" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0013628" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0014045" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0017066" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0017201" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU" ADD CONSTRAINT "SYS_C0019209" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6104,6 +6199,7 @@ ALTER TABLE "BLADE_TOP_MENU_SETTING" ADD CONSTRAINT "SYS_C0011886" CHECK ("ID" I
 ALTER TABLE "BLADE_TOP_MENU_SETTING" ADD CONSTRAINT "SYS_C0012755" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU_SETTING" ADD CONSTRAINT "SYS_C0013310" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU_SETTING" ADD CONSTRAINT "SYS_C0013629" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_TOP_MENU_SETTING" ADD CONSTRAINT "SYS_C0014046" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU_SETTING" ADD CONSTRAINT "SYS_C0017067" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU_SETTING" ADD CONSTRAINT "SYS_C0017202" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_TOP_MENU_SETTING" ADD CONSTRAINT "SYS_C0019210" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6126,6 +6222,7 @@ ALTER TABLE "BLADE_USER" ADD CONSTRAINT "SYS_C0011887" CHECK ("ID" IS NOT NULL) 
 ALTER TABLE "BLADE_USER" ADD CONSTRAINT "SYS_C0012756" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER" ADD CONSTRAINT "SYS_C0013311" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER" ADD CONSTRAINT "SYS_C0013630" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_USER" ADD CONSTRAINT "SYS_C0014047" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER" ADD CONSTRAINT "SYS_C0017068" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER" ADD CONSTRAINT "SYS_C0017203" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER" ADD CONSTRAINT "SYS_C0019211" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6144,6 +6241,7 @@ ALTER TABLE "BLADE_USER_APP" ADD CONSTRAINT "SYS_C0028128" PRIMARY KEY ("ID");
 -- ----------------------------
 -- Checks structure for table BLADE_USER_APP
 -- ----------------------------
+ALTER TABLE "BLADE_USER_APP" ADD CONSTRAINT "SYS_C0014048" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_APP" ADD CONSTRAINT "SYS_C0028127" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 
 -- ----------------------------
@@ -6157,6 +6255,7 @@ ALTER TABLE "BLADE_USER_DEPT" ADD CONSTRAINT "SYS_C0019621" PRIMARY KEY ("ID");
 ALTER TABLE "BLADE_USER_DEPT" ADD CONSTRAINT "SYS_C0011888" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_DEPT" ADD CONSTRAINT "SYS_C0013312" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_DEPT" ADD CONSTRAINT "SYS_C0013631" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_USER_DEPT" ADD CONSTRAINT "SYS_C0014049" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_DEPT" ADD CONSTRAINT "SYS_C0017204" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_DEPT" ADD CONSTRAINT "SYS_C0019620" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_DEPT" ADD CONSTRAINT "SYS_C0020278" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6176,6 +6275,7 @@ ALTER TABLE "BLADE_USER_OAUTH" ADD CONSTRAINT "SYS_C0013568" PRIMARY KEY ("ID");
 ALTER TABLE "BLADE_USER_OAUTH" ADD CONSTRAINT "SYS_C0011889" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_OAUTH" ADD CONSTRAINT "SYS_C0013567" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_OAUTH" ADD CONSTRAINT "SYS_C0013632" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "BLADE_USER_OAUTH" ADD CONSTRAINT "SYS_C0014050" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_OAUTH" ADD CONSTRAINT "SYS_C0017205" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_OAUTH" ADD CONSTRAINT "SYS_C0022818" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_OAUTH" ADD CONSTRAINT "SYS_C0027655" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
@@ -6188,6 +6288,7 @@ ALTER TABLE "BLADE_USER_OTHER" ADD CONSTRAINT "SYS_C0028130" PRIMARY KEY ("ID");
 -- ----------------------------
 -- Checks structure for table BLADE_USER_OTHER
 -- ----------------------------
+ALTER TABLE "BLADE_USER_OTHER" ADD CONSTRAINT "SYS_C0014051" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_OTHER" ADD CONSTRAINT "SYS_C0028129" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 
 -- ----------------------------
@@ -6198,4 +6299,5 @@ ALTER TABLE "BLADE_USER_WEB" ADD CONSTRAINT "SYS_C0028126" PRIMARY KEY ("ID");
 -- ----------------------------
 -- Checks structure for table BLADE_USER_WEB
 -- ----------------------------
+ALTER TABLE "BLADE_USER_WEB" ADD CONSTRAINT "SYS_C0014052" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 ALTER TABLE "BLADE_USER_WEB" ADD CONSTRAINT "SYS_C0028125" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;

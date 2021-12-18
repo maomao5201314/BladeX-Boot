@@ -1,10 +1,10 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : postgres_jd
+ Source Server         : postgres_localhost
  Source Server Type    : PostgreSQL
  Source Server Version : 110001
- Source Host           : 127.0.0.1:5432
+ Source Host           : localhost:5432
  Source Catalog        : bladex
  Source Schema         : public
 
@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 05/12/2021 22:52:16
+ Date: 18/12/2021 22:31:38
 */
 
 
@@ -4706,6 +4706,7 @@ CREATE TABLE "blade_tenant" (
   "address" varchar(255) COLLATE "pg_catalog"."default",
   "account_number" int2 DEFAULT '-1'::integer,
   "expire_time" timestamp(6),
+  "package_id" int8,
   "datasource_id" int8,
   "license_key" varchar(1000) COLLATE "pg_catalog"."default",
   "create_user" int8,
@@ -4727,6 +4728,7 @@ COMMENT ON COLUMN "blade_tenant"."contact_number" IS '联系电话';
 COMMENT ON COLUMN "blade_tenant"."address" IS '联系地址';
 COMMENT ON COLUMN "blade_tenant"."account_number" IS '账号额度';
 COMMENT ON COLUMN "blade_tenant"."expire_time" IS '过期时间';
+COMMENT ON COLUMN "blade_tenant"."package_id" IS '产品包ID';
 COMMENT ON COLUMN "blade_tenant"."datasource_id" IS '数据源ID';
 COMMENT ON COLUMN "blade_tenant"."license_key" IS '授权码';
 COMMENT ON COLUMN "blade_tenant"."create_user" IS '创建人';
@@ -4742,8 +4744,39 @@ COMMENT ON TABLE "blade_tenant" IS '租户表';
 -- Records of blade_tenant
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_tenant" VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, NULL, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
+INSERT INTO "blade_tenant" VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, NULL, NULL, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
 COMMIT;
+
+-- ----------------------------
+-- Table structure for blade_tenant_package
+-- ----------------------------
+DROP TABLE IF EXISTS "blade_tenant_package";
+CREATE TABLE "blade_tenant_package" (
+  "id" int8 NOT NULL,
+  "package_name" varchar(50) COLLATE "pg_catalog"."default",
+  "menu_id" varchar(3000) COLLATE "pg_catalog"."default",
+  "remark" varchar(255) COLLATE "pg_catalog"."default",
+  "create_user" int8,
+  "create_dept" int8,
+  "create_time" timestamp(6),
+  "update_user" int8,
+  "update_time" timestamp(6),
+  "status" int4,
+  "is_deleted" int4
+)
+;
+COMMENT ON COLUMN "blade_tenant_package"."id" IS '主键';
+COMMENT ON COLUMN "blade_tenant_package"."package_name" IS '产品包名';
+COMMENT ON COLUMN "blade_tenant_package"."menu_id" IS '菜单ID';
+COMMENT ON COLUMN "blade_tenant_package"."remark" IS '备注';
+COMMENT ON COLUMN "blade_tenant_package"."create_user" IS '创建人';
+COMMENT ON COLUMN "blade_tenant_package"."create_dept" IS '创建部门';
+COMMENT ON COLUMN "blade_tenant_package"."create_time" IS '创建时间';
+COMMENT ON COLUMN "blade_tenant_package"."update_user" IS '修改人';
+COMMENT ON COLUMN "blade_tenant_package"."update_time" IS '修改时间';
+COMMENT ON COLUMN "blade_tenant_package"."status" IS '状态';
+COMMENT ON COLUMN "blade_tenant_package"."is_deleted" IS '是否已删除';
+COMMENT ON TABLE "blade_tenant_package" IS '租户产品表';
 
 -- ----------------------------
 -- Table structure for blade_top_menu
@@ -5091,6 +5124,11 @@ ALTER TABLE "blade_sms" ADD CONSTRAINT "blade_sms_pkey" PRIMARY KEY ("id");
 -- Primary Key structure for table blade_tenant
 -- ----------------------------
 ALTER TABLE "blade_tenant" ADD CONSTRAINT "blade_tenant_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table blade_tenant_package
+-- ----------------------------
+ALTER TABLE "blade_tenant_package" ADD CONSTRAINT "blade_tenant_package_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table blade_top_menu

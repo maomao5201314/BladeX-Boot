@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql_jd
+ Source Server         : mysql_localhost
  Source Server Type    : MySQL
- Source Server Version : 50723
- Source Host           : 127.0.0.1:3306
+ Source Server Version : 50729
+ Source Host           : localhost:3306
  Source Schema         : bladex
 
  Target Server Type    : MySQL
- Target Server Version : 50723
+ Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 05/12/2021 23:12:09
+ Date: 18/12/2021 22:17:42
 */
 
 SET NAMES utf8mb4;
@@ -645,6 +645,7 @@ CREATE TABLE `blade_tenant`  (
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '联系地址',
   `account_number` int(11) NULL DEFAULT -1 COMMENT '账号额度',
   `expire_time` datetime(0) NULL DEFAULT NULL COMMENT '过期时间',
+  `package_id` bigint(20) NULL DEFAULT NULL COMMENT '产品包ID',
   `datasource_id` bigint(20) NULL DEFAULT NULL COMMENT '数据源ID',
   `license_key` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '授权码',
   `create_user` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
@@ -661,8 +662,27 @@ CREATE TABLE `blade_tenant`  (
 -- Records of blade_tenant
 -- ----------------------------
 BEGIN;
-INSERT INTO `blade_tenant` VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, NULL, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
+INSERT INTO `blade_tenant` VALUES (1123598820738675201, '000000', '管理组', NULL, NULL, 'admin', '666666', '管理组', -1, NULL, NULL, NULL, NULL, 1123598821738675201, 1123598813738675201, '2019-01-01 00:00:39', 1123598821738675201, '2019-01-01 00:00:39', 1, 0);
 COMMIT;
+
+-- ----------------------------
+-- Table structure for blade_tenant_package
+-- ----------------------------
+DROP TABLE IF EXISTS `blade_tenant_package`;
+CREATE TABLE `blade_tenant_package`  (
+  `id` bigint(20) NOT NULL COMMENT '主键',
+  `package_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '产品包名',
+  `menu_id` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '菜单ID',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `create_user` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
+  `create_dept` bigint(20) NULL DEFAULT NULL COMMENT '创建部门',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_user` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `status` int(2) NULL DEFAULT NULL COMMENT '状态',
+  `is_deleted` int(2) NULL DEFAULT 0 COMMENT '是否已删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '租户产品表';
 
 -- ----------------------------
 -- Table structure for blade_top_menu

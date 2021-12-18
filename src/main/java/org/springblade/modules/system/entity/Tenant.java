@@ -91,6 +91,12 @@ public class Tenant extends BaseEntity {
 	@ApiModelProperty(value = "过期时间")
 	private Date expireTime;
 	/**
+	 * 产品包ID
+	 */
+	@JsonSerialize(nullsUsing = NullSerializer.class)
+	@ApiModelProperty(value = "产品包ID")
+	private Long packageId;
+	/**
 	 * 数据源ID
 	 */
 	@JsonSerialize(nullsUsing = NullSerializer.class)

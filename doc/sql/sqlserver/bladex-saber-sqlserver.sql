@@ -12,7 +12,7 @@
  Target Server Version : 10501600
  File Encoding         : 65001
 
- Date: 05/12/2021 12:00:00
+ Date: 18/12/2021 22:19:42
 */
 
 
@@ -2044,7 +2044,7 @@ GO
 BEGIN TRANSACTION
 GO
 
-INSERT INTO [dbo].[blade_param] VALUES (N'1123598819738675201', N'是否开启注册功能', N'account.registerUser', N'true', N'开启注册', N'1123598821738675201', N'1123598813738675201', N'2018-12-28 12:19:01', N'1123598821738675201', N'2018-12-28 12:19:01', N'1', N'0'), (N'1123598819738675202', N'账号初始密码', N'account.initPassword', N'123456', N'初始密码', N'1123598821738675201', N'1123598813738675201', N'2018-12-28 12:19:01', N'1123598821738675201', N'2018-12-28 12:19:01', N'1', N'0'), (1123598819738675203, N'账号错误锁定次数', N'account.failCount', N'5', N'锁定次数', 1123598821738675201, 1123598813738675201, N'2021-12-01 12:00:00', 1123598821738675201, N'2021-12-01 12:00:00', 1, 0), (N'1238706101399142402', N'租户默认管理密码', N'tenant.default.password', N'admin', NULL, N'1123598821738675201', N'1123598813738675201', N'2020-03-14 13:58:43', N'1123598821738675201', N'2020-03-14 13:58:43', N'1', N'0'), (N'1238706160295559170', N'租户默认账号额度', N'tenant.default.accountNumber', N'100', NULL, N'1123598821738675201', N'1123598813738675201', N'2020-03-14 13:58:57', N'1123598821738675201', N'2020-03-14 13:58:57', N'1', N'0'), (N'1238706330076790786', N'租户默认菜单集合', N'tenant.default.menuCode', N'desk,flow,work,monitor,resource,role,user,dept,post,dictbiz,topmenu', NULL, N'1123598821738675201', N'1123598813738675201', N'2020-03-14 13:59:38', N'1123598821738675201', N'2020-03-14 13:59:38', N'1', N'0')
+INSERT INTO [dbo].[blade_param] VALUES (N'1123598819738675201', N'是否开启注册功能', N'account.registerUser', N'true', N'开启注册', N'1123598821738675201', N'1123598813738675201', N'2018-12-28 12:19:01', N'1123598821738675201', N'2018-12-28 12:19:01', N'1', N'0'), (N'1123598819738675202', N'账号初始密码', N'account.initPassword', N'123456', N'初始密码', N'1123598821738675201', N'1123598813738675201', N'2018-12-28 12:19:01', N'1123598821738675201', N'2018-12-28 12:19:01', N'1', N'0'), (N'1123598819738675203', N'账号错误锁定次数', N'account.failCount', N'5', N'锁定次数', N'1123598821738675201', N'1123598813738675201', N'2021-12-01 12:00:00', N'1123598821738675201', N'2021-12-01 12:00:00', N'1', N'0'), (N'1238706101399142402', N'租户默认管理密码', N'tenant.default.password', N'admin', NULL, N'1123598821738675201', N'1123598813738675201', N'2020-03-14 13:58:43', N'1123598821738675201', N'2020-03-14 13:58:43', N'1', N'0'), (N'1238706160295559170', N'租户默认账号额度', N'tenant.default.accountNumber', N'100', NULL, N'1123598821738675201', N'1123598813738675201', N'2020-03-14 13:58:57', N'1123598821738675201', N'2020-03-14 13:58:57', N'1', N'0'), (N'1238706330076790786', N'租户默认菜单集合', N'tenant.default.menuCode', N'desk,flow,work,monitor,resource,role,user,dept,post,dictbiz,topmenu', NULL, N'1123598821738675201', N'1123598813738675201', N'2020-03-14 13:59:38', N'1123598821738675201', N'2020-03-14 13:59:38', N'1', N'0')
 GO
 
 COMMIT
@@ -3277,6 +3277,7 @@ CREATE TABLE [dbo].[blade_tenant] (
   [address] nvarchar(255) COLLATE Chinese_PRC_CI_AS  NULL,
   [account_number] int  NULL,
   [expire_time] datetime2(0)  NULL,
+  [package_id] int  NULL,
   [datasource_id] bigint  NULL,
   [license_key] nvarchar(1000) COLLATE Chinese_PRC_CI_AS  NULL,
   [create_user] bigint  NULL,
@@ -3363,6 +3364,13 @@ EXEC sp_addextendedproperty
 GO
 
 EXEC sp_addextendedproperty
+'MS_Description', N'租户产品ID',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant',
+'COLUMN', N'package_id'
+GO
+
+EXEC sp_addextendedproperty
 'MS_Description', N'数据源ID',
 'SCHEMA', N'dbo',
 'TABLE', N'blade_tenant',
@@ -3438,10 +3446,119 @@ GO
 BEGIN TRANSACTION
 GO
 
-INSERT INTO [dbo].[blade_tenant] VALUES (N'1123598820738675201', N'000000', N'管理组', NULL, NULL, N'admin', N'666666', N'管理组', N'-1', NULL, NULL, NULL, N'1123598821738675201', N'1123598813738675201', N'2019-01-01 00:00:39', N'1123598821738675201', N'2019-01-01 00:00:39', N'1', N'0')
+INSERT INTO [dbo].[blade_tenant] VALUES (N'1123598820738675201', N'000000', N'管理组', NULL, NULL, N'admin', N'666666', N'管理组', N'-1', NULL, NULL, NULL, NULL, N'1123598821738675201', N'1123598813738675201', N'2019-01-01 00:00:39', N'1123598821738675201', N'2019-01-01 00:00:39', N'1', N'0')
 GO
 
 COMMIT
+GO
+
+
+-- ----------------------------
+-- Table structure for blade_tenant_package
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[blade_tenant_package]') AND type IN ('U'))
+	DROP TABLE [dbo].[blade_tenant_package]
+GO
+
+CREATE TABLE [dbo].[blade_tenant_package] (
+  [id] bigint  NOT NULL,
+  [package_name] nvarchar(50) COLLATE Chinese_PRC_CI_AS  NULL,
+  [menu_id] nvarchar(3000) COLLATE Chinese_PRC_CI_AS  NULL,
+  [remark] nvarchar(255) COLLATE Chinese_PRC_CI_AS  NULL,
+  [create_user] bigint  NULL,
+  [create_dept] bigint  NULL,
+  [create_time] datetime2(0)  NULL,
+  [update_user] bigint  NULL,
+  [update_time] datetime2(0)  NULL,
+  [status] int  NULL,
+  [is_deleted] int  NULL
+)
+GO
+
+ALTER TABLE [dbo].[blade_tenant_package] SET (LOCK_ESCALATION = TABLE)
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'主键',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'产品包名',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'package_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'菜单ID',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'menu_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建人',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'create_user'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建部门',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'create_dept'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'修改人',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'update_user'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'修改时间',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否已删除',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package',
+'COLUMN', N'is_deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户产品表',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_tenant_package'
 GO
 
 
@@ -4379,6 +4496,15 @@ GO
 -- Primary Key structure for table blade_tenant
 -- ----------------------------
 ALTER TABLE [dbo].[blade_tenant] ADD CONSTRAINT [PK__blade_te__3213E83F5BE2A6F2] PRIMARY KEY CLUSTERED ([id])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
+-- Primary Key structure for table blade_tenant_package
+-- ----------------------------
+ALTER TABLE [dbo].[blade_tenant_package] ADD CONSTRAINT [PK__blade_te__3213E83F09C96D33] PRIMARY KEY CLUSTERED ([id])
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 ON [PRIMARY]
 GO

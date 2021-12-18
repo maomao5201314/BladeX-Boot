@@ -36,6 +36,8 @@ import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Tenant;
+import org.springblade.modules.system.entity.TenantPackage;
+import org.springblade.modules.system.service.ITenantPackageService;
 import org.springblade.modules.system.service.ITenantService;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -61,6 +63,7 @@ import static org.springblade.core.tenant.constant.TenantBaseConstant.TENANT_DAT
 public class TenantController extends BladeController {
 
 	private final ITenantService tenantService;
+	private final ITenantPackageService tenantPackageService;
 
 	/**
 	 * 详情
@@ -158,7 +161,7 @@ public class TenantController extends BladeController {
 	@ApiOperationSupport(order = 8)
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	@ApiOperation(value = "数据源配置", notes = "传入datasource_id")
-	public R datasource(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId, @ApiParam(value = "数据源ID", required = true) @RequestParam Long datasourceId){
+	public R datasource(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId, @ApiParam(value = "数据源ID", required = true) @RequestParam Long datasourceId) {
 		CacheUtil.evict(TENANT_DATASOURCE_CACHE, TENANT_DATASOURCE_EXIST_KEY, tenantId, Boolean.FALSE);
 		return R.status(tenantService.update(Wrappers.<Tenant>update().lambda().set(Tenant::getDatasourceId, datasourceId).eq(Tenant::getTenantId, tenantId)));
 	}
@@ -194,6 +197,31 @@ public class TenantController extends BladeController {
 				.set("backgroundUrl", tenant.getBackgroundUrl());
 		}
 		return R.data(kv);
+	}
+
+	/**
+	 * 根据租户ID查询产品包详情
+	 *
+	 * @param tenantId 租户ID
+	 */
+	@GetMapping("/package-detail")
+	@ApiOperationSupport(order = 11)
+	@ApiOperation(value = "产品包详情", notes = "传入tenantId")
+	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	public R<TenantPackage> packageDetail(Long tenantId) {
+		Tenant tenant = tenantService.getById(tenantId);
+		return R.data(tenantPackageService.getById(tenant.getPackageId()));
+	}
+
+	/**
+	 * 产品包配置
+	 */
+	@PostMapping("/package-setting")
+	@ApiOperationSupport(order = 12)
+	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
+	@ApiOperation(value = "产品包配置", notes = "传入packageId")
+	public R packageSetting(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId, @ApiParam(value = "产品包ID", required = true) @RequestParam Long packageId) {
+		return R.status(tenantService.update(Wrappers.<Tenant>update().lambda().set(Tenant::getPackageId, packageId).eq(Tenant::getTenantId, tenantId)));
 	}
 
 

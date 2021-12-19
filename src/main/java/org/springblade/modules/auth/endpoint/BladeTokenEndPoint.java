@@ -42,6 +42,7 @@ import org.springblade.modules.auth.provider.TokenParameter;
 import org.springblade.modules.auth.utils.TokenUtil;
 import org.springblade.modules.system.entity.UserInfo;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
 import java.time.Duration;
@@ -70,7 +71,9 @@ public class BladeTokenEndPoint {
 	@ApiOperation(value = "获取认证令牌", notes = "传入租户ID:tenantId,账号:account,密码:password")
 	public Kv token(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId,
 					@ApiParam(value = "账号", required = true) @RequestParam(required = false) String username,
-					@ApiParam(value = "密码", required = true) @RequestParam(required = false) String password) {
+					@ApiParam(value = "密码", required = true) @RequestParam(required = false) String password,
+					@ApiIgnore @RequestHeader(TokenUtil.DEPT_HEADER_KEY) String deptId,
+					@ApiIgnore @RequestHeader(TokenUtil.ROLE_HEADER_KEY) String roleId) {
 
 		Kv authInfo = Kv.create();
 
@@ -80,7 +83,13 @@ public class BladeTokenEndPoint {
 		String userType = Func.toStr(WebUtil.getRequest().getHeader(TokenUtil.USER_TYPE_HEADER_KEY), TokenUtil.DEFAULT_USER_TYPE);
 
 		TokenParameter tokenParameter = new TokenParameter();
-		tokenParameter.getArgs().set("tenantId", tenantId).set("username", username).set("password", password).set("grantType", grantType).set("refreshToken", refreshToken).set("userType", userType);
+		tokenParameter.getArgs().set("tenantId", tenantId)
+			.set("username", username)
+			.set("password", password)
+			.set("grantType", grantType)
+			.set("refreshToken", refreshToken)
+			.set("userType", userType)
+			.set("deptId", deptId).set("roleId", roleId);
 
 		ITokenGranter granter = TokenGranterBuilder.getGranter(grantType);
 		UserInfo userInfo = granter.grant(tokenParameter);

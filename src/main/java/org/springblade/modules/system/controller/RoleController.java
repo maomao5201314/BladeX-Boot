@@ -22,6 +22,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.SysCache;
+import org.springblade.common.cache.UserCache;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.cache.utils.CacheUtil;
 import org.springblade.core.launch.constant.AppConstant;
@@ -35,6 +36,7 @@ import org.springblade.core.tool.constant.BladeConstant;
 import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Role;
+import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.service.IRoleService;
 import org.springblade.modules.system.vo.GrantVO;
 import org.springblade.modules.system.vo.RoleVO;
@@ -157,7 +159,11 @@ public class RoleController extends BladeController {
 	@GetMapping("/select")
 	@ApiOperationSupport(order = 8)
 	@ApiOperation(value = "下拉数据源", notes = "传入id集合")
-	public R<List<Role>> select(String roleId) {
+	public R<List<Role>> select(Long userId, String roleId) {
+		if (Func.isNotEmpty(userId)) {
+			User user = UserCache.getUser(userId);
+			roleId = user.getRoleId();
+		}
 		List<Role> list = roleService.list(Wrappers.<Role>lambdaQuery().in(Role::getId, Func.toLongList(roleId)));
 		return R.data(list);
 	}

@@ -22,6 +22,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springblade.common.cache.DictCache;
+import org.springblade.common.cache.UserCache;
 import org.springblade.common.enums.DictEnum;
 import org.springblade.core.boot.ctrl.BladeController;
 import org.springblade.core.cache.utils.CacheUtil;
@@ -37,6 +38,7 @@ import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.support.Kv;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.system.entity.Dept;
+import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.service.IDeptService;
 import org.springblade.modules.system.vo.DeptVO;
 import org.springblade.modules.system.wrapper.DeptWrapper;
@@ -163,7 +165,11 @@ public class DeptController extends BladeController {
 	@GetMapping("/select")
 	@ApiOperationSupport(order = 8)
 	@ApiOperation(value = "下拉数据源", notes = "传入id集合")
-	public R<List<Dept>> select(String deptId) {
+	public R<List<Dept>> select(Long userId, String deptId) {
+		if (Func.isNotEmpty(userId)) {
+			User user = UserCache.getUser(userId);
+			deptId = user.getDeptId();
+		}
 		List<Dept> list = deptService.list(Wrappers.<Dept>lambdaQuery().in(Dept::getId, Func.toLongList(deptId)));
 		return R.data(list);
 	}

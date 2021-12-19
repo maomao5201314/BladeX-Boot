@@ -54,6 +54,8 @@ public class RefreshTokenGranter implements ITokenGranter {
 		String tenantId = tokenParameter.getArgs().getStr("tenantId");
 		String grantType = tokenParameter.getArgs().getStr("grantType");
 		String refreshToken = tokenParameter.getArgs().getStr("refreshToken");
+		String deptId = tokenParameter.getArgs().getStr("deptId");
+		String roleId = tokenParameter.getArgs().getStr("roleId");
 		UserInfo userInfo = null;
 		if (Func.isNoneBlank(grantType, refreshToken) && grantType.equals(TokenConstant.REFRESH_TOKEN)) {
 			Claims claims = AuthUtil.parseJWT(refreshToken);
@@ -67,12 +69,16 @@ public class RefreshTokenGranter implements ITokenGranter {
 					}
 					// 获取用户信息
 					userInfo = userService.userInfo(Func.toLong(claims.get(TokenConstant.USER_ID)));
-					// 设置部门信息
-					userInfo.getUser().setDeptId(Func.toStr(claims.get(TokenConstant.DEPT_ID)));
-					// 设置角色信息
-					userInfo.getUser().setRoleId(Func.toStr(claims.get(TokenConstant.ROLE_ID)));
-					List<String> roleAliases = roleService.getRoleAliases(Func.toStr(claims.get(TokenConstant.ROLE_ID)));
-					userInfo.setRoles(roleAliases);
+					// 设置多部门信息
+					if (Func.isNotEmpty(deptId) && userInfo.getUser().getDeptId().contains(deptId)) {
+						userInfo.getUser().setDeptId(deptId);
+					}
+					// 设置多角色信息
+					if (Func.isNotEmpty(roleId) && userInfo.getUser().getRoleId().contains(roleId)) {
+						userInfo.getUser().setRoleId(roleId);
+						List<String> roleAliases = roleService.getRoleAliases(roleId);
+						userInfo.setRoles(roleAliases);
+					}
 				}
 			}
 		}

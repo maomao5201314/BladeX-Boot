@@ -72,8 +72,8 @@ public class BladeTokenEndPoint {
 	public Kv token(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId,
 					@ApiParam(value = "账号", required = true) @RequestParam(required = false) String username,
 					@ApiParam(value = "密码", required = true) @RequestParam(required = false) String password,
-					@ApiIgnore @RequestHeader(TokenUtil.DEPT_HEADER_KEY) String deptId,
-					@ApiIgnore @RequestHeader(TokenUtil.ROLE_HEADER_KEY) String roleId) {
+					@ApiIgnore @RequestHeader(name = TokenUtil.DEPT_HEADER_KEY, required = false) String deptId,
+					@ApiIgnore @RequestHeader(name = TokenUtil.ROLE_HEADER_KEY, required = false) String roleId) {
 
 		Kv authInfo = Kv.create();
 

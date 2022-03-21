@@ -43,6 +43,7 @@ import org.springblade.core.tool.constant.RoleConstant;
 import org.springblade.core.tool.utils.DateUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.StringPool;
+import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.modules.system.entity.User;
 import org.springblade.modules.system.excel.UserExcel;
 import org.springblade.modules.system.excel.UserImporter;
@@ -324,6 +325,9 @@ public class UserController {
 	@ApiOperationSupport(order = 19)
 	@ApiOperation(value = "账号解锁", notes = "传入id")
 	public R unlock(String userIds) {
+		if (StringUtil.isBlank(userIds)) {
+			return R.fail("请至少选择一个用户");
+		}
 		List<User> userList = userService.list(Wrappers.<User>lambdaQuery().in(User::getId, Func.toLongList(userIds)));
 		userList.forEach(user -> bladeRedis.del(CacheNames.tenantKey(user.getTenantId(), CacheNames.USER_FAIL_KEY, user.getAccount())));
 		return R.success("操作成功");

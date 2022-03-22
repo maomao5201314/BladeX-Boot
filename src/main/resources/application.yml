@@ -70,6 +70,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+    jdbc-type-for-null: 'null'
 
 #knife4j配置
 knife4j:

@@ -18,7 +18,7 @@
 -- ----------------------------
 -- Table structure for BLADE_ATTACH
 -- ----------------------------
-DROP TABLE "BLADE_ATTACH";
+-- DROP TABLE "BLADE_ATTACH";
 CREATE TABLE "BLADE_ATTACH" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -68,7 +68,7 @@ COMMENT ON TABLE "BLADE_ATTACH" IS '附件表';
 -- ----------------------------
 -- Table structure for BLADE_CLIENT
 -- ----------------------------
-DROP TABLE "BLADE_CLIENT";
+-- DROP TABLE "BLADE_CLIENT";
 CREATE TABLE "BLADE_CLIENT" (
   "ID" NUMBER(20) NOT NULL ,
   "CLIENT_ID" NVARCHAR2(48) NOT NULL ,
@@ -137,7 +137,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_CODE
 -- ----------------------------
-DROP TABLE "BLADE_CODE";
+-- DROP TABLE "BLADE_CODE";
 CREATE TABLE "BLADE_CODE" (
   "ID" NUMBER(20) NOT NULL ,
   "DATASOURCE_ID" NUMBER(20) ,
@@ -193,7 +193,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_DATASOURCE
 -- ----------------------------
-DROP TABLE "BLADE_DATASOURCE";
+-- DROP TABLE "BLADE_DATASOURCE";
 CREATE TABLE "BLADE_DATASOURCE" (
   "ID" NUMBER(20) NOT NULL ,
   "NAME" NVARCHAR2(100) ,
@@ -254,7 +254,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_DEPT
 -- ----------------------------
-DROP TABLE "BLADE_DEPT";
+-- DROP TABLE "BLADE_DEPT";
 CREATE TABLE "BLADE_DEPT" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -306,7 +306,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_DICT
 -- ----------------------------
-DROP TABLE "BLADE_DICT";
+-- DROP TABLE "BLADE_DICT";
 CREATE TABLE "BLADE_DICT" (
   "ID" NUMBER(20) NOT NULL ,
   "PARENT_ID" NUMBER(20) ,
@@ -418,7 +418,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_DICT_BIZ
 -- ----------------------------
-DROP TABLE "BLADE_DICT_BIZ";
+-- DROP TABLE "BLADE_DICT_BIZ";
 CREATE TABLE "BLADE_DICT_BIZ" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -462,7 +462,7 @@ COMMENT ON TABLE "BLADE_DICT_BIZ" IS '数据源配置表';
 -- ----------------------------
 -- Table structure for BLADE_LOG_API
 -- ----------------------------
-DROP TABLE "BLADE_LOG_API";
+-- DROP TABLE "BLADE_LOG_API";
 CREATE TABLE "BLADE_LOG_API" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -522,7 +522,7 @@ COMMENT ON TABLE "BLADE_LOG_API" IS '接口日志表';
 -- ----------------------------
 -- Table structure for BLADE_LOG_ERROR
 -- ----------------------------
-DROP TABLE "BLADE_LOG_ERROR";
+-- DROP TABLE "BLADE_LOG_ERROR";
 CREATE TABLE "BLADE_LOG_ERROR" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -586,7 +586,7 @@ COMMENT ON TABLE "BLADE_LOG_ERROR" IS '错误日志表';
 -- ----------------------------
 -- Table structure for BLADE_LOG_USUAL
 -- ----------------------------
-DROP TABLE "BLADE_LOG_USUAL";
+-- DROP TABLE "BLADE_LOG_USUAL";
 CREATE TABLE "BLADE_LOG_USUAL" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -646,7 +646,7 @@ COMMENT ON TABLE "BLADE_LOG_USUAL" IS '通用日志表';
 -- ----------------------------
 -- Table structure for BLADE_MENU
 -- ----------------------------
-DROP TABLE "BLADE_MENU";
+-- DROP TABLE "BLADE_MENU";
 CREATE TABLE "BLADE_MENU" (
   "ID" NUMBER(20) NOT NULL ,
   "PARENT_ID" NUMBER(20) ,
@@ -862,7 +862,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_NOTICE
 -- ----------------------------
-DROP TABLE "BLADE_NOTICE";
+-- DROP TABLE "BLADE_NOTICE";
 CREATE TABLE "BLADE_NOTICE" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -920,7 +920,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_OSS
 -- ----------------------------
-DROP TABLE "BLADE_OSS";
+-- DROP TABLE "BLADE_OSS";
 CREATE TABLE "BLADE_OSS" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -987,7 +987,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_PARAM
 -- ----------------------------
-DROP TABLE "BLADE_PARAM";
+-- DROP TABLE "BLADE_PARAM";
 CREATE TABLE "BLADE_PARAM" (
   "ID" NUMBER(20) NOT NULL ,
   "PARAM_NAME" NVARCHAR2(255) ,
@@ -1046,7 +1046,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_POST
 -- ----------------------------
-DROP TABLE "BLADE_POST";
+-- DROP TABLE "BLADE_POST";
 CREATE TABLE "BLADE_POST" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -1111,7 +1111,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_PROCESS_LEAVE
 -- ----------------------------
-DROP TABLE "BLADE_PROCESS_LEAVE";
+-- DROP TABLE "BLADE_PROCESS_LEAVE";
 CREATE TABLE "BLADE_PROCESS_LEAVE" (
   "ID" NUMBER(20) NOT NULL ,
   "PROCESS_DEFINITION_ID" NVARCHAR2(64) ,
@@ -1165,7 +1165,7 @@ COMMENT ON TABLE "BLADE_PROCESS_LEAVE" IS '流程请假业务表';
 -- ----------------------------
 -- Table structure for BLADE_REGION
 -- ----------------------------
-DROP TABLE "BLADE_REGION";
+-- DROP TABLE "BLADE_REGION";
 CREATE TABLE "BLADE_REGION" (
   "CODE" VARCHAR2(12 BYTE) NOT NULL ,
   "PARENT_CODE" VARCHAR2(12 BYTE) ,
@@ -4456,7 +4456,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_REPORT_FILE
 -- ----------------------------
-DROP TABLE "BLADE_REPORT_FILE";
+-- DROP TABLE "BLADE_REPORT_FILE";
 CREATE TABLE "BLADE_REPORT_FILE" (
   "ID" NUMBER(20) NOT NULL ,
   "NAME" NVARCHAR2(100) NOT NULL ,
@@ -4492,7 +4492,7 @@ COMMENT ON TABLE "BLADE_REPORT_FILE" IS '报表文件表';
 -- ----------------------------
 -- Table structure for BLADE_ROLE
 -- ----------------------------
-DROP TABLE "BLADE_ROLE";
+-- DROP TABLE "BLADE_ROLE";
 CREATE TABLE "BLADE_ROLE" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -4540,7 +4540,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_ROLE_MENU
 -- ----------------------------
-DROP TABLE "BLADE_ROLE_MENU";
+-- DROP TABLE "BLADE_ROLE_MENU";
 CREATE TABLE "BLADE_ROLE_MENU" (
   "ID" NUMBER(20) NOT NULL ,
   "MENU_ID" NUMBER(20) ,
@@ -4832,7 +4832,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_ROLE_SCOPE
 -- ----------------------------
-DROP TABLE "BLADE_ROLE_SCOPE";
+-- DROP TABLE "BLADE_ROLE_SCOPE";
 CREATE TABLE "BLADE_ROLE_SCOPE" (
   "ID" NUMBER(20) NOT NULL ,
   "SCOPE_CATEGORY" NUMBER(11) ,
@@ -4864,7 +4864,7 @@ COMMENT ON TABLE "BLADE_ROLE_SCOPE" IS '角色数据权限关联表';
 -- ----------------------------
 -- Table structure for BLADE_SCOPE_API
 -- ----------------------------
-DROP TABLE "BLADE_SCOPE_API";
+-- DROP TABLE "BLADE_SCOPE_API";
 CREATE TABLE "BLADE_SCOPE_API" (
   "ID" NUMBER(20) NOT NULL ,
   "MENU_ID" NUMBER(20) ,
@@ -4916,7 +4916,7 @@ COMMENT ON TABLE "BLADE_SCOPE_API" IS '接口权限表';
 -- ----------------------------
 -- Table structure for BLADE_SCOPE_DATA
 -- ----------------------------
-DROP TABLE "BLADE_SCOPE_DATA";
+-- DROP TABLE "BLADE_SCOPE_DATA";
 CREATE TABLE "BLADE_SCOPE_DATA" (
   "ID" NUMBER(20) NOT NULL ,
   "MENU_ID" NUMBER(20) ,
@@ -4974,7 +4974,7 @@ COMMENT ON TABLE "BLADE_SCOPE_DATA" IS '数据权限表';
 -- ----------------------------
 -- Table structure for BLADE_SMS
 -- ----------------------------
-DROP TABLE "BLADE_SMS";
+-- DROP TABLE "BLADE_SMS";
 CREATE TABLE "BLADE_SMS" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -5032,7 +5032,7 @@ COMMENT ON TABLE "BLADE_SMS" IS '短信配置表';
 -- ----------------------------
 -- Table structure for BLADE_TENANT
 -- ----------------------------
-DROP TABLE "BLADE_TENANT";
+-- DROP TABLE "BLADE_TENANT";
 CREATE TABLE "BLADE_TENANT" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -5102,7 +5102,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_TENANT_PACKAGE
 -- ----------------------------
-DROP TABLE "BLADE_TENANT_PACKAGE";
+-- DROP TABLE "BLADE_TENANT_PACKAGE";
 CREATE TABLE "BLADE_TENANT_PACKAGE" (
   "ID" NUMBER(20) NOT NULL ,
   "PACKAGE_NAME" NVARCHAR2(50) ,
@@ -5144,7 +5144,7 @@ COMMENT ON TABLE "BLADE_TENANT_PACKAGE" IS '租户产品表';
 -- ----------------------------
 -- Table structure for BLADE_TOP_MENU
 -- ----------------------------
-DROP TABLE "BLADE_TOP_MENU";
+-- DROP TABLE "BLADE_TOP_MENU";
 CREATE TABLE "BLADE_TOP_MENU" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -5194,7 +5194,7 @@ COMMENT ON TABLE "BLADE_TOP_MENU" IS '顶部菜单表';
 -- ----------------------------
 -- Table structure for BLADE_TOP_MENU_SETTING
 -- ----------------------------
-DROP TABLE "BLADE_TOP_MENU_SETTING";
+-- DROP TABLE "BLADE_TOP_MENU_SETTING";
 CREATE TABLE "BLADE_TOP_MENU_SETTING" (
   "ID" NUMBER(20) NOT NULL ,
   "TOP_MENU_ID" NUMBER(20) ,
@@ -5224,7 +5224,7 @@ COMMENT ON TABLE "BLADE_TOP_MENU_SETTING" IS '顶部菜单配置表';
 -- ----------------------------
 -- Table structure for BLADE_USER
 -- ----------------------------
-DROP TABLE "BLADE_USER";
+-- DROP TABLE "BLADE_USER";
 CREATE TABLE "BLADE_USER" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" NVARCHAR2(12) ,
@@ -5302,7 +5302,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_USER_APP
 -- ----------------------------
-DROP TABLE "BLADE_USER_APP";
+-- DROP TABLE "BLADE_USER_APP";
 CREATE TABLE "BLADE_USER_APP" (
   "ID" NUMBER(20) NOT NULL ,
   "USER_ID" NUMBER(20) ,
@@ -5328,7 +5328,7 @@ COMMENT ON TABLE "BLADE_USER_APP" IS '用户平台拓展表';
 -- ----------------------------
 -- Table structure for BLADE_USER_DEPT
 -- ----------------------------
-DROP TABLE "BLADE_USER_DEPT";
+-- DROP TABLE "BLADE_USER_DEPT";
 CREATE TABLE "BLADE_USER_DEPT" (
   "ID" NUMBER(20) NOT NULL ,
   "USER_ID" NUMBER(20) ,
@@ -5367,7 +5367,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for BLADE_USER_OAUTH
 -- ----------------------------
-DROP TABLE "BLADE_USER_OAUTH";
+-- DROP TABLE "BLADE_USER_OAUTH";
 CREATE TABLE "BLADE_USER_OAUTH" (
   "ID" NUMBER(20) NOT NULL ,
   "TENANT_ID" VARCHAR2(12 BYTE) ,
@@ -5415,7 +5415,7 @@ COMMENT ON TABLE "BLADE_USER_OAUTH" IS '用户第三方认证表';
 -- ----------------------------
 -- Table structure for BLADE_USER_OTHER
 -- ----------------------------
-DROP TABLE "BLADE_USER_OTHER";
+-- DROP TABLE "BLADE_USER_OTHER";
 CREATE TABLE "BLADE_USER_OTHER" (
   "ID" NUMBER(20) NOT NULL ,
   "USER_ID" NUMBER(20) ,
@@ -5441,7 +5441,7 @@ COMMENT ON TABLE "BLADE_USER_OTHER" IS '用户平台拓展表';
 -- ----------------------------
 -- Table structure for BLADE_USER_WEB
 -- ----------------------------
-DROP TABLE "BLADE_USER_WEB";
+-- DROP TABLE "BLADE_USER_WEB";
 CREATE TABLE "BLADE_USER_WEB" (
   "ID" NUMBER(20) NOT NULL ,
   "USER_ID" NUMBER(20) ,

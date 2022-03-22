@@ -94,9 +94,12 @@ public class PasswordTokenGranter implements ITokenGranter {
 				userInfo = userService.userInfo(tenantId, username, DigestUtil.hex(password), UserEnum.OTHER);
 			}
 		}
-		// 错误次数锁定
 		if (userInfo == null || userInfo.getUser() == null) {
+			// 增加错误锁定次数
 			bladeRedis.setEx(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username), cnt + 1, Duration.ofMinutes(30));
+		} else {
+			// 成功则清除登录错误次数
+			bladeRedis.del(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username));
 		}
 		// 多部门情况下指定单部门
 		if (Func.isNotEmpty(headerDept) && userInfo != null && userInfo.getUser().getDeptId().contains(headerDept)) {
@@ -108,8 +111,6 @@ public class PasswordTokenGranter implements ITokenGranter {
 			userInfo.setRoles(roleAliases);
 			userInfo.getUser().setRoleId(headerRole);
 		}
-		// 成功则清除登录错误次数
-		bladeRedis.del(CacheNames.tenantKey(tenantId, CacheNames.USER_FAIL_KEY, username));
 		return userInfo;
 	}
 

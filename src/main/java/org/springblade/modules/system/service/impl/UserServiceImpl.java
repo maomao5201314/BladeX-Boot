@@ -148,6 +148,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	@Override
 	public IPage<UserVO> selectUserSearch(UserVO user, Query query) {
 		LambdaQueryWrapper<User> queryWrapper = Wrappers.<User>query().lambda();
+		String tenantId = AuthUtil.getTenantId();
+		if (StringUtil.isNotBlank(tenantId)) {
+			queryWrapper.eq(User::getTenantId, tenantId);
+		}
 		if (StringUtil.isNotBlank(user.getName())) {
 			queryWrapper.like(User::getName, user.getName());
 		}

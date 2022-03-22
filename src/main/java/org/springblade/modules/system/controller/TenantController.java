@@ -220,7 +220,7 @@ public class TenantController extends BladeController {
 	@ApiOperationSupport(order = 12)
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	@ApiOperation(value = "产品包配置", notes = "传入packageId")
-	public R packageSetting(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId, @ApiParam(value = "产品包ID", required = true) @RequestParam Long packageId) {
+	public R packageSetting(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId, @ApiParam(value = "产品包ID") Long packageId) {
 		return R.status(tenantService.update(Wrappers.<Tenant>update().lambda().set(Tenant::getPackageId, packageId).eq(Tenant::getTenantId, tenantId)));
 	}
 

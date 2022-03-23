@@ -28,6 +28,10 @@ spring:
     #url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=bladex_boot
     #username: bladex_boot
     #password: bladex_boot
+    # DaMeng
+    #url: jdbc:dm://127.0.0.1:5236/BLADEX_BOOT?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+    #username: BLADEX_BOOT
+    #password: BLADEX_BOOT
 
 #第三方登陆
 social:

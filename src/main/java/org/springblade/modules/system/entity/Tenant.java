@@ -57,7 +57,7 @@ public class Tenant extends BaseEntity {
 	 * 域名地址
 	 */
 	@ApiModelProperty(value = "域名地址")
-	private String domain;
+	private String domainUrl;
 	/**
 	 * 系统背景
 	 */

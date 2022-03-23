@@ -206,7 +206,7 @@ public class OssEndpoint {
 	private Long buildAttach(String fileName, Long fileSize, BladeFile bladeFile) {
 		String fileExtension = FileUtil.getFileExtension(fileName);
 		Attach attach = new Attach();
-		attach.setDomain(bladeFile.getDomain());
+		attach.setDomainUrl(bladeFile.getDomain());
 		attach.setLink(bladeFile.getLink());
 		attach.setName(bladeFile.getName());
 		attach.setOriginalName(bladeFile.getOriginalName());

@@ -45,7 +45,7 @@ public class Attach extends TenantEntity {
 	 * 附件域名
 	 */
 	@ApiModelProperty(value = "附件域名")
-	private String domain;
+	private String domainUrl;
 	/**
 	 * 附件名称
 	 */

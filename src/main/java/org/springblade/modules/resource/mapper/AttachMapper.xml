@@ -13,7 +13,7 @@
         <result column="status" property="status"/>
         <result column="is_deleted" property="isDeleted"/>
         <result column="link" property="link"/>
-        <result column="domain" property="domain"/>
+        <result column="domain_url" property="domainUrl"/>
         <result column="name" property="name"/>
         <result column="original_name" property="originalName"/>
         <result column="extension" property="extension"/>

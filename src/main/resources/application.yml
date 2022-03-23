@@ -18,10 +18,11 @@ spring:
     #driver-class-name: org.postgresql.Driver
     #driver-class-name: oracle.jdbc.OracleDriver
     #driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    #driver-class-name: dm.jdbc.driver.DmDriver
     druid:
       # MySql、PostgreSQL、SqlServer校验
       validation-query: select 1
-      # Oracle校验
+      # Oracle、DaMeng校验
       #validation-query: select 1 from dual
       validation-query-timeout: 2000
       initial-size: 5

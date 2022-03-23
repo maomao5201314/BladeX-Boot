@@ -124,8 +124,8 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
 	@Override
 	public boolean removeDept(String ids) {
-		Integer cnt = baseMapper.selectCount(Wrappers.<Dept>query().lambda().in(Dept::getParentId, Func.toLongList(ids)));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount(Wrappers.<Dept>query().lambda().in(Dept::getParentId, Func.toLongList(ids)));
+		if (cnt > 0L) {
 			throw new ServiceException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));

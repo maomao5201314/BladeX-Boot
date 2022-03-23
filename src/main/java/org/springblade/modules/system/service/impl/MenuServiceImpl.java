@@ -232,8 +232,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 	@Override
 	public boolean removeMenu(String ids) {
-		Integer cnt = baseMapper.selectCount(Wrappers.<Menu>query().lambda().in(Menu::getParentId, Func.toLongList(ids)));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount(Wrappers.<Menu>query().lambda().in(Menu::getParentId, Func.toLongList(ids)));
+		if (cnt > 0L) {
 			throw new ServiceException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));
@@ -253,8 +253,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 				)
 			);
 		}
-		Integer cnt = baseMapper.selectCount(menuQueryWrapper);
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount(menuQueryWrapper);
+		if (cnt > 0L) {
 			throw new ServiceException("菜单名或编号已存在!");
 		}
 		if (menu.getParentId() == null && menu.getId() == null) {

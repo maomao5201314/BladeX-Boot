@@ -47,8 +47,8 @@ public class SmsServiceImpl extends BaseServiceImpl<SmsMapper, Sms> implements I
 	public boolean submit(Sms sms) {
 		LambdaQueryWrapper<Sms> lqw = Wrappers.<Sms>query().lambda()
 			.eq(Sms::getSmsCode, sms.getSmsCode()).eq(Sms::getTenantId, AuthUtil.getTenantId());
-		Integer cnt = baseMapper.selectCount(Func.isEmpty(sms.getId()) ? lqw : lqw.notIn(Sms::getId, sms.getId()));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount(Func.isEmpty(sms.getId()) ? lqw : lqw.notIn(Sms::getId, sms.getId()));
+		if (cnt > 0L) {
 			throw new ServiceException("当前资源编号已存在!");
 		}
 		return this.saveOrUpdate(sms);

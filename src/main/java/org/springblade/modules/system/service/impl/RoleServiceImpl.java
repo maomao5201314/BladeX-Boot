@@ -86,13 +86,13 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	private boolean grantRoleMenu(List<Long> roleIds, List<Long> menuIds) {
 		// 防止越权配置超管角色
-		int administratorCount = baseMapper.selectCount(Wrappers.<Role>query().lambda().eq(Role::getRoleAlias, RoleConstant.ADMINISTRATOR).in(Role::getId, roleIds));
-		if (!AuthUtil.isAdministrator() && administratorCount > 0) {
+		Long administratorCount = baseMapper.selectCount(Wrappers.<Role>query().lambda().eq(Role::getRoleAlias, RoleConstant.ADMINISTRATOR).in(Role::getId, roleIds));
+		if (!AuthUtil.isAdministrator() && administratorCount > 0L) {
 			throw new ServiceException("无权配置超管角色!");
 		}
 		// 防止越权配置管理员角色
-		int adminCount = baseMapper.selectCount(Wrappers.<Role>query().lambda().eq(Role::getRoleAlias, RoleConstant.ADMIN).in(Role::getId, roleIds));
-		if (!AuthUtil.isAdmin() && adminCount > 0) {
+		Long adminCount = baseMapper.selectCount(Wrappers.<Role>query().lambda().eq(Role::getRoleAlias, RoleConstant.ADMIN).in(Role::getId, roleIds));
+		if (!AuthUtil.isAdmin() && adminCount > 0L) {
 			throw new ServiceException("无权配置管理员角色!");
 		}
 		// 删除角色配置的菜单集合
@@ -220,8 +220,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
 	@Override
 	public boolean removeRole(String ids) {
-		Integer cnt = baseMapper.selectCount(Wrappers.<Role>query().lambda().in(Role::getParentId, Func.toLongList(ids)));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount(Wrappers.<Role>query().lambda().in(Role::getParentId, Func.toLongList(ids)));
+		if (cnt > 0L) {
 			throw new ServiceException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));

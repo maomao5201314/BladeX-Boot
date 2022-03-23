@@ -74,8 +74,8 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 	@Override
 	public boolean submit(DictBiz dict) {
 		LambdaQueryWrapper<DictBiz> lqw = Wrappers.<DictBiz>query().lambda().eq(DictBiz::getCode, dict.getCode()).eq(DictBiz::getDictKey, dict.getDictKey());
-		Integer cnt = baseMapper.selectCount((Func.isEmpty(dict.getId())) ? lqw : lqw.notIn(DictBiz::getId, dict.getId()));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount((Func.isEmpty(dict.getId())) ? lqw : lqw.notIn(DictBiz::getId, dict.getId()));
+		if (cnt > 0L) {
 			throw new ServiceException("当前字典键值已存在!");
 		}
 		// 修改顶级字典后同步更新下属字典的编号
@@ -93,8 +93,8 @@ public class DictBizServiceImpl extends ServiceImpl<DictBizMapper, DictBiz> impl
 
 	@Override
 	public boolean removeDict(String ids) {
-		Integer cnt = baseMapper.selectCount(Wrappers.<DictBiz>query().lambda().in(DictBiz::getParentId, Func.toLongList(ids)));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount(Wrappers.<DictBiz>query().lambda().in(DictBiz::getParentId, Func.toLongList(ids)));
+		if (cnt > 0L) {
 			throw new ServiceException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));

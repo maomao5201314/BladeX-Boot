@@ -89,7 +89,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 				String decrypt = DesUtil.decryptFormHex(licenseKey, TenantConstant.DES_KEY);
 				accountNumber = JsonUtil.parse(decrypt, Tenant.class).getAccountNumber();
 			}
-			Integer tenantCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId));
+			Long tenantCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId));
 			if (accountNumber != null && accountNumber > 0 && accountNumber <= tenantCount) {
 				throw new ServiceException("当前租户已到最大账号额度!");
 			}
@@ -97,8 +97,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 		if (Func.isNotEmpty(user.getPassword())) {
 			user.setPassword(DigestUtil.encrypt(user.getPassword()));
 		}
-		Integer userCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId).eq(User::getAccount, user.getAccount()));
-		if (userCount > 0 && Func.isEmpty(user.getId())) {
+		Long userCount = baseMapper.selectCount(Wrappers.<User>query().lambda().eq(User::getTenantId, tenantId).eq(User::getAccount, user.getAccount()));
+		if (userCount > 0L && Func.isEmpty(user.getId())) {
 			throw new ServiceException(StringUtil.format("当前用户 [{}] 已存在!", user.getAccount()));
 		}
 		return save(user) && submitUserDept(user);
@@ -108,13 +108,13 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 	@Transactional(rollbackFor = Exception.class)
 	public boolean updateUser(User user) {
 		String tenantId = user.getTenantId();
-		Integer userCount = baseMapper.selectCount(
+		Long userCount = baseMapper.selectCount(
 			Wrappers.<User>query().lambda()
 				.eq(User::getTenantId, tenantId)
 				.eq(User::getAccount, user.getAccount())
 				.notIn(User::getId, user.getId())
 		);
-		if (userCount > 0) {
+		if (userCount > 0L) {
 			throw new ServiceException(StringUtil.format("当前用户 [{}] 已存在!", user.getAccount()));
 		}
 		return updateUserInfo(user) && submitUserDept(user);

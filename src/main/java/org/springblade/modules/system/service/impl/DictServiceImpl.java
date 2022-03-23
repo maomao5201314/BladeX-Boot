@@ -79,8 +79,8 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 	@Override
 	public boolean submit(Dict dict) {
 		LambdaQueryWrapper<Dict> lqw = Wrappers.<Dict>query().lambda().eq(Dict::getCode, dict.getCode()).eq(Dict::getDictKey, dict.getDictKey());
-		Integer cnt = baseMapper.selectCount((Func.isEmpty(dict.getId())) ? lqw : lqw.notIn(Dict::getId, dict.getId()));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount((Func.isEmpty(dict.getId())) ? lqw : lqw.notIn(Dict::getId, dict.getId()));
+		if (cnt > 0L) {
 			throw new ServiceException("当前字典键值已存在!");
 		}
 		// 修改顶级字典后同步更新下属字典的编号
@@ -98,8 +98,8 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 
 	@Override
 	public boolean removeDict(String ids) {
-		Integer cnt = baseMapper.selectCount(Wrappers.<Dict>query().lambda().in(Dict::getParentId, Func.toLongList(ids)));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount(Wrappers.<Dict>query().lambda().in(Dict::getParentId, Func.toLongList(ids)));
+		if (cnt > 0L) {
 			throw new ServiceException("请先删除子节点!");
 		}
 		return removeByIds(Func.toLongList(ids));

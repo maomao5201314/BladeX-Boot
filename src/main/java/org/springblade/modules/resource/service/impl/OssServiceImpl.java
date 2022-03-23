@@ -47,8 +47,8 @@ public class OssServiceImpl extends BaseServiceImpl<OssMapper, Oss> implements I
 	public boolean submit(Oss oss) {
 		LambdaQueryWrapper<Oss> lqw = Wrappers.<Oss>query().lambda()
 			.eq(Oss::getOssCode, oss.getOssCode()).eq(Oss::getTenantId, AuthUtil.getTenantId());
-		Integer cnt = baseMapper.selectCount(Func.isEmpty(oss.getId()) ? lqw : lqw.notIn(Oss::getId, oss.getId()));
-		if (cnt > 0) {
+		Long cnt = baseMapper.selectCount(Func.isEmpty(oss.getId()) ? lqw : lqw.notIn(Oss::getId, oss.getId()));
+		if (cnt > 0L) {
 			throw new ServiceException("当前资源编号已存在!");
 		}
 		return this.saveOrUpdate(oss);

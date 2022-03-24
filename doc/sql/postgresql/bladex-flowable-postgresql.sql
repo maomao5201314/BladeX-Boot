@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 01/08/2019 11:17:08
+ Date: 20/03/2022 11:17:08
 */
 
 
@@ -20,7 +20,7 @@
 -- Sequence structure for act_evt_log_log_nr__seq
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "act_evt_log_log_nr__seq";
-CREATE SEQUENCE "act_evt_log_log_nr__seq" 
+CREATE SEQUENCE "act_evt_log_log_nr__seq"
 INCREMENT 1
 MINVALUE  1
 MAXVALUE 2147483647
@@ -31,7 +31,7 @@ CACHE 1;
 -- Sequence structure for act_hi_tsk_log_id__seq
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "act_hi_tsk_log_id__seq";
-CREATE SEQUENCE "act_hi_tsk_log_id__seq" 
+CREATE SEQUENCE "act_hi_tsk_log_id__seq"
 INCREMENT 1
 MINVALUE  1
 MAXVALUE 2147483647
@@ -539,6 +539,7 @@ CREATE TABLE "act_de_model" (
   "last_updated_by" varchar(255) COLLATE "pg_catalog"."default",
   "version" int4,
   "model_editor_json" text COLLATE "pg_catalog"."default",
+  "model_editor_xml" text COLLATE "pg_catalog"."default",
   "thumbnail" bytea,
   "model_type" int4,
   "tenant_id" varchar(255) COLLATE "pg_catalog"."default"

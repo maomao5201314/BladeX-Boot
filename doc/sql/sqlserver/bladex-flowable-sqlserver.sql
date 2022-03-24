@@ -12,7 +12,7 @@
  Target Server Version : 10501600
  File Encoding         : 65001
 
- Date: 22/07/2020 21:27:18
+ Date: 20/03/2022 21:27:18
 */
 
 
@@ -741,6 +741,7 @@ CREATE TABLE [dbo].[ACT_DE_MODEL] (
   [last_updated_by] varchar(255) COLLATE Chinese_PRC_CI_AS  NULL,
   [version] int  NULL,
   [model_editor_json] varchar(max) COLLATE Chinese_PRC_CI_AS  NULL,
+  [model_editor_xml] varchar(max) COLLATE Chinese_PRC_CI_AS  NULL,
   [thumbnail] varbinary(max)  NULL,
   [model_type] int  NULL,
   [tenant_id] varchar(255) COLLATE Chinese_PRC_CI_AS  NULL

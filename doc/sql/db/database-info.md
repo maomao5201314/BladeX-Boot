@@ -5,7 +5,7 @@ Table: blade_attach（附件表）
 | id            | BIGINT(19)    | NO   | PRI |         | 主键      |
 | tenant_id     | VARCHAR(12)   | YES  |     | 000000  | 租户ID    |
 | link          | VARCHAR(1000) | YES  |     |         | 附件地址    |
-| domain        | VARCHAR(500)  | YES  |     |         | 附件域名    |
+| domain_url    | VARCHAR(500)  | YES  |     |         | 附件域名    |
 | name          | VARCHAR(500)  | YES  |     |         | 附件名称    |
 | original_name | VARCHAR(500)  | YES  |     |         | 附件原名    |
 | extension     | VARCHAR(12)   | YES  |     |         | 附件拓展名   |
@@ -441,7 +441,7 @@ Table: blade_tenant（租户表）
 | id             | BIGINT(19)    | NO   | PRI |         | 主键      |
 | tenant_id      | VARCHAR(12)   | YES  |     | 000000  | 租户ID    |
 | tenant_name    | VARCHAR(50)   | NO   |     |         | 租户名称    |
-| domain         | VARCHAR(255)  | YES  |     |         | 域名地址    |
+| domain_url     | VARCHAR(255)  | YES  |     |         | 域名地址    |
 | background_url | VARCHAR(1000) | YES  |     |         | 系统背景    |
 | linkman        | VARCHAR(20)   | YES  |     |         | 联系人     |
 | contact_number | VARCHAR(20)   | YES  |     |         | 联系电话    |

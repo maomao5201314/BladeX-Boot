@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 18/12/2021 22:31:38
+ Date: 20/03/2022 22:31:38
 */
 
 
@@ -24,7 +24,7 @@ CREATE TABLE "blade_attach" (
   "id" int8 NOT NULL,
   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
   "link" varchar(1000) COLLATE "pg_catalog"."default",
-  "domain" varchar(500) COLLATE "pg_catalog"."default",
+  "domain_url" varchar(500) COLLATE "pg_catalog"."default",
   "name" varchar(500) COLLATE "pg_catalog"."default",
   "original_name" varchar(500) COLLATE "pg_catalog"."default",
   "extension" varchar(12) COLLATE "pg_catalog"."default",
@@ -41,7 +41,7 @@ CREATE TABLE "blade_attach" (
 COMMENT ON COLUMN "blade_attach"."id" IS '主键';
 COMMENT ON COLUMN "blade_attach"."tenant_id" IS '租户ID';
 COMMENT ON COLUMN "blade_attach"."link" IS '附件地址';
-COMMENT ON COLUMN "blade_attach"."domain" IS '附件域名';
+COMMENT ON COLUMN "blade_attach"."domain_url" IS '附件域名';
 COMMENT ON COLUMN "blade_attach"."name" IS '附件名称';
 COMMENT ON COLUMN "blade_attach"."original_name" IS '附件原名';
 COMMENT ON COLUMN "blade_attach"."extension" IS '附件拓展名';
@@ -4509,8 +4509,6 @@ INSERT INTO "blade_role_menu" VALUES (1161272593873322992, 1161272593873321992, 
 INSERT INTO "blade_role_menu" VALUES (1161272593873322993, 1161272593873321993, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272593873322994, 1161272593873321994, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272593873322995, 1161272593873321995, 1123598816738675201);
-INSERT INTO "blade_role_menu" VALUES (1161272593873322996, 1164733121140551682, 1123598816738675201);
-INSERT INTO "blade_role_menu" VALUES (1161272593873322997, 1164733349637844993, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272693873322991, 1164733369658963251, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272693873322992, 1164733369658963252, 1123598816738675201);
 INSERT INTO "blade_role_menu" VALUES (1161272693873322993, 1164733369658963253, 1123598816738675201);
@@ -4699,7 +4697,7 @@ CREATE TABLE "blade_tenant" (
   "id" int8 NOT NULL,
   "tenant_id" varchar(12) COLLATE "pg_catalog"."default",
   "tenant_name" varchar(50) COLLATE "pg_catalog"."default" NOT NULL,
-  "domain" varchar(255) COLLATE "pg_catalog"."default",
+  "domain_url" varchar(255) COLLATE "pg_catalog"."default",
   "background_url" varchar(1000) COLLATE "pg_catalog"."default",
   "linkman" varchar(20) COLLATE "pg_catalog"."default",
   "contact_number" varchar(20) COLLATE "pg_catalog"."default",
@@ -4721,7 +4719,7 @@ CREATE TABLE "blade_tenant" (
 COMMENT ON COLUMN "blade_tenant"."id" IS '主键';
 COMMENT ON COLUMN "blade_tenant"."tenant_id" IS '租户ID';
 COMMENT ON COLUMN "blade_tenant"."tenant_name" IS '租户名称';
-COMMENT ON COLUMN "blade_tenant"."domain" IS '域名地址';
+COMMENT ON COLUMN "blade_tenant"."domain_url" IS '域名地址';
 COMMENT ON COLUMN "blade_tenant"."background_url" IS '系统背景';
 COMMENT ON COLUMN "blade_tenant"."linkman" IS '联系人';
 COMMENT ON COLUMN "blade_tenant"."contact_number" IS '联系电话';

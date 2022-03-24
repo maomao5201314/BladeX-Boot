@@ -11,7 +11,7 @@
  Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 01/08/2019 11:09:17
+ Date: 20/03/2022 11:09:17
 */
 
 SET NAMES utf8mb4;
@@ -537,9 +537,11 @@ CREATE TABLE `ACT_DE_MODEL`  (
   `last_updated_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `version` int(11) NULL DEFAULT NULL,
   `model_editor_json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `model_editor_xml` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `thumbnail` longblob NULL,
   `model_type` int(11) NULL DEFAULT NULL,
   `tenant_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `xml` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_proc_mod_created`(`created_by`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;

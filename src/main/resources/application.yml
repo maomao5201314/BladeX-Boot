@@ -60,7 +60,7 @@ mybatis-plus:
       #字段策略
       insert-strategy: not_null
       update-strategy: not_null
-      select-strategy: not_empty
+      where-strategy: not_null
       #驼峰下划线转换
       table-underline: true
       # 逻辑删除配置

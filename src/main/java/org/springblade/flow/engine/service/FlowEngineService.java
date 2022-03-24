@@ -24,7 +24,9 @@ import org.springblade.flow.engine.entity.FlowModel;
 import org.springblade.flow.engine.entity.FlowProcess;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 /**
  * FlowEngineService
@@ -117,4 +119,39 @@ public interface FlowEngineService extends IService<FlowModel> {
 	 * @return
 	 */
 	boolean deleteProcessInstance(String processInstanceId, String deleteReason);
+
+	/**
+	 * 保存/更新模型
+	 *
+	 * @param model 模型
+	 * @return 模型
+	 */
+	FlowModel submitModel(FlowModel model);
+
+	/**
+	 * 流程节点进程图
+	 *
+	 * @param processDefinitionId
+	 * @param processInstanceId
+	 * @return
+	 */
+	Map<String, Object> modelView(String processDefinitionId, String processInstanceId);
+
+	/**
+	 * 流程节点进程图
+	 *
+	 * @param processInstanceId
+	 * @param httpServletResponse
+	 */
+	void diagramView(String processInstanceId, HttpServletResponse httpServletResponse);
+
+	/**
+	 * 流程图展示
+	 *
+	 * @param processDefinitionId
+	 * @param processInstanceId
+	 * @param resourceType
+	 * @param response
+	 */
+	void resourceView(String processDefinitionId, String processInstanceId, String resourceType, HttpServletResponse response);
 }

@@ -64,7 +64,9 @@ public class FlowModelController {
 	@ApiOperationSupport(order = 1)
 	@ApiOperation(value = "分页", notes = "传入notice")
 	public R<IPage<FlowModel>> list(@ApiIgnore @RequestParam Map<String, Object> flow, Query query) {
-		IPage<FlowModel> pages = flowEngineService.page(Condition.getPage(query), Condition.getQueryWrapper(flow, FlowModel.class));
+		IPage<FlowModel> pages = flowEngineService.page(Condition.getPage(query), Condition.getQueryWrapper(flow, FlowModel.class)
+			.select("id,model_key modelKey,name,description,version,created,last_updated lastUpdated")
+			.orderByDesc("last_updated"));
 		return R.data(pages);
 	}
 
@@ -90,6 +92,30 @@ public class FlowModelController {
 					@ApiParam(value = "租户ID") @RequestParam(required = false, defaultValue = "") String tenantIds) {
 		boolean temp = flowEngineService.deployModel(modelId, category, Func.toStrList(tenantIds));
 		return R.status(temp);
+	}
+
+	@PostMapping("submit")
+	@ApiOperationSupport(order = 4)
+	@ApiOperation(value = "保存/编辑")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "id", value = "模型id"),
+		@ApiImplicitParam(name = "name", value = "模型名称", required = true),
+		@ApiImplicitParam(name = "modelKey", value = "模型key", required = true),
+		@ApiImplicitParam(name = "description", value = "模型描述"),
+		@ApiImplicitParam(name = "xml", value = "模型xml", required = true),
+	})
+	public R<FlowModel> submit(@RequestBody @ApiIgnore FlowModel model) {
+		return R.data(flowEngineService.submitModel(model));
+	}
+
+	@GetMapping("detail")
+	@ApiOperation(value = "详情")
+	@ApiOperationSupport(order = 5)
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "id", value = "模型id", required = true),
+	})
+	public R<FlowModel> detail(String id) {
+		return R.data(flowEngineService.getById(id));
 	}
 
 }

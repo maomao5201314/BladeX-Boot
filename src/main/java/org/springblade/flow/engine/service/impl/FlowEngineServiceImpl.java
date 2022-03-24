@@ -26,11 +26,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.flowable.bpmn.converter.BpmnXMLConverter;
 import org.flowable.bpmn.model.BpmnModel;
 import org.flowable.bpmn.model.Process;
+import org.flowable.common.engine.impl.util.IoUtil;
+import org.flowable.common.engine.impl.util.io.StringStreamSource;
 import org.flowable.editor.language.json.converter.BpmnJsonConverter;
-import org.flowable.engine.HistoryService;
-import org.flowable.engine.RepositoryService;
-import org.flowable.engine.RuntimeService;
-import org.flowable.engine.TaskService;
+import org.flowable.engine.*;
 import org.flowable.engine.history.HistoricActivityInstance;
 import org.flowable.engine.history.HistoricProcessInstance;
 import org.flowable.engine.impl.persistence.entity.ExecutionEntityImpl;
@@ -41,6 +40,7 @@ import org.flowable.engine.repository.ProcessDefinitionQuery;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.engine.runtime.ProcessInstanceQuery;
 import org.flowable.engine.task.Comment;
+import org.flowable.image.ProcessDiagramGenerator;
 import org.springblade.common.cache.UserCache;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.utils.AuthUtil;
@@ -62,8 +62,10 @@ import org.springblade.modules.system.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.*;
 
 /**
@@ -76,6 +78,10 @@ import java.util.*;
 @AllArgsConstructor
 public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> implements FlowEngineService {
 	private static final String ALREADY_IN_STATE = "already in state";
+	private static final String USR_TASK = "userTask";
+	private static final String IMAGE_NAME = "image";
+	private static final String XML_NAME = "xml";
+	private static final Integer INT_1024 = 1024;
 	private static final BpmnJsonConverter BPMN_JSON_CONVERTER = new BpmnJsonConverter();
 	private static final BpmnXMLConverter BPMN_XML_CONVERTER = new BpmnXMLConverter();
 	private final ObjectMapper objectMapper;
@@ -83,6 +89,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 	private final RuntimeService runtimeService;
 	private final HistoryService historyService;
 	private final TaskService taskService;
+	private final ProcessEngine processEngine;
 
 	@Override
 	public IPage<FlowModel> selectFlowPage(IPage<FlowModel> page, FlowModel flowModel) {
@@ -170,7 +177,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 				continue;
 			}
 			// 显示开始节点和结束节点，并且执行人不为空的任务
-			if (StringUtils.isNotBlank(historicActivityInstance.getAssignee())
+			if (StringUtils.equals(USR_TASK, historicActivityInstance.getActivityType())
 				|| FlowEngineConstant.START_EVENT.equals(historicActivityInstance.getActivityType())
 				|| FlowEngineConstant.END_EVENT.equals(historicActivityInstance.getActivityType())) {
 				// 给节点增加序号
@@ -291,7 +298,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 	public boolean deployModel(String modelId, String category, List<String> tenantIdList) {
 		FlowModel model = this.getById(modelId);
 		if (model == null) {
-			throw new ServiceException("No model found with the given id: " + modelId);
+			throw new ServiceException("未找到模型 id: " + modelId);
 		}
 		byte[] bytes = getBpmnXML(model);
 		String processName = model.getName();
@@ -317,7 +324,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 		return true;
 	}
 
-	private boolean deploy(Deployment deployment, String category) {
+	private void deploy(Deployment deployment, String category) {
 		log.debug("流程部署--------deploy:  " + deployment + "  分类---------->" + category);
 		List<ProcessDefinition> list = repositoryService.createProcessDefinitionQuery().deploymentId(deployment.getId()).list();
 		StringBuilder logBuilder = new StringBuilder(500);
@@ -334,8 +341,158 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 			throw new ServiceException("部署失败,未找到流程");
 		} else {
 			log.info(logBuilder.toString(), logArgs.toArray());
-			return true;
 		}
+	}
+
+	@Override
+	public FlowModel submitModel(FlowModel model) {
+		FlowModel flowModel = new FlowModel();
+		flowModel.setId(model.getId());
+		flowModel.setVersion(Func.toInt(model.getVersion(), 0) + 1);
+		flowModel.setName(model.getName());
+		flowModel.setModelKey(model.getModelKey());
+		flowModel.setModelType(FlowModel.MODEL_TYPE_BPMN);
+		flowModel.setCreatedBy(TaskUtil.getTaskUser());
+		flowModel.setDescription(model.getDescription());
+		flowModel.setLastUpdated(Calendar.getInstance().getTime());
+		flowModel.setLastUpdatedBy(TaskUtil.getTaskUser());
+		flowModel.setTenantId(AuthUtil.getTenantId());
+		flowModel.setModelEditorXml(model.getModelEditorXml());
+		if (StringUtil.isBlank(model.getId())) {
+			flowModel.setCreated(Calendar.getInstance().getTime());
+		}
+		if (StringUtil.isNotBlank(model.getModelEditorXml())) {
+			flowModel.setModelEditorJson(getBpmnJsonString(model.getModelEditorXml()));
+		}
+		this.saveOrUpdate(flowModel);
+		return flowModel;
+	}
+
+	@Override
+	public Map<String, Object> modelView(String processDefinitionId, String processInstanceId) {
+		Map<String, Object> result = new HashMap<>();
+		// 节点标记
+		if (StringUtil.isNotBlank(processInstanceId)) {
+			result.put("flow", this.historyFlowList(processInstanceId, null, null));
+			HistoricProcessInstance processInstance = historyService.createHistoricProcessInstanceQuery()
+				.processInstanceId(processInstanceId)
+				.singleResult();
+			processDefinitionId = processInstance.getProcessDefinitionId();
+		}
+		BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
+		// 流程图展示
+		result.put("xml", new String(new BpmnXMLConverter().convertToXML(bpmnModel)));
+		return result;
+	}
+
+	@Override
+	public void diagramView(String processInstanceId, HttpServletResponse httpServletResponse) {
+		// 获得当前活动的节点
+		String processDefinitionId;
+		// 如果流程已经结束，则得到结束节点
+		if (this.isFinished(processInstanceId)) {
+			HistoricProcessInstance pi = historyService.createHistoricProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+			processDefinitionId = pi.getProcessDefinitionId();
+		} else {
+			// 如果流程没有结束，则取当前活动节点
+			// 根据流程实例ID获得当前处于活动状态的ActivityId合集
+			ProcessInstance pi = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+			processDefinitionId = pi.getProcessDefinitionId();
+		}
+		List<String> highLightedActivities = new ArrayList<>();
+
+		// 获得活动的节点
+		List<HistoricActivityInstance> highLightedActivityList = historyService.createHistoricActivityInstanceQuery().processInstanceId(processInstanceId).orderByHistoricActivityInstanceStartTime().asc().list();
+
+		for (HistoricActivityInstance tempActivity : highLightedActivityList) {
+			String activityId = tempActivity.getActivityId();
+			highLightedActivities.add(activityId);
+		}
+
+		List<String> flows = new ArrayList<>();
+		// 获取流程图
+		BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
+		ProcessEngineConfiguration engConf = processEngine.getProcessEngineConfiguration();
+
+		ProcessDiagramGenerator diagramGenerator = engConf.getProcessDiagramGenerator();
+		InputStream in = diagramGenerator.generateDiagram(bpmnModel, "bmp", highLightedActivities, flows, engConf.getActivityFontName(),
+			engConf.getLabelFontName(), engConf.getAnnotationFontName(), engConf.getClassLoader(), 1.0, true);
+		OutputStream out = null;
+		byte[] buf = new byte[1024];
+		int length;
+		try {
+			out = httpServletResponse.getOutputStream();
+			while ((length = in.read(buf)) != -1) {
+				out.write(buf, 0, length);
+			}
+		} catch (IOException e) {
+			log.error("操作异常", e);
+		} finally {
+			IoUtil.closeSilently(out);
+			IoUtil.closeSilently(in);
+		}
+	}
+
+	@Override
+	public void resourceView(String processDefinitionId, String processInstanceId, String resourceType, HttpServletResponse response) {
+		if (StringUtil.isAllBlank(processDefinitionId, processInstanceId)) {
+			return;
+		}
+		if (StringUtil.isBlank(processDefinitionId)) {
+			ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+			processDefinitionId = processInstance.getProcessDefinitionId();
+		}
+		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionId(processDefinitionId).singleResult();
+		String resourceName = "";
+		if (resourceType.equals(IMAGE_NAME)) {
+			resourceName = processDefinition.getDiagramResourceName();
+		} else if (resourceType.equals(XML_NAME)) {
+			resourceName = processDefinition.getResourceName();
+		}
+		try {
+			InputStream resourceAsStream = repositoryService.getResourceAsStream(processDefinition.getDeploymentId(), resourceName);
+			byte[] b = new byte[1024];
+			int len;
+			while ((len = resourceAsStream.read(b, 0, INT_1024)) != -1) {
+				response.getOutputStream().write(b, 0, len);
+			}
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+	}
+
+	/**
+	 * 是否已完结
+	 *
+	 * @param processInstanceId 流程实例id
+	 * @return bool
+	 */
+	private boolean isFinished(String processInstanceId) {
+		return historyService.createHistoricProcessInstanceQuery().finished()
+			.processInstanceId(processInstanceId).count() > 0;
+	}
+
+
+	/**
+	 * xml转bpmn json string
+	 *
+	 * @param xml xml
+	 * @return json string
+	 */
+	private String getBpmnJsonString(String xml) {
+		BpmnJsonConverter jsonConverter = new BpmnJsonConverter();
+		return jsonConverter.convertToJson(getBpmnModel(xml)).toString();
+	}
+
+	/**
+	 * xml转bpmnModel对象
+	 *
+	 * @param xml xml
+	 * @return bpmnModel对象
+	 */
+	private BpmnModel getBpmnModel(String xml) {
+		BpmnXMLConverter converter = new BpmnXMLConverter();
+		return converter.convertToBpmnModel(new StringStreamSource(xml), false, false);
 	}
 
 	private byte[] getBpmnXML(FlowModel model) {

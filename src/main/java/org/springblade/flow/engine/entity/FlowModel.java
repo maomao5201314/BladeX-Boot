@@ -53,5 +53,6 @@ public class FlowModel implements Serializable {
 	private Integer modelType;
 	private String tenantId;
 	private byte[] thumbnail;
+	private String modelEditorXml;
 
 }

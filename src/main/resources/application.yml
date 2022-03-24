@@ -20,9 +20,9 @@ spring:
     #driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     #driver-class-name: dm.jdbc.driver.DmDriver
     druid:
-      # MySql、PostgreSQL、SqlServer校验
+      # MySql、PostgreSQL、SqlServer、DaMeng校验
       validation-query: select 1
-      # Oracle、DaMeng校验
+      # Oracle校验
       #validation-query: select 1 from dual
       validation-query-timeout: 2000
       initial-size: 5
@@ -116,6 +116,8 @@ flowable:
   annotation-font-name: \u5B8B\u4F53
   check-process-definitions: false
   database-schema-update: false
+  async-executor-activate: false
+  async-history-executor-activate: false
 
 #报表配置
 report:
@@ -191,6 +193,7 @@ blade:
     skip-url:
       - /blade-chat/weixin
       - /blade-desk/notice/submit
+      - /blade-flow/model/submit
   #安全框架配置
   secure:
     #接口放行

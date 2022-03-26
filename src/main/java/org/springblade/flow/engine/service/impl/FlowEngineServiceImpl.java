@@ -362,7 +362,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 			flowModel.setCreated(Calendar.getInstance().getTime());
 		}
 		if (StringUtil.isNotBlank(model.getModelEditorXml())) {
-			flowModel.setModelEditorJson(getBpmnJsonString(model.getModelEditorXml()));
+			flowModel.setModelEditorJson(getBpmnJson(model.getModelEditorXml()));
 		}
 		this.saveOrUpdate(flowModel);
 		return flowModel;
@@ -461,6 +461,11 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 		}
 	}
 
+	@Override
+	public byte[] getModelEditorXML(FlowModel model) {
+		return getBpmnXML(model);
+	}
+
 	/**
 	 * 是否已完结
 	 *
@@ -474,25 +479,23 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 
 
 	/**
-	 * xml转bpmn json string
+	 * xml转bpmn json
 	 *
 	 * @param xml xml
-	 * @return json string
+	 * @return json
 	 */
-	private String getBpmnJsonString(String xml) {
-		BpmnJsonConverter jsonConverter = new BpmnJsonConverter();
-		return jsonConverter.convertToJson(getBpmnModel(xml)).toString();
+	private String getBpmnJson(String xml) {
+		return BPMN_JSON_CONVERTER.convertToJson(getBpmnModel(xml)).toString();
 	}
 
 	/**
-	 * xml转bpmnModel对象
+	 * xml转bpmnModel
 	 *
 	 * @param xml xml
-	 * @return bpmnModel对象
+	 * @return bpmnModel
 	 */
 	private BpmnModel getBpmnModel(String xml) {
-		BpmnXMLConverter converter = new BpmnXMLConverter();
-		return converter.convertToBpmnModel(new StringStreamSource(xml), false, false);
+		return BPMN_XML_CONVERTER.convertToBpmnModel(new StringStreamSource(xml), false, false);
 	}
 
 	private byte[] getBpmnXML(FlowModel model) {

@@ -154,4 +154,12 @@ public interface FlowEngineService extends IService<FlowModel> {
 	 * @param response
 	 */
 	void resourceView(String processDefinitionId, String processInstanceId, String resourceType, HttpServletResponse response);
+
+	/**
+	 * 获取XML
+	 *
+	 * @param model
+	 * @return
+	 */
+	byte[] getModelEditorXML(FlowModel model);
 }

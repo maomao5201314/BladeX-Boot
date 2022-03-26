@@ -18,10 +18,13 @@ package org.springblade.modules.auth.granter;
 
 import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
+import org.springblade.core.jwt.JwtUtil;
+import org.springblade.core.jwt.props.JwtProperties;
 import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.log.exception.ServiceException;
 import org.springblade.core.secure.utils.AuthUtil;
 import org.springblade.core.tool.utils.Func;
+import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.modules.auth.provider.ITokenGranter;
 import org.springblade.modules.auth.provider.TokenParameter;
 import org.springblade.modules.auth.utils.TokenUtil;
@@ -48,6 +51,7 @@ public class RefreshTokenGranter implements ITokenGranter {
 	private final IUserService userService;
 	private final IRoleService roleService;
 	private final ITenantService tenantService;
+	private final JwtProperties jwtProperties;
 
 	@Override
 	public UserInfo grant(TokenParameter tokenParameter) {
@@ -58,6 +62,10 @@ public class RefreshTokenGranter implements ITokenGranter {
 		String roleId = tokenParameter.getArgs().getStr("roleId");
 		UserInfo userInfo = null;
 		if (Func.isNoneBlank(grantType, refreshToken) && grantType.equals(TokenConstant.REFRESH_TOKEN)) {
+			// 判断令牌合法性
+			if (!judgeRefreshToken(grantType, refreshToken)) {
+				throw new ServiceException(TokenUtil.TOKEN_NOT_PERMISSION);
+			}
 			Claims claims = AuthUtil.parseJWT(refreshToken);
 			if (claims != null) {
 				String tokenType = Func.toStr(claims.get(TokenConstant.TOKEN_TYPE));
@@ -84,4 +92,23 @@ public class RefreshTokenGranter implements ITokenGranter {
 		}
 		return userInfo;
 	}
+
+	/**
+	 * 校验refreshToken合法性
+	 *
+	 * @param grantType    认证类型
+	 * @param refreshToken refreshToken
+	 */
+	private boolean judgeRefreshToken(String grantType, String refreshToken) {
+		if (jwtProperties.getState() && jwtProperties.getSingle()) {
+			Claims claims = JwtUtil.parseJWT(refreshToken);
+			String tenantId = String.valueOf(claims.get("tenant_id"));
+			String userId = String.valueOf(claims.get("user_id"));
+			String token = JwtUtil.getRefreshToken(tenantId, userId, refreshToken);
+			return StringUtil.equalsIgnoreCase(token, refreshToken);
+		}
+		return true;
+	}
+
+
 }

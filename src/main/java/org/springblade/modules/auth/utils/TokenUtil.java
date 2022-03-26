@@ -51,6 +51,7 @@ public class TokenUtil {
 	public final static String DEFAULT_TENANT_ID = "000000";
 	public final static String USER_TYPE_HEADER_KEY = "User-Type";
 	public final static String DEFAULT_USER_TYPE = "web";
+	public final static String TOKEN_NOT_PERMISSION = "令牌授权已过期";
 	public final static String USER_NOT_FOUND = "用户名或密码错误";
 	public final static String USER_HAS_NO_ROLE = "未获得用户的角色信息";
 	public final static String USER_HAS_NO_TENANT = "未获得用户的租户信息";

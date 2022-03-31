@@ -17,12 +17,15 @@
 package org.springblade.flow.engine.utils;
 
 import org.flowable.engine.RepositoryService;
+import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntityImpl;
 import org.flowable.engine.repository.ProcessDefinition;
 import org.springblade.common.cache.DictCache;
 import org.springblade.core.cache.utils.CacheUtil;
+import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.SpringUtil;
 import org.springblade.core.tool.utils.StringPool;
+import org.springblade.flow.engine.entity.FlowProcess;
 
 /**
  * 流程缓存
@@ -48,8 +51,12 @@ public class FlowCache {
 	 * @param processDefinitionId 流程对象id
 	 * @return
 	 */
-	public static ProcessDefinition getProcessDefinition(String processDefinitionId) {
-		return CacheUtil.get(FLOW_CACHE, FLOW_DEFINITION_ID, processDefinitionId, () -> getRepositoryService().createProcessDefinitionQuery().processDefinitionId(processDefinitionId).singleResult());
+	public static FlowProcess getProcessDefinition(String processDefinitionId) {
+		return CacheUtil.get(FLOW_CACHE, FLOW_DEFINITION_ID, processDefinitionId, () -> {
+			ProcessDefinition processDefinition = getRepositoryService().createProcessDefinitionQuery().processDefinitionId(processDefinitionId).singleResult();
+			ProcessDefinitionEntityImpl processDefinitionEntity = BeanUtil.copy(processDefinition, ProcessDefinitionEntityImpl.class);
+			return new FlowProcess(processDefinitionEntity);
+		});
 	}
 
 	/**

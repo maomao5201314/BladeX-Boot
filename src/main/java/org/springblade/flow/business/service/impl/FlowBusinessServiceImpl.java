@@ -22,7 +22,6 @@ import org.flowable.engine.HistoryService;
 import org.flowable.engine.TaskService;
 import org.flowable.engine.history.HistoricProcessInstance;
 import org.flowable.engine.history.HistoricProcessInstanceQuery;
-import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.task.api.TaskQuery;
 import org.flowable.task.api.history.HistoricTaskInstance;
 import org.flowable.task.api.history.HistoricTaskInstanceQuery;
@@ -36,6 +35,7 @@ import org.springblade.flow.core.constant.ProcessConstant;
 import org.springblade.flow.core.entity.BladeFlow;
 import org.springblade.flow.core.utils.TaskUtil;
 import org.springblade.flow.engine.constant.FlowEngineConstant;
+import org.springblade.flow.engine.entity.FlowProcess;
 import org.springblade.flow.engine.utils.FlowCache;
 import org.springframework.stereotype.Service;
 
@@ -148,7 +148,7 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 			flow.setProcessInstanceId(historicProcessInstance.getId());
 			flow.setHistoryProcessInstanceId(historicProcessInstance.getId());
 			// ProcessDefinition
-			ProcessDefinition processDefinition = FlowCache.getProcessDefinition(historicProcessInstance.getProcessDefinitionId());
+			FlowProcess processDefinition = FlowCache.getProcessDefinition(historicProcessInstance.getProcessDefinitionId());
 			flow.setProcessDefinitionId(processDefinition.getId());
 			flow.setProcessDefinitionName(processDefinition.getName());
 			flow.setProcessDefinitionVersion(processDefinition.getVersion());
@@ -216,7 +216,7 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 			flow.setHistoryTaskEndTime(historicTaskInstance.getEndTime());
 			flow.setVariables(historicTaskInstance.getProcessVariables());
 
-			ProcessDefinition processDefinition = FlowCache.getProcessDefinition(historicTaskInstance.getProcessDefinitionId());
+			FlowProcess processDefinition = FlowCache.getProcessDefinition(historicTaskInstance.getProcessDefinitionId());
 			flow.setProcessDefinitionId(processDefinition.getId());
 			flow.setProcessDefinitionName(processDefinition.getName());
 			flow.setProcessDefinitionKey(processDefinition.getKey());
@@ -307,7 +307,7 @@ public class FlowBusinessServiceImpl implements FlowBusinessService {
 				flow.setBusinessId(businessKey[1]);
 			}
 
-			ProcessDefinition processDefinition = FlowCache.getProcessDefinition(task.getProcessDefinitionId());
+			FlowProcess processDefinition = FlowCache.getProcessDefinition(task.getProcessDefinitionId());
 			flow.setCategory(processDefinition.getCategory());
 			flow.setCategoryName(FlowCache.getCategoryName(processDefinition.getCategory()));
 			flow.setProcessDefinitionId(processDefinition.getId());

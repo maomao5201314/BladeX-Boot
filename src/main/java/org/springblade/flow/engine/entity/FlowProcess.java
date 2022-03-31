@@ -17,6 +17,7 @@
 package org.springblade.flow.engine.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntityImpl;
 import org.springblade.flow.engine.utils.FlowCache;
 
@@ -29,6 +30,7 @@ import java.util.Date;
  * @author Chill
  */
 @Data
+@NoArgsConstructor
 public class FlowProcess implements Serializable {
 
 	private String id;
@@ -45,17 +47,19 @@ public class FlowProcess implements Serializable {
 	private Date deploymentTime;
 
 	public FlowProcess(ProcessDefinitionEntityImpl entity) {
-		this.id = entity.getId();
-		this.tenantId = entity.getTenantId();
-		this.name = entity.getName();
-		this.key = entity.getKey();
-		this.category = entity.getCategory();
-		this.categoryName = FlowCache.getCategoryName(entity.getCategory());
-		this.version = entity.getVersion();
-		this.deploymentId = entity.getDeploymentId();
-		this.resourceName = entity.getResourceName();
-		this.diagramResourceName = entity.getDiagramResourceName();
-		this.suspensionState = entity.getSuspensionState();
+		if (entity != null) {
+			this.id = entity.getId();
+			this.tenantId = entity.getTenantId();
+			this.name = entity.getName();
+			this.key = entity.getKey();
+			this.category = entity.getCategory();
+			this.categoryName = FlowCache.getCategoryName(entity.getCategory());
+			this.version = entity.getVersion();
+			this.deploymentId = entity.getDeploymentId();
+			this.resourceName = entity.getResourceName();
+			this.diagramResourceName = entity.getDiagramResourceName();
+			this.suspensionState = entity.getSuspensionState();
+		}
 	}
 
 }

@@ -151,7 +151,7 @@ public class FlowEngineServiceImpl extends ServiceImpl<FlowMapper, FlowModel> im
 			flowExecution.setProcessDefinitionId(execution.getProcessDefinitionId());
 			flowExecution.setProcessDefinitionKey(execution.getProcessDefinitionKey());
 			flowExecution.setSuspensionState(execution.getSuspensionState());
-			ProcessDefinition processDefinition = FlowCache.getProcessDefinition(execution.getProcessDefinitionId());
+			FlowProcess processDefinition = FlowCache.getProcessDefinition(execution.getProcessDefinitionId());
 			flowExecution.setCategory(processDefinition.getCategory());
 			flowExecution.setCategoryName(FlowCache.getCategoryName(processDefinition.getCategory()));
 			flowList.add(flowExecution);

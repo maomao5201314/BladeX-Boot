@@ -36,7 +36,7 @@ import $!{package.Entity}.$!{entity};
 #set($voPackage=$package.Entity.replace("entity","vo"))
 import $!{voPackage}.$!{entity}VO;
 #set($wrapperPackage=$package.Entity.replace("entity","wrapper"))
-#if($!{cfg.hasWrapper})
+#if($!{hasWrapper})
 import $!{wrapperPackage}.$!{entity}Wrapper;
 #end
 import $!{package.Service}.$!{table.serviceName};
@@ -54,7 +54,7 @@ import $!{superControllerClassPackage};
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("$!{cfg.serviceName}/$!{cfg.entityKey}")
+@RequestMapping("#if($!{package.ModuleName})$!{package.ModuleName}#end/$!{entityKey}")
 @Api(value = "$!{table.comment}", tags = "$!{table.comment}接口")
 #if($!{superControllerClass})
 public class $!{table.controllerName} extends $!{superControllerClass} {
@@ -64,7 +64,7 @@ public class $!{table.controllerName} {
 
 	private final $!{table.serviceName} $!{table.entityPath}Service;
 
-#if($!{cfg.hasWrapper})
+#if($!{hasWrapper})
 	/**
 	 * 详情
 	 */

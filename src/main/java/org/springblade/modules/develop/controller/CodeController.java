@@ -148,6 +148,8 @@ public class CodeController extends BladeController {
 			generator.setHasSuperEntity(code.getBaseMode() == 2);
 			// 设置是否开启包装器模式
 			generator.setHasWrapper(code.getWrapMode() == 2);
+			// 设置控制器服务名前缀
+			generator.setHasServiceName(Boolean.TRUE);
 			generator.run();
 		});
 		return R.success("代码生成成功");

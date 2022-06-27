@@ -47,6 +47,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import static org.springblade.common.cache.SysCache.TENANT_PACKAGE_ID;
+import static org.springblade.common.cache.SysCache.TENANT_TENANT_ID;
+import static org.springblade.core.cache.constant.CacheConstant.SYS_CACHE;
 import static org.springblade.core.tenant.constant.TenantBaseConstant.TENANT_DATASOURCE_CACHE;
 import static org.springblade.core.tenant.constant.TenantBaseConstant.TENANT_DATASOURCE_EXIST_KEY;
 
@@ -221,6 +224,8 @@ public class TenantController extends BladeController {
 	@PreAuth(RoleConstant.HAS_ROLE_ADMINISTRATOR)
 	@ApiOperation(value = "产品包配置", notes = "传入packageId")
 	public R packageSetting(@ApiParam(value = "租户ID", required = true) @RequestParam String tenantId, @ApiParam(value = "产品包ID") Long packageId) {
+		CacheUtil.evict(SYS_CACHE, TENANT_TENANT_ID, tenantId, Boolean.FALSE);
+		CacheUtil.evict(SYS_CACHE, TENANT_PACKAGE_ID, tenantId, Boolean.FALSE);
 		return R.status(tenantService.update(Wrappers.<Tenant>update().lambda().set(Tenant::getPackageId, packageId).eq(Tenant::getTenantId, tenantId)));
 	}
 

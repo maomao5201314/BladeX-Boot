@@ -170,9 +170,42 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 		TenantPackage tenantPackage = SysCache.getTenantPackage(tenantId);
 		if (!AuthUtil.isAdministrator() && Func.isNotEmpty(tenantPackage) && tenantPackage.getId() > 0L) {
 			List<Long> menuIds = Func.toLongList(tenantPackage.getMenuId());
-			menuTree = menuTree.stream().filter(x -> menuIds.contains(x.getId())).collect(Collectors.toList());
+			// 筛选出两者菜单交集集合
+			List<TreeNode> collect = menuTree.stream().filter(x -> menuIds.contains(x.getId())).collect(Collectors.toList());
+			// 创建递归基础集合
+			List<TreeNode> packageTree = new LinkedList<>(collect);
+			// 递归筛选出菜单集合所有父级
+			collect.forEach(treeNode -> recursionParent(menuTree, packageTree, treeNode));
+			// 递归筛选出菜单集合所有子级
+			collect.forEach(treeNode -> recursionChild(menuTree, packageTree, treeNode));
+			// 合并在一起返回最终集合
+			return packageTree;
 		}
 		return menuTree;
+	}
+
+	/**
+	 * 父节点递归
+	 */
+	public void recursionParent(List<TreeNode> menuTree, List<TreeNode> packageTree, TreeNode treeNode) {
+		Optional<TreeNode> node = menuTree.stream().filter(x -> Func.equals(x.getId(), treeNode.getParentId())).findFirst();
+		if (node.isPresent() && !packageTree.contains(node.get())) {
+			packageTree.add(node.get());
+			recursionParent(menuTree, packageTree, node.get());
+		}
+	}
+
+	/**
+	 * 子节点递归
+	 */
+	public void recursionChild(List<TreeNode> menuTree, List<TreeNode> packageTree, TreeNode treeNode) {
+		List<TreeNode> nodes = menuTree.stream().filter(x -> Func.equals(x.getParentId(), treeNode.getId())).collect(Collectors.toList());
+		nodes.forEach(node -> {
+			if (!packageTree.contains(node)) {
+				packageTree.add(node);
+				recursionChild(menuTree, packageTree, node);
+			}
+		});
 	}
 
 	/**

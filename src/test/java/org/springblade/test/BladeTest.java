@@ -1,10 +1,10 @@
 package org.springblade.test;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springblade.core.test.BladeBootTest;
-import org.springblade.core.test.BladeSpringRunner;
+import org.springblade.core.test.BladeSpringExtension;
 import org.springblade.core.tool.utils.StringUtil;
 import org.springblade.flow.engine.entity.FlowModel;
 import org.springblade.flow.engine.service.FlowEngineService;
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Chill
  */
-@RunWith(BladeSpringRunner.class)
+@ExtendWith(BladeSpringExtension.class)
 @BladeBootTest(appName = "blade-runner", enableLoader = true)
 public class BladeTest {
 

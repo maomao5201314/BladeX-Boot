@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author Chill
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @AllArgsConstructor
 @EnableConfigurationProperties(FlowableProperties.class)
 public class FlowableConfiguration implements EngineConfigurationConfigurer<SpringProcessEngineConfiguration> {

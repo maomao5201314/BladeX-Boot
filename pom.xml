@@ -7,18 +7,18 @@
     <groupId>org.springblade</groupId>
     <artifactId>BladeX-Boot</artifactId>
     <packaging>jar</packaging>
-    <version>2.9.1.RELEASE</version>
+    <version>3.0.0.RELEASE</version>
 
     <properties>
         <bladex.project.id>blade-api</bladex.project.id>
-        <bladex.project.version>2.9.1.RELEASE</bladex.project.version>
+        <bladex.project.version>3.0.0.RELEASE</bladex.project.version>
 
         <java.version>1.8</java.version>
         <maven.plugin.version>3.8.1</maven.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+        <spring.boot.version>2.7.1</spring.boot.version>
         <spring.platform.version>Cairo-SR8</spring.platform.version>
 
         <!-- 推荐使用Harbor -->

@@ -42,7 +42,7 @@ import java.util.List;
  *
  * @author Chill
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @EnableSwagger
 @AllArgsConstructor
 public class SwaggerConfiguration {

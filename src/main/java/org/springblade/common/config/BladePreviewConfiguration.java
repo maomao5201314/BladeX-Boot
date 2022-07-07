@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author Chill
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(value = "blade.preview.enabled", havingValue = "true")
 public class BladePreviewConfiguration {
 

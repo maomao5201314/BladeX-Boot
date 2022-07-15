@@ -98,6 +98,18 @@ public class Code implements Serializable {
 	private Integer wrapMode;
 
 	/**
+	 * 远程调用模式
+	 */
+	@ApiModelProperty(value = "远程调用模式")
+	private Integer feignMode;
+
+	/**
+	 * 代码风格
+	 */
+	@ApiModelProperty(value = "代码风格")
+	private String codeStyle;
+
+	/**
 	 * 后端包名
 	 */
 	@ApiModelProperty(value = "后端包名")

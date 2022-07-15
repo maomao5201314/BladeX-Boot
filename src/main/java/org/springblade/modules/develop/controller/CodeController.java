@@ -125,7 +125,7 @@ public class CodeController extends BladeController {
 	@PostMapping("/gen-code")
 	@ApiOperationSupport(order = 6)
 	@ApiOperation(value = "代码生成", notes = "传入ids")
-	public R genCode(@ApiParam(value = "主键集合", required = true) @RequestParam String ids, @RequestParam(defaultValue = "sword") String system) {
+	public R genCode(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
 		Collection<Code> codes = codeService.listByIds(Func.toLongList(ids));
 		codes.forEach(code -> {
 			BladeCodeGenerator generator = new BladeCodeGenerator();
@@ -136,7 +136,7 @@ public class CodeController extends BladeController {
 			generator.setUsername(datasource.getUsername());
 			generator.setPassword(datasource.getPassword());
 			// 设置基础配置
-			generator.setSystemName(system);
+			generator.setCodeStyle(code.getCodeStyle());
 			generator.setCodeName(code.getCodeName());
 			generator.setServiceName(code.getServiceName());
 			generator.setPackageName(code.getPackageName());
@@ -148,6 +148,8 @@ public class CodeController extends BladeController {
 			generator.setHasSuperEntity(code.getBaseMode() == 2);
 			// 设置是否开启包装器模式
 			generator.setHasWrapper(code.getWrapMode() == 2);
+			// 设置是否开启远程调用模式
+			generator.setHasFeign(code.getFeignMode() == 2);
 			// 设置控制器服务名前缀
 			generator.setHasServiceName(Boolean.TRUE);
 			generator.run();

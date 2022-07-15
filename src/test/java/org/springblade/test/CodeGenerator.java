@@ -17,6 +17,7 @@
 package org.springblade.test;
 
 
+import org.springblade.develop.constant.DevelopConstant;
 import org.springblade.develop.support.BladeCodeGenerator;
 
 /**
@@ -39,9 +40,9 @@ public class CodeGenerator {
 	 */
 	public static String PACKAGE_NAME = "org.springblade.desk";
 	/**
-	 * 前端代码生成所属系统
+	 * 前端代码生成风格
 	 */
-	public static String SYSTEM_NAME = "sword";
+	public static String CODE_STYLE = DevelopConstant.SABER_NAME;
 	/**
 	 * 前端代码生成地址
 	 */
@@ -74,7 +75,7 @@ public class CodeGenerator {
 		BladeCodeGenerator generator = new BladeCodeGenerator();
 		generator.setCodeName(CODE_NAME);
 		generator.setServiceName(SERVICE_NAME);
-		generator.setSystemName(SYSTEM_NAME);
+		generator.setCodeStyle(CODE_STYLE);
 		generator.setPackageName(PACKAGE_NAME);
 		generator.setPackageWebDir(PACKAGE_WEB_DIR);
 		generator.setTablePrefix(TABLE_PREFIX);

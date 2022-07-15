@@ -11,7 +11,7 @@
  Target Server Version : 110200
  File Encoding         : 65001
 
- Date: 20/03/2022 22:35:38
+ Date: 15/07/2022 16:25:12
 */
 
 
@@ -131,7 +131,7 @@ COMMENT ON TABLE "BLADE_CLIENT" IS '客户端表';
 -- Records of BLADE_CLIENT
 -- ----------------------------
 INSERT INTO "BLADE_CLIENT" VALUES ('1123598811738675201', 'sword', 'sword_secret', NULL, 'all', 'refresh_token,password,authorization_code,captcha,social', 'http://localhost:8888', NULL, '3600', '604800', NULL, NULL, '1123598815738675201', '1123598813738675201', TO_DATE('2019-03-24 10:40:55', 'SYYYY-MM-DD HH24:MI:SS'), '1123598815738675201', TO_DATE('2019-03-24 10:40:59', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
-INSERT INTO "BLADE_CLIENT" VALUES ('1123598811738675202', 'saber', 'saber_secret', NULL, 'all', 'refresh_token,password,authorization_code,captcha,social', 'http://localhost:8080', NULL, '3600', '604800', NULL, NULL, '1123598815738675201', '1123598813738675201', TO_DATE('2019-03-24 10:42:29', 'SYYYY-MM-DD HH24:MI:SS'), '1123598815738675201', TO_DATE('2019-03-24 10:42:32', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "BLADE_CLIENT" VALUES ('1123598811738675202', 'saber', 'saber_secret', NULL, 'all', 'refresh_token,password,authorization_code,captcha,social', 'http://localhost:1888', NULL, '3600', '604800', NULL, NULL, '1123598815738675201', '1123598813738675201', TO_DATE('2019-03-24 10:42:29', 'SYYYY-MM-DD HH24:MI:SS'), '1123598815738675201', TO_DATE('2019-03-24 10:42:32', 'SYYYY-MM-DD HH24:MI:SS'), '1', '0');
 COMMIT;
 
 -- ----------------------------
@@ -149,6 +149,8 @@ CREATE TABLE "BLADE_CODE" (
   "PACKAGE_NAME" NVARCHAR2(500) ,
   "BASE_MODE" NUMBER(11) ,
   "WRAP_MODE" NUMBER(11) ,
+  "FEIGN_MODE" NUMBER(11) ,
+  "CODE_STYLE" NVARCHAR2(32) ,
   "API_PATH" NCLOB ,
   "WEB_PATH" NCLOB ,
   "IS_DELETED" NUMBER(11)
@@ -179,6 +181,8 @@ COMMENT ON COLUMN "BLADE_CODE"."PK_NAME" IS '主键名';
 COMMENT ON COLUMN "BLADE_CODE"."PACKAGE_NAME" IS '后端包名';
 COMMENT ON COLUMN "BLADE_CODE"."BASE_MODE" IS '基础业务模式';
 COMMENT ON COLUMN "BLADE_CODE"."WRAP_MODE" IS '包装器模式';
+COMMENT ON COLUMN "BLADE_CODE"."FEIGN_MODE" IS '远程调用模式';
+COMMENT ON COLUMN "BLADE_CODE"."CODE_STYLE" IS '代码风格';
 COMMENT ON COLUMN "BLADE_CODE"."API_PATH" IS '后端路径';
 COMMENT ON COLUMN "BLADE_CODE"."WEB_PATH" IS '前端路径';
 COMMENT ON COLUMN "BLADE_CODE"."IS_DELETED" IS '是否已删除';
@@ -187,7 +191,7 @@ COMMENT ON TABLE "BLADE_CODE" IS '代码生成表';
 -- ----------------------------
 -- Records of BLADE_CODE
 -- ----------------------------
-INSERT INTO "BLADE_CODE" VALUES ('1123598812738675201', '1161483357481541634', 'blade-demo', '通知公告', 'BLADE_NOTICE', 'blade_', 'ID', 'org.springblade.desktop', '1', '1', 'D:\Develop\WorkSpace\Git\SpringBlade\blade-ops\blade-develop', 'D:\Develop\WorkSpace\Git\Sword', '0');
+INSERT INTO "BLADE_CODE" VALUES ('1123598812738675201', '1161483357481541634', 'blade-demo', '通知公告', 'BLADE_NOTICE', 'blade_', 'ID', 'org.springblade.desktop', '1', '1', '1', 'saber', 'D:\Develop\WorkSpace\Git\SpringBlade\blade-ops\blade-develop', 'D:\Develop\WorkSpace\Git\Saber', '0');
 COMMIT;
 
 -- ----------------------------

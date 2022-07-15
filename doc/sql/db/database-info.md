@@ -56,6 +56,8 @@ Table: blade_code（代码生成表）
 | package_name  | VARCHAR(500)  | YES  |     |         | 后端包名    |
 | base_mode     | INT(10)       | YES  |     |         | 基础业务模式  |
 | wrap_mode     | INT(10)       | YES  |     |         | 包装器模式   |
+| feign_mode    | INT(10)       | YES  |     |         | 远程调用模式   |
+| code_style    | VARCHAR(32)   | YES  |     |         | 代码风格    |
 | api_path      | VARCHAR(2000) | YES  |     |         | 后端路径    |
 | web_path      | VARCHAR(2000) | YES  |     |         | 前端路径    |
 | is_deleted    | INT(10)       | YES  |     | 0       | 是否已删除   |

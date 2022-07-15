@@ -12,7 +12,7 @@
  Target Server Version : 110001
  File Encoding         : 65001
 
- Date: 20/03/2022 22:29:34
+ Date: 15/07/2022 16:29:28
 */
 
 
@@ -106,7 +106,7 @@ COMMENT ON TABLE "blade_client" IS '客户端表';
 -- ----------------------------
 BEGIN;
 INSERT INTO "blade_client" VALUES (1123598811738675201, 'sword', 'sword_secret', NULL, 'all', 'refresh_token,password,authorization_code,captcha,social', 'http://localhost:8888', NULL, 3600, 604800, NULL, NULL, 1123598815738675201, 1123598813738675201, '2019-03-24 10:40:55', 1123598815738675201, '2019-03-24 10:40:59', 1, 0);
-INSERT INTO "blade_client" VALUES (1123598811738675202, 'saber', 'saber_secret', NULL, 'all', 'refresh_token,password,authorization_code,captcha,social', 'http://localhost:8080', NULL, 3600, 604800, NULL, NULL, 1123598815738675201, 1123598813738675201, '2019-03-24 10:42:29', 1123598815738675201, '2019-03-24 10:42:32', 1, 0);
+INSERT INTO "blade_client" VALUES (1123598811738675202, 'saber', 'saber_secret', NULL, 'all', 'refresh_token,password,authorization_code,captcha,social', 'http://localhost:1888', NULL, 3600, 604800, NULL, NULL, 1123598815738675201, 1123598813738675201, '2019-03-24 10:42:29', 1123598815738675201, '2019-03-24 10:42:32', 1, 0);
 COMMIT;
 
 -- ----------------------------
@@ -124,6 +124,8 @@ CREATE TABLE "blade_code" (
   "package_name" varchar(500) COLLATE "pg_catalog"."default",
   "base_mode" int2,
   "wrap_mode" int2,
+  "feign_mode" int2,
+  "code_style" varchar(32) COLLATE "pg_catalog"."default",
   "api_path" varchar(2000) COLLATE "pg_catalog"."default",
   "web_path" varchar(2000) COLLATE "pg_catalog"."default",
   "is_deleted" int4
@@ -139,6 +141,8 @@ COMMENT ON COLUMN "blade_code"."pk_name" IS '主键名';
 COMMENT ON COLUMN "blade_code"."package_name" IS '后端包名';
 COMMENT ON COLUMN "blade_code"."base_mode" IS '基础业务模式';
 COMMENT ON COLUMN "blade_code"."wrap_mode" IS '包装器模式';
+COMMENT ON COLUMN "blade_code"."feign_mode" IS '远程调用模式';
+COMMENT ON COLUMN "blade_code"."code_style" IS '代码风格';
 COMMENT ON COLUMN "blade_code"."api_path" IS '后端路径';
 COMMENT ON COLUMN "blade_code"."web_path" IS '前端路径';
 COMMENT ON COLUMN "blade_code"."is_deleted" IS '是否已删除';
@@ -148,7 +152,7 @@ COMMENT ON TABLE "blade_code" IS '代码生成表';
 -- Records of blade_code
 -- ----------------------------
 BEGIN;
-INSERT INTO "blade_code" VALUES (1123598812738675201, 1161483357481541634, 'blade-demo', '通知公告', 'blade_notice', 'blade_', 'id', 'org.springblade.desktop', 1, 1, 'D:\Develop\WorkSpace\Git\SpringBlade\blade-ops\blade-develop', 'D:\Develop\WorkSpace\Git\Sword', 0);
+INSERT INTO "blade_code" VALUES (1123598812738675201, 1161483357481541634, 'blade-demo', '通知公告', 'blade_notice', 'blade_', 'id', 'org.springblade.desktop', 1, 1, 1, 'saber', 'D:\Develop\WorkSpace\Git\SpringBlade\blade-ops\blade-develop', 'D:\Develop\WorkSpace\Git\Saber', 0);
 COMMIT;
 
 -- ----------------------------

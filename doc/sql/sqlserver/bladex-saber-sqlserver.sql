@@ -12,7 +12,7 @@
  Target Server Version : 10501600
  File Encoding         : 65001
 
- Date: 20/03/2022 22:19:42
+ Date: 15/07/2022 16:29:58
 */
 
 
@@ -336,7 +336,7 @@ GO
 BEGIN TRANSACTION
 GO
 
-INSERT INTO [dbo].[blade_client] VALUES (N'1123598811738675201', N'sword', N'sword_secret', NULL, N'all', N'refresh_token,password,authorization_code,captcha,social', N'http://localhost:8888', NULL, N'3600', N'604800', NULL, NULL, N'1123598815738675201', N'1123598813738675201', N'2019-03-24 10:40:55', N'1123598815738675201', N'2019-03-24 10:40:59', N'1', N'0'), (N'1123598811738675202', N'saber', N'saber_secret', NULL, N'all', N'refresh_token,password,authorization_code,captcha,social', N'http://localhost:8080', NULL, N'3600', N'604800', NULL, NULL, N'1123598815738675201', N'1123598813738675201', N'2019-03-24 10:42:29', N'1123598815738675201', N'2019-03-24 10:42:32', N'1', N'0')
+INSERT INTO [dbo].[blade_client] VALUES (N'1123598811738675201', N'sword', N'sword_secret', NULL, N'all', N'refresh_token,password,authorization_code,captcha,social', N'http://localhost:8888', NULL, N'3600', N'604800', NULL, NULL, N'1123598815738675201', N'1123598813738675201', N'2019-03-24 10:40:55', N'1123598815738675201', N'2019-03-24 10:40:59', N'1', N'0'), (N'1123598811738675202', N'saber', N'saber_secret', NULL, N'all', N'refresh_token,password,authorization_code,captcha,social', N'http://localhost:1888', NULL, N'3600', N'604800', NULL, NULL, N'1123598815738675201', N'1123598813738675201', N'2019-03-24 10:42:29', N'1123598815738675201', N'2019-03-24 10:42:32', N'1', N'0')
 GO
 
 COMMIT
@@ -361,6 +361,8 @@ CREATE TABLE [dbo].[blade_code] (
   [package_name] nvarchar(500) COLLATE Chinese_PRC_CI_AS  NULL,
   [base_mode] int  NULL,
   [wrap_mode] int  NULL,
+  [feign_mode] int  NULL,
+  [code_sytle] nvarchar(32) COLLATE Chinese_PRC_CI_AS  NULL,
   [api_path] nvarchar(2000) COLLATE Chinese_PRC_CI_AS  NULL,
   [web_path] nvarchar(2000) COLLATE Chinese_PRC_CI_AS  NULL,
   [is_deleted] int  NULL
@@ -441,6 +443,20 @@ EXEC sp_addextendedproperty
 GO
 
 EXEC sp_addextendedproperty
+'MS_Description', N'远程调用模式',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_code',
+'COLUMN', N'feign_mode'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'代码风格',
+'SCHEMA', N'dbo',
+'TABLE', N'blade_code',
+'COLUMN', N'code_style'
+GO
+
+EXEC sp_addextendedproperty
 'MS_Description', N'后端路径',
 'SCHEMA', N'dbo',
 'TABLE', N'blade_code',
@@ -474,7 +490,7 @@ GO
 BEGIN TRANSACTION
 GO
 
-INSERT INTO [dbo].[blade_code] VALUES (N'1123598812738675201', N'1161483357481541634', N'blade-demo', N'通知公告', N'blade_notice', N'blade_', N'id', N'org.springblade.desktop', N'1', N'1', N'D:\Develop\WorkSpace\Git\SpringBlade\blade-ops\blade-develop', N'D:\Develop\WorkSpace\Git\Sword', N'0')
+INSERT INTO [dbo].[blade_code] VALUES (N'1123598812738675201', N'1161483357481541634', N'blade-demo', N'通知公告', N'blade_notice', N'blade_', N'id', N'org.springblade.desktop', N'1', N'1', N'1', N'saber', N'D:\Develop\WorkSpace\Git\SpringBlade\blade-ops\blade-develop', N'D:\Develop\WorkSpace\Git\Saber', N'0')
 GO
 
 COMMIT
